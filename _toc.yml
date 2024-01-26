@@ -73,8 +73,8 @@ sections:
 
 - file: chapters/Finance/PortfolioMath
   title: Portfolio Math
-    - file: chapters/scientific/linear_algebra1
-      title: Linear algebra Review
+  - file: chapters/scientific/linear_algebra1
+    title: Linear algebra Review
 
 
 - file: chapters/Finance/CapitalAllocationLine
@@ -91,6 +91,8 @@ sections:
     title: Leverage and Shorting
   - file: chapters/Finance/Portfoliooptimizationwithconstraints
     title: Portfolio Optimization with constraints
+
+
 - file: chapters/Finance/EstimationUncertainty
   title: Estimation Uncertainty and It's Implications for investing
 - file: chapters/Finance/TradingStrategies
