@@ -73,6 +73,7 @@ sections:
 
 - file: chapters/Finance/PortfolioMath
   title: Portfolio Math
+  sections:
   - file: chapters/scientific/linear_algebra1
     title: Linear algebra Review
 
