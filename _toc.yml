@@ -34,13 +34,6 @@ sections:
   - file: chapters/essentials/plotting1
     title: Plotting
 
-
-# - file: chapters/scientific/intro
-#   title: Scientific Computing
-#   sections:
-
-  #- file: chapters/scientific/randomness1
-    #title: Randomness
 - file: chapters/pandas/workingwithdata
   title: Working with Data
   sections:
@@ -64,21 +57,24 @@ sections:
     title: Plotting (opt)
   - file: chapters/pandas/storage_formats
     title: Data Storage (opt)
-- file: chapters/Finance/Returns.md
+
+
+- file: chapters/Finance/Returns.ipynb
   title: Asset Returns
   sections:
-  - file: chapters/Finance/Returns1
-    title: Returns
   - file: chapters/scientific/randomness1
     title: Modeling randomness
-  - file: chapters/Finance/TheChoiceofFrequency
-    title: The Choice of Frequency and Annualization of Returns
-  - file: chapters/scientific/linear_algebra1
-    title: Linear algebra Review
   - file: chapters/Finance/UsingAPI
     title: Data APIs
+  - file: chapters/Finance/TheChoiceofFrequency
+    title: The Choice of Frequency and Annualization of Returns
+
+
+
 - file: chapters/Finance/PortfolioMath
   title: Portfolio Math
+    - file: chapters/scientific/linear_algebra1
+      title: Linear algebra Review
 
 
 - file: chapters/Finance/CapitalAllocationLine
