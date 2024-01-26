@@ -32,13 +32,16 @@ jobs:
       run: |
         jupyter-book build .
 
-    # Push the book's HTML to github-pages
     - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3
-      if: ${{ github.event_name == 'push' }}
+      uses: peaceiris/actions-gh-pages@v3.6.1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: master
         publish_dir: ./_build/html
-        external_repository: amoreira2/quantitativeinvesting
-        deploy_key: ${{ secrets.DEPLOY_DOC }}
+        
+    # - name: GitHub Pages action
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   if: ${{ github.event_name == 'push' }}
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_branch: gh-pages
+    #     publish_dir: ./_build/html
