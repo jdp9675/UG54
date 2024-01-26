@@ -18,9 +18,7 @@ sections:
     title: Local installation
   - file: chapters/02/cloud_setup
     title: Cloud Setup
-- file: chapters/03/programming-in-python
-  title: First Steps with Python
-- file: chapters/essentials/essentials
+- file: chapters/essentials/intro
   title: Python Essentials
   sections:
   - file: chapters/essentials/basics
