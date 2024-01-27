@@ -25,6 +25,27 @@ sections:
     title: Basics
   - file: chapters/essentials/collections
     title: Collections
+  - file: chapters/essentials/introtopandas
+    title: Pandas
+    sections:
+    - file: chapters/pandas/basics
+      title: Pandas Basics
+    - file: chapters/pandas/the_index
+      title: Indexing
+    - file: chapters/pandas/timeseries
+      title: Time-Series
+    - file: chapters/pandas/data_clean
+      title: Cleaning data (opt)
+    - file: chapters/pandas/reshape
+      title: Reshape (opt)
+    - file: chapters/pandas/merge
+      title: Merge (opt)
+    - file: chapters/pandas/groupby
+      title: Group-by (opt)
+    - file: chapters/pandas/matplotlib
+      title: Plotting (opt)
+    - file: chapters/pandas/storage_formats
+      title: Data Storage (opt)
   - file: chapters/essentials/control_flow
     title: Flow control
   - file: chapters/essentials/functions
@@ -36,38 +57,36 @@ sections:
 
 - file: chapters/pandas/workingwithdata
   title: Working with Data
-  sections:
-  - file: chapters/pandas/intro
-    title: Introduction
-  - file: chapters/pandas/basics
-    title: Pandas Basics
-  - file: chapters/pandas/the_index
-    title: Indexing
-  - file: chapters/pandas/timeseries
-    title: Time-Series
-  - file: chapters/pandas/data_clean
-    title: Cleaning data (opt)
-  - file: chapters/pandas/reshape
-    title: Reshape (opt)
-  - file: chapters/pandas/merge
-    title: Merge (opt)
-  - file: chapters/pandas/groupby
-    title: Group-by (opt)
-  - file: chapters/pandas/matplotlib
-    title: Plotting (opt)
-  - file: chapters/pandas/storage_formats
-    title: Data Storage (opt)
+  # sections:
+  # - file: chapters/pandas/basics
+  #   title: Pandas Basics
+  # - file: chapters/pandas/the_index
+  #   title: Indexing
+  # - file: chapters/pandas/timeseries
+  #   title: Time-Series
+  # - file: chapters/pandas/data_clean
+  #   title: Cleaning data (opt)
+  # - file: chapters/pandas/reshape
+  #   title: Reshape (opt)
+  # - file: chapters/pandas/merge
+  #   title: Merge (opt)
+  # - file: chapters/pandas/groupby
+  #   title: Group-by (opt)
+  # - file: chapters/pandas/matplotlib
+  #   title: Plotting (opt)
+  # - file: chapters/pandas/storage_formats
+  #   title: Data Storage (opt)
 
 
 - file: chapters/Finance/Returns
   title: Asset Returns
   sections:
-  - file: chapters/scientific/randomness1
-    title: Modeling randomness
   - file: chapters/Finance/UsingAPI
     title: Data APIs
   - file: chapters/Finance/TheChoiceofFrequency
     title: The Choice of Frequency and Annualization of Returns
+  - file: chapters/scientific/randomness1
+    title: Modeling randomness
 
 
 
