@@ -28,8 +28,6 @@ sections:
   - file: chapters/essentials/introtopandas
     title: Pandas
     sections:
-    - file: chapters/pandas/basics
-      title: Pandas Basics
     - file: chapters/pandas/the_index
       title: Indexing
     - file: chapters/pandas/timeseries
