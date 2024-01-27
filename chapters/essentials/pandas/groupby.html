@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>3.3.8. GroupBy (opt) &#8212; Quantitative Investing</title>
+    <title>GroupBy (opt) &#8212; Quantitative Investing</title>
   
   
   
@@ -19,56 +19,54 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/book.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/book.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/pandas/groupby';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/quantitativeinvesting/chapters/pandas/groupby.html" />
-    <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.3.9. Intermediate Plotting (opt)" href="matplotlib.html" />
-    <link rel="prev" title="3.3.7. Merge (opt)" href="merge.html" />
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/essentials/pandas/groupby';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/essentials/pandas/groupby.html" />
+    <link rel="shortcut icon" href="../../../_static/figuremain2.jpg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -96,7 +94,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../../search.html"
+      action="../../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -134,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../intro.html">
+<a class="navbar-brand logo" href="../../intro.html">
   
   
   
@@ -144,123 +142,113 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/computational-tools.html">1.2. Computational tools</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../02/local_install.html">2.3. Local installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02/cloud_setup.html">2.4. Cloud Setup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/local_install.html">2.3. Local installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/cloud_setup.html">2.4. Cloud Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../essentials/intro.html">3. Python Essentials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../essentials/basics.html">3.1. Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/collections.html">3.2. Collections</a></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.3. Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="basics.html">3.3.2. Pandas Basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="the_index.html">3.3.3. Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html">3.3.4. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_clean.html">3.3.5. Cleaning data (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reshape.html">3.3.6. Reshape (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="merge.html">3.3.7. Merge (opt)</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">3.3.8. Group-by (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib.html">3.3.9. Plotting (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="storage_formats.html">3.3.10. Data Storage (opt)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro.html">3. Python Essentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics.html">3.1. Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collections.html">3.2. Collections</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../introtopandas.html">3.3. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.4. Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy1.html">3.6. Numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting1.html">3.7. Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control_flow.html">3.4. Flow control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions.html">3.5. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../numpy1.html">3.6. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting1.html">3.7. Plotting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="workingwithdata.html">4. Working with Data</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Returns.html">5. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/UsingAPI.html">5.3. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/TheChoiceofFrequency.html">5.4. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">5.5. Modeling randomness</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/UsingAPI.html">4.3. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/randomness1.html">4.5. Modeling randomness</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/PortfolioMath.html">6. Portfolio Math</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">6.5. Linear algebra Review</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/PortfolioMath.html">5. Portfolio Math</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/linear_algebra1.html">5.5. Linear algebra Review</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/CapitalAllocationLine.html">7. Capital Allocation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/meanvariance1.html">8. Mean Variance Frontier</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/MeanVariance.html">8.1. Mean Variance Efficient Portfolios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/CaseStudy.html">8.2. Case Study in International Diversification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/LeverageandShorting.html">8.3. Leverage and Shorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Portfoliooptimizationwithconstraints.html">8.4. Portfolio Optimization with constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/CapitalAllocationLine.html">6. Capital Allocation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/meanvariance1.html">7. Mean Variance Frontier</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MeanVariance.html">7.1. Mean Variance Efficient Portfolios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/CaseStudy.html">7.2. Case Study in International Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/LeverageandShorting.html">7.3. Leverage and Shorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Portfoliooptimizationwithconstraints.html">7.4. Portfolio Optimization with constraints</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/EstimationUncertainty.html">9. Estimation Uncertainty and It's Implications for investing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/TradingStrategies.html">10. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Timing.html">11. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Volatilitytiming.html">11.1. Volatility Timing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/EstimationUncertainty.html">8. Estimation Uncertainty and It's Implications for investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/TradingStrategies.html">9. Trading Strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Volatilitytiming.html">10.1. Volatility Timing</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/crosssectionalequitystrategies.html">12. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Valueinvesting.html">12.1. Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Momentum.html">12.2. Momentum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/OtherEquityStrategies.html">12.3. Other Equity strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Valueinvesting.html">11.1. Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Momentum.html">11.2. Momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/OtherEquityStrategies.html">11.3. Other Equity strategies</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Evaluation.html">13. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Econometrics.html">13.1. The Econometrics of Strategy Evalaution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/outofsample.html">13.2. Out of Sample Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/TailandBackground.html">13.3. Tail Risks and Background Risks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/MultiFactorModels.html">13.4. Multifactor Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Evaluation.html">12. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Econometrics.html">12.1. The Econometrics of Strategy Evalaution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/outofsample.html">12.2. Out of Sample Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/TailandBackground.html">12.3. Tail Risks and Background Risks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MultiFactorModels.html">12.4. Multifactor Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Topics.html">14. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Equilbrium.html">14.1. Intepreting Factor models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Implementation.html">14.2. Strategy Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Horizon.html">14.3. Investment horizon effects</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Topics.html">13. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Equilbrium.html">13.1. Intepreting Factor models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Implementation.html">13.2. Strategy Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Horizon.html">13.3. Investment horizon effects</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">15. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">16. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">16.1. Assigment 0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/additional.html">14. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Assignments/Assignments.html">15. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment0.html">15.1. Assigment 0</a></li>
 
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">16.7. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment1.html">15.7. Assignment 1</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">16.12. Assigment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment2.html">15.12. Assigment 2</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">16.16. Assignment 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment3.html">15.16. Assignment 3</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">16.20. Assignment 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment4.html">15.20. Assignment 4</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment5.html">16.24. Assigment 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment5.html">15.24. Assigment 5</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment6.html">16.28. Assignment 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment6.html">15.28. Assignment 6</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment7.html">16.32. Assignment 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment7.html">15.32. Assignment 7</a></li>
 
 </ul>
 </li>
@@ -318,7 +306,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/amoreira2/Lectures/blob/main/chapters/pandas/groupby.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/essentials/pandas/groupby.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -327,7 +315,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img src="../../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -349,7 +337,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/amoreira2/Lectures" target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -366,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/amoreira2/Lectures/issues/new?title=Issue%20on%20page%20%2Fchapters/pandas/groupby.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/essentials/pandas/groupby.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -396,7 +384,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/chapters/pandas/groupby.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/essentials/pandas/groupby.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -488,20 +476,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">3.3.8.1. Outline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">3.3.8.2. Split-Apply-Combine</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example">3.3.8.2.1. Simple Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-aggregate-functions">3.3.8.2.2. Custom Aggregate Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transforms-the-apply-method">3.3.8.2.3. Transforms: The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-grouper">3.3.8.2.4. <code class="docutils literal notranslate"><span class="pre">pd.Grouper</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">Split-Apply-Combine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example">Simple Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-aggregate-functions">Custom Aggregate Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transforms-the-apply-method">Transforms: The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-grouper"><code class="docutils literal notranslate"><span class="pre">pd.Grouper</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-airline-delays">3.3.8.3. Case Study: Airline Delays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-cohort-analysis-using-shopify-data">3.3.8.4. Exercise: Cohort Analysis using Shopify Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-exercise">3.3.8.4.1. Extended Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-airline-delays">Case Study: Airline Delays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-cohort-analysis-using-shopify-data">Exercise: Cohort Analysis using Shopify Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-exercise">Extended Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.3.8.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -514,7 +502,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="groupby-opt">
-<h1><span class="section-number">3.3.8. </span>GroupBy (opt)<a class="headerlink" href="#groupby-opt" title="Permalink to this heading">#</a></h1>
+<h1>GroupBy (opt)<a class="headerlink" href="#groupby-opt" title="Permalink to this heading">#</a></h1>
 <p><strong>Prerequisites</strong></p>
 <ul class="simple">
 <li><p><span class="xref myst">Functions</span></p></li>
@@ -560,7 +548,7 @@ Statistics</a></p></li>
 </div>
 </div>
 <section id="outline">
-<h2><span class="section-number">3.3.8.1. </span>Outline<a class="headerlink" href="#outline" title="Permalink to this heading">#</a></h2>
+<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="xref myst">GroupBy</span></p>
 <ul>
@@ -573,7 +561,7 @@ Statistics</a></p></li>
 </ul>
 </section>
 <section id="split-apply-combine">
-<h2><span class="section-number">3.3.8.2. </span>Split-Apply-Combine<a class="headerlink" href="#split-apply-combine" title="Permalink to this heading">#</a></h2>
+<h2>Split-Apply-Combine<a class="headerlink" href="#split-apply-combine" title="Permalink to this heading">#</a></h2>
 <p>One powerful paradigm for analyzing data is the “Split-Apply-Combine”
 strategy.</p>
 <p>This strategy has three steps:</p>
@@ -669,7 +657,7 @@ then work through extended example and exercises with real data.</p>
 </div></div></div>
 </div>
 <section id="simple-example">
-<h3><span class="section-number">3.3.8.2.1. </span>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this heading">#</a></h3>
+<h3>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this heading">#</a></h3>
 <p>To perform the <em>Split</em> step, we call the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> method on our
 DataFrame.</p>
 <p>The first argument to <code class="docutils literal notranslate"><span class="pre">groupby</span></code> is a description of how we want to
@@ -949,7 +937,7 @@ with one index level per group key.</p>
 </div></blockquote>
 </section>
 <section id="custom-aggregate-functions">
-<h3><span class="section-number">3.3.8.2.2. </span>Custom Aggregate Functions<a class="headerlink" href="#custom-aggregate-functions" title="Permalink to this heading">#</a></h3>
+<h3>Custom Aggregate Functions<a class="headerlink" href="#custom-aggregate-functions" title="Permalink to this heading">#</a></h3>
 <p>So far, we have been applying built-in aggregations to our GroupBy object.</p>
 <p>We can also apply custom aggregations to each group of a GroupBy in two
 steps:</p>
@@ -1042,7 +1030,7 @@ with one item per column in the original DataFrame.</p>
 our function as a DataFrame (or Series).</p>
 </section>
 <section id="transforms-the-apply-method">
-<h3><span class="section-number">3.3.8.2.3. </span>Transforms: The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method<a class="headerlink" href="#transforms-the-apply-method" title="Permalink to this heading">#</a></h3>
+<h3>Transforms: The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method<a class="headerlink" href="#transforms-the-apply-method" title="Permalink to this heading">#</a></h3>
 <p>As we saw in the <a class="reference internal" href="basics.html"><span class="doc std std-doc">basics lecture</span></a>, we can apply transforms to DataFrames.</p>
 <p>We can do the same with GroupBy objects using the <code class="docutils literal notranslate"><span class="pre">.apply</span></code> method.</p>
 <p>Let’s see an example.</p>
@@ -1207,7 +1195,7 @@ that would appear in the result of the call to <code class="docutils literal not
 </div></blockquote>
 </section>
 <section id="pd-grouper">
-<h3><span class="section-number">3.3.8.2.4. </span><code class="docutils literal notranslate"><span class="pre">pd.Grouper</span></code><a class="headerlink" href="#pd-grouper" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">pd.Grouper</span></code><a class="headerlink" href="#pd-grouper" title="Permalink to this heading">#</a></h3>
 <p>Sometimes, in order to construct the groups you want, you need to give
 pandas more information than just a column name.</p>
 <p>Some examples are:</p>
@@ -1523,7 +1511,7 @@ denotes a column name</p>
 </section>
 </section>
 <section id="case-study-airline-delays">
-<h2><span class="section-number">3.3.8.3. </span>Case Study: Airline Delays<a class="headerlink" href="#case-study-airline-delays" title="Permalink to this heading">#</a></h2>
+<h2>Case Study: Airline Delays<a class="headerlink" href="#case-study-airline-delays" title="Permalink to this heading">#</a></h2>
 <p>Let’s apply our new split-apply-combine skills to the airline dataset we
 saw in the <a class="reference internal" href="merge.html"><span class="doc std std-doc">merge</span></a> lecture.</p>
 <div class="cell docutils container">
@@ -1693,7 +1681,7 @@ each week.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7e711c357e7070d47e4af6476d31a3fc6db40a100a5ddb34b310b4e93286c602.png" src="../../_images/7e711c357e7070d47e4af6476d31a3fc6db40a100a5ddb34b310b4e93286c602.png" />
+<img alt="../../../_images/7e711c357e7070d47e4af6476d31a3fc6db40a100a5ddb34b310b4e93286c602.png" src="../../../_images/7e711c357e7070d47e4af6476d31a3fc6db40a100a5ddb34b310b4e93286c602.png" />
 </div>
 </div>
 <p>It looks like more delays occurred during the week ending Sunday
@@ -2230,9 +2218,9 @@ carrier</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dadf8d16b520af4ca13f6045a862e736fac9449dad070f713a38a8066d4567df.png" src="../../_images/dadf8d16b520af4ca13f6045a862e736fac9449dad070f713a38a8066d4567df.png" />
-<img alt="../../_images/a239b3be259c2f0c9772cca93db941f7629334c54ee85b3cca854f3753fd9a2b.png" src="../../_images/a239b3be259c2f0c9772cca93db941f7629334c54ee85b3cca854f3753fd9a2b.png" />
-<img alt="../../_images/46bc6b74145b81f7288bc7cfeac1af9ca7424857a861630bb6c35aa99e4c45eb.png" src="../../_images/46bc6b74145b81f7288bc7cfeac1af9ca7424857a861630bb6c35aa99e4c45eb.png" />
+<img alt="../../../_images/dadf8d16b520af4ca13f6045a862e736fac9449dad070f713a38a8066d4567df.png" src="../../../_images/dadf8d16b520af4ca13f6045a862e736fac9449dad070f713a38a8066d4567df.png" />
+<img alt="../../../_images/a239b3be259c2f0c9772cca93db941f7629334c54ee85b3cca854f3753fd9a2b.png" src="../../../_images/a239b3be259c2f0c9772cca93db941f7629334c54ee85b3cca854f3753fd9a2b.png" />
+<img alt="../../../_images/46bc6b74145b81f7288bc7cfeac1af9ca7424857a861630bb6c35aa99e4c45eb.png" src="../../../_images/46bc6b74145b81f7288bc7cfeac1af9ca7424857a861630bb6c35aa99e4c45eb.png" />
 </div>
 </div>
 <p><a id='exercise-3'></a></p>
@@ -2328,7 +2316,7 @@ figure to be a bit wider in order to see the dates.)</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f7460936d33a37f22394d70b54f745099007ec8814b55e56f1ea3cb3cd99ccdb.png" src="../../_images/f7460936d33a37f22394d70b54f745099007ec8814b55e56f1ea3cb3cd99ccdb.png" />
+<img alt="../../../_images/f7460936d33a37f22394d70b54f745099007ec8814b55e56f1ea3cb3cd99ccdb.png" src="../../../_images/f7460936d33a37f22394d70b54f745099007ec8814b55e56f1ea3cb3cd99ccdb.png" />
 </div>
 </div>
 <p>As we expected given our analysis above, the longest average delays
@@ -2347,9 +2335,9 @@ the days together and separately without much effort.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f837dbbd904cfc455ffb1d80a63f9ab9517bc6fb6788976fe56730fe05f3420.png" src="../../_images/5f837dbbd904cfc455ffb1d80a63f9ab9517bc6fb6788976fe56730fe05f3420.png" />
-<img alt="../../_images/312c292533e13416ec166eaeac5607f037a2983019f2f0b0c59f9d2bc7283ab6.png" src="../../_images/312c292533e13416ec166eaeac5607f037a2983019f2f0b0c59f9d2bc7283ab6.png" />
-<img alt="../../_images/4e17af2c34fb790edf89e76e7b617ca3215375c0c65a5c71a8e68ec14f2397c7.png" src="../../_images/4e17af2c34fb790edf89e76e7b617ca3215375c0c65a5c71a8e68ec14f2397c7.png" />
+<img alt="../../../_images/5f837dbbd904cfc455ffb1d80a63f9ab9517bc6fb6788976fe56730fe05f3420.png" src="../../../_images/5f837dbbd904cfc455ffb1d80a63f9ab9517bc6fb6788976fe56730fe05f3420.png" />
+<img alt="../../../_images/312c292533e13416ec166eaeac5607f037a2983019f2f0b0c59f9d2bc7283ab6.png" src="../../../_images/312c292533e13416ec166eaeac5607f037a2983019f2f0b0c59f9d2bc7283ab6.png" />
+<img alt="../../../_images/4e17af2c34fb790edf89e76e7b617ca3215375c0c65a5c71a8e68ec14f2397c7.png" src="../../../_images/4e17af2c34fb790edf89e76e7b617ca3215375c0c65a5c71a8e68ec14f2397c7.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2360,9 +2348,9 @@ the days together and separately without much effort.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/066f3ca19866964926756d18635c63f0e380ade90a297c560c53e2657fe13e84.png" src="../../_images/066f3ca19866964926756d18635c63f0e380ade90a297c560c53e2657fe13e84.png" />
-<img alt="../../_images/937c01d4e0fc7adbfede529569eb6e75e0661f2a24fdbbd40136c89a3a1a8cbd.png" src="../../_images/937c01d4e0fc7adbfede529569eb6e75e0661f2a24fdbbd40136c89a3a1a8cbd.png" />
-<img alt="../../_images/aa4cc6deee9a3982ead821309628234de9598d2e200d4591d58e9c5ab40f1e9e.png" src="../../_images/aa4cc6deee9a3982ead821309628234de9598d2e200d4591d58e9c5ab40f1e9e.png" />
+<img alt="../../../_images/066f3ca19866964926756d18635c63f0e380ade90a297c560c53e2657fe13e84.png" src="../../../_images/066f3ca19866964926756d18635c63f0e380ade90a297c560c53e2657fe13e84.png" />
+<img alt="../../../_images/937c01d4e0fc7adbfede529569eb6e75e0661f2a24fdbbd40136c89a3a1a8cbd.png" src="../../../_images/937c01d4e0fc7adbfede529569eb6e75e0661f2a24fdbbd40136c89a3a1a8cbd.png" />
+<img alt="../../../_images/aa4cc6deee9a3982ead821309628234de9598d2e200d4591d58e9c5ab40f1e9e.png" src="../../../_images/aa4cc6deee9a3982ead821309628234de9598d2e200d4591d58e9c5ab40f1e9e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2373,9 +2361,9 @@ the days together and separately without much effort.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/034641b5c880bf0b6bc27067a9e134a0c31c7eea8e4fe24eecf5de920ecd1ea4.png" src="../../_images/034641b5c880bf0b6bc27067a9e134a0c31c7eea8e4fe24eecf5de920ecd1ea4.png" />
-<img alt="../../_images/914aa605078eb4d90ecef629e909a8aff580b445ed09ba5757e27aa79dfa74d3.png" src="../../_images/914aa605078eb4d90ecef629e909a8aff580b445ed09ba5757e27aa79dfa74d3.png" />
-<img alt="../../_images/a57e68a0a41c132797bf759d2e532746bbed8e8f420a16a537783e535db9be2d.png" src="../../_images/a57e68a0a41c132797bf759d2e532746bbed8e8f420a16a537783e535db9be2d.png" />
+<img alt="../../../_images/034641b5c880bf0b6bc27067a9e134a0c31c7eea8e4fe24eecf5de920ecd1ea4.png" src="../../../_images/034641b5c880bf0b6bc27067a9e134a0c31c7eea8e4fe24eecf5de920ecd1ea4.png" />
+<img alt="../../../_images/914aa605078eb4d90ecef629e909a8aff580b445ed09ba5757e27aa79dfa74d3.png" src="../../../_images/914aa605078eb4d90ecef629e909a8aff580b445ed09ba5757e27aa79dfa74d3.png" />
+<img alt="../../../_images/a57e68a0a41c132797bf759d2e532746bbed8e8f420a16a537783e535db9be2d.png" src="../../../_images/a57e68a0a41c132797bf759d2e532746bbed8e8f420a16a537783e535db9be2d.png" />
 </div>
 </div>
 <p>The purpose of this exercise was to drive home the ability to <em>automate</em>
@@ -2388,7 +2376,7 @@ November 2016 data, with two lines of code).</p>
 <p>Keep that in mind as we work through the rest of the materials.</p>
 </section>
 <section id="exercise-cohort-analysis-using-shopify-data">
-<h2><span class="section-number">3.3.8.4. </span>Exercise: Cohort Analysis using Shopify Data<a class="headerlink" href="#exercise-cohort-analysis-using-shopify-data" title="Permalink to this heading">#</a></h2>
+<h2>Exercise: Cohort Analysis using Shopify Data<a class="headerlink" href="#exercise-cohort-analysis-using-shopify-data" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">qeds</span></code> library includes routines to simulate data sets in the
 format of common sources</p>
 <p>One of these sources is <a class="reference external" href="https://www.shopify.com/">Shopify</a> — an
@@ -2564,7 +2552,7 @@ complete.</p>
 total quantity separated by customer cohort and customer type.</p>
 <p>Read that carefully one more time…</p>
 <section id="extended-exercise">
-<h3><span class="section-number">3.3.8.4.1. </span>Extended Exercise<a class="headerlink" href="#extended-exercise" title="Permalink to this heading">#</a></h3>
+<h3>Extended Exercise<a class="headerlink" href="#extended-exercise" title="Permalink to this heading">#</a></h3>
 <p>Using the reshape and <code class="docutils literal notranslate"><span class="pre">groupby</span></code> tools you have learned, apply the want
 operator described above.</p>
 <p>See below for advice on how to proceed.</p>
@@ -2621,7 +2609,7 @@ move things to the right place in rows and columns.</p></li>
 </section>
 </section>
 <section id="exercises">
-<h2><span class="section-number">3.3.8.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
 <p>Look closely at the output of the cells below.</p>
@@ -2868,7 +2856,7 @@ appropriate values to replicate the plots from above.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/pandas"
+            path: "./chapters/essentials/pandas"
         },
         predefinedOutput: true
     }
@@ -2886,24 +2874,6 @@ appropriate values to replicate the plots from above.</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="merge.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.3.7. </span>Merge (opt)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="matplotlib.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.3.9. </span>Intermediate Plotting (opt)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -2922,20 +2892,20 @@ appropriate values to replicate the plots from above.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">3.3.8.1. Outline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">3.3.8.2. Split-Apply-Combine</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example">3.3.8.2.1. Simple Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-aggregate-functions">3.3.8.2.2. Custom Aggregate Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transforms-the-apply-method">3.3.8.2.3. Transforms: The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-grouper">3.3.8.2.4. <code class="docutils literal notranslate"><span class="pre">pd.Grouper</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#split-apply-combine">Split-Apply-Combine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example">Simple Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-aggregate-functions">Custom Aggregate Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transforms-the-apply-method">Transforms: The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-grouper"><code class="docutils literal notranslate"><span class="pre">pd.Grouper</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-airline-delays">3.3.8.3. Case Study: Airline Delays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-cohort-analysis-using-shopify-data">3.3.8.4. Exercise: Cohort Analysis using Shopify Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-exercise">3.3.8.4.1. Extended Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-airline-delays">Case Study: Airline Delays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-cohort-analysis-using-shopify-data">Exercise: Cohort Analysis using Shopify Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-exercise">Extended Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.3.8.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
   </nav></div>
 
@@ -2983,8 +2953,8 @@ By Alan Moreira
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

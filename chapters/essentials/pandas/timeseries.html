@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>3.3.4. Time series &#8212; Quantitative Investing</title>
+    <title>Time series &#8212; Quantitative Investing</title>
   
   
   
@@ -19,56 +19,54 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/book.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/book.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/pandas/timeseries';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/quantitativeinvesting/chapters/pandas/timeseries.html" />
-    <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.3.5. Cleaning Data (opt)" href="data_clean.html" />
-    <link rel="prev" title="3.3.3. The Index" href="the_index.html" />
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/essentials/pandas/timeseries';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/essentials/pandas/timeseries.html" />
+    <link rel="shortcut icon" href="../../../_static/figuremain2.jpg"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -96,7 +94,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="../../search.html"
+      action="../../../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -134,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../intro.html">
+<a class="navbar-brand logo" href="../../intro.html">
   
   
   
@@ -144,123 +142,113 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01/computational-tools.html">1.2. Computational tools</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../02/local_install.html">2.3. Local installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02/cloud_setup.html">2.4. Cloud Setup</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02/local_install.html">2.3. Local installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02/cloud_setup.html">2.4. Cloud Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../essentials/intro.html">3. Python Essentials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../essentials/basics.html">3.1. Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/collections.html">3.2. Collections</a></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.3. Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="basics.html">3.3.2. Pandas Basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="the_index.html">3.3.3. Indexing</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">3.3.4. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_clean.html">3.3.5. Cleaning data (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reshape.html">3.3.6. Reshape (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="merge.html">3.3.7. Merge (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="groupby.html">3.3.8. Group-by (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib.html">3.3.9. Plotting (opt)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="storage_formats.html">3.3.10. Data Storage (opt)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro.html">3. Python Essentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics.html">3.1. Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../collections.html">3.2. Collections</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../introtopandas.html">3.3. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.4. Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy1.html">3.6. Numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting1.html">3.7. Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control_flow.html">3.4. Flow control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../functions.html">3.5. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../numpy1.html">3.6. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plotting1.html">3.7. Plotting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="workingwithdata.html">4. Working with Data</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Returns.html">5. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/UsingAPI.html">5.3. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/TheChoiceofFrequency.html">5.4. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">5.5. Modeling randomness</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/UsingAPI.html">4.3. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/randomness1.html">4.5. Modeling randomness</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/PortfolioMath.html">6. Portfolio Math</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">6.5. Linear algebra Review</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/PortfolioMath.html">5. Portfolio Math</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/linear_algebra1.html">5.5. Linear algebra Review</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/CapitalAllocationLine.html">7. Capital Allocation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/meanvariance1.html">8. Mean Variance Frontier</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/MeanVariance.html">8.1. Mean Variance Efficient Portfolios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/CaseStudy.html">8.2. Case Study in International Diversification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/LeverageandShorting.html">8.3. Leverage and Shorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Portfoliooptimizationwithconstraints.html">8.4. Portfolio Optimization with constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/CapitalAllocationLine.html">6. Capital Allocation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/meanvariance1.html">7. Mean Variance Frontier</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MeanVariance.html">7.1. Mean Variance Efficient Portfolios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/CaseStudy.html">7.2. Case Study in International Diversification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/LeverageandShorting.html">7.3. Leverage and Shorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Portfoliooptimizationwithconstraints.html">7.4. Portfolio Optimization with constraints</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/EstimationUncertainty.html">9. Estimation Uncertainty and It's Implications for investing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/TradingStrategies.html">10. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Timing.html">11. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Volatilitytiming.html">11.1. Volatility Timing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/EstimationUncertainty.html">8. Estimation Uncertainty and It's Implications for investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/TradingStrategies.html">9. Trading Strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Volatilitytiming.html">10.1. Volatility Timing</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/crosssectionalequitystrategies.html">12. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Valueinvesting.html">12.1. Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Momentum.html">12.2. Momentum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/OtherEquityStrategies.html">12.3. Other Equity strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Valueinvesting.html">11.1. Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Momentum.html">11.2. Momentum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/OtherEquityStrategies.html">11.3. Other Equity strategies</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Evaluation.html">13. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Econometrics.html">13.1. The Econometrics of Strategy Evalaution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/outofsample.html">13.2. Out of Sample Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/TailandBackground.html">13.3. Tail Risks and Background Risks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/MultiFactorModels.html">13.4. Multifactor Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Evaluation.html">12. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Econometrics.html">12.1. The Econometrics of Strategy Evalaution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/outofsample.html">12.2. Out of Sample Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/TailandBackground.html">12.3. Tail Risks and Background Risks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MultiFactorModels.html">12.4. Multifactor Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Topics.html">14. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Equilbrium.html">14.1. Intepreting Factor models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Implementation.html">14.2. Strategy Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Horizon.html">14.3. Investment horizon effects</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Topics.html">13. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Equilbrium.html">13.1. Intepreting Factor models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Implementation.html">13.2. Strategy Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Horizon.html">13.3. Investment horizon effects</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">15. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">16. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">16.1. Assigment 0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/additional.html">14. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Assignments/Assignments.html">15. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment0.html">15.1. Assigment 0</a></li>
 
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">16.7. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment1.html">15.7. Assignment 1</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">16.12. Assigment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment2.html">15.12. Assigment 2</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">16.16. Assignment 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment3.html">15.16. Assignment 3</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">16.20. Assignment 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment4.html">15.20. Assignment 4</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment5.html">16.24. Assigment 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment5.html">15.24. Assigment 5</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment6.html">16.28. Assignment 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment6.html">15.28. Assignment 6</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment7.html">16.32. Assignment 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment7.html">15.32. Assignment 7</a></li>
 
 </ul>
 </li>
@@ -318,7 +306,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/amoreira2/Lectures/blob/main/chapters/pandas/timeseries.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/essentials/pandas/timeseries.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -327,7 +315,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img src="../../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -349,7 +337,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/amoreira2/Lectures" target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -366,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/amoreira2/Lectures/issues/new?title=Issue%20on%20page%20%2Fchapters/pandas/timeseries.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/essentials/pandas/timeseries.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -396,7 +384,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/chapters/pandas/timeseries.ipynb" target="_blank"
+      <li><a href="../../../_sources/chapters/essentials/pandas/timeseries.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -488,16 +476,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">3.3.4.1. Intro</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-strings-as-dates">3.3.4.2. Parsing Strings as Dates</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-dates">3.3.4.2.1. Multiple Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-strings-as-dates">Parsing Strings as Dates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-dates">Multiple Dates</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data">3.3.4.3. Extracting Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-date-properties">3.3.4.4. Accessing Date Properties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leads-and-lags-df-shift">3.3.4.5. Leads and Lags: <code class="docutils literal notranslate"><span class="pre">df.shift</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-computations-rolling">3.3.4.6. Rolling Computations: <code class="docutils literal notranslate"><span class="pre">.rolling</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-frequencies-resample-opt">3.3.4.7. Changing Frequencies: <code class="docutils literal notranslate"><span class="pre">.resample</span></code> (Opt)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data">Extracting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-date-properties">Accessing Date Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leads-and-lags-df-shift">Leads and Lags: <code class="docutils literal notranslate"><span class="pre">df.shift</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-computations-rolling">Rolling Computations: <code class="docutils literal notranslate"><span class="pre">.rolling</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-frequencies-resample-opt">Changing Frequencies: <code class="docutils literal notranslate"><span class="pre">.resample</span></code> (Opt)</a></li>
 </ul>
             </nav>
         </div>
@@ -510,7 +498,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="time-series">
-<h1><span class="section-number">3.3.4. </span>Time series<a class="headerlink" href="#time-series" title="Permalink to this heading">#</a></h1>
+<h1>Time series<a class="headerlink" href="#time-series" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -521,7 +509,7 @@ document.write(`
 </div>
 </div>
 <section id="intro">
-<h2><span class="section-number">3.3.4.1. </span>Intro<a class="headerlink" href="#intro" title="Permalink to this heading">#</a></h2>
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this heading">#</a></h2>
 <p>pandas has extensive support for handling dates and times.</p>
 <p>We will loosely refer to data with date or time information as time
 series data.</p>
@@ -542,7 +530,7 @@ documentation</a>
 for more information.</p>
 </section>
 <section id="parsing-strings-as-dates">
-<h2><span class="section-number">3.3.4.2. </span>Parsing Strings as Dates<a class="headerlink" href="#parsing-strings-as-dates" title="Permalink to this heading">#</a></h2>
+<h2>Parsing Strings as Dates<a class="headerlink" href="#parsing-strings-as-dates" title="Permalink to this heading">#</a></h2>
 <p>When working with time series data, we almost always receive the data
 with dates encoded as strings.</p>
 <p>Hopefully, the date strings follow a structured format or pattern.</p>
@@ -649,7 +637,7 @@ for 2 a digit month, and so on…</p>
 documentation</a> contains a complete list of possible <code class="docutils literal notranslate"><span class="pre">%</span></code>something patterns that are accepted
 in the <code class="docutils literal notranslate"><span class="pre">format</span></code> argument.</p>
 <section id="multiple-dates">
-<h3><span class="section-number">3.3.4.2.1. </span>Multiple Dates<a class="headerlink" href="#multiple-dates" title="Permalink to this heading">#</a></h3>
+<h3>Multiple Dates<a class="headerlink" href="#multiple-dates" title="Permalink to this heading">#</a></h3>
 <p>If we have dates in a Series (e.g. column of DataFrame) or a list, we
 can pass the entire collection to <code class="docutils literal notranslate"><span class="pre">pd.to_datetime</span></code> and get a
 collection of dates back.</p>
@@ -670,7 +658,7 @@ a single date.</p>
 </section>
 </section>
 <section id="extracting-data">
-<h2><span class="section-number">3.3.4.3. </span>Extracting Data<a class="headerlink" href="#extracting-data" title="Permalink to this heading">#</a></h2>
+<h2>Extracting Data<a class="headerlink" href="#extracting-data" title="Permalink to this heading">#</a></h2>
 <p>When the index of a DataFrame has date information and pandas
 recognizes the values as <code class="docutils literal notranslate"><span class="pre">datetime</span></code> values, we can leverage some
 convenient indexing features for extracting data.</p>
@@ -1541,7 +1529,7 @@ date for selection.</p>
 </div>
 </section>
 <section id="accessing-date-properties">
-<h2><span class="section-number">3.3.4.4. </span>Accessing Date Properties<a class="headerlink" href="#accessing-date-properties" title="Permalink to this heading">#</a></h2>
+<h2>Accessing Date Properties<a class="headerlink" href="#accessing-date-properties" title="Permalink to this heading">#</a></h2>
 <p>Sometimes, we would like to directly access a part of the date/time.</p>
 <p>If our date/time information is in the index, we can to <code class="docutils literal notranslate"><span class="pre">df.index.XX</span></code>
 where <code class="docutils literal notranslate"><span class="pre">XX</span></code> is replaced by <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, or whatever we would
@@ -1701,7 +1689,7 @@ Name: index, dtype: int64
 </div>
 </section>
 <section id="leads-and-lags-df-shift">
-<h2><span class="section-number">3.3.4.5. </span>Leads and Lags: <code class="docutils literal notranslate"><span class="pre">df.shift</span></code><a class="headerlink" href="#leads-and-lags-df-shift" title="Permalink to this heading">#</a></h2>
+<h2>Leads and Lags: <code class="docutils literal notranslate"><span class="pre">df.shift</span></code><a class="headerlink" href="#leads-and-lags-df-shift" title="Permalink to this heading">#</a></h2>
 <p>When doing time series analysis, we often want to compare data at one
 date against data at another date.</p>
 <p>pandas can help us with this if we leverage the <code class="docutils literal notranslate"><span class="pre">shift</span></code> method.</p>
@@ -2118,7 +2106,7 @@ Name: close, dtype: float64
 </div>
 </section>
 <section id="rolling-computations-rolling">
-<h2><span class="section-number">3.3.4.6. </span>Rolling Computations: <code class="docutils literal notranslate"><span class="pre">.rolling</span></code><a class="headerlink" href="#rolling-computations-rolling" title="Permalink to this heading">#</a></h2>
+<h2>Rolling Computations: <code class="docutils literal notranslate"><span class="pre">.rolling</span></code><a class="headerlink" href="#rolling-computations-rolling" title="Permalink to this heading">#</a></h2>
 <p>pandas has facilities that enable easy computation of <em>rolling
 statistics</em>.</p>
 <p>These are best understood by example, so we will dive right in.</p>
@@ -2318,7 +2306,7 @@ window for the whole dataset.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1c4d19cd3a0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/c1b13d012251332791db01d82e75e73977370131e67a37b4a8030e6f8181f149.png" src="../../_images/c1b13d012251332791db01d82e75e73977370131e67a37b4a8030e6f8181f149.png" />
+<img alt="../../../_images/c1b13d012251332791db01d82e75e73977370131e67a37b4a8030e6f8181f149.png" src="../../../_images/c1b13d012251332791db01d82e75e73977370131e67a37b4a8030e6f8181f149.png" />
 </div>
 </div>
 <p>We can also ask pandas to <code class="docutils literal notranslate"><span class="pre">apply</span></code> custom functions, similar to what we
@@ -2355,7 +2343,7 @@ Name: open, dtype: float64
 </div>
 </section>
 <section id="changing-frequencies-resample-opt">
-<h2><span class="section-number">3.3.4.7. </span>Changing Frequencies: <code class="docutils literal notranslate"><span class="pre">.resample</span></code> (Opt)<a class="headerlink" href="#changing-frequencies-resample-opt" title="Permalink to this heading">#</a></h2>
+<h2>Changing Frequencies: <code class="docutils literal notranslate"><span class="pre">.resample</span></code> (Opt)<a class="headerlink" href="#changing-frequencies-resample-opt" title="Permalink to this heading">#</a></h2>
 <p>In addition to computing rolling statistics, we can also change the
 frequency of the data.</p>
 <p>For example, instead of a monthly moving average, suppose that we wanted
@@ -3003,7 +2991,7 @@ price on the first day of the month.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/pandas"
+            path: "./chapters/essentials/pandas"
         },
         predefinedOutput: true
     }
@@ -3021,24 +3009,6 @@ price on the first day of the month.</p>
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="the_index.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.3.3. </span>The Index</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="data_clean.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.3.5. </span>Cleaning Data (opt)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -3057,16 +3027,16 @@ price on the first day of the month.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">3.3.4.1. Intro</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-strings-as-dates">3.3.4.2. Parsing Strings as Dates</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-dates">3.3.4.2.1. Multiple Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro">Intro</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-strings-as-dates">Parsing Strings as Dates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-dates">Multiple Dates</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data">3.3.4.3. Extracting Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-date-properties">3.3.4.4. Accessing Date Properties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leads-and-lags-df-shift">3.3.4.5. Leads and Lags: <code class="docutils literal notranslate"><span class="pre">df.shift</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-computations-rolling">3.3.4.6. Rolling Computations: <code class="docutils literal notranslate"><span class="pre">.rolling</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-frequencies-resample-opt">3.3.4.7. Changing Frequencies: <code class="docutils literal notranslate"><span class="pre">.resample</span></code> (Opt)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-data">Extracting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-date-properties">Accessing Date Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leads-and-lags-df-shift">Leads and Lags: <code class="docutils literal notranslate"><span class="pre">df.shift</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rolling-computations-rolling">Rolling Computations: <code class="docutils literal notranslate"><span class="pre">.rolling</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-frequencies-resample-opt">Changing Frequencies: <code class="docutils literal notranslate"><span class="pre">.resample</span></code> (Opt)</a></li>
 </ul>
   </nav></div>
 
@@ -3114,8 +3084,8 @@ By Alan Moreira
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
