@@ -28,21 +28,21 @@ sections:
   - file: chapters/essentials/introtopandas
     title: Pandas
     sections:
-    - file: chapters/pandas/the_index
+    - file: chapters/essentials/pandas/the_index
       title: Indexing
-    - file: chapters/pandas/timeseries
+    - file: chapters/essentials/pandas/timeseries
       title: Time-Series
-    - file: chapters/pandas/data_clean
+    - file: chapters/essentials/pandas/data_clean
       title: Cleaning data 
-    - file: chapters/pandas/reshape
+    - file: chapters/essentials/pandas/reshape
       title: Reshape
-    - file: chapters/pandas/merge
+    - file: chapters/essentials/pandas/merge
       title: Merge  
-    - file: chapters/pandas/groupby
+    - file: chapters/essentials/pandas/groupby
       title: Group-by 
-    - file: chapters/pandas/matplotlib
+    - file: chapters/essentials/pandas/matplotlib
       title: Plotting 
-    - file: chapters/pandas/storage_formats
+    - file: chapters/essentials/pandas/storage_formats
       title: Data Storage 
   - file: chapters/essentials/control_flow
     title: Flow control
