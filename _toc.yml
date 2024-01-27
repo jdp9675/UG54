@@ -33,17 +33,17 @@ sections:
     - file: chapters/pandas/timeseries
       title: Time-Series
     - file: chapters/pandas/data_clean
-      title: Cleaning data (opt)
+      title: Cleaning data 
     - file: chapters/pandas/reshape
-      title: Reshape (opt)
+      title: Reshape
     - file: chapters/pandas/merge
-      title: Merge (opt)
+      title: Merge  
     - file: chapters/pandas/groupby
-      title: Group-by (opt)
+      title: Group-by 
     - file: chapters/pandas/matplotlib
-      title: Plotting (opt)
+      title: Plotting 
     - file: chapters/pandas/storage_formats
-      title: Data Storage (opt)
+      title: Data Storage 
   - file: chapters/essentials/control_flow
     title: Flow control
   - file: chapters/essentials/functions
@@ -53,8 +53,8 @@ sections:
   - file: chapters/essentials/plotting1
     title: Plotting
 
-- file: chapters/pandas/workingwithdata
-  title: Working with Data
+# - file: chapters/pandas/workingwithdata
+#   title: Working with Data
   # sections:
   # - file: chapters/pandas/basics
   #   title: Pandas Basics
