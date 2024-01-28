@@ -101,11 +101,13 @@ sections:
 - file: chapters/Finance/CapitalAllocationLine
   title: Capital Allocation
 
-- file: chapters/Finance/meanvariance
+- file: chapters/Finance/MeanVariance
   title: Mean-Variance Investing
 
 - file: chapters/Finance/EstimationUncertainty
   title: Estimation Uncertainty and It's Implications for investing
+
+
 - file: chapters/Finance/TradingStrategies
   title: Trading Strategies
 - file: chapters/Finance/Timing
