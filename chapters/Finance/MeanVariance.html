@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>7.1. Mean-Variance Investing &#8212; Quantitative Investing</title>
+    <title>Mean-Variance Investing &#8212; Quantitative Investing</title>
   
   
   
@@ -69,8 +69,6 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.2. Case study on international portfolio diversification" href="CaseStudy.html" />
-    <link rel="prev" title="7. Mean Variance Frontier" href="meanvariance1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,7 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
@@ -170,18 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.3. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/the_index.html">3.3.15. Indexing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/timeseries.html">3.3.16. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.3.17. Cleaning data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.3.18. Reshape</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.3.19. Merge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.3.20. Group-by</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.3.21. Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.3.17. Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.3.18. Merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.3.19. Group-by</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.3.20. Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.3.21. Cleaning data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/storage_formats.html">3.3.22. Data Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.4. Flow control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy1.html">3.6. Numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting1.html">3.7. Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy.html">3.6. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -194,41 +192,35 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">5.5. Linear algebra Review</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="CapitalAllocationLine.html">6. Capital Allocation</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="meanvariance1.html">7. Mean Variance Frontier</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.1. Mean Variance Efficient Portfolios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CaseStudy.html">7.2. Case Study in International Diversification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">7.3. Leverage and Shorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Portfoliooptimizationwithconstraints.html">7.4. Portfolio Optimization with constraints</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="meanvariance1.html">6. Mean-Variance Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CapitalAllocationLine.html">7. Capital Allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EstimationUncertainty.html">8. Estimation Uncertainty and It's Implications for investing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">9. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.1. Volatility Timing</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Valueinvesting.html">11.1. Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Momentum.html">11.2. Momentum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">11.3. Other Equity strategies</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Evaluation.html">12. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Evaluation.html">12. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Econometrics.html">12.1. The Econometrics of Strategy Evalaution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="outofsample.html">12.2. Out of Sample Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TailandBackground.html">12.3. Tail Risks and Background Risks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultiFactorModels.html">12.4. Multifactor Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Topics.html">13. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Topics.html">13. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Equilbrium.html">13.1. Intepreting Factor models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Implementation.html">13.2. Strategy Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Horizon.html">13.3. Investment horizon effects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">14. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">15. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">15. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">15.1. Assigment 0</a></li>
 
 
@@ -488,15 +480,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-derivation-of-the-mean-variance-frontier">7.1.1. <strong>Mathematical derivation of the Mean-variance Frontier</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-return-representation">7.1.1.1. <strong>Excess return representation</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.1.1.2. <strong>Solution</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tangecy-portfolio">7.1.2. <strong>The Tangecy  portfolio</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-tangency-portfolio">7.1.3. <strong>Finding the Tangency portfolio</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-fund-separation">7.1.4. <strong>Two-fund separation</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-tangency-portfolio">7.1.5. <strong>Properties of the Tangency Portfolio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-bond-equity-strategic-investment-problem-of-an-international-investor">A bond-equity strategic investment problem of an international investor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">Numerical solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-ratio">Sharpe-ratio !</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-mean-variance-efficient-portfolio"><strong>Finding the Mean-variance efficient portfolio</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -514,188 +502,379 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/amoreira2/Lectures/main/assets/data/GlobalFinMonthly.csv&quot;</span>
-<span class="n">Data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">na_values</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
-<span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
-<span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="mean-variance-investing">
-<h1><span class="section-number">7.1. </span>Mean-Variance Investing<a class="headerlink" href="#mean-variance-investing" title="Permalink to this heading">#</a></h1>
+<h1>Mean-Variance Investing<a class="headerlink" href="#mean-variance-investing" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
-<li><p>How should one allocate capital?</p></li>
-<li><p>Below I reproduce the plot of constructed last chapter</p></li>
-<li><p>It shows the average <strong>EXCESS</strong> return and standard deviation for portfolios with different weights in the risk-free asset, the US stock market, and the international stock market</p></li>
-</ul>
-<p><img alt="MVfrontier" src="../../_images/MV1.jpg" /></p>
-<ul class="simple">
-<li><p>The upper envelope that defines the “investment frontier”, i.e., what is achievable in terms of risk and expected returns</p></li>
-<li><p>If you are in this envelope, you know that in order to get less risk you will have to reduce your expected return</p></li>
-<li><p>There is no portfolio with a higher expected return and the same volatility</p></li>
-<li><p>And no portfolio with the same expected return and lower volatility</p></li>
-<li><p>In volatility-expected return space all these “investment frontier” portfolio are in a straight line</p></li>
-<li><p>What does this mean?</p></li>
-<li><p>These portfolios achieve exactly the same ratio of expected excess return per unit of volatility since a straight line has constant slope</p></li>
-<li><p>So all these portfolios have exactly the same Sharpe ratio (<span class="math notranslate nohighlight">\(\frac{E[r_p-R_f]}{std(r_p-R_f)}\)</span>)</p></li>
-<li><p>This is also the maximum SR among all possible portfolios of the basis assets</p>
+<li><p>How should we allocate capital?</p></li>
+<li><p>You learn that very much depends on your preferences</p>
 <ul>
-<li><p>(in this case only two: US and world portfolio)</p></li>
+<li><p>What do you want to do with the money and when?</p></li>
+<li><p>how terrible you feel if you have less than you expected</p></li>
+<li><p>how much joy would you enjoy if you had more</p></li>
+<li><p>depends on your risk-aversion, but also on lots of assumptions about you actually care about</p></li>
 </ul>
 </li>
-</ul>
-<blockquote>
-<div><p>What do these “efficient” portfolios look like? Do they have the same weights? How do the weights in the assets vary?</p>
-</div></blockquote>
-<section id="mathematical-derivation-of-the-mean-variance-frontier">
-<h2><span class="section-number">7.1.1. </span><strong>Mathematical derivation of the Mean-variance Frontier</strong><a class="headerlink" href="#mathematical-derivation-of-the-mean-variance-frontier" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>These portfolios all can be thought as minimizing variance for a given desired expected return</p></li>
-<li><p>or maximizing expected returns for a given aversion to variance</p></li>
-<li><p>Formally they are choosing their composition of their portfolio</p></li>
+<li><p>Under some assumptions about our preferences it comes down to a mean-variance criteria where you want to maximize the expected value  of your wealth at some future date (say when you retire) with a penalty for it’s variance</p></li>
+<li><p>this can be written as maximizing the returns of your portfolio</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[r_p(X)=X'R+(1-\sum_i^I x_i)r_f\]</div>
+\[ \max_X E[X'R_T]-a Var(X'R_T)\]</div>
 <ul class="simple">
-<li><p>Which is a portfolio that invests in risky assets (vector of returns R) and the rest <span class="math notranslate nohighlight">\((1-\sum_i^I x_i)\)</span> at the risk-free rate.</p></li>
-<li><p>note that I use big R here to emphasize that this is a vector of asset returns, like (<span class="math notranslate nohighlight">\([r^{AAPL},r^{TSLA},..]\)</span>), and little <span class="math notranslate nohighlight">\(r_f\)</span> to emphasize this is just a scalar (like 1%)</p></li>
-<li><p>Note that <span class="math notranslate nohighlight">\((1-\sum_i^I x_i)&lt;0\)</span>. what is the interpretation of this number being negative? What is the interpretation of being positive?</p></li>
-<li><p>So given weights X, asset returns R and rf, the portfolio returns <span class="math notranslate nohighlight">\(r_p(X)\)</span></p></li>
+<li><p>where we typically call this <span class="math notranslate nohighlight">\(a\)</span> parameter risk-aversion, because it captures how much you dislike that your wealth will move in unpredictable ways</p></li>
+<li><p>A similar criteria shows up in delegate asset management</p></li>
+<li><p>in hedge funds, manager get allocated some capital <span class="math notranslate nohighlight">\(W_0\)</span> and some volatility budget <span class="math notranslate nohighlight">\(Vmax\)</span>, and are compensated by their absolute performance</p></li>
+<li><p>so their problem is something like</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\( \max_X E[X'R_T]\)</span> subject to <span class="math notranslate nohighlight">\(Var(X'R_T)\leq Vmax\)</span></p>
+<ul class="simple">
+<li><p>in mutual funds there is often a benchmark, say the S&amp;P 500 and the manager has a mandate to have a tracking error relative to the benchmark that is low enough, say <span class="math notranslate nohighlight">\(Tmax\)</span></p></li>
+<li><p>and the manager is compensated only with respect to the returns above this benchmark</p></li>
+<li><p>tracking error is the volatility of the portfolio relative to the benchmark</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-maximize_{X} E[r_p(X)]- \frac{\gamma}{2} Var(r_p(X))\\
-\end{aligned}
-\end{split}\]</div>
-<section id="excess-return-representation">
-<h3><span class="section-number">7.1.1.1. </span><strong>Excess return representation</strong><a class="headerlink" href="#excess-return-representation" title="Permalink to this heading">#</a></h3>
-<p>It is much easier to do the math and see what is going on if we separate the excess returns and the return piece so we represent our portfolio as</p>
-<div class="math notranslate nohighlight">
-\[r_p(X)=X'R+(1-\sum_i^I x_i)r_f=X'R+r_f-(\sum_i^I x_i)r_f=X'(R-r_f)+r_f\]</div>
-<div class="math notranslate nohighlight">
-\[r_p(X)=X'R^e+r_f\]</div>
+\[\sqrt{var(X'R_T-R^{benchmark}_T)}\]</div>
 <ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(R^e\)</span>  is the vector of excess returns</p></li>
-<li><p>It is KEY to note that all the risky assets are now zero cost portfolios</p></li>
-<li><p>So each risky asset is really a portfolio that is long the risky asset and short the risk-free rate</p></li>
-<li><p>This means that no matter the sum of the weights in X, the cost of this risky portfolio is zero</p></li>
-<li><p>How this this works?</p></li>
-<li><p>Say you have 1m dollar to invest</p>
+<li><p>So the manager problem is something like</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\( \max_X E[X'R_T-R^{benchmark}_T]\)</span> subject to <span class="math notranslate nohighlight">\(Var(X'R_T-R^{benchmark}_T)\leq Tmax\)</span></p>
+<ul class="simple">
+<li><p>thus lots of investment problems are versions of mean-variance</p></li>
+<li><p>often these investment problems have a variety of additional constraints</p>
 <ul>
-<li><p>We represent your portfolio as:</p></li>
-<li><p>The compositions/relative weights  <span class="math notranslate nohighlight">\(X/\sum x_i\)</span> of your risky portfolio</p></li>
-<li><p>How much of this dollar to allocate to you risky portfolio by choosing <span class="math notranslate nohighlight">\(\sum x_i\)</span> the total fraction of your wealth invested in risky assets</p></li>
+<li><p>concentration limits by industry</p></li>
+<li><p>leverage limits</p></li>
+<li><p>shorting constraints</p></li>
+<li><p>etc</p></li>
 </ul>
 </li>
-<li><p>If  <span class="math notranslate nohighlight">\(\sum x_i&gt;1\)</span> then you are leveraging since you are investing more that 100% of your wealth in the risky assets, i.e. borrowing money to invest more than you have in the risky assets.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\sum x_i&lt;1\)</span> then you are invest a fraction less than 1 in the risky portfolio, thus you are leaving some money invested in the risk-free asset</p></li>
+<li><p>Hard part is not solving the problem–that is easy!</p></li>
+<li><p>We will show how to do that numerically and analytically</p></li>
+<li><p>Numerical solution will alow for a variety of constraints</p></li>
+<li><p>Analytical solution cannot deal with constraints and assumes free borrowing and lending at the risk-free rate</p></li>
+<li><p>numerical solution is nice because it allow us to see clearly what this problem is all about.</p></li>
+<li><p>the hard problem is knowing the Expected returns of the assets and their covariance matrix</p></li>
 </ul>
-<p>You can think borrowing as shorting. They are different words for the same thing when used in the context of risk-free assets</p>
-</section>
-<section id="solution">
-<h3><span class="section-number">7.1.1.2. </span><strong>Solution</strong><a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
+<section id="a-bond-equity-strategic-investment-problem-of-an-international-investor">
+<h2>A bond-equity strategic investment problem of an international investor<a class="headerlink" href="#a-bond-equity-strategic-investment-problem-of-an-international-investor" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>First write our objective function in vector notation</p></li>
+<li><p>we will assume here that the risk-premium is being generated from a constant distribution</p></li>
+<li><p>this is wrong, but for large well diversified portfolio not too bad</p></li>
+<li><p>under this assumption, our estimation problem amounts to using sample means</p></li>
+<li><p>ths risk-free rate is time-varying so we will have to deal with it</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[E[r_p(X)]- \frac{\gamma}{2} Var(r_p(X))=E[r_f+X'R^e]- \frac{\gamma}{2} Var(r_f+X'R^e)\]</div>
-<div class="math notranslate nohighlight">
-\[E[r_p(X)]- \frac{\gamma}{2} Var(r_p(X))=r_f+X'E[R^e]- \frac{\gamma}{2} X'Var(R^e)X\]</div>
-<ul class="simple">
-<li><p>All you need is to take the derivative of the expression with respect to the risky portfolio weights <span class="math notranslate nohighlight">\(X\)</span> :</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[E[R^e]- 2\gamma/2 Var(R^e)X\]</div>
-<ul class="simple">
-<li><p>and impose the “first order condition”:
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-E[R^e]- \gamma Var(R^e)X^*=0
-\end{aligned}
-\)</span>$</p></li>
-<li><p>which simply means that if <span class="math notranslate nohighlight">\(X^*\)</span> is really the weight that maximizes the expression, if you move it a little bit in any direction, the value of the expression shouldn’t move much</p></li>
-</ul>
-<p><em>An aside</em></p>
-<ul class="simple">
-<li><p>What is the intution for this condition?</p></li>
-<li><p>It says that for a tiny move in either direction, the benefit should be zero either way</p></li>
-<li><p>Lets consider that we want to find the x that maximizes: <span class="math notranslate nohighlight">\(4x-x^2\)</span></p></li>
-</ul>
+<p>We start by loading out return data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/amoreira2/Lectures/main/assets/data/GlobalFinMonthly.csv&quot;</span>
+<span class="n">Data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">na_values</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
+<span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+<span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+<span class="c1"># the assets are the risk-free rate, the us equity market, the us bond market, the emerging market, the global equity market (without US), and the global bond market (without US)</span>
+
+<span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">Data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="s2">&quot;MKTUS&quot;</span><span class="p">,</span><span class="n">Data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="s2">&quot;BondUS&quot;</span><span class="p">,</span>
+                          <span class="n">Data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="s2">&quot;EM&quot;</span><span class="p">,</span><span class="n">Data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="s2">&quot;MKTxUS&quot;</span><span class="p">,</span><span class="n">Data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s2">&quot;BondxUS&quot;</span> <span class="p">})</span>
+<span class="n">Data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x21ce22aa490&gt;
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RF</th>
+      <th>MKTUS</th>
+      <th>BondUS</th>
+      <th>EM</th>
+      <th>MKTxUS</th>
+      <th>BondxUS</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-08-31</th>
+      <td>0.0002</td>
+      <td>0.0052</td>
+      <td>-0.008417</td>
+      <td>0.025186</td>
+      <td>0.000838</td>
+      <td>-0.009552</td>
+    </tr>
+    <tr>
+      <th>2016-09-30</th>
+      <td>0.0002</td>
+      <td>0.0027</td>
+      <td>-0.016417</td>
+      <td>0.013153</td>
+      <td>0.012736</td>
+      <td>0.009979</td>
+    </tr>
+    <tr>
+      <th>2016-10-31</th>
+      <td>0.0002</td>
+      <td>-0.0200</td>
+      <td>-0.049460</td>
+      <td>0.002474</td>
+      <td>-0.020383</td>
+      <td>-0.043476</td>
+    </tr>
+    <tr>
+      <th>2016-11-30</th>
+      <td>0.0001</td>
+      <td>0.0487</td>
+      <td>-0.081636</td>
+      <td>-0.045971</td>
+      <td>-0.019798</td>
+      <td>-0.050359</td>
+    </tr>
+    <tr>
+      <th>2016-12-31</th>
+      <td>0.0003</td>
+      <td>0.0185</td>
+      <td>-0.005296</td>
+      <td>0.002904</td>
+      <td>0.034383</td>
+      <td>-0.023207</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we start by constructing excess returns by subtracting the risk-free rate from the returns of the assets and we drop the risk-free rate column</span>
+<span class="n">Re</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># we compute the mean and covariance matrix of the excess returns</span>
+<span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ERe</span><span class="p">)</span>
+<span class="n">Cove</span><span class="o">=</span><span class="n">Re</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Cove</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../../_images/1a4f3721ef4c26761297dde59817ea7b40cafcc4e3de725fb42bfa78454b609a.png" src="../../_images/1a4f3721ef4c26761297dde59817ea7b40cafcc4e3de725fb42bfa78454b609a.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MKTUS      0.005140
+BondUS     0.002523
+EM         0.006923
+MKTxUS     0.004149
+BondxUS    0.002054
+dtype: float64
+            MKTUS    BondUS        EM    MKTxUS   BondxUS
+MKTUS    0.001948  0.000111  0.001292  0.001264  0.000187
+BondUS   0.000111  0.001227 -0.000204 -0.000013  0.000264
+EM       0.001292 -0.000204  0.003556  0.001661  0.000249
+MKTxUS   0.001264 -0.000013  0.001661  0.002182  0.000422
+BondxUS  0.000187  0.000264  0.000249  0.000422  0.000407
+</pre></div>
 </div>
 </div>
-<ul class="simple">
-<li><p>This is maximized at 2</p></li>
-<li><p>The FOC for this case is simply the derivatinve of <span class="math notranslate nohighlight">\(4x-x^2\)</span> which is</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[4-2x^*=0\]</div>
-<ul class="simple">
-<li><p>Which means <span class="math notranslate nohighlight">\(x^*=2\)</span></p></li>
-<li><p>You see in the plot that pertubating x a little bit has no effect on the value</p></li>
-<li><p>close to the peak, the expression is flat.</p></li>
-</ul>
+</div>
+<p>Suppose I want to reconstruct my current estimates of Expected returns and the covariance matrix of returns ( and not excess returns), What do I do?</p>
+<p>Simply add the current risk-free rate to you estimate of the expected return</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set the risk-free rate to the current value of the 3-month T-bill rate divided by 12 to make it a monthly rate</span>
+<span class="n">rf</span><span class="o">=</span><span class="mf">0.0525</span><span class="o">/</span><span class="mi">12</span>
+<span class="c1"># add to our estimate of risk-premiumns to get our estimate of expected returns</span>
+
+<span class="n">ER</span><span class="o">=</span><span class="n">ERe</span><span class="o">+</span><span class="n">rf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What about the covariance piece?</p>
 </section>
+<section id="numerical-solution">
+<h2>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this heading">#</a></h2>
+<p>Lets start by solving</p>
+<p><span class="math notranslate nohighlight">\( \max_X E[X'R_T]\)</span> subject to <span class="math notranslate nohighlight">\(Var(X'R_T)\leq Vmax\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># STEP 1: define the fucntion that computes the portfolio variance and expected returns given a vector of weights X (initially set to equal weights)</span>
+
+<span class="k">def</span> <span class="nf">portfolio_variance</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">X</span> <span class="o">@</span> <span class="n">Cove</span> <span class="o">@</span> <span class="n">X</span>
+
+<span class="k">def</span> <span class="nf">portfolio_expected_return</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span><span class="p">):</span>
+     <span class="k">return</span> <span class="n">X</span> <span class="o">@</span> <span class="n">ER</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">portfolio_variance</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">portfolio_variance</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">portfolio_expected_return</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0007914039297139136
+0.0008490361488465391
+0.008532889760767246
+0.00820649669319938
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># STEP 2: define the constraint functions, </span>
+
+<span class="c1"># here we will have one inequality for the portfolio variance , lets say a volatility of 10% per year. How do we translate this into a monthly variance?</span>
+
+<span class="c1"># and one equality constraint for the weights to sum to one</span>
+
+
+
+<span class="n">Vmax</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">cons</span><span class="o">=</span> <span class="p">({</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;ineq&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;fun&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="o">-</span><span class="n">portfolio_variance</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">+</span><span class="n">Vmax</span><span class="p">},</span>
+          <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;eq&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;fun&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+
+<span class="c1"># the constraint is normalized so that</span>
+
+<span class="c1">#cons=({&#39;type&#39;: &#39;ineq&#39;,</span>
+<span class="c1">#          &#39;fun&#39; : lambda X: F(X)})</span>
+
+<span class="c1">#means F(X)&gt;=0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Finally we are ready to do our minimization</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">options={'disp':</span> <span class="pre">True}</span></code>: tell python to report intermediary steps so we can check if the algorithm is doing progress towards a solution.</p></li>
+<li><p>There is a variety of additional parameters that you can pass to the minimizer.</p></li>
+<li><p>see: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># STEP 3: solve the minimization problem with constraints and save as `sol`</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+<span class="n">X0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="o">-</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="n">X0</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully    (Exit mode 0)
+            Current function value: -0.011929088525593382
+            Iterations: 13
+            Function evaluations: 78
+            Gradient evaluations: 13
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#optimal weights</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># optimal expected return at the annual frequency</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+<span class="c1"># optimal portfolio volatility at the annual frequenc</span>
+<span class="p">(</span><span class="n">portfolio_variance</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.65116148  0.38641728  0.8388073  -0.36993916 -0.50644689]
+0.1431490623071206
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20000201024211733
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># below I am plotting the solution weights.</span>
+<span class="n">width</span><span class="o">=</span><span class="mf">0.3</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">width</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">ER</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/70226f2c4c03e77906a060eca77c2483f49d49a004270d09707785a6327979b0.png" src="../../_images/70226f2c4c03e77906a060eca77c2483f49d49a004270d09707785a6327979b0.png" />
+</div>
+</div>
+<p>Here we assumed the portfolio has to be fully invested in risky assets.</p>
+<p>There is no leverage (borrowing at the risk-free rate)</p>
+<p>but there is shorting (raising additional funds by selling one asset)</p>
+<p>Note that is X0+X1=1, if X0&lt;0, then X1&gt;1</p>
+<p>Exercises to do</p>
+<ol class="arabic simple">
+<li><p>trace out how the optimal expected return varies as you change Vmax. In yearly volatility units try 6.5%, 7%, 8% , 10% ,15%,30%. Plot the resulting pairs in the scatter plot with the expected return in the y-axis and the volatility in the x-axis. What do you find?</p></li>
+<li><p>Add the risk-free rate among the asset. There are different ways to do this. But a simple one is to change the expected return function  <code class="docutils literal notranslate"><span class="pre">X&#64;ER+(1-np.sum(X))*rf</span></code>
+* now X is the vector of risky assets only and (1-np.sum(X)) is whatever is the residual
+* if this residual is positive you park in cash and earn rf
+* if negative you borrow at the rf rate
+* now your total weights mechanically add up to 1
+* so you need to take out the equality constraint</p></li>
+<li><p>Add a shorting constraint, say you can only short equities but not bonds, that is X&gt;0 for certain assets</p></li>
+<li><p>Add a leverage cap, so that the sum of your risky assets cannot exceed 1 too much, np.sum(X)-1 is called your leverage, so you can limit it to 1, so that for each dollar you have you borrow at most 1 dollar</p></li>
+<li><p>Modify the expected return function to incorporate practical frictions in trading. For example, when you borrow you typically pay more than what you can invest at, there is a borrowing spread. Analogously if you short a stock, you have to pay an extra fee</p></li>
+<li><p>Add a benchmark so that the problem comes one with a tracking error constraint. You would have to modify the expected return fuction to reflect the expected return in excess of the benchmark, and the covariance matrix to reflect the variance of <span class="math notranslate nohighlight">\(X'R-R^{benchmark}\)</span></p></li>
+</ol>
 </section>
-<section id="the-tangecy-portfolio">
-<h2><span class="section-number">7.1.2. </span><strong>The Tangecy  portfolio</strong><a class="headerlink" href="#the-tangecy-portfolio" title="Permalink to this heading">#</a></h2>
+<section id="analytical-solution">
+<h2>Analytical solution<a class="headerlink" href="#analytical-solution" title="Permalink to this heading">#</a></h2>
+<p>The analytical solution assumes</p>
 <ul class="simple">
-<li><p>Rewriting our first order condition we have</p></li>
+<li><p>free borrowing and lending at risk-free rate</p></li>
+<li><p>Shorting without any shorting fees</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(
-\begin{align}
-\gamma Var(R^e)X^* &amp;=E[R^e]\\
-(\gamma Var(R^e))^{-1}\gamma Var(R^e)X^* &amp;=(\gamma Var(R^e))^{-1}E[R^e]\\
-X^* &amp;=(\gamma Var(R^e))^{-1}E[R^e]\\
-X^* &amp;=\frac{1}{\gamma} Var(R^e)^{-1}E[R^e]
-\end{align}\)</span></p>
-<ul class="simple">
-<li><p>We simply multiplied both the RHS and the LHS by the inverse of the matrix <span class="math notranslate nohighlight">\(\gamma Var(R^e)\)</span> that was multiplying the weight</p></li>
-<li><p>This is equivalent to solving 5x=4, by dividing though by 5 to get x=4/5, but in matrix form</p></li>
-</ul>
-<p><em>Questions</em></p>
-<ul class="simple">
-<li><p>How does your distaste for risk <span class="math notranslate nohighlight">\(\gamma\)</span> impact your portfolio composition?</p></li>
-<li><p>Does it impact the relative weights in the risky assets?</p></li>
-</ul>
-<p>Note that <span class="math notranslate nohighlight">\(X^*\)</span> is the optimal position in risky assets and therefore has the same dimension as the number of assets you are considering.</p>
-<hr class="docutils" />
-<p><em>Aside: Three different problems with exactly the same solution</em></p>
-<p>We solved this problem</p>
+<p>The optimal weights are</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-maximize_{(X)} E[X'R^e]- \gamma/2 Var(X'R^e)\\
-\end{aligned}
-\end{split}\]</div>
-<p>This problem has the same solution as minimizing the variance subject to hitting a desired minimum expected return target</p>
+\[X=\frac{Vmax}{E[R^e]'Var(R^e)^{-1}E[R^e]}Var(R^e)^{-1}E[R^e]\]</div>
+<p>Where Vmax is in monthly variance units</p>
+<p>Note that \frac{Vmax}{E[R^e]’Var(R^e)^{-1}E[R^e]} is a number. Is basically a leverage factor. It leverage up (or down) the portfolio <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> so that the resulting portfolio has the desired target variance</p>
+<p>This portfolio <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> is quite special because it has the highest Sharpe-ratio among all possible combinations of these assets</p>
+</section>
+<section id="sharpe-ratio">
+<h2>Sharpe-ratio !<a class="headerlink" href="#sharpe-ratio" title="Permalink to this heading">#</a></h2>
+<p>Sharpe ratio is probably the most used concept in money management, it comes in honor of William Sharpe ( the dude that discovered the CAPM). It reflects how much additional expected return you are getting per unit of volatility. Say you have a portfolio with returns <span class="math notranslate nohighlight">\(R_p\)</span></p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-minimize_{(X)} Var(X'R^e) \text{    subject to } E[X'R^e]\geq\mu^{Desired}\\
-\end{aligned}
-\end{split}\]</div>
-<p>or maximizing the expected  return subject to hitting a maximum desired volatility  target</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-maximize_{(X)} E(X'R^e) \text{   subject to } Var(X'R^e)\leq Var^{Desired}\\
-\end{aligned}
-\end{split}\]</div>
-<p>This means that once we have the tangency portfolio solution we can simply scale up and down the portfolio weights to achieve the desired volatility or expected return</p>
+\[SharpeRatio=\frac{R_p-rf}{\sigma(R_p)}\]</div>
+<p>So a portfolio that has the highest sharpe ratio is nice because it is efficient.</p>
+<p>You take the minimum amount of risk that you need to take to achieve a expected return</p>
+<p>or conversely you get the maximum possible expected return for a given level of risk that you are willing to take</p>
 <hr class="docutils" />
 <p><em>Aside: Matrix inversion</em></p>
 <ul class="simple">
@@ -708,34 +887,18 @@ maximize_{(X)} E(X'R^e) \text{   subject to } Var(X'R^e)\leq Var^{Desired}\\
 <li><p>but more complicated because <span class="math notranslate nohighlight">\(Var(R^e)\)</span> is a N by N matrix and we can’t simply divide over to solve for X</p></li>
 <li><p>The definition of the inverse function is <span class="math notranslate nohighlight">\(f(x)=x^{-1}=y\)</span> where <span class="math notranslate nohighlight">\(y*x=1\)</span></p></li>
 <li><p>for matrices it is the same: <span class="math notranslate nohighlight">\((Var(R^e))^{-1}Var(R^e)=I\)</span>, but now instead of 1, we have an identity matrix, which is a matrix with 1’s in the diagonal and zero everywhere else</p></li>
-<li><p>For example, lets say we want to inverse a 2 by 2 matrix:</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left[\begin{array}{cc}3 &amp; 7\\0 &amp;9\end{array}\right]^{-1}=\left[\begin{array}{cc}a &amp; b\\c &amp;d\end{array}\right]\end{split}\]</div>
-<ul class="simple">
-<li><p>We would simply solve</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left[\begin{array}{cc}3 &amp; 7\\0 &amp;9\end{array}\right]\left[\begin{array}{cc}a &amp; b\\c &amp;d\end{array}\right]=I=\left[\begin{array}{cc}1 &amp; 0\\0 &amp;1\end{array}\right]\end{split}\]</div>
-<ul class="simple">
-<li><p>Which means solving this system of four equations below
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-3*a+7*c=1\\
-3*b+7*d=0\\
-0*a+9*c=0\\
-0*b+9*d=1\\
-\end{aligned}\)</span>$</p></li>
-<li><p>which in this case has an easy solution [a,b,c,d]=[1/3,-7/27,0,1/9]</p></li>
-<li><p>But we should be thankful for being born after the 70’s, when people had to do these inversions by hand–for very large matrices</p></li>
-<li><p>Now we can simply us the linear algebra library build in numpy  we discussed in Notebook 1 and invert the matrix</p></li>
-<li><p>so we don’t really to know this, but rather simpky understand conceptually what it means</p></li>
-</ul>
+<p>Thankfully we have a function in python that does just that</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># start with a 2 by 2 matrix</span>
+<span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> 
+
+<span class="c1"># compute the inverse</span>
+<span class="n">ainv</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> 
+
+<span class="n">ainv</span>
 </pre></div>
 </div>
 </div>
@@ -752,104 +915,53 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="o">@</span> <span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># indeed ainv is the inverse of a because ainv @ a = I</span>
+<span class="n">ainv</span> <span class="o">@</span> <span class="n">a</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.00000000e+00, 3.33066907e-16],
-       [0.00000000e+00, 1.00000000e+00]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 0.],
+       [0., 1.]])
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 0],
-       [7, 9]])
-</pre></div>
-</div>
-</div>
-</div>
+<p>This portfolio is very special so it has many names</p>
+<ol class="arabic simple">
+<li><p>maximum sharpe ratio portfolio</p></li>
+<li><p>mean-variance efficient portfolio (MVE)</p></li>
+<li><p>Tangency portfolio</p></li>
+</ol>
+<p>Names 1 and 2 are pretty clear. Name 3 will become clear later in the course</p>
 </section>
 <hr class="docutils" />
-<section id="finding-the-tangency-portfolio">
-<h2><span class="section-number">7.1.3. </span><strong>Finding the Tangency portfolio</strong><a class="headerlink" href="#finding-the-tangency-portfolio" title="Permalink to this heading">#</a></h2>
-<p>First lets construct our vector of excess returns for our risky two assets US equity market and International equity market</p>
+<section id="finding-the-mean-variance-efficient-portfolio">
+<h2><strong>Finding the Mean-variance efficient portfolio</strong><a class="headerlink" href="#finding-the-mean-variance-efficient-portfolio" title="Permalink to this heading">#</a></h2>
+<p>First lets construct our vector of expected excess returns for our risky two assets US equity market and International equity market</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Re</span><span class="o">=</span><span class="p">(</span><span class="n">Data</span><span class="p">[[</span><span class="s1">&#39;MKT&#39;</span><span class="p">,</span><span class="s1">&#39;WorldxUSA&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-<span class="n">Re</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">assets</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MKTUS&#39;</span><span class="p">,</span><span class="s1">&#39;MKTxUS&#39;</span><span class="p">]</span>
+<span class="n">e</span><span class="o">=</span><span class="n">ERe</span><span class="p">[</span><span class="n">assets</span><span class="p">]</span>
+
+<span class="n">e</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>MKT</th>
-      <th>WorldxUSA</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1963-02-28</th>
-      <td>-0.0238</td>
-      <td>-0.005073</td>
-    </tr>
-    <tr>
-      <th>1963-03-31</th>
-      <td>0.0308</td>
-      <td>-0.001929</td>
-    </tr>
-    <tr>
-      <th>1963-04-30</th>
-      <td>0.0451</td>
-      <td>-0.005836</td>
-    </tr>
-    <tr>
-      <th>1963-05-31</th>
-      <td>0.0176</td>
-      <td>-0.002586</td>
-    </tr>
-    <tr>
-      <th>1963-06-30</th>
-      <td>-0.0200</td>
-      <td>-0.013460</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MKTUS     0.005140
+MKTxUS    0.004149
+dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <p>We start by estimating the covariance matrix from our data <span class="math notranslate nohighlight">\(Var(R^e)\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Re</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">Cove</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">assets</span><span class="p">,</span><span class="n">assets</span><span class="p">]</span>
+
+<span class="n">c</span>
 </pre></div>
 </div>
 </div>
@@ -872,18 +984,18 @@ $<span class="math notranslate nohighlight">\(
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>MKT</th>
-      <th>WorldxUSA</th>
+      <th>MKTUS</th>
+      <th>MKTxUS</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>MKT</th>
+      <th>MKTUS</th>
       <td>0.001948</td>
       <td>0.001264</td>
     </tr>
     <tr>
-      <th>WorldxUSA</th>
+      <th>MKTxUS</th>
       <td>0.001264</td>
       <td>0.002182</td>
     </tr>
@@ -891,25 +1003,12 @@ $<span class="math notranslate nohighlight">\(
 </table>
 </div></div></div>
 </div>
-<p>We then estiamte the expected excess return, the premium you expect to earn by investing in each asset <span class="math notranslate nohighlight">\(E[R^e]\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Re</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MKT          0.005140
-WorldxUSA    0.004149
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
 <p>We then invert the covaraicne matrix <span class="math notranslate nohighlight">\(Var(R^e)^{-1}\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Re</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cinv</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> 
+
+<span class="n">cinv</span>
 </pre></div>
 </div>
 </div>
@@ -925,8 +1024,8 @@ dtype: float64
 \[Var(R^e)^{-1}E[R^e]\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Re</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span> <span class="o">@</span> <span class="n">Re</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">W</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Wmve</span><span class="o">=</span><span class="n">cinv</span> <span class="o">@</span> <span class="n">e</span>
+<span class="n">Wmve</span>
 </pre></div>
 </div>
 </div>
@@ -936,90 +1035,35 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Now for a given level of risk-aversion <span class="math notranslate nohighlight">\(gamma\)</span> we can find the optimal risky portfolio</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gamma</span><span class="o">=</span><span class="mi">4</span>
-
-<span class="n">Wstar</span><span class="o">=</span><span class="n">W</span><span class="o">/</span><span class="n">gamma</span>
-<span class="n">Wstar</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vmax</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">Wmve</span> <span class="o">*</span> <span class="n">Vmax</span><span class="o">/</span><span class="p">(</span><span class="n">e</span> <span class="nd">@cinv</span> <span class="o">@</span> <span class="n">e</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.56274938, 0.14943225])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.53401107, 0.14180109])
 </pre></div>
 </div>
 </div>
 </div>
-<p>and the amount allocated to the risk-free asset</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Wstar</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2878183714834085
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="two-fund-separation">
-<h2><span class="section-number">7.1.4. </span><strong>Two-fund separation</strong><a class="headerlink" href="#two-fund-separation" title="Permalink to this heading">#</a></h2>
+<p>Exercises</p>
 <ul class="simple">
-<li><p>It tells us that the decision of which assets to invest is completely independent of your risk-aversion</p></li>
-<li><p>Your risky portfolio is always the same, and you risk-aversion simply determines how much of it you will have, versus the risk-free rate</p></li>
-<li><p>Please take a moment to appreciate this</p></li>
-<li><p>Why that happens?</p></li>
-</ul>
-<p>Because any portfolio that is proportional to <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> achieve the highest feasible Sharpe Ratio</p>
-<ul class="simple">
-<li><p>Why is that?</p></li>
-</ul>
-<p>Recall what a SR is : <span class="math notranslate nohighlight">\(E[r-r_f]/\sigma(r-r_f)\)</span>. Since this portfolio solves the problem of maximizing expected return for a given level of volatility, it also is the portfolio with maximum Sharpe Ratio</p>
-<p>Note further that any linear combination of this portfolio with the risk-free rate will achieve exactly the same sharpe ratio.</p>
-<p>Let <span class="math notranslate nohighlight">\(r_p=r_f+wr^*\)</span> then <span class="math notranslate nohighlight">\(E[r_p-r_f]/\sigma(r_p)=E[wr^*]/\sigma(wr^*+r_f)=E[r^*]/\sigma(r^*)\)</span></p>
-</section>
-<section id="properties-of-the-tangency-portfolio">
-<h2><span class="section-number">7.1.5. </span><strong>Properties of the Tangency Portfolio</strong><a class="headerlink" href="#properties-of-the-tangency-portfolio" title="Permalink to this heading">#</a></h2>
-<p>Any portfolio that is proportional to  <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> is in the <strong>Tangency</strong> of the mean-variance frontier</p>
-<p>I will refer to <span class="math notranslate nohighlight">\(X_T=Var(R^e)^{-1}E[R^e]\)</span> as the tangency portfolio, but formally any other portfolio that is of the form <span class="math notranslate nohighlight">\(y X_T\)</span> where y is a scalar is also tangency.</p>
+<li><p>Verify that indeed the entire class of portfolios that solve the problem for different variance targets Vmax are also MVE ( i.e they all have the max sharpe ratio)</p></li>
+<li><p>What is the allocation to the risk-free rate? How do you find it? How does it change as you increase/decrease Vmax?</p></li>
+<li><p>How does max SR change as you go from</p>
 <ol class="arabic simple">
-<li><p>What is the expected excess return of the tangency portfolio?</p></li>
+<li><p>only investing in the US equity market</p></li>
+<li><p>investing in US equities and US bonds</p></li>
+<li><p>Invest everywhere except emerging markets</p></li>
+<li><p>investing everywhere including emerging markets</p></li>
+<li><p>investing only in global equities and bonds</p></li>
 </ol>
-<div class="math notranslate nohighlight">
-\[E[yX_T'R^e]=yE[E[R^e]'Var(R^e)^{-1}R^e]=yE[R^e]'Var(R^e)^{-1}E[R^e]\]</div>
-<ol class="arabic simple" start="2">
-<li><p>What is the volatility of the tangency portfolio?</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[Var[yX_T'R^e]=y^2Var(E[R^e]'Var(R^e)^{-1}R^e)=y^2E[R^e]'Var(R^e)^{-1}Var(R^e)Var(R^e)^{-1}E[R^e]\]</div>
-<div class="math notranslate nohighlight">
-\[Var[yX_T'R^e]=y^2E[R^e]'Var(R^e)^{-1}E[R^e]\]</div>
-<div class="math notranslate nohighlight">
-\[STD[yX_T'R^e]=y\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}\]</div>
-<ol class="arabic simple" start="3">
-<li><p>What is the Sharpe Ratio of the Tangency portfolio?</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[\frac{E[yW_T'R^e]}{STD[yW_T'R^e+r_f]}=\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}\]</div>
-<p>As we saw before, the Sharpe Ratio is invariant to the precise location that you choose in the investment frontier.</p>
-<p>Volatility and Expected excess return will vary, but any leverage effect will exactly cancel out when you look at the Sharpe Ratio</p>
-<p>So Sharpe Ratio is nice because it is invariant to leverage</p>
-<p><strong>Portfolio advice summary (so far!)</strong></p>
-<ul class="simple">
-<li><p>All investors invest in the same portfolio of risky assets, regardless of risk aversion.</p></li>
-<li><p>Depending on risk aversion (desired level of volatility) , they choose an appropriate mix of risk-free and risky fund investments</p></li>
-</ul>
-<hr class="docutils" />
-<p><em>Reality is a bit more complicated</em></p>
-<ul class="simple">
-<li><p>Here we assume your preferences: You like higher portfolio expected returns and dislikes portfolio variance</p></li>
-<li><p>Peoples preferences for risk are likely to be much richer than these simple preferences</p></li>
-<li><p>We will discuss later how to incorporate other risk dimensions (tail risks, background risks, etc)</p></li>
-<li><p>We also ignore investment horizon effects which we will discuss later in the course</p></li>
+</li>
+<li><p>look at a portfolio with a fairly high vol target, say 30% per year. discuss the source of the benefits of investing internationally. Why exactly the SR is going up?</p></li>
+<li><p>For the four investment opportunity sets above, compute the optimal expected returns for the following volatilities 6.5%, 7%, 8% , 10% ,15%,30%. Plot the results in a scatter plot with volatility in the X-axis and expected returns in the y-axis. You should see 4 lines. Why they look like that?</p></li>
+<li><p>Compare the benefits of a US investor to invest globally and the benefit of an international investor investing in the US ( ignore Emerging markets). Looking at individual assets risk-premiums and volatility explain the benefits of investing across multiple assets</p></li>
 </ul>
 </section>
 </section>
@@ -1055,24 +1099,6 @@ dtype: float64
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="meanvariance1.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Mean Variance Frontier</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="CaseStudy.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Case study on international portfolio diversification</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -1091,15 +1117,11 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-derivation-of-the-mean-variance-frontier">7.1.1. <strong>Mathematical derivation of the Mean-variance Frontier</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-return-representation">7.1.1.1. <strong>Excess return representation</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7.1.1.2. <strong>Solution</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tangecy-portfolio">7.1.2. <strong>The Tangecy  portfolio</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-tangency-portfolio">7.1.3. <strong>Finding the Tangency portfolio</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-fund-separation">7.1.4. <strong>Two-fund separation</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-tangency-portfolio">7.1.5. <strong>Properties of the Tangency Portfolio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-bond-equity-strategic-investment-problem-of-an-international-investor">A bond-equity strategic investment problem of an international investor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-solution">Numerical solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharpe-ratio">Sharpe-ratio !</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-mean-variance-efficient-portfolio"><strong>Finding the Mean-variance efficient portfolio</strong></a></li>
 </ul>
   </nav></div>
 

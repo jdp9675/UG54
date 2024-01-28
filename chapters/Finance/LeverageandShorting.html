@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>7.3. Levering up and Shorting &#8212; Quantitative Investing</title>
+    <title>Levering up and Shorting &#8212; Quantitative Investing</title>
   
   
   
@@ -69,8 +69,6 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7.4. Portfolio Optimization with constraints" href="Portfoliooptimizationwithconstraints.html" />
-    <link rel="prev" title="7.2. Case study on international portfolio diversification" href="CaseStudy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,7 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
@@ -170,18 +168,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.3. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/the_index.html">3.3.15. Indexing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/timeseries.html">3.3.16. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.3.17. Cleaning data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.3.18. Reshape</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.3.19. Merge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.3.20. Group-by</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.3.21. Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.3.17. Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.3.18. Merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.3.19. Group-by</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.3.20. Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.3.21. Cleaning data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/storage_formats.html">3.3.22. Data Storage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.4. Flow control</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy1.html">3.6. Numpy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting1.html">3.7. Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy.html">3.6. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -194,41 +192,35 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">5.5. Linear algebra Review</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="CapitalAllocationLine.html">6. Capital Allocation</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="meanvariance1.html">7. Mean Variance Frontier</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="MeanVariance.html">7.1. Mean Variance Efficient Portfolios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CaseStudy.html">7.2. Case Study in International Diversification</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">7.3. Leverage and Shorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Portfoliooptimizationwithconstraints.html">7.4. Portfolio Optimization with constraints</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="meanvariance1.html">6. Mean-Variance Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CapitalAllocationLine.html">7. Capital Allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="EstimationUncertainty.html">8. Estimation Uncertainty and It's Implications for investing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">9. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.1. Volatility Timing</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Valueinvesting.html">11.1. Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Momentum.html">11.2. Momentum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">11.3. Other Equity strategies</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Evaluation.html">12. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Evaluation.html">12. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Econometrics.html">12.1. The Econometrics of Strategy Evalaution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="outofsample.html">12.2. Out of Sample Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TailandBackground.html">12.3. Tail Risks and Background Risks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="MultiFactorModels.html">12.4. Multifactor Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Topics.html">13. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Topics.html">13. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Equilbrium.html">13.1. Intepreting Factor models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Implementation.html">13.2. Strategy Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Horizon.html">13.3. Investment horizon effects</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">14. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">15. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">15. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">15.1. Assigment 0</a></li>
 
 
@@ -488,8 +480,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla">7.3.1. <strong>Aplication: All in on Tesla</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting">7.3.2. <strong>Shorting</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla"><strong>Aplication: All in on Tesla</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting"><strong>Shorting</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -513,7 +505,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="levering-up-and-shorting">
-<h1><span class="section-number">7.3. </span>Levering up and Shorting<a class="headerlink" href="#levering-up-and-shorting" title="Permalink to this heading">#</a></h1>
+<h1>Levering up and Shorting<a class="headerlink" href="#levering-up-and-shorting" title="Permalink to this heading">#</a></h1>
 <p>So far we wrote the portfolio return as simple product of weights and individual asset returns</p>
 <div class="math notranslate nohighlight">
 \[r^p=W R+(1-\sum_i^I w_{i})r^f\]</div>
@@ -647,7 +639,7 @@ document.write(`
 <li><p>This means that if volatilitiy goes up at the same time as your assets go down in value you face demand for cash both from your losses buy also from an increase in the margin you need to sustain your trade</p></li>
 </ul>
 <section id="aplication-all-in-on-tesla">
-<h2><span class="section-number">7.3.1. </span><strong>Aplication: All in on Tesla</strong><a class="headerlink" href="#aplication-all-in-on-tesla" title="Permalink to this heading">#</a></h2>
+<h2><strong>Aplication: All in on Tesla</strong><a class="headerlink" href="#aplication-all-in-on-tesla" title="Permalink to this heading">#</a></h2>
 <p>Jackie is a complete believer on Tesla and decide to invest all her savings, 1 Million dollars on Tesla in early 2017, and lever up to the maximum allowed by it’s broker to 2 (inital margin 0.5), so a total position of 2 million dollars that she commited to stick with it.</p>
 <p>The broker changed 1% on top of the tbill rate which was at zero.</p>
 <p>The broker made clear that a fraction of the tesla shares would have to sold everytime leverage went above 1/0.3, i.e. a maintenance margin of 0.3 . The amount sold would have to bring the account margin back to 0.3.</p>
@@ -914,7 +906,7 @@ document.write(`
 </div>
 </section>
 <section id="shorting">
-<h2><span class="section-number">7.3.2. </span><strong>Shorting</strong><a class="headerlink" href="#shorting" title="Permalink to this heading">#</a></h2>
+<h2><strong>Shorting</strong><a class="headerlink" href="#shorting" title="Permalink to this heading">#</a></h2>
 <p>Shorting is conceptually very similar to leverage.</p>
 <p>You borrow an asset and pay some lending fee to borrow it (perhaps this fee will be zero if there is ample supply).</p>
 <p>And of course once you borrow you immediately sell and get the cash from the sale. The broker facilitating this transaction will typically ask you to  keep some margin in you account.</p>
@@ -1296,24 +1288,6 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="CaseStudy.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.2. </span>Case study on international portfolio diversification</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="Portfoliooptimizationwithconstraints.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7.4. </span>Portfolio Optimization with constraints</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -1332,8 +1306,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla">7.3.1. <strong>Aplication: All in on Tesla</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting">7.3.2. <strong>Shorting</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla"><strong>Aplication: All in on Tesla</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting"><strong>Shorting</strong></a></li>
 </ul>
   </nav></div>
 

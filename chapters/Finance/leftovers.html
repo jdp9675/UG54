@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Quantitative Investing</title>
+    <title>Mathematical derivation of the Mean-variance Frontier &#8212; Quantitative Investing</title>
   
   
   
@@ -62,8 +62,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/Untitled';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/Untitled.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/leftovers';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/leftovers.html" />
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -308,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/Untitled.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/leftovers.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +358,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/Untitled.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/leftovers.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/chapters/Finance/Untitled.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/Finance/leftovers.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -468,7 +470,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Mathematical derivation of the Mean-variance Frontier</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -477,7 +479,15 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Mathematical derivation of the Mean-variance Frontier</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-return-representation"><strong>Excess return representation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution"><strong>Solution</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tangecy-portfolio"><strong>The Tangecy  portfolio</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-fund-separation"><strong>Two-fund separation</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-tangency-portfolio"><strong>Properties of the Tangency Portfolio</strong></a></li>
 </ul>
 
             </nav>
@@ -490,26 +500,277 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
+  <p><strong>Simulating the Simulation</strong></p>
+<ul class="simple">
+<li><p>As we saw above, each simulation is naturally different.</p></li>
+<li><p>Like our sample, it is simply one draw of the distribution</p></li>
+</ul>
+<p>-How often does the higher moments come the way that they do in our sample?</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="n">df2</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="n">df3</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="n">df1</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;returns&#39;</span>
-<span class="n">df2</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nfirms&#39;</span>
-<span class="n">df3</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;size&#39;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">,</span><span class="n">df3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_1&#39;</span><span class="p">:</span><span class="s1">&#39;industry&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../../assets/data/49_Industry_Portfolios.csv&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># I am initializing an array with 1000 zero entries</span>
+<span class="n">kurt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1">#now each step of the for loop I am drawing one realization of sample exactly as large as our sample</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">std</span><span class="p">,</span><span class="n">T</span><span class="p">))</span>
+    <span class="n">kurt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">()</span>
+    
+
+
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">kurt</span><span class="p">)</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x2721502f250&gt;
+</pre></div>
 </div>
+<img alt="../../_images/44fcba11f784e9c7185282e0550f122aa48d79f40e4b1e2932253c38875b69f1.png" src="../../_images/44fcba11f784e9c7185282e0550f122aa48d79f40e4b1e2932253c38875b69f1.png" />
+</div>
+</div>
+<p><strong>A comment on sample moments vs populational moments</strong></p>
+<p>We care about the population variance, i.e. what is the true variance of these assets going forward</p>
+<p>We use the realized variance to the extent it help us estimate this.</p>
+<p>Just like with average returns and expected returns</p>
+<p>The key assumption, which tends to be ok over long time-peridos (say acorss years) is that the volatility is kind of stable, so we use the overall variance to gauge what the population is.</p>
+<p>We will later discuss methods that deal with time-variation in these moments, but for now lets think as the population moments being constant</p>
+<p><strong>dealing wiht the risk-free rate</strong></p>
+<p>Again the risk-free rate is different, becasue as we discussed variation in the risk-free rate directly tracks what people expect to get from investing in the risk-free asset in different points in time, and not risk, so the formal way to think about it is what people call the Law of interated expectations</p>
+<div class="math notranslate nohighlight">
+\[Var(R)=Var(E_t[R])+E(Var_t[R])\]</div>
+<p>So the overal variance of a series is the sum of the vairance of what people expected at a point in time and the average value of the variance of the asset at a given point in time</p>
+<p>For a risky asset, we think that there is very little variation in <span class="math notranslate nohighlight">\(E_t[R]\)</span> so the overall variance is all risk.</p>
+<p>For a risk-less asset, there is zero risk, so the second term is zero, and all the variantion of the asset is about variation in these expectations.</p>
+<p>This means that is wrong to add the risk-free rate when you do variance calculations because you are attributing to risk, which is variation in what people expected to earn (and that is not risk)</p>
+<ul class="simple">
+<li><p>Below I reproduce the plot of constructed last chapter</p></li>
+<li><p>It shows the average <strong>EXCESS</strong> return and standard deviation for portfolios with different weights in the risk-free asset, the US stock market, and the international stock market</p></li>
+</ul>
+<p><img alt="MVfrontier" src="../../_images/MV1.jpg" /></p>
+<ul class="simple">
+<li><p>The upper envelope that defines the “investment frontier”, i.e., what is achievable in terms of risk and expected returns</p></li>
+<li><p>If you are in this envelope, you know that in order to get less risk you will have to reduce your expected return</p></li>
+<li><p>There is no portfolio with a higher expected return and the same volatility</p></li>
+<li><p>And no portfolio with the same expected return and lower volatility</p></li>
+<li><p>In volatility-expected return space all these “investment frontier” portfolio are in a straight line</p></li>
+<li><p>What does this mean?</p></li>
+<li><p>These portfolios achieve exactly the same ratio of expected excess return per unit of volatility since a straight line has constant slope</p></li>
+<li><p>So all these portfolios have exactly the same Sharpe ratio (<span class="math notranslate nohighlight">\(\frac{E[r_p-R_f]}{std(r_p-R_f)}\)</span>)</p></li>
+<li><p>This is also the maximum SR among all possible portfolios of the basis assets</p>
+<ul>
+<li><p>(in this case only two: US and world portfolio)</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p>What do these “efficient” portfolios look like? Do they have the same weights? How do the weights in the assets vary?</p>
+</div></blockquote>
+<section id="mathematical-derivation-of-the-mean-variance-frontier">
+<h1><strong>Mathematical derivation of the Mean-variance Frontier</strong><a class="headerlink" href="#mathematical-derivation-of-the-mean-variance-frontier" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>These portfolios all can be thought as minimizing variance for a given desired expected return</p></li>
+<li><p>or maximizing expected returns for a given aversion to variance</p></li>
+<li><p>Formally they are choosing their composition of their portfolio</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[r_p(X)=X'R+(1-\sum_i^I x_i)r_f\]</div>
+<ul class="simple">
+<li><p>Which is a portfolio that invests in risky assets (vector of returns R) and the rest <span class="math notranslate nohighlight">\((1-\sum_i^I x_i)\)</span> at the risk-free rate.</p></li>
+<li><p>note that I use big R here to emphasize that this is a vector of asset returns, like (<span class="math notranslate nohighlight">\([r^{AAPL},r^{TSLA},..]\)</span>), and little <span class="math notranslate nohighlight">\(r_f\)</span> to emphasize this is just a scalar (like 1%)</p></li>
+<li><p>Note that <span class="math notranslate nohighlight">\((1-\sum_i^I x_i)&lt;0\)</span>. what is the interpretation of this number being negative? What is the interpretation of being positive?</p></li>
+<li><p>So given weights X, asset returns R and rf, the portfolio returns <span class="math notranslate nohighlight">\(r_p(X)\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+maximize_{X} E[r_p(X)]- \frac{\gamma}{2} Var(r_p(X))\\
+\end{aligned}
+\end{split}\]</div>
+<section id="excess-return-representation">
+<h2><strong>Excess return representation</strong><a class="headerlink" href="#excess-return-representation" title="Permalink to this heading">#</a></h2>
+<p>It is much easier to do the math and see what is going on if we separate the excess returns and the return piece so we represent our portfolio as</p>
+<div class="math notranslate nohighlight">
+\[r_p(X)=X'R+(1-\sum_i^I x_i)r_f=X'R+r_f-(\sum_i^I x_i)r_f=X'(R-r_f)+r_f\]</div>
+<div class="math notranslate nohighlight">
+\[r_p(X)=X'R^e+r_f\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(R^e\)</span>  is the vector of excess returns</p></li>
+<li><p>It is KEY to note that all the risky assets are now zero cost portfolios</p></li>
+<li><p>So each risky asset is really a portfolio that is long the risky asset and short the risk-free rate</p></li>
+<li><p>This means that no matter the sum of the weights in X, the cost of this risky portfolio is zero</p></li>
+<li><p>How this this works?</p></li>
+<li><p>Say you have 1m dollar to invest</p>
+<ul>
+<li><p>We represent your portfolio as:</p></li>
+<li><p>The compositions/relative weights  <span class="math notranslate nohighlight">\(X/\sum x_i\)</span> of your risky portfolio</p></li>
+<li><p>How much of this dollar to allocate to you risky portfolio by choosing <span class="math notranslate nohighlight">\(\sum x_i\)</span> the total fraction of your wealth invested in risky assets</p></li>
+</ul>
+</li>
+<li><p>If  <span class="math notranslate nohighlight">\(\sum x_i&gt;1\)</span> then you are leveraging since you are investing more that 100% of your wealth in the risky assets, i.e. borrowing money to invest more than you have in the risky assets.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\sum x_i&lt;1\)</span> then you are invest a fraction less than 1 in the risky portfolio, thus you are leaving some money invested in the risk-free asset</p></li>
+</ul>
+<p>You can think borrowing as shorting. They are different words for the same thing when used in the context of risk-free assets</p>
+</section>
+<section id="solution">
+<h2><strong>Solution</strong><a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>First write our objective function in vector notation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E[r_p(X)]- \frac{\gamma}{2} Var(r_p(X))=E[r_f+X'R^e]- \frac{\gamma}{2} Var(r_f+X'R^e)\]</div>
+<div class="math notranslate nohighlight">
+\[E[r_p(X)]- \frac{\gamma}{2} Var(r_p(X))=r_f+X'E[R^e]- \frac{\gamma}{2} X'Var(R^e)X\]</div>
+<ul class="simple">
+<li><p>All you need is to take the derivative of the expression with respect to the risky portfolio weights <span class="math notranslate nohighlight">\(X\)</span> :</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E[R^e]- 2\gamma/2 Var(R^e)X\]</div>
+<ul class="simple">
+<li><p>and impose the “first order condition”:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+E[R^e]- \gamma Var(R^e)X^*=0
+\end{aligned}
+\)</span>$</p></li>
+<li><p>which simply means that if <span class="math notranslate nohighlight">\(X^*\)</span> is really the weight that maximizes the expression, if you move it a little bit in any direction, the value of the expression shouldn’t move much</p></li>
+</ul>
+<p><em>An aside</em></p>
+<ul class="simple">
+<li><p>What is the intution for this condition?</p></li>
+<li><p>It says that for a tiny move in either direction, the benefit should be zero either way</p></li>
+<li><p>Lets consider that we want to find the x that maximizes: <span class="math notranslate nohighlight">\(4x-x^2\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x21ce22aa490&gt;
+</pre></div>
+</div>
+<img alt="../../_images/1a4f3721ef4c26761297dde59817ea7b40cafcc4e3de725fb42bfa78454b609a.png" src="../../_images/1a4f3721ef4c26761297dde59817ea7b40cafcc4e3de725fb42bfa78454b609a.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>This is maximized at 2</p></li>
+<li><p>The FOC for this case is simply the derivatinve of <span class="math notranslate nohighlight">\(4x-x^2\)</span> which is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[4-2x^*=0\]</div>
+<ul class="simple">
+<li><p>Which means <span class="math notranslate nohighlight">\(x^*=2\)</span></p></li>
+<li><p>You see in the plot that pertubating x a little bit has no effect on the value</p></li>
+<li><p>close to the peak, the expression is flat.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-tangecy-portfolio">
+<h1><strong>The Tangecy  portfolio</strong><a class="headerlink" href="#the-tangecy-portfolio" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Rewriting our first order condition we have</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(
+\begin{align}
+\gamma Var(R^e)X^* &amp;=E[R^e]\\
+(\gamma Var(R^e))^{-1}\gamma Var(R^e)X^* &amp;=(\gamma Var(R^e))^{-1}E[R^e]\\
+X^* &amp;=(\gamma Var(R^e))^{-1}E[R^e]\\
+X^* &amp;=\frac{1}{\gamma} Var(R^e)^{-1}E[R^e]
+\end{align}\)</span></p>
+<ul class="simple">
+<li><p>We simply multiplied both the RHS and the LHS by the inverse of the matrix <span class="math notranslate nohighlight">\(\gamma Var(R^e)\)</span> that was multiplying the weight</p></li>
+<li><p>This is equivalent to solving 5x=4, by dividing though by 5 to get x=4/5, but in matrix form</p></li>
+</ul>
+<p><em>Questions</em></p>
+<ul class="simple">
+<li><p>How does your distaste for risk <span class="math notranslate nohighlight">\(\gamma\)</span> impact your portfolio composition?</p></li>
+<li><p>Does it impact the relative weights in the risky assets?</p></li>
+</ul>
+<p>Note that <span class="math notranslate nohighlight">\(X^*\)</span> is the optimal position in risky assets and therefore has the same dimension as the number of assets you are considering.</p>
+<hr class="docutils" />
+<p><em>Aside: Three different problems with exactly the same solution</em></p>
+<p>We solved this problem</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+maximize_{(X)} E[X'R^e]- \gamma/2 Var(X'R^e)\\
+\end{aligned}
+\end{split}\]</div>
+<p>This problem has the same solution as minimizing the variance subject to hitting a desired minimum expected return target</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+minimize_{(X)} Var(X'R^e) \text{    subject to } E[X'R^e]\geq\mu^{Desired}\\
+\end{aligned}
+\end{split}\]</div>
+<p>or maximizing the expected  return subject to hitting a maximum desired volatility  target</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+maximize_{(X)} E(X'R^e) \text{   subject to } Var(X'R^e)\leq Var^{Desired}\\
+\end{aligned}
+\end{split}\]</div>
+<p>This means that once we have the tangency portfolio solution we can simply scale up and down the portfolio weights to achieve the desired volatility or expected return</p>
+</section>
+<section id="two-fund-separation">
+<h1><strong>Two-fund separation</strong><a class="headerlink" href="#two-fund-separation" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>It tells us that the decision of which assets to invest is completely independent of your risk-aversion</p></li>
+<li><p>Your risky portfolio is always the same, and you risk-aversion simply determines how much of it you will have, versus the risk-free rate</p></li>
+<li><p>Please take a moment to appreciate this</p></li>
+<li><p>Why that happens?</p></li>
+</ul>
+<p>Because any portfolio that is proportional to <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> achieve the highest feasible Sharpe Ratio</p>
+<ul class="simple">
+<li><p>Why is that?</p></li>
+</ul>
+<p>Recall what a SR is : <span class="math notranslate nohighlight">\(E[r-r_f]/\sigma(r-r_f)\)</span>. Since this portfolio solves the problem of maximizing expected return for a given level of volatility, it also is the portfolio with maximum Sharpe Ratio</p>
+<p>Note further that any linear combination of this portfolio with the risk-free rate will achieve exactly the same sharpe ratio.</p>
+<p>Let <span class="math notranslate nohighlight">\(r_p=r_f+wr^*\)</span> then <span class="math notranslate nohighlight">\(E[r_p-r_f]/\sigma(r_p)=E[wr^*]/\sigma(wr^*+r_f)=E[r^*]/\sigma(r^*)\)</span></p>
+</section>
+<section id="properties-of-the-tangency-portfolio">
+<h1><strong>Properties of the Tangency Portfolio</strong><a class="headerlink" href="#properties-of-the-tangency-portfolio" title="Permalink to this heading">#</a></h1>
+<p>Any portfolio that is proportional to  <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> is in the <strong>Tangency</strong> of the mean-variance frontier</p>
+<p>I will refer to <span class="math notranslate nohighlight">\(X_T=Var(R^e)^{-1}E[R^e]\)</span> as the tangency portfolio, but formally any other portfolio that is of the form <span class="math notranslate nohighlight">\(y X_T\)</span> where y is a scalar is also tangency.</p>
+<ol class="arabic simple">
+<li><p>What is the expected excess return of the tangency portfolio?</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[E[yX_T'R^e]=yE[E[R^e]'Var(R^e)^{-1}R^e]=yE[R^e]'Var(R^e)^{-1}E[R^e]\]</div>
+<ol class="arabic simple" start="2">
+<li><p>What is the volatility of the tangency portfolio?</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[Var[yX_T'R^e]=y^2Var(E[R^e]'Var(R^e)^{-1}R^e)=y^2E[R^e]'Var(R^e)^{-1}Var(R^e)Var(R^e)^{-1}E[R^e]\]</div>
+<div class="math notranslate nohighlight">
+\[Var[yX_T'R^e]=y^2E[R^e]'Var(R^e)^{-1}E[R^e]\]</div>
+<div class="math notranslate nohighlight">
+\[STD[yX_T'R^e]=y\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>What is the Sharpe Ratio of the Tangency portfolio?</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\frac{E[yW_T'R^e]}{STD[yW_T'R^e+r_f]}=\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}\]</div>
+<p>As we saw before, the Sharpe Ratio is invariant to the precise location that you choose in the investment frontier.</p>
+<p>Volatility and Expected excess return will vary, but any leverage effect will exactly cancel out when you look at the Sharpe Ratio</p>
+<p>So Sharpe Ratio is nice because it is invariant to leverage</p>
+<p><strong>Portfolio advice summary (so far!)</strong></p>
+<ul class="simple">
+<li><p>All investors invest in the same portfolio of risky assets, regardless of risk aversion.</p></li>
+<li><p>Depending on risk aversion (desired level of volatility) , they choose an appropriate mix of risk-free and risky fund investments</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Reality is a bit more complicated</em></p>
+<ul class="simple">
+<li><p>Here we assume your preferences: You like higher portfolio expected returns and dislikes portfolio variance</p></li>
+<li><p>Peoples preferences for risk are likely to be much richer than these simple preferences</p></li>
+<li><p>We will discuss later how to incorporate other risk dimensions (tail risks, background risks, etc)</p></li>
+<li><p>We also ignore investment horizon effects which we will discuss later in the course</p></li>
+</ul>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -559,7 +820,15 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Mathematical derivation of the Mean-variance Frontier</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-return-representation"><strong>Excess return representation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution"><strong>Solution</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tangecy-portfolio"><strong>The Tangecy  portfolio</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#two-fund-separation"><strong>Two-fund separation</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-tangency-portfolio"><strong>Properties of the Tangency Portfolio</strong></a></li>
 </ul>
 
   </nav></div>
