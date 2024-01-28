@@ -94,27 +94,22 @@ sections:
   - file: chapters/scientific/linear_algebra1
     title: Linear algebra Review
 
-- file: chapters/Finance/meanvariance1
-  title: Mean-Variance Investing
-
-
-- file: chapters/Finance/CapitalAllocationLine
-  title: Capital Allocation
-
 - file: chapters/Finance/MeanVariance
   title: Mean-Variance Investing
+
+- file: chapters/Finance/TradingStrategies
+  title: Trading Strategies
 
 - file: chapters/Finance/EstimationUncertainty
   title: Estimation Uncertainty and It's Implications for investing
 
 
-- file: chapters/Finance/TradingStrategies
-  title: Trading Strategies
 - file: chapters/Finance/Timing
   title: Timing Strategies
   sections:
   - file: chapters/Finance/Volatilitytiming
     title: Volatility Timing
+    
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
