@@ -1,0 +1,1460 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>9.1. The Market-Cap Weighted strategy &#8212; Quantitative Investing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/book.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/MarketCapweighted';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/MarketCapweighted.html" />
+    <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9.2. Value Investing" href="Valueinvesting.html" />
+    <link rel="prev" title="9. Cross-sectional strategies" href="crosssectionalequitystrategies.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/local_install.html">2.3. Local installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/cloud_setup.html">2.4. Cloud Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../essentials/intro.html">3. Python Essentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/basics.html">3.1. Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/collections.html">3.2. Collections</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.3. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/the_index.html">3.3.15. Indexing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/timeseries.html">3.3.16. Time-Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.3.17. Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.3.18. Merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.3.19. Group-by</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.3.20. Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.3.21. Cleaning data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/storage_formats.html">3.3.22. Data Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.4. Flow control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.5. Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy.html">3.6. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">4.3. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">4.5. Modeling randomness</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">5. Portfolio Math</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">5.5. Linear algebra Review</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MeanVariance.html">6. Mean-Variance Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">7. Trading Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FactorModels.html">8. Factor Models</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.1. The Market Cap Weighted Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Valueinvesting.html">9.2. Value factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Momentum.html">9.3. Momentum factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">9.4. Other Equity strategies</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Volatility Timing</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Evaluation.html">11. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Econometrics.html">11.1. The Econometrics of Strategy Evalaution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="outofsample.html">11.2. Out of Sample Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TailandBackground.html">11.3. Tail Risks and Background Risks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Topics.html">12. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Equilbrium.html">12.1. Intepreting Factor models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Implementation.html">12.2. Strategy Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Horizon.html">12.3. Investment horizon effects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">13. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">14.1. Assigment 0</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">14.7. Assignment 1</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">14.12. Assigment 2</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">14.16. Assignment 3</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">14.20. Assignment 4</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment5.html">14.24. Assigment 5</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment6.html">14.28. Assignment 6</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment7.html">14.32. Assignment 7</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/MarketCapweighted.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/amoreira2/Fin418" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/MarketCapweighted.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/Finance/MarketCapweighted.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Market-Cap Weighted strategy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section id="the-market-cap-weighted-strategy">
+<h1><span class="section-number">9.1. </span>The Market-Cap Weighted strategy<a class="headerlink" href="#the-market-cap-weighted-strategy" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>most important quantitative strategy.</p></li>
+<li><p>start with a vector of market capitalization for all relevant assets <span class="math notranslate nohighlight">\(M_t=[m_t^{AAPL},m_t^{GOOG},m_t^{TSLA},..]\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[m_t^{AAPL}=P^{AAPL}_t\times SharesOutstanding^{AAPL}\]</div>
+<p>The strategy then set the weights simply to</p>
+<div class="math notranslate nohighlight">
+\[X_t=\frac{M_t}{\sum_i^Im^i_t}\]</div>
+<p>So at end of month <strong>t</strong> you look at the market caps, construct the weights, and buy the assets with weights <span class="math notranslate nohighlight">\(X_t\)</span> to earn</p>
+<div class="math notranslate nohighlight">
+\[R^{mcap}_{t+1}=X_tR_{t+1}\]</div>
+<p>at the end of the next month.</p>
+<p>This portfolio has nice properties</p>
+<ol class="arabic simple">
+<li><p>This portfolio is very easy to trade. It does not require re-balancing as you weights naturally go up if the stock rallies and go down if the stock crashes</p></li>
+<li><p>You can implement this approach to any subset of firms (for example SP500 or Russel2000) are market cap indexes that track a particular universe of stocks</p></li>
+<li><p>By buying proportionally to market cap you never have to build a huge position in a tiny stock</p></li>
+<li><p>IF implemented for ALL assets, the CAPM says that this portfolios should be MVE. In practice we never do across all assets, but it should at least be much closer to MVE  then a portfolio made of a just a few stocks</p></li>
+</ol>
+<p>Below we will construct the market portfolio for the US equity market.</p>
+<p>But we use this type of code to many trading strategies</p>
+<ul class="simple">
+<li><p>for example, momentum investing amounts to make market cap weights on stocks that have been doing well (in terms of relative returns) in the last 12 month.</p></li>
+</ul>
+<p><strong>Steps</strong></p>
+<ol class="arabic simple">
+<li><p>Get firm level monthly return data with market capitalizations</p></li>
+<li><p>clean up/organize the data set</p></li>
+<li><p>Make sure to lag the market cap signal so that we use prices from last month to trade at the start of this month ( we could also skip another month to be extra sure)</p></li>
+<li><p>Construct the weighted average of returns across stocks for each date</p></li>
+</ol>
+<p><strong>Download data from WRDS</strong></p>
+<p>You will be required to put your name and password if you have it</p>
+<p><strong>Organizing the data</strong></p>
+<p>The objective here is to have a data set with</p>
+<ul class="simple">
+<li><p>Security identifier</p></li>
+<li><p>Date of the information</p></li>
+<li><p>Monthly return of the firm in that month</p></li>
+<li><p>Market capitalization of the firm in that month</p></li>
+</ul>
+<p><strong>Note</strong></p>
+<p>In this data set negative price mean that there was not trade in the last trading day of the month of the particular stock. So the value is the negative of the mid point in these date</p>
+<p>price if no trade=<span class="math notranslate nohighlight">\(-\frac{Ask+Bid}{2}\)</span></p>
+<p>So we either drop those observations or simply take the absolute value, which is simply using the mid point to compute the market cap</p>
+<p>Using Mid point is completely fine here. It would be more problematic if that was determining the prices that we trade.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+<span class="kn">import</span> <span class="nn">wrds</span>
+<span class="kn">import</span> <span class="nn">psycopg2</span> 
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="c1">###################</span>
+<span class="c1"># Connect to WRDS. #</span>
+<span class="c1"># You will be required to put your name and password if you have it</span>
+<span class="c1">###################</span>
+<span class="n">conn</span><span class="o">=</span><span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span> 
+
+<span class="c1">###################</span>
+<span class="c1"># This below dowloads from the server the data that we want #</span>
+<span class="c1">###################</span>
+<span class="n">crsp_m</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                      select a.permno, a.date, b.shrcd, b.exchcd,</span>
+<span class="s2">                      a.ret, a.shrout, a.prc,a.retx</span>
+<span class="s2">                      from crsp.msf as a</span>
+<span class="s2">                      left join crsp.msenames as b</span>
+<span class="s2">                      on a.permno=b.permno</span>
+<span class="s2">                      and b.namedt&lt;=a.date</span>
+<span class="s2">                      and a.date&lt;=b.nameendt</span>
+<span class="s2">                      where a.date between &#39;01/01/2005&#39; and &#39;12/31/2020&#39;</span>
+<span class="s2">                      and b.exchcd between 1 and 3</span>
+<span class="s2">                      and b.shrcd between 10 and 11</span>
+<span class="s2">                      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span> 
+
+<span class="c1"># this saves it</span>
+<span class="c1">#crsp_m.to_pickle(&#39;../../assets/data/crspm2005_2020.pkl&#39;)</span>
+<span class="c1"># variables downloaded</span>
+
+<span class="c1"># 1. Permno-- are unique indentifier to a security </span>
+<span class="c1"># (for exmaple a stock that has multiple types of stocks will have multiple permnos)</span>
+
+<span class="c1"># 2. shrco is the type of share: common share, ADR, ETF, ....</span>
+<span class="c1"># we will focus on common shares</span>
+
+<span class="c1"># 3. exchcd is the code of the exchange where the stock was originally listed</span>
+<span class="c1"># we will focus on stock listed in the 3 major stock exchanges ( basically the whole market)</span>
+
+<span class="c1"># 4. ret,retx, shrout,  prc, are the stock return, the stock return excluding dividends, number of shares outstanding, and price</span>
+
+<span class="c1"># 5. date is the trading date of the return</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter your WRDS username [Alan.Moreira]: moreira5
+Enter your password: ···········
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
+You can find more info here:
+https://www.postgresql.org/docs/9.5/static/libpq-pgpass.html.
+Loading library list...
+Done
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><em>If you don’t want to deal with that you can simply get the data by running the code below</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_m</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://github.com/amoreira2/Lectures/blob/main/assets/data/crspm2005_2020.pkl?raw=true&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="o">=</span><span class="n">crsp_m</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;shrout&#39;</span><span class="p">,</span><span class="s1">&#39;prc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># change variable format to int</span>
+<span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="c1"># Line up date to be end of month </span>
+<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># calculate market equity</span>
+<span class="c1"># why do we use absolute value of price?</span>
+<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;prc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">*</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;shrout&#39;</span><span class="p">]</span> 
+<span class="c1"># drop price and shareoustandng since we won&#39;t need it anymore</span>
+<span class="n">crsp</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;prc&#39;</span><span class="p">,</span><span class="s1">&#39;shrout&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>permno</th>
+      <th>date</th>
+      <th>ret</th>
+      <th>me</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11671</td>
+      <td>2005-01-31</td>
+      <td>0.016491</td>
+      <td>8.192548e+03</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10001</td>
+      <td>2005-01-31</td>
+      <td>-0.040580</td>
+      <td>1.717890e+04</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10002</td>
+      <td>2005-01-31</td>
+      <td>-0.132466</td>
+      <td>2.352984e+05</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>11674</td>
+      <td>2005-01-31</td>
+      <td>0.015766</td>
+      <td>7.621100e+06</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11681</td>
+      <td>2005-01-31</td>
+      <td>0.337143</td>
+      <td>4.302792e+04</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>763621</th>
+      <td>81665</td>
+      <td>2020-08-31</td>
+      <td>-0.003570</td>
+      <td>8.317922e+05</td>
+    </tr>
+    <tr>
+      <th>763622</th>
+      <td>81666</td>
+      <td>2020-08-31</td>
+      <td>0.130362</td>
+      <td>6.181997e+05</td>
+    </tr>
+    <tr>
+      <th>763623</th>
+      <td>81677</td>
+      <td>2020-08-31</td>
+      <td>0.072037</td>
+      <td>1.266447e+07</td>
+    </tr>
+    <tr>
+      <th>763624</th>
+      <td>81678</td>
+      <td>2020-08-31</td>
+      <td>0.069919</td>
+      <td>5.741383e+06</td>
+    </tr>
+    <tr>
+      <th>763625</th>
+      <td>81696</td>
+      <td>2020-08-31</td>
+      <td>0.106197</td>
+      <td>1.018962e+07</td>
+    </tr>
+  </tbody>
+</table>
+<p>763626 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p><strong>Lagging the market cap signal</strong></p>
+<p>We use the method <code class="docutils literal notranslate"><span class="pre">.shift(d)</span></code> which “lags” the data by d periods.</p>
+<ul class="simple">
+<li><p>tT is critical that we have our data set sorted by date</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">shift(d)</span></code> simply shifts the rows. So you have to make sure that it is actually lagging by date.</p>
+<p>The way to do that is to  <code class="docutils literal notranslate"><span class="pre">groupby</span></code> security and applying the shift within security.</p>
+<blockquote>
+<div><p>Why this is important?</p>
+</div></blockquote>
+<p>Because the data set is stacked so when you shift the first month of security n, it will end up returning the last month of security n-1.</p>
+<p>By grouping by we simply assign a missing value there since we don’t have the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort by permno and date and set as index</span>
+<span class="n">crsp</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># done incorrectly</span>
+<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">crsp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">250</span><span class="p">:</span><span class="mi">280</span><span class="p">]</span>
+<span class="c1"># what is the problem  here?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>permno</th>
+      <th>date</th>
+      <th>ret</th>
+      <th>me</th>
+      <th>me_l1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9582</th>
+      <td>10012</td>
+      <td>2005-03-31</td>
+      <td>-0.080000</td>
+      <td>10916.720198</td>
+      <td>11866.000000</td>
+    </tr>
+    <tr>
+      <th>14335</th>
+      <td>10012</td>
+      <td>2005-04-30</td>
+      <td>-0.195652</td>
+      <td>8780.840113</td>
+      <td>10916.720198</td>
+    </tr>
+    <tr>
+      <th>18981</th>
+      <td>10012</td>
+      <td>2005-05-31</td>
+      <td>-0.243243</td>
+      <td>6648.600028</td>
+      <td>8780.840113</td>
+    </tr>
+    <tr>
+      <th>23732</th>
+      <td>10012</td>
+      <td>2005-06-30</td>
+      <td>-0.250000</td>
+      <td>4986.449844</td>
+      <td>6648.600028</td>
+    </tr>
+    <tr>
+      <th>30586</th>
+      <td>10012</td>
+      <td>2005-07-31</td>
+      <td>-0.190476</td>
+      <td>4036.650042</td>
+      <td>4986.449844</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10025</td>
+      <td>2005-01-31</td>
+      <td>0.277966</td>
+      <td>159037.453218</td>
+      <td>4036.650042</td>
+    </tr>
+    <tr>
+      <th>4584</th>
+      <td>10025</td>
+      <td>2005-02-28</td>
+      <td>0.082228</td>
+      <td>172114.796782</td>
+      <td>159037.453218</td>
+    </tr>
+    <tr>
+      <th>9586</th>
+      <td>10025</td>
+      <td>2005-03-31</td>
+      <td>-0.031863</td>
+      <td>168270.000000</td>
+      <td>172114.796782</td>
+    </tr>
+    <tr>
+      <th>14336</th>
+      <td>10025</td>
+      <td>2005-04-30</td>
+      <td>-0.058734</td>
+      <td>158535.521301</td>
+      <td>168270.000000</td>
+    </tr>
+    <tr>
+      <th>18982</th>
+      <td>10025</td>
+      <td>2005-05-31</td>
+      <td>-0.073158</td>
+      <td>146954.666096</td>
+      <td>158535.521301</td>
+    </tr>
+    <tr>
+      <th>23733</th>
+      <td>10025</td>
+      <td>2005-06-30</td>
+      <td>0.071387</td>
+      <td>157445.332191</td>
+      <td>146954.666096</td>
+    </tr>
+    <tr>
+      <th>30587</th>
+      <td>10025</td>
+      <td>2005-07-31</td>
+      <td>0.061213</td>
+      <td>167514.091305</td>
+      <td>157445.332191</td>
+    </tr>
+    <tr>
+      <th>32070</th>
+      <td>10025</td>
+      <td>2005-08-31</td>
+      <td>0.045431</td>
+      <td>175124.476086</td>
+      <td>167514.091305</td>
+    </tr>
+    <tr>
+      <th>37335</th>
+      <td>10025</td>
+      <td>2005-09-30</td>
+      <td>0.076172</td>
+      <td>188486.087830</td>
+      <td>175124.476086</td>
+    </tr>
+    <tr>
+      <th>42325</th>
+      <td>10025</td>
+      <td>2005-10-31</td>
+      <td>-0.078947</td>
+      <td>173625.893475</td>
+      <td>188486.087830</td>
+    </tr>
+    <tr>
+      <th>48041</th>
+      <td>10025</td>
+      <td>2005-11-30</td>
+      <td>0.133005</td>
+      <td>196719.000000</td>
+      <td>173625.893475</td>
+    </tr>
+    <tr>
+      <th>52968</th>
+      <td>10025</td>
+      <td>2005-12-31</td>
+      <td>0.086957</td>
+      <td>213825.000000</td>
+      <td>196719.000000</td>
+    </tr>
+    <tr>
+      <th>58538</th>
+      <td>10025</td>
+      <td>2006-01-31</td>
+      <td>0.040000</td>
+      <td>223080.000000</td>
+      <td>213825.000000</td>
+    </tr>
+    <tr>
+      <th>62806</th>
+      <td>10025</td>
+      <td>2006-02-28</td>
+      <td>0.035385</td>
+      <td>231027.440655</td>
+      <td>223080.000000</td>
+    </tr>
+    <tr>
+      <th>67205</th>
+      <td>10025</td>
+      <td>2006-03-31</td>
+      <td>0.223997</td>
+      <td>285083.406601</td>
+      <td>231027.440655</td>
+    </tr>
+    <tr>
+      <th>73148</th>
+      <td>10025</td>
+      <td>2006-04-30</td>
+      <td>0.069499</td>
+      <td>305284.134541</td>
+      <td>285083.406601</td>
+    </tr>
+    <tr>
+      <th>76751</th>
+      <td>10025</td>
+      <td>2006-05-31</td>
+      <td>-0.060585</td>
+      <td>286788.611034</td>
+      <td>305284.134541</td>
+    </tr>
+    <tr>
+      <th>82451</th>
+      <td>10025</td>
+      <td>2006-06-30</td>
+      <td>0.009515</td>
+      <td>289717.964127</td>
+      <td>286788.611034</td>
+    </tr>
+    <tr>
+      <th>85370</th>
+      <td>10025</td>
+      <td>2006-07-31</td>
+      <td>0.336326</td>
+      <td>387827.438675</td>
+      <td>289717.964127</td>
+    </tr>
+    <tr>
+      <th>91177</th>
+      <td>10025</td>
+      <td>2006-08-31</td>
+      <td>-0.019257</td>
+      <td>380359.193375</td>
+      <td>387827.438675</td>
+    </tr>
+    <tr>
+      <th>95050</th>
+      <td>10025</td>
+      <td>2006-09-30</td>
+      <td>-0.042237</td>
+      <td>329139.705986</td>
+      <td>380359.193375</td>
+    </tr>
+    <tr>
+      <th>100842</th>
+      <td>10025</td>
+      <td>2006-10-31</td>
+      <td>0.255781</td>
+      <td>415434.482407</td>
+      <td>329139.705986</td>
+    </tr>
+    <tr>
+      <th>104469</th>
+      <td>10025</td>
+      <td>2006-11-30</td>
+      <td>-0.022969</td>
+      <td>405892.429626</td>
+      <td>415434.482407</td>
+    </tr>
+    <tr>
+      <th>108775</th>
+      <td>10025</td>
+      <td>2006-12-31</td>
+      <td>0.035749</td>
+      <td>420402.670830</td>
+      <td>405892.429626</td>
+    </tr>
+    <tr>
+      <th>113887</th>
+      <td>10025</td>
+      <td>2007-01-31</td>
+      <td>-0.125305</td>
+      <td>370055.688477</td>
+      <td>420402.670830</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">crsp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">250</span><span class="p">:</span><span class="mi">280</span><span class="p">]</span>
+<span class="c1"># did it get fixed?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>permno</th>
+      <th>date</th>
+      <th>ret</th>
+      <th>me</th>
+      <th>me_l1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>9582</th>
+      <td>10012</td>
+      <td>2005-03-31</td>
+      <td>-0.080000</td>
+      <td>10916.720198</td>
+      <td>11866.000000</td>
+    </tr>
+    <tr>
+      <th>14335</th>
+      <td>10012</td>
+      <td>2005-04-30</td>
+      <td>-0.195652</td>
+      <td>8780.840113</td>
+      <td>10916.720198</td>
+    </tr>
+    <tr>
+      <th>18981</th>
+      <td>10012</td>
+      <td>2005-05-31</td>
+      <td>-0.243243</td>
+      <td>6648.600028</td>
+      <td>8780.840113</td>
+    </tr>
+    <tr>
+      <th>23732</th>
+      <td>10012</td>
+      <td>2005-06-30</td>
+      <td>-0.250000</td>
+      <td>4986.449844</td>
+      <td>6648.600028</td>
+    </tr>
+    <tr>
+      <th>30586</th>
+      <td>10012</td>
+      <td>2005-07-31</td>
+      <td>-0.190476</td>
+      <td>4036.650042</td>
+      <td>4986.449844</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10025</td>
+      <td>2005-01-31</td>
+      <td>0.277966</td>
+      <td>159037.453218</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4584</th>
+      <td>10025</td>
+      <td>2005-02-28</td>
+      <td>0.082228</td>
+      <td>172114.796782</td>
+      <td>159037.453218</td>
+    </tr>
+    <tr>
+      <th>9586</th>
+      <td>10025</td>
+      <td>2005-03-31</td>
+      <td>-0.031863</td>
+      <td>168270.000000</td>
+      <td>172114.796782</td>
+    </tr>
+    <tr>
+      <th>14336</th>
+      <td>10025</td>
+      <td>2005-04-30</td>
+      <td>-0.058734</td>
+      <td>158535.521301</td>
+      <td>168270.000000</td>
+    </tr>
+    <tr>
+      <th>18982</th>
+      <td>10025</td>
+      <td>2005-05-31</td>
+      <td>-0.073158</td>
+      <td>146954.666096</td>
+      <td>158535.521301</td>
+    </tr>
+    <tr>
+      <th>23733</th>
+      <td>10025</td>
+      <td>2005-06-30</td>
+      <td>0.071387</td>
+      <td>157445.332191</td>
+      <td>146954.666096</td>
+    </tr>
+    <tr>
+      <th>30587</th>
+      <td>10025</td>
+      <td>2005-07-31</td>
+      <td>0.061213</td>
+      <td>167514.091305</td>
+      <td>157445.332191</td>
+    </tr>
+    <tr>
+      <th>32070</th>
+      <td>10025</td>
+      <td>2005-08-31</td>
+      <td>0.045431</td>
+      <td>175124.476086</td>
+      <td>167514.091305</td>
+    </tr>
+    <tr>
+      <th>37335</th>
+      <td>10025</td>
+      <td>2005-09-30</td>
+      <td>0.076172</td>
+      <td>188486.087830</td>
+      <td>175124.476086</td>
+    </tr>
+    <tr>
+      <th>42325</th>
+      <td>10025</td>
+      <td>2005-10-31</td>
+      <td>-0.078947</td>
+      <td>173625.893475</td>
+      <td>188486.087830</td>
+    </tr>
+    <tr>
+      <th>48041</th>
+      <td>10025</td>
+      <td>2005-11-30</td>
+      <td>0.133005</td>
+      <td>196719.000000</td>
+      <td>173625.893475</td>
+    </tr>
+    <tr>
+      <th>52968</th>
+      <td>10025</td>
+      <td>2005-12-31</td>
+      <td>0.086957</td>
+      <td>213825.000000</td>
+      <td>196719.000000</td>
+    </tr>
+    <tr>
+      <th>58538</th>
+      <td>10025</td>
+      <td>2006-01-31</td>
+      <td>0.040000</td>
+      <td>223080.000000</td>
+      <td>213825.000000</td>
+    </tr>
+    <tr>
+      <th>62806</th>
+      <td>10025</td>
+      <td>2006-02-28</td>
+      <td>0.035385</td>
+      <td>231027.440655</td>
+      <td>223080.000000</td>
+    </tr>
+    <tr>
+      <th>67205</th>
+      <td>10025</td>
+      <td>2006-03-31</td>
+      <td>0.223997</td>
+      <td>285083.406601</td>
+      <td>231027.440655</td>
+    </tr>
+    <tr>
+      <th>73148</th>
+      <td>10025</td>
+      <td>2006-04-30</td>
+      <td>0.069499</td>
+      <td>305284.134541</td>
+      <td>285083.406601</td>
+    </tr>
+    <tr>
+      <th>76751</th>
+      <td>10025</td>
+      <td>2006-05-31</td>
+      <td>-0.060585</td>
+      <td>286788.611034</td>
+      <td>305284.134541</td>
+    </tr>
+    <tr>
+      <th>82451</th>
+      <td>10025</td>
+      <td>2006-06-30</td>
+      <td>0.009515</td>
+      <td>289717.964127</td>
+      <td>286788.611034</td>
+    </tr>
+    <tr>
+      <th>85370</th>
+      <td>10025</td>
+      <td>2006-07-31</td>
+      <td>0.336326</td>
+      <td>387827.438675</td>
+      <td>289717.964127</td>
+    </tr>
+    <tr>
+      <th>91177</th>
+      <td>10025</td>
+      <td>2006-08-31</td>
+      <td>-0.019257</td>
+      <td>380359.193375</td>
+      <td>387827.438675</td>
+    </tr>
+    <tr>
+      <th>95050</th>
+      <td>10025</td>
+      <td>2006-09-30</td>
+      <td>-0.042237</td>
+      <td>329139.705986</td>
+      <td>380359.193375</td>
+    </tr>
+    <tr>
+      <th>100842</th>
+      <td>10025</td>
+      <td>2006-10-31</td>
+      <td>0.255781</td>
+      <td>415434.482407</td>
+      <td>329139.705986</td>
+    </tr>
+    <tr>
+      <th>104469</th>
+      <td>10025</td>
+      <td>2006-11-30</td>
+      <td>-0.022969</td>
+      <td>405892.429626</td>
+      <td>415434.482407</td>
+    </tr>
+    <tr>
+      <th>108775</th>
+      <td>10025</td>
+      <td>2006-12-31</td>
+      <td>0.035749</td>
+      <td>420402.670830</td>
+      <td>405892.429626</td>
+    </tr>
+    <tr>
+      <th>113887</th>
+      <td>10025</td>
+      <td>2007-01-31</td>
+      <td>-0.125305</td>
+      <td>370055.688477</td>
+      <td>420402.670830</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rmkt</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="n">x</span><span class="o">.</span><span class="n">ret</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">me_l1</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">me_l1</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So in the code above <code class="docutils literal notranslate"><span class="pre">(x.me/x.me.sum())</span></code> is the weights, which for each date will return a vector that adds up to one. and of course <code class="docutils literal notranslate"><span class="pre">x.ret</span></code> is the vector of returns</p>
+<p>The code <code class="docutils literal notranslate"><span class="pre">(x.ret*(x.me/x.me.sum())</span></code> multiplies the return of each asset by the weight and then we sum if all up to get the reutrn of the portfolio</p>
+<p><code class="docutils literal notranslate"><span class="pre">(x.ret*(x.me/x.me.sum())).sum()</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">groupby(['date'])</span></code> method groups the data by month so we obtain the return of the portfolio in that month</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Lets look at the cumulative returns</span>
+<span class="p">((</span><span class="n">Rmkt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/b317c5346a8d722e0c9fb371390c13cd64fa1697e598afc3f0946730254a5b14.png" src="../../_images/b317c5346a8d722e0c9fb371390c13cd64fa1697e598afc3f0946730254a5b14.png" />
+</div>
+</div>
+<p><strong>Things to try</strong></p>
+<ul class="simple">
+<li><p>Download the market factor from Kenfrench website. How correlated is our replication with his factor? Do they have similar mean and volatility in the same sample?</p></li>
+<li><p>Suppose you wanted to construct something “like” the SP500? I.e. do market cap weights but only form the 500 largest firms in a given month. How would you use groupby to do that?</p></li>
+<li><p>Suppose you lag 2 months instead of 1 does it make any difference?</p></li>
+<li><p>Suppose you drop the stocks with “negative” prices, does it make a difference?</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/Finance"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="crosssectionalequitystrategies.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Cross-sectional strategies</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Valueinvesting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9.2. </span>Value Investing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alan Moreira
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
