@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7. What is a trading strategy?" href="TradingStrategies.html" />
+    <link rel="next" title="7. Trading Strategies" href="TradingStrategies.html" />
     <link rel="prev" title="5.5. Applied Linear Algebra" href="../scientific/linear_algebra1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -863,7 +863,7 @@ BondxUS  0.000187  0.000264  0.000249  0.000422  0.000407
 </ul>
 <p>The optimal weights are</p>
 <div class="math notranslate nohighlight">
-\[X=\frac{Vmax}{E[R^e]'Var(R^e)^{-1}E[R^e]}Var(R^e)^{-1}E[R^e]\]</div>
+\[X=\sqrt{\frac{Vmax}{E[R^e]'Var(R^e)^{-1}E[R^e]}}Var(R^e)^{-1}E[R^e]\]</div>
 <p>Where Vmax is in monthly variance units</p>
 <p>Note that <span class="math notranslate nohighlight">\(\frac{Vmax}{E[R^e]'Var(R^e)^{-1}E[R^e]}\)</span> is a number. Is basically a leverage factor. It leverage up (or down) the portfolio <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> so that the resulting portfolio has the desired target variance</p>
 <p>This portfolio <span class="math notranslate nohighlight">\(Var(R^e)^{-1}E[R^e]\)</span> is quite special because it has the highest Sharpe-ratio among all possible combinations of these assets</p>
@@ -1039,7 +1039,7 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vmax</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">Wmve</span> <span class="o">*</span> <span class="n">Vmax</span><span class="o">/</span><span class="p">(</span><span class="n">e</span> <span class="nd">@cinv</span> <span class="o">@</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">Wmve</span> <span class="o">*</span> <span class="p">(</span><span class="n">Vmax</span><span class="o">/</span><span class="p">(</span><span class="n">e</span> <span class="nd">@cinv</span> <span class="o">@</span> <span class="n">e</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span>
 </pre></div>
 </div>
 </div>
@@ -1114,7 +1114,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>What is a trading strategy?</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Trading Strategies</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

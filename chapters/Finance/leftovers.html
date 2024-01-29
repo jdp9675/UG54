@@ -769,6 +769,78 @@ maximize_{(X)} E(X'R^e) \text{   subject to } Var(X'R^e)\leq Var^{Desired}\\
 <li><p>We will discuss later how to incorporate other risk dimensions (tail risks, background risks, etc)</p></li>
 <li><p>We also ignore investment horizon effects which we will discuss later in the course</p></li>
 </ul>
+<p>In econometrics there is a whole field dedicated towards finding features of the data that are “robust”. Features that don’t vary too much from sample to sample.</p>
+<p>As you can see this can be super useful here.</p>
+<p>This techniques get complicated very quickly with Bayesian methods, Shrinkage methods, and so on. Well beyond the scope of this class.</p>
+<p>The industry however uses two approaches that attempt to get at that by de-emphasizing information about the pieces of the data that we are most uncertain about.</p>
+<p>Two approaches are particularly popular</p>
+<ul class="simple">
+<li><p>Minimum-variance investing</p></li>
+<li><p>Risk parity</p></li>
+</ul>
+<p><strong>Minimum-variance investing</strong></p>
+<ul class="simple">
+<li><p>Mean-variance investing under the assumption that all assets have same expected returns, but uses covariance matrix to minimize risk</p></li>
+<li><p>The idea is that expected returns signals are pure noise so we might as well assume there are no signals and all expected returns are the same</p></li>
+<li><p>For example this is behind Minimum volatility investing for example, [<a class="reference external" href="https://investor.vanguard.com/mutual-funds/profile/VMVFX">https://investor.vanguard.com/mutual-funds/profile/VMVFX</a>]</p></li>
+<li><p>Assumes all assets have the same expected return</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Min~ W'Var(R)W~ subject~ to~ \mathbf{1}'W=1\]</div>
+<div class="math notranslate nohighlight">
+\[W_{minvariance}\propto Var(R)^{-1}\mathbf{1}\]</div>
+<p>Imposing the constraint:
+$<span class="math notranslate nohighlight">\(W_{minvariance}=\frac{Var(R)^{-1}\mathbf{1}}{\mathbf{1}^TVar(R)^{-1}\mathbf{1}}\)</span>$</p>
+<ul class="simple">
+<li><p>I use this technique in “hedging-risk factors”, a recent academic paper, to construct portfolios with Sharpe-ratios of 0.8 at the yearly horizon, which is very large</p></li>
+</ul>
+<blockquote>
+<div><p>Why this might make sense?</p>
+</div></blockquote>
+<p>So you see here that the problem is really identical to the mean-variance problem. We simply substituted the vector or Expected returns by a vector of ones.</p>
+<p>The end result is that now the solution is the portfolio that minimizes variance while being fully invested as the constraint <span class="math notranslate nohighlight">\(\mathbf{1}'W=1\)</span> means <span class="math notranslate nohighlight">\(\sum_i^I w_i*1=1\)</span></p>
+<p><strong>Risk- Parity</strong></p>
+<ul class="simple">
+<li><p>Risk-parity investing: Mean-variance investing under the assumption that all expected returns are equal, and the correlations across all assets are zero.</p>
+<ul>
+<li><p>Sometimes the assumption is that all Sharpe Ratios are equal</p></li>
+<li><p>This is the strategy behind the biggest hedge funds on the planet [<a class="reference external" href="https://www.bridgewater.com/resources/our-thoughts-about-risk-parity-and-all-weather.pdf">https://www.bridgewater.com/resources/our-thoughts-about-risk-parity-and-all-weather.pdf</a>]</p></li>
+</ul>
+</li>
+<li><p>It assumes that the non-diagonal terms in the covariance matrix are all zero.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}Var_{RP}(R)=diag(Var(R))=\left[\begin{array}{ccc}\sigma_1^2 &amp; 0 &amp; 0\\0 &amp; \sigma_2^2 &amp;0 \\0 &amp; 0&amp; \sigma^2_3\end{array}\right]\end{split}\]</div>
+<ul class="simple">
+<li><p>we then have</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Min~ W'Var_{RP}(R)W ~ subject~ to~ \mathbf{1}'W=1\]</div>
+<ul class="simple">
+<li><p>it follows</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}W_{RP}\propto Var_{RP}(R)^{-1}\mathbf{1}=\left[\begin{array}{c}\frac{1}{\sigma_1^2}\\\frac{1}{\sigma_2^2}\\\frac{1}{\sigma_3^2}\end{array}\right]\end{split}\]</div>
+<ul class="simple">
+<li><p>another implementation is one where the Sharpe Ratio is the same across assets, so the Expected return scales with volatility.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}E_{RP}(R)=\left[\begin{array}{ccc}\sigma_1\\\sigma_2\\\sigma_3\end{array}\right]\times SR\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}W_{RP}=Var_{RP}(R)^{-1}E_{RP}[R]=\left[\begin{array}{ccc}\sigma_1^2 &amp; 0 &amp; 0\\0 &amp; \sigma_2^2 &amp;0 \\0 &amp; 0&amp; \sigma^2_3\end{array}\right]^{-1}\left[\begin{array}{ccc}\sigma_1\\\sigma_2\\\sigma_3\end{array}\right]\times SR=SR\left[\begin{array}{c}\frac{1}{\sigma_1}\\\frac{1}{\sigma_2}\\\frac{1}{\sigma_3}\end{array}\right]\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}W_{RP}\propto \left[\begin{array}{c}\frac{1}{\sigma_1}\\\frac{1}{\sigma_2}\\\frac{1}{\sigma_3}\end{array}\right]\end{split}\]</div>
+<p>In the first approach you invest inversely proportional to variance</p>
+<p>In the second approach you invest inversely proportional to volatility</p>
+<p>The important point is that estimate even less moments than the minimum-variance approach. Now it assumes all correlations are zero</p>
+<blockquote>
+<div><p>Why this might make sense?</p>
+</div></blockquote>
+<blockquote>
+<div><p>Why does the assumption of ZERO correlation a conservative ASSUMPTION?</p>
+</div></blockquote>
+<p>Below we will implement the second approach.</p>
+<p>The key trick that we will use is the <code class="docutils literal notranslate"><span class="pre">np.diag()</span></code> function to extract the diagonal of the covariance matrix when applied to a matrix and to build a matrix only with the diagonal terms when applied to a vector</p>
 </section>
 
     <script type="text/x-thebe-config">
