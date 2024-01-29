@@ -100,8 +100,8 @@ sections:
 - file: chapters/Finance/TradingStrategies
   title: Trading Strategies
 
-- file: chapters/Finance/EstimationUncertainty
-  title: Estimation Uncertainty and It's Implications for investing
+# - file: chapters/Finance/EstimationUncertainty
+#   title: Estimation Uncertainty and It's Implications for investing
 
 
 - file: chapters/Finance/Timing
@@ -109,7 +109,7 @@ sections:
   sections:
   - file: chapters/Finance/Volatilitytiming
     title: Volatility Timing
-    
+
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
