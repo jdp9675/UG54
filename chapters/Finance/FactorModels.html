@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>8. Multi-factor models &#8212; Quantitative Investing</title>
+    <title>8. Factor models &#8212; Quantitative Investing</title>
   
   
   
@@ -458,7 +458,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -469,11 +471,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Multi-factor models</h1>
+    <h1>Factor models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-factor-risk-model">8.1. A Single-Factor Risk Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-market-model">8.2. Application: Market model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance-investing">8.3. Minimum-variance investing</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -499,8 +511,750 @@ document.write(`
 <p>Look at R-squared, residual and correlation with residuals</p>
 <p>show that if the residuals are uncorrelated we can reconstruct the covariance matrix</p>
 <p>then do multifactors</p>
-<section class="tex2jax_ignore mathjax_ignore" id="multi-factor-models">
-<h1><span class="section-number">8. </span>Multi-factor models<a class="headerlink" href="#multi-factor-models" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="factor-models">
+<h1><span class="section-number">8. </span>Factor models<a class="headerlink" href="#factor-models" title="Permalink to this heading">#</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(r_t^i\)</span> be an asset excess return over the risk-free rate</p>
+<p>Let <span class="math notranslate nohighlight">\(f_t\)</span> be a traded factor, for example the excess returns on the market portfolio</p>
+<p>Then we can write</p>
+<div class="math notranslate nohighlight">
+\[r_t^i=b_{i}f_t+u_{i,t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(b_{i}\)</span> is asset <span class="math notranslate nohighlight">\(i\)</span> exposure to the factor</p>
+<p>We can always write things that way–it is just a statistical decomposition</p>
+<ol class="arabic simple">
+<li><p>It can be useful for measuring risk if</p>
+<ul class="simple">
+<li><p>The risk <span class="math notranslate nohighlight">\(u_{i,t}\)</span> is specific to asset <span class="math notranslate nohighlight">\(i\)</span> and uncorrelated with other assets</p></li>
+</ul>
+</li>
+<li><p>It can be useful for measuring expected returns if</p>
+<ul class="simple">
+<li><p>The risk <span class="math notranslate nohighlight">\(u_{i,t}\)</span> has no premium, i.e., <span class="math notranslate nohighlight">\(E[u_{i,t}]=0\)</span></p></li>
+<li><p>The premium of asset <span class="math notranslate nohighlight">\(i\)</span> comes exclusively from the exposure to the factor <span class="math notranslate nohighlight">\(f\)</span></p></li>
+</ul>
+</li>
+</ol>
+<p>We will call the first a factor model of risk, and the second a factor model of expected returns</p>
+<ul class="simple">
+<li><p>Which one of the two is the CAPM?</p></li>
+<li><p>Which one of the two is the APT?</p></li>
+<li><p>Which one of the two is the market model?</p></li>
+<li><p>What is the difference between the CAPM and the market model?</p></li>
+</ul>
+<section id="a-single-factor-risk-model">
+<h2><span class="section-number">8.1. </span>A Single-Factor Risk Model<a class="headerlink" href="#a-single-factor-risk-model" title="Permalink to this heading">#</a></h2>
+<p>We now focus on the first case. The assumption that <span class="math notranslate nohighlight">\(u_{i,t}\)</span> are uncorrelated across assets is never really satisfied</p>
+<p>But it can be achieved approximately</p>
+<p>We will see how we can compute covariance matrixes easily under such an assumption</p>
+<p>first we will do so using a single factor</p>
+<p>In this case the assumption is very bad…and not even close to holding for most assets…but will allow us to get the intuition</p>
+<p>We will then learn how to do it with many factors as is standard in the industry</p>
+<p>I will add an intercept to make explicit that I am not making any assumption about how the means of the asset and the factor are related</p>
+<div class="math notranslate nohighlight">
+\[r_t^i=a_i+b_{i}f_t+u_{i,t}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r_t^i\)</span> is the the excess return of asset i over the risk-free rate</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_i\)</span> is the exposure or sensitivity of asset <span class="math notranslate nohighlight">\(i\)</span> to the factor</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_t\)</span> is the excess return of the factor</p></li>
+<li><p>non-factor component of the asset return of asset <span class="math notranslate nohighlight">\(i\)</span>. Assumed to uncorrelated between any two assets</p></li>
+</ul>
+<p>Now this is just a regression!</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[Var(r_t^i)=b_i^2Var(f_t)+var(u_{i,t})\]</div>
+<p>This gives us a nice decomposition of risk</p>
+<ul class="simple">
+<li><p>the risk component that is driven by the common factor</p></li>
+<li><p>the asset specific comment</p></li>
+</ul>
+<p>Now if our assumption holds, <span class="math notranslate nohighlight">\(cov(u_{i,t},u_{j,t})=0\)</span></p>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[Cov(r_t^i,r_t^j)=Cov(a_i+b_{i}f_t+u_{i,t},a_j+b_{j}f_t+u_{j,t})=b_ib_jVar(f_t)\]</div>
+<p>And the covariance matrix is simply</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{cc}
+b_i^2+ var(u_{i,t}) &amp; b_ib_j \\
+b_ib_j &amp;  b_j^2 +var(u_{j,t})
+\end{array}\right]\end{split}\]</div>
+<p>We see that now for N assets we only need to estimate N factor exposures, N asset specific volatilities , and the factor volatility</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(2N+1\)</span> vs <span class="math notranslate nohighlight">\((N^2-N)/2+N\)</span></p>
+</div></blockquote>
+<p>That is a huge difference</p>
+<p>Suppose we have many assets, all respecting this factor model. Say <span class="math notranslate nohighlight">\(R_t\)</span> is the big N by 1 vector of excess return <span class="math notranslate nohighlight">\([r_{1,t},r_{2,t},...]\)</span> for all these assets</p>
+<div class="math notranslate nohighlight">
+\[R_t=bf_t+U_t\]</div>
+<p>where <span class="math notranslate nohighlight">\(b\)</span> is also a N by 1 vector of exposures <span class="math notranslate nohighlight">\([b_1,b_2,...b_N]\)</span>  and <span class="math notranslate nohighlight">\(u_t\)</span> is the N by 1 vector of shocks</p>
+<p>Then their variance-covariance matrix is simply</p>
+<div class="math notranslate nohighlight">
+\[Var(R_t)=b &#64; b' Var(f_t)+ Var(U_t)\]</div>
+</section>
+<section id="application-market-model">
+<h2><span class="section-number">8.2. </span>Application: Market model<a class="headerlink" href="#application-market-model" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>use the 50 stocks</p></li>
+<li><p>Then do multifactor ?</p></li>
+<li><p>Discuss how to use such model in risk management. Say if you know your portfolio b, you can quickly figure out what another fund might add to your portfolio in terms of risk</p></li>
+<li><p>Do CAPM/APT here?</p></li>
+<li><p>Benchmarking and tracking error?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="c1"># Create a date parser function that will allow pandas to read the dates in the format we have them</span>
+<span class="n">date_parser</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;%Y%m&quot;</span><span class="p">)</span>
+<span class="c1"># our 50 stock returns data</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/amoreira2/Fin418/main/assets/data/Retuns50stocks.csv&quot;</span>
+
+<span class="c1"># Use pd.read_csv with the date_parser</span>
+<span class="n">df</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">date_parser</span><span class="o">=</span><span class="n">date_parser</span><span class="p">)</span>
+<span class="c1"># Set the date column as the index</span>
+
+<span class="c1"># first, create the DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># put the returns in percentage format</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 180 entries, 2000-01-01 to 2014-12-01
+Data columns (total 51 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   CTL     180 non-null    float64
+ 1   T       180 non-null    float64
+ 2   CSCO    180 non-null    float64
+ 3   FCX     180 non-null    float64
+ 4   XL      180 non-null    float64
+ 5   IVZ     180 non-null    float64
+ 6   AMT     180 non-null    float64
+ 7   WHR     180 non-null    float64
+ 8   IR      180 non-null    float64
+ 9   WFT     180 non-null    float64
+ 10  YUM     180 non-null    float64
+ 11  CVS     180 non-null    float64
+ 12  GD      180 non-null    float64
+ 13  TYC     180 non-null    float64
+ 14  EL      180 non-null    float64
+ 15  MUR     180 non-null    float64
+ 16  CTAS    180 non-null    float64
+ 17  CBSA    180 non-null    float64
+ 18  SNV     180 non-null    float64
+ 19  CAM     180 non-null    float64
+ 20  DLTR    180 non-null    float64
+ 21  CAH     180 non-null    float64
+ 22  DTE     180 non-null    float64
+ 23  SSP     180 non-null    float64
+ 24  PSA     180 non-null    float64
+ 25  EXC     180 non-null    float64
+ 26  TKR     180 non-null    float64
+ 27  CMA     180 non-null    float64
+ 28  ORCL    180 non-null    float64
+ 29  MS      180 non-null    float64
+ 30  RSG     180 non-null    float64
+ 31  ACAS    180 non-null    float64
+ 32  AGN     180 non-null    float64
+ 33  MMM     180 non-null    float64
+ 34  ETFC    180 non-null    float64
+ 35  CAR     180 non-null    float64
+ 36  MDR     180 non-null    float64
+ 37  NOV     180 non-null    float64
+ 38  PCH     180 non-null    float64
+ 39  BAX     180 non-null    float64
+ 40  JCI     180 non-null    float64
+ 41  SWK     180 non-null    float64
+ 42  DVN     180 non-null    float64
+ 43  TMO     180 non-null    float64
+ 44  PEP     180 non-null    float64
+ 45  LNC     180 non-null    float64
+ 46  EMR     180 non-null    float64
+ 47  MLM     180 non-null    float64
+ 48  CCI     180 non-null    float64
+ 49  NU      180 non-null    float64
+ 50  Market  180 non-null    float64
+dtypes: float64(51)
+memory usage: 73.1 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="c1"># add a constant to the independent variable</span>
+<span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Market&#39;</span><span class="p">])</span>
+<span class="c1"># set the dependent variable to be the &#39;CTL&#39; return</span>
+<span class="n">y</span><span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;CTL&#39;</span><span class="p">]</span>
+<span class="c1"># run the regression</span>
+<span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>CTL</td>       <th>  R-squared:         </th> <td>   0.171</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.167</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   36.81</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Mon, 29 Jan 2024</td> <th>  Prob (F-statistic):</th> <td>7.62e-09</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>18:02:15</td>     <th>  Log-Likelihood:    </th> <td>  214.56</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   180</td>      <th>  AIC:               </th> <td>  -425.1</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>   178</td>      <th>  BIC:               </th> <td>  -418.7</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+     <td></td>       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>const</th>  <td>    0.0019</td> <td>    0.006</td> <td>    0.340</td> <td> 0.734</td> <td>   -0.009</td> <td>    0.013</td>
+</tr>
+<tr>
+  <th>Market</th> <td>    0.7269</td> <td>    0.120</td> <td>    6.068</td> <td> 0.000</td> <td>    0.491</td> <td>    0.963</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>43.729</td> <th>  Durbin-Watson:     </th> <td>   2.264</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 394.038</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.524</td> <th>  Prob(JB):          </th> <td>2.73e-86</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td>10.172</td> <th>  Cond. No.          </th> <td>    21.8</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<p>Interpretation:</p>
+<p>The coefficient on the market estimates the exposure <span class="math notranslate nohighlight">\(b_{CTL}\)</span>. It is 0.72 and well estimate</p>
+<ul class="simple">
+<li><p>we see that the standard errors allow us to reject both zero (easy) and one (not as easy simnce the typical stock must have a beta of 1)</p></li>
+</ul>
+<p>We see that the R-squared is 17% so the asset specific risk is sizable</p>
+<ul class="simple">
+<li><p>what fraction of CTL risk is due to the factor?</p></li>
+<li><p>how large is the non-factor component?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to get the residual volatility, we need to get the residuals and compute it&#39;s volatility</span>
+<span class="n">u</span><span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">resid</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25520301676928053
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lets now estimate the covariance matrix of these 50 stocks using this single-factor model</p>
+<ol class="arabic simple">
+<li><p>Run regression stock by stock</p></li>
+<li><p>save betas, save residual variance</p></li>
+<li><p>Use formula to construct variance matrix</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;CTL&#39;, &#39;T&#39;, &#39;CSCO&#39;, &#39;FCX&#39;, &#39;XL&#39;, &#39;IVZ&#39;, &#39;AMT&#39;, &#39;WHR&#39;, &#39;IR&#39;, &#39;WFT&#39;,
+       &#39;YUM&#39;, &#39;CVS&#39;, &#39;GD&#39;, &#39;TYC&#39;, &#39;EL&#39;, &#39;MUR&#39;, &#39;CTAS&#39;, &#39;CBSA&#39;, &#39;SNV&#39;, &#39;CAM&#39;,
+       &#39;DLTR&#39;, &#39;CAH&#39;, &#39;DTE&#39;, &#39;SSP&#39;, &#39;PSA&#39;, &#39;EXC&#39;, &#39;TKR&#39;, &#39;CMA&#39;, &#39;ORCL&#39;, &#39;MS&#39;,
+       &#39;RSG&#39;, &#39;ACAS&#39;, &#39;AGN&#39;, &#39;MMM&#39;, &#39;ETFC&#39;, &#39;CAR&#39;, &#39;MDR&#39;, &#39;NOV&#39;, &#39;PCH&#39;, &#39;BAX&#39;,
+       &#39;JCI&#39;, &#39;SWK&#39;, &#39;DVN&#39;, &#39;TMO&#39;, &#39;PEP&#39;, &#39;LNC&#39;, &#39;EMR&#39;, &#39;MLM&#39;, &#39;CCI&#39;, &#39;NU&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Results</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Beta&#39;</span><span class="p">,</span><span class="s1">&#39;VarU&#39;</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Market&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">stocki</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+<span class="c1"># set the dependent variable to be the &#39;CTL&#39; return</span>
+    <span class="n">y</span><span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">stocki</span><span class="p">]</span>
+    <span class="c1"># run the regression</span>
+    <span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">Results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stocki</span><span class="p">,</span><span class="s1">&#39;Beta&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">stocki</span><span class="p">,</span><span class="s1">&#39;VarU&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+
+<span class="n">Results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Beta</th>
+      <th>VarU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>CTL</th>
+      <td>0.726946</td>
+      <td>0.005427</td>
+    </tr>
+    <tr>
+      <th>T</th>
+      <td>0.529153</td>
+      <td>0.004093</td>
+    </tr>
+    <tr>
+      <th>CSCO</th>
+      <td>1.530779</td>
+      <td>0.006403</td>
+    </tr>
+    <tr>
+      <th>FCX</th>
+      <td>1.569894</td>
+      <td>0.011742</td>
+    </tr>
+    <tr>
+      <th>XL</th>
+      <td>1.438681</td>
+      <td>0.011752</td>
+    </tr>
+    <tr>
+      <th>IVZ</th>
+      <td>2.036247</td>
+      <td>0.004851</td>
+    </tr>
+    <tr>
+      <th>AMT</th>
+      <td>1.352478</td>
+      <td>0.027122</td>
+    </tr>
+    <tr>
+      <th>WHR</th>
+      <td>1.442238</td>
+      <td>0.008598</td>
+    </tr>
+    <tr>
+      <th>IR</th>
+      <td>1.461150</td>
+      <td>0.005901</td>
+    </tr>
+    <tr>
+      <th>WFT</th>
+      <td>1.513599</td>
+      <td>0.010939</td>
+    </tr>
+    <tr>
+      <th>YUM</th>
+      <td>0.701920</td>
+      <td>0.004836</td>
+    </tr>
+    <tr>
+      <th>CVS</th>
+      <td>0.647671</td>
+      <td>0.004854</td>
+    </tr>
+    <tr>
+      <th>GD</th>
+      <td>0.833312</td>
+      <td>0.003792</td>
+    </tr>
+    <tr>
+      <th>TYC</th>
+      <td>1.331555</td>
+      <td>0.006221</td>
+    </tr>
+    <tr>
+      <th>EL</th>
+      <td>0.918557</td>
+      <td>0.004550</td>
+    </tr>
+    <tr>
+      <th>MUR</th>
+      <td>0.873364</td>
+      <td>0.005601</td>
+    </tr>
+    <tr>
+      <th>CTAS</th>
+      <td>0.845109</td>
+      <td>0.005044</td>
+    </tr>
+    <tr>
+      <th>CBSA</th>
+      <td>1.705297</td>
+      <td>0.006981</td>
+    </tr>
+    <tr>
+      <th>SNV</th>
+      <td>0.980521</td>
+      <td>0.009233</td>
+    </tr>
+    <tr>
+      <th>CAM</th>
+      <td>1.287322</td>
+      <td>0.006415</td>
+    </tr>
+    <tr>
+      <th>DLTR</th>
+      <td>0.789608</td>
+      <td>0.008543</td>
+    </tr>
+    <tr>
+      <th>CAH</th>
+      <td>0.544862</td>
+      <td>0.004334</td>
+    </tr>
+    <tr>
+      <th>DTE</th>
+      <td>0.334819</td>
+      <td>0.002472</td>
+    </tr>
+    <tr>
+      <th>SSP</th>
+      <td>1.510001</td>
+      <td>0.012559</td>
+    </tr>
+    <tr>
+      <th>PSA</th>
+      <td>0.528390</td>
+      <td>0.003389</td>
+    </tr>
+    <tr>
+      <th>EXC</th>
+      <td>0.299122</td>
+      <td>0.003815</td>
+    </tr>
+    <tr>
+      <th>TKR</th>
+      <td>1.484943</td>
+      <td>0.006822</td>
+    </tr>
+    <tr>
+      <th>CMA</th>
+      <td>0.810631</td>
+      <td>0.005133</td>
+    </tr>
+    <tr>
+      <th>ORCL</th>
+      <td>1.269003</td>
+      <td>0.007420</td>
+    </tr>
+    <tr>
+      <th>MS</th>
+      <td>1.687285</td>
+      <td>0.005518</td>
+    </tr>
+    <tr>
+      <th>RSG</th>
+      <td>0.495615</td>
+      <td>0.004677</td>
+    </tr>
+    <tr>
+      <th>ACAS</th>
+      <td>1.452933</td>
+      <td>0.015387</td>
+    </tr>
+    <tr>
+      <th>AGN</th>
+      <td>0.569430</td>
+      <td>0.004983</td>
+    </tr>
+    <tr>
+      <th>MMM</th>
+      <td>0.695088</td>
+      <td>0.002467</td>
+    </tr>
+    <tr>
+      <th>ETFC</th>
+      <td>2.391465</td>
+      <td>0.015546</td>
+    </tr>
+    <tr>
+      <th>CAR</th>
+      <td>3.353010</td>
+      <td>0.030258</td>
+    </tr>
+    <tr>
+      <th>MDR</th>
+      <td>1.468548</td>
+      <td>0.025389</td>
+    </tr>
+    <tr>
+      <th>NOV</th>
+      <td>1.398243</td>
+      <td>0.010767</td>
+    </tr>
+    <tr>
+      <th>PCH</th>
+      <td>0.990190</td>
+      <td>0.003758</td>
+    </tr>
+    <tr>
+      <th>BAX</th>
+      <td>0.485301</td>
+      <td>0.004654</td>
+    </tr>
+    <tr>
+      <th>JCI</th>
+      <td>1.292524</td>
+      <td>0.005156</td>
+    </tr>
+    <tr>
+      <th>SWK</th>
+      <td>1.100645</td>
+      <td>0.004248</td>
+    </tr>
+    <tr>
+      <th>DVN</th>
+      <td>0.957763</td>
+      <td>0.006943</td>
+    </tr>
+    <tr>
+      <th>TMO</th>
+      <td>0.958138</td>
+      <td>0.003878</td>
+    </tr>
+    <tr>
+      <th>PEP</th>
+      <td>0.351366</td>
+      <td>0.001890</td>
+    </tr>
+    <tr>
+      <th>LNC</th>
+      <td>1.826397</td>
+      <td>0.009519</td>
+    </tr>
+    <tr>
+      <th>EMR</th>
+      <td>1.035139</td>
+      <td>0.002380</td>
+    </tr>
+    <tr>
+      <th>MLM</th>
+      <td>0.871716</td>
+      <td>0.005100</td>
+    </tr>
+    <tr>
+      <th>CCI</th>
+      <td>1.672453</td>
+      <td>0.014393</td>
+    </tr>
+    <tr>
+      <th>NU</th>
+      <td>0.446771</td>
+      <td>0.002182</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Assuming Results is your DataFrame and &#39;Beta&#39; is your column</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">Results</span><span class="p">[</span><span class="s1">&#39;Beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># make sure beta is a column vector (and not di)</span>
+<span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Compute the outer product of the &#39;Beta&#39; column with itself</span>
+<span class="n">beta_matrix</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">@</span> <span class="n">beta</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">beta_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">beta_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># the unsystematic component is a diagonal matrix with the variance of the residuals on the diagonal</span>
+<span class="n">CovU</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Results</span><span class="p">[</span><span class="s1">&#39;VarU&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">CovU</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">CovU</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># construct the covariance matrix by adding the systematic and unsystematic components</span>
+<span class="n">Cov</span><span class="o">=</span><span class="n">beta_matrix</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Market&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">+</span><span class="n">CovU</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Cov</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Cov</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.52845028 0.38466559 1.11279362 ... 0.63369045 1.21578277 0.32477868]
+ [0.38466559 0.28000291 0.81001644 ... 0.46127124 0.88498354 0.23641048]
+ [1.11279362 0.81001644 2.34328505 ... 1.334405   2.5601563  0.68390851]
+ ...
+ [0.63369045 0.46127124 1.334405   ... 0.75988907 1.4579043  0.38945793]
+ [1.21578277 0.88498354 2.5601563  ... 1.4579043  2.79709901 0.74720431]
+ [0.32477868 0.23641048 0.68390851 ... 0.38945793 0.74720431 0.19960476]]
+(50, 50)
+[[0.00542738 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.00409277 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.00640331 ... 0.         0.         0.        ]
+ ...
+ [0.         0.         0.         ... 0.00510028 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.01439288 0.        ]
+ [0.         0.         0.         ... 0.         0.         0.00218208]]
+(50, 50)
+[[0.0065499  0.0008171  0.00236376 ... 0.00134607 0.00258253 0.00068989]
+ [0.0008171  0.00468754 0.00172061 ... 0.00097982 0.00187986 0.00050218]
+ [0.00236376 0.00172061 0.01138085 ... 0.0028345  0.00543821 0.00145274]
+ ...
+ [0.00134607 0.00097982 0.0028345  ... 0.00671441 0.00309684 0.00082727]
+ [0.00258253 0.00187986 0.00543821 ... 0.00309684 0.0203344  0.00158719]
+ [0.00068989 0.00050218 0.00145274 ... 0.00082727 0.00158719 0.00260607]]
+(50, 50)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">Cov</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Market&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.18458701 0.02820187 0.02641282 0.02408352 0.01543593 0.01488343
+ 0.01384643 0.01237561 0.01174754 0.01137313 0.01084868 0.01028004
+ 0.00932048 0.00900449 0.00855584 0.00821247 0.00189723 0.0021908
+ 0.00241865 0.00253078 0.0024709  0.00734261 0.0069544  0.00688625
+ 0.00665538 0.00339956 0.0064101  0.00628267 0.00604179 0.00377187
+ 0.00381028 0.00382598 0.00393034 0.00574614 0.0041033  0.0055832
+ 0.00428599 0.00435046 0.00544161 0.00530519 0.00457194 0.00465879
+ 0.0046841  0.00514056 0.00511297 0.00506295 0.00499907 0.00495316
+ 0.00483742 0.00485367]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.20234862, 0.04380649, 0.03867242, 0.0267219 , 0.02183821,
+       0.02126078, 0.0160202 , 0.01368212, 0.01338605, 0.01173726,
+       0.0111724 , 0.01070277, 0.00930882, 0.00854364, 0.00764067,
+       0.00724038, 0.00656417, 0.00642297, 0.00596876, 0.00542201,
+       0.00496879, 0.00470215, 0.00452763, 0.00430816, 0.00383458,
+       0.00364044, 0.00353846, 0.00336802, 0.00053798, 0.00313359,
+       0.00071095, 0.00077215, 0.00294676, 0.00282649, 0.00253401,
+       0.00248637, 0.00101429, 0.00110574, 0.00111545, 0.00222037,
+       0.00211258, 0.00203357, 0.00194135, 0.00184789, 0.00178512,
+       0.0012698 , 0.00133569, 0.00155697, 0.00154107, 0.00150227])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="minimum-variance-investing">
+<h2><span class="section-number">8.3. </span>Minimum-variance investing<a class="headerlink" href="#minimum-variance-investing" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>it is mean-variance investing under the assumption that all assets have same expected returns, but uses covariance matrix to minimize risk</p></li>
+<li><p>The idea is that expected returns signals are pure noise so we might as well assume there are no signals and all expected returns are the same</p></li>
+<li><p>For example this is behind Minimum volatility investing for example, [<a class="reference external" href="https://investor.vanguard.com/mutual-funds/profile/VMVFX">https://investor.vanguard.com/mutual-funds/profile/VMVFX</a>]</p></li>
+<li><p>Assumes all assets have the same expected return</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Min~ X'Var(R)X~ subject~ to~ \mathbf{1}'X=1\]</div>
+<p>The result of this problem is a vector of weights proportional to</p>
+<div class="math notranslate nohighlight">
+\[W_{minvariance}\propto Var(R)^{-1}\mathbf{1}\]</div>
+<p>We then impose the constraint that the weights have to add-up to 1.</p>
+<div class="math notranslate nohighlight">
+\[X_{minvariance}=\frac{Var(R)^{-1}\mathbf{1}}{\mathbf{1}^TVar(R)^{-1}\mathbf{1}}\]</div>
+<ul class="simple">
+<li><p>I use this technique in “hedging-risk factors”, a recent academic paper, to construct portfolios with Sharpe-ratios of 0.8 at the yearly horizon, which is very large</p></li>
+</ul>
+<blockquote>
+<div><p>Why this might make sense?</p>
+</div></blockquote>
+<p>So you see here that the problem is really identical to the mean-variance problem. We simply substituted the vector or Expected returns by a vector of ones.</p>
+<p>The end result is that now the solution is the portfolio that minimizes variance while being fully invested as the constraint <span class="math notranslate nohighlight">\(\mathbf{1}'W=1\)</span> means <span class="math notranslate nohighlight">\(\sum_i^I w_i*1=1\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ones</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Cov</span><span class="p">)</span><span class="o">@</span> <span class="n">ones</span><span class="o">/</span><span class="p">(</span><span class="n">ones</span><span class="o">.</span><span class="n">T</span> <span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Cov</span><span class="p">)</span><span class="o">@</span> <span class="n">ones</span><span class="p">)</span>
+<span class="n">R_X</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Market&#39;</span><span class="p">)</span> <span class="o">@</span> <span class="n">X</span>
+<span class="n">Vol_X</span><span class="o">=</span><span class="n">R_X</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">ER_X</span><span class="o">=</span><span class="n">R_X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">R_X</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Market</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/cfa5c242f65ffb35f95c279b5d40ac7654b4908c4abe561b125100d801566458.png" src="../../_images/cfa5c242f65ffb35f95c279b5d40ac7654b4908c4abe561b125100d801566458.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ones</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Cov</span><span class="p">)</span><span class="o">@</span> <span class="n">ones</span><span class="o">/</span><span class="p">(</span><span class="n">ones</span><span class="o">.</span><span class="n">T</span> <span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Cov</span><span class="p">)</span><span class="o">@</span> <span class="n">ones</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(((</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Cov</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">ones</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Cov</span> <span class="o">@</span> <span class="n">ones</span><span class="p">)</span><span class="o">/</span><span class="mi">50</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Market&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">ones</span><span class="o">.</span><span class="n">T</span><span class="o">/</span><span class="mi">50</span> <span class="o">@</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Market&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.38448195]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.87872984]])
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Adding factors to proxy for the total wealth portfolio</strong></p>
 <ul class="simple">
 <li><p>According to the  CAPM the Wealth portfolio is the tangency portfolio</p></li>
@@ -1777,6 +2531,7 @@ Freq: M, Name: 17778.0, dtype: float64
 <li><p>How do you account for the differnece in market betas when investing?</p></li>
 </ul>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1836,6 +2591,22 @@ Freq: M, Name: 17778.0, dtype: float64
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-single-factor-risk-model">8.1. A Single-Factor Risk Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-market-model">8.2. Application: Market model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance-investing">8.3. Minimum-variance investing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
