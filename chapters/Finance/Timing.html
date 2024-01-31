@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Timing Strategies &#8212; Quantitative Investing</title>
+    <title>10. Factor Timing &#8212; Quantitative Investing</title>
   
   
   
@@ -471,7 +471,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Timing Strategies</h1>
+    <h1>Factor Timing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -503,31 +503,44 @@ document.write(`
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="timing-strategies">
-<h1><span class="section-number">10. </span>Timing Strategies<a class="headerlink" href="#timing-strategies" title="Permalink to this heading">#</a></h1>
-<p>Timing strategies use some signal to change the exposure to a specific asset. So it goes between cash and the asset.</p>
-<p>When timing some specific asset–say your investment in tesla– you care mostly about predicting future returns since you cannot make money or timing volatility of some individual stock</p>
-<p>We think these type of trade as “cross-sectional” trade because when you overweight Telsa you are underweight some other stock</p>
-<p>So we decompose trading strategies as</p>
+<section class="tex2jax_ignore mathjax_ignore" id="factor-timing">
+<h1><span class="section-number">10. </span>Factor Timing<a class="headerlink" href="#factor-timing" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Cross-sectional: keep exposure to the market right about constant, but over-weights some stocks and down-weights others</p></li>
-<li><p>Timing: switch exposure to the market overtime, going in and out of cash</p></li>
+<li><p>So far we focused on strategies that overweight some assets and underweight others</p></li>
+<li><p>While these strategies are dynamic–since the portfolios change every year or even every month</p></li>
+<li><p>These strategies do not explicitly exploit the possibility that the risk and returns of the factors are time-varying</p></li>
+<li><p>To the extent that they are, then you might benefit of dynamically change you exposure to the factor</p></li>
+<li><p>Say for example, if, every thing else constant, you know that expected returns on the market next year is below the average, then you would reduce your position in it relative to what you typically have. You would move your money into cash or into other candidate asset</p></li>
+<li><p>To keep it simple we always think of timing as moving money between on factor and cash</p></li>
+<li><p>While one can time any factor, lets start with the most important one, the market</p></li>
 </ul>
-<p>First lets us go back to the mean-variance optimization framework that we studied before to get some intuition</p>
 <p><strong>Market timing: Theoretical intuition</strong></p>
 <p>Lets consider the problem of this mean-variance investor that allocates between a risky asset (the market) and a risk-free asset. (For convenience the risky asset will already by an excess return, but that doesn’t matter)</p>
 <div class="math notranslate nohighlight">
-\[\max_{x_t} E_t[x_tr^e_{t+1} +rf_{t+1}]-\frac{\gamma}{2}Var_t(x_tr^e_{t+1} +rf_{t+1})\]</div>
-<p>The only difference from the previous mve analysis is that now it is only one risky asset, so this is particular case of that problem.</p>
-<p>It is like we already decided what out risky portfolio looks like and we are just deciding how much to invest in it.</p>
-<p>The other important difference is the <code class="docutils literal notranslate"><span class="pre">t</span></code> subscripts in the moments.</p>
-<p>What does that mean? It means that now we try to account for <strong>time-variation</strong> in the <strong>distribution of returns</strong>.</p>
+\[\max_{x_t} E_t[x_tr_{t+1} +(1-x_t)rf_{t+1}]-\frac{\gamma}{2}Var_t(x_tr^e_{t+1} +(1-x_t)rf_{t+1})\]</div>
+<ul class="simple">
+<li><p>The only difference from the previous mve analysis is that now it is only one risky asset, so this is particular case of that problem.</p></li>
+<li><p>The other important difference is the <code class="docutils literal notranslate"><span class="pre">t</span></code> subscripts in the moments.</p></li>
+<li><p>It means that the moments can be varying overtime.</p></li>
+</ul>
 <p>The solution to this problem is super simple</p>
 <div class="math notranslate nohighlight">
-\[x_t=\frac{E_t[r^e_{t+1}]}{\gamma Var_t(r^e_{t+1})}\]</div>
+\[x_t=\frac{E_t[r_{t+1}-r^f_{t+1}]}{\gamma Var_t(r_{t+1})}\]</div>
 <p>So you invest proportionally to the risk-return trade-off.</p>
-<p>You invest more when you get a lot of premium per unit of risk.</p>
-<p>You see that theory tell us that we should time vol too! We should care really about the disconnect between these risk and return.</p>
+<ul class="simple">
+<li><p>lever up if expected returns are higher</p></li>
+<li><p>lever down if variance is higher</p></li>
+</ul>
+<p>A nice result is that you target the volatility of your portfolio to move up and down with the factor Sharpe ratio</p>
+<div class="math notranslate nohighlight">
+\[x_t\sigma_t(r_{t+1})=\frac{1}{\gamma}\frac{E_t[r_{t+1}-r^f_{t+1}]}{ \sigma_t(r_{t+1})}=SR_t(r_{t+1})\]</div>
+<p>If SR is up you choose to have a more volatile portfolio</p>
+<ul class="simple">
+<li><p>makes sense!it is more attractive to take risk!</p></li>
+<li><p>The theory tells us that is all about the ratio of premium to variance</p></li>
+<li><p>If risk-premiums goes up more than the variance, you lever up</p></li>
+<li><p>If variance goes up more than risk-premiums, you lever down</p></li>
+</ul>
 <section id="market-timing">
 <h2><span class="section-number">10.1. </span>Market Timing<a class="headerlink" href="#market-timing" title="Permalink to this heading">#</a></h2>
 <p>The most classic timing strategies are motivated by the fact that high dividend yield periods seems to be followed by above average returns</p>
@@ -543,12 +556,57 @@ document.write(`
 \[x_t^{timing}=c(\frac{d_t}{p_t})\]</div>
 <p>on the market excess return,so your strategy return is</p>
 <div class="math notranslate nohighlight">
-\[r_{t+1}^{mkttiming}=(1-x_t^{timing})r_{f,t+1}+x_t^{timing}r_{t+1}^{mkt}\]</div>
+\[r_{t+1}^{timing}=(1-x_t^{timing})r_{f,t+1}+x_t^{timing}r_{t+1}^{mkt}\]</div>
 <p>Where you would use to control your average exposure to the market.</p>
 <p>if you are interested in digging further see</p>
 <blockquote>
 <div><p>John Y. Campbell, Samuel B. Thompson, Predicting Excess Stock Returns Out of Sample: Can Anything Beat the Historical Average?, The Review of Financial Studies, Volume 21, Issue 4, July 2008, Pages 1509–1531, <a class="reference external" href="https://doi.org/10.1093/rfs/hhm055">https://doi.org/10.1093/rfs/hhm055</a></p>
 </div></blockquote>
+<ul class="simple">
+<li><p>We refer to the dividend-yield as a signal</p></li>
+<li><p>There are many other signals that have been show to predict market returns– in the past</p></li>
+<li><p>Harder to know which ones work right now</p></li>
+<li><p>Some of the signals are</p>
+<ul>
+<li><p>Short interest</p></li>
+<li><p>Aggregate accruals</p></li>
+<li><p>Variance risk premium</p></li>
+<li><p>equity issuing activity</p></li>
+</ul>
+</li>
+</ul>
+<p>How do you see if the signal works</p>
+<ul class="simple">
+<li><p>You start with some signal that you know in date <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>Split the sample in terms of estimation sample and test sample</p></li>
+<li><p>Estimate the forecasting regression in the estimation sample</p></li>
+<li><p>Typically using excess returns</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ r_{t+1}^e=a+b *signal_t+u_{t+1}\]</div>
+<ul class="simple">
+<li><p>The difference from factor models is that the relationship is NOT contemporaneous</p></li>
+<li><p>The whole point is to use the fact that you know the signal ahead of time</p></li>
+<li><p>That is the signal at date <span class="math notranslate nohighlight">\(t\)</span> has information about the return in data <span class="math notranslate nohighlight">\(t+1\)</span> (or some longer horizon)</p></li>
+<li><p>Is the R-squared is meaningful ( we will discuss later ) and the b is well estimate and different from zero?</p>
+<ul>
+<li><p>If no stop, the signal does not work even in sample!</p></li>
+</ul>
+</li>
+<li><p>IF yes, you go a look at the performance in the test sample –we call this out of sample performance evaluation</p>
+<ul>
+<li><p>Just like what we did with our trading strategies</p></li>
+<li><p>But here we look at R-squares</p></li>
+</ul>
+</li>
+</ul>
+<p>$$R^2_{TS}=1-\frac{(r_{t+1}-(a+b *signal_t))^2}{((r_{t+1})-\mu_{t})^2}</p>
+<ol class="arabic simple">
+<li><p>Use goyal predictor to run a regression</p></li>
+<li><p>Look at forecast. Note that gets negative</p></li>
+<li><p>Construct a trading strategy that imposes non negativity</p></li>
+<li><p>See that</p></li>
+</ol>
 </section>
 <div class="toctree-wrapper compound">
 </div>
