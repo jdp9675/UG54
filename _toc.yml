@@ -102,8 +102,9 @@ sections:
 
 - file: chapters/Finance/FactorModels
   title: Factor Models
-  - file: chapters/Finance/Equilbrium
-    title: Intepreting Factor models
+  sections:
+  - file: chapters/Finance/InterpretingFactorModels
+    title: Interpreting Factor Models
 
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
