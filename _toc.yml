@@ -102,7 +102,8 @@ sections:
 
 - file: chapters/Finance/FactorModels
   title: Factor Models
-
+  - file: chapters/Finance/Equilbrium
+    title: Intepreting Factor models
 
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
@@ -134,12 +135,9 @@ sections:
     title: Out of Sample Analysis
   - file: chapters/Finance/TailandBackground
     title: Tail Risks and Background Risks
-
 - file: chapters/Finance/Topics
   title: Topics in Quantitative Investing
   sections:
-  - file: chapters/Finance/Equilbrium
-    title: Intepreting Factor models
   - file: chapters/Finance/Implementation
     title: Strategy Implementation
   - file: chapters/Finance/Horizon
