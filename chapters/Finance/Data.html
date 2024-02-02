@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Warren Buffet Data &#8212; Quantitative Investing</title>
+    <title>Warren Buffet and ARKK Data &#8212; Quantitative Investing</title>
   
   
   
@@ -469,7 +469,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Warren Buffet Data</h1>
+    <h1>Warren Buffet and ARKK Data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -489,20 +489,27 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">wrds</span>
 <span class="kn">import</span> <span class="nn">psycopg2</span> 
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="n">conn</span><span class="o">=</span><span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
+Created .pgpass file successfully.
+You can create this file yourself at any time with the create_pgpass_file() function.
+Loading library list...
+Done
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="warren-buffet-data">
-<h1>Warren Buffet Data<a class="headerlink" href="#warren-buffet-data" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="warren-buffet-and-arkk-data">
+<h1>Warren Buffet and ARKK Data<a class="headerlink" href="#warren-buffet-and-arkk-data" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
-
-<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="n">YYYY</span><span class="p">,</span> <span class="n">MM</span><span class="p">,</span> <span class="n">DD</span><span class="p">)</span>  <span class="c1"># Replace YYYY, MM, DD with the desired start date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Replace YYYY, MM, DD with the desired start date</span>
 
 <span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_5_Factors_2x3_Daily&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
 <span class="n">dff5</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -511,483 +518,38 @@ document.write(`
 <span class="n">dmom</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">dff6</span> <span class="o">=</span> <span class="n">dff5</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dmom</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-<span class="n">dff6e</span> <span class="o">=</span> <span class="n">dff6</span> <span class="o">/</span> <span class="mi">100</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_5_Factors_2x3&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
-<span class="n">dff5</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Momentum_Factor&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
-<span class="n">dmom</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">dff6</span><span class="o">=</span><span class="n">dff5</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dmom</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-<span class="n">dff6e</span><span class="o">=</span><span class="n">dff6</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">dff6</span> <span class="o">=</span> <span class="n">dff6</span> <span class="o">/</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mkt-RF    0.068960
+SMB       0.017871
+HML       0.036446
+RMW       0.034791
+CMA       0.032238
+RF        0.043425
+Mom       0.068840
+dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">=</span><span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">codesnippets</span> <span class="kn">import</span> <span class="n">get_returns_daily</span>
 <span class="n">df</span><span class="o">=</span><span class="n">get_returns_daily</span><span class="p">([</span><span class="s1">&#39;BRK&#39;</span><span class="p">],</span><span class="n">conn</span><span class="p">,</span><span class="s1">&#39;1/1/1960&#39;</span><span class="p">,</span><span class="s1">&#39;1/1/2022&#39;</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>
-<span class="n">dff6</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
 
-<span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">dff6</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mf">17778.0</span><span class="p">],</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">dff6</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mf">17778.0</span><span class="p">],</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">17778</span><span class="p">:</span><span class="s1">&#39;BRK&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">BRK</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">BRK</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">RF</span>
-<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../../data/df.pkl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/78fa12a978cd65b733edca4fc5bfc1f4d20d3a50f505c1348e05acfa6b661baa.png" src="../../_images/78fa12a978cd65b733edca4fc5bfc1f4d20d3a50f505c1348e05acfa6b661baa.png" />
-</div>
-</div>
-<p>Start with the CAPM</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> 
-<span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
-<span class="n">y</span><span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;BRK&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>           <td>BRK</td>       <th>  R-squared:         </th> <td>   0.212</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.210</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   103.6</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Tue, 04 May 2021</td> <th>  Prob (F-statistic):</th> <td>1.06e-21</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>09:25:48</td>     <th>  Log-Likelihood:    </th> <td>  592.00</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   386</td>      <th>  AIC:               </th> <td>  -1180.</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>   384</td>      <th>  BIC:               </th> <td>  -1172.</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-     <td></td>       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>const</th>  <td>    0.0060</td> <td>    0.003</td> <td>    2.210</td> <td> 0.028</td> <td>    0.001</td> <td>    0.011</td>
-</tr>
-<tr>
-  <th>Mkt-RF</th> <td>    0.6236</td> <td>    0.061</td> <td>   10.178</td> <td> 0.000</td> <td>    0.503</td> <td>    0.744</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td>83.751</td> <th>  Durbin-Watson:     </th> <td>   2.060</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 261.498</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.974</td> <th>  Prob(JB):          </th> <td>1.65e-57</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 6.530</td> <th>  Cond. No.          </th> <td>    23.0</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07164885662375453
-</pre></div>
-</div>
-</div>
-</div>
-<p>Market beta of about 0.6 and alpha of 7% per year!</p>
-<p><em>Six factor model</em></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> 
-<span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;BRK&#39;</span><span class="p">,</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">y</span><span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;BRK&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>           <td>BRK</td>       <th>  R-squared:         </th> <td>   0.348</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.338</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   33.74</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Tue, 04 May 2021</td> <th>  Prob (F-statistic):</th> <td>1.35e-32</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>09:26:02</td>     <th>  Log-Likelihood:    </th> <td>  628.50</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   386</td>      <th>  AIC:               </th> <td>  -1243.</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>   379</td>      <th>  BIC:               </th> <td>  -1215.</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     6</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-     <td></td>       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>const</th>  <td>    0.0046</td> <td>    0.003</td> <td>    1.774</td> <td> 0.077</td> <td>   -0.001</td> <td>    0.010</td>
-</tr>
-<tr>
-  <th>Mkt-RF</th> <td>    0.7599</td> <td>    0.067</td> <td>   11.357</td> <td> 0.000</td> <td>    0.628</td> <td>    0.892</td>
-</tr>
-<tr>
-  <th>SMB</th>    <td>   -0.3946</td> <td>    0.091</td> <td>   -4.316</td> <td> 0.000</td> <td>   -0.574</td> <td>   -0.215</td>
-</tr>
-<tr>
-  <th>HML</th>    <td>    0.4836</td> <td>    0.118</td> <td>    4.091</td> <td> 0.000</td> <td>    0.251</td> <td>    0.716</td>
-</tr>
-<tr>
-  <th>RMW</th>    <td>    0.2687</td> <td>    0.121</td> <td>    2.214</td> <td> 0.027</td> <td>    0.030</td> <td>    0.507</td>
-</tr>
-<tr>
-  <th>CMA</th>    <td>   -0.1286</td> <td>    0.172</td> <td>   -0.749</td> <td> 0.454</td> <td>   -0.466</td> <td>    0.209</td>
-</tr>
-<tr>
-  <th>Mom   </th> <td>   -0.0077</td> <td>    0.057</td> <td>   -0.135</td> <td> 0.892</td> <td>   -0.119</td> <td>    0.104</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td>89.527</td> <th>  Durbin-Watson:     </th> <td>   2.143</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 237.376</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 1.105</td> <th>  Prob(JB):          </th> <td>2.85e-52</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 6.143</td> <th>  Cond. No.          </th> <td>    80.7</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.055415983696528254
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>What do we learn about Warren Investment style?</p></li>
-<li><p>What do we learn about Warren specific stock picking skills?</p></li>
-</ul>
-<p><strong>Aplication 2: Does Cathie Wood has some secret sauce? Performance evalaution of <a class="reference external" href="https://ark-funds.com/arkk">ARKK</a></strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">get_returns</span><span class="p">([</span><span class="s1">&#39;ARKK&#39;</span><span class="p">],</span><span class="n">conn</span><span class="p">,</span><span class="s1">&#39;1/1/1960&#39;</span><span class="p">,</span><span class="s1">&#39;1/1/2022&#39;</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>
-<span class="p">(</span><span class="n">df</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/c5b9beb8488bb09c45d52b4a11aba719898edf97297135a7be834ba54812436d.png" src="../../_images/c5b9beb8488bb09c45d52b4a11aba719898edf97297135a7be834ba54812436d.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">dff6</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">),</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+
+
+<span class="n">df_temp</span><span class="o">=</span><span class="n">get_returns_daily</span><span class="p">([</span><span class="s1">&#39;ARKK&#39;</span><span class="p">],</span><span class="n">conn</span><span class="p">,</span><span class="s1">&#39;1/1/1960&#39;</span><span class="p">,</span><span class="s1">&#39;1/1/2022&#39;</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_temp</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mf">14948.0</span><span class="p">:</span><span class="s1">&#39;ARKK&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">ARKK</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">ARKK</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">RF</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> 
-<span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
-<span class="n">y</span><span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;ARKK&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>          <td>ARKK</td>       <th>  R-squared:         </th> <td>   0.691</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.687</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   160.9</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Tue, 04 May 2021</td> <th>  Prob (F-statistic):</th> <td>4.98e-20</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>09:28:12</td>     <th>  Log-Likelihood:    </th> <td>  120.93</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>    74</td>      <th>  AIC:               </th> <td>  -237.9</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    72</td>      <th>  BIC:               </th> <td>  -233.2</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-     <td></td>       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>const</th>  <td>    0.0115</td> <td>    0.006</td> <td>    2.016</td> <td> 0.048</td> <td>    0.000</td> <td>    0.023</td>
-</tr>
-<tr>
-  <th>Mkt-RF</th> <td>    1.5768</td> <td>    0.124</td> <td>   12.684</td> <td> 0.000</td> <td>    1.329</td> <td>    1.825</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 4.334</td> <th>  Durbin-Watson:     </th> <td>   1.974</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.115</td> <th>  Jarque-Bera (JB):  </th> <td>   3.484</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.465</td> <th>  Prob(JB):          </th> <td>   0.175</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 3.516</td> <th>  Cond. No.          </th> <td>    22.3</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1385421007873513
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> 
-<span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ARKK&#39;</span><span class="p">,</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">y</span><span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="s1">&#39;ARKK&#39;</span><span class="p">]</span>
-<span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>          <td>ARKK</td>       <th>  R-squared:         </th> <td>   0.818</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.802</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   50.21</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Tue, 04 May 2021</td> <th>  Prob (F-statistic):</th> <td>6.69e-23</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>09:28:44</td>     <th>  Log-Likelihood:    </th> <td>  140.55</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>    74</td>      <th>  AIC:               </th> <td>  -267.1</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    67</td>      <th>  BIC:               </th> <td>  -251.0</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     6</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-     <td></td>       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>const</th>  <td>    0.0059</td> <td>    0.005</td> <td>    1.234</td> <td> 0.221</td> <td>   -0.004</td> <td>    0.015</td>
-</tr>
-<tr>
-  <th>Mkt-RF</th> <td>    1.3860</td> <td>    0.126</td> <td>   11.009</td> <td> 0.000</td> <td>    1.135</td> <td>    1.637</td>
-</tr>
-<tr>
-  <th>SMB</th>    <td>    0.5065</td> <td>    0.210</td> <td>    2.410</td> <td> 0.019</td> <td>    0.087</td> <td>    0.926</td>
-</tr>
-<tr>
-  <th>HML</th>    <td>   -0.8120</td> <td>    0.200</td> <td>   -4.067</td> <td> 0.000</td> <td>   -1.211</td> <td>   -0.413</td>
-</tr>
-<tr>
-  <th>RMW</th>    <td>   -0.1642</td> <td>    0.326</td> <td>   -0.504</td> <td> 0.616</td> <td>   -0.815</td> <td>    0.487</td>
-</tr>
-<tr>
-  <th>CMA</th>    <td>   -0.9219</td> <td>    0.351</td> <td>   -2.624</td> <td> 0.011</td> <td>   -1.623</td> <td>   -0.221</td>
-</tr>
-<tr>
-  <th>Mom   </th> <td>   -0.2654</td> <td>    0.152</td> <td>   -1.747</td> <td> 0.085</td> <td>   -0.569</td> <td>    0.038</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td>10.376</td> <th>  Durbin-Watson:     </th> <td>   2.119</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.006</td> <th>  Jarque-Bera (JB):  </th> <td>  10.331</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.806</td> <th>  Prob(JB):          </th> <td> 0.00571</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 3.866</td> <th>  Cond. No.          </th> <td>    83.6</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0704257048781867
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>What do we learn about Cathie Wood investment style?</p></li>
-<li><p>What do we learn about Cathie Wook investment skills?</p></li>
-<li><p>How do you think about the R-squared? Is a large Rsquared good or bad in this case?</p></li>
-</ul>
-<p><strong>Application 3: what is a good Momentum ETF?</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;VFMO&#39;</span><span class="p">,</span><span class="s1">&#39;QMOM&#39;</span><span class="p">,</span><span class="s1">&#39;FDMO&#39;</span><span class="p">,</span><span class="s1">&#39;MTUM&#39;</span><span class="p">,</span><span class="s1">&#39;IMTM&#39;</span><span class="p">,</span><span class="s1">&#39;IMOM&#39;</span><span class="p">]</span>
-<span class="n">dmom</span><span class="o">=</span><span class="n">get_returns</span><span class="p">([</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="n">conn</span><span class="p">,</span><span class="s1">&#39;1/1/1960&#39;</span><span class="p">,</span><span class="s1">&#39;1/1/2022&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-    <span class="n">df</span><span class="o">=</span><span class="n">get_returns</span><span class="p">([</span><span class="n">n</span><span class="p">],</span><span class="n">conn</span><span class="p">,</span><span class="s1">&#39;1/1/1960&#39;</span><span class="p">,</span><span class="s1">&#39;1/1/2022&#39;</span><span class="p">)</span>
-    <span class="n">dmom</span><span class="o">=</span><span class="n">dmom</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="n">dmom</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="n">names</span>    
-<span class="p">(</span><span class="n">dmom</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/4c020ec0e0abb4a84814286f60ac473c37e83396940f17578d21edac59501565.png" src="../../_images/4c020ec0e0abb4a84814286f60ac473c37e83396940f17578d21edac59501565.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets merge</span>
-<span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">dff6</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dmom</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">),</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-<span class="c1"># lets conver to excess returns</span>
-<span class="n">df</span><span class="p">[</span><span class="n">names</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">names</span><span class="p">]</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Mkt-RF&#39;, &#39;SMB&#39;, &#39;HML&#39;, &#39;RMW&#39;, &#39;CMA&#39;, &#39;RF&#39;, &#39;Mom   &#39;, &#39;VFMO&#39;, &#39;QMOM&#39;,
-       &#39;FDMO&#39;, &#39;MTUM&#39;, &#39;IMTM&#39;, &#39;IMOM&#39;],
-      dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> 
-<span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">temp</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mom   &#39;</span><span class="p">]])</span>
-<span class="n">results</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[],</span><span class="n">columns</span><span class="o">=</span><span class="n">names</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    <span class="n">y</span><span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
-    <span class="n">res</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">missing</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;t(alpha)&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">tvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;betamkt&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;t(betamkt)&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">tvalues</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;betamom&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;t(betamom)&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">tvalues</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;R-squared&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">rsquared</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;indio risk&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
-    <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;sample size&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">nobs</span>
-<span class="n">results</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../../assets/data/df_WarrenBAndCathieW.pkl&#39;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1010,107 +572,516 @@ document.write(`
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>VFMO</th>
-      <th>QMOM</th>
-      <th>FDMO</th>
-      <th>MTUM</th>
-      <th>IMTM</th>
-      <th>IMOM</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>RF</th>
+      <th>Mom</th>
+      <th>BRK</th>
+      <th>ARKK</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>alpha</th>
-      <td>-0.001458</td>
-      <td>-0.002718</td>
-      <td>-0.002354</td>
-      <td>0.001112</td>
-      <td>-0.002008</td>
-      <td>-0.005894</td>
+      <th>1988-11-29</th>
+      <td>0.0080</td>
+      <td>-0.0045</td>
+      <td>-0.0045</td>
+      <td>0.0028</td>
+      <td>-0.0033</td>
+      <td>0.00027</td>
+      <td>0.0018</td>
+      <td>0.000000</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>t(alpha)</th>
-      <td>-0.430959</td>
-      <td>-0.63581</td>
-      <td>-1.664363</td>
-      <td>0.869311</td>
-      <td>-0.847557</td>
-      <td>-1.459713</td>
+      <th>1988-11-30</th>
+      <td>0.0091</td>
+      <td>-0.0007</td>
+      <td>-0.0032</td>
+      <td>0.0011</td>
+      <td>-0.0030</td>
+      <td>0.00027</td>
+      <td>0.0033</td>
+      <td>0.000000</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>betamkt</th>
-      <td>1.132283</td>
-      <td>1.39176</td>
-      <td>1.024135</td>
-      <td>1.00483</td>
-      <td>0.761741</td>
-      <td>0.958616</td>
+      <th>1988-12-01</th>
+      <td>-0.0019</td>
+      <td>0.0052</td>
+      <td>-0.0016</td>
+      <td>-0.0011</td>
+      <td>-0.0034</td>
+      <td>0.00030</td>
+      <td>0.0021</td>
+      <td>0.010638</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>t(betamkt)</th>
-      <td>16.762846</td>
-      <td>13.753471</td>
-      <td>31.996319</td>
-      <td>31.597999</td>
-      <td>13.558808</td>
-      <td>10.029335</td>
+      <th>1988-12-02</th>
+      <td>-0.0020</td>
+      <td>0.0035</td>
+      <td>-0.0041</td>
+      <td>-0.0012</td>
+      <td>-0.0030</td>
+      <td>0.00030</td>
+      <td>-0.0029</td>
+      <td>0.031579</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>betamom</th>
-      <td>0.186237</td>
-      <td>0.394746</td>
-      <td>0.254752</td>
-      <td>0.345416</td>
-      <td>0.09699</td>
-      <td>0.15187</td>
+      <th>1988-12-05</th>
+      <td>0.0087</td>
+      <td>-0.0036</td>
+      <td>-0.0022</td>
+      <td>0.0028</td>
+      <td>-0.0037</td>
+      <td>0.00030</td>
+      <td>-0.0005</td>
+      <td>0.000000</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>t(betamom)</th>
-      <td>2.178768</td>
-      <td>3.281823</td>
-      <td>6.461063</td>
-      <td>9.626601</td>
-      <td>1.568105</td>
-      <td>1.336749</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>R-squared</th>
-      <td>0.917845</td>
-      <td>0.782982</td>
-      <td>0.960205</td>
-      <td>0.919332</td>
-      <td>0.756383</td>
-      <td>0.674357</td>
+      <th>2021-12-27</th>
+      <td>0.0122</td>
+      <td>-0.0013</td>
+      <td>0.0029</td>
+      <td>0.0097</td>
+      <td>0.0048</td>
+      <td>0.00000</td>
+      <td>0.0192</td>
+      <td>0.005523</td>
+      <td>-0.016756</td>
     </tr>
     <tr>
-      <th>indio risk</th>
-      <td>0.064076</td>
-      <td>0.107838</td>
-      <td>0.032342</td>
-      <td>0.039782</td>
-      <td>0.065174</td>
-      <td>0.101857</td>
+      <th>2021-12-28</th>
+      <td>-0.0027</td>
+      <td>-0.0041</td>
+      <td>0.0081</td>
+      <td>0.0084</td>
+      <td>0.0020</td>
+      <td>0.00000</td>
+      <td>-0.0053</td>
+      <td>0.005502</td>
+      <td>-0.018273</td>
     </tr>
     <tr>
-      <th>sample size</th>
-      <td>34.0</td>
-      <td>60.0</td>
-      <td>51.0</td>
-      <td>92.0</td>
-      <td>71.0</td>
-      <td>60.0</td>
+      <th>2021-12-29</th>
+      <td>0.0006</td>
+      <td>-0.0003</td>
+      <td>0.0017</td>
+      <td>0.0069</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0041</td>
+      <td>0.005632</td>
+      <td>-0.010639</td>
+    </tr>
+    <tr>
+      <th>2021-12-30</th>
+      <td>-0.0015</td>
+      <td>0.0008</td>
+      <td>-0.0040</td>
+      <td>-0.0083</td>
+      <td>-0.0042</td>
+      <td>0.00000</td>
+      <td>-0.0106</td>
+      <td>0.001323</td>
+      <td>0.030587</td>
+    </tr>
+    <tr>
+      <th>2021-12-31</th>
+      <td>-0.0031</td>
+      <td>0.0018</td>
+      <td>0.0053</td>
+      <td>0.0036</td>
+      <td>0.0040</td>
+      <td>0.00000</td>
+      <td>0.0042</td>
+      <td>-0.004502</td>
+      <td>-0.021820</td>
     </tr>
   </tbody>
 </table>
+<p>8338 rows × 9 columns</p>
 </div></div></div>
 </div>
-<ul class="simple">
-<li><p>what do you conclude?</p></li>
-<li><p>Which ETF would you pick?</p></li>
-<li><p>How to think about the alpha here?</p></li>
-<li><p>How do you think about the R-squared? Is a large Rsquared good or bad in this case?</p></li>
-<li><p>How do you account for the differnece in market betas when investing?</p></li>
-</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Replace YYYY, MM, DD with the desired start date</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_5_Factors_2x3&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
+<span class="n">dff5</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Momentum_Factor&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
+<span class="n">dmom</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">dff6</span> <span class="o">=</span> <span class="n">dff5</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dmom</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">dff6</span> <span class="o">=</span> <span class="n">dff6</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="n">dff6</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">dff6</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">()</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthEnd</span><span class="p">()</span>
+<span class="n">dff6</span>
+
+<span class="kn">from</span> <span class="nn">codesnippets</span> <span class="kn">import</span> <span class="n">get_returns_monthly</span>
+<span class="n">df</span><span class="o">=</span><span class="n">get_returns_monthly</span><span class="p">([</span><span class="s1">&#39;BRK&#39;</span><span class="p">],</span><span class="n">conn</span><span class="p">,</span><span class="s1">&#39;1/1/1960&#39;</span><span class="p">,</span><span class="s1">&#39;1/1/2022&#39;</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">dff6</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mf">17778.0</span><span class="p">],</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">17778</span><span class="p">:</span><span class="s1">&#39;BRK&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">df_temp</span><span class="o">=</span><span class="n">get_returns_monthly</span><span class="p">([</span><span class="s1">&#39;ARKK&#39;</span><span class="p">],</span><span class="n">conn</span><span class="p">,</span><span class="s1">&#39;1/1/1960&#39;</span><span class="p">,</span><span class="s1">&#39;1/1/2022&#39;</span><span class="p">,</span><span class="n">variable</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_temp</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mf">14948.0</span><span class="p">:</span><span class="s1">&#39;ARKK&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../../assets/data/df_WarrenBAndCathieW_monthly.pkl&#39;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>RF</th>
+      <th>Mom</th>
+      <th>BRK</th>
+      <th>ARKK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1988-11-30</th>
+      <td>-0.0229</td>
+      <td>-0.0165</td>
+      <td>0.0141</td>
+      <td>-0.0028</td>
+      <td>0.0162</td>
+      <td>0.0057</td>
+      <td>0.0033</td>
+      <td>-0.005291</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1989-01-31</th>
+      <td>0.0610</td>
+      <td>-0.0231</td>
+      <td>0.0060</td>
+      <td>-0.0095</td>
+      <td>0.0014</td>
+      <td>0.0055</td>
+      <td>-0.0016</td>
+      <td>0.047872</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1989-02-28</th>
+      <td>-0.0225</td>
+      <td>0.0271</td>
+      <td>0.0101</td>
+      <td>-0.0087</td>
+      <td>0.0181</td>
+      <td>0.0061</td>
+      <td>0.0099</td>
+      <td>-0.040609</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1989-03-31</th>
+      <td>0.0157</td>
+      <td>0.0068</td>
+      <td>0.0058</td>
+      <td>0.0005</td>
+      <td>0.0072</td>
+      <td>0.0067</td>
+      <td>0.0351</td>
+      <td>0.047619</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1989-05-31</th>
+      <td>0.0335</td>
+      <td>-0.0001</td>
+      <td>-0.0088</td>
+      <td>0.0049</td>
+      <td>-0.0008</td>
+      <td>0.0079</td>
+      <td>0.0152</td>
+      <td>0.023904</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-06-30</th>
+      <td>0.0275</td>
+      <td>-0.0034</td>
+      <td>-0.0787</td>
+      <td>-0.0214</td>
+      <td>-0.0094</td>
+      <td>0.0000</td>
+      <td>0.0220</td>
+      <td>-0.039906</td>
+      <td>0.166637</td>
+    </tr>
+    <tr>
+      <th>2021-08-31</th>
+      <td>0.0291</td>
+      <td>-0.0068</td>
+      <td>-0.0015</td>
+      <td>-0.0028</td>
+      <td>-0.0179</td>
+      <td>0.0000</td>
+      <td>0.0245</td>
+      <td>0.026259</td>
+      <td>0.016917</td>
+    </tr>
+    <tr>
+      <th>2021-09-30</th>
+      <td>-0.0437</td>
+      <td>0.0112</td>
+      <td>0.0508</td>
+      <td>-0.0196</td>
+      <td>0.0210</td>
+      <td>0.0000</td>
+      <td>0.0149</td>
+      <td>-0.043082</td>
+      <td>-0.094239</td>
+    </tr>
+    <tr>
+      <th>2021-11-30</th>
+      <td>-0.0155</td>
+      <td>-0.0177</td>
+      <td>-0.0045</td>
+      <td>0.0720</td>
+      <td>0.0173</td>
+      <td>0.0000</td>
+      <td>0.0088</td>
+      <td>-0.037020</td>
+      <td>-0.128545</td>
+    </tr>
+    <tr>
+      <th>2021-12-31</th>
+      <td>0.0310</td>
+      <td>-0.0080</td>
+      <td>0.0326</td>
+      <td>0.0491</td>
+      <td>0.0440</td>
+      <td>0.0001</td>
+      <td>-0.0260</td>
+      <td>0.081046</td>
+      <td>-0.097620</td>
+    </tr>
+  </tbody>
+</table>
+<p>279 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>RF</th>
+      <th>Mom</th>
+      <th>BRK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1988-11-30</th>
+      <td>-0.0229</td>
+      <td>-0.0165</td>
+      <td>0.0141</td>
+      <td>-0.0028</td>
+      <td>0.0162</td>
+      <td>0.0057</td>
+      <td>0.0033</td>
+      <td>-0.005291</td>
+    </tr>
+    <tr>
+      <th>1989-01-31</th>
+      <td>0.0610</td>
+      <td>-0.0231</td>
+      <td>0.0060</td>
+      <td>-0.0095</td>
+      <td>0.0014</td>
+      <td>0.0055</td>
+      <td>-0.0016</td>
+      <td>0.047872</td>
+    </tr>
+    <tr>
+      <th>1989-02-28</th>
+      <td>-0.0225</td>
+      <td>0.0271</td>
+      <td>0.0101</td>
+      <td>-0.0087</td>
+      <td>0.0181</td>
+      <td>0.0061</td>
+      <td>0.0099</td>
+      <td>-0.040609</td>
+    </tr>
+    <tr>
+      <th>1989-03-31</th>
+      <td>0.0157</td>
+      <td>0.0068</td>
+      <td>0.0058</td>
+      <td>0.0005</td>
+      <td>0.0072</td>
+      <td>0.0067</td>
+      <td>0.0351</td>
+      <td>0.047619</td>
+    </tr>
+    <tr>
+      <th>1989-05-31</th>
+      <td>0.0335</td>
+      <td>-0.0001</td>
+      <td>-0.0088</td>
+      <td>0.0049</td>
+      <td>-0.0008</td>
+      <td>0.0079</td>
+      <td>0.0152</td>
+      <td>0.023904</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2021-06-30</th>
+      <td>0.0275</td>
+      <td>-0.0034</td>
+      <td>-0.0787</td>
+      <td>-0.0214</td>
+      <td>-0.0094</td>
+      <td>0.0000</td>
+      <td>0.0220</td>
+      <td>-0.039906</td>
+    </tr>
+    <tr>
+      <th>2021-08-31</th>
+      <td>0.0291</td>
+      <td>-0.0068</td>
+      <td>-0.0015</td>
+      <td>-0.0028</td>
+      <td>-0.0179</td>
+      <td>0.0000</td>
+      <td>0.0245</td>
+      <td>0.026259</td>
+    </tr>
+    <tr>
+      <th>2021-09-30</th>
+      <td>-0.0437</td>
+      <td>0.0112</td>
+      <td>0.0508</td>
+      <td>-0.0196</td>
+      <td>0.0210</td>
+      <td>0.0000</td>
+      <td>0.0149</td>
+      <td>-0.043082</td>
+    </tr>
+    <tr>
+      <th>2021-11-30</th>
+      <td>-0.0155</td>
+      <td>-0.0177</td>
+      <td>-0.0045</td>
+      <td>0.0720</td>
+      <td>0.0173</td>
+      <td>0.0000</td>
+      <td>0.0088</td>
+      <td>-0.037020</td>
+    </tr>
+    <tr>
+      <th>2021-12-31</th>
+      <td>0.0310</td>
+      <td>-0.0080</td>
+      <td>0.0326</td>
+      <td>0.0491</td>
+      <td>0.0440</td>
+      <td>0.0001</td>
+      <td>-0.0260</td>
+      <td>0.081046</td>
+    </tr>
+  </tbody>
+</table>
+<p>279 rows × 8 columns</p>
+</div></div></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
