@@ -39,10 +39,10 @@ Quant investing is right in between strictly passive strategies that just hold t
   - Evaluate an investment strategy
   - Implement an investment strategy
 
-What is distictive about quantitative investing in it's best form?
+What is distinctive about quantitative investing in it's best form?
 
 * Backtestsed using historical data
-* Alphas are not huge, but one can have many strategied achieving diversification
+* Alphas are not huge, but one can have many strategies achieving diversification
 * Model driven
 
 There are different types of "quants":
@@ -57,15 +57,15 @@ There are different types of "quants":
 
  - Fundamental quant (Blackrock, DFA, Bridgewater, AQR,Vanguard)
 
- Trading horizon is months/year. Combines use of statistics with economic analysis. Use information similar to that used by  long/short equity managers (balance-sheet data, stock-return data, stock relevant events), but systematize it in a way that the  computer can replixated what a good equity analysts does. Scale methodology  across thousands of stocks around the world to reap benefits of diversification.
+ Trading horizon is months/year. Combines use of statistics with economic analysis. Use information similar to that used by  long/short equity managers (balance-sheet data, stock-return data, stock relevant events), but systematize it in a way that the  computer can replicated what a good equity analysts does. Scale methodology  across thousands of stocks around the world to reap benefits of diversification.
 
  ![fig](../../assets/plots/intro4.jpg)
 
  *Jack Bogle, founder of Vanguard*
 
- In some ways the father of quantitative investing is Jack Bogle who operationalized the index fund in a way that is cheap and acessible. This essentially build the conditions for showing that active managers were mostly big losers realtive to easy/cheap index fund, and induce the quant investing revolution that moved from a personality centric culture to a data centric culture.
+ In some ways the father of quantitative investing is Jack Bogle who operationalized the index fund in a way that is cheap and accessible. This essentially build the conditions for showing that active managers were mostly big losers relative to easy/cheap index fund, and induce the quant investing revolution that moved from a personality centric culture to a data centric culture.
 
- In lots of ways Eugene Fama and Kenneth French (**UofR Simon** grad!) are the academic founders that in lots of ways were way ahead of what was beign done in the industry at the time. They developed or perfected most of the techiques used to construct and evalaute quant strategies and were instrumental in building clean and organized data repositories for financial data.
+ In lots of ways Eugene Fama and Kenneth French (**UofR Simon** grad!) are the academic founders that in lots of ways were way ahead of what was begin done in the industry at the time. They developed or perfected most of the techniques used to construct and evaluate quant strategies and were instrumental in building clean and organized data repositories for financial data.
 
 
  ![fig](../../assets/plots/intro5.jpg)
