@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Multi-factor models &#8212; Quantitative Investing</title>
+    <title>8.4. Multi-factor models &#8212; Quantitative Investing</title>
   
   
   
@@ -69,6 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.8. Factor Models as Models of Expected Returns" href="ExpectedReturnModels.html" />
+    <link rel="prev" title="8. Factor models" href="FactorModels.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
@@ -194,8 +196,13 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1"><a class="reference internal" href="MeanVariance.html">6. Mean-Variance Investing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">7. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="FactorModels.html">8. Factor Models</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">8.4. Interpreting Factor Models</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="FactorModels.html">8. Factor Models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.4. Multi-factor models</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="ExpectedReturnModels.html">8.8. Factor Models as Models of Expected Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">8.9. Interpreting Factor Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -481,29 +488,29 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multi-factor models</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-a-multi-factor-model">Estimating a multi-factor model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstructing-the-co-variance-matrix">Reconstructing the co-variance matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions">Application: How will your portfolio risk change as you add positions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">Performance Attribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes-test">Application: What does Cathie Wood  Likes ? TEST</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">8.4. Multi-factor models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-a-multi-factor-model">8.4.1. Estimating a multi-factor model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">8.4.2. Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstructing-the-co-variance-matrix">8.4.3. Reconstructing the co-variance matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions">8.4.4. Application: How will your portfolio risk change as you add positions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">8.4.5. Performance Attribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes-test">8.4.5.1. Application: What does Cathie Wood  Likes ? TEST</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-portfolios-and-tracking-error">Tracking portfolios and Tracking error</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">Benchmarking</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-as-models-of-expected-returns">Factor Models as Models of Expected Returns</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">Alpha</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">Application: Does Warren Buffet beats the market?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">Appraisal Ratios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">Portable Alpha and Hedged Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">Multi-factor: theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">APT: Arbitrage Pricing Theory</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-portfolios-and-tracking-error">8.5. Tracking portfolios and Tracking error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">8.6. Benchmarking</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-as-models-of-expected-returns">8.7. Factor Models as Models of Expected Returns</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">8.7.1. Alpha</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">8.7.2. Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">8.7.3. Application: Does Warren Buffet beats the market?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">8.7.4. Appraisal Ratios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">8.7.5. Portable Alpha and Hedged Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">8.7.6. Multi-factor: theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">8.7.6.1. IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">8.7.6.2. ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">8.7.6.3. APT: Arbitrage Pricing Theory</a></li>
 </ul>
 </li>
 </ul>
@@ -615,7 +622,7 @@ memory usage: 73.1 KB
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="multi-factor-models">
-<h1>Multi-factor models<a class="headerlink" href="#multi-factor-models" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8.4. </span>Multi-factor models<a class="headerlink" href="#multi-factor-models" title="Permalink to this heading">#</a></h1>
 <p>We simply assumed that the residual <span class="math notranslate nohighlight">\(u\)</span> is uncorrelated</p>
 <p>This will never be exactly correct, but we better be sure that we are not missing some big sources of correlation</p>
 <p>If we miss our covariance assumption will be off</p>
@@ -654,12 +661,12 @@ memory usage: 73.1 KB
 <li><p><span class="math notranslate nohighlight">\(U_t\)</span> as before is a N by 1 vector with the residual risk of each N asset</p></li>
 </ul>
 <section id="estimating-a-multi-factor-model">
-<h2>Estimating a multi-factor model<a class="headerlink" href="#estimating-a-multi-factor-model" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.1. </span>Estimating a multi-factor model<a class="headerlink" href="#estimating-a-multi-factor-model" title="Permalink to this heading">#</a></h2>
 <p>Again, this is a very simple regression!</p>
 <p>We simply run a multivariate regression for each asset and the coefficients on the different factors is our estimate!</p>
 </section>
 <section id="application">
-<h2>Application<a class="headerlink" href="#application" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.2. </span>Application<a class="headerlink" href="#application" title="Permalink to this heading">#</a></h2>
 <p>Lets apply this!</p>
 <p>Lets fo a 8 factor model—total overkill for these 50 stocks–</p>
 <p>I will get the 3 factors from the Fama-French 3 factor model + 5 industry portfolios</p>
@@ -1553,7 +1560,7 @@ memory usage: 71.7 KB
 </div>
 </section>
 <section id="reconstructing-the-co-variance-matrix">
-<h2>Reconstructing the co-variance matrix<a class="headerlink" href="#reconstructing-the-co-variance-matrix" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.3. </span>Reconstructing the co-variance matrix<a class="headerlink" href="#reconstructing-the-co-variance-matrix" title="Permalink to this heading">#</a></h2>
 <p>We have</p>
 <div class="math notranslate nohighlight">
 \[R_t=B&#64;F_t+u_t\]</div>
@@ -2833,7 +2840,7 @@ memory usage: 71.7 KB
 </ul>
 </section>
 <section id="application-how-will-your-portfolio-risk-change-as-you-add-positions">
-<h2>Application: How will your portfolio risk change as you add positions<a class="headerlink" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.4. </span>Application: How will your portfolio risk change as you add positions<a class="headerlink" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions" title="Permalink to this heading">#</a></h2>
 <p>You have portfolio <span class="math notranslate nohighlight">\(X_0\)</span> and you want to sell w of your positions to invest in a fund with portfolio <span class="math notranslate nohighlight">\(X_1\)</span>. How your portfolio variance will change as a function of you reallocation?</p>
 <ul class="simple">
 <li><p>The answer is simple</p></li>
@@ -2853,14 +2860,14 @@ memory usage: 71.7 KB
 </ul>
 </section>
 <section id="performance-attribution">
-<h2>Performance Attribution<a class="headerlink" href="#performance-attribution" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.5. </span>Performance Attribution<a class="headerlink" href="#performance-attribution" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We can use factor models to decompose a manager strategy</p></li>
 <li><p>What explains their returns?</p></li>
 <li><p>tilts they have?  What kind of stocks they like?</p></li>
 </ul>
 <section id="application-what-does-cathie-wood-likes-test">
-<h3>Application: What does Cathie Wood  Likes ? TEST<a class="headerlink" href="#application-what-does-cathie-wood-likes-test" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.4.5.1. </span>Application: What does Cathie Wood  Likes ? TEST<a class="headerlink" href="#application-what-does-cathie-wood-likes-test" title="Permalink to this heading">#</a></h3>
 <p><img alt="fig" src="../../_images/CW_image.jfif" /></p>
 <p>Cathie Wood is a renowned stock-picker and the founder of ARK Invest, which manages around 60 billion in assets and invests in innovative technologies such as self-driving cars and genomics. She gained fame for her success in the male-dominated world of investing, her persuasive investment arguments, and her proven track record in the stock market. Prior to founding ARK Invest, she gained experience at The Capital Group, Jennison Associates, and AllianceBernstein, and co-founded Tupelo Capital Management, a hedge fund. Wood is known for her unconventional investment strategies and her advocacy for investing in disruptive technologies, which has garnered her a large following in the investing world. Her estimated net worth is around $250 million.</p>
 <p>Citations:
@@ -2978,13 +2985,13 @@ memory usage: 71.7 KB
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="tracking-portfolios-and-tracking-error">
-<h1>Tracking portfolios and Tracking error<a class="headerlink" href="#tracking-portfolios-and-tracking-error" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8.5. </span>Tracking portfolios and Tracking error<a class="headerlink" href="#tracking-portfolios-and-tracking-error" title="Permalink to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="benchmarking">
-<h1>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8.6. </span>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="factor-models-as-models-of-expected-returns">
-<h1>Factor Models as Models of Expected Returns<a class="headerlink" href="#factor-models-as-models-of-expected-returns" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8.7. </span>Factor Models as Models of Expected Returns<a class="headerlink" href="#factor-models-as-models-of-expected-returns" title="Permalink to this heading">#</a></h1>
 <p>So far we had</p>
 <div class="math notranslate nohighlight">
 \[r_t^i=b_{i,1}f_t^1+b_{i,2}f_t^2+b_{i,3}f_t^3+...+b_{i,M}f_t^M+u_{i,t}\]</div>
@@ -3008,7 +3015,7 @@ memory usage: 71.7 KB
 <li><p>Just as before, our model is a linear regression with a very important restriction–the intercept must be zero for the model to be right</p></li>
 </ul>
 <section id="alpha">
-<h2>Alpha<a class="headerlink" href="#alpha" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.7.1. </span>Alpha<a class="headerlink" href="#alpha" title="Permalink to this heading">#</a></h2>
 <p>for clarity lets focus on the single factor case M=1. Say we run the regression</p>
 <div class="math notranslate nohighlight">
 \[r^i_t=\alpha_i +\beta_{i}f_t +\epsilon_{i,t}\]</div>
@@ -3044,7 +3051,7 @@ memory usage: 71.7 KB
 <p>Why? Because the other stuff you already know how to harvest the premium</p>
 </section>
 <section id="testing-if-alpha-i-neq-0">
-<h2>Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span><a class="headerlink" href="#testing-if-alpha-i-neq-0" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.7.2. </span>Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span><a class="headerlink" href="#testing-if-alpha-i-neq-0" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Our test will be agnostic on the direction.</p></li>
 </ul>
@@ -3079,7 +3086,7 @@ memory usage: 71.7 KB
 </div></blockquote>
 </section>
 <section id="application-does-warren-buffet-beats-the-market">
-<h2>Application: Does Warren Buffet beats the market?<a class="headerlink" href="#application-does-warren-buffet-beats-the-market" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.7.3. </span>Application: Does Warren Buffet beats the market?<a class="headerlink" href="#application-does-warren-buffet-beats-the-market" title="Permalink to this heading">#</a></h2>
 <p><img alt="fig" src="../../_images/WB_image.jpg" /></p>
 <p>Warren Buffett is the chairman and CEO of Berkshire Hathaway, a multinational conglomerate holding company. Berkshire Hathaway’s portfolio includes a diverse range of companies, but its five largest positions are in Apple Inc., Bank of America Corp, Chevron, The Coca-Cola Company, and American Express Company. Buffett is known for his extraordinary performance record and his transparent, straightforward investment model, which involves investing in large, blue-chip companies with strong balance sheets and attractive valuations. His investment strategy focuses on long-term investments and he is recognized for making significant new investments while also being unafraid to drop longtime holdings. As of 2022, Buffett’s largest holding was in Apple Inc., representing 41.76% of the equity portfolio, with an estimated gain of 246.02%. Berkshire Hathaway is a leading conglomerate due to Buffett’s business savvy and investing, with a high rate of return and a portfolio that continues to attract wide media attention and scrutiny.</p>
 <p>Citations:
@@ -3273,16 +3280,16 @@ memory usage: 71.7 KB
 </ul>
 </section>
 <section id="appraisal-ratios">
-<h2>Appraisal Ratios<a class="headerlink" href="#appraisal-ratios" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.7.4. </span>Appraisal Ratios<a class="headerlink" href="#appraisal-ratios" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="portable-alpha-and-hedged-portfolios">
-<h2>Portable Alpha and Hedged Portfolios<a class="headerlink" href="#portable-alpha-and-hedged-portfolios" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.7.5. </span>Portable Alpha and Hedged Portfolios<a class="headerlink" href="#portable-alpha-and-hedged-portfolios" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="multi-factor-theory">
-<h2>Multi-factor: theory<a class="headerlink" href="#multi-factor-theory" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.7.6. </span>Multi-factor: theory<a class="headerlink" href="#multi-factor-theory" title="Permalink to this heading">#</a></h2>
 <p>What about the theory?</p>
 <section id="it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">
-<h3>IT is the CAPM, but the wealth portfolio is not the stock market<a class="headerlink" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.7.6.1. </span>IT is the CAPM, but the wealth portfolio is not the stock market<a class="headerlink" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>According to the  CAPM the Wealth portfolio is the tangency portfolio</p></li>
 <li><p>The return on the wealth portfolio summarizes how Bad the times are</p></li>
@@ -3311,7 +3318,7 @@ memory usage: 71.7 KB
 </ul>
 </section>
 <section id="icapm-intertemporal-capital-asset-pricing-model">
-<h3>ICAPM: Intertemporal Capital Asset Pricing Model<a class="headerlink" href="#icapm-intertemporal-capital-asset-pricing-model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.7.6.2. </span>ICAPM: Intertemporal Capital Asset Pricing Model<a class="headerlink" href="#icapm-intertemporal-capital-asset-pricing-model" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Another way to rationalize additional  factors is to realize that the premium and the volatility of the market are time-varying.</p></li>
 <li><p>This means that assets that allow you to hedge this investment opportunity set risk will be valuable</p>
@@ -3331,7 +3338,7 @@ memory usage: 71.7 KB
 </ul>
 </section>
 <section id="apt-arbitrage-pricing-theory">
-<h3>APT: Arbitrage Pricing Theory<a class="headerlink" href="#apt-arbitrage-pricing-theory" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.7.6.3. </span>APT: Arbitrage Pricing Theory<a class="headerlink" href="#apt-arbitrage-pricing-theory" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This is probably the most popular and more flexible way to think about multi-factor models</p></li>
 <li><p>but now the factors are motivated because the explain time-series variation in realized return</p></li>
@@ -3398,6 +3405,24 @@ memory usage: 71.7 KB
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="FactorModels.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Factor models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ExpectedReturnModels.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.8. </span>Factor Models as Models of Expected Returns</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -3416,29 +3441,29 @@ memory usage: 71.7 KB
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multi-factor models</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-a-multi-factor-model">Estimating a multi-factor model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstructing-the-co-variance-matrix">Reconstructing the co-variance matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions">Application: How will your portfolio risk change as you add positions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">Performance Attribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes-test">Application: What does Cathie Wood  Likes ? TEST</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">8.4. Multi-factor models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-a-multi-factor-model">8.4.1. Estimating a multi-factor model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">8.4.2. Application</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstructing-the-co-variance-matrix">8.4.3. Reconstructing the co-variance matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions">8.4.4. Application: How will your portfolio risk change as you add positions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">8.4.5. Performance Attribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes-test">8.4.5.1. Application: What does Cathie Wood  Likes ? TEST</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-portfolios-and-tracking-error">Tracking portfolios and Tracking error</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">Benchmarking</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-as-models-of-expected-returns">Factor Models as Models of Expected Returns</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">Alpha</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">Application: Does Warren Buffet beats the market?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">Appraisal Ratios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">Portable Alpha and Hedged Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">Multi-factor: theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">APT: Arbitrage Pricing Theory</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-portfolios-and-tracking-error">8.5. Tracking portfolios and Tracking error</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">8.6. Benchmarking</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-as-models-of-expected-returns">8.7. Factor Models as Models of Expected Returns</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">8.7.1. Alpha</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">8.7.2. Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">8.7.3. Application: Does Warren Buffet beats the market?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">8.7.4. Appraisal Ratios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">8.7.5. Portable Alpha and Hedged Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">8.7.6. Multi-factor: theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">8.7.6.1. IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">8.7.6.2. ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">8.7.6.3. APT: Arbitrage Pricing Theory</a></li>
 </ul>
 </li>
 </ul>
