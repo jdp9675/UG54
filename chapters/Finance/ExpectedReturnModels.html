@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>8.8. Factor Models as Models of Expected Returns &#8212; Quantitative Investing</title>
+    <title>8.5. Factor Models as Models of Expected Returns &#8212; Quantitative Investing</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8.9. Interpretating Factor models" href="InterpretingFactorModels.html" />
+    <link rel="next" title="8.6. Interpretating Factor models" href="InterpretingFactorModels.html" />
     <link rel="prev" title="8.4. Multi-factor models" href="MultiFactorModels.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -197,12 +197,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="MeanVariance.html">6. Mean-Variance Investing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">7. Trading Strategies</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="FactorModels.html">8. Factor Models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="MultiFactorModels.html">8.4. Multi-factor models</a></li>
-
-
-
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.8. Factor Models as Models of Expected Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">8.9. Interpreting Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MultiFactorModels.html">8.4. Multi Factor Models</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.5. Factor Models as Models of Expected Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">8.6. Interpreting Factor Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -488,15 +485,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">8.8.1. Alpha</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">8.8.2. Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">8.8.3. Application: Does Warren Buffet beats the market?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">8.8.4. Portable Alpha and Hedged Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">8.8.5. Appraisal Ratios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">8.8.6. Multi-factor: theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">8.8.6.1. IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">8.8.6.2. ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">8.8.6.3. APT: Arbitrage Pricing Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">8.5.1. Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capm">8.5.1.1. CAPM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">8.5.2. Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">8.5.3. Application: Does Warren Buffet beats the market?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">8.5.4. Portable Alpha and Hedged Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">8.5.5. Appraisal Ratios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">8.5.6. Multi-factor: theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">8.5.6.1. IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">8.5.6.2. ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">8.5.6.3. APT: Arbitrage Pricing Theory</a></li>
 </ul>
 </li>
 </ul>
@@ -516,12 +516,13 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="factor-models-as-models-of-expected-returns">
-<h1><span class="section-number">8.8. </span>Factor Models as Models of Expected Returns<a class="headerlink" href="#factor-models-as-models-of-expected-returns" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8.5. </span>Factor Models as Models of Expected Returns<a class="headerlink" href="#factor-models-as-models-of-expected-returns" title="Permalink to this heading">#</a></h1>
 <p>So far we had</p>
 <div class="math notranslate nohighlight">
 \[r_t^i=b_{i,1}f_t^1+b_{i,2}f_t^2+b_{i,3}f_t^3+...+b_{i,M}f_t^M+u_{i,t}\]</div>
@@ -545,7 +546,7 @@ document.write(`
 <li><p>Just as before, our model is a linear regression with a very important restriction–the intercept must be zero for the model to be right</p></li>
 </ul>
 <section id="alpha">
-<h2><span class="section-number">8.8.1. </span>Alpha<a class="headerlink" href="#alpha" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.1. </span>Alpha<a class="headerlink" href="#alpha" title="Permalink to this heading">#</a></h2>
 <p>for clarity lets focus on the single factor case M=1. Say we run the regression</p>
 <div class="math notranslate nohighlight">
 \[r^i_t=\alpha_i +\beta_{i}f_t +\epsilon_{i,t}\]</div>
@@ -558,7 +559,9 @@ document.write(`
 <li><p>Why alpha=0 is so special? Because it tells us that the expected return of any of these assets can be captured by varying the exposure to  the factor with the minimum increase in risk possible</p></li>
 </ul>
 <p><strong>What adding value means?</strong> It means that the test portfolio can increase the  sharpe ratio of the maximum sharpe ratio portfolio spanned by the factors. So it means that this asset increases the opportunity set of an investor that has access to the factors</p>
-<p><strong>CAPM prediction: Market portfolio is the mean-varaince efficient portfolio</strong></p>
+<section id="capm">
+<h3><span class="section-number">8.5.1.1. </span>CAPM<a class="headerlink" href="#capm" title="Permalink to this heading">#</a></h3>
+<p>CAPM prediction: Market portfolio is the mean-varaince efficient portfolio</p>
 <ul>
 <li><p>The most used reference portfolio is the market portfolio</p></li>
 <li><p>So we will do our first alpha test with respect to the market</p></li>
@@ -580,8 +583,9 @@ document.write(`
 <p>His value added to you is only the alpha–not the entire Sharpe ratio</p>
 <p>Why? Because the other stuff you already know how to harvest the premium</p>
 </section>
+</section>
 <section id="testing-if-alpha-i-neq-0">
-<h2><span class="section-number">8.8.2. </span>Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span><a class="headerlink" href="#testing-if-alpha-i-neq-0" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.2. </span>Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span><a class="headerlink" href="#testing-if-alpha-i-neq-0" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Our test will be agnostic on the direction.</p></li>
 </ul>
@@ -616,7 +620,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="application-does-warren-buffet-beats-the-market">
-<h2><span class="section-number">8.8.3. </span>Application: Does Warren Buffet beats the market?<a class="headerlink" href="#application-does-warren-buffet-beats-the-market" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.3. </span>Application: Does Warren Buffet beats the market?<a class="headerlink" href="#application-does-warren-buffet-beats-the-market" title="Permalink to this heading">#</a></h2>
 <p><img alt="fig" src="../../_images/WB_image.jpg" /></p>
 <p>Warren Buffett is the chairman and CEO of Berkshire Hathaway, a multinational conglomerate holding company. Berkshire Hathaway’s portfolio includes a diverse range of companies, but its five largest positions are in Apple Inc., Bank of America Corp, Chevron, The Coca-Cola Company, and American Express Company. Buffett is known for his extraordinary performance record and his transparent, straightforward investment model, which involves investing in large, blue-chip companies with strong balance sheets and attractive valuations. His investment strategy focuses on long-term investments and he is recognized for making significant new investments while also being unafraid to drop longtime holdings. As of 2022, Buffett’s largest holding was in Apple Inc., representing 41.76% of the equity portfolio, with an estimated gain of 246.02%. Berkshire Hathaway is a leading conglomerate due to Buffett’s business savvy and investing, with a high rate of return and a portfolio that continues to attract wide media attention and scrutiny.</p>
 <p>Citations:
@@ -624,10 +628,11 @@ document.write(`
 [2] <a class="reference external" href="https://www.berkshirehathaway.com">https://www.berkshirehathaway.com</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;../../assets/data/df_WarrenBAndCathieW.pkl&#39;</span><span class="p">)</span>
 <span class="c1"># select the columns to use as factors</span>
-<span class="n">Factors</span><span class="o">=</span><span class="n">_temp</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;BRK&#39;</span><span class="p">,</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;ARKK&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Factors</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;BRK&#39;</span><span class="p">,</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;ARKK&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">Factors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">BrK</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">BRK</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">RF</span>
 </pre></div>
 </div>
 </div>
@@ -636,8 +641,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 <span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
-<span class="n">y</span><span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">BRK</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">RF</span><span class="p">)</span>
-<span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">results</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">BrK</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -646,31 +651,31 @@ document.write(`
 <div class="output text_html"><table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared:         </th> <td>   0.256</td> 
+  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared:         </th> <td>   0.223</td>
 </tr>
 <tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.256</td> 
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.220</td>
 </tr>
 <tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   2871.</td> 
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   79.32</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 02 Feb 2024</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
+  <th>Date:</th>             <td>Fri, 02 Feb 2024</td> <th>  Prob (F-statistic):</th> <td>7.17e-17</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>09:40:51</td>     <th>  Log-Likelihood:    </th> <td> -13639.</td> 
+  <th>Time:</th>                 <td>11:37:53</td>     <th>  Log-Likelihood:    </th> <td>  442.23</td>
 </tr>
 <tr>
-  <th>No. Observations:</th>      <td>  8338</td>      <th>  AIC:               </th> <td>2.728e+04</td>
+  <th>No. Observations:</th>      <td>   279</td>      <th>  AIC:               </th> <td>  -880.5</td>
 </tr>
 <tr>
-  <th>Df Residuals:</th>          <td>  8336</td>      <th>  BIC:               </th> <td>2.730e+04</td>
+  <th>Df Residuals:</th>          <td>   277</td>      <th>  BIC:               </th> <td>  -873.2</td>
 </tr>
 <tr>
-  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>    
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
 </tr>
 <tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
 </tr>
 </table>
 <table class="simpletable">
@@ -678,24 +683,24 @@ document.write(`
      <td></td>       <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
 </tr>
 <tr>
-  <th>const</th>  <td>    0.0292</td> <td>    0.014</td> <td>    2.142</td> <td> 0.032</td> <td>    0.002</td> <td>    0.056</td>
+  <th>const</th>  <td>    0.0054</td> <td>    0.003</td> <td>    1.797</td> <td> 0.073</td> <td>   -0.001</td> <td>    0.011</td>
 </tr>
 <tr>
-  <th>Mkt-RF</th> <td>    0.6471</td> <td>    0.012</td> <td>   53.579</td> <td> 0.000</td> <td>    0.623</td> <td>    0.671</td>
+  <th>Mkt-RF</th> <td>    0.5919</td> <td>    0.066</td> <td>    8.906</td> <td> 0.000</td> <td>    0.461</td> <td>    0.723</td>
 </tr>
 </table>
 <table class="simpletable">
 <tr>
-  <th>Omnibus:</th>       <td>2301.572</td> <th>  Durbin-Watson:     </th> <td>   2.018</td> 
+  <th>Omnibus:</th>       <td>51.668</td> <th>  Durbin-Watson:     </th> <td>   1.989</td>
 </tr>
 <tr>
-  <th>Prob(Omnibus):</th>  <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td>44382.694</td>
+  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 198.575</td>
 </tr>
 <tr>
-  <th>Skew:</th>           <td> 0.837</td>  <th>  Prob(JB):          </th> <td>    0.00</td> 
+  <th>Skew:</th>          <td> 0.710</td> <th>  Prob(JB):          </th> <td>7.59e-44</td>
 </tr>
 <tr>
-  <th>Kurtosis:</th>       <td>14.178</td>  <th>  Cond. No.          </th> <td>    1.13</td> 
+  <th>Kurtosis:</th>      <td> 6.882</td> <th>  Cond. No.          </th> <td>    22.3</td>
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
@@ -756,7 +761,7 @@ document.write(`
   <th>Date:</th>             <td>Fri, 02 Feb 2024</td> <th>  Prob (F-statistic):</th>   <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>09:42:06</td>     <th>  Log-Likelihood:    </th>  <td>  24961.</td> 
+  <th>Time:</th>                 <td>11:39:18</td>     <th>  Log-Likelihood:    </th>  <td>  24961.</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  8338</td>      <th>  AIC:               </th> <td>-4.991e+04</td>
@@ -812,6 +817,32 @@ document.write(`
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
+<p>Now lets look at monthly data</p>
+<ul class="simple">
+<li><p>Do you think the results will change?</p></li>
+<li><p>What can happen?</p></li>
+<li><p>Are the exposures comparable?</p></li>
+<li><p>Are the alphas comparable?</p></li>
+<li><p>How to make them comparable?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df=pd.read_pickle(&#39;../../assets/data/df_WarrenBAndCathieW_monthly.pkl&#39;)</span>
+<span class="c1"># # select the columns to use as factors</span>
+<span class="c1"># Factors=df.drop([&#39;BRK&#39;,&#39;RF&#39;,&#39;ARKK&#39;],axis=1)</span>
+<span class="c1"># Factors.head(3)</span>
+<span class="c1"># BrK=df.BRK-df.RF</span>
+
+<span class="c1"># temp=df.copy() </span>
+<span class="c1"># Factors=df.drop([&#39;BRK&#39;,&#39;RF&#39;,&#39;ARKK&#39;],axis=1)</span>
+<span class="c1"># x= sm.add_constant(Factors)</span>
+<span class="c1"># y= df.BRK-df.RF</span>
+<span class="c1"># results= sm.OLS(y,x).fit()</span>
+<span class="c1"># results.summary()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>what do we learn now? Did it make any difference?</p></li>
 <li><p>what kind of stocks Warren likes?</p></li>
@@ -820,16 +851,16 @@ document.write(`
 </ul>
 </section>
 <section id="portable-alpha-and-hedged-portfolios">
-<h2><span class="section-number">8.8.4. </span>Portable Alpha and Hedged Portfolios<a class="headerlink" href="#portable-alpha-and-hedged-portfolios" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.4. </span>Portable Alpha and Hedged Portfolios<a class="headerlink" href="#portable-alpha-and-hedged-portfolios" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="appraisal-ratios">
-<h2><span class="section-number">8.8.5. </span>Appraisal Ratios<a class="headerlink" href="#appraisal-ratios" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.5. </span>Appraisal Ratios<a class="headerlink" href="#appraisal-ratios" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="multi-factor-theory">
-<h2><span class="section-number">8.8.6. </span>Multi-factor: theory<a class="headerlink" href="#multi-factor-theory" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.6. </span>Multi-factor: theory<a class="headerlink" href="#multi-factor-theory" title="Permalink to this heading">#</a></h2>
 <p>What about the theory?</p>
 <section id="it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">
-<h3><span class="section-number">8.8.6.1. </span>IT is the CAPM, but the wealth portfolio is not the stock market<a class="headerlink" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.6.1. </span>IT is the CAPM, but the wealth portfolio is not the stock market<a class="headerlink" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>According to the  CAPM the Wealth portfolio is the tangency portfolio</p></li>
 <li><p>The return on the wealth portfolio summarizes how Bad the times are</p></li>
@@ -858,7 +889,7 @@ document.write(`
 </ul>
 </section>
 <section id="icapm-intertemporal-capital-asset-pricing-model">
-<h3><span class="section-number">8.8.6.2. </span>ICAPM: Intertemporal Capital Asset Pricing Model<a class="headerlink" href="#icapm-intertemporal-capital-asset-pricing-model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.6.2. </span>ICAPM: Intertemporal Capital Asset Pricing Model<a class="headerlink" href="#icapm-intertemporal-capital-asset-pricing-model" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Another way to rationalize additional  factors is to realize that the premium and the volatility of the market are time-varying.</p></li>
 <li><p>This means that assets that allow you to hedge this investment opportunity set risk will be valuable</p>
@@ -878,7 +909,7 @@ document.write(`
 </ul>
 </section>
 <section id="apt-arbitrage-pricing-theory">
-<h3><span class="section-number">8.8.6.3. </span>APT: Arbitrage Pricing Theory<a class="headerlink" href="#apt-arbitrage-pricing-theory" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.6.3. </span>APT: Arbitrage Pricing Theory<a class="headerlink" href="#apt-arbitrage-pricing-theory" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This is probably the most popular and more flexible way to think about multi-factor models</p></li>
 <li><p>but now the factors are motivated because the explain time-series variation in realized return</p></li>
@@ -896,20 +927,6 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[E[u_{i,t}]=E[R_t^i-R_t^f]-\sum_{j=1}^J\beta_{i,j}E[Factor^j_t]\]</div>
-<p><strong>Three applications to evalauting asset managers</strong></p>
-<p>We will do this in three steps</p>
-<ol class="arabic simple">
-<li><p>Get time-series of the factors in our factor model and the risk-free rate</p></li>
-<li><p>For each application get the time-series return data of the asset  being evaluated</p></li>
-<li><p>Merge with factor series</p></li>
-<li><p>Convert the returns of the asset being evaluate to excess returns</p></li>
-<li><p>Run a time-series regression of the asset excess returns on the relevant factors</p></li>
-</ol>
-<p><strong>Factors for our factor model</strong></p>
-<ul class="simple">
-<li><p>We will start by dowloading he Five factors from Fama Frency 5 factors model plus the momentum factor which is in separate data set</p></li>
-<li><p>We of course could have constructed them ourselves as well, but this is obviously faster and less error prone</p></li>
-</ul>
 </section>
 </section>
 </section>
@@ -959,7 +976,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.9. </span>Interpretating  Factor models</p>
+        <p class="prev-next-title"><span class="section-number">8.6. </span>Interpretating  Factor models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -981,15 +998,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">8.8.1. Alpha</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">8.8.2. Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">8.8.3. Application: Does Warren Buffet beats the market?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">8.8.4. Portable Alpha and Hedged Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">8.8.5. Appraisal Ratios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">8.8.6. Multi-factor: theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">8.8.6.1. IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">8.8.6.2. ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">8.8.6.3. APT: Arbitrage Pricing Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha">8.5.1. Alpha</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capm">8.5.1.1. CAPM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-if-alpha-i-neq-0">8.5.2. Testing  if <span class="math notranslate nohighlight">\(\alpha_i \neq 0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-does-warren-buffet-beats-the-market">8.5.3. Application: Does Warren Buffet beats the market?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portable-alpha-and-hedged-portfolios">8.5.4. Portable Alpha and Hedged Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appraisal-ratios">8.5.5. Appraisal Ratios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-factor-theory">8.5.6. Multi-factor: theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#it-is-the-capm-but-the-wealth-portfolio-is-not-the-stock-market">8.5.6.1. IT is the CAPM, but the wealth portfolio is not the stock market</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#icapm-intertemporal-capital-asset-pricing-model">8.5.6.2. ICAPM: Intertemporal Capital Asset Pricing Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apt-arbitrage-pricing-theory">8.5.6.3. APT: Arbitrage Pricing Theory</a></li>
 </ul>
 </li>
 </ul>
