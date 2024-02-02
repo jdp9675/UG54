@@ -103,6 +103,10 @@ sections:
 - file: chapters/Finance/FactorModels
   title: Factor Models
   sections:
+  - file: chapters/Finance/MultiFactorModels
+    title: Multi Factor Models
+  - file: chapters/Finance/ExpectedReturnModels
+    title: Factor Models as Models of Expected Returns
   - file: chapters/Finance/InterpretingFactorModels
     title: Interpreting Factor Models
 
