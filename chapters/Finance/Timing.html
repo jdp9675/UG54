@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Factor Timing &#8212; Quantitative Investing</title>
+    <title>11. Factor Timing &#8212; Quantitative Investing</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10.2. Volatility timing" href="Volatilitytiming.html" />
-    <link rel="prev" title="9.4. Other Cross-sectional equity stratgies" href="OtherEquityStrategies.html" />
+    <link rel="next" title="11.2. Volatility timing" href="Volatilitytiming.html" />
+    <link rel="prev" title="10. Robustness of Quantitative Strategies" href="Robustness.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -209,23 +209,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">9.4. Other Equity strategies</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">10. Timing Strategies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Volatility Timing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Robustness.html">10. Robustness of Quantitative Strategies</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">11. Factor Timing</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">11.2. Volatility Timing</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Evaluation.html">11. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Econometrics.html">11.1. The Econometrics of Strategy Evalaution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="outofsample.html">11.2. Out of Sample Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TailandBackground.html">11.3. Tail Risks and Background Risks</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Topics.html">12. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Implementation.html">12.1. Strategy Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Horizon.html">12.2. Investment horizon effects</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Implementation.html">12. Liquidity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">13. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">14.1. Assigment 0</a></li>
 
 
@@ -485,7 +476,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-timing">10.1. Market Timing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-timing">11.1. Market Timing</a></li>
 </ul>
             </nav>
         </div>
@@ -508,7 +499,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="factor-timing">
-<h1><span class="section-number">10. </span>Factor Timing<a class="headerlink" href="#factor-timing" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Factor Timing<a class="headerlink" href="#factor-timing" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>So far we focused on strategies that overweight some assets and underweight others</p></li>
 <li><p>While these strategies are dynamic–since the portfolios change every year or even every month</p></li>
@@ -546,7 +537,7 @@ document.write(`
 <li><p>If variance goes up more than risk-premiums, you lever down</p></li>
 </ul>
 <section id="market-timing">
-<h2><span class="section-number">10.1. </span>Market Timing<a class="headerlink" href="#market-timing" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Market Timing<a class="headerlink" href="#market-timing" title="Permalink to this heading">#</a></h2>
 <p>The most classic timing strategies are motivated by the fact that high dividend yield periods seems to be followed by above average returns</p>
 <p>The plot shows the dividend-yield of the stock market overlayed with the future 7 year returns
 <img alt="MVfrontier" src="../../_images/Timing1.jpg" /></p>
@@ -648,12 +639,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="OtherEquityStrategies.html"
+       href="Robustness.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9.4. </span>Other Cross-sectional equity stratgies</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Robustness of Quantitative Strategies</p>
       </div>
     </a>
     <a class="right-next"
@@ -661,7 +652,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10.2. </span>Volatility timing</p>
+        <p class="prev-next-title"><span class="section-number">11.2. </span>Volatility timing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -683,7 +674,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-timing">10.1. Market Timing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-timing">11.1. Market Timing</a></li>
 </ul>
   </nav></div>
 

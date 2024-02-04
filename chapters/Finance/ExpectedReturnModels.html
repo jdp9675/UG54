@@ -209,23 +209,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">9.4. Other Equity strategies</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Volatility Timing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Robustness.html">10. Robustness of Quantitative Strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">11. Factor Timing</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">11.2. Volatility Timing</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Evaluation.html">11. Evaluating a Trading Strategy</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Econometrics.html">11.1. The Econometrics of Strategy Evalaution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="outofsample.html">11.2. Out of Sample Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TailandBackground.html">11.3. Tail Risks and Background Risks</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Topics.html">12. Topics in Quantitative Investing</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Implementation.html">12.1. Strategy Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Horizon.html">12.2. Investment horizon effects</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Implementation.html">12. Liquidity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">13. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">14.1. Assigment 0</a></li>
 
 
@@ -530,7 +521,9 @@ document.write(`
 <li><p>Where we made assumptions about how <span class="math notranslate nohighlight">\(u_{i,t}\)</span> was uncorrelated across assets (i.e. across i)</p></li>
 <li><p>But we made NO assumption about any risk-premium in <span class="math notranslate nohighlight">\(u_{i,t}\)</span>, i.e <span class="math notranslate nohighlight">\(E[u_{i,t}]\)</span> does not need to be equal to zero</p></li>
 <li><p>In fact we added a constant when we estimated the model to keep this parameter free</p></li>
-<li><p>A model of expected returns is exactly the opposite</p></li>
+</ul>
+<p><strong>A model of expected returns is exactly the opposite</strong></p>
+<ul class="simple">
 <li><p>We will relax the assumption that the <span class="math notranslate nohighlight">\(u_{i,t}\)</span> are uncorrelated–they will be free to do whatever, but</p></li>
 <li><p>We will impose that they have no risk-premium, i.e. <span class="math notranslate nohighlight">\(E[u_{i,t}]=0\)</span> for any asset <span class="math notranslate nohighlight">\(i\)</span></p></li>
 <li><p>If this restriction is true, when we take expectations in both sides we get</p></li>
@@ -547,21 +540,21 @@ document.write(`
 </ul>
 <section id="alpha">
 <h2><span class="section-number">8.5.1. </span>Alpha<a class="headerlink" href="#alpha" title="Permalink to this heading">#</a></h2>
-<p>for clarity lets focus on the single factor case M=1. Say we run the regression</p>
+<p>For clarity lets focus on the single factor case M=1. Say we run the regression</p>
 <div class="math notranslate nohighlight">
 \[r^i_t=\alpha_i +\beta_{i}f_t +\epsilon_{i,t}\]</div>
 <ul class="simple">
-<li><p>Then this relation predicts that the intercept, the alpha, should be zero</p></li>
-<li><p>It is important here that both the test assets and the reference portfolios are all <strong>excess returns</strong>. This makes the test really simple. If you use returns instead the prediction about the intercept will be different because of the risk-free rate</p></li>
+<li><p>Then this relation predicts that the intercept, the alpha, <strong>should be zero</strong></p></li>
+<li><p>It is important here that both the test assets and the reference portfolios are all <strong>excess returns</strong>. This makes the test really simple. If you use returns instead the prediction about the intercept will be different because of the risk-free rate–so don’t do it!</p></li>
 <li><p>We refer to these assets on the Left Hand Side of the regression as <strong>Test Assets</strong> and the asset on the right as the <strong>model</strong>, which is the candidate factor model ( that can contain one or many more factors)</p></li>
 <li><p>This means that we can use this to test whether a new strategy adds value relative to another strategy (i.e. the model).</p></li>
-<li><p>If the model is “right” than we will fail to reject that the alphas are zero, i.e. the relationship between average returns and factor exposures and factor premiums hold.</p></li>
+<li><p>If the model is “right” than we will <strong>fail to reject</strong> that the alphas are zero, i.e. the relationship between average returns and factor exposures and factor premiums hold.</p></li>
 <li><p>Why alpha=0 is so special? Because it tells us that the expected return of any of these assets can be captured by varying the exposure to  the factor with the minimum increase in risk possible</p></li>
 </ul>
-<p><strong>What adding value means?</strong> It means that the test portfolio can increase the  sharpe ratio of the maximum sharpe ratio portfolio spanned by the factors. So it means that this asset increases the opportunity set of an investor that has access to the factors</p>
+<p>-It means that the test portfolio can increase the  sharpe ratio of the maximum sharpe ratio portfolio spanned by the factors. So it means that this asset increases the opportunity set of an investor that has access to the factors</p>
 <section id="capm">
 <h3><span class="section-number">8.5.1.1. </span>CAPM<a class="headerlink" href="#capm" title="Permalink to this heading">#</a></h3>
-<p>CAPM prediction: Market portfolio is the mean-varaince efficient portfolio</p>
+<p>CAPM prediction: Market portfolio is the mean-variance efficient portfolio</p>
 <ul>
 <li><p>The most used reference portfolio is the market portfolio</p></li>
 <li><p>So we will do our first alpha test with respect to the market</p></li>
@@ -571,15 +564,17 @@ document.write(`
 <p>with <span class="math notranslate nohighlight">\(\alpha_i=0\)</span> for all assets  i=1…N</p>
 <p>Where both <span class="math notranslate nohighlight">\(r_{i,t}\)</span> and <span class="math notranslate nohighlight">\(r_{t}^{MKT}\)</span> are excess returns</p>
 </li>
-<li><p>So if you put any other factor= instead of the market excess return, then you are not testing the CAPM. The CAPM is a specific model that predicts that the market is tangency–in fact the model predicts that is the excess return on the total wealth portfolio–so it is really untestable!</p></li>
+<li><p>So if you put any other factor on the right instead of the market excess return, then you are <strong>not testing the CAPM</strong>. The CAPM is a specific model that predicts that the market portfolio is MVE–in fact the model predicts that is the excess return on the total wealth portfolio–so it is really hard to test!</p></li>
+<li><p>It is very important here that is all about expectations, not at all about realized returns.</p></li>
+<li><p>Being MVE does <strong>NOT</strong> mean that your realized returns should explain all the other realized returns.</p></li>
+<li><p>The idio risk can be quite large and can even be correlated across assets!</p></li>
 </ul>
-<p>It is very important here that is all about expectations, not at all about realized returns.</p>
-<p>Being MVE does <strong>NOT</strong> mean that your realized returns should explain all the other realized returns. The idio risk can be quite large and can even be correlated across assets!</p>
 <p>Instead, it means that the betas of the asset with the factor should explain the expected return of the asset.</p>
-<p>Of course, stuff happens, so even if your reference portfolio is in fact MVE portfolio under the true distribution, it will not be in any particular sample, so we will use statistics to tell us if the <span class="math notranslate nohighlight">\(\alpha\)</span> is different enough from zero.</p>
-<p><strong>Why practitioners care about this? Beating the Model</strong></p>
-<p>Practicioners use this to see if they can beat the CAPM (or any richer factor model), i.e. <strong>beat the market</strong>. Having an alpha–a postive intercept– means that you have an average return that is higher than your strategy market risk exposure would predict.</p>
-<p>So if you are U of R  endowment, and a big shot hedge fund manager comes and pitch some fund with some large Sharpe ratio—all you should want to know is whether after you adjust for the exposures to the expected return factors that you already know, if this guys still has alpha.</p>
+<p>Of course, stuff happens, so even if your reference portfolio is in fact MVE portfolio under the true distribution, it will not be in any particular sample, so we will use statistics to tell us if the <span class="math notranslate nohighlight">\(\alpha\)</span> is different enough from zero. That is what the t-stats are for!</p>
+<p>**Why practitioners care about this? They want to Beat the Market **
+(or whatever set of factors their clients can easily invest!)</p>
+<p>Practicioners use this to see if they can beat the CAPM (or any richer factor model), i.e. <strong>beat the market</strong>. Having an alpha–a positive intercept– means that you have an average return that is higher than your strategy market risk exposure would predict.</p>
+<p>So if you are U of R  endowment, and a big shot hedge fund manager comes and pitch some fund with some large Sharpe ratio—all you should want to know is whether after you adjust for the exposures to the expected return factors that you already know how to invest by yourself, if this guys still has alpha.</p>
 <p>His value added to you is only the alpha–not the entire Sharpe ratio</p>
 <p>Why? Because the other stuff you already know how to harvest the premium</p>
 </section>
@@ -721,7 +716,7 @@ document.write(`
 <li><p>Carhart 4 factor model:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[E[R_t^i-R_t^f]=\beta_{i,mkt}E[R^{mkt}_t-R^f_t]+\beta_{i,smb}E[SmB_t]+\beta_{i,HmL}E[HmL_t]+\beta_{i,WmL}E[WmL_t]\]</div>
+\[E[R_t^i-R_t^f]=\beta_{i,mkt}E[R^{mkt}_t-R^f_t]+\beta_{i,smb}E[SmB_t]+\beta_{i,HmL}E[HmL_t]+\beta_{i,MoM}E[MoM_t]\]</div>
 <ol class="arabic simple" start="3">
 <li><p>Fama French  5 factor model:</p></li>
 </ol>
@@ -731,9 +726,10 @@ document.write(`
 <li><p>Fama French  5 factor model + Momentum:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[E[R_t^i-R_t^f]=\beta_{i,mkt}E[R^{mkt}_t-R^f_t]+\beta_{i,smb}E[SmB_t]+\beta_{i,HmL}E[HmL_t]+\beta_{i,rmw}E[RmW_t]+\beta_{i,cma}E[CmA_t]+\beta_{i,WmL}E[WmL_t]\]</div>
+\[E[R_t^i-R_t^f]=\beta_{i,mkt}E[R^{mkt}_t-R^f_t]+\beta_{i,smb}E[SmB_t]+\beta_{i,HmL}E[HmL_t]+\beta_{i,rmw}E[RmW_t]+\beta_{i,cma}E[CmA_t]+\beta_{i,MoM}E[MoM_t]\]</div>
 <p>These models are more or less on chronological order.</p>
-<p>Most practicioners today would start with the 6 factor model and if they are dealing with non equity assets add a bunch of asset class specific factors that essentially mimic some of these factors in these spaces</p>
+<p>Most practicioners today would start with the 6 factor model and if they are dealing with non equity assets add a bunch of asset class specific factors that essentially mimic some of these factors in these spaces.</p>
+<p>But these 6 are must add factors for low frequency (monthly or longer) equity strategies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> 
@@ -852,9 +848,20 @@ document.write(`
 </section>
 <section id="portable-alpha-and-hedged-portfolios">
 <h2><span class="section-number">8.5.4. </span>Portable Alpha and Hedged Portfolios<a class="headerlink" href="#portable-alpha-and-hedged-portfolios" title="Permalink to this heading">#</a></h2>
+<p>Suppose we want a strategy that replicates the returns of Berkshire Hathaway using the factors above.</p>
+<p>How would you do that?</p>
+<p>How large a fraction of the expected return of Berkshire Hathaway can we replicate using the factors above?</p>
+<p>Now suppose you want only the alpha of Berkshire Hathaway. How would you do that? Can you do that unsing only the factors?</p>
+<p>The hedged portfolio is the portfolios that keeps only the alpha and hedges the factors away. So by design it’s Expected return is the alpha and the alpha only</p>
 </section>
 <section id="appraisal-ratios">
 <h2><span class="section-number">8.5.5. </span>Appraisal Ratios<a class="headerlink" href="#appraisal-ratios" title="Permalink to this heading">#</a></h2>
+<p>Appraisal ratio is the ratio of the abnormal expected return of the portfolio to the standard deviation of the abnormal return.</p>
+<ul class="simple">
+<li><p>We can compute it by using the alpha of the regression and divide it by the standard deviation of the residuals.</p></li>
+<li><p>We can compute it by getting the t-stat of the alpha and divide it by the square root of the degrees of freedom.</p></li>
+<li><p>We can compute it by dividing the expected return of the Hedged portfolio</p></li>
+</ul>
 </section>
 <section id="multi-factor-theory">
 <h2><span class="section-number">8.5.6. </span>Multi-factor: theory<a class="headerlink" href="#multi-factor-theory" title="Permalink to this heading">#</a></h2>
