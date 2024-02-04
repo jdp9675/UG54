@@ -124,29 +124,24 @@ sections:
 
 
 
+- file: chapters/Finance/Robustness
+  title: Robustness of Quantitative Strategies
+
 - file: chapters/Finance/Timing
-  title: Timing Strategies
+  title: Factor Timing 
   sections:
   - file: chapters/Finance/Volatilitytiming
     title: Volatility Timing
 
+- file: chapters/Finance/RiskManagement
+  title: Risk Management
 
-- file: chapters/Finance/Evaluation
-  title: Evaluating a Trading Strategy
-  sections:
-  - file: chapters/Finance/Econometrics
-    title: The Econometrics of Strategy Evalaution
-  - file: chapters/Finance/outofsample
-    title: Out of Sample Analysis
-  - file: chapters/Finance/TailandBackground
-    title: Tail Risks and Background Risks
-- file: chapters/Finance/Topics
-  title: Topics in Quantitative Investing
-  sections:
-  - file: chapters/Finance/Implementation
-    title: Strategy Implementation
-  - file: chapters/Finance/Horizon
-    title: Investment horizon effects
+- file: chapters/Finance/Implementation
+  title: Liquidity
+
+- file: chapters/Finance/MachineLearning
+  title: Machine Learning in Finance
+
 - file: chapters/additional/additional
   title: Additional Statistics Material
 - file: chapters/Assignments/Assignments
