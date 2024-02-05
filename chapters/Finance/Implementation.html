@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>12. Strategy Implementation &#8212; Quantitative Investing</title>
+    <title>12. Trading costs and Liquidity &#8212; Quantitative Investing</title>
   
   
   
@@ -466,7 +466,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Strategy Implementation</h1>
+    <h1>Trading costs and Liquidity</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -476,8 +476,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-the-devil-is-in-the-details">12.1. Data Cleaning: The devil is in the details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liquidity">12.2. Liquidity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">12.1. Implementation Shortfall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">12.2. Absorption capacity</a></li>
 </ul>
             </nav>
         </div>
@@ -500,52 +500,55 @@ document.write(`
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="strategy-implementation">
-<h1><span class="section-number">12. </span>Strategy Implementation<a class="headerlink" href="#strategy-implementation" title="Permalink to this heading">#</a></h1>
-<p>This chapter was not touched</p>
+<section class="tex2jax_ignore mathjax_ignore" id="trading-costs-and-liquidity">
+<h1><span class="section-number">12. </span>Trading costs and Liquidity<a class="headerlink" href="#trading-costs-and-liquidity" title="Permalink to this heading">#</a></h1>
 <p>So we have taken prices as given and discussed quantitative allocation rules that overperform relative to a standard CAPM benchmark.</p>
 <p>An important question is whether we would be able to trade at those prices if we tried to implement the strategy.</p>
-<p>Here start briefly by dsicussing how cleaning the data is really the most important step to make sure what you are finding is real and can be a profitable trading strategy.</p>
-<p>We will then discuss at length liquidity issues.</p>
-<section id="data-cleaning-the-devil-is-in-the-details">
-<h2><span class="section-number">12.1. </span>Data Cleaning: The devil is in the details<a class="headerlink" href="#data-cleaning-the-devil-is-in-the-details" title="Permalink to this heading">#</a></h2>
-<p>Eugene Fama always would tell his students: Garbage in, Garbage out</p>
-<p>He was also able to look at a Table of a regression, or summary statistics and immediately tell that the person had
-done something different with the data when cleaning it.
-When working with raw data, it is really important to undergo careful work to check if the underlying data is indeed real</p>
-<p>CRSP dataset is very clean already, but if you are not careful your analysis will pick up features of the data are not real</p>
-<ul class="simple">
-<li><p>Load on microstructure effects- bid-ask bounces</p></li>
-<li><p>Load on tiny/peny stocks</p></li>
-<li><p>Load on stocks that are outside of your investment mandate (for example stocks that do not trade in the US)</p></li>
-<li><p>Load on other financial instruments (closed-end funds, convertible, prefered shares..)</p></li>
-</ul>
-<p>For example, Daniel and Moskowitz in the “Momentum Crashes” paper impose the following data requriements</p>
-<p>(a). CRSP Sharecode 10 or 11. (i.e, common stocks; no ADRs)</p>
-<p>(b). CRSP exchange code of 1, 2 or 3 (NYSE, AMEX or NASDAQ)</p>
-<p>(c). Must have price at date t-13</p>
-<p>(d). Must have return at date t-2</p>
-<p>(e). Must have market cap at date t-1</p>
-</section>
-<section id="liquidity">
-<h2><span class="section-number">12.2. </span>Liquidity<a class="headerlink" href="#liquidity" title="Permalink to this heading">#</a></h2>
 <p>Liquidity is the ease of trading a security.</p>
-<p>This can be quite complex and encompass many things, all of which impose a cost on those wishing to trade.</p>
+<p>This encompass many factors, all of which impose a cost on those wishing to trade.</p>
 <p>Sources of illiquidity:</p>
 <ol class="arabic simple">
 <li><p>Exogenous transactions costs = brokerage fees, order-processing costs, transaction taxes.</p></li>
-<li><p>Demand pressure = when need to sell quickly, sometimes a buyer is not immediately available (search costs).</p></li>
-<li><p>Inventory risk = if can’t find a buyer will sell to a market maker who will later sell position.  But, since market maker faces future price changes, you must compensate him for this risk.</p></li>
-<li><p>Private information = concern over trading against an informed party (e.g., insider).  Need to be compensated for this. Private information can be about fundamentals or order flow</p></li>
+<li><p>Demand pressure = when need to sell quickly, nautral buyer not available. Whoever is available will ask to be compensated to absorb the trade</p></li>
+<li><p>Inventory risk = if can’t find a buyer will sell to a market maker who will later sell position.  But, since market maker faces future price changes, he might demand compensation for this risk</p></li>
+<li><p>Private information = concern over trading against an informed party (e.g., insider).  Need to be compensated for this risk. Private information can be about fundamentals or about future flows.</p></li>
 </ol>
 <p>Obviuosly a perfect answer to this question requires costly experimentation. It would require trading and measuring how prices change in reponse to your trading behavior.</p>
-<p><strong>Absorption capacity</strong></p>
-<p>A much simpler approach is to measure the absorption capacity of the strategy.</p>
+<section id="implementation-shortfall">
+<h2><span class="section-number">12.1. </span>Implementation Shortfall<a class="headerlink" href="#implementation-shortfall" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Wish portfolio: your portfolio is trading costs were zero</p></li>
+<li><p>Performance of wish portfolio: compute returns in real time assuming you can trade at the mid</p></li>
+</ul>
+<p><strong>Shortfall=return of wish portfolio- return of real portfolio</strong></p>
+<p>(after all costs)</p>
+<p>Shortfall includes both execution costs ( the costs of trading to  get you to the wish portfolio)  and opportunity costs ( the costs of deviating from the wish portfolio )</p>
+<p>IF you trade quickly what force will increase the Shotfall ?Which will increase?</p>
+<p>How should you trade in this world?</p>
+<p>Precise answer is highly empirical</p>
+<p>But overall shape of the solution is clear</p>
+<ul class="simple">
+<li><p>Find size of tracking error that minimize shortfall</p></li>
+<li><p>IF your weights imply a tracking below the cap, don;t trade</p></li>
+<li><p>Trade whenever tracking error going above this value</p></li>
+<li><p>Trade just enough to keep tracking error at the cap</p></li>
+</ul>
+<p>Key for this trade-off is the cost of trading.</p>
+<p>Trading cost highly dependent of who is trading</p>
+<ul class="simple">
+<li><p>Why?</p></li>
+</ul>
+</section>
+<section id="absorption-capacity">
+<h2><span class="section-number">12.2. </span>Absorption capacity<a class="headerlink" href="#absorption-capacity" title="Permalink to this heading">#</a></h2>
 <p>The idea is to measure how much of the trading volume of each stock you would “use” to implement the strategy for a given position size</p>
 <p>Specifically:</p>
 <div class="math notranslate nohighlight">
 \[UsedVolume_{i,t}=\frac{Trading_{i,t}}{Volume_{i,t}}\]</div>
 <p>The idea is that if you trade a small share of the volume, you are likely to be able to trade at the posted prices.</p>
+<p>This graph below shows costs for Trades made by AQR</p>
+<p><img alt="Market Impact" src="../../_images/marketimpact.jpg" /></p>
+<p>HERE</p>
 <p>To compute how much you need to trade you need to compare the desired weights in date <span class="math notranslate nohighlight">\(t\)</span> with the weights you have in the end of date <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
 <ul class="simple">
 <li><p>Before trading, your weight in date <span class="math notranslate nohighlight">\(t+1\)</span> is</p></li>
@@ -1599,8 +1602,8 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-the-devil-is-in-the-details">12.1. Data Cleaning: The devil is in the details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#liquidity">12.2. Liquidity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">12.1. Implementation Shortfall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">12.2. Absorption capacity</a></li>
 </ul>
   </nav></div>
 

@@ -1022,6 +1022,28 @@ $<span class="math notranslate nohighlight">\(W_{minvariance}=\frac{Var(R)^{-1}\
 <li><p>How do you think about the R-squared? Is a large Rsquared good or bad in this case?</p></li>
 <li><p>How do you account for the differnece in market betas when investing?</p></li>
 </ul>
+<p><strong>Fine tuning your strategy</strong></p>
+<p>We know have three piece of data.</p>
+<ul class="simple">
+<li><p><strong>Estimation sample</strong>: The estiamtion sample is exactyl as before. This is the sample we will use to estimate moments, construct the portfolios, and so on. That is where your discovery process will take place. Where you will play with different parameters of the strategy. Statistical tests here are not valid</p></li>
+</ul>
+<p>But now the Test sample will change and we will introduce the concept of the hold out sample</p>
+<ul class="simple">
+<li><p><strong>Test sample</strong>: You will use this to run statistical test and see how a particular parameter configuration works on unseen data. In practice you will do the testing multiple times. For example in this example we will play with the look back windown of the covariance estimator, mean estimator and so on.</p>
+<ul>
+<li><p>So information of the test sample will leak to your method as you do the search.</p></li>
+<li><p>You might settle on a particular specification becasue it worked on this particular sample, but not becasuse it is the most robust out of sample</p></li>
+<li><p>So when you are searching for the specification that works you have the be very careful to not search “TOO MUCH”” so you are overfitting the Test sample</p></li>
+</ul>
+</li>
+<li><p><strong>Holdout sample</strong>: This is data that your method never looked. That is the true test. You only look at it once you are confident you have a good specification. The hold sample are a much closer reflection of the reality of trading.</p>
+<ul>
+<li><p>of course it is impossible to really reproduce the reality of trading on future data and information of the holdout sample might leak through the fact that the researcher know what happened in that sample: there was a fiancial crash, a crypto boom, value did poorly and so on.</p></li>
+<li><p>This knowledge migth implicly guide your search process.</p></li>
+<li><p>So you have to be mindful of why you are makign the choices you are making to gaurd against this form of <strong>look-ahead bias</strong></p></li>
+</ul>
+</li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
