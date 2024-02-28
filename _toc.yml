@@ -128,6 +128,9 @@ sections:
 - file: chapters/Finance/Robustness
   title: Robustness of Quantitative Strategies
 
+- file: chapters/Finance/Implementation
+  title: Liquidity
+
 - file: chapters/Finance/Timing
   title: Factor Timing 
   sections:
@@ -140,8 +143,7 @@ sections:
 - file: chapters/Finance/CapitalAllocation
   title: Capital Allocation
 
-- file: chapters/Finance/Implementation
-  title: Liquidity
+
 
 - file: chapters/Finance/MachineLearning
   title: Machine Learning in Finance
