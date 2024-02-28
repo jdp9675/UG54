@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>12. Trading costs and Liquidity &#8212; Quantitative Investing</title>
+    <title>14. Trading costs and Liquidity &#8212; Quantitative Investing</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="13. Additional Statistics Material" href="../additional/additional.html" />
-    <link rel="prev" title="11.2. Volatility timing" href="Volatilitytiming.html" />
+    <link rel="next" title="15. Machine Learning and AI" href="MachineLearning.html" />
+    <link rel="prev" title="13. Capital Allocation under Benchmarking, Tracking Error Constraints, and Risk Budgets" href="CapitalAllocation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -214,41 +214,44 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">11.2. Volatility Timing</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Liquidity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">13. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">14.1. Assigment 0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RiskManagement.html">12. Risk Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CapitalAllocation.html">13. Capital Allocation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Liquidity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">15. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">16. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">17. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">17.1. Assigment 0</a></li>
 
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">14.7. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">17.7. Assignment 1</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">14.12. Assigment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">17.12. Assigment 2</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">14.16. Assignment 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">17.16. Assignment 3</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">14.20. Assignment 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">17.20. Assignment 4</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment5.html">14.24. Assigment 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment5.html">17.24. Assigment 5</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment6.html">14.28. Assignment 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment6.html">17.28. Assignment 6</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment7.html">14.32. Assignment 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment7.html">17.32. Assignment 7</a></li>
 
 </ul>
 </li>
@@ -476,8 +479,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">12.1. Implementation Shortfall</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">12.2. Absorption capacity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">14.1. Implementation Shortfall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">14.2. Absorption capacity</a></li>
 </ul>
             </nav>
         </div>
@@ -501,7 +504,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="trading-costs-and-liquidity">
-<h1><span class="section-number">12. </span>Trading costs and Liquidity<a class="headerlink" href="#trading-costs-and-liquidity" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>Trading costs and Liquidity<a class="headerlink" href="#trading-costs-and-liquidity" title="Permalink to this heading">#</a></h1>
 <p>So we have taken prices as given and discussed quantitative allocation rules that overperform relative to a standard CAPM benchmark.</p>
 <p>An important question is whether we would be able to trade at those prices if we tried to implement the strategy.</p>
 <p>Liquidity is the ease of trading a security.</p>
@@ -515,7 +518,7 @@ document.write(`
 </ol>
 <p>Obviuosly a perfect answer to this question requires costly experimentation. It would require trading and measuring how prices change in reponse to your trading behavior.</p>
 <section id="implementation-shortfall">
-<h2><span class="section-number">12.1. </span>Implementation Shortfall<a class="headerlink" href="#implementation-shortfall" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>Implementation Shortfall<a class="headerlink" href="#implementation-shortfall" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Wish portfolio: your portfolio is trading costs were zero</p></li>
 <li><p>Performance of wish portfolio: compute returns in real time assuming you can trade at the mid</p></li>
@@ -540,7 +543,7 @@ document.write(`
 </ul>
 </section>
 <section id="absorption-capacity">
-<h2><span class="section-number">12.2. </span>Absorption capacity<a class="headerlink" href="#absorption-capacity" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>Absorption capacity<a class="headerlink" href="#absorption-capacity" title="Permalink to this heading">#</a></h2>
 <p>The idea is to measure how much of the trading volume of each stock you would “use” to implement the strategy for a given position size</p>
 <p>Specifically:</p>
 <div class="math notranslate nohighlight">
@@ -1567,20 +1570,20 @@ dtype: float64
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Volatilitytiming.html"
+       href="CapitalAllocation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11.2. </span>Volatility timing</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Capital Allocation under Benchmarking, Tracking Error Constraints, and Risk Budgets</p>
       </div>
     </a>
     <a class="right-next"
-       href="../additional/additional.html"
+       href="MachineLearning.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Additional Statistics Material</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Machine Learning and AI</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1602,8 +1605,8 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">12.1. Implementation Shortfall</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">12.2. Absorption capacity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">14.1. Implementation Shortfall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">14.2. Absorption capacity</a></li>
 </ul>
   </nav></div>
 
