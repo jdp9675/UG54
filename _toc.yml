@@ -25,6 +25,8 @@ sections:
     title: Basics
   - file: chapters/essentials/collections
     title: Collections
+  - file: chapters/essentials/numpy
+    title: Numpy
   - file: chapters/essentials/introtopandas
     title: Pandas
     sections:
@@ -48,8 +50,7 @@ sections:
     title: Flow control
   - file: chapters/essentials/functions
     title: Functions
-  - file: chapters/essentials/numpy
-    title: Numpy
+
   - file: chapters/essentials/plotting
     title: Plotting
 
