@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>3.6. Introduction to Numpy &#8212; Quantitative Investing</title>
+    <title>3.3. Introduction to Numpy &#8212; Quantitative Investing</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.7. Plotting" href="plotting.html" />
-    <link rel="prev" title="3.5. Functions" href="functions.html" />
+    <link rel="next" title="3.4. Pandas" href="introtopandas.html" />
+    <link rel="prev" title="3.2. Collections" href="collections.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,20 +167,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">3. Python Essentials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basics.html">3.1. Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collections.html">3.2. Collections</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="introtopandas.html">3.3. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="pandas/the_index.html">3.3.15. Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pandas/timeseries.html">3.3.16. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pandas/reshape.html">3.3.17. Reshape</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pandas/merge.html">3.3.18. Merge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pandas/groupby.html">3.3.19. Group-by</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pandas/matplotlib.html">3.3.20. Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pandas/data_clean.html">3.3.21. Cleaning data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pandas/storage_formats.html">3.3.22. Data Storage</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.3. Numpy</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="introtopandas.html">3.4. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="pandas/the_index.html">3.4.15. Indexing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas/timeseries.html">3.4.16. Time-Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas/reshape.html">3.4.17. Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas/merge.html">3.4.18. Merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas/groupby.html">3.4.19. Group-by</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas/matplotlib.html">3.4.20. Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas/data_clean.html">3.4.21. Cleaning data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pandas/storage_formats.html">3.4.22. Data Storage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="control_flow.html">3.4. Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="functions.html">3.5. Functions</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.6. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="control_flow.html">3.5. Flow control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">3.6. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plotting.html">3.7. Plotting</a></li>
 </ul>
 </li>
@@ -476,35 +476,35 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">3.6.1. Numpy Arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-array">3.6.1.1. What is an Array?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">3.6.1.1.1. Array Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">3.3.1. Numpy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-array">3.3.1.1. What is an Array?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">3.3.1.1.1. Array Indexing</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-functionality">3.6.2. Array Functionality</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-properties">3.6.2.1. Array Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-arrays">3.6.2.2. Creating Arrays</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-operations">3.6.2.3. Broadcasting Operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">3.6.2.4. Dot Product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-functionality">3.3.2. Array Functionality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-properties">3.3.2.1. Array Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-arrays">3.3.2.2. Creating Arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-operations">3.3.2.3. Broadcasting Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">3.3.2.4. Dot Product</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vectors">3.6.3. Visualizing Vectors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">3.6.4. Matrices</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose">3.6.4.1. Transpose</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">3.6.4.2. Identity Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">3.6.4.3. Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vectors">3.3.3. Visualizing Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">3.3.4. Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose">3.3.4.1. Transpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">3.3.4.2. Identity Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">3.3.4.3. Matrix Multiplication</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-functions">3.6.5. Universal Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-array-operations">3.6.6. Other Useful Array Operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-some-array-methods">3.6.7. A list of some Array Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutability-and-copying-arrays">3.6.8. Mutability and Copying Arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-copies">3.6.8.1. Making Copies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-functions">3.3.5. Universal Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-array-operations">3.3.6. Other Useful Array Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-some-array-methods">3.3.7. A list of some Array Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutability-and-copying-arrays">3.3.8. Mutability and Copying Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-copies">3.3.8.1. Making Copies</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">3.6.9. Comparisons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">3.3.9. Comparisons</a></li>
 </ul>
             </nav>
         </div>
@@ -517,9 +517,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-numpy">
-<h1><span class="section-number">3.6. </span>Introduction to Numpy<a class="headerlink" href="#introduction-to-numpy" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">3.3. </span>Introduction to Numpy<a class="headerlink" href="#introduction-to-numpy" title="Permalink to this heading">#</a></h1>
 <section id="numpy-arrays">
-<h2><span class="section-number">3.6.1. </span>Numpy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.1. </span>Numpy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h2>
 <p>Now that we have learned the fundamentals of programming in Python, we will learn how we can use Python
 to perform the computations required in data science and economics. We call these the “scientific Python tools”.</p>
 <p>The foundational library that helps us perform these computations is known as <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (numerical
@@ -541,7 +541,7 @@ nickname <code class="docutils literal notranslate"><span class="pre">np</span><
 </div>
 </div>
 <section id="what-is-an-array">
-<h3><span class="section-number">3.6.1.1. </span>What is an Array?<a class="headerlink" href="#what-is-an-array" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.1.1. </span>What is an Array?<a class="headerlink" href="#what-is-an-array" title="Permalink to this heading">#</a></h3>
 <p>An array is a multi-dimensional grid of values.</p>
 <p>What does this mean? It is easier to demonstrate than to explain.</p>
 <p>In this block of code, we build a 1-dimensional array.</p>
@@ -670,7 +670,7 @@ example, if we wanted to access the <code class="docutils literal notranslate"><
 </div>
 <p>This continues to generalize, since numpy gives us as many dimensions as we want in an array.</p>
 <section id="array-indexing">
-<h4><span class="section-number">3.6.1.1.1. </span>Array Indexing<a class="headerlink" href="#array-indexing" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">3.3.1.1.1. </span>Array Indexing<a class="headerlink" href="#array-indexing" title="Permalink to this heading">#</a></h4>
 <p>Now that there are multiple dimensions, indexing might feel somewhat non-obvious.</p>
 <p>Do the rows or columns come first? In higher dimensions, what is the order of
 the index?</p>
@@ -733,9 +733,9 @@ slice out subsets of the elements by doing <code class="docutils literal notrans
 </section>
 </section>
 <section id="array-functionality">
-<h2><span class="section-number">3.6.2. </span>Array Functionality<a class="headerlink" href="#array-functionality" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.2. </span>Array Functionality<a class="headerlink" href="#array-functionality" title="Permalink to this heading">#</a></h2>
 <section id="array-properties">
-<h3><span class="section-number">3.6.2.1. </span>Array Properties<a class="headerlink" href="#array-properties" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.2.1. </span>Array Properties<a class="headerlink" href="#array-properties" title="Permalink to this heading">#</a></h3>
 <p>All numpy arrays have various useful properties.</p>
 <p>Properties are similar to methods in that they’re accessed through
 the “dot notation.” However, they aren’t a function so we don’t need parentheses.</p>
@@ -808,7 +808,7 @@ float64
 </div>
 </section>
 <section id="creating-arrays">
-<h3><span class="section-number">3.6.2.2. </span>Creating Arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.2.2. </span>Creating Arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this heading">#</a></h3>
 <p>It’s usually impractical to define arrays by hand as we have done so far.</p>
 <p>We’ll often need to create an array with default values and then fill it
 with other values.</p>
@@ -850,7 +850,7 @@ array filled with 0s or 1s respectively.</p>
 </div>
 </section>
 <section id="broadcasting-operations">
-<h3><span class="section-number">3.6.2.3. </span>Broadcasting Operations<a class="headerlink" href="#broadcasting-operations" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.2.3. </span>Broadcasting Operations<a class="headerlink" href="#broadcasting-operations" title="Permalink to this heading">#</a></h3>
 <p>Two types of operations that will be useful for arrays of any dimension are:</p>
 <ol class="arabic simple">
 <li><p>Operations between an array and a single number.</p></li>
@@ -918,7 +918,7 @@ x - y [[0. 1.]
 </div>
 </section>
 <section id="dot-product">
-<h3><span class="section-number">3.6.2.4. </span>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.2.4. </span>Dot Product<a class="headerlink" href="#dot-product" title="Permalink to this heading">#</a></h3>
 <p>Another operation very frequently used in data science is the <strong>dot product</strong>.</p>
 <p>The dot between <span class="math notranslate nohighlight">\( x \)</span> and <span class="math notranslate nohighlight">\( y \)</span> is written <span class="math notranslate nohighlight">\( x \cdot y \)</span> and is
 equal to <span class="math notranslate nohighlight">\( \sum_{i=1}^N x_i y_i \)</span>.</p>
@@ -939,13 +939,13 @@ equal to <span class="math notranslate nohighlight">\( \sum_{i=1}^N x_i y_i \)</
 </section>
 </section>
 <section id="visualizing-vectors">
-<h2><span class="section-number">3.6.3. </span>Visualizing Vectors<a class="headerlink" href="#visualizing-vectors" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.3. </span>Visualizing Vectors<a class="headerlink" href="#visualizing-vectors" title="Permalink to this heading">#</a></h2>
 <p>A (N-element) vector is <span class="math notranslate nohighlight">\( N \)</span> numbers stored together.</p>
 <p>We typically write a vector as <span class="math notranslate nohighlight">\( x = \begin{bmatrix} x_1 \\ x_2 \\ \dots \\ x_N \end{bmatrix} \)</span>.</p>
 <p>In numpy terms, a vector is a 1-dimensional array.</p>
 </section>
 <section id="matrices">
-<h2><span class="section-number">3.6.4. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.4. </span>Matrices<a class="headerlink" href="#matrices" title="Permalink to this heading">#</a></h2>
 <p>An <span class="math notranslate nohighlight">\( N \times M \)</span> matrix can be thought of as a collection of M
 N-element vectors stacked side-by-side as columns.</p>
 <p>We write a matrix as</p>
@@ -1014,7 +1014,7 @@ Scalar Division
 </div>
 </div>
 <section id="transpose">
-<h3><span class="section-number">3.6.4.1. </span>Transpose<a class="headerlink" href="#transpose" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.4.1. </span>Transpose<a class="headerlink" href="#transpose" title="Permalink to this heading">#</a></h3>
 <p>A matrix transpose is an operation that flips all elements of a matrix along the diagonal.</p>
 <p>More formally, the <span class="math notranslate nohighlight">\( (i, j) \)</span> element of <span class="math notranslate nohighlight">\( x \)</span> becomes the <span class="math notranslate nohighlight">\( (j, i) \)</span> element of
 <span class="math notranslate nohighlight">\( x^T \)</span>.</p>
@@ -1055,7 +1055,7 @@ x = \begin{bmatrix} 1 &amp; 4 &amp; 7 \\
 </div>
 </section>
 <section id="identity-matrix">
-<h3><span class="section-number">3.6.4.2. </span>Identity Matrix<a class="headerlink" href="#identity-matrix" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.4.2. </span>Identity Matrix<a class="headerlink" href="#identity-matrix" title="Permalink to this heading">#</a></h3>
 <p>In linear algebra, one particular matrix acts very similarly to how 1 behaves for scalar numbers.</p>
 <p>This matrix is known as the <em>identity matrix</em> and is given by</p>
 <div class="math notranslate nohighlight">
@@ -1102,7 +1102,7 @@ y @ I
 </div>
 </section>
 <section id="matrix-multiplication">
-<h3><span class="section-number">3.6.4.3. </span>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.4.3. </span>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this heading">#</a></h3>
 <p>Similar to how we combine vectors with a dot product, matrices can do what we’ll call <em>matrix
 multiplication</em>.</p>
 <p>Matrix multiplication is effectively a generalization of dot products.</p>
@@ -1169,7 +1169,7 @@ matrix multiplication between a matrix and a vector!</p>
 </section>
 </section>
 <section id="universal-functions">
-<h2><span class="section-number">3.6.5. </span>Universal Functions<a class="headerlink" href="#universal-functions" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.5. </span>Universal Functions<a class="headerlink" href="#universal-functions" title="Permalink to this heading">#</a></h2>
 <p>We will often need to transform data by applying a function to every element of an array.</p>
 <p>Numpy has good support for these operations, called <em>universal functions</em> or ufuncs for short.</p>
 <p>The
@@ -1237,7 +1237,7 @@ just saw, as a ufunc.</p>
 </div>
 </section>
 <section id="other-useful-array-operations">
-<h2><span class="section-number">3.6.6. </span>Other Useful Array Operations<a class="headerlink" href="#other-useful-array-operations" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.6. </span>Other Useful Array Operations<a class="headerlink" href="#other-useful-array-operations" title="Permalink to this heading">#</a></h2>
 <p>We have barely scratched the surface of what is possible using numpy arrays.</p>
 <p>We hope you will experiment with other functions from numpy and see how they
 work.</p>
@@ -1343,7 +1343,7 @@ of what else you might find.</p>
 </div>
 </section>
 <section id="a-list-of-some-array-methods">
-<h2><span class="section-number">3.6.7. </span>A list of some Array Methods<a class="headerlink" href="#a-list-of-some-array-methods" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.7. </span>A list of some Array Methods<a class="headerlink" href="#a-list-of-some-array-methods" title="Permalink to this heading">#</a></h2>
 <p><a id='index-6'></a>
 Arrays have useful methods, all of which are carefully optimized</p>
 <div class="cell docutils container">
@@ -1514,7 +1514,7 @@ Arrays have useful methods, all of which are carefully optimized</p>
 </div>
 </section>
 <section id="mutability-and-copying-arrays">
-<h2><span class="section-number">3.6.8. </span>Mutability and Copying Arrays<a class="headerlink" href="#mutability-and-copying-arrays" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.8. </span>Mutability and Copying Arrays<a class="headerlink" href="#mutability-and-copying-arrays" title="Permalink to this heading">#</a></h2>
 <p>NumPy arrays are mutable data types, like Python lists.</p>
 <p>In other words, their contents can be altered (mutated) in memory after initialization.</p>
 <p>We already saw examples above.</p>
@@ -1581,7 +1581,7 @@ array (the Python assignment model is described in more detail <a class="referen
 <p>It means that we pass around only pointers to data, rather than making copies.</p>
 <p>Making copies is expensive in terms of both speed and memory.</p>
 <section id="making-copies">
-<h3><span class="section-number">3.6.8.1. </span>Making Copies<a class="headerlink" href="#making-copies" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.3.8.1. </span>Making Copies<a class="headerlink" href="#making-copies" title="Permalink to this heading">#</a></h3>
 <p>It is of course possible to make <code class="docutils literal notranslate"><span class="pre">b</span></code> an independent copy of <code class="docutils literal notranslate"><span class="pre">a</span></code> when required.</p>
 <p>This can be done using <code class="docutils literal notranslate"><span class="pre">np.copy</span></code></p>
 <div class="cell docutils container">
@@ -1640,7 +1640,7 @@ array (the Python assignment model is described in more detail <a class="referen
 </section>
 </section>
 <section id="comparisons">
-<h2><span class="section-number">3.6.9. </span>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3.9. </span>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h2>
 <p><a id='index-10'></a>
 As a rule, comparisons on arrays are done element-wise</p>
 <div class="cell docutils container">
@@ -1783,20 +1783,20 @@ As a rule, comparisons on arrays are done element-wise</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="functions.html"
+       href="collections.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.5. </span>Functions</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>Collections</p>
       </div>
     </a>
     <a class="right-next"
-       href="plotting.html"
+       href="introtopandas.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.7. </span>Plotting</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Pandas</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1818,35 +1818,35 @@ As a rule, comparisons on arrays are done element-wise</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">3.6.1. Numpy Arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-array">3.6.1.1. What is an Array?</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">3.6.1.1.1. Array Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">3.3.1. Numpy Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-array">3.3.1.1. What is an Array?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-indexing">3.3.1.1.1. Array Indexing</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-functionality">3.6.2. Array Functionality</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-properties">3.6.2.1. Array Properties</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-arrays">3.6.2.2. Creating Arrays</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-operations">3.6.2.3. Broadcasting Operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">3.6.2.4. Dot Product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-functionality">3.3.2. Array Functionality</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-properties">3.3.2.1. Array Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-arrays">3.3.2.2. Creating Arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting-operations">3.3.2.3. Broadcasting Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product">3.3.2.4. Dot Product</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vectors">3.6.3. Visualizing Vectors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">3.6.4. Matrices</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose">3.6.4.1. Transpose</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">3.6.4.2. Identity Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">3.6.4.3. Matrix Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-vectors">3.3.3. Visualizing Vectors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices">3.3.4. Matrices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose">3.3.4.1. Transpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-matrix">3.3.4.2. Identity Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">3.3.4.3. Matrix Multiplication</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-functions">3.6.5. Universal Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-array-operations">3.6.6. Other Useful Array Operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-some-array-methods">3.6.7. A list of some Array Methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutability-and-copying-arrays">3.6.8. Mutability and Copying Arrays</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-copies">3.6.8.1. Making Copies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#universal-functions">3.3.5. Universal Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-useful-array-operations">3.3.6. Other Useful Array Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-list-of-some-array-methods">3.3.7. A list of some Array Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutability-and-copying-arrays">3.3.8. Mutability and Copying Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-copies">3.3.8.1. Making Copies</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">3.6.9. Comparisons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">3.3.9. Comparisons</a></li>
 </ul>
   </nav></div>
 

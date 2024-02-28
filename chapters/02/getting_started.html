@@ -165,20 +165,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../essentials/intro.html">3. Python Essentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../essentials/basics.html">3.1. Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../essentials/collections.html">3.2. Collections</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.3. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/the_index.html">3.3.15. Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/timeseries.html">3.3.16. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.3.17. Reshape</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.3.18. Merge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.3.19. Group-by</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.3.20. Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.3.21. Cleaning data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/storage_formats.html">3.3.22. Data Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy.html">3.3. Numpy</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.4. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/the_index.html">3.4.15. Indexing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/timeseries.html">3.4.16. Time-Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.4.17. Reshape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.4.18. Merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.4.19. Group-by</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.4.20. Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.4.21. Cleaning data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/storage_formats.html">3.4.22. Data Storage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.4. Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.5. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy.html">3.6. Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.5. Flow control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.6. Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
 </ul>
 </li>
@@ -476,9 +476,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">2.1. Computing Environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">2.1.1. Jupyter</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">2.1.2. Google Colab</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-lectures">2.1.3. Running the Lectures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-basics">2.1.4. Jupyter Basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-lectures">2.1.2. Running the Lectures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-basics">2.1.3. Jupyter Basics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.2. Exercises</a></li>
@@ -553,14 +552,8 @@ and <a class="reference external" href="https://www.techatbloomberg.com/blog/ins
 to adopt Jupyter as a tool of choice for data analytics and reporting.</p>
 <p>We will follow in their path and leverage Jupyter Notebook throughout these materials.</p>
 </section>
-<section id="google-colab">
-<h3><span class="section-number">2.1.2. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h3>
-<p>We will be using the Free google Colab plataform (as you use in GBA-Stats)</p>
-<p>This is cloud based software that allow us to run jupyter notebooks without having to install any softward in your machine</p>
-<p>But you should feel free to install locally in your machine– BUT YOU DON’T NEED TO DO IT.</p>
-</section>
 <section id="running-the-lectures">
-<h3><span class="section-number">2.1.3. </span>Running the Lectures<a class="headerlink" href="#running-the-lectures" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.2. </span>Running the Lectures<a class="headerlink" href="#running-the-lectures" title="Permalink to this heading">#</a></h3>
 <p>The interactivity of a Jupyter notebook is driven by two main components:</p>
 <ol class="arabic simple">
 <li><p>Server that is responsible for executing code</p></li>
@@ -578,18 +571,13 @@ the GUI.</p>
 <p>A cloud solution provides a pre-installed environment for you.</p>
 <p>As long as you have an internet connection, you will be able to interact with the lectures
 through a few cloud computing options.</p>
-<p>We try to ensure that you’ll be able to run any of the lectures from each of the cloud options,
-but because these services are hosted by others, we cannot provide any guarantees.</p>
-<p>Using the cloud is a great option if</p>
-<ol class="arabic simple">
-<li><p>You aren’t sure whether you’d like to learn these skills and just want to test the lectures
-out without any additional commitment.</p></li>
-<li><p>You are away from your typical work station and would like to spend a few minutes interacting
-with our lectures — we often take this route with our colleagues over coffee (or other
-conversation stimulants).</p></li>
-</ol>
-<p>If you would like to work on these lectures from the cloud, please read the instructions for
-getting set up with <span class="xref myst">cloud computing</span>. That is my recommendation for most of you.</p>
+<p>We will be using the Free google Colab plataform (as you use in GBA-Stats)</p>
+<p>This is a cloud based software that allow us to run jupyter notebooks without having to install any software in your machine</p>
+<p>But you should feel free to install locally in your machine– BUT YOU DON’T NEED TO DO IT.</p>
+<p>To launch COLAB simply click on the rocket symbol on the top of this page.</p>
+<p>You should create a gmail account as this will allow you to save the modified files directly on google drive.</p>
+<p>This save you time of uploading/downloading notebooks to the cloud.</p>
+<p>See cloud setup chapter for more.</p>
 <p><strong>Local Installation</strong></p>
 <p>With a local installation, you will install the required software onto your own computer.</p>
 <p>This is typically a straightforward task and, once you have done this, you will be able to run the
@@ -604,7 +592,7 @@ and show you how to open JupyterLab.</p>
 Basics section.</p>
 </section>
 <section id="jupyter-basics">
-<h3><span class="section-number">2.1.4. </span>Jupyter Basics<a class="headerlink" href="#jupyter-basics" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.3. </span>Jupyter Basics<a class="headerlink" href="#jupyter-basics" title="Permalink to this heading">#</a></h3>
 <p>Now that you can open a JupyterLab instance on the cloud or on your own computer, we can talk about
 how you should use them.</p>
 <p>Note, not all of this will apply if you are using the Google Colab cloud server since they are
@@ -733,9 +721,8 @@ then another quote (<code class="docutils literal notranslate"><span class="pre"
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">2.1. Computing Environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter">2.1.1. Jupyter</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">2.1.2. Google Colab</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-lectures">2.1.3. Running the Lectures</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-basics">2.1.4. Jupyter Basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-lectures">2.1.2. Running the Lectures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-basics">2.1.3. Jupyter Basics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.2. Exercises</a></li>
