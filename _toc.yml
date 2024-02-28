@@ -137,6 +137,9 @@ sections:
 - file: chapters/Finance/RiskManagement
   title: Risk Management
 
+- file: chapters/Finance/CapitalAllocation
+  title: Capital Allocation
+
 - file: chapters/Finance/Implementation
   title: Liquidity
 
