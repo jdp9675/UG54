@@ -138,16 +138,10 @@ sections:
     title: Volatility Timing
 
 - file: chapters/Finance/RiskManagement
-  title: Risk Management
-
-- file: chapters/Finance/CapitalAllocation
-  title: Capital Allocation
-
-
+  title: Risk Management and Capital Allocation
 
 - file: chapters/Finance/MachineLearning
   title: Machine Learning in Finance
-
 - file: chapters/additional/additional
   title: Additional Statistics Material
 - file: chapters/Assignments/Assignments
