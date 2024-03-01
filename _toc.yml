@@ -50,7 +50,6 @@ sections:
     title: Flow control
   - file: chapters/essentials/functions
     title: Functions
-
   - file: chapters/essentials/plotting
     title: Plotting
 
@@ -161,6 +160,7 @@ sections:
   #   title: Assignment 5
   # - file: chapters/Assignments/Assignment6
   #   title: Assignment 6
-  # - file: chapters/Assignments/Assignment7
-  #   title: Assignment 7
+  # - file: chapters/Assignments/Final Project
+  #   title: Final Project
+  #
   
