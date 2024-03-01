@@ -90,7 +90,7 @@ sections:
 
 
 - file: chapters/Finance/PortfolioMath
-  title: Portfolio Math
+  title: Portfolios
   sections:
   - file: chapters/scientific/linear_algebra1
     title: Linear algebra Review
