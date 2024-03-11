@@ -448,9 +448,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 1</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-forum-assignment">Discussion Forum Assignment</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-basic-commands">Part A: Basic Commands</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-applications">Part B: Applications</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 
             </nav>
@@ -465,9 +463,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-1">
 <h1>Assignment 1<a class="headerlink" href="#assignment-1" title="Permalink to this heading">#</a></h1>
-<p>Instructions: This problem set should be done individually.</p>
-<p>Answer each question in the designated space below.</p>
-<p>After you are done, save, download, and upload in blackboard under Assignment 1.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="write-your-name-and-simon-email">
 <h1>Write your name and simon email<a class="headerlink" href="#write-your-name-and-simon-email" title="Permalink to this heading">#</a></h1>
@@ -476,282 +471,174 @@ document.write(`
 <li><p>[Name]:</p></li>
 <li><p>[email]:</p></li>
 </ul>
-<p>NOTE:</p>
-<ol class="arabic simple">
-<li><p>You can edit this cell by double clicking in it and hitting <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code>+<code class="docutils literal notranslate"><span class="pre">enter</span></code> for it to render.</p></li>
-<li><p>This is Markdown cell, where we type text. For more info on how to do formatting on markdown please see here <a class="reference external" href="https://ingeh.medium.com/markdown-for-jupyter-notebooks-cheatsheet-386c05aeebed">https://ingeh.medium.com/markdown-for-jupyter-notebooks-cheatsheet-386c05aeebed</a>, but you don’t need to.</p></li>
-</ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="discussion-forum-assignment">
-<h1>Discussion Forum Assignment<a class="headerlink" href="#discussion-forum-assignment" title="Permalink to this heading">#</a></h1>
-<p>Due to assigment: “Quant investing from the trenches” in the discussion forum</p>
-<p><a class="reference external" href="https://edstem.org/us/courses/30665/discussion/1972479">https://edstem.org/us/courses/30665/discussion/1972479</a></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-a-basic-commands">
-<h1>Part A: Basic Commands<a class="headerlink" href="#part-a-basic-commands" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
 <p><strong>Exercise 1</strong></p>
-<p>In the first cell, try <code class="docutils literal notranslate"><span class="pre">y.append(z)</span></code>.</p>
-<p>In the second cell try <code class="docutils literal notranslate"><span class="pre">y.extend(z)</span></code>.</p>
-<p>Explain the behavior.</p>
-<p>HINT: When you are trying to explain, use <code class="docutils literal notranslate"><span class="pre">y.append?</span></code> and <code class="docutils literal notranslate"><span class="pre">y.extend?</span></code> to
-see a description of what these methods are supposed to do.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="c1"># your code here</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">]</span>
-<span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="c1"># your code here</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 2</strong></p>
-<p>Experiment with two versions of the <code class="docutils literal notranslate"><span class="pre">range</span></code> function. Explain what d is and how you get the second option to implement the first by choosing a particular d.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try list(range(a, N)) -- you pick `a` and `N`</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># try list(range(a, N, d)) -- you pick `a`, `N`, and `d`</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 3</strong></p>
-<p>Use Jupyter’s help facilities to learn how to use the <code class="docutils literal notranslate"><span class="pre">pop</span></code> method to
-remove the number 10.48 from the list gdp_data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdp_data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">9.607</span><span class="p">,</span> <span class="mf">10.48</span><span class="p">,</span> <span class="mf">11.06</span><span class="p">]</span>
-<span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 4</strong></p>
-<p>Explain what happens to the value you popped.</p>
-<p>Experiment with calling <code class="docutils literal notranslate"><span class="pre">pop</span></code> twice.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 5</strong></p>
-<p>Run the following two variations on the code with only a single difference in the indentation.</p>
-<p>After you do that, modify the value of <code class="docutils literal notranslate"><span class="pre">x</span></code> to print <code class="docutils literal notranslate"><span class="pre">3</span></code> in the first cell and then <code class="docutils literal notranslate"><span class="pre">2,</span> <span class="pre">3</span></code> in the second cell instead.</p>
-<p>Create a cell below to explain what is going on.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="c1"># changed the indentation</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 6</strong></p>
-<p>Using the code cell below as a start, print <code class="docutils literal notranslate"><span class="pre">&quot;Good</span> <span class="pre">afternoon&quot;</span></code> if the
-<code class="docutils literal notranslate"><span class="pre">current_time</span></code> is past noon.</p>
-<p>Otherwise, do nothing.</p>
-<p>(Hint: Write some conditional based on <code class="docutils literal notranslate"><span class="pre">current_time.hour</span></code>.)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
-<span class="n">current_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-
-<span class="c1">## your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 7</strong></p>
-<p>You will generate a random number between 0 and 1, add code to  print “x &gt; 0.5” or “x &lt;= 0.5” depending on the value of the number.</p>
-<p>This also introduces a new package <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> for drawing random numbers.</p>
+<p>Start by importing pandas, numpy, maplotlib, and loading the data set.</p>
+<p>The dataset has address</p>
+<p><code class="docutils literal notranslate"><span class="pre">url='https://github.com/amoreira2/Lectures/blob/main/assets/data/Assignment1.xlsx?raw=true'</span></code></p>
+<p>I strongly recommend you download first and look at the data set.</p>
+<p>This file contains multiple sheets, you should use <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to get the data that contains the 49 value-weighted industry portfolios.</p>
+<p>See here:<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html</a> .</p>
+<p>Do the followings:</p>
+<ol class="arabic simple">
+<li><p>Import this dataframe as <code class="docutils literal notranslate"><span class="pre">df_ind</span></code></p>
+<ul class="simple">
+<li><p>Use “sheet_name” to select the desired excel sheet.</p></li>
+<li><p>Use “skip_rows” to skip the initial rows before the data.</p></li>
+<li><p>Figure out what is the code for missing value and change the option <code class="docutils literal notranslate"><span class="pre">na_values</span></code> appropriately</p></li>
+<li><p>If you look at the excel file you will see that there are other data sets stacked horizontally. Use the <code class="docutils literal notranslate"><span class="pre">usecols</span></code> option to select the range of columns you want imported</p></li>
+<li><p>You can take a look at Lab3 material for some examples of importing excel data and using these options.</p></li>
+</ul>
+</li>
+<li><p>Change the name of the column with the date information to date</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> so python understand the column date as a datetime object (you will have to use the option format)</p></li>
+<li><p>Set date as index</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">df_ind.info()</span></code> so you check all the tasks were accomplished.</p></li>
+<li><p>In the next cell, call <code class="docutils literal notranslate"><span class="pre">df_ind.head()</span></code></p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">MonthEnd</span>
 
-<span class="c1">## your code here</span>
+<span class="c1"># your code below</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Exercise 8</strong></p>
-<p>Write a for loop that uses the lists of cities
-and states below to print the same “{city} is in {state}” using
-<code class="docutils literal notranslate"><span class="pre">zip</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Phoenix&quot;</span><span class="p">,</span> <span class="s2">&quot;Austin&quot;</span><span class="p">,</span> <span class="s2">&quot;San Diego&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">]</span>
-<span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Arizona&quot;</span><span class="p">,</span> <span class="s2">&quot;Texas&quot;</span><span class="p">,</span> <span class="s2">&quot;California&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">__</span><span class="p">,</span> <span class="n">__</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">__</span><span class="p">,</span><span class="n">__</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">__</span><span class="si">}</span><span class="s2"> is in </span><span class="si">{</span><span class="n">__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="c1"># Your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 9</strong></p>
-<p>Try to find the index of the first value in <code class="docutils literal notranslate"><span class="pre">x</span></code>
-that is greater than 0.999 using a for loop and <code class="docutils literal notranslate"><span class="pre">break</span></code>.</p>
-<p><em>Hint</em>: try iterating over <code class="docutils literal notranslate"><span class="pre">range(len(x))</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-<span class="c1"># Your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 10</strong></p>
-<p>Write a for loop that adds up all values in <code class="docutils literal notranslate"><span class="pre">x</span></code> that are greater than
-or equal to 0.5.</p>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">continue</span></code> word to end the body of the loop early for all values
-of <code class="docutils literal notranslate"><span class="pre">x</span></code> that are less than 0.5.</p>
-<p><em>Hint</em>: Try starting your loop with <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">value</span> <span class="pre">in</span> <span class="pre">x:</span></code> instead of
-iterating over the indices of <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
-<span class="c1"># Your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="part-b-applications">
-<h1>Part B: Applications<a class="headerlink" href="#part-b-applications" title="Permalink to this heading">#</a></h1>
-<p><strong>Exercise 1</strong></p>
-<p>In economics, when an individual has some knowledge, skills, or education
-which provides them with a source of future income, we call it <a class="reference external" href="https://en.wikipedia.org/wiki/Human_capital">human
-capital</a>.</p>
-<p>When a student graduating from high school is considering whether to
-continue with post-secondary education, they may consider that it gives
-them higher paying jobs in the future, but requires that they don’t begin
-working until after graduation.</p>
-<p>Consider the simplified example where a student has perfectly forecastable
-employment and is given two choices:</p>
+<p><strong>Exercise 2. Advanced date manipulation</strong></p>
 <ol class="arabic simple">
-<li><p>Begin working immediately and make 60,000 a year until they retire 40
-years later.</p></li>
-<li><p>Pay 20,000 a year for the next 4 years to attend university, then
-get a job paying 200,000 a year until they retire in 40 years after making
-the college attendance decision.</p></li>
+<li><p>convert the date from the start of the month to end of the month.</p></li>
+<li><p>call <code class="docutils literal notranslate"><span class="pre">df_ind.head()</span></code> and verify it works</p></li>
 </ol>
-<p>Assume wages and tuitions are paid at the beginning of each year.</p>
-<p>What is the expected rate of return of this investment?</p>
-<p>To do this first start by constructing the npv of the college decision using the NPV of high school as inspiration. Do this for a given interest rate, say 5%.</p>
-<p>Then build a expression that returns the difference in NPVs.</p>
-<p>Finally, change the interest rate manually until this difference in the NPVs is the less than 1000 dollars.</p>
+<p><strong><em>Hint:</em></strong></p>
+<ul class="simple">
+<li><p>Read this link: <a class="reference external" href="https://stackoverflow.com/questions/37354105/find-the-end-of-the-month-of-a-pandas-dataframe-series">https://stackoverflow.com/questions/37354105/find-the-end-of-the-month-of-a-pandas-dataframe-series</a>.
+If you google “pandas end of month” that is the first thing that comes out. Read the answer and apply to your problem.</p></li>
+<li><p>you aready set date as index, so you cannot do stuff like <code class="docutils literal notranslate"><span class="pre">df_ind.date</span></code> or <code class="docutils literal notranslate"><span class="pre">df_ind['date']</span></code>  and have to adjust the code accordingly. Think about how to access the index.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Discount rate</span>
-<span class="n">r</span> <span class="o">=</span> <span class="mf">0.05</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
 
-<span class="c1"># High school wage</span>
-<span class="n">w_hs</span> <span class="o">=</span> <span class="mi">80000</span>
-
-<span class="c1"># College wage and cost of college</span>
-<span class="n">c_college</span> <span class="o">=</span> <span class="mi">20000</span> 
-<span class="n">w_college</span> <span class="o">=</span> <span class="mi">200000</span>
-
-<span class="c1"># Compute npv of being a hs worker</span>
-<span class="n">npv_hs</span><span class="o">=</span><span class="mi">0</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">40</span><span class="p">):</span>
-    <span class="n">npv_hs</span><span class="o">=</span><span class="n">npv_hs</span><span class="o">+</span><span class="n">w_hs</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">t</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">npv_hs</span><span class="p">)</span>
-<span class="c1"># Compute npv of attending college</span>
-<span class="n">npv_c</span><span class="o">=</span><span class="mi">0</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">__</span><span class="p">):</span>
-    <span class="n">__</span><span class="o">=</span><span class="n">__</span><span class="o">+</span><span class="n">__</span>
-
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">__</span><span class="p">,</span><span class="mi">40</span><span class="p">):</span>
-    <span class="n">__</span><span class="o">=</span><span class="n">__</span><span class="o">+</span><span class="n">__</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">npv_c</span><span class="p">)</span>
-<span class="c1"># Compute npv of being a college worker</span>
-
-<span class="c1"># Is npv_collegeworker - npv_collegecost &gt; npv_hsworker</span>
+<span class="n">df_ind</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Exercise 2</strong></p>
-<p>Companies often invest in training their employees to raise their
-productivity. Economists sometimes wonder why companies
-spend this money when this incentivizes other companies to hire
-their employees away with higher salaries since employees gain human capital from training.</p>
-<p>Let’s say that it costs a company 25,000 dollars to teach their
-employees Python, but it raises their output by 2,500 per month. How
-many months would an employee need to stay for the company to find it
-profitable to pay for their employees to learn Python if their <strong>monthly</strong> discount
-rate is r = 0.01?</p>
+<p><strong>Exercise 3. Importing risk-free rate</strong></p>
+<ol class="arabic simple">
+<li><p>In this same file there is another sheet with market returns and the risk-free rate. Import them as <code class="docutils literal notranslate"><span class="pre">df_rmrf</span></code> by following all the steps you did in the above two questions</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">df_rmrf.info()</span></code> so you check all the tasks were accomplished.</p></li>
+<li><p>In the next cell, call <code class="docutils literal notranslate"><span class="pre">df_rmrf.head()</span></code></p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define cost of teaching python</span>
-<span class="n">cost</span> <span class="o">=</span> <span class="mi">25_000</span>
-<span class="n">r</span> <span class="o">=</span> <span class="mf">0.01</span>
-
-<span class="c1"># Per month value</span>
-<span class="n">added_value</span> <span class="o">=</span> <span class="mi">2500</span>
-
-<span class="n">n_months</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">total_npv</span> <span class="o">=</span> <span class="mf">0.0</span>
-
-<span class="c1"># Put condition below here</span>
-<span class="k">while</span> <span class="kc">False</span><span class="p">:</span> <span class="c1"># (replace False with your condition here)</span>
-    <span class="n">n_months</span> <span class="o">=</span> <span class="n">n_months</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Increment how many months they&#39;ve worked</span>
-
-    <span class="c1"># Increase total_npv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Exercise 4. Constructing excess returns A</strong></p>
+<ol class="arabic simple">
+<li><p>for the industry <code class="docutils literal notranslate"><span class="pre">Agric</span></code>, construct the excess return by subtracting the risk-free rate RF from it.</p></li>
+<li><p>compute the mean of this excess return.</p></li>
+<li><p>print it along with the mean of the raw returns and the risk free rate to compare</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 5. Constructing excess returns B</strong></p>
+<ol class="arabic simple">
+<li><p>construct excess returns for all portfolio by subtracting the risk-free rate from all of columns at the same time</p></li>
+<li><p>name the new data frame <code class="docutils literal notranslate"><span class="pre">df_inde</span></code> ( for excess returns)</p></li>
+</ol>
+<p><strong><em>Hint:</em></strong></p>
+<ul class="simple">
+<li><p>You can do that using the method <code class="docutils literal notranslate"><span class="pre">.subtract()</span></code> with the option axis to tell along which dimension</p></li>
+<li><p>Go ahead , google “pandas subtract” to see how this works</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below </span>
+
+<span class="n">df_inde</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 6. Drop missing observations</strong></p>
+<p>You may notice that excess returns of some industries are not available at the beginning of the sample.</p>
+<p>If we want all the industries to have same period of data in <code class="docutils literal notranslate"><span class="pre">df_inde</span></code>, we need to drop some observations.</p>
+<p>Do the followings:</p>
+<ol class="arabic simple">
+<li><p>Use method <code class="docutils literal notranslate"><span class="pre">dropna</span></code> to drop rows in <code class="docutils literal notranslate"><span class="pre">df_inde</span></code> if <strong>ANY</strong> industry is missing.</p></li>
+<li><p>After that, <code class="docutils literal notranslate"><span class="pre">print(df_inde.shape)</span></code> to see the changes in the length.</p></li>
+</ol>
+<p><strong><em>Hint</em></strong></p>
+<ul class="simple">
+<li><p>when you call <code class="docutils literal notranslate"><span class="pre">dropna</span></code> function, use <code class="docutils literal notranslate"><span class="pre">axis</span></code> and <code class="docutils literal notranslate"><span class="pre">how</span></code> option to drop missing values if <strong>ANY</strong> industry is missing</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 7. Moments</strong></p>
+<p>We will now estimate the risk-premium in each of these portfolio and the covariance between these portfolios.</p>
+<p>Do the followings:</p>
+<ol class="arabic simple">
+<li><p>using the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> on the excess return data frame to obtain a vector of average excess returns.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">std</span></code> construct an estimator for each asset standard deviation.</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">cov</span></code> method to estimate the covariance of excess returns.</p></li>
+<li><p>Discuss in each units these variables are</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ERe</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CovRe</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 8. Plotting</strong></p>
+<p>Choose a couple of industry portfolios to plot their time-series.</p>
+<p>Use the behavior of these two assets to discuss an important economic event in US history</p>
+<p>as you discuss make sure to use the magnitudes in your discussion to show that you do understand what this data means</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 9. Cumulative returns</strong></p>
+<p>Choose two industry portfolios to plot the cumulative returns over time.</p>
+<p>You cna plot for the whole period or just a subperiod.</p>
+<p>You should explain what the numbers mean in terms of how much money people would have if they had invested in these assets</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -805,9 +692,7 @@ rate is r = 0.01?</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 1</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-forum-assignment">Discussion Forum Assignment</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-basic-commands">Part A: Basic Commands</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-applications">Part B: Applications</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 
   </nav></div>
