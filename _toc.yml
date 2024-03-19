@@ -148,7 +148,7 @@ sections:
   sections:
   - file: chapters/Assignments/Assignment0
     title: Assignment 0
-  # - file: chapters/Assignments/Assignment1
+  - file: chapters/Assignments/Assignment1
   #   title: Assignment 1
   # - file: chapters/Assignments/Assignment2
   #   title: Assignment 2
