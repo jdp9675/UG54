@@ -532,6 +532,392 @@ document.write(`
 <li><p>Can use lags</p></li>
 <li><p>Can use option based measures of volatility, which also encode future information about what market participants think about future risk</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets strat by importing daily data on the market</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+
+<span class="c1"># Define the start and end dates</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2024-01-01&#39;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;1926-01-01&#39;</span>
+
+<span class="c1"># Define the ticker symbol for the market factor</span>
+<span class="n">ticker</span> <span class="o">=</span> <span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span>
+
+<span class="c1"># Fetch the data from Ken French website</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+<span class="c1"># Extract the market factor data</span>
+<span class="n">market_factor</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below I compute the variance across days in a given month, so I obtain a daily variance measure ( recall that the variance takes the mean of the square residuals)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="p">((</span><span class="n">market_RV</span><span class="o">*</span><span class="mi">252</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/bf8c3c5bed791e19b5ee624d07bf53927815e92722cfe6fd7a56c44f1199d304.png" src="../../_images/bf8c3c5bed791e19b5ee624d07bf53927815e92722cfe6fd7a56c44f1199d304.png" />
+</div>
+</div>
+<p>below I will just sum the square returns, so I obtain a monthly variance measure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or alternatively, ignoring the mean</span>
+<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+<span class="p">((</span><span class="n">market_RV</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/89cc38e207d712711296df11f54a40cb2cabc22b8d8e76d25d58faaa31735e57.png" src="../../_images/89cc38e207d712711296df11f54a40cb2cabc22b8d8e76d25d58faaa31735e57.png" />
+</div>
+</div>
+<p>LEts do some forecasting.</p>
+<p>Basic model</p>
+<div class="math notranslate nohighlight">
+\[RV_{t+1}=a+bRV_t+\epsilon_{t+1}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="c1"># Create lagged variable</span>
+<span class="n">market_RV</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">market_RV</span><span class="p">)</span>
+<span class="n">market_RV</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RV&#39;</span><span class="p">]</span>
+<span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RVl1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+
+<span class="c1"># Remove missing values</span>
+<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+
+<span class="c1"># Add constant term</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RVl1</span><span class="p">)</span>
+
+<span class="c1"># Fit the regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">results1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Print the regression results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                     RV   R-squared:                       0.304
+Model:                            OLS   Adj. R-squared:                  0.304
+Method:                 Least Squares   F-statistic:                     510.5
+Date:                Wed, 20 Mar 2024   Prob (F-statistic):           4.68e-94
+Time:                        17:17:14   Log-Likelihood:                -6073.7
+No. Observations:                1169   AIC:                         1.215e+04
+Df Residuals:                    1167   BIC:                         1.216e+04
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         11.5001      1.423      8.079      0.000       8.707      14.293
+RVl1           0.5516      0.024     22.594      0.000       0.504       0.600
+==============================================================================
+Omnibus:                     1650.566   Durbin-Watson:                   2.091
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           510579.995
+Skew:                           7.829   Prob(JB):                         0.00
+Kurtosis:                     104.179   Cond. No.                         64.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results1</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19a46cf7970&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/f2369b664a1dd2a1c95fe07497c7ecf0bc0b1c14f32573c6665fdc65b12d2c89.png" src="../../_images/f2369b664a1dd2a1c95fe07497c7ecf0bc0b1c14f32573c6665fdc65b12d2c89.png" />
+</div>
+</div>
+<p>What if I do in Standard Deviation? Does it work better?</p>
+<p>Bu what do I care about?</p>
+<p>How would you do it?</p>
+<p>Does additional lags help?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RVl2&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RVl3&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># Remove missing values</span>
+<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+
+<span class="c1"># Add constant term</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;RVl1&#39;</span><span class="p">:</span><span class="s1">&#39;RVl3&#39;</span><span class="p">])</span>
+
+<span class="c1"># Fit the regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">results2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Print the regression results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results2</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                     RV   R-squared:                       0.322
+Model:                            OLS   Adj. R-squared:                  0.320
+Method:                 Least Squares   F-statistic:                     183.8
+Date:                Wed, 20 Mar 2024   Prob (F-statistic):           1.53e-97
+Time:                        17:17:21   Log-Likelihood:                -6044.6
+No. Observations:                1166   AIC:                         1.210e+04
+Df Residuals:                    1162   BIC:                         1.212e+04
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          9.1214      1.481      6.158      0.000       6.215      12.028
+RVl1           0.4949      0.029     17.031      0.000       0.438       0.552
+RVl2           0.0130      0.032      0.400      0.689      -0.051       0.077
+RVl3           0.1368      0.029      4.709      0.000       0.080       0.194
+==============================================================================
+Omnibus:                     1697.738   Durbin-Watson:                   2.020
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           575996.063
+Skew:                           8.290   Prob(JB):                         0.00
+Kurtosis:                     110.615   Cond. No.                         101.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<p>What if it really matters the very recent past?</p>
+<p>Lets look at also last five days of the month</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;RV1m&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)),</span> <span class="s1">&#39;RV5d&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:,]</span><span class="o">**</span><span class="mi">2</span><span class="p">))})</span>
+
+
+<span class="n">market_RV</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/32b551c94a174dc1cd9a878337364d0d927bd3838e2e84665c9983dd0857df05.png" src="../../_images/32b551c94a174dc1cd9a878337364d0d927bd3838e2e84665c9983dd0857df05.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RV1ml1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+<span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RV5dl1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV5d</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+<span class="c1"># Remove missing values</span>
+<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+
+<span class="c1"># Add constant term</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">market_RV</span><span class="p">[[</span><span class="s1">&#39;RV1ml1&#39;</span><span class="p">,</span><span class="s1">&#39;RV5dl1&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Fit the regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">results3</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Print the regression results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results3</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   RV1m   R-squared:                       0.318
+Model:                            OLS   Adj. R-squared:                  0.317
+Method:                 Least Squares   F-statistic:                     272.3
+Date:                Wed, 20 Mar 2024   Prob (F-statistic):           8.98e-98
+Time:                        17:17:25   Log-Likelihood:                -6061.7
+No. Observations:                1169   AIC:                         1.213e+04
+Df Residuals:                    1166   BIC:                         1.214e+04
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         11.3675      1.410      8.063      0.000       8.601      14.134
+RV1ml1         0.4495      0.032     14.085      0.000       0.387       0.512
+RV5dl1         0.4955      0.101      4.904      0.000       0.297       0.694
+==============================================================================
+Omnibus:                     1648.413   Durbin-Watson:                   2.100
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           489989.372
+Skew:                           7.829   Prob(JB):                         0.00
+Kurtosis:                     102.068   Cond. No.                         66.4
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<p>What about forward looking information from option markets?</p>
+<p>We can use a measure of implied volatility–say the VIX</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+
+<span class="c1"># Define the start and end dates</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;1990-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2024-01-01&#39;</span>
+
+<span class="c1"># Define the ticker symbol for the VIX</span>
+<span class="n">ticker</span> <span class="o">=</span> <span class="s1">&#39;VIXCLS&#39;</span>
+
+<span class="c1"># Fetch the data from FRED</span>
+<span class="n">vix_data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+
+<span class="c1"># Print the VIX data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vix_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            VIXCLS
+DATE              
+1990-01-02   17.24
+1990-01-03   18.19
+1990-01-04   19.22
+1990-01-05   20.11
+1990-01-08   20.26
+...            ...
+2023-12-26   12.99
+2023-12-27   12.43
+2023-12-28   12.47
+2023-12-29   12.45
+2024-01-01     NaN
+
+[8870 rows x 1 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>note that VIX is in annual and in standard deviation space.</p>
+<p>Lets put all this in yearly stadandar-deviation jsut to make sure the units are interpretable</p>
+<p>I need to divide VIX by 100–toget to be a number like 0.16, i.e. 16%</p>
+<p>the realized variance I need to first divide by a 100**2 ( returns were in %, so a 10, means 10%), and then multiply by 12 (since it was monthly), and finally square-root it since it was in variance space</p>
+<p>If you are confuse while we divide by 10000 and not jsut 100, do the division in returns before computing any variance</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
+1926-08-31    0.104247
+1926-09-30    0.082386
+1926-10-31    0.144156
+1926-11-30    0.066006
+1926-12-31    0.072420
+                ...   
+2023-08-31    0.130037
+2023-09-30    0.113227
+2023-10-31    0.149390
+2023-11-30    0.133621
+2023-12-31    0.107392
+Freq: M, Name: RV1m, Length: 1169, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span><span class="o">=</span><span class="p">((</span><span class="n">market_RV</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vix_data</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">market_RV</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/ef80080c3f10800e45cfb2c903383ad8e50a8d8459d46df6b08f1b8885a40a3b.png" src="../../_images/ef80080c3f10800e45cfb2c903383ad8e50a8d8459d46df6b08f1b8885a40a3b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove missing values</span>
+
+<span class="n">_temp</span><span class="o">=</span><span class="n">market_RV</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Add constant term</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">_temp</span><span class="p">[[</span><span class="s1">&#39;RV1ml1&#39;</span><span class="p">,</span><span class="s1">&#39;RV5dl1&#39;</span><span class="p">,</span><span class="s1">&#39;VIXCLS&#39;</span><span class="p">]]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Fit the regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">_temp</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">results4</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">missing</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print the regression results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results4</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                   RV1m   R-squared:                       0.692
+Model:                            OLS   Adj. R-squared:                  0.689
+Method:                 Least Squares   F-statistic:                     211.0
+Date:                Wed, 20 Mar 2024   Prob (F-statistic):           9.26e-72
+Time:                        17:19:22   Log-Likelihood:                 514.72
+No. Observations:                 286   AIC:                            -1021.
+Df Residuals:                     282   BIC:                            -1007.
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const         -0.0266      0.004     -7.227      0.000      -0.034      -0.019
+RV1ml1        -0.1907      0.055     -3.472      0.001      -0.299      -0.083
+RV5dl1         1.6765      0.330      5.086      0.000       1.028       2.325
+VIXCLS         1.2553      0.084     14.921      0.000       1.090       1.421
+==============================================================================
+Omnibus:                      350.069   Durbin-Watson:                   1.490
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            50155.165
+Skew:                           5.047   Prob(JB):                         0.00
+Kurtosis:                      67.085   Cond. No.                         141.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Huge gain?</p>
+<p>Is this all about the VIX? or is there something else going on?</p>
+<p>CLUE: What happen with the sample?</p>
 </section>
 <section id="the-garch-approach">
 <h3><span class="section-number">13.1.3. </span>The GARCH approach<a class="headerlink" href="#the-garch-approach" title="Permalink to this heading">#</a></h3>
@@ -556,6 +942,350 @@ document.write(`
 <li><p>Estimate GARCH for market</p></li>
 <li><p>Show T periods forecast</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arch</span> <span class="kn">import</span> <span class="n">arch_model</span>
+
+<span class="c1"># Assume returns is your time series data</span>
+<span class="c1"># returns = ...</span>
+<span class="n">monthly_returns</span><span class="o">=</span><span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">arch_model</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="n">vol</span><span class="o">=</span><span class="s1">&#39;Garch&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">model_fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration:      1,   Func. Count:      8,   Neg. LLF: 10513380094896.7
+Iteration:      2,   Func. Count:     21,   Neg. LLF: 3680.0476545078764
+Iteration:      3,   Func. Count:     32,   Neg. LLF: 53672074.53952524
+Iteration:      4,   Func. Count:     46,   Neg. LLF: 2561.382008452128
+Iteration:      5,   Func. Count:     57,   Neg. LLF: 200688.7081476923
+Iteration:      6,   Func. Count:     68,   Neg. LLF: -1556.8057480127136
+Iteration:      7,   Func. Count:     77,   Neg. LLF: -1866.7965613782387
+Iteration:      8,   Func. Count:     85,   Neg. LLF: -1930.3317277328806
+Iteration:      9,   Func. Count:     93,   Neg. LLF: -1904.4147213452775
+Iteration:     10,   Func. Count:    101,   Neg. LLF: -1938.31504212355
+Iteration:     11,   Func. Count:    108,   Neg. LLF: -1938.8781092553188
+Iteration:     12,   Func. Count:    115,   Neg. LLF: -1939.495423464682
+Iteration:     13,   Func. Count:    122,   Neg. LLF: -1939.6484599350388
+Iteration:     14,   Func. Count:    129,   Neg. LLF: -1939.7178353214986
+Iteration:     15,   Func. Count:    136,   Neg. LLF: -1939.7202975044122
+Iteration:     16,   Func. Count:    143,   Neg. LLF: -1939.7212430899406
+Iteration:     17,   Func. Count:    150,   Neg. LLF: -1939.7212905896874
+Iteration:     18,   Func. Count:    157,   Neg. LLF: -1939.7212978200887
+Iteration:     19,   Func. Count:    163,   Neg. LLF: -1939.7212976575488
+Optimization terminated successfully    (Exit mode 0)
+            Current function value: -1939.7212978200887
+            Iterations: 20
+            Function evaluations: 163
+            Gradient evaluations: 19
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\univariate\base.py:311: DataScaleWarning: y is poorly scaled, which may affect convergence of the optimizer when
+estimating the model parameters. The scale of y is 0.002851. Parameter
+estimation work better when this value is between 1 and 1000. The recommended
+rescaling is 10 * y.
+
+This warning can be disabled by either rescaling y before initializing the
+model or by setting rescale=False.
+
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_html"><table class="simpletable">
+<caption>Constant Mean - GARCH Model Results</caption>
+<tr>
+  <th>Dep. Variable:</th>       <td>Mkt-RF</td>       <th>  R-squared:         </th>  <td>   0.000</td> 
+</tr>
+<tr>
+  <th>Mean Model:</th>       <td>Constant Mean</td>   <th>  Adj. R-squared:    </th>  <td>   0.000</td> 
+</tr>
+<tr>
+  <th>Vol Model:</th>            <td>GARCH</td>       <th>  Log-Likelihood:    </th> <td>   1939.72</td>
+</tr>
+<tr>
+  <th>Distribution:</th>        <td>Normal</td>       <th>  AIC:               </th> <td>  -3867.44</td>
+</tr>
+<tr>
+  <th>Method:</th>        <td>Maximum Likelihood</td> <th>  BIC:               </th> <td>  -3837.05</td>
+</tr>
+<tr>
+  <th></th>                        <td></td>          <th>  No. Observations:  </th>    <td>1170</td>   
+</tr>
+<tr>
+  <th>Date:</th>           <td>Wed, Mar 20 2024</td>  <th>  Df Residuals:      </th>    <td>1169</td>   
+</tr>
+<tr>
+  <th>Time:</th>               <td>17:31:23</td>      <th>  Df Model:          </th>      <td>1</td>    
+</tr>
+</table>
+<table class="simpletable">
+<caption>Mean Model</caption>
+<tr>
+   <td></td>     <th>coef</th>     <th>std err</th>      <th>t</th>       <th>P>|t|</th>     <th>95.0% Conf. Int.</th>   
+</tr>
+<tr>
+  <th>mu</th> <td>8.0713e-03</td> <td>1.240e-03</td> <td>    6.508</td> <td>7.615e-11</td> <td>[5.641e-03,1.050e-02]</td>
+</tr>
+</table>
+<table class="simpletable">
+<caption>Volatility Model</caption>
+<tr>
+      <td></td>        <th>coef</th>     <th>std err</th>      <th>t</th>       <th>P>|t|</th>     <th>95.0% Conf. Int.</th>   
+</tr>
+<tr>
+  <th>omega</th>    <td>7.5979e-05</td> <td>3.309e-05</td> <td>    2.296</td> <td>2.168e-02</td> <td>[1.112e-05,1.408e-04]</td>
+</tr>
+<tr>
+  <th>alpha[1]</th> <td>    0.1395</td> <td>3.663e-02</td> <td>    3.807</td> <td>1.406e-04</td>  <td>[6.767e-02,  0.211]</td> 
+</tr>
+<tr>
+  <th>beta[1]</th>  <td>    0.8386</td> <td>    0.367</td> <td>    2.282</td> <td>2.247e-02</td>   <td>[  0.118,  1.559]</td>  
+</tr>
+<tr>
+  <th>beta[2]</th>    <td>0.0000</td>   <td>    0.545</td>   <td>0.000</td>   <td>    1.000</td>   <td>[ -1.069,  1.069]</td>  
+</tr>
+<tr>
+  <th>beta[3]</th>    <td>0.0000</td>   <td>    0.286</td>   <td>0.000</td>   <td>    1.000</td>   <td>[ -0.561,  0.561]</td>  
+</tr>
+</table><br/><br/>Covariance estimator: robust</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is the model best estimate of volatility at a given point in time</span>
+<span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">conditional_volatility</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="c1"># If we want next period volatility</span>
+
+<span class="n">forecasts</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Get the variance</span>
+<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span><span class="o">*</span><span class="mi">12</span>
+
+<span class="c1"># Get the standard deviation (volatility) by taking the square root of the variance</span>
+<span class="p">((</span><span class="n">variance_forecast</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\__future__\_utility.py:11: FutureWarning: 
+The default for reindex is True. After September 2021 this will change to
+False. Set reindex to True or False to silence this message. Alternatively,
+you can use the import comment
+
+from arch.__future__ import reindexing
+
+to globally set reindex to True and silence this warning.
+
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/8b83993ca5d990f64dbc5560f085750f5daef066eedb36315036162d39463d9e.png" src="../../_images/8b83993ca5d990f64dbc5560f085750f5daef066eedb36315036162d39463d9e.png" />
+</div>
+</div>
+<p>Basically on top of each other</p>
+<p>Lets look at how it forecasts for a given date how volatiltiy will behave many month in the future</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">forecasts</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>
+
+<span class="c1"># Get the variance</span>
+<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span>
+
+<span class="c1"># Get the standard deviation (volatility) by taking the square root of the variance</span>
+<span class="n">volatility_forecast</span> <span class="o">=</span> <span class="p">(</span><span class="n">variance_forecast</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="c1"># Print the 3-month ahead forecasted volatility for all data points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">volatility_forecast</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-03&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\__future__\_utility.py:11: FutureWarning: 
+The default for reindex is True. After September 2021 this will change to
+False. Set reindex to True or False to silence this message. Alternatively,
+you can use the import comment
+
+from arch.__future__ import reindexing
+
+to globally set reindex to True and silence this warning.
+
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19a4956e070&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/5a6a09c0e689c48ab738d1145b0430f02dc061442e64458fa1e5e20e1dc694d7.png" src="../../_images/5a6a09c0e689c48ab738d1145b0430f02dc061442e64458fa1e5e20e1dc694d7.png" />
+</div>
+</div>
+<p>Which one is better?</p>
+<p>different approaches to deal with this</p>
+<p>There is a whole field dedicated to forecasting</p>
+<p>But the basic idea is simple</p>
+<p>You wan to have some penalty for it: What is the cost of getting it wrong?</p>
+<p>We could simply have a penalty:</p>
+<div class="math notranslate nohighlight">
+\[\gamma E[(Variance(model)-Variance(Truth))^2]\]</div>
+<p>Basically this the “Mean-Squared Error” approach to evaluating forecasts</p>
+<p>Here we need some estimate of the true variance</p>
+<p>Below we assume it is the realized variance</p>
+<p>It is very important that they are in the same units!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the model that that uses VIX</span>
+
+<span class="nb">print</span><span class="p">(((</span><span class="n">results4</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">-</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1"># divide by the variable variance to have a sense of how big are your mistakes!</span>
+
+<span class="c1"># tbhis is the model that use 5 days and 1 month lagged RV (but much longer sample!)</span>
+<span class="nb">print</span><span class="p">(((</span><span class="n">results3</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="o">-</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4051535764714756
+0.6810322727264222
+</pre></div>
+</div>
+</div>
+</div>
+<p>How do you make it more comparable?</p>
+<p>Lets add the GARCH to the mix</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Get the variance</span>
+<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span><span class="o">*</span><span class="mi">12</span>
+
+<span class="c1"># check units!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">variance_forecast</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>h.1    0.035207
+dtype: float64
+0.030773669974337045
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\__future__\_utility.py:11: FutureWarning: 
+The default for reindex is True. After September 2021 this will change to
+False. Set reindex to True or False to silence this message. Alternatively,
+you can use the import comment
+
+from arch.__future__ import reindexing
+
+to globally set reindex to True and silence this warning.
+
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(((</span><span class="n">variance_forecast</span><span class="p">[</span><span class="s1">&#39;h.1&#39;</span><span class="p">]</span><span class="o">-</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6654570726042942
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that to make it comparable we should look at similar samples.</p>
+<p>Why is that? How would you do that?</p>
+<p>A cool thing is that we can be sharper in our context.</p>
+<p>If we are willing to assume the investor has mean-variance preferences</p>
+<div class="math notranslate nohighlight">
+\[E[xR]-\frac{\gamma}{2}Var(xR)\]</div>
+<p>Then the utility cost of believing the variance is V1 when the truth is V2 is</p>
+<p>just the difference in utilities</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2\gamma}\mu^2(\frac{V1-V2}{\sqrt{V2}V1})^2\]</div>
+<p>We can then normalize by the utility we would get if we knew then right variance</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{2\gamma}\frac{\mu^2}{V2}\]</div>
+<p>and we get</p>
+<div class="math notranslate nohighlight">
+\[(\frac{V1-V2}{V_1})^2\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+
+<span class="n">V1</span><span class="o">=</span><span class="n">variance_forecast</span><span class="p">[</span><span class="s1">&#39;h.1&#39;</span><span class="p">]</span>
+<span class="n">V2</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">V2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+
+<span class="n">V1</span><span class="o">=</span><span class="n">results4</span><span class="o">.</span><span class="n">fittedvalues</span>
+<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+
+<span class="n">V1</span><span class="o">=</span><span class="n">results3</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span>
+<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+
+<span class="n">V1</span><span class="o">=</span><span class="n">results2</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">252</span>
+<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+
+<span class="n">V1</span><span class="o">=</span><span class="n">results1</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">252</span>
+<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03520698196484563
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.030773669974337045
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8157334674506211
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03498733006993004
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>733.6436990346128
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03077366997433707
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8520782506437237
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6472175563636362
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9207099695425797
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6462470694610781
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9221982108896982
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="dynamic-portfolios">
