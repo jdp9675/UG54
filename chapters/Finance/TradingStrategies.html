@@ -661,7 +661,7 @@ memory usage: 30.3 KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Estimate moments up to 1973</span>
-<span class="n">Endofsample</span><span class="o">=</span><span class="mi">1987</span>
+<span class="n">Endofsample</span><span class="o">=</span><span class="mi">1973</span>
 <span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="nb">str</span><span class="p">(</span><span class="n">Endofsample</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">CovRe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="nb">str</span><span class="p">(</span><span class="n">Endofsample</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
 
@@ -706,28 +706,28 @@ memory usage: 30.3 KB
     <tr style="text-align: right;">
       <th></th>
       <th>Fullsample</th>
-      <th>Estimation_pre1987</th>
-      <th>test_pos1987</th>
+      <th>Estimation_pre1973</th>
+      <th>test_pos1973</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>avgreturn</th>
       <td>0.085055</td>
-      <td>0.077184</td>
-      <td>0.059583</td>
+      <td>0.102715</td>
+      <td>-0.014757</td>
     </tr>
     <tr>
       <th>volatility</th>
       <td>0.150000</td>
       <td>0.150000</td>
-      <td>0.208493</td>
+      <td>0.284975</td>
     </tr>
     <tr>
       <th>shaperatio</th>
       <td>0.567030</td>
-      <td>0.514557</td>
-      <td>0.285780</td>
+      <td>0.684767</td>
+      <td>-0.051783</td>
     </tr>
   </tbody>
 </table>
@@ -747,89 +747,6 @@ memory usage: 30.3 KB
 <p>A more sophisticated and also more realistic description of a trading strategy uses the concept of a rolling estimation sample</p>
 <p>Basically you start in some date 1973, build you portfolio and hold it for a month, and each month that passes you re-estimate your weights and again hold the new portfolio for another month</p>
 <p>So you are always using data up to month t and holding the position in date t+1.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rp</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-
-<span class="c1"># I will start building portfolios in the end of 1972 so my first return will be january 1973 </span>
-<span class="c1"># and will use data up do december 1972</span>
-<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">Re</span><span class="p">[</span><span class="s1">&#39;1973-1&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-    <span class="c1"># I am using DateOffset function to tell python to stop on month before </span>
-    <span class="c1"># so the estimation sample will be all months up to one month before the return that I </span>
-    <span class="c1">#I will be trading</span>
-    <span class="c1"># this guarantees the strategy is VALID with respect to information</span>
-    <span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="n">CovRe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
-<span class="c1"># construct weights and normalize them so the have desired volatility</span>
-    <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span> <span class="p">(</span><span class="n">Targetvol</span><span class="o">/</span><span class="p">(</span><span class="n">ERe</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="c1">#store the strategy returns of the relevant month</span>
-    <span class="n">Rp</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="o">=</span><span class="n">X</span> <span class="o">@</span> <span class="n">Re</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span>
-
-<span class="c1"># store results for out of sample period</span>
-<span class="n">Results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;avgreturn&#39;</span><span class="p">,</span><span class="s1">&#39;test_rolling&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Rp</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span>
-<span class="n">Results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;volatility&#39;</span><span class="p">,</span><span class="s1">&#39;test_rolling&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Rp</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
-<span class="n">Results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;shaperatio&#39;</span><span class="p">,</span><span class="s1">&#39;test_rolling&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Rp</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">/</span><span class="p">(</span><span class="n">Rp</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">Results</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Fullsample</th>
-      <th>Estimation_pre1987</th>
-      <th>test_pos1987</th>
-      <th>test_rolling</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>avgreturn</th>
-      <td>0.085055</td>
-      <td>0.077184</td>
-      <td>0.059583</td>
-      <td>0.063920</td>
-    </tr>
-    <tr>
-      <th>volatility</th>
-      <td>0.150000</td>
-      <td>0.150000</td>
-      <td>0.208493</td>
-      <td>0.181048</td>
-    </tr>
-    <tr>
-      <th>shaperatio</th>
-      <td>0.567030</td>
-      <td>0.514557</td>
-      <td>0.285780</td>
-      <td>0.353057</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<ul class="simple">
-<li><p>How would you evaluate if this was a good strategy?</p></li>
-<li><p>It certainly way worse than the full sample? But is it good enough? Is it worth pursuing?</p></li>
-<li><p>How to evaluate it?</p></li>
-</ul>
 </section>
 <section id="garbage-in-garbage-out">
 <h2><span class="section-number">7.3. </span>Garbage in, Garbage out<a class="headerlink" href="#garbage-in-garbage-out" title="Permalink to this heading">#</a></h2>
@@ -992,7 +909,7 @@ memory usage: 30.3 KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected to get given data: 0.04852462499115859
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected to get given data: 0.04852462499115857
 Will actually get given the truth:0.02432653824907584
 </pre></div>
 </div>
@@ -1058,19 +975,6 @@ Will actually get given the truth:0.02432653824907584
 <span class="c1"># 4. ret,retx, shrout,  prc, are the stock return, the stock return excluding dividends, number of shares outstanding, and price</span>
 
 <span class="c1"># 5. date is the trading date of the return</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter your WRDS username [Alan.Moreira]: moreira5
-Enter your password: ···········
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
-You can find more info here:
-https://www.postgresql.org/docs/9.5/static/libpq-pgpass.html.
-Loading library list...
-Done
 </pre></div>
 </div>
 </div>

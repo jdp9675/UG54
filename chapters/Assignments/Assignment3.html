@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Assignments/Assignment3';</script>
     <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Assignments/Assignment3.html" />
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
@@ -484,14 +486,306 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercises">
 <h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
-<p>Load some value portfolio–perhaps E/P from french</p>
-<p>Look at premium</p>
-<p>Look at betas</p>
-<p>do in a sample where there is premium and capm does not work</p>
-<p>Add HML factor</p>
-<p>discuss exposure</p>
-<p>Look at residuals</p>
-<p>look at hedge portfolio</p>
+<p><strong>Exercise 1</strong></p>
+<p>Lets start by importing our data.</p>
+<p>We will import monthly data on the five factor model.</p>
+<p>You should go to Ken French website and figure out the name of the data set.</p>
+<p>An alternative way is to use</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">pandas_datareader.famafrench</span> <span class="pre">import</span> <span class="pre">get_available_datasets</span></code></p>
+<p>And call get_available_datasets to see the name of the different data set available</p>
+<p>TIP: The data set should have 7 columns: Date, factors and the risk-free rate</p>
+<p>Also note that there is a lot of stuff on a given file, i.e., <code class="docutils literal notranslate"><span class="pre">ds</span></code> below will contain multiple datasets associated with this dataset you choose</p>
+<p>you have to choose the right one–the one that contains monthly return data!</p>
+<p>Finally make sure the index is in the datetime format</p>
+<p>Here is the code to get you started!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">___</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="n">_</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">____</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">____</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">())</span>
+
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1926</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># this tell which month to start</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_5_Factors_2x3&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">())</span>
+
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1963-07-01</th>
+      <td>-0.39</td>
+      <td>-0.41</td>
+      <td>-0.97</td>
+      <td>0.68</td>
+      <td>-1.18</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <th>1963-08-01</th>
+      <td>5.07</td>
+      <td>-0.80</td>
+      <td>1.80</td>
+      <td>0.36</td>
+      <td>-0.35</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>1963-09-01</th>
+      <td>-1.57</td>
+      <td>-0.52</td>
+      <td>0.13</td>
+      <td>-0.71</td>
+      <td>0.29</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <th>1963-10-01</th>
+      <td>2.53</td>
+      <td>-1.39</td>
+      <td>-0.10</td>
+      <td>2.80</td>
+      <td>-2.01</td>
+      <td>0.29</td>
+    </tr>
+    <tr>
+      <th>1963-11-01</th>
+      <td>-0.85</td>
+      <td>-0.88</td>
+      <td>1.75</td>
+      <td>-0.51</td>
+      <td>2.24</td>
+      <td>0.27</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2023-09-01</th>
+      <td>-5.24</td>
+      <td>-1.80</td>
+      <td>1.52</td>
+      <td>1.86</td>
+      <td>-0.83</td>
+      <td>0.43</td>
+    </tr>
+    <tr>
+      <th>2023-10-01</th>
+      <td>-3.19</td>
+      <td>-4.04</td>
+      <td>0.19</td>
+      <td>2.46</td>
+      <td>-0.66</td>
+      <td>0.47</td>
+    </tr>
+    <tr>
+      <th>2023-11-01</th>
+      <td>8.84</td>
+      <td>-0.12</td>
+      <td>1.64</td>
+      <td>-3.91</td>
+      <td>-1.00</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <th>2023-12-01</th>
+      <td>4.85</td>
+      <td>7.32</td>
+      <td>4.93</td>
+      <td>-3.06</td>
+      <td>1.32</td>
+      <td>0.43</td>
+    </tr>
+    <tr>
+      <th>2024-01-01</th>
+      <td>0.70</td>
+      <td>-5.73</td>
+      <td>-2.39</td>
+      <td>0.68</td>
+      <td>-0.95</td>
+      <td>0.47</td>
+    </tr>
+  </tbody>
+</table>
+<p>727 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p><strong>Exercise 2</strong></p>
+<p>What are the units of the data?  In you invested 100 dollars in the start of the sample in the market portfolio. How much model would you have at the end of 2023 (recall that the market portfolio is not a factor, but can be created by combining it with the risk-free rate )</p>
+<p><strong>Exercise 3</strong></p>
+<p>I would like you to build on the portfolio construction we did on the Trading Strategies lecture</p>
+<p>Let’s start by computing the mean-variance optimal portfolio across these five factors</p>
+<p>I would like you start by using the full sample to estiamte the weights and the leverage up the weights so this portfolio has the same in sample volatiltiy as the market portfolio</p>
+<p>report weights and  the Sharpe ratio of the MVE portfolio</p>
+<p><strong>Exercise 4</strong></p>
+<p>Lets construct weights for four alternative strategies (using the full sample)</p>
+<ol class="arabic simple">
+<li><p>Invest in the market portfolio in the whole sample</p></li>
+<li><p>Invest equally in each factor</p></li>
+<li><p>Risk Parity 1: Assume expected returns of each factor are of the form <span class="math notranslate nohighlight">\(E[R^i_t]=c*\sigma(R^i_t)\)</span> so they are exactly proportional to their standard deviation. Meaning that instead of estimating expected returns you simply use the vector of standard deviations <span class="math notranslate nohighlight">\(c[\sigma(R^1_t),\sigma(R^2_t),\sigma(R^3_t),..]\)</span>. Apply the MVE formula given the estimated covariance matrix and these “estimates” for expected returns</p></li>
+<li><p>Risk Parity 2: In addition to assuming that the off-diagonal terms of the covariance matrix are zero. Assuming that all factors have zero correlation with each other</p></li>
+</ol>
+<p><strong>Exercise 5</strong></p>
+<p>Compute the full sample Sharpe Ratio of all five trading strategies.</p>
+<p>Discuss what we can learn and not learn from such exercise. What are the issues with interpreting the differences in performance?</p>
+<p><strong>Exercise 6</strong></p>
+<p>Lets pursue a rolling approach to evaluate these strategies.</p>
+<p>I would like you to split the sample down the middle–how to find the middle of the sample?</p>
+<p>And then proceed by estimating in the first half, then looking at the performance in the following month.</p>
+<p>Then adding this month to the estimation sample, and so on.</p>
+<p>I provide code below that constructs this for the standard MVE strategy.</p>
+<p>I advise you to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">Rp</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[],</span><span class="n">columns</span><span class="o">=</span><span class="p">[],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">Re</span><span class="o">=</span><span class="n">__</span>
+<span class="n">start_date</span><span class="o">=</span><span class="n">__</span>
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">Re</span><span class="p">[</span><span class="n">start_date</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="c1"># I am using DateOffset function to tell python to stop on month before </span>
+    <span class="c1"># so the estimation sample will be all months up to one month before the return that I </span>
+    <span class="c1">#I will be trading</span>
+    <span class="c1"># this guarantees the strategy is VALID with respect to information</span>
+    <span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">CovRe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+    <span class="n">Target_vol</span><span class="o">=</span><span class="n">___</span>
+
+    <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span> <span class="p">(</span><span class="n">Targetvol</span><span class="o">/</span><span class="p">(</span><span class="n">ERe</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1">#store the strategy returns of the relevant month</span>
+    <span class="n">Rp</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;MVE&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">X</span> <span class="o">@</span> <span class="n">Re</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Rp</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># I will start building portfolios in the end of 1972 so my first return will be january 1973 </span>
+<span class="c1"># and will use data up do december 1972</span>
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">Re</span><span class="p">[</span><span class="s1">&#39;1973-1&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="c1"># I am using DateOffset function to tell python to stop on month before </span>
+    <span class="c1"># so the estimation sample will be all months up to one month before the return that I </span>
+    <span class="c1">#I will be trading</span>
+    <span class="c1"># this guarantees the strategy is VALID with respect to information</span>
+    <span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">CovRe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+<span class="c1"># construct weights and normalize them so the have desired volatility</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span> <span class="p">(</span><span class="n">Targetvol</span><span class="o">/</span><span class="p">(</span><span class="n">ERe</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1">#store the strategy returns of the relevant month</span>
+    <span class="n">Rp</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="o">=</span><span class="n">X</span> <span class="o">@</span> <span class="n">Re</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span>
+
+<span class="c1"># store results for out of sample period</span>
+<span class="n">Results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;avgreturn&#39;</span><span class="p">,</span><span class="s1">&#39;test_rolling&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Rp</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span>
+<span class="n">Results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;volatility&#39;</span><span class="p">,</span><span class="s1">&#39;test_rolling&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Rp</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">Results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;shaperatio&#39;</span><span class="p">,</span><span class="s1">&#39;test_rolling&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Rp</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">/</span><span class="p">(</span><span class="n">Rp</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">Results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 7</strong></p>
+<p>Compute their Sharpe Ratios, volatilities, and expected returns</p>
+<p>Is there a conclusion? What statistical test can you to see if the differences in expected returns is statistically significant?</p>
+<p>Would that be enough to know that one of them is better strategy?  What source of difference of expected returns might not be so interesting for an investor</p>
+<p><strong>Exercise 8</strong></p>
+<p>Lets take a step back and simply estimate the CAPM betas of the different factors–using ‘MKT-RF’ as a proxy for market.</p>
+<p>So I want you to run a time-series regression of each factor on the market portfolio.</p>
+<p>Report the CAPM betas of each factor.</p>
+<p>Do the same for the trading strategies that you constructed.</p>
+<p>Discuss what these findings imply for the discussion in exercise 7. How these different betas might impact your evalaution?</p>
+<p>Please find code below that estimates the regression and reports the beta</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="c1"># Define the dependent variable </span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">_</span><span class="p">]</span>
+
+<span class="c1"># Define the independent variable</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Add a constant term to the independent variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Fit the regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Print the regression results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="n">beta</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+</pre></div>
+</div>
+<p><strong>Exercise 8</strong></p>
+<p>Lets construct market hedged factors!</p>
+<p>Say for each factor factor, you have the returns <span class="math notranslate nohighlight">\(R^{factor}_t\)</span> ina dataframe. You also have it’s beta <span class="math notranslate nohighlight">\(\beta\)</span>, and the returns on the market portfolio (the excess return to be precise) <span class="math notranslate nohighlight">\(R^{mkt-rf}_t\)</span></p>
+<p>So you cna construct the market hedged as</p>
+<div class="math notranslate nohighlight">
+\[R^{factor-market}_t=R^{factor}_t-\beta*R^{mkt-rf}_t\]</div>
+<p>Compute this for all other four factors</p>
+<p>Report means, standard deviations, and also the beta with respect to the market</p>
+<p><strong>Exercise 9</strong></p>
+<p>What is the interpretation of the mean return for the hedged portfolios? What is the interpretation of the volatility?</p>
+<p>In what sense the Sharpe ratio of the hedged factor might be a better guide then their individual Sharpe Ratios?</p>
+<p><strong>Exercise 10</strong></p>
+<p>Lets construct the correlation of residuals.</p>
+<p>you can do that by either getting the residuals of the regression you did (model.resid)</p>
+<p>Or more easily put all the hedged factors in one dataframe and compute the correlation across hedged factors</p>
+<p>When you compare with the correlation of the raw factors what do you notice? Why that happen?</p>
+<p>What the fact that it didn’t go all the way to zero might tell us?</p>
 </section>
 
     <script type="text/x-thebe-config">
