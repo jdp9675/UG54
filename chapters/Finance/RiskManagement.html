@@ -948,8 +948,9 @@ Notes:
 
 <span class="c1"># Assume returns is your time series data</span>
 <span class="c1"># returns = ...</span>
-<span class="n">monthly_returns</span><span class="o">=</span><span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">arch_model</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="n">vol</span><span class="o">=</span><span class="s1">&#39;Garch&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">monthly_returns</span><span class="o">=</span><span class="n">market_factor</span><span class="c1">#.resample(&#39;M&#39;).agg(lambda x: np.prod(1+x/100)-1)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">arch_model</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="n">vol</span><span class="o">=</span><span class="s1">&#39;Garch&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="n">model_fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
@@ -957,41 +958,46 @@ Notes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration:      1,   Func. Count:      8,   Neg. LLF: 10513380094896.7
-Iteration:      2,   Func. Count:     21,   Neg. LLF: 3680.0476545078764
-Iteration:      3,   Func. Count:     32,   Neg. LLF: 53672074.53952524
-Iteration:      4,   Func. Count:     46,   Neg. LLF: 2561.382008452128
-Iteration:      5,   Func. Count:     57,   Neg. LLF: 200688.7081476923
-Iteration:      6,   Func. Count:     68,   Neg. LLF: -1556.8057480127136
-Iteration:      7,   Func. Count:     77,   Neg. LLF: -1866.7965613782387
-Iteration:      8,   Func. Count:     85,   Neg. LLF: -1930.3317277328806
-Iteration:      9,   Func. Count:     93,   Neg. LLF: -1904.4147213452775
-Iteration:     10,   Func. Count:    101,   Neg. LLF: -1938.31504212355
-Iteration:     11,   Func. Count:    108,   Neg. LLF: -1938.8781092553188
-Iteration:     12,   Func. Count:    115,   Neg. LLF: -1939.495423464682
-Iteration:     13,   Func. Count:    122,   Neg. LLF: -1939.6484599350388
-Iteration:     14,   Func. Count:    129,   Neg. LLF: -1939.7178353214986
-Iteration:     15,   Func. Count:    136,   Neg. LLF: -1939.7202975044122
-Iteration:     16,   Func. Count:    143,   Neg. LLF: -1939.7212430899406
-Iteration:     17,   Func. Count:    150,   Neg. LLF: -1939.7212905896874
-Iteration:     18,   Func. Count:    157,   Neg. LLF: -1939.7212978200887
-Iteration:     19,   Func. Count:    163,   Neg. LLF: -1939.7212976575488
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration:      1,   Func. Count:     29,   Neg. LLF: 87280152.13492987
+Iteration:      2,   Func. Count:     62,   Neg. LLF: 3101026.2797004567
+Iteration:      3,   Func. Count:     92,   Neg. LLF: 72273.85519082382
+Iteration:      4,   Func. Count:    121,   Neg. LLF: 61029.03605963528
+Iteration:      5,   Func. Count:    150,   Neg. LLF: 57262.68006262315
+Iteration:      6,   Func. Count:    179,   Neg. LLF: 54292.69272537783
+Iteration:      7,   Func. Count:    208,   Neg. LLF: 38605.633297890476
+Iteration:      8,   Func. Count:    238,   Neg. LLF: 50356.14610061475
+Iteration:      9,   Func. Count:    268,   Neg. LLF: 41564.60189180337
+Iteration:     10,   Func. Count:    298,   Neg. LLF: 32993.7955221611
+Iteration:     11,   Func. Count:    327,   Neg. LLF: 33216.99354341255
+Iteration:     12,   Func. Count:    356,   Neg. LLF: 31750.055176004185
+Iteration:     13,   Func. Count:    385,   Neg. LLF: 31917.328606507836
+Iteration:     14,   Func. Count:    414,   Neg. LLF: 31949.548379002958
+Iteration:     15,   Func. Count:    443,   Neg. LLF: 31642.063906500473
+Iteration:     16,   Func. Count:    472,   Neg. LLF: 31723.515581103155
+Iteration:     17,   Func. Count:    501,   Neg. LLF: 31610.128951485793
+Iteration:     18,   Func. Count:    530,   Neg. LLF: 31762.902310908597
+Iteration:     19,   Func. Count:    559,   Neg. LLF: 31598.114267905567
+Iteration:     20,   Func. Count:    588,   Neg. LLF: 31592.475334015817
+Iteration:     21,   Func. Count:    617,   Neg. LLF: 31604.00898495259
+Iteration:     22,   Func. Count:    646,   Neg. LLF: 31587.551561909095
+Iteration:     23,   Func. Count:    674,   Neg. LLF: 31595.557250378937
+Iteration:     24,   Func. Count:    703,   Neg. LLF: 31588.38913665318
+Iteration:     25,   Func. Count:    732,   Neg. LLF: 31587.098325900584
+Iteration:     26,   Func. Count:    760,   Neg. LLF: 31587.390984344733
+Iteration:     27,   Func. Count:    789,   Neg. LLF: 31586.963758821294
+Iteration:     28,   Func. Count:    817,   Neg. LLF: 31586.849975719997
+Iteration:     29,   Func. Count:    845,   Neg. LLF: 31586.76201261629
+Iteration:     30,   Func. Count:    873,   Neg. LLF: 31586.75673644639
+Iteration:     31,   Func. Count:    901,   Neg. LLF: 31586.756109855833
+Iteration:     32,   Func. Count:    929,   Neg. LLF: 31586.754926675374
+Iteration:     33,   Func. Count:    957,   Neg. LLF: 31586.754916098966
+Iteration:     34,   Func. Count:    985,   Neg. LLF: 31586.754914291363
+Iteration:     35,   Func. Count: 1.01e+03,   Neg. LLF: 34114.32911030575
 Optimization terminated successfully    (Exit mode 0)
-            Current function value: -1939.7212978200887
-            Iterations: 20
-            Function evaluations: 163
-            Gradient evaluations: 19
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\univariate\base.py:311: DataScaleWarning: y is poorly scaled, which may affect convergence of the optimizer when
-estimating the model parameters. The scale of y is 0.002851. Parameter
-estimation work better when this value is between 1 and 1000. The recommended
-rescaling is 10 * y.
-
-This warning can be disabled by either rescaling y before initializing the
-model or by setting rescale=False.
-
-  warnings.warn(
+            Current function value: 31586.754914290254
+            Iterations: 36
+            Function evaluations: 1019
+            Gradient evaluations: 35
 </pre></div>
 </div>
 <div class="output text_html"><table class="simpletable">
@@ -1003,22 +1009,22 @@ model or by setting rescale=False.
   <th>Mean Model:</th>       <td>Constant Mean</td>   <th>  Adj. R-squared:    </th>  <td>   0.000</td> 
 </tr>
 <tr>
-  <th>Vol Model:</th>            <td>GARCH</td>       <th>  Log-Likelihood:    </th> <td>   1939.72</td>
+  <th>Vol Model:</th>            <td>GARCH</td>       <th>  Log-Likelihood:    </th> <td>  -31586.8</td>
 </tr>
 <tr>
-  <th>Distribution:</th>        <td>Normal</td>       <th>  AIC:               </th> <td>  -3867.44</td>
+  <th>Distribution:</th>        <td>Normal</td>       <th>  AIC:               </th> <td>   63227.5</td>
 </tr>
 <tr>
-  <th>Method:</th>        <td>Maximum Likelihood</td> <th>  BIC:               </th> <td>  -3837.05</td>
+  <th>Method:</th>        <td>Maximum Likelihood</td> <th>  BIC:               </th> <td>   63447.6</td>
 </tr>
 <tr>
-  <th></th>                        <td></td>          <th>  No. Observations:  </th>    <td>1170</td>   
+  <th></th>                        <td></td>          <th>  No. Observations:  </th>    <td>25649</td>  
 </tr>
 <tr>
-  <th>Date:</th>           <td>Wed, Mar 20 2024</td>  <th>  Df Residuals:      </th>    <td>1169</td>   
+  <th>Date:</th>           <td>Wed, Mar 20 2024</td>  <th>  Df Residuals:      </th>    <td>25648</td>  
 </tr>
 <tr>
-  <th>Time:</th>               <td>17:31:23</td>      <th>  Df Model:          </th>      <td>1</td>    
+  <th>Time:</th>               <td>18:21:27</td>      <th>  Df Model:          </th>      <td>1</td>    
 </tr>
 </table>
 <table class="simpletable">
@@ -1027,41 +1033,104 @@ model or by setting rescale=False.
    <td></td>     <th>coef</th>     <th>std err</th>      <th>t</th>       <th>P>|t|</th>     <th>95.0% Conf. Int.</th>   
 </tr>
 <tr>
-  <th>mu</th> <td>8.0713e-03</td> <td>1.240e-03</td> <td>    6.508</td> <td>7.615e-11</td> <td>[5.641e-03,1.050e-02]</td>
+  <th>mu</th> <td>    0.0572</td> <td>1.607e-02</td> <td>    3.561</td> <td>3.692e-04</td> <td>[2.573e-02,8.872e-02]</td>
 </tr>
 </table>
 <table class="simpletable">
 <caption>Volatility Model</caption>
 <tr>
-      <td></td>        <th>coef</th>     <th>std err</th>      <th>t</th>       <th>P>|t|</th>     <th>95.0% Conf. Int.</th>   
+      <td></td>        <th>coef</th>     <th>std err</th>      <th>t</th>       <th>P>|t|</th>   <th>95.0% Conf. Int.</th> 
 </tr>
 <tr>
-  <th>omega</th>    <td>7.5979e-05</td> <td>3.309e-05</td> <td>    2.296</td> <td>2.168e-02</td> <td>[1.112e-05,1.408e-04]</td>
+  <th>omega</th>    <td>    0.0254</td> <td>    0.520</td> <td>4.894e-02</td> <td>    0.961</td> <td>[ -0.993,  1.044]</td>
 </tr>
 <tr>
-  <th>alpha[1]</th> <td>    0.1395</td> <td>3.663e-02</td> <td>    3.807</td> <td>1.406e-04</td>  <td>[6.767e-02,  0.211]</td> 
+  <th>alpha[1]</th> <td>    0.1217</td> <td>    0.185</td> <td>    0.658</td> <td>    0.511</td> <td>[ -0.241,  0.484]</td>
 </tr>
 <tr>
-  <th>beta[1]</th>  <td>    0.8386</td> <td>    0.367</td> <td>    2.282</td> <td>2.247e-02</td>   <td>[  0.118,  1.559]</td>  
+  <th>alpha[2]</th> <td>    0.0814</td> <td>    3.165</td> <td>2.572e-02</td> <td>    0.979</td> <td>[ -6.122,  6.285]</td>
 </tr>
 <tr>
-  <th>beta[2]</th>    <td>0.0000</td>   <td>    0.545</td>   <td>0.000</td>   <td>    1.000</td>   <td>[ -1.069,  1.069]</td>  
+  <th>alpha[3]</th> <td>5.3036e-03</td> <td>    3.403</td> <td>1.558e-03</td> <td>    0.999</td> <td>[ -6.665,  6.676]</td>
 </tr>
 <tr>
-  <th>beta[3]</th>    <td>0.0000</td>   <td>    0.286</td>   <td>0.000</td>   <td>    1.000</td>   <td>[ -0.561,  0.561]</td>  
+  <th>alpha[4]</th> <td>    0.0297</td> <td>    0.700</td> <td>4.244e-02</td> <td>    0.966</td> <td>[ -1.341,  1.401]</td>
+</tr>
+<tr>
+  <th>alpha[5]</th> <td>3.1291e-17</td> <td>    0.940</td> <td>3.330e-17</td> <td>    1.000</td> <td>[ -1.841,  1.841]</td>
+</tr>
+<tr>
+  <th>beta[1]</th>  <td>    0.0998</td> <td>   24.615</td> <td>4.055e-03</td> <td>    0.997</td> <td>[-48.145, 48.345]</td>
+</tr>
+<tr>
+  <th>beta[2]</th>  <td>    0.5224</td> <td>    9.778</td> <td>5.343e-02</td> <td>    0.957</td> <td>[-18.642, 19.687]</td>
+</tr>
+<tr>
+  <th>beta[3]</th>  <td>1.1263e-09</td> <td>   26.345</td> <td>4.275e-11</td> <td>    1.000</td> <td>[-51.635, 51.635]</td>
+</tr>
+<tr>
+  <th>beta[4]</th>  <td>4.1476e-17</td> <td>   13.226</td> <td>3.136e-18</td> <td>    1.000</td> <td>[-25.923, 25.923]</td>
+</tr>
+<tr>
+  <th>beta[5]</th>  <td>4.1688e-17</td> <td>    9.680</td> <td>4.307e-18</td> <td>    1.000</td> <td>[-18.973, 18.973]</td>
+</tr>
+<tr>
+  <th>beta[6]</th>  <td>1.0747e-09</td> <td>    1.492</td> <td>7.203e-10</td> <td>    1.000</td> <td>[ -2.924,  2.924]</td>
+</tr>
+<tr>
+  <th>beta[7]</th>  <td>    0.0612</td> <td>    2.199</td> <td>2.782e-02</td> <td>    0.978</td> <td>[ -4.249,  4.371]</td>
+</tr>
+<tr>
+  <th>beta[8]</th>  <td>5.2737e-10</td> <td>    8.097</td> <td>6.513e-11</td> <td>    1.000</td> <td>[-15.869, 15.869]</td>
+</tr>
+<tr>
+  <th>beta[9]</th>  <td>6.6717e-16</td> <td>    5.092</td> <td>1.310e-16</td> <td>    1.000</td> <td>[ -9.981,  9.981]</td>
+</tr>
+<tr>
+  <th>beta[10]</th> <td>5.7734e-16</td> <td>    7.192</td> <td>8.027e-17</td> <td>    1.000</td> <td>[-14.097, 14.097]</td>
+</tr>
+<tr>
+  <th>beta[11]</th> <td>8.0013e-16</td> <td>   14.039</td> <td>5.699e-17</td> <td>    1.000</td> <td>[-27.516, 27.516]</td>
+</tr>
+<tr>
+  <th>beta[12]</th> <td>1.2914e-10</td> <td>    6.491</td> <td>1.990e-11</td> <td>    1.000</td> <td>[-12.722, 12.722]</td>
+</tr>
+<tr>
+  <th>beta[13]</th> <td>6.1068e-16</td> <td>   22.102</td> <td>2.763e-17</td> <td>    1.000</td> <td>[-43.318, 43.318]</td>
+</tr>
+<tr>
+  <th>beta[14]</th> <td>7.0716e-16</td> <td>   14.228</td> <td>4.970e-17</td> <td>    1.000</td> <td>[-27.887, 27.887]</td>
+</tr>
+<tr>
+  <th>beta[15]</th> <td>8.4043e-16</td> <td>   15.379</td> <td>5.465e-17</td> <td>    1.000</td> <td>[-30.143, 30.143]</td>
+</tr>
+<tr>
+  <th>beta[16]</th> <td>8.4142e-16</td> <td>   13.782</td> <td>6.105e-17</td> <td>    1.000</td> <td>[-27.013, 27.013]</td>
+</tr>
+<tr>
+  <th>beta[17]</th> <td>9.0297e-16</td> <td>    3.195</td> <td>2.827e-16</td> <td>    1.000</td> <td>[ -6.261,  6.261]</td>
+</tr>
+<tr>
+  <th>beta[18]</th> <td>7.4625e-16</td> <td>    8.107</td> <td>9.205e-17</td> <td>    1.000</td> <td>[-15.890, 15.890]</td>
+</tr>
+<tr>
+  <th>beta[19]</th> <td>7.9076e-10</td> <td>    1.040</td> <td>7.602e-10</td> <td>    1.000</td> <td>[ -2.039,  2.039]</td>
+</tr>
+<tr>
+  <th>beta[20]</th> <td>    0.0566</td> <td>    3.499</td> <td>1.618e-02</td> <td>    0.987</td> <td>[ -6.801,  6.914]</td>
 </tr>
 </table><br/><br/>Covariance estimator: robust</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is the model best estimate of volatility at a given point in time</span>
-<span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">conditional_volatility</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">conditional_volatility</span><span class="o">*</span><span class="mi">252</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="c1"># If we want next period volatility</span>
 
 <span class="n">forecasts</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Get the variance</span>
-<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span><span class="o">*</span><span class="mi">12</span>
+<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span><span class="o">*</span><span class="mi">252</span>
 
 <span class="c1"># Get the standard deviation (volatility) by taking the square root of the variance</span>
 <span class="p">((</span><span class="n">variance_forecast</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
@@ -1084,7 +1153,7 @@ to globally set reindex to True and silence this warning.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/8b83993ca5d990f64dbc5560f085750f5daef066eedb36315036162d39463d9e.png" src="../../_images/8b83993ca5d990f64dbc5560f085750f5daef066eedb36315036162d39463d9e.png" />
+<img alt="../../_images/8ea861febb2ad11e3db6caa4c921cb14efe62c63c5aaf36b83236d0f4ddd0f89.png" src="../../_images/8ea861febb2ad11e3db6caa4c921cb14efe62c63c5aaf36b83236d0f4ddd0f89.png" />
 </div>
 </div>
 <p>Basically on top of each other</p>
@@ -1098,10 +1167,10 @@ to globally set reindex to True and silence this warning.
 <span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span>
 
 <span class="c1"># Get the standard deviation (volatility) by taking the square root of the variance</span>
-<span class="n">volatility_forecast</span> <span class="o">=</span> <span class="p">(</span><span class="n">variance_forecast</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="n">volatility_forecast</span> <span class="o">=</span> <span class="p">(</span><span class="n">variance_forecast</span><span class="o">*</span><span class="mi">252</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
 
 <span class="c1"># Print the 3-month ahead forecasted volatility for all data points</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">volatility_forecast</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-03&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">volatility_forecast</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-03-23&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1118,10 +1187,44 @@ to globally set reindex to True and silence this warning.
   warnings.warn(
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19a4956e070&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19a503e1370&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e13d0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e14f0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1610&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1730&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1850&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1970&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1a90&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1bb0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1cd0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e1df0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e13a0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e7040&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e7160&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e7280&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e73a0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e74c0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e75e0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e7700&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e7820&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e7940&gt;,
+ &lt;matplotlib.lines.Line2D at 0x19a503e7a60&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/5a6a09c0e689c48ab738d1145b0430f02dc061442e64458fa1e5e20e1dc694d7.png" src="../../_images/5a6a09c0e689c48ab738d1145b0430f02dc061442e64458fa1e5e20e1dc694d7.png" />
+<img alt="../../_images/599b6e0f709a2966ea392466a438c460320a28dd657e8fb99505a183615eb90d.png" src="../../_images/599b6e0f709a2966ea392466a438c460320a28dd657e8fb99505a183615eb90d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">volatility_forecast</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-03-20&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x19a50534dc0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/7bd70da172719271c9da895e9eeb74fbb7c8eef03f4af09ad5284c3ee9514bd4.png" src="../../_images/7bd70da172719271c9da895e9eeb74fbb7c8eef03f4af09ad5284c3ee9514bd4.png" />
 </div>
 </div>
 <p>Which one is better?</p>
@@ -1226,27 +1329,27 @@ to globally set reindex to True and silence this warning.
 <span class="n">V2</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">V2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+<span class="p">(((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1">#multiply to put in the same units</span>
 
 <span class="n">V1</span><span class="o">=</span><span class="n">results4</span><span class="o">.</span><span class="n">fittedvalues</span>
 <span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+<span class="p">(((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1">#multiply to put in the same units</span>
 
 <span class="n">V1</span><span class="o">=</span><span class="n">results3</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span>
 <span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+<span class="p">(((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1">#multiply to put in the same units</span>
 
-<span class="n">V1</span><span class="o">=</span><span class="n">results2</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">252</span>
+<span class="n">V1</span><span class="o">=</span><span class="n">results2</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span>
 <span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+<span class="p">(((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1">#multiply to put in the same units</span>
 
-<span class="n">V1</span><span class="o">=</span><span class="n">results1</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">252</span>
+<span class="n">V1</span><span class="o">=</span><span class="n">results1</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span>
 <span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
+<span class="p">(((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1">#multiply to put in the same units</span>
 </pre></div>
 </div>
 </div>
@@ -1257,31 +1360,31 @@ to globally set reindex to True and silence this warning.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.030773669974337045
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8157334674506211
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8157334674506211
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03498733006993004
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>733.6436990346128
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>733.6436990346128
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03077366997433707
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8520782506437237
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8520782506437237
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6472175563636362
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03081988363636368
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9207099695425797
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3072938841409907
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6462470694610781
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.03077366997433702
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9221982108896982
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.959125188899544
 </pre></div>
 </div>
 </div>
