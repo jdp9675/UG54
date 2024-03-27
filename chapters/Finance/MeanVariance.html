@@ -510,9 +510,6 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ \max_X E[X'R_T]~~~subject~~to~~~Var(X'R_T)\leq Vmax \]</div>
 <ul class="simple">
-<li><p>in mutual funds there is often a benchmark, say the S&amp;P 500 and the manager has a mandate to have a tracking error relative to the benchmark that is low enough, say <span class="math notranslate nohighlight">\(Tmax\)</span></p></li>
-<li><p>and the manager is compensated only with respect to the returns above this benchmark</p></li>
-<li><p>tracking error is the volatility of the portfolio relative to the benchmark: <span class="math notranslate nohighlight">\(\sqrt{var(X'R_T-R^{benchmark}_T)}\)</span></p></li>
 <li><p>thus lots of investment problems are versions of mean-variance</p></li>
 <li><p>often these investment problems have a variety of additional constraints</p>
 <ul>
@@ -812,6 +809,11 @@ BondxUS  0.000187  0.000264  0.000249  0.000422  0.000407
 </section>
 <section id="introducing-a-benchmark">
 <h2><span class="section-number">6.3. </span>Introducing a benchmark<a class="headerlink" href="#introducing-a-benchmark" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>in mutual funds there is often a benchmark, say the S&amp;P 500 and the manager has a mandate to have a tracking error relative to the benchmark that is low enough, say <span class="math notranslate nohighlight">\(Tmax\)</span></p></li>
+<li><p>and the manager is compensated only with respect to the returns above this benchmark</p></li>
+<li><p>tracking error is the volatility of the portfolio relative to the benchmark: <span class="math notranslate nohighlight">\(\sqrt{var(X'R_T-R^{benchmark}_T)}\)</span></p></li>
+</ul>
 <p>The manager problem is ro maximize benchmark adjusted returns subject to some tracking error constraint</p>
 <p><span class="math notranslate nohighlight">\( \max_X E[X'R_T-R^{benchmark}_T]\)</span> subject to <span class="math notranslate nohighlight">\(Var(X'R_T-R^{benchmark}_T)\leq Tmax\)</span></p>
 <p>Assuming benchmark is in set of traded assets, you car write</p>
@@ -835,7 +837,7 @@ BondxUS  0.000187  0.000264  0.000249  0.000422  0.000407
           <span class="s1">&#39;fun&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">})</span>
 
 <span class="n">X0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="o">-</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Xbenchmark</span><span class="o">=</span><span class="n">Xb</span><span class="p">),</span><span class="n">X0</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="n">solb</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="o">-</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Xbenchmark</span><span class="o">=</span><span class="n">Xb</span><span class="p">),</span><span class="n">X0</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">cons</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -851,26 +853,33 @@ BondxUS  0.000187  0.000264  0.000249  0.000422  0.000407
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#optimal weights</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Cove</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="c1">#optimal weights no benchmark</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-<span class="c1"># optimal expected return at the annual frequency</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-<span class="c1"># portfolio volatility pf optimal portfolio at the annual frequency</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">portfolio_variance</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="c1">#Trackign error</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">portfolio_variance</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">Xbenchmark</span><span class="o">=</span><span class="n">Xb</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="c1">#Benchmark adjsuted returns</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">Xbenchmark</span><span class="o">=</span><span class="n">Xb</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">))</span>
+<span class="c1">#optimal weights with benchmark</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solb</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.71916096  0.06129325  0.73328686 -0.28549667 -1.2282444 ]
-0.1768309850637644
-0.3251620933086093
-0.2000067906789743
-0.06264690469282155
-0.31322388844974003
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;MKTUS&#39;, &#39;BondUS&#39;, &#39;EM&#39;, &#39;MKTxUS&#39;, &#39;BondxUS&#39;], dtype=&#39;object&#39;)
+[ 0.65116149  0.38641724  0.83880728 -0.36993912 -0.50644688]
+[ 1.71916096  0.06129325  0.73328686 -0.28549667 -1.2282444 ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>What happen here? Why the position in the market went up? Is that what you would expect?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># optimal expected return at the annual frequency</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">solb</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+<span class="c1"># portfolio volatility pf optimal portfolio at the annual frequency</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">portfolio_variance</span><span class="p">(</span><span class="n">solb</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1">#Trackign error</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">portfolio_variance</span><span class="p">(</span><span class="n">solb</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">Xbenchmark</span><span class="o">=</span><span class="n">Xb</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1">#Benchmark adjsuted returns</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">portfolio_expected_return</span><span class="p">(</span><span class="n">solb</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">Xbenchmark</span><span class="o">=</span><span class="n">Xb</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
