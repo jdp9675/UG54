@@ -464,8 +464,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes-test">8.2.5.1. Application: What does Cathie Wood  Likes ? TEST</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">8.2.6. Benchmarking</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error">8.2.7. Tracking error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endogenous-benchmarking">8.2.6. “Endogenous” Benchmarking</a></li>
 </ul>
             </nav>
         </div>
@@ -2637,10 +2636,10 @@ memory usage: 71.7 KB
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>  <td>   1069.</td> 
 </tr>
 <tr>
-  <th>Date:</th>             <td>Fri, 02 Feb 2024</td> <th>  Prob (F-statistic):</th>   <td>  0.00</td>  
+  <th>Date:</th>             <td>Thu, 28 Mar 2024</td> <th>  Prob (F-statistic):</th>   <td>  0.00</td>  
 </tr>
 <tr>
-  <th>Time:</th>                 <td>11:34:48</td>     <th>  Log-Likelihood:    </th>  <td>  5908.9</td> 
+  <th>Time:</th>                 <td>16:24:08</td>     <th>  Log-Likelihood:    </th>  <td>  5908.9</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1804</td>      <th>  AIC:               </th> <td>-1.180e+04</td>
@@ -2705,23 +2704,17 @@ memory usage: 71.7 KB
 </ul>
 </section>
 </section>
-<section id="benchmarking">
-<h2><span class="section-number">8.2.6. </span>Benchmarking<a class="headerlink" href="#benchmarking" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">common</span> <span class="k">for</span> <span class="n">large</span> <span class="n">portfolio</span> <span class="n">allocators</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">benchmarks</span> <span class="k">for</span> <span class="n">the</span> <span class="n">managers</span> <span class="n">that</span> <span class="n">they</span> <span class="n">allocate</span> <span class="n">to</span>
-
-<span class="o">*</span> <span class="n">The</span> <span class="n">most</span> <span class="n">common</span> <span class="n">benchmark</span> <span class="ow">is</span> <span class="n">simply</span> <span class="n">returns</span> <span class="n">of</span> <span class="n">the</span> <span class="n">S</span><span class="o">&amp;</span><span class="n">P500</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">almost</span> <span class="n">the</span> <span class="n">same</span> <span class="n">thing</span> <span class="k">as</span> <span class="n">the</span> <span class="n">returns</span> <span class="n">of</span> <span class="n">the</span> <span class="n">market</span> <span class="n">portfolio</span> <span class="p">(</span> <span class="n">large</span> <span class="n">caps</span> <span class="n">dominate</span> <span class="n">the</span> <span class="n">returns</span> <span class="n">of</span> <span class="nb">any</span> <span class="n">market</span><span class="o">-</span><span class="n">cap</span> <span class="n">portfolio</span><span class="p">)</span>
-
-<span class="o">*</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="tracking-error">
-<h2><span class="section-number">8.2.7. </span>Tracking error<a class="headerlink" href="#tracking-error" title="Permalink to this heading">#</a></h2>
-<p>It is common for buy side allocators to give</p>
+<section id="endogenous-benchmarking">
+<h2><span class="section-number">8.2.6. </span>“Endogenous” Benchmarking<a class="headerlink" href="#endogenous-benchmarking" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>it is common for large portfolio allocators to set benchmarks for the managers that they allocate to</p></li>
+<li><p>The most common benchmark is simply returns of the S&amp;P500 which is almost the same thing as the returns of the market portfolio ( large caps dominate the returns of any market-cap portfolio)</p></li>
+<li><p>You might also have endogenous benchmarks</p></li>
+<li><p>Use a set of Factors F and estimate <span class="math notranslate nohighlight">\(r^b_t=\sum \beta_j F_{j,t}\)</span></p></li>
+<li><p>I.e use as a bechmark the multifactor combination that best replicates the portfolio.</p></li>
+<li><p>typically this is not done contractually but implicitly: You will allocate to the different funds based on their alpha</p></li>
+<li><p>Captures the idea that one should pay different prices for alpha (very hard to get) and beta( easier, the gains are in implementation)</p></li>
+</ul>
 </section>
 </section>
 
@@ -2800,8 +2793,7 @@ memory usage: 71.7 KB
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes-test">8.2.5.1. Application: What does Cathie Wood  Likes ? TEST</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarking">8.2.6. Benchmarking</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error">8.2.7. Tracking error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#endogenous-benchmarking">8.2.6. “Endogenous” Benchmarking</a></li>
 </ul>
   </nav></div>
 
