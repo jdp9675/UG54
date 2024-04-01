@@ -486,7 +486,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1">#GlobalFinMonthly</span>
-<span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/amoreira2/Lectures/main/assets/data/GlobalFinMonthly.csv&quot;</span>
+<span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/amoreira2/Fin418/main/assets/data/GlobalFinMonthly.csv&quot;</span>
 <span class="n">Data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">na_values</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
 <span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
 <span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
@@ -505,7 +505,8 @@ document.write(`
 <li><p>we used data of the whole sample to estimate the weights of our strategy and evaluated the strategy in the same sample</p></li>
 </ul>
 </li>
-<li><p>It is very important that the trading strategy only uses information that is known at the time of the trade– you obviously cannot trade on info that you don’t know</p></li>
+<li><p>It is very important that the trading strategy only uses information that is known at the time of the trade</p></li>
+<li><p>– you obviously cannot trade on info that you don’t know</p></li>
 <li><p>The weights of a trading strategy must either:</p>
 <ul>
 <li><p>Add up to 1. So it describes what you do with your entire capital.</p></li>
@@ -570,7 +571,7 @@ document.write(`
 <li><p>compute the weights and invest on the assets according to this strategy for the next month.</p></li>
 </ul>
 <p>I will do that for the entire sample.</p>
-<p>This will be valid because at no moment We will use information that an investor would not have had available in real time.</p>
+<p>This will be valid because at no moment we use information that an investor would not have had available in real time.</p>
 <p>We will target an annual volatility of 15%</p>
 <p>We will start by using just the first 10 years and evaluating on the rest of the sample as a warm up (because it is simpler)</p>
 <p>Warm up</p>
@@ -989,7 +990,7 @@ Will actually get given the truth:0.02432653824907584
 <p><em>If you don’t want to deal with that you can simply get the data by running the code below</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_m</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://github.com/amoreira2/Lectures/blob/main/assets/data/crspm2005_2020.pkl?raw=true&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_m</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://github.com/amoreira2/Fin418/blob/main/assets/data/crspm2005_2020.pkl?raw=true&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
