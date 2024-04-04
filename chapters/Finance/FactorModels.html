@@ -548,8 +548,11 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \left[\begin{array}{cc}
-b_i^2+ var(u_{i,t}) &amp; b_ib_j \\
-b_ib_j &amp;  b_j^2 +var(u_{j,t})
+b_i^2 &amp; b_ib_j \\
+b_ib_j &amp;  b_j^2 
+\end{array}\right]var(f_t)+\left[\begin{array}{cc}
+var(u_{i,t}) &amp; 0 \\
+0&amp;  var(u_{j,t})
 \end{array}\right]\end{split}\]</div>
 <p>We see that now for N assets we only need to estimate N factor exposures, N asset specific volatilities , and the factor volatility</p>
 <blockquote>
@@ -558,11 +561,11 @@ b_ib_j &amp;  b_j^2 +var(u_{j,t})
 <p>That is a huge difference</p>
 <p>Suppose we have many assets, all respecting this factor model. Say <span class="math notranslate nohighlight">\(R_t\)</span> is the big N by 1 vector of excess return <span class="math notranslate nohighlight">\([r_{1,t},r_{2,t},...]\)</span> for all these assets</p>
 <div class="math notranslate nohighlight">
-\[R_t=bf_t+U_t\]</div>
-<p>where <span class="math notranslate nohighlight">\(b\)</span> is also a N by 1 vector of exposures <span class="math notranslate nohighlight">\([b_1,b_2,...b_N]\)</span>  and <span class="math notranslate nohighlight">\(u_t\)</span> is the N by 1 vector of shocks</p>
+\[R_t=Bf_t+U_t\]</div>
+<p>where <span class="math notranslate nohighlight">\(B\)</span> is also a N by 1 vector of exposures <span class="math notranslate nohighlight">\([b_1,b_2,...b_N]\)</span>  and <span class="math notranslate nohighlight">\(u_t\)</span> is the N by 1 vector of shocks</p>
 <p>Then their variance-covariance matrix is simply</p>
 <div class="math notranslate nohighlight">
-\[Var(R_t)=b &#64; b' Var(f_t)+ Var(U_t)\]</div>
+\[Var(R_t)=B &#64; B' Var(f_t)+ Var(U_t)\]</div>
 <section id="application-market-model">
 <h3><span class="section-number">8.1.1. </span>Application: Market model<a class="headerlink" href="#application-market-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
