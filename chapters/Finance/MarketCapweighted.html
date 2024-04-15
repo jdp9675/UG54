@@ -524,6 +524,13 @@ document.write(`
 <p>Using Mid point is completely fine here. It would be more problematic if that was determining the prices that we trade.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install wrds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 <span class="kn">import</span> <span class="nn">wrds</span>
 <span class="kn">import</span> <span class="nn">psycopg2</span> 
@@ -538,6 +545,22 @@ document.write(`
 <span class="c1">###################</span>
 <span class="c1"># This below dowloads from the server the data that we want #</span>
 <span class="c1">###################</span>
+
+
+<span class="c1"># crsp_m = conn.raw_sql(</span>
+<span class="c1">#     &quot;select a.permno, a.date, b.shrcd, b.exchcd, &quot;</span>
+<span class="c1">#     &quot;a.ret, a.shrout, a.prc, a.retx &quot;</span>
+<span class="c1">#     &quot;from crsp.msf as a &quot;</span>
+<span class="c1">#     &quot;left join crsp.msenames as b &quot;</span>
+<span class="c1">#     &quot;on a.permno=b.permno &quot;</span>
+<span class="c1">#     &quot;and b.namedt&lt;=a.date &quot;</span>
+<span class="c1">#     &quot;and a.date&lt;=b.nameendt &quot;</span>
+<span class="c1">#     &quot;where a.date between &#39;01/01/2005&#39; and &#39;12/31/2020&#39; &quot;</span>
+<span class="c1">#     &quot;and b.exchcd between 1 and 3 &quot;</span>
+<span class="c1">#     &quot;and b.shrcd between 10 and 11&quot;,</span>
+<span class="c1">#     date_cols=[&#39;date&#39;]</span>
+<span class="c1"># )</span>
+
 <span class="n">crsp_m</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">                      select a.permno, a.date, b.shrcd, b.exchcd,</span>
 <span class="s2">                      a.ret, a.shrout, a.prc,a.retx</span>
@@ -550,6 +573,20 @@ document.write(`
 <span class="s2">                      and b.exchcd between 1 and 3</span>
 <span class="s2">                      and b.shrcd between 10 and 11</span>
 <span class="s2">                      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span> 
+
+
+<span class="c1"># crsp_m = conn.raw_sql(&quot;&quot;&quot;</span>
+<span class="c1">#                       select a.permno, a.date, b.shrcd, b.exchcd,</span>
+<span class="c1">#                       a.ret, a.shrout, a.prc,a.retx</span>
+<span class="c1">#                       from crsp.msf as a</span>
+<span class="c1">#                       left join crsp.msenames as b</span>
+<span class="c1">#                       on a.permno=b.permno</span>
+<span class="c1">#                       and b.namedt&lt;=a.date</span>
+<span class="c1">#                       and a.date&lt;=b.nameendt</span>
+<span class="c1">#                       where a.date between &#39;01/01/2005&#39; and &#39;12/31/2020&#39;</span>
+<span class="c1">#                       and b.exchcd between 1 and 3</span>
+<span class="c1">#                       and b.shrcd between 10 and 11</span>
+<span class="c1">#                       &quot;&quot;&quot;, date_cols=[&#39;date&#39;]) </span>
 
 <span class="c1"># this saves it</span>
 <span class="c1">#crsp_m.to_pickle(&#39;../../assets/data/crspm2005_2020.pkl&#39;)</span>
@@ -570,32 +607,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter your WRDS username [Alan.Moreira]: moreira5
-Enter your password: ···········
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
-You can find more info here:
-https://www.postgresql.org/docs/9.5/static/libpq-pgpass.html.
-Loading library list...
-Done
-</pre></div>
-</div>
-</div>
 </div>
 <hr class="docutils" />
 <p><em>If you don’t want to deal with that you can simply get the data by running the code below</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_m</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://github.com/amoreira2/Lectures/blob/main/assets/data/crspm2005_2020.pkl?raw=true&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_m</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://github.com/amoreira2/Fin418/blob/main/assets/data/crspm2005_2020.pkl?raw=true&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="o">=</span><span class="n">crsp_m</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;shrout&#39;</span><span class="p">,</span><span class="s1">&#39;prc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">crsp</span><span class="o">=</span><span class="n">crsp_m</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;shrout&#39;</span><span class="p">,</span><span class="s1">&#39;prc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="c1"># change variable format to int</span>
 <span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="c1"># Line up date to be end of month </span>
@@ -609,113 +634,6 @@ Done
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>permno</th>
-      <th>date</th>
-      <th>ret</th>
-      <th>me</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>11671</td>
-      <td>2005-01-31</td>
-      <td>0.016491</td>
-      <td>8.192548e+03</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10001</td>
-      <td>2005-01-31</td>
-      <td>-0.040580</td>
-      <td>1.717890e+04</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>10002</td>
-      <td>2005-01-31</td>
-      <td>-0.132466</td>
-      <td>2.352984e+05</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>11674</td>
-      <td>2005-01-31</td>
-      <td>0.015766</td>
-      <td>7.621100e+06</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>11681</td>
-      <td>2005-01-31</td>
-      <td>0.337143</td>
-      <td>4.302792e+04</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>763621</th>
-      <td>81665</td>
-      <td>2020-08-31</td>
-      <td>-0.003570</td>
-      <td>8.317922e+05</td>
-    </tr>
-    <tr>
-      <th>763622</th>
-      <td>81666</td>
-      <td>2020-08-31</td>
-      <td>0.130362</td>
-      <td>6.181997e+05</td>
-    </tr>
-    <tr>
-      <th>763623</th>
-      <td>81677</td>
-      <td>2020-08-31</td>
-      <td>0.072037</td>
-      <td>1.266447e+07</td>
-    </tr>
-    <tr>
-      <th>763624</th>
-      <td>81678</td>
-      <td>2020-08-31</td>
-      <td>0.069919</td>
-      <td>5.741383e+06</td>
-    </tr>
-    <tr>
-      <th>763625</th>
-      <td>81696</td>
-      <td>2020-08-31</td>
-      <td>0.106197</td>
-      <td>1.018962e+07</td>
-    </tr>
-  </tbody>
-</table>
-<p>763626 rows × 4 columns</p>
-</div></div></div>
 </div>
 <p><strong>Lagging the market cap signal</strong></p>
 <p>We use the method <code class="docutils literal notranslate"><span class="pre">.shift(d)</span></code> which “lags” the data by d periods.</p>
@@ -746,276 +664,6 @@ Done
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>permno</th>
-      <th>date</th>
-      <th>ret</th>
-      <th>me</th>
-      <th>me_l1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>9582</th>
-      <td>10012</td>
-      <td>2005-03-31</td>
-      <td>-0.080000</td>
-      <td>10916.720198</td>
-      <td>11866.000000</td>
-    </tr>
-    <tr>
-      <th>14335</th>
-      <td>10012</td>
-      <td>2005-04-30</td>
-      <td>-0.195652</td>
-      <td>8780.840113</td>
-      <td>10916.720198</td>
-    </tr>
-    <tr>
-      <th>18981</th>
-      <td>10012</td>
-      <td>2005-05-31</td>
-      <td>-0.243243</td>
-      <td>6648.600028</td>
-      <td>8780.840113</td>
-    </tr>
-    <tr>
-      <th>23732</th>
-      <td>10012</td>
-      <td>2005-06-30</td>
-      <td>-0.250000</td>
-      <td>4986.449844</td>
-      <td>6648.600028</td>
-    </tr>
-    <tr>
-      <th>30586</th>
-      <td>10012</td>
-      <td>2005-07-31</td>
-      <td>-0.190476</td>
-      <td>4036.650042</td>
-      <td>4986.449844</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10025</td>
-      <td>2005-01-31</td>
-      <td>0.277966</td>
-      <td>159037.453218</td>
-      <td>4036.650042</td>
-    </tr>
-    <tr>
-      <th>4584</th>
-      <td>10025</td>
-      <td>2005-02-28</td>
-      <td>0.082228</td>
-      <td>172114.796782</td>
-      <td>159037.453218</td>
-    </tr>
-    <tr>
-      <th>9586</th>
-      <td>10025</td>
-      <td>2005-03-31</td>
-      <td>-0.031863</td>
-      <td>168270.000000</td>
-      <td>172114.796782</td>
-    </tr>
-    <tr>
-      <th>14336</th>
-      <td>10025</td>
-      <td>2005-04-30</td>
-      <td>-0.058734</td>
-      <td>158535.521301</td>
-      <td>168270.000000</td>
-    </tr>
-    <tr>
-      <th>18982</th>
-      <td>10025</td>
-      <td>2005-05-31</td>
-      <td>-0.073158</td>
-      <td>146954.666096</td>
-      <td>158535.521301</td>
-    </tr>
-    <tr>
-      <th>23733</th>
-      <td>10025</td>
-      <td>2005-06-30</td>
-      <td>0.071387</td>
-      <td>157445.332191</td>
-      <td>146954.666096</td>
-    </tr>
-    <tr>
-      <th>30587</th>
-      <td>10025</td>
-      <td>2005-07-31</td>
-      <td>0.061213</td>
-      <td>167514.091305</td>
-      <td>157445.332191</td>
-    </tr>
-    <tr>
-      <th>32070</th>
-      <td>10025</td>
-      <td>2005-08-31</td>
-      <td>0.045431</td>
-      <td>175124.476086</td>
-      <td>167514.091305</td>
-    </tr>
-    <tr>
-      <th>37335</th>
-      <td>10025</td>
-      <td>2005-09-30</td>
-      <td>0.076172</td>
-      <td>188486.087830</td>
-      <td>175124.476086</td>
-    </tr>
-    <tr>
-      <th>42325</th>
-      <td>10025</td>
-      <td>2005-10-31</td>
-      <td>-0.078947</td>
-      <td>173625.893475</td>
-      <td>188486.087830</td>
-    </tr>
-    <tr>
-      <th>48041</th>
-      <td>10025</td>
-      <td>2005-11-30</td>
-      <td>0.133005</td>
-      <td>196719.000000</td>
-      <td>173625.893475</td>
-    </tr>
-    <tr>
-      <th>52968</th>
-      <td>10025</td>
-      <td>2005-12-31</td>
-      <td>0.086957</td>
-      <td>213825.000000</td>
-      <td>196719.000000</td>
-    </tr>
-    <tr>
-      <th>58538</th>
-      <td>10025</td>
-      <td>2006-01-31</td>
-      <td>0.040000</td>
-      <td>223080.000000</td>
-      <td>213825.000000</td>
-    </tr>
-    <tr>
-      <th>62806</th>
-      <td>10025</td>
-      <td>2006-02-28</td>
-      <td>0.035385</td>
-      <td>231027.440655</td>
-      <td>223080.000000</td>
-    </tr>
-    <tr>
-      <th>67205</th>
-      <td>10025</td>
-      <td>2006-03-31</td>
-      <td>0.223997</td>
-      <td>285083.406601</td>
-      <td>231027.440655</td>
-    </tr>
-    <tr>
-      <th>73148</th>
-      <td>10025</td>
-      <td>2006-04-30</td>
-      <td>0.069499</td>
-      <td>305284.134541</td>
-      <td>285083.406601</td>
-    </tr>
-    <tr>
-      <th>76751</th>
-      <td>10025</td>
-      <td>2006-05-31</td>
-      <td>-0.060585</td>
-      <td>286788.611034</td>
-      <td>305284.134541</td>
-    </tr>
-    <tr>
-      <th>82451</th>
-      <td>10025</td>
-      <td>2006-06-30</td>
-      <td>0.009515</td>
-      <td>289717.964127</td>
-      <td>286788.611034</td>
-    </tr>
-    <tr>
-      <th>85370</th>
-      <td>10025</td>
-      <td>2006-07-31</td>
-      <td>0.336326</td>
-      <td>387827.438675</td>
-      <td>289717.964127</td>
-    </tr>
-    <tr>
-      <th>91177</th>
-      <td>10025</td>
-      <td>2006-08-31</td>
-      <td>-0.019257</td>
-      <td>380359.193375</td>
-      <td>387827.438675</td>
-    </tr>
-    <tr>
-      <th>95050</th>
-      <td>10025</td>
-      <td>2006-09-30</td>
-      <td>-0.042237</td>
-      <td>329139.705986</td>
-      <td>380359.193375</td>
-    </tr>
-    <tr>
-      <th>100842</th>
-      <td>10025</td>
-      <td>2006-10-31</td>
-      <td>0.255781</td>
-      <td>415434.482407</td>
-      <td>329139.705986</td>
-    </tr>
-    <tr>
-      <th>104469</th>
-      <td>10025</td>
-      <td>2006-11-30</td>
-      <td>-0.022969</td>
-      <td>405892.429626</td>
-      <td>415434.482407</td>
-    </tr>
-    <tr>
-      <th>108775</th>
-      <td>10025</td>
-      <td>2006-12-31</td>
-      <td>0.035749</td>
-      <td>420402.670830</td>
-      <td>405892.429626</td>
-    </tr>
-    <tr>
-      <th>113887</th>
-      <td>10025</td>
-      <td>2007-01-31</td>
-      <td>-0.125305</td>
-      <td>370055.688477</td>
-      <td>420402.670830</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1025,276 +673,6 @@ Done
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>permno</th>
-      <th>date</th>
-      <th>ret</th>
-      <th>me</th>
-      <th>me_l1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>9582</th>
-      <td>10012</td>
-      <td>2005-03-31</td>
-      <td>-0.080000</td>
-      <td>10916.720198</td>
-      <td>11866.000000</td>
-    </tr>
-    <tr>
-      <th>14335</th>
-      <td>10012</td>
-      <td>2005-04-30</td>
-      <td>-0.195652</td>
-      <td>8780.840113</td>
-      <td>10916.720198</td>
-    </tr>
-    <tr>
-      <th>18981</th>
-      <td>10012</td>
-      <td>2005-05-31</td>
-      <td>-0.243243</td>
-      <td>6648.600028</td>
-      <td>8780.840113</td>
-    </tr>
-    <tr>
-      <th>23732</th>
-      <td>10012</td>
-      <td>2005-06-30</td>
-      <td>-0.250000</td>
-      <td>4986.449844</td>
-      <td>6648.600028</td>
-    </tr>
-    <tr>
-      <th>30586</th>
-      <td>10012</td>
-      <td>2005-07-31</td>
-      <td>-0.190476</td>
-      <td>4036.650042</td>
-      <td>4986.449844</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10025</td>
-      <td>2005-01-31</td>
-      <td>0.277966</td>
-      <td>159037.453218</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4584</th>
-      <td>10025</td>
-      <td>2005-02-28</td>
-      <td>0.082228</td>
-      <td>172114.796782</td>
-      <td>159037.453218</td>
-    </tr>
-    <tr>
-      <th>9586</th>
-      <td>10025</td>
-      <td>2005-03-31</td>
-      <td>-0.031863</td>
-      <td>168270.000000</td>
-      <td>172114.796782</td>
-    </tr>
-    <tr>
-      <th>14336</th>
-      <td>10025</td>
-      <td>2005-04-30</td>
-      <td>-0.058734</td>
-      <td>158535.521301</td>
-      <td>168270.000000</td>
-    </tr>
-    <tr>
-      <th>18982</th>
-      <td>10025</td>
-      <td>2005-05-31</td>
-      <td>-0.073158</td>
-      <td>146954.666096</td>
-      <td>158535.521301</td>
-    </tr>
-    <tr>
-      <th>23733</th>
-      <td>10025</td>
-      <td>2005-06-30</td>
-      <td>0.071387</td>
-      <td>157445.332191</td>
-      <td>146954.666096</td>
-    </tr>
-    <tr>
-      <th>30587</th>
-      <td>10025</td>
-      <td>2005-07-31</td>
-      <td>0.061213</td>
-      <td>167514.091305</td>
-      <td>157445.332191</td>
-    </tr>
-    <tr>
-      <th>32070</th>
-      <td>10025</td>
-      <td>2005-08-31</td>
-      <td>0.045431</td>
-      <td>175124.476086</td>
-      <td>167514.091305</td>
-    </tr>
-    <tr>
-      <th>37335</th>
-      <td>10025</td>
-      <td>2005-09-30</td>
-      <td>0.076172</td>
-      <td>188486.087830</td>
-      <td>175124.476086</td>
-    </tr>
-    <tr>
-      <th>42325</th>
-      <td>10025</td>
-      <td>2005-10-31</td>
-      <td>-0.078947</td>
-      <td>173625.893475</td>
-      <td>188486.087830</td>
-    </tr>
-    <tr>
-      <th>48041</th>
-      <td>10025</td>
-      <td>2005-11-30</td>
-      <td>0.133005</td>
-      <td>196719.000000</td>
-      <td>173625.893475</td>
-    </tr>
-    <tr>
-      <th>52968</th>
-      <td>10025</td>
-      <td>2005-12-31</td>
-      <td>0.086957</td>
-      <td>213825.000000</td>
-      <td>196719.000000</td>
-    </tr>
-    <tr>
-      <th>58538</th>
-      <td>10025</td>
-      <td>2006-01-31</td>
-      <td>0.040000</td>
-      <td>223080.000000</td>
-      <td>213825.000000</td>
-    </tr>
-    <tr>
-      <th>62806</th>
-      <td>10025</td>
-      <td>2006-02-28</td>
-      <td>0.035385</td>
-      <td>231027.440655</td>
-      <td>223080.000000</td>
-    </tr>
-    <tr>
-      <th>67205</th>
-      <td>10025</td>
-      <td>2006-03-31</td>
-      <td>0.223997</td>
-      <td>285083.406601</td>
-      <td>231027.440655</td>
-    </tr>
-    <tr>
-      <th>73148</th>
-      <td>10025</td>
-      <td>2006-04-30</td>
-      <td>0.069499</td>
-      <td>305284.134541</td>
-      <td>285083.406601</td>
-    </tr>
-    <tr>
-      <th>76751</th>
-      <td>10025</td>
-      <td>2006-05-31</td>
-      <td>-0.060585</td>
-      <td>286788.611034</td>
-      <td>305284.134541</td>
-    </tr>
-    <tr>
-      <th>82451</th>
-      <td>10025</td>
-      <td>2006-06-30</td>
-      <td>0.009515</td>
-      <td>289717.964127</td>
-      <td>286788.611034</td>
-    </tr>
-    <tr>
-      <th>85370</th>
-      <td>10025</td>
-      <td>2006-07-31</td>
-      <td>0.336326</td>
-      <td>387827.438675</td>
-      <td>289717.964127</td>
-    </tr>
-    <tr>
-      <th>91177</th>
-      <td>10025</td>
-      <td>2006-08-31</td>
-      <td>-0.019257</td>
-      <td>380359.193375</td>
-      <td>387827.438675</td>
-    </tr>
-    <tr>
-      <th>95050</th>
-      <td>10025</td>
-      <td>2006-09-30</td>
-      <td>-0.042237</td>
-      <td>329139.705986</td>
-      <td>380359.193375</td>
-    </tr>
-    <tr>
-      <th>100842</th>
-      <td>10025</td>
-      <td>2006-10-31</td>
-      <td>0.255781</td>
-      <td>415434.482407</td>
-      <td>329139.705986</td>
-    </tr>
-    <tr>
-      <th>104469</th>
-      <td>10025</td>
-      <td>2006-11-30</td>
-      <td>-0.022969</td>
-      <td>405892.429626</td>
-      <td>415434.482407</td>
-    </tr>
-    <tr>
-      <th>108775</th>
-      <td>10025</td>
-      <td>2006-12-31</td>
-      <td>0.035749</td>
-      <td>420402.670830</td>
-      <td>405892.429626</td>
-    </tr>
-    <tr>
-      <th>113887</th>
-      <td>10025</td>
-      <td>2007-01-31</td>
-      <td>-0.125305</td>
-      <td>370055.688477</td>
-      <td>420402.670830</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1313,12 +691,6 @@ Done
 <span class="p">((</span><span class="n">Rmkt</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/b317c5346a8d722e0c9fb371390c13cd64fa1697e598afc3f0946730254a5b14.png" src="../../_images/b317c5346a8d722e0c9fb371390c13cd64fa1697e598afc3f0946730254a5b14.png" />
 </div>
 </div>
 <p><strong>Things to try</strong></p>
