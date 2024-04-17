@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Levering up and Shorting &#8212; Quantitative Investing</title>
+    <title>9.5. Levering up and Shorting &#8212; Quantitative Investing</title>
   
   
   
@@ -69,6 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="10. Robustness of Quantitative Strategies" href="Robustness.html" />
+    <link rel="prev" title="9.4. Other Cross-sectional equity stratgies" href="OtherEquityStrategies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
@@ -200,11 +202,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">8.4. Interpreting Factor Models</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="MarketCapweighted.html">9.1. The Market Cap Weighted Portfolio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Valueinvesting.html">9.2. Value factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Momentum.html">9.3. Momentum factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">9.4. Other Equity strategies</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">9.5. Leverage and Shorting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Robustness.html">10. Robustness of Quantitative Strategies</a></li>
@@ -459,8 +462,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla"><strong>Aplication: All in on Tesla</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting"><strong>Shorting</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla">9.5.1. <strong>Aplication: All in on Tesla</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting">9.5.2. <strong>Shorting</strong></a></li>
 </ul>
             </nav>
         </div>
@@ -484,7 +487,7 @@ document.write(`
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="levering-up-and-shorting">
-<h1>Levering up and Shorting<a class="headerlink" href="#levering-up-and-shorting" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9.5. </span>Levering up and Shorting<a class="headerlink" href="#levering-up-and-shorting" title="Permalink to this heading">#</a></h1>
 <p>So far we wrote the portfolio return as simple product of weights and individual asset returns</p>
 <div class="math notranslate nohighlight">
 \[r^p=W R+(1-\sum_i^I w_{i})r^f\]</div>
@@ -618,7 +621,7 @@ document.write(`
 <li><p>This means that if volatilitiy goes up at the same time as your assets go down in value you face demand for cash both from your losses buy also from an increase in the margin you need to sustain your trade</p></li>
 </ul>
 <section id="aplication-all-in-on-tesla">
-<h2><strong>Aplication: All in on Tesla</strong><a class="headerlink" href="#aplication-all-in-on-tesla" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.5.1. </span><strong>Aplication: All in on Tesla</strong><a class="headerlink" href="#aplication-all-in-on-tesla" title="Permalink to this heading">#</a></h2>
 <p>Jackie is a complete believer on Tesla and decide to invest all her savings, 1 Million dollars on Tesla in early 2017, and lever up to the maximum allowed by it’s broker to 2 (inital margin 0.5), so a total position of 2 million dollars that she commited to stick with it.</p>
 <p>The broker changed 1% on top of the tbill rate which was at zero.</p>
 <p>The broker made clear that a fraction of the tesla shares would have to sold everytime leverage went above 1/0.3, i.e. a maintenance margin of 0.3 . The amount sold would have to bring the account margin back to 0.3.</p>
@@ -885,7 +888,7 @@ document.write(`
 </div>
 </section>
 <section id="shorting">
-<h2><strong>Shorting</strong><a class="headerlink" href="#shorting" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.5.2. </span><strong>Shorting</strong><a class="headerlink" href="#shorting" title="Permalink to this heading">#</a></h2>
 <p>Shorting is conceptually very similar to leverage.</p>
 <p>You borrow an asset and pay some lending fee to borrow it (perhaps this fee will be zero if there is ample supply).</p>
 <p>And of course once you borrow you immediately sell and get the cash from the sale. The broker facilitating this transaction will typically ask you to  keep some margin in you account.</p>
@@ -1230,7 +1233,7 @@ document.write(`
 <li><p>You can see above that the volatiltiy of the fund net position went to 1,200%!</p></li>
 <li><p>As response to this retail brokers increase margin requirements on GME shorts to 300% (from 50%). So to sustain 1 dollar of a short position you need to put 3 dollars instead of 50 cents.</p></li>
 <li><p>I am not sure what institutional brokers did, but likely they increased their leverage reuqirements too.</p></li>
-<li><p>This implies required capital would increase 6 foldfold (from 0.5 to 3 initial margin) going from 300 million to 1.8 billion dollars!</p></li>
+<li><p>This implies required capital would increase 6 fold (from 0.5 to 3 initial margin) going from 300 million to 1.8 billion dollars!</p></li>
 <li><p>1.8 Billion dollars to sustain the 1 million dollars trade!</p></li>
 </ul>
 </section>
@@ -1267,6 +1270,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="OtherEquityStrategies.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9.4. </span>Other Cross-sectional equity stratgies</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Robustness.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Robustness of Quantitative Strategies</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -1285,8 +1306,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla"><strong>Aplication: All in on Tesla</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting"><strong>Shorting</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplication-all-in-on-tesla">9.5.1. <strong>Aplication: All in on Tesla</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shorting">9.5.2. <strong>Shorting</strong></a></li>
 </ul>
   </nav></div>
 
