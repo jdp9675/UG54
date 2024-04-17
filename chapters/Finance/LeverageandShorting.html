@@ -481,7 +481,6 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="c1"># import regression package</span>
 </pre></div>
 </div>
 </div>
@@ -505,7 +504,7 @@ document.write(`
 <li><p>here are the <a class="reference external" href="https://www.interactivebrokers.com/en/index.php?f=46376">lending rates of a big retail broker</a></p></li>
 <li><p>Here is snapshot from May/2021</p></li>
 </ul>
-<p><img alt="image.png" src="../../_images/leverageandshorting1.jpg" /></p>
+<p><img alt="image.png" src="https://github.com/amoreira2/Fin418/blob/main/assets/plots/leverageandshorting1.jpg?raw=1" /></p>
 <ul class="simple">
 <li><p>The structure of the rate is the following</p></li>
 </ul>
@@ -537,7 +536,7 @@ document.write(`
 <li><p>so the bank lends to you another dollar for each dollar you put it</p></li>
 <li><p>here is for a US retial broker. Focus on the top row, 50% initial , 30% maintenance, which translates to 1/0.5=2 initial leverage and 1/0.3=2.33 maintenance leverage</p></li>
 </ul>
-<p><img alt="image.png" src="../../_images/leverageandshorting2.jpg" /></p>
+<p><img alt="image.png" src="https://github.com/amoreira2/Fin418/blob/main/assets/plots/leverageandshorting2.jpg?raw=1" /></p>
 <p><strong>Example</strong></p>
 <p>lets say  <span class="math notranslate nohighlight">\(m_{initial}=0.5\)</span> and <span class="math notranslate nohighlight">\(m_{maintenance}=0.3\)</span>. Say you have 100k in your brokerage account and you can buy up to 200K in stocks. The broker lends to you 100k and hold the whole 200k in assets as protection. The value of your networth is still 100k. 200k in stocks -100k in the risk-free asset. For simplicity lets assume the risk-free rate is zero in this example.</p>
 <ul class="simple">
@@ -598,7 +597,7 @@ document.write(`
 <li><p>If you don’t do it your broker will certainly sell fro you and  might even liquidiate your entire position</p></li>
 <li><p>for example, here is from a retail broker</p></li>
 </ul>
-<p><img alt="image.png" src="../../_images/leverageandshorting3.jpg" /></p>
+<p><img alt="image.png" src="https://github.com/amoreira2/Fin418/blob/main/assets/plots/leverageandshorting3.jpg?raw=1" /></p>
 <ul class="simple">
 <li><p>When the position to be sold is large, this can lead to very sharp price movements</p></li>
 <li><p>The dealers does not care at all about the price that he sells for as long he can get his money</p>
@@ -649,7 +648,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-6a489a78-2f5c-424d-8c46-40367ec8b98c" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -718,7 +719,272 @@ document.write(`
   </tbody>
 </table>
 <p>901 rows × 1 columns</p>
-</div></div></div>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-6a489a78-2f5c-424d-8c46-40367ec8b98c')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-6a489a78-2f5c-424d-8c46-40367ec8b98c button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-6a489a78-2f5c-424d-8c46-40367ec8b98c');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-18596bb0-35f2-407c-884f-c0a993ea8504">
+  <button class="colab-df-quickchart" onclick="quickchart('df-18596bb0-35f2-407c-884f-c0a993ea8504')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-18596bb0-35f2-407c-884f-c0a993ea8504 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_87fe62bb-9e3c-45fa-a6dc-881ae4b197f4">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_87fe62bb-9e3c-45fa-a6dc-881ae4b197f4 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -745,33 +1011,31 @@ document.write(`
     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">networth</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="c1"># sum of w0 gives us the networth. IF that goes negative, trader goes banktrupt and it is liquidated</span>
         <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Risky&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_RiskyAsset</span> <span class="c1"># position in Tesla at the start</span>
         <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Safe&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_SafeAsset</span>
-        <span class="k">break</span> 
+        <span class="k">break</span>
     <span class="k">if</span> <span class="n">networth</span><span class="o">/</span><span class="n">pos_RiskyAsset</span><span class="o">&lt;</span><span class="n">m_maintenance</span><span class="p">:</span> <span class="c1"># accoutn is in breach and trader has to rebalance (sell some stock to satisfy their position limits)</span>
         <span class="nb">print</span><span class="p">([</span><span class="n">pos_RiskyAsset</span><span class="p">,</span><span class="n">pos_SafeAsset</span><span class="p">])</span>
         <span class="n">pos_RiskyAsset</span><span class="o">=</span><span class="n">networth</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="n">m_maintenance</span>
         <span class="n">post_SafeAsset</span><span class="o">=</span><span class="n">networth</span><span class="o">-</span><span class="n">pos_RiskyAsset</span>
         <span class="nb">print</span><span class="p">([</span><span class="n">pos_RiskyAsset</span><span class="p">,</span><span class="n">pos_SafeAsset</span><span class="p">])</span>
-        
-    <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Risky&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_RiskyAsset</span> 
+
+    <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Risky&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_RiskyAsset</span>
     <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Safe&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_SafeAsset</span>
-<span class="n">W</span>      
+<span class="n">W</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Risky       Safe
 2017-01-03  2000000.0 -1000000.0
-[1706622.4249965441, -1024297.959301626]
-[1705811.1642372953, -1024297.959301626]
-[1648784.9646983622, -1024338.6060460426]
-[1561115.8966307987, -1024338.6060460426]
-[1688730.1647634946, -1024379.2544034254]
-[1660877.275900173, -1024379.2544034254]
-[1686528.2214318959, -1024419.9043738381]
-[1655270.7926451443, -1024419.9043738381]
 </pre></div>
 </div>
-<div class="output text_html"><div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-10-dd7440011350&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  returnRiskyAsset=float(df.loc[d].values)
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-d80aa039-c6c6-4b8b-a0d7-61c19e975782" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -826,33 +1090,298 @@ document.write(`
     </tr>
     <tr>
       <th>2020-07-27</th>
-      <td>12963298.806432</td>
+      <td>14190515.691967</td>
       <td>-1036194.481947</td>
     </tr>
     <tr>
       <th>2020-07-28</th>
-      <td>12431918.066192</td>
+      <td>13608829.899995</td>
       <td>-1036235.600776</td>
     </tr>
     <tr>
       <th>2020-07-29</th>
-      <td>12622376.509295</td>
+      <td>13817318.77045</td>
       <td>-1036276.721236</td>
     </tr>
     <tr>
       <th>2020-07-30</th>
-      <td>12524537.114562</td>
+      <td>13710217.060694</td>
       <td>-1036317.843328</td>
     </tr>
     <tr>
       <th>2020-07-31</th>
-      <td>12046875.422376</td>
+      <td>13187335.821927</td>
       <td>-1036358.967052</td>
     </tr>
   </tbody>
 </table>
 <p>901 rows × 2 columns</p>
-</div></div></div>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d80aa039-c6c6-4b8b-a0d7-61c19e975782')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d80aa039-c6c6-4b8b-a0d7-61c19e975782 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d80aa039-c6c6-4b8b-a0d7-61c19e975782');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-a2fcda14-44c1-42a4-b681-041f10a787c7">
+  <button class="colab-df-quickchart" onclick="quickchart('df-a2fcda14-44c1-42a4-b681-041f10a787c7')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-a2fcda14-44c1-42a4-b681-041f10a787c7 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_5f4dee86-0907-4f82-95cd-4d52d3029570">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('W')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_5f4dee86-0907-4f82-95cd-4d52d3029570 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('W');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -879,11 +1408,11 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;volatility&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/66c20a3e885594bb966974cb20b7d6cfd8dde7b351f5c06e453a8c6adbbcafc4.png" src="../../_images/66c20a3e885594bb966974cb20b7d6cfd8dde7b351f5c06e453a8c6adbbcafc4.png" />
-<img alt="../../_images/cd26cde57d3d49f9b58d8c6111c34540bc73c13ed3872f67a4431691471fae39.png" src="../../_images/cd26cde57d3d49f9b58d8c6111c34540bc73c13ed3872f67a4431691471fae39.png" />
-<img alt="../../_images/a9cc6e834644e8f7611787be432b5bf3c0937c1dcf254fae217786ea55b70331.png" src="../../_images/a9cc6e834644e8f7611787be432b5bf3c0937c1dcf254fae217786ea55b70331.png" />
-<img alt="../../_images/09dd117a8dcb1f79f9c786b7551eac3db2f2c5796844e664ed2eb65e3fedc982.png" src="../../_images/09dd117a8dcb1f79f9c786b7551eac3db2f2c5796844e664ed2eb65e3fedc982.png" />
-<img alt="../../_images/e2b84ecb9de47180b88dc46ee6e76d263fa4827f66ee0fb877f293eae0fff349.png" src="../../_images/e2b84ecb9de47180b88dc46ee6e76d263fa4827f66ee0fb877f293eae0fff349.png" />
+<img alt="../../_images/ecc32bb3fced3a28f029666a322919cabe18f15a50406397535a46bb15d16558.png" src="../../_images/ecc32bb3fced3a28f029666a322919cabe18f15a50406397535a46bb15d16558.png" />
+<img alt="../../_images/fabb39ec6f38d6cfefbcd6075b36bf73bf26abe132ad8726fe16a12ed3eda318.png" src="../../_images/fabb39ec6f38d6cfefbcd6075b36bf73bf26abe132ad8726fe16a12ed3eda318.png" />
+<img alt="../../_images/88b6acbac9fce75a24a192cb4f017ff8c830bb17c135d0b84cd1420cb2ee9ea3.png" src="../../_images/88b6acbac9fce75a24a192cb4f017ff8c830bb17c135d0b84cd1420cb2ee9ea3.png" />
+<img alt="../../_images/4922f00c035bf58ebe0293e2059dbd7a98bda087b0d376c90af6c06a7d763552.png" src="../../_images/4922f00c035bf58ebe0293e2059dbd7a98bda087b0d376c90af6c06a7d763552.png" />
+<img alt="../../_images/322f35ec06ec8b8709b1b4bde37130fe8134c2a0a670c3bf83b3de77669c6943.png" src="../../_images/322f35ec06ec8b8709b1b4bde37130fe8134c2a0a670c3bf83b3de77669c6943.png" />
 </div>
 </div>
 </section>
@@ -921,7 +1450,7 @@ document.write(`
 <li><p>In the expression above <span class="math notranslate nohighlight">\(sf^i\)</span> is the shorting fee you pay per period to short, which typically is quoted in annualized terms and can change briskly over time.</p></li>
 <li><p>Here is a snapshort of the fee to borrow GME stock early this year (the borrowing rate is in red)</p></li>
 </ul>
-<p><img alt="image.png" src="../../_images/leverageandshorting4.jpg" /></p>
+<p><img alt="image.png" src="https://github.com/amoreira2/Fin418/blob/main/assets/plots/leverageandshorting4.jpg?raw=1" /></p>
 <ul class="simple">
 <li><p>A full portfolio looks like</p></li>
 </ul>
@@ -953,10 +1482,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="../../_images/09b67ce23fd391964deeeb3d955e8414c8ecee5c3af2c1b6442497b22891ccaa.png" src="../../_images/09b67ce23fd391964deeeb3d955e8414c8ecee5c3af2c1b6442497b22891ccaa.png" />
+<img alt="../../_images/af5406a15d601ebe73e00f451cdd498cd95a2e244ded2515d7749588cad816bc.png" src="../../_images/af5406a15d601ebe73e00f451cdd498cd95a2e244ded2515d7749588cad816bc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -974,7 +1503,9 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
+<div class="output text_html">
+  <div id="df-0d71a36b-00c4-499f-86f4-2affea31f1d9" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1043,7 +1574,272 @@ document.write(`
   </tbody>
 </table>
 <p>401 rows × 1 columns</p>
-</div></div></div>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-0d71a36b-00c4-499f-86f4-2affea31f1d9')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-0d71a36b-00c4-499f-86f4-2affea31f1d9 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-0d71a36b-00c4-499f-86f4-2affea31f1d9');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-c1418048-f643-4afc-865e-02ce55ff754a">
+  <button class="colab-df-quickchart" onclick="quickchart('df-c1418048-f643-4afc-865e-02ce55ff754a')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-c1418048-f643-4afc-865e-02ce55ff754a button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_b15d9693-b8d0-4148-a50d-d6897d583abf">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_b15d9693-b8d0-4148-a50d-d6897d583abf button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1059,22 +1855,22 @@ document.write(`
 <span class="n">d</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Risky&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_RiskyAsset</span> <span class="c1"># position in Tesla at the start</span>
 <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Safe&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_SafeAsset</span>
-<span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;injected capital&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">val</span>
+<span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;injectedcapital&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">val</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
     <span class="n">pos_SafeAsset</span><span class="o">=</span><span class="n">pos_SafeAsset</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">rf</span><span class="p">)</span><span class="o">+</span><span class="n">pos_RiskyAsset</span><span class="o">*</span><span class="n">sf</span>
     <span class="n">returnRiskyAsset</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
     <span class="n">pos_RiskyAsset</span><span class="o">=</span><span class="n">pos_RiskyAsset</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">returnRiskyAsset</span><span class="p">)</span>
-    <span class="n">networth</span><span class="o">=</span> <span class="n">pos_RiskyAsset</span><span class="o">+</span> <span class="n">pos_SafeAsset</span> 
+    <span class="n">networth</span><span class="o">=</span> <span class="n">pos_RiskyAsset</span><span class="o">+</span> <span class="n">pos_SafeAsset</span>
     <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;injected capital&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
-    
-    
+
+
     <span class="k">if</span> <span class="n">networth</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pos_RiskyAsset</span><span class="p">)</span><span class="o">&lt;</span><span class="n">m_maintenance</span><span class="p">:</span> <span class="c1"># if you breach the maintanece margim</span>
         <span class="n">neededcapital</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">pos_RiskyAsset</span><span class="p">)</span><span class="o">*</span><span class="n">m_maintenance</span><span class="o">-</span><span class="n">networth</span><span class="p">)</span>
-        <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;injected capital&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">neededcapital</span> <span class="c1"># how mcuh capital is injected in the trade</span>
+        <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;injectedcapital&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">neededcapital</span> <span class="c1"># how mcuh capital is injected in the trade</span>
         <span class="n">pos_SafeAsset</span><span class="o">=</span><span class="n">pos_SafeAsset</span><span class="o">+</span><span class="n">neededcapital</span> <span class="c1"># change in the risk-free positions</span>
-  
+
     <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Risky&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_RiskyAsset</span> <span class="c1"># position in Tesla at the start</span>
     <span class="n">W</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">d</span><span class="p">,</span><span class="s1">&#39;Safe&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pos_SafeAsset</span>
 <span class="n">W</span>
@@ -1082,11 +1878,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Risky       Safe    capital
-2020-04-01 -2000000.0  3000000.0  1000000.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Risky       Safe  injectedcapital
+2020-04-01 -2000000.0  3000000.0        1000000.0
 </pre></div>
 </div>
-<div class="output text_html"><div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-17-df137dfa871a&gt;:18: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  returnRiskyAsset=float(df.loc[d].values)
+&lt;ipython-input-17-df137dfa871a&gt;:18: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  returnRiskyAsset=float(df.loc[d].values)
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-417345d6-6783-4731-a6bb-a3832d6547d7" class="colab-df-container">
+    <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1106,7 +1910,8 @@ document.write(`
       <th></th>
       <th>Risky</th>
       <th>Safe</th>
-      <th>capital</th>
+      <th>injectedcapital</th>
+      <th>injected capital</th>
     </tr>
   </thead>
   <tbody>
@@ -1115,29 +1920,34 @@ document.write(`
       <td>-2000000.0</td>
       <td>3000000.0</td>
       <td>1000000.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2020-04-02</th>
       <td>-1753846.153846</td>
       <td>3000000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2020-04-03</th>
       <td>-1723076.923077</td>
       <td>3000000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2020-04-06</th>
       <td>-1901538.461538</td>
       <td>3000000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2020-04-07</th>
       <td>-2012307.692308</td>
       <td>3000000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
@@ -1145,41 +1955,312 @@ document.write(`
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>2021-10-26</th>
       <td>-109440000.0</td>
-      <td>299393230.769231</td>
+      <td>278008000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2021-10-27</th>
       <td>-106775384.615385</td>
-      <td>299393230.769231</td>
+      <td>278008000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2021-10-28</th>
       <td>-112523076.923077</td>
-      <td>299393230.769231</td>
+      <td>278008000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2021-10-29</th>
       <td>-112929230.769231</td>
-      <td>299393230.769231</td>
+      <td>278008000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2021-11-01</th>
       <td>-123132307.692308</td>
-      <td>299393230.769231</td>
+      <td>278008000.0</td>
+      <td>NaN</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>401 rows × 3 columns</p>
-</div></div></div>
+<p>401 rows × 4 columns</p>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-417345d6-6783-4731-a6bb-a3832d6547d7')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-417345d6-6783-4731-a6bb-a3832d6547d7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-417345d6-6783-4731-a6bb-a3832d6547d7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-80852e32-b9a8-4f51-be12-6d9a04fae05a">
+  <button class="colab-df-quickchart" onclick="quickchart('df-80852e32-b9a8-4f51-be12-6d9a04fae05a')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-80852e32-b9a8-4f51-be12-6d9a04fae05a button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_d54f96b3-d59e-488b-8345-6b19e6363089">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('W')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_d54f96b3-d59e-488b-8345-6b19e6363089 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('W');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1195,16 +2276,16 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">subtract</span><span class="p">((</span><span class="n">W</span><span class="o">.</span><span class="n">capital</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">subtract</span><span class="p">((</span><span class="n">W</span><span class="o">.</span><span class="n">injectedcapital</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1">#(W[&#39;2017&#39;:&#39;2020&#39;][&#39;Asset&#39;]/1e6).plot(logy=False)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;P &amp; L&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">capital</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">injectedcapital</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1">#(W[&#39;2017&#39;:&#39;2020&#39;][&#39;Asset&#39;]/1e6).plot(logy=False)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Capital injections&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">capital</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">injectedcapital</span><span class="o">/</span><span class="n">val</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1">#(W[&#39;2017&#39;:&#39;2020&#39;][&#39;Asset&#39;]/1e6).plot(logy=False)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Capital&#39;</span><span class="p">)</span>
 
@@ -1220,10 +2301,10 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;vol&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/70db54c6f65ae13f0d37afed38bac2c0a9c3a956f5e1a2eccc1f9a349b1a2c8f.png" src="../../_images/70db54c6f65ae13f0d37afed38bac2c0a9c3a956f5e1a2eccc1f9a349b1a2c8f.png" />
-<img alt="../../_images/a6feca8ed29303822430f2f5bfc21fc2c56b8f01f5f85f054e6f31cff5f4b4bb.png" src="../../_images/a6feca8ed29303822430f2f5bfc21fc2c56b8f01f5f85f054e6f31cff5f4b4bb.png" />
-<img alt="../../_images/812eb5e0efbcc74cf8df058a9035e1b0778b4d1963b63ce655d4b4dd37e05207.png" src="../../_images/812eb5e0efbcc74cf8df058a9035e1b0778b4d1963b63ce655d4b4dd37e05207.png" />
-<img alt="../../_images/5df253101b81b2e54a7d46cd2f03e87aed757e5cbe68f250b089b2c6d0d2fa60.png" src="../../_images/5df253101b81b2e54a7d46cd2f03e87aed757e5cbe68f250b089b2c6d0d2fa60.png" />
+<img alt="../../_images/2064c63e0a48cd0c3d8bad0b2b7782f8e98505b4517f4183cd7fb2325b473775.png" src="../../_images/2064c63e0a48cd0c3d8bad0b2b7782f8e98505b4517f4183cd7fb2325b473775.png" />
+<img alt="../../_images/7f582643f5564ae1c804c6f2a8553689663a81a36f3b49225c793100d1381a93.png" src="../../_images/7f582643f5564ae1c804c6f2a8553689663a81a36f3b49225c793100d1381a93.png" />
+<img alt="../../_images/990a8d236d319847d4314931cadf118ed4716a985f82ce80711d8ab89ef33e57.png" src="../../_images/990a8d236d319847d4314931cadf118ed4716a985f82ce80711d8ab89ef33e57.png" />
+<img alt="../../_images/f18baeabd92c1f258f0eede5a654bde322d7537906850c8e94bcb4c81b0aa755.png" src="../../_images/f18baeabd92c1f258f0eede5a654bde322d7537906850c8e94bcb4c81b0aa755.png" />
 </div>
 </div>
 <p>Suppose you were a hedge fund with 200M capital, you placed a fairly small 1 million dollar trade. You were fully commited and thought you had the capital to support the trade</p>
