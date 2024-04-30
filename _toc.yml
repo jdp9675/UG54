@@ -121,6 +121,8 @@ sections:
     title: Momentum factor
   - file: chapters/Finance/OtherEquityStrategies
     title: Other Equity strategies
+  - file: chapters/Finance/LeverageandShorting
+    title: Leverage and Shorting
 
 
 
