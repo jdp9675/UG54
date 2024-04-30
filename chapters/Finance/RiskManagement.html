@@ -1128,7 +1128,7 @@ model or by setting rescale=False.
 
 <span class="nb">print</span><span class="p">(((</span><span class="n">results4</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">-</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1"># divide by the variable variance to have a sense of how big are your mistakes!</span>
 
-<span class="c1"># tbhis is the model that use 5 days and 1 month lagged RV (but much longer sample!)</span>
+<span class="c1"># this is the model that use 5 days and 1 month lagged RV (but much longer sample!)</span>
 <span class="nb">print</span><span class="p">(((</span><span class="n">results3</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="o">-</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
 </pre></div>
 </div>
@@ -1177,66 +1177,6 @@ dtype: float64
 </div>
 <p>Note that to make it comparable we should look at similar samples.</p>
 <p>Why is that? How would you do that?</p>
-<p>A cool thing is that we can be sharper in our context.</p>
-<p>If we are willing to assume the investor has mean-variance preferences</p>
-<div class="math notranslate nohighlight">
-\[E[xR]-\frac{\gamma}{2}Var(xR)\]</div>
-<p>Then the utility cost of believing the variance is V1 when the truth is V2 is</p>
-<p>just the difference in utilities</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{2\gamma}\mu^2(\frac{V1-V2}{\sqrt{V2}V1})^2\]</div>
-<p>We can then normalize by the utility we would get if we knew then right variance</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{2\gamma}\frac{\mu^2}{V2}\]</div>
-<p>and we get</p>
-<div class="math notranslate nohighlight">
-\[(\frac{V1-V2}{V_1})^2\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
-<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
-
-<span class="n">V1</span><span class="o">=</span><span class="n">variance_forecast</span><span class="p">[</span><span class="s1">&#39;h.1&#39;</span><span class="p">]</span>
-<span class="n">V2</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">V2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
-
-<span class="n">V1</span><span class="o">=</span><span class="n">results4</span><span class="o">.</span><span class="n">fittedvalues</span>
-<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
-
-<span class="n">V1</span><span class="o">=</span><span class="n">results3</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span>
-<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
-
-<span class="n">V1</span><span class="o">=</span><span class="n">results2</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">252</span>
-<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
-
-<span class="n">V1</span><span class="o">=</span><span class="n">results1</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">252</span>
-<span class="n">V1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">((((</span><span class="n">V1</span><span class="o">-</span><span class="n">V2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8157377651622565
-733.6436990362961
-1.8520782506437232
-0.9207099695425797
-0.922198210889698
-</pre></div>
-</div>
-</div>
-</div>
-<p>Why the blow up? What is happening?</p>
-<p>How to find out?</p>
-<p>How to fix it?</p>
 </section>
 </section>
 <section id="dynamic-portfolios">
@@ -1290,13 +1230,31 @@ You can get quite sophisticated.</p>
 <li><p>use factor model to extrapolate implications to variance-covariance matrix</p></li>
 </ul>
 <p>Note: These are all assumptions. You have to check if they are good approximation and ultimate if indeed they help you forecast the variance of your portfolio!</p>
-<p>Application: use the 50 stocks with the three factor model</p>
 </section>
 <section id="risk-budget-constraint">
 <h2><span class="section-number">13.3. </span>Risk-Budget Constraint<a class="headerlink" href="#risk-budget-constraint" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>How this is used in practice?</p></li>
+<li><p>In practice a fund or a “trading pod” is allocated some capital and some maximum risk-limits</p></li>
+<li><p>If you breach the risk-limit you have to de-risk</p></li>
+<li><p>Why is typically so hard to de-risk?</p></li>
+<li><p>Think about Melvin Capital.</p>
+<ul>
+<li><p>How should you think about de-risking? Should you comply? What is the trade-off?</p></li>
+<li><p>What are the incentives the manager faces? What does it depend on?</p></li>
+<li><p>How are these incentives different from a wealth individual invest in her own behalf?</p></li>
+</ul>
+</li>
+<li><p>Should our past losses matter for our decision to de-risk?</p></li>
+</ul>
 </section>
 <section id="tracking-error-constraint">
 <h2><span class="section-number">13.4. </span>Tracking Error Constraint<a class="headerlink" href="#tracking-error-constraint" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>One can use exactly the same model to compute the tracking error</p></li>
+<li><p>it is simply the volatility of a relative return</p></li>
+<li><p>How would you adjust our math above to estimate the tracking error instead of the absolute risk?</p></li>
+</ul>
 </section>
 </section>
 
