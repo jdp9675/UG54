@@ -464,7 +464,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">11.1. Implementation Shortfall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">11.2. Absorption capacity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-d-you-actually-need-to-trade">11.3. How much d you actually need to trade?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-do-you-actually-need-to-trade">11.3. How much do you actually need to trade?</a></li>
 </ul>
             </nav>
         </div>
@@ -536,8 +536,8 @@ document.write(`
 <p>This graph below shows costs for Trades made by AQR</p>
 <p><img alt="Market Impact" src="../../_images/marketimpact.jpg" /></p>
 </section>
-<section id="how-much-d-you-actually-need-to-trade">
-<h2><span class="section-number">11.3. </span>How much d you actually need to trade?<a class="headerlink" href="#how-much-d-you-actually-need-to-trade" title="Permalink to this heading">#</a></h2>
+<section id="how-much-do-you-actually-need-to-trade">
+<h2><span class="section-number">11.3. </span>How much do you actually need to trade?<a class="headerlink" href="#how-much-do-you-actually-need-to-trade" title="Permalink to this heading">#</a></h2>
 <p>To compute how much you need to trade you need to compare the desired weights in date <span class="math notranslate nohighlight">\(t\)</span> with the weights you have in the end of date <span class="math notranslate nohighlight">\(t+1\)</span>.</p>
 <ul class="simple">
 <li><p>Before trading, your weight in date <span class="math notranslate nohighlight">\(t+1\)</span> is</p></li>
@@ -545,13 +545,12 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[w_{i,t+1}(\text{before trading})= \frac{w_{i,t}^*(1+r_{i,t+1})}{(1+r_{t+1}^{strategy})}\]</div>
 <ul class="simple">
-<li><p>If the desired position in the stock is <span class="math notranslate nohighlight">\(w_{i,t+1}^*\)</span>, then</p></li>
-</ul>
-<p>\begin{align}
-UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^<em>-w_{i,t+1}(\text{before trading})\bigg)}{Volume_{i,t}} \
-&amp;=\frac{position}{Volume_{i,t}}\left(w_{i,t+1}^</em>-\frac{w_{i,t}^*(1+r_{i,t+1})}{1+r_{t+1}^{strategy}}\right)
-\end{align}</p>
-<ul class="simple">
+<li><p>If the desired position in the stock is <span class="math notranslate nohighlight">\(w_{i,t+1}^*\)</span>, then
+$<span class="math notranslate nohighlight">\(
+\begin{align}
+UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{before trading})\bigg)}{Volume_{i,t}} \\
+&amp;=\frac{position}{Volume_{i,t}}\left(w_{i,t+1}^*-\frac{w_{i,t}^*(1+r_{i,t+1})}{1+r_{t+1}^{strategy}}\right)
+\end{align}\)</span>$</p></li>
 <li><p><span class="math notranslate nohighlight">\(UsedVolume_{i,t}\)</span> is a stock-time specific statistic. Implementability will depend on how high this quantity is across time and across stocks– the lower the better.</p></li>
 <li><p>If it is very high (i.e., close to  1), it means that your position would require almost all volume in a particular stock. It doesn’t mean that you wouldn’t be able to trade, but likely prices would move against you (i.e., go up as you buy, do down as you sell)</p></li>
 <li><p>One very conservative way of looking at it is to look at the <strong>maximum</strong> of this statistic across stocks. This tells you the “weakest” link in your portfolio formation.</p></li>
@@ -1593,7 +1592,7 @@ dtype: float64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">11.1. Implementation Shortfall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">11.2. Absorption capacity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-d-you-actually-need-to-trade">11.3. How much d you actually need to trade?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-do-you-actually-need-to-trade">11.3. How much do you actually need to trade?</a></li>
 </ul>
   </nav></div>
 
