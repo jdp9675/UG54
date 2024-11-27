@@ -486,6 +486,14 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\alan.moreira\AppData\Roaming\Python\Python39\site-packages\pandas\core\computation\expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+C:\Users\alan.moreira\AppData\Roaming\Python\Python39\site-packages\pandas\core\arrays\masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+</pre></div>
+</div>
+</div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="trading-costs-and-liquidity">
 <h1><span class="section-number">11. </span>Trading costs and Liquidity<a class="headerlink" href="#trading-costs-and-liquidity" title="Permalink to this heading">#</a></h1>
@@ -759,7 +767,7 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
         <span class="n">w</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">weight_name</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Wght&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">group</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">]]</span>
+            <span class="k">return</span> <span class="n">group</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">]]</span>
         <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
     <span class="c1"># We now simply have to  use the above function to construct the portfolio</span>
@@ -805,6 +813,113 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_ret</span><span class="p">,</span> <span class="n">wght</span><span class="o">=</span><span class="n">momreturns_w</span><span class="p">(</span><span class="n">crsp</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_1440\3351365901.py:48: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  weights = mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).apply(wavg_wght, &#39;ret&#39;,&#39;me&#39;)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">port_ret</span><span class="p">,</span> <span class="n">wght</span><span class="o">=</span><span class="n">momreturns_w</span><span class="p">(</span><span class="n">crsp</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="nn">Input In [3],</span> in <span class="ni">momreturns_w</span><span class="nt">(data, ngroups)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wavg_wght</span><span class="p">,</span> <span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;me&#39;</span><span class="p">)</span> 
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="c1"># merge back</span>
+<span class="ne">---&gt; </span><span class="mi">51</span> <span class="n">weights</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;mom_group_lead&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mom_group</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python39\site-packages\pandas\core\frame.py:10819,</span> in <span class="ni">DataFrame.merge</span><span class="nt">(self, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10800</span> <span class="nd">@Substitution</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10801</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_merge_doc</span><span class="p">,</span> <span class="n">indents</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10802</span> <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">  </span><span class="mi">10815</span>     <span class="n">validate</span><span class="p">:</span> <span class="n">MergeValidate</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10816</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="g g-Whitespace">  </span><span class="mi">10817</span>     <span class="kn">from</span> <span class="nn">pandas.core.reshape.merge</span> <span class="kn">import</span> <span class="n">merge</span>
+<span class="ne">&gt; </span><span class="mi">10819</span>     <span class="k">return</span> <span class="n">merge</span><span class="p">(</span>
+<span class="g g-Whitespace">  </span><span class="mi">10820</span>         <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10821</span>         <span class="n">right</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10822</span>         <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10823</span>         <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10824</span>         <span class="n">left_on</span><span class="o">=</span><span class="n">left_on</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10825</span>         <span class="n">right_on</span><span class="o">=</span><span class="n">right_on</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10826</span>         <span class="n">left_index</span><span class="o">=</span><span class="n">left_index</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10827</span>         <span class="n">right_index</span><span class="o">=</span><span class="n">right_index</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10828</span>         <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10829</span>         <span class="n">suffixes</span><span class="o">=</span><span class="n">suffixes</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10830</span>         <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10831</span>         <span class="n">indicator</span><span class="o">=</span><span class="n">indicator</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10832</span>         <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span>
+<span class="g g-Whitespace">  </span><span class="mi">10833</span>     <span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python39\site-packages\pandas\core\reshape\merge.py:170,</span> in <span class="ni">merge</span><span class="nt">(left, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span>     <span class="k">return</span> <span class="n">_cross_merge</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>         <span class="n">left_df</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>         <span class="n">right_df</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span>         <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">170</span>     <span class="n">op</span> <span class="o">=</span> <span class="n">_MergeOperation</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span>         <span class="n">left_df</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span>         <span class="n">right_df</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>         <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>         <span class="n">left_on</span><span class="o">=</span><span class="n">left_on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="n">right_on</span><span class="o">=</span><span class="n">right_on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>         <span class="n">left_index</span><span class="o">=</span><span class="n">left_index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span>         <span class="n">right_index</span><span class="o">=</span><span class="n">right_index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span>         <span class="n">suffixes</span><span class="o">=</span><span class="n">suffixes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span>         <span class="n">indicator</span><span class="o">=</span><span class="n">indicator</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span>         <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span>     <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">get_result</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python39\site-packages\pandas\core\reshape\merge.py:794,</span> in <span class="ni">_MergeOperation.__init__</span><span class="nt">(self, left, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, indicator, validate)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span>     <span class="k">raise</span> <span class="n">MergeError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_on</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">right_on</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_left_right_on</span><span class="p">(</span><span class="n">left_on</span><span class="p">,</span> <span class="n">right_on</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="bp">self</span><span class="o">.</span><span class="n">left_join_keys</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>     <span class="bp">self</span><span class="o">.</span><span class="n">right_join_keys</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="bp">self</span><span class="o">.</span><span class="n">join_names</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">left_drop</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">right_drop</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">794</span> <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_merge_keys</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span> <span class="k">if</span> <span class="n">left_drop</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">_drop_labels_or_levels</span><span class="p">(</span><span class="n">left_drop</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python39\site-packages\pandas\core\reshape\merge.py:1297,</span> in <span class="ni">_MergeOperation._get_merge_keys</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1295</span> <span class="n">rk</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">Hashable</span><span class="p">,</span> <span class="n">rk</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1296</span> <span class="k">if</span> <span class="n">rk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1297</span>     <span class="n">right_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">_get_label_or_level_values</span><span class="p">(</span><span class="n">rk</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1298</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1299</span>     <span class="c1"># work-around for merge_asof(right_index=True)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1300</span>     <span class="n">right_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_values</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python39\site-packages\pandas\core\generic.py:1905,</span> in <span class="ni">NDFrame._get_label_or_level_values</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1902</span> <span class="n">other_axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_AXIS_LEN</span><span class="p">)</span> <span class="k">if</span> <span class="n">ax</span> <span class="o">!=</span> <span class="n">axis</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1904</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_label_reference</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1905</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_label_or_level_ambiguity</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1906</span>     <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">other_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">_values</span>
+<span class="g g-Whitespace">   </span><span class="mi">1907</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_level_reference</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">):</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python39\site-packages\pandas\core\generic.py:1867,</span> in <span class="ni">NDFrame._check_label_or_level_ambiguity</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1859</span> <span class="n">label_article</span><span class="p">,</span> <span class="n">label_type</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1860</span>     <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;column&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">axis_int</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">(</span><span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1861</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1863</span> <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1864</span>     <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; is both </span><span class="si">{</span><span class="n">level_article</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">level_type</span><span class="si">}</span><span class="s2"> level and &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1865</span>     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label_article</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">label_type</span><span class="si">}</span><span class="s2"> label, which is ambiguous.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1866</span> <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1867</span> <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: &#39;date&#39; is both an index level and a column label, which is ambiguous.
 </pre></div>
 </div>
 </div>
@@ -1077,7 +1192,7 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
         <span class="n">w</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">weight_name</span><span class="p">]</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Wght&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">group</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">]]</span>
+            <span class="k">return</span> <span class="n">group</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">]]</span>
         <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
     <span class="c1"># We now simply have to  use the above function to construct the portfolio</span>
