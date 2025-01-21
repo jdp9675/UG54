@@ -94,53 +94,32 @@ sections:
   - file: chapters/scientific/linear_algebra1
     title: Linear algebra Review
 
-- file: chapters/Finance/MeanVariance
-  title: Mean-Variance Investing
-
-- file: chapters/Finance/TradingStrategies
-  title: Trading Strategies
-
 - file: chapters/Finance/FactorModels
   title: Factor Models
+- file: chapters/Finance/FactorModelEstimation
+  title: Factor Model Estimation
+- file: chapters/Finance/PortfolioMath
+  title: Portfolios
   sections:
-  - file: chapters/Finance/MultiFactorModels
-    title: Multi Factor Models
-  - file: chapters/Finance/ExpectedReturnModels
-    title: Factor Models as Models of Expected Returns
-  - file: chapters/Finance/InterpretingFactorModels
-    title: Interpreting Factor Models
-
+    - file: chapters/Finance/LeverageandShorting
+      title: Leverage and Shorting
+- file: chapters/Finance/Performance_evaluation
+  title: Performance Evaluation
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
-  - file: chapters/Finance/MarketCapweighted
-    title: The Market Cap Weighted Portfolio
-  - file: chapters/Finance/Valueinvesting
-    title: Value factor
-  - file: chapters/Finance/Momentum
-    title: Momentum factor
-  - file: chapters/Finance/OtherEquityStrategies
-    title: Other Equity strategies
-  - file: chapters/Finance/LeverageandShorting
-    title: Leverage and Shorting
+    - file: chapters/Finance/Momentum
+      title: Momentum factor
+    - file: chapters/Finance/OtherEquityStrategies
+      title: Other Equity strategies
 
-
-
-- file: chapters/Finance/Robustness
-  title: Robustness of Quantitative Strategies
-
-- file: chapters/Finance/Implementation
-  title: Liquidity
-
-- file: chapters/Finance/Timing
-  title: Factor Timing 
+- file: chapters/Finance/MultiFactorModels
+  title: Multi Factor Models
   sections:
-  - file: chapters/Finance/Volatilitytiming
-    title: Volatility Timing
-
-- file: chapters/Finance/RiskManagement
-  title: Risk Management and Capital Allocation
-
+    - file: chapters/Finance/WhichFactors_TBD
+      title: Interpreting Factor Models
+    - file: chapters/Finance/InterpretingFactorModels
+      title: Interpreting Factor Models
 - file: chapters/Finance/MachineLearning
   title: Machine Learning in Finance
 - file: chapters/additional/additional
