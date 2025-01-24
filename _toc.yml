@@ -77,9 +77,8 @@ sections:
   sections:
     - file: chapters/Finance/Momentum
       title: Momentum factor
-    - file: chapters/Finance/OtherEquityStrategies
-      title: Other Equity strategies
-
+    # - file: chapters/Finance/OtherEquityStrategies
+    #   title: Other Equity strategies
 - file: chapters/Finance/MultiFactorModels
   title: Multi Factor Models
   sections:
@@ -92,18 +91,18 @@ sections:
 - file: chapters/additional/additional
   title: Additional Statistics Material
 - file: chapters/Assignments/Assignments
-  title: Assignments
-  sections:
-  - file: chapters/Assignments/Assignment0
-    title: Assignment 0
-  - file: chapters/Assignments/Assignment1
-    title: Assignment 1
-  - file: chapters/Assignments/Assignment2
-    title: Assignment 2
-  - file: chapters/Assignments/Assignment3
-    title: Assignment 3
-  - file: chapters/Assignments/Assignment4
-    title: Assignment 4
+  # title: Assignments
+  # sections:
+  # - file: chapters/Assignments/Assignment0
+  #   title: Assignment 0
+  # - file: chapters/Assignments/Assignment1
+  #   title: Assignment 1
+  # - file: chapters/Assignments/Assignment2
+  #   title: Assignment 2
+  # - file: chapters/Assignments/Assignment3
+  #   title: Assignment 3
+  # - file: chapters/Assignments/Assignment4
+  #   title: Assignment 4
   # - file: chapters/Assignments/Assignment5
   #   title: Assignment 5
   # - file: chapters/Assignments/Final Project
