@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Returns, excess returns, and common factors &#8212; Quantitative Investing</title>
+    <title>14. Returns, excess returns, and common factors &#8212; Quantitative Investing</title>
   
   
   
@@ -68,6 +68,8 @@
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14.5. Dat APIs" href="UsingAPI.html" />
+    <link rel="prev" title="13.7. Plotting" href="../essentials/plotting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -119,8 +121,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -165,7 +165,7 @@
 </button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
@@ -187,10 +187,10 @@
 
 
 
-<li class="toctree-l1 has-children"><a class="reference internal" href="Returns.html">14. Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">14.3. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">14.4. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">14.5. Modeling randomness</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">14. Asset Returns</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">14.5. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">14.6. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">14.7. Modeling randomness</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="FactorModels.html">15. Factor Models</a></li>
@@ -435,16 +435,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-return">What is a return?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposing-returns">Decomposing Returns</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#striping-the-risk-free-rate">Striping the risk-free rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-return">14.1. What is a return?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposing-returns">14.2. Decomposing Returns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#striping-the-risk-free-rate">14.2.1. Striping the risk-free rate</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-premiums">Risk Premiums</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stripping-the-common-factor">Stripping the common factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-premiums">14.3. Risk Premiums</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stripping-the-common-factor">14.3.1. Stripping the common factor</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">Towards a factor Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">14.4. Towards a factor Model</a></li>
 </ul>
             </nav>
         </div>
@@ -559,7 +559,7 @@
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="returns-excess-returns-and-common-factors">
-<h1>Returns, excess returns, and common factors<a class="headerlink" href="#returns-excess-returns-and-common-factors" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>Returns, excess returns, and common factors<a class="headerlink" href="#returns-excess-returns-and-common-factors" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Define what are returns, which is the key variable of analysis in finance (and this class).</p></li>
 <li><p>Discuss how to think them of random variables</p></li>
@@ -568,7 +568,7 @@
 <li><p>Define the concept of Excess returns</p></li>
 </ul>
 <section id="what-is-a-return">
-<h2>What is a return?<a class="headerlink" href="#what-is-a-return" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>What is a return?<a class="headerlink" href="#what-is-a-return" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Lets say you paid <span class="math notranslate nohighlight">\(𝑃_𝑡\)</span> in date <span class="math notranslate nohighlight">\(t\)</span> for an asset</p></li>
 <li><p>In date <span class="math notranslate nohighlight">\(t+1\)</span> the price is <span class="math notranslate nohighlight">\(𝑃_{𝑡+1}\)</span>  and you earn some dividend as well <span class="math notranslate nohighlight">\(𝐷_{𝑡+1}\)</span></p></li>
@@ -868,7 +868,7 @@ Done
 <p>What drives these returns? Why do they vary over time?</p>
 </section>
 <section id="decomposing-returns">
-<h2>Decomposing Returns<a class="headerlink" href="#decomposing-returns" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>Decomposing Returns<a class="headerlink" href="#decomposing-returns" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Returns of an individual stock can be driven by many things</p>
 <ul>
@@ -882,7 +882,7 @@ Done
 <p>We will build towards a framework of investing that thinks differently about investing on systematic risk and idiosyncratic risk</p>
 <p>The first step will be to build this decomposition, which will start now and culminate in our factor models lecture</p>
 <section id="striping-the-risk-free-rate">
-<h3>Striping the risk-free rate<a class="headerlink" href="#striping-the-risk-free-rate" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.2.1. </span>Striping the risk-free rate<a class="headerlink" href="#striping-the-risk-free-rate" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>In this class we will do a lot of decomposing, but lets start by stripping down the “time-value of money” piece</p></li>
 <li><p>We first define an “<b>excess return</b>”： the return minus the risk-free rate</p></li>
@@ -1042,7 +1042,7 @@ Done
 </section>
 </section>
 <section id="risk-premiums">
-<h2>Risk Premiums<a class="headerlink" href="#risk-premiums" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>Risk Premiums<a class="headerlink" href="#risk-premiums" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We call the risk-premium what we earn in excess of what a risk-free investment pays</p></li>
 <li><p>So the risk premium of an asset is the expected value of the excess return</p></li>
@@ -1062,7 +1062,7 @@ Done
 <li><p>How do we figure out the risk-premium of an asset?</p></li>
 </ul>
 <section id="stripping-the-common-factor">
-<h3>Stripping the common factor<a class="headerlink" href="#stripping-the-common-factor" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.1. </span>Stripping the common factor<a class="headerlink" href="#stripping-the-common-factor" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>We will build a simple model to help us both think about this risk-premium and also the risk that we need to manage</p></li>
 <li><p>It will be useful to decompose the excess returns further to better understand it’s risk and it’s premium</p></li>
@@ -1628,7 +1628,7 @@ dtype: float64
 </section>
 </section>
 <section id="towards-a-factor-model">
-<h2>Towards a factor Model<a class="headerlink" href="#towards-a-factor-model" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.4. </span>Towards a factor Model<a class="headerlink" href="#towards-a-factor-model" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>First idea is that stocks might have different degree of co-movement</p></li>
 <li><p>For example, Defensive stocks like utilities, supermarkets, and so on might not suffer as much when the market tanks</p>
@@ -1760,6 +1760,8 @@ the historical standard deviation of the market factor is 0.18752700466334934 an
 </ul>
 </div></blockquote>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1792,6 +1794,24 @@ the historical standard deviation of the market factor is 0.18752700466334934 an
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../essentials/plotting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13.7. </span>Plotting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="UsingAPI.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14.5. </span>Dat APIs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1809,16 +1829,16 @@ the historical standard deviation of the market factor is 0.18752700466334934 an
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-return">What is a return?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposing-returns">Decomposing Returns</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#striping-the-risk-free-rate">Striping the risk-free rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-return">14.1. What is a return?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposing-returns">14.2. Decomposing Returns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#striping-the-risk-free-rate">14.2.1. Striping the risk-free rate</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-premiums">Risk Premiums</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stripping-the-common-factor">Stripping the common factor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-premiums">14.3. Risk Premiums</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stripping-the-common-factor">14.3.1. Stripping the common factor</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">Towards a factor Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">14.4. Towards a factor Model</a></li>
 </ul>
   </nav></div>
 
