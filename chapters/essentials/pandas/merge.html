@@ -1,76 +1,76 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.4.6. Merge (opt) &#8212; Quantitative Investing</title>
+    <title>13.4.6. Merge (opt) &#8212; Quantitative Investing</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/book.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/book.css?v=c2893119" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/essentials/pandas/merge';</script>
     <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/essentials/pandas/merge.html" />
-    <link rel="shortcut icon" href="../../../_static/figuremain2.jpg"/>
+    <link rel="icon" href="../../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="3.4.7. GroupBy (opt)" href="groupby.html" />
-    <link rel="prev" title="3.4.5. Reshape (opt)" href="reshape.html" />
+    <link rel="next" title="13.4.7. GroupBy (opt)" href="groupby.html" />
+    <link rel="prev" title="13.4.5. Reshape (opt)" href="reshape.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,23 +78,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -102,7 +95,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,16 +102,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -132,9 +133,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -144,98 +149,96 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/figuremain2.jpg" class="logo__image only-light" alt="Quantitative Investing - Home"/>
+    <img src="../../../_static/figuremain2.jpg" class="logo__image only-dark pst-js-only" alt="Quantitative Investing - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/computational-tools.html">1.2. Computational tools</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/getting_started.html">2. Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../02/local_install.html">2.3. Local installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02/cloud_setup.html">2.4. Cloud Setup</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../intro.html">3. Python Essentials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../basics.html">3.1. Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../collections.html">3.2. Collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../numpy.html">3.3. Numpy</a></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="../introtopandas.html">3.4. Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="the_index.html">3.4.3. Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html">3.4.4. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reshape.html">3.4.5. Reshape</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">3.4.6. Merge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="groupby.html">3.4.7. Group-by</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib.html">3.4.8. Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_clean.html">3.4.9. Cleaning data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="storage_formats.html">3.4.10. Data Storage</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">3. First steps with Python</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Returns.html">14. Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/UsingAPI.html">14.3. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/TheChoiceofFrequency.html">14.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/randomness1.html">14.5. Modeling randomness</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../control_flow.html">3.5. Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../functions.html">3.6. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../plotting.html">3.7. Plotting</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/PortfolioMath.html">15. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/linear_algebra1.html">15.7. Linear algebra Review</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/UsingAPI.html">4.3. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../scientific/randomness1.html">4.5. Modeling randomness</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/MeanVariance.html">16. Mean-Variance Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/TradingStrategies.html">17. Trading Strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/FactorModels.html">18. Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MultiFactorModels.html">18.2. Multi Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/ExpectedReturnModels.html">18.3. Factor Models as Models of Expected Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/InterpretingFactorModels.html">18.4. Interpreting Factor Models</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/PortfolioMath.html">5. Portfolios</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../scientific/linear_algebra1.html">5.7. Linear algebra Review</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/crosssectionalequitystrategies.html">19. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MarketCapweighted.html">19.1. The Market Cap Weighted Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Valueinvesting.html">19.2. Value factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Momentum.html">19.3. Momentum factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/OtherEquityStrategies.html">19.4. Other Equity strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/LeverageandShorting.html">19.5. Leverage and Shorting</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/MeanVariance.html">6. Mean-Variance Investing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/TradingStrategies.html">7. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/FactorModels.html">8. Factor Models</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/MultiFactorModels.html">8.2. Multi Factor Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/ExpectedReturnModels.html">8.3. Factor Models as Models of Expected Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/InterpretingFactorModels.html">8.4. Interpreting Factor Models</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/Robustness.html">20. Robustness of Quantitative Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/Implementation.html">21. Liquidity</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Timing.html">22. Factor Timing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Volatilitytiming.html">22.2. Volatility Timing</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/MarketCapweighted.html">9.1. The Market Cap Weighted Portfolio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/Valueinvesting.html">9.2. Value factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/Momentum.html">9.3. Momentum factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/OtherEquityStrategies.html">9.4. Other Equity strategies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/LeverageandShorting.html">9.5. Leverage and Shorting</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/Robustness.html">10. Robustness of Quantitative Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/Implementation.html">11. Liquidity</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Timing.html">12. Factor Timing</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/Volatilitytiming.html">12.2. Volatility Timing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/RiskManagement.html">13. Risk Management and Capital Allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/MachineLearning.html">14. Machine Learning in Finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../additional/additional.html">15. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Assignments/Assignments.html">16. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment0.html">16.1. Assigment 0</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/RiskManagement.html">23. Risk Management and Capital Allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/MachineLearning.html">24. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/additional.html">25. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Assignments/Assignments.html">26. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment0.html">26.1. Assigment 0</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment1.html">16.6. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment1.html">26.6. Assignment 1</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment2.html">16.9. Assignment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment2.html">26.9. Assignment 2</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment3.html">16.12. Assignment 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment3.html">26.12. Assignment 3</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment4.html">16.15. Assignment 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment4.html">26.15. Assignment 4</a></li>
 
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -244,14 +247,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -260,14 +268,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -292,14 +300,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/essentials/pandas/merge.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -420,26 +428,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -460,38 +462,38 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">3.4.6.1. Outline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-datasets">3.4.6.2. Combining Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-concat">3.4.6.3. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-0">3.4.6.3.1. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-1">3.4.6.3.2. <code class="docutils literal notranslate"><span class="pre">axis=1</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">13.4.6.1. Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-datasets">13.4.6.2. Combining Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-concat">13.4.6.3. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-0">13.4.6.3.1. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-1">13.4.6.3.2. <code class="docutils literal notranslate"><span class="pre">axis=1</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-merge">3.4.6.4. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-columns">3.4.6.4.1. Multiple Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-merge">13.4.6.4. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-columns">13.4.6.4.1. Multiple Columns</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments-to-merge">3.4.6.5. Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on">3.4.6.5.1. <code class="docutils literal notranslate"><span class="pre">on</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-on-right-on">3.4.6.5.2. <code class="docutils literal notranslate"><span class="pre">left_on</span></code>, <code class="docutils literal notranslate"><span class="pre">right_on</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-index-right-index">3.4.6.5.3. <code class="docutils literal notranslate"><span class="pre">left_index</span></code>, <code class="docutils literal notranslate"><span class="pre">right_index</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how">3.4.6.5.4. <code class="docutils literal notranslate"><span class="pre">how</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-merge-df2">3.4.6.5.5. <code class="docutils literal notranslate"><span class="pre">df.merge(df2)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments-to-merge">13.4.6.5. Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on">13.4.6.5.1. <code class="docutils literal notranslate"><span class="pre">on</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-on-right-on">13.4.6.5.2. <code class="docutils literal notranslate"><span class="pre">left_on</span></code>, <code class="docutils literal notranslate"><span class="pre">right_on</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-index-right-index">13.4.6.5.3. <code class="docutils literal notranslate"><span class="pre">left_index</span></code>, <code class="docutils literal notranslate"><span class="pre">right_index</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how">13.4.6.5.4. <code class="docutils literal notranslate"><span class="pre">how</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-merge-df2">13.4.6.5.5. <code class="docutils literal notranslate"><span class="pre">df.merge(df2)</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-join">3.4.6.6. <code class="docutils literal notranslate"><span class="pre">df.join</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">3.4.6.7. Case Study</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#book-data">3.4.6.7.1. Book Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-join">13.4.6.6. <code class="docutils literal notranslate"><span class="pre">df.join</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">13.4.6.7. Case Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#book-data">13.4.6.7.1. Book Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-example-airline-delays">3.4.6.8. Extra Example: Airline Delays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-merge-operations">3.4.6.9. Visualizing Merge Operations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.4.6.9.1. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.4.6.9.2. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-with-artificial-data">3.4.6.9.3. Exercises With Artificial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-example-airline-delays">13.4.6.8. Extra Example: Airline Delays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-merge-operations">13.4.6.9. Visualizing Merge Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.4.6.9.1. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.4.6.9.2. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-with-artificial-data">13.4.6.9.3. Exercises With Artificial Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.4.6.10. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">13.4.6.10. Exercises</a></li>
 </ul>
             </nav>
         </div>
@@ -501,13 +503,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="merge-opt">
-<h1><span class="section-number">3.4.6. </span>Merge (opt)<a class="headerlink" href="#merge-opt" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">13.4.6. </span>Merge (opt)<a class="headerlink" href="#merge-opt" title="Link to this heading">#</a></h1>
 <p><strong>Prerequisites</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="reshape.html"><span class="doc std std-doc">Reshape</span></a></p></li>
+<li><p><a class="reference internal" href="reshape.html"><span class="std std-doc">Reshape</span></a></p></li>
 </ul>
 <p><strong>Outcomes</strong></p>
 <ul class="simple">
@@ -521,23 +523,23 @@ document.write(`
 <li><p>Book ratings: 6,000,000 ratings for the 10,000 most rated books on
 <a class="reference external" href="https://www.goodreads.com/">Goodreads</a></p></li>
 <li><p>Details for all delayed US domestic flights in November 2016,
-obtained from the <a class="reference external" href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;DB_Short_Name=On-Time">Bureau of Transportation
+obtained from the <a class="reference external" href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;amp;DB_Short_Name=On-Time">Bureau of Transportation
 Statistics</a></p></li>
 </ul>
 <section id="outline">
-<h2><span class="section-number">3.4.6.1. </span>Outline<a class="headerlink" href="#outline" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.1. </span>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><span class="xref myst">Merge</span></p>
+<li><p><a class="reference internal" href="#Merge"><span class="xref myst">Merge</span></a></p>
 <ul>
-<li><p><span class="xref myst">Combining Datasets</span></p></li>
-<li><p><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></span></p></li>
-<li><p><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></span></p></li>
-<li><p><span class="xref myst">Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code></span></p></li>
-<li><p><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">df.join</span></code></span></p></li>
-<li><p><span class="xref myst">Case Study</span></p></li>
-<li><p><span class="xref myst">Extra Example: Airline Delays</span></p></li>
-<li><p><span class="xref myst">Visualizing Merge Operations</span></p></li>
-<li><p><span class="xref myst">Exercises</span></p></li>
+<li><p><a class="reference internal" href="#Combining-Datasets"><span class="xref myst">Combining Datasets</span></a></p></li>
+<li><p><a class="reference internal" href="#%60pd.concat%60"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#%60pd.merge%60"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#Arguments-to-%60merge%60"><span class="xref myst">Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#%60df.join%60"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">df.join</span></code></span></a></p></li>
+<li><p><a class="reference internal" href="#Case-Study"><span class="xref myst">Case Study</span></a></p></li>
+<li><p><a class="reference internal" href="#Extra-Example:-Airline-Delays"><span class="xref myst">Extra Example: Airline Delays</span></a></p></li>
+<li><p><a class="reference internal" href="#Visualizing-Merge-Operations"><span class="xref myst">Visualizing Merge Operations</span></a></p></li>
+<li><p><a class="reference internal" href="Exercises.html"><span class="doc std std-doc">Exercises</span></a></p></li>
 </ul>
 </li>
 </ul>
@@ -551,7 +553,7 @@ Statistics</a></p></li>
 </div>
 </section>
 <section id="combining-datasets">
-<h2><span class="section-number">3.4.6.2. </span>Combining Datasets<a class="headerlink" href="#combining-datasets" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.2. </span>Combining Datasets<a class="headerlink" href="#combining-datasets" title="Link to this heading">#</a></h2>
 <p>Often, we will want perform joint analysis on data from different sources.</p>
 <p>For example, when analyzing the regional sales for a company, we might
 want to include industry aggregates or demographic information for each
@@ -561,14 +563,14 @@ product groups in a separate dataset, and want to compute aggregate
 statistics for each group.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">qeds</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qeds</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="c1"># activate plot theme</span>
-<span class="kn">import</span> <span class="nn">qeds</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qeds</span>
 <span class="n">qeds</span><span class="o">.</span><span class="n">themes</span><span class="o">.</span><span class="n">mpl_style</span><span class="p">();</span>
 
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
 </pre></div>
 </div>
 </div>
@@ -964,7 +966,7 @@ aligned.</p>
 <p>We’ll look at each one.</p>
 </section>
 <section id="pd-concat">
-<h2><span class="section-number">3.4.6.3. </span><code class="docutils literal notranslate"><span class="pre">pd.concat</span></code><a class="headerlink" href="#pd-concat" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.3. </span><code class="docutils literal notranslate"><span class="pre">pd.concat</span></code><a class="headerlink" href="#pd-concat" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code> function is used to stack two or more DataFrames
 together.</p>
 <p>An example of when you might want to do this is if you have monthly data
@@ -981,7 +983,7 @@ will stack DataFrames on top of one another while <code class="docutils literal 
 side by side.</p>
 <p>We’ll look at each case separately.</p>
 <section id="axis-0">
-<h3><span class="section-number">3.4.6.3.1. </span><code class="docutils literal notranslate"><span class="pre">axis=0</span></code><a class="headerlink" href="#axis-0" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.3.1. </span><code class="docutils literal notranslate"><span class="pre">axis=0</span></code><a class="headerlink" href="#axis-0" title="Link to this heading">#</a></h3>
 <p>When we call <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code> and set <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, the list of DataFrames
 passed in the first argument will be stacked on top of one another.</p>
 <p>Let’s try it out here.</p>
@@ -1140,7 +1142,7 @@ originating from a different input is equal to <code class="docutils literal not
 </ul>
 </section>
 <section id="axis-1">
-<h3><span class="section-number">3.4.6.3.2. </span><code class="docutils literal notranslate"><span class="pre">axis=1</span></code><a class="headerlink" href="#axis-1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.3.2. </span><code class="docutils literal notranslate"><span class="pre">axis=1</span></code><a class="headerlink" href="#axis-1" title="Link to this heading">#</a></h3>
 <p>In this example, concatenating by stacking
 side-by-side makes more sense.</p>
 <p>We accomplish this by passing <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> to <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code>:</p>
@@ -1277,7 +1279,7 @@ dtype: float64
 </section>
 </section>
 <section id="pd-merge">
-<h2><span class="section-number">3.4.6.4. </span><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code><a class="headerlink" href="#pd-merge" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.4. </span><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code><a class="headerlink" href="#pd-merge" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code> operates on two DataFrames at a time and is primarily used
 to bring columns from one DataFrame into another, <em>aligning</em> data based
 on one or more “key” columns.</p>
@@ -1637,7 +1639,7 @@ that in the first step when all columns are copied over, <code class="docutils l
 </div></div></div>
 </div>
 <section id="multiple-columns">
-<h3><span class="section-number">3.4.6.4.1. </span>Multiple Columns<a class="headerlink" href="#multiple-columns" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.4.1. </span>Multiple Columns<a class="headerlink" href="#multiple-columns" title="Link to this heading">#</a></h3>
 <p>Sometimes, we need to merge multiple columns.</p>
 <p>For example our <code class="docutils literal notranslate"><span class="pre">pop</span></code> and <code class="docutils literal notranslate"><span class="pre">wdi2016_17</span></code> DataFrames both have observations
 organized by country and year.</p>
@@ -1816,12 +1818,12 @@ dtype: float64
 </div>
 <p><a id='exercise-0'></a></p>
 <blockquote>
-<div><p>See exercise 1 in the <span class="xref myst"><em>exercise list</em></span></p>
+<div><p>See exercise 1 in the <a class="reference internal" href="#exerciselist-0"><span class="xref myst"><em>exercise list</em></span></a></p>
 </div></blockquote>
 </section>
 </section>
 <section id="arguments-to-merge">
-<h2><span class="section-number">3.4.6.5. </span>Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code><a class="headerlink" href="#arguments-to-merge" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.5. </span>Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code><a class="headerlink" href="#arguments-to-merge" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code> function can take many optional arguments.</p>
 <p>We’ll talk about a few of the most commonly-used ones here and refer you
 to the
@@ -1830,7 +1832,7 @@ for more details.</p>
 <p>We’ll follow the pandas convention and refer to the first argument to
 <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code> as <code class="docutils literal notranslate"><span class="pre">left</span></code> and call the second <code class="docutils literal notranslate"><span class="pre">right</span></code>.</p>
 <section id="on">
-<h3><span class="section-number">3.4.6.5.1. </span><code class="docutils literal notranslate"><span class="pre">on</span></code><a class="headerlink" href="#on" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.5.1. </span><code class="docutils literal notranslate"><span class="pre">on</span></code><a class="headerlink" href="#on" title="Link to this heading">#</a></h3>
 <p>We have already seen this one used before, but we want to point out that on
 is optional.</p>
 <p>If nothing is given for this argument, pandas will use <strong>all</strong> columns
@@ -2003,7 +2005,7 @@ DataFrames, so it is used for <code class="docutils literal notranslate"><span c
 </div>
 </section>
 <section id="left-on-right-on">
-<h3><span class="section-number">3.4.6.5.2. </span><code class="docutils literal notranslate"><span class="pre">left_on</span></code>, <code class="docutils literal notranslate"><span class="pre">right_on</span></code><a class="headerlink" href="#left-on-right-on" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.5.2. </span><code class="docutils literal notranslate"><span class="pre">left_on</span></code>, <code class="docutils literal notranslate"><span class="pre">right_on</span></code><a class="headerlink" href="#left-on-right-on" title="Link to this heading">#</a></h3>
 <p>Above, we used the <code class="docutils literal notranslate"><span class="pre">on</span></code> argument to identify a column in both <code class="docutils literal notranslate"><span class="pre">left</span></code>
 and <code class="docutils literal notranslate"><span class="pre">right</span></code> that was used to align data.</p>
 <p>Sometimes, both DataFrames don’t have the same name for this column.</p>
@@ -2096,7 +2098,7 @@ DataFrames do both have the <code class="docutils literal notranslate"><span cla
 </div>
 </section>
 <section id="left-index-right-index">
-<h3><span class="section-number">3.4.6.5.3. </span><code class="docutils literal notranslate"><span class="pre">left_index</span></code>, <code class="docutils literal notranslate"><span class="pre">right_index</span></code><a class="headerlink" href="#left-index-right-index" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.5.3. </span><code class="docutils literal notranslate"><span class="pre">left_index</span></code>, <code class="docutils literal notranslate"><span class="pre">right_index</span></code><a class="headerlink" href="#left-index-right-index" title="Link to this heading">#</a></h3>
 <p>Sometimes, as in our example, the key used to align data is actually in the
 index instead of one of the columns.</p>
 <p>In this case, we can use the <code class="docutils literal notranslate"><span class="pre">left_index</span></code> or <code class="docutils literal notranslate"><span class="pre">right_index</span></code> arguments.</p>
@@ -2187,7 +2189,7 @@ index instead of one of the columns.</p>
 </div>
 </section>
 <section id="how">
-<h3><span class="section-number">3.4.6.5.4. </span><code class="docutils literal notranslate"><span class="pre">how</span></code><a class="headerlink" href="#how" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.5.4. </span><code class="docutils literal notranslate"><span class="pre">how</span></code><a class="headerlink" href="#how" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">how</span></code> is perhaps the most powerful, but most conceptually
 difficult of the arguments we will cover.</p>
 <p>This argument controls which values from the key column(s) appear in the
@@ -2679,15 +2681,15 @@ illustrate the <code class="docutils literal notranslate"><span class="pre">how<
 </div>
 <p><a id='exercise-1'></a></p>
 <blockquote>
-<div><p>See exercise 2 in the <span class="xref myst"><em>exercise list</em></span></p>
+<div><p>See exercise 2 in the <a class="reference internal" href="#exerciselist-0"><span class="xref myst"><em>exercise list</em></span></a></p>
 </div></blockquote>
 <p><a id='exercise-2'></a></p>
 <blockquote>
-<div><p>See exercise 3 in the <span class="xref myst"><em>exercise list</em></span></p>
+<div><p>See exercise 3 in the <a class="reference internal" href="#exerciselist-0"><span class="xref myst"><em>exercise list</em></span></a></p>
 </div></blockquote>
 </section>
 <section id="df-merge-df2">
-<h3><span class="section-number">3.4.6.5.5. </span><code class="docutils literal notranslate"><span class="pre">df.merge(df2)</span></code><a class="headerlink" href="#df-merge-df2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.5.5. </span><code class="docutils literal notranslate"><span class="pre">df.merge(df2)</span></code><a class="headerlink" href="#df-merge-df2" title="Link to this heading">#</a></h3>
 <p>Note that the DataFrame type has a <code class="docutils literal notranslate"><span class="pre">merge</span></code> <em>method</em>.</p>
 <p>It is the same as the function we have been working with, but passes the
 DataFrame before the period as <code class="docutils literal notranslate"><span class="pre">left</span></code>.</p>
@@ -2787,7 +2789,7 @@ DataFrame before the period as <code class="docutils literal notranslate"><span 
 </section>
 </section>
 <section id="df-join">
-<h2><span class="section-number">3.4.6.6. </span><code class="docutils literal notranslate"><span class="pre">df.join</span></code><a class="headerlink" href="#df-join" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.6. </span><code class="docutils literal notranslate"><span class="pre">df.join</span></code><a class="headerlink" href="#df-join" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">join</span></code> method for a DataFrame is very similar to the <code class="docutils literal notranslate"><span class="pre">merge</span></code>
 method described above, but only allows you to use the index of the
 <code class="docutils literal notranslate"><span class="pre">right</span></code> DataFrame as the join key.</p>
@@ -2966,7 +2968,7 @@ are in the index.</p>
 </div>
 </section>
 <section id="case-study">
-<h2><span class="section-number">3.4.6.7. </span>Case Study<a class="headerlink" href="#case-study" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.7. </span>Case Study<a class="headerlink" href="#case-study" title="Link to this heading">#</a></h2>
 <p>Let’s put these tools to practice by loading some real datasets and
 seeing how these functions can be applied.</p>
 <p>We’ll analyze ratings of books from the website <a class="reference external" href="https://www.goodreads.com/">Goodreads</a>.</p>
@@ -3345,7 +3347,7 @@ Name: user_id, dtype: int64
 <p>Nice! From the picture above, the new users look much more
 likely to leave 5 star ratings than more experienced users.</p>
 <section id="book-data">
-<h3><span class="section-number">3.4.6.7.1. </span>Book Data<a class="headerlink" href="#book-data" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.7.1. </span>Book Data<a class="headerlink" href="#book-data" title="Link to this heading">#</a></h3>
 <p>We know what you are probably thinking: “Isn’t this a lecture on merging?
 Why are we only using one dataset?”</p>
 <p>We hear you.</p>
@@ -3545,7 +3547,7 @@ rated books on Goodreads.</p>
 <p>I wonder what the bottom of the distribution looks like…</p>
 <p><a id='exercise-3'></a></p>
 <blockquote>
-<div><p>See exercise 4 in the <span class="xref myst"><em>exercise list</em></span></p>
+<div><p>See exercise 4 in the <a class="reference internal" href="#exerciselist-0"><span class="xref myst"><em>exercise list</em></span></a></p>
 </div></blockquote>
 <p>Let’s compute the average number of ratings for each book in our sample.</p>
 <div class="cell docutils container">
@@ -3653,9 +3655,9 @@ rated books on Goodreads.</p>
 </section>
 </section>
 <section id="extra-example-airline-delays">
-<h2><span class="section-number">3.4.6.8. </span>Extra Example: Airline Delays<a class="headerlink" href="#extra-example-airline-delays" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.8. </span>Extra Example: Airline Delays<a class="headerlink" href="#extra-example-airline-delays" title="Link to this heading">#</a></h2>
 <p>Let’s look at one more example.</p>
-<p>This time, we will use a dataset from the <a class="reference external" href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;DB_Short_Name=On-Time">Bureau of Transportation
+<p>This time, we will use a dataset from the <a class="reference external" href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&amp;amp;DB_Short_Name=On-Time">Bureau of Transportation
 Statistics</a>
 that describes the cause of all US domestic flight delays
 in November 2016:</p>
@@ -3995,8 +3997,8 @@ flying…</p>
 the holidays?</p>
 </section>
 <section id="visualizing-merge-operations">
-<h2><span class="section-number">3.4.6.9. </span>Visualizing Merge Operations<a class="headerlink" href="#visualizing-merge-operations" title="Permalink to this heading">#</a></h2>
-<p>As we did in the <a class="reference internal" href="reshape.html"><span class="doc std std-doc">reshape lecture</span></a>, we will visualize the
+<h2><span class="section-number">13.4.6.9. </span>Visualizing Merge Operations<a class="headerlink" href="#visualizing-merge-operations" title="Link to this heading">#</a></h2>
+<p>As we did in the <a class="reference internal" href="reshape.html"><span class="std std-doc">reshape lecture</span></a>, we will visualize the
 various merge operations using artificial DataFrames.</p>
 <p>First, we create some dummy DataFrames.</p>
 <div class="cell docutils container">
@@ -4124,7 +4126,7 @@ various merge operations using artificial DataFrames.</p>
 </div></div></div>
 </div>
 <section id="id1">
-<h3><span class="section-number">3.4.6.9.1. </span><code class="docutils literal notranslate"><span class="pre">pd.concat</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.9.1. </span><code class="docutils literal notranslate"><span class="pre">pd.concat</span></code><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Recall that calling <code class="docutils literal notranslate"><span class="pre">pd.concat(...,</span> <span class="pre">axis=0)</span></code> will stack DataFrames on top of
 one another:</p>
 <div class="cell docutils container">
@@ -4346,7 +4348,7 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
 <p>Here’s how we might visualize that.</p>
 <img src="https://datascience.quantecon.org/assets/_static/merge_files/concat_axis1.gif" alt="concat\_axis1.gif" style=""></section>
 <section id="id2">
-<h3><span class="section-number">3.4.6.9.2. </span><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.9.2. </span><code class="docutils literal notranslate"><span class="pre">pd.merge</span></code><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>The animation below shows a visualization of what happens when we call</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4489,23 +4491,23 @@ the key <code class="docutils literal notranslate"><span class="pre">A</span></c
 </div>
 <img src="https://datascience.quantecon.org/assets/_static/merge_files/right_merge.gif" alt="right\_merge.gif" style=""></section>
 <section id="exercises-with-artificial-data">
-<h3><span class="section-number">3.4.6.9.3. </span>Exercises With Artificial Data<a class="headerlink" href="#exercises-with-artificial-data" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">13.4.6.9.3. </span>Exercises With Artificial Data<a class="headerlink" href="#exercises-with-artificial-data" title="Link to this heading">#</a></h3>
 <p><a id='exercise-4'></a></p>
 <blockquote>
-<div><p>See exercise 5 in the <span class="xref myst"><em>exercise list</em></span></p>
+<div><p>See exercise 5 in the <a class="reference internal" href="#exerciselist-0"><span class="xref myst"><em>exercise list</em></span></a></p>
 </div></blockquote>
 <p><a id='exercise-5'></a></p>
 <blockquote>
-<div><p>See exercise 6 in the <span class="xref myst"><em>exercise list</em></span></p>
+<div><p>See exercise 6 in the <a class="reference internal" href="#exerciselist-0"><span class="xref myst"><em>exercise list</em></span></a></p>
 </div></blockquote>
 <p><a id='exercise-6'></a></p>
 <blockquote>
-<div><p>See exercise 7 in the <span class="xref myst"><em>exercise list</em></span></p>
+<div><p>See exercise 7 in the <a class="reference internal" href="#exerciselist-0"><span class="xref myst"><em>exercise list</em></span></a></p>
 </div></blockquote>
 </section>
 </section>
 <section id="exercises">
-<h2><span class="section-number">3.4.6.10. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">13.4.6.10. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
 <p>Use your new <code class="docutils literal notranslate"><span class="pre">merge</span></code> skills to answer the final question from above: What
@@ -4518,7 +4520,7 @@ time?</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>Compare the <code class="docutils literal notranslate"><span class="pre">how=&quot;left&quot;</span></code> with <code class="docutils literal notranslate"><span class="pre">how=&quot;inner&quot;</span></code> options using the
 DataFrames <code class="docutils literal notranslate"><span class="pre">wdi2017_no_US</span></code> and <code class="docutils literal notranslate"><span class="pre">sq_miles_no_germany</span></code>.</p>
@@ -4534,7 +4536,7 @@ questions.</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-1"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 3</strong></p>
 <p>Can you pick the correct argument for <code class="docutils literal notranslate"><span class="pre">how</span></code> such that <code class="docutils literal notranslate"><span class="pre">pd.merge(wdi2017,</span> <span class="pre">sq_miles,</span> <span class="pre">how=&quot;left&quot;)</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">pd.merge(sq_miles,</span> <span class="pre">wdi2017,</span> <span class="pre">how=XXX)</span></code>?</p>
 <div class="cell docutils container">
@@ -4544,7 +4546,7 @@ questions.</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-2"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 4</strong></p>
 <p>Repeat the analysis above to determine the average rating for the books with the
 <em>least</em> number ratings.</p>
@@ -4558,7 +4560,7 @@ the most rated books?</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-3"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 5</strong></p>
 <p>In writing, describe what the output looks like when you do
 <code class="docutils literal notranslate"><span class="pre">pd.concat([dfL,</span> <span class="pre">dfR],</span> <span class="pre">axis=1)</span></code> (see above and/or run the cell below).</p>
@@ -4679,7 +4681,7 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
 </table>
 </div></div></div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-4"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 6</strong></p>
 <p>Determine what happens when you run each of the two cells below.</p>
 <p>For each cell, answer the list of questions from the previous exercise.</p>
@@ -4832,11 +4834,11 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
 </table>
 </div></div></div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-5"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 7</strong></p>
 <p>Describe in words why the output of <code class="docutils literal notranslate"><span class="pre">pd.merge(dfL,</span> <span class="pre">dfR,</span> <span class="pre">how=&quot;right&quot;)</span></code> has more rows than either <code class="docutils literal notranslate"><span class="pre">dfL</span></code> or <code class="docutils literal notranslate"><span class="pre">dfR</span></code>.</p>
 <p>Run the cell below to see the output of that operation.</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-6"><span class="xref myst"><em>back to text</em></span></a>)</p>
 </section>
 </section>
 
@@ -4865,11 +4867,10 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="reshape.html"
@@ -4877,7 +4878,7 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3.4.5. </span>Reshape (opt)</p>
+        <p class="prev-next-title"><span class="section-number">13.4.5. </span>Reshape (opt)</p>
       </div>
     </a>
     <a class="right-next"
@@ -4885,21 +4886,20 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.4.7. </span>GroupBy (opt)</p>
+        <p class="prev-next-title"><span class="section-number">13.4.7. </span>GroupBy (opt)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -4907,38 +4907,38 @@ To retain the current behavior and silence the warning, pass &#39;sort=True&#39;
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">3.4.6.1. Outline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-datasets">3.4.6.2. Combining Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-concat">3.4.6.3. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-0">3.4.6.3.1. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-1">3.4.6.3.2. <code class="docutils literal notranslate"><span class="pre">axis=1</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">13.4.6.1. Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-datasets">13.4.6.2. Combining Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-concat">13.4.6.3. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-0">13.4.6.3.1. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-1">13.4.6.3.2. <code class="docutils literal notranslate"><span class="pre">axis=1</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-merge">3.4.6.4. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-columns">3.4.6.4.1. Multiple Columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-merge">13.4.6.4. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-columns">13.4.6.4.1. Multiple Columns</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments-to-merge">3.4.6.5. Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on">3.4.6.5.1. <code class="docutils literal notranslate"><span class="pre">on</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-on-right-on">3.4.6.5.2. <code class="docutils literal notranslate"><span class="pre">left_on</span></code>, <code class="docutils literal notranslate"><span class="pre">right_on</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-index-right-index">3.4.6.5.3. <code class="docutils literal notranslate"><span class="pre">left_index</span></code>, <code class="docutils literal notranslate"><span class="pre">right_index</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how">3.4.6.5.4. <code class="docutils literal notranslate"><span class="pre">how</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-merge-df2">3.4.6.5.5. <code class="docutils literal notranslate"><span class="pre">df.merge(df2)</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments-to-merge">13.4.6.5. Arguments to <code class="docutils literal notranslate"><span class="pre">merge</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on">13.4.6.5.1. <code class="docutils literal notranslate"><span class="pre">on</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-on-right-on">13.4.6.5.2. <code class="docutils literal notranslate"><span class="pre">left_on</span></code>, <code class="docutils literal notranslate"><span class="pre">right_on</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#left-index-right-index">13.4.6.5.3. <code class="docutils literal notranslate"><span class="pre">left_index</span></code>, <code class="docutils literal notranslate"><span class="pre">right_index</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how">13.4.6.5.4. <code class="docutils literal notranslate"><span class="pre">how</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-merge-df2">13.4.6.5.5. <code class="docutils literal notranslate"><span class="pre">df.merge(df2)</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-join">3.4.6.6. <code class="docutils literal notranslate"><span class="pre">df.join</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">3.4.6.7. Case Study</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#book-data">3.4.6.7.1. Book Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-join">13.4.6.6. <code class="docutils literal notranslate"><span class="pre">df.join</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">13.4.6.7. Case Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#book-data">13.4.6.7.1. Book Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-example-airline-delays">3.4.6.8. Extra Example: Airline Delays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-merge-operations">3.4.6.9. Visualizing Merge Operations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.4.6.9.1. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.4.6.9.2. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-with-artificial-data">3.4.6.9.3. Exercises With Artificial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-example-airline-delays">13.4.6.8. Extra Example: Airline Delays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-merge-operations">13.4.6.9. Visualizing Merge Operations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.4.6.9.1. <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">13.4.6.9.2. <code class="docutils literal notranslate"><span class="pre">pd.merge</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-with-artificial-data">13.4.6.9.3. Exercises With Artificial Data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.4.6.10. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">13.4.6.10. Exercises</a></li>
 </ul>
   </nav></div>
 
@@ -4960,6 +4960,7 @@ By Alan Moreira
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
@@ -4986,8 +4987,8 @@ By Alan Moreira
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

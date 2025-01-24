@@ -1,78 +1,78 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Robustness of Quantitative Strategies &#8212; Quantitative Investing</title>
+    <title>20. Robustness of Quantitative Strategies &#8212; Quantitative Investing</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/book.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/book.css?v=c2893119" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/Robustness';</script>
     <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/Robustness.html" />
-    <link rel="shortcut icon" href="../../_static/figuremain2.jpg"/>
+    <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11. Trading costs and Liquidity" href="Implementation.html" />
-    <link rel="prev" title="9.5. Levering up and Shorting" href="LeverageandShorting.html" />
+    <link rel="next" title="21. Trading costs and Liquidity" href="Implementation.html" />
+    <link rel="prev" title="19.5. Levering up and Shorting" href="LeverageandShorting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -80,23 +80,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -104,7 +97,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -112,16 +104,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -134,9 +135,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -146,98 +151,96 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/figuremain2.jpg" class="logo__image only-light" alt="Quantitative Investing - Home"/>
+    <img src="../../_static/figuremain2.jpg" class="logo__image only-dark pst-js-only" alt="Quantitative Investing - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/getting_started.html">2. Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../02/local_install.html">2.3. Local installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02/cloud_setup.html">2.4. Cloud Setup</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../essentials/intro.html">3. Python Essentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/basics.html">3.1. Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/collections.html">3.2. Collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/numpy.html">3.3. Numpy</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../essentials/introtopandas.html">3.4. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/the_index.html">3.4.3. Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/timeseries.html">3.4.4. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/reshape.html">3.4.5. Reshape</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/merge.html">3.4.6. Merge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/groupby.html">3.4.7. Group-by</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/matplotlib.html">3.4.8. Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/data_clean.html">3.4.9. Cleaning data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../essentials/pandas/storage_formats.html">3.4.10. Data Storage</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../essentials/intro.html">3. First steps with Python</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Returns.html">14. Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">14.3. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">14.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">14.5. Modeling randomness</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/control_flow.html">3.5. Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/functions.html">3.6. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">15. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">15.7. Linear algebra Review</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">4.3. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">4.5. Modeling randomness</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="MeanVariance.html">16. Mean-Variance Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">17. Trading Strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="FactorModels.html">18. Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="MultiFactorModels.html">18.2. Multi Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ExpectedReturnModels.html">18.3. Factor Models as Models of Expected Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">18.4. Interpreting Factor Models</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">5. Portfolios</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">5.7. Linear algebra Review</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">19. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="MarketCapweighted.html">19.1. The Market Cap Weighted Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Valueinvesting.html">19.2. Value factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Momentum.html">19.3. Momentum factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">19.4. Other Equity strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">19.5. Leverage and Shorting</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="MeanVariance.html">6. Mean-Variance Investing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">7. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="FactorModels.html">8. Factor Models</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="MultiFactorModels.html">8.2. Multi Factor Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ExpectedReturnModels.html">8.3. Factor Models as Models of Expected Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">8.4. Interpreting Factor Models</a></li>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. Robustness of Quantitative Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Implementation.html">21. Liquidity</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">22. Factor Timing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">22.2. Volatility Timing</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="MarketCapweighted.html">9.1. The Market Cap Weighted Portfolio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Valueinvesting.html">9.2. Value factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Momentum.html">9.3. Momentum factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">9.4. Other Equity strategies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">9.5. Leverage and Shorting</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Robustness of Quantitative Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Implementation.html">11. Liquidity</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">12. Factor Timing</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">12.2. Volatility Timing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="RiskManagement.html">13. Risk Management and Capital Allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">14. Machine Learning in Finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">15. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">16. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">16.1. Assigment 0</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="RiskManagement.html">23. Risk Management and Capital Allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">24. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">25. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">26. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">26.1. Assigment 0</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">16.6. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">26.6. Assignment 1</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">16.9. Assignment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">26.9. Assignment 2</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">16.12. Assignment 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">26.12. Assignment 3</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">16.15. Assignment 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">26.15. Assignment 4</a></li>
 
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -246,14 +249,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -262,14 +270,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -294,14 +302,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/Robustness.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -422,26 +430,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -462,19 +464,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">10.1. The basic problem of overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-to-guard-against-overfitting">10.2. Suggestions to guard against overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-makes-it-worse">10.3. Optimization makes it worse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">10.4. Additional Diagnostics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-t-tests-for-sharpe-ratios">10.4.1. Confidence intervals/T-tests for Sharpe Ratios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-sampling">10.4.2. Distribution sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">10.4.3. Adjusting for Discarded Signals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustifying-your-backtests">10.4.4. Robustifying your Backtests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">20.1. The basic problem of overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-to-guard-against-overfitting">20.2. Suggestions to guard against overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-makes-it-worse">20.3. Optimization makes it worse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">20.4. Additional Diagnostics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-t-tests-for-sharpe-ratios">20.4.1. Confidence intervals/T-tests for Sharpe Ratios</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-sampling">20.4.2. Distribution sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">20.4.3. Adjusting for Discarded Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustifying-your-backtests">20.4.4. Robustifying your Backtests</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-for-sample-spliting">10.5. Approaches for sample spliting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dradowns">10.6. Dradowns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">10.7. Publication bias (or Famous bias or incubation bias…)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-for-sample-spliting">20.5. Approaches for sample spliting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dradowns">20.6. Dradowns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">20.7. Publication bias (or Famous bias or incubation bias…)</a></li>
 </ul>
             </nav>
         </div>
@@ -484,23 +486,23 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we start loading our favourite packages with the names we used to</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="c1"># import regression package</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="robustness-of-quantitative-strategies">
-<h1><span class="section-number">10. </span>Robustness of Quantitative Strategies<a class="headerlink" href="#robustness-of-quantitative-strategies" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">20. </span>Robustness of Quantitative Strategies<a class="headerlink" href="#robustness-of-quantitative-strategies" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>The more complicated a trading strategy, the more the in sample results are often a poor guide to how things behave out of sample</p></li>
 <li><p>Looking for large t-stats only partially guard against that because you will be searching for things that have high t-stats and you are bound to find high t-stat strategies <strong>in sample</strong> even if no true large alpha strategy exists.</p></li>
@@ -531,7 +533,7 @@ document.write(`
 <li><p><a class="reference external" href="https://twitter.com/nope_its_lily/status/1368623837961621505">We are always looking for patterns, be careful!</a></p></li>
 </ul>
 <section id="the-basic-problem-of-overfitting">
-<h2><span class="section-number">10.1. </span>The basic problem of overfitting<a class="headerlink" href="#the-basic-problem-of-overfitting" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.1. </span>The basic problem of overfitting<a class="headerlink" href="#the-basic-problem-of-overfitting" title="Link to this heading">#</a></h2>
 <p>Any sample estimate  is itself a random variable.  The uncertainty in these estimates may encourage us to:</p>
 <ul class="simple">
 <li><p>Select signals that are pure noise with no real predictive power.</p></li>
@@ -543,7 +545,7 @@ document.write(`
 </ul>
 </section>
 <section id="suggestions-to-guard-against-overfitting">
-<h2><span class="section-number">10.2. </span>Suggestions to guard against overfitting<a class="headerlink" href="#suggestions-to-guard-against-overfitting" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.2. </span>Suggestions to guard against overfitting<a class="headerlink" href="#suggestions-to-guard-against-overfitting" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Additional diagnostics</p></li>
 <li><p>Robustness tests</p></li>
@@ -553,14 +555,14 @@ document.write(`
 </ul>
 </section>
 <section id="optimization-makes-it-worse">
-<h2><span class="section-number">10.3. </span>Optimization makes it worse<a class="headerlink" href="#optimization-makes-it-worse" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.3. </span>Optimization makes it worse<a class="headerlink" href="#optimization-makes-it-worse" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>It is a form of in-sample regression.</p></li>
 <li><p>Weights in model heavily determined by in-sample statistics, often the most extreme weights most likely to be off</p></li>
 </ul>
 </section>
 <section id="additional-diagnostics">
-<h2><span class="section-number">10.4. </span>Additional Diagnostics<a class="headerlink" href="#additional-diagnostics" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.4. </span>Additional Diagnostics<a class="headerlink" href="#additional-diagnostics" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Strategy Sharpe Ratio</p></li>
 <li><p>Report t-stat of mean return</p></li>
@@ -577,7 +579,7 @@ document.write(`
 <li><p>When comparing Strategies, always do it over the same sample period!</p></li>
 </ul>
 <section id="confidence-intervals-t-tests-for-sharpe-ratios">
-<h3><span class="section-number">10.4.1. </span>Confidence intervals/T-tests for Sharpe Ratios<a class="headerlink" href="#confidence-intervals-t-tests-for-sharpe-ratios" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">20.4.1. </span>Confidence intervals/T-tests for Sharpe Ratios<a class="headerlink" href="#confidence-intervals-t-tests-for-sharpe-ratios" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>If returns are normal</p></li>
 </ul>
@@ -589,7 +591,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="distribution-sampling">
-<h3><span class="section-number">10.4.2. </span>Distribution sampling<a class="headerlink" href="#distribution-sampling" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">20.4.2. </span>Distribution sampling<a class="headerlink" href="#distribution-sampling" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Instead of assuming returns have a particular distribution we can sample from the realized distribution to obtain alternative realization of the world</p></li>
 </ul>
@@ -601,7 +603,7 @@ document.write(`
 - This give you the different SR that can be produced by the same truth</p>
 </section>
 <section id="adjusting-for-discarded-signals">
-<h3><span class="section-number">10.4.3. </span>Adjusting for Discarded Signals<a class="headerlink" href="#adjusting-for-discarded-signals" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">20.4.3. </span>Adjusting for Discarded Signals<a class="headerlink" href="#adjusting-for-discarded-signals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Often we look at many signals to find the one</p></li>
 <li><p>This makes conventional thresholds for t-tests too small</p></li>
@@ -616,7 +618,7 @@ document.write(`
 </ul>
 </section>
 <section id="robustifying-your-backtests">
-<h3><span class="section-number">10.4.4. </span>Robustifying your Backtests<a class="headerlink" href="#robustifying-your-backtests" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">20.4.4. </span>Robustifying your Backtests<a class="headerlink" href="#robustifying-your-backtests" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Calculate out of sample Sharpe ratios: Have a hold-out sample not used in backtest to test out of sample performance.</p></li>
 <li><p>Be careful to not use out of sample results for tunning and model choice</p></li>
@@ -636,7 +638,7 @@ document.write(`
 </section>
 </section>
 <section id="approaches-for-sample-spliting">
-<h2><span class="section-number">10.5. </span>Approaches for sample spliting<a class="headerlink" href="#approaches-for-sample-spliting" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.5. </span>Approaches for sample spliting<a class="headerlink" href="#approaches-for-sample-spliting" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Rolling window estimation</p></li>
 <li><p>Use odd months to estimate signals and even months to compute returns and test signals.  Repeat by switching odd and even months.</p></li>
@@ -661,8 +663,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading the data</span>
 
-<span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="nn">web</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1926</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s1">&#39;F-F_Research_Data_Factors&#39;</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">)</span>
 <span class="n">df</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="s1">&#39;2021-3&#39;</span><span class="p">]</span>
@@ -690,7 +692,7 @@ memory usage: 44.4 KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets define a function to calculate the Sharpe ratio  </span>
-<span class="k">def</span> <span class="nf">SR</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">SR</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
     <span class="n">sr</span><span class="o">=</span><span class="n">R</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="n">R</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="n">freq</span><span class="o">**</span><span class="mf">0.5</span>
     <span class="k">return</span> <span class="n">sr</span>
 </pre></div>
@@ -728,7 +730,7 @@ memory usage: 44.4 KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct function that identifies if a number is odd</span>
-<span class="k">def</span> <span class="nf">is_odd</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_odd</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span>
 
 <span class="c1"># create a sample that selects the even years and odd months</span>
@@ -747,7 +749,7 @@ memory usage: 44.4 KB
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function gets data and sample and returns the returns of the strategy </span>
-<span class="k">def</span> <span class="nf">Strat_wgts</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Strat_wgts</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
    
     <span class="n">X</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
     <span class="n">vol_unlevered</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="nd">@df</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span><span class="nd">@X</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
@@ -829,7 +831,7 @@ dtype: float64
 <p>Lets wrap this in a function that computes this for us</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Analysis</span><span class="p">(</span><span class="n">Returns</span><span class="p">,</span><span class="n">Market</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Analysis</span><span class="p">(</span><span class="n">Returns</span><span class="p">,</span><span class="n">Market</span><span class="p">):</span>
     <span class="n">results</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Strategy:SR&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">SR</span><span class="p">(</span><span class="n">Returns</span><span class="p">)</span>
     <span class="n">results</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="s1">&#39;Strategy:std&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
@@ -883,7 +885,7 @@ dtype: float64
 </ul>
 </section>
 <section id="dradowns">
-<h2><span class="section-number">10.6. </span>Dradowns<a class="headerlink" href="#dradowns" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.6. </span>Dradowns<a class="headerlink" href="#dradowns" title="Link to this heading">#</a></h2>
 <p>It is common to look at how lond are the periods where you are losing money on a strategy</p>
 <p>This might inform you how sticky your clients need to be. For example might inform how long the lockup in your fund might need to be</p>
 <p>This is also relevant for Hedge funds where hedge fund managers are compensated only when they go above the high-water mark</p>
@@ -1078,7 +1080,7 @@ dtype: float64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RollingEval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">window</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">RollingEval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">window</span><span class="p">):</span>
 
     <span class="n">Returns</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">window</span><span class="p">:]:</span>
@@ -1241,13 +1243,13 @@ dtype: float64
 </ul>
 </section>
 <section id="publication-bias-or-famous-bias-or-incubation-bias">
-<h2><span class="section-number">10.7. </span>Publication bias (or Famous bias or incubation bias…)<a class="headerlink" href="#publication-bias-or-famous-bias-or-incubation-bias" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.7. </span>Publication bias (or Famous bias or incubation bias…)<a class="headerlink" href="#publication-bias-or-famous-bias-or-incubation-bias" title="Link to this heading">#</a></h2>
 <p>We discussed that we often look at past performance exactly because a strategy did well. This mechanism of selection renders our statistical analysis biased in the direction of findings that the strategy is amazing.</p>
 <p>It is often hard to deal with this because you need all the data of strategies that look like the one you are interested from the perspective of someone in the start of the reliant sample. That is hard.</p>
 <p>One way to deal with this is to use some hard metric of saliency.</p>
 <ul class="simple">
 <li><p>For example, check when Bitcoin became popular and we did our analysis after that.</p></li>
-<li><p>See when a fund manager became well known because of his/her performance. While google trends is only available after 2004 there is data from New York Times and Wall Street Journal that allows you to go back to the start of the <strong>Last</strong> century. (<a class="reference external" href="http://www.google.com/url?q=http%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0304405X16301751&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFWO63SSQXSteNhgTI4oOhtmh0ZUQ">for example, I use data like that that in this paper</a>)</p></li>
+<li><p>See when a fund manager became well known because of his/her performance. While google trends is only available after 2004 there is data from New York Times and Wall Street Journal that allows you to go back to the start of the <strong>Last</strong> century. (<a class="reference external" href="http://www.google.com/url?q=http%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0304405X16301751&amp;amp;sa=D&amp;amp;sntz=1&amp;amp;usg=AFQjCNFWO63SSQXSteNhgTI4oOhtmh0ZUQ">for example, I use data like that that in this paper</a>)</p></li>
 </ul>
 <p>A setting where we can do this very cleanly is in the context of academic work. We know exactly when the paper was first published and what the sample that was used there</p>
 <p>A nice paper that investigates this for a bunch of strategies is <a class="reference external" href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/jofi.12365?casa_token=gSqvouNM61EAAAAA:JyTl4yxx9xTfKo8-VEBIE-4c4ha7kRFGvirWzEZRXhYw2AtueM3yzpRDcpcXgnsDdlvlXflKp1Nw_ss">Does academic research destroy stock return predictability?</a></p>
@@ -1275,7 +1277,7 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Strategy</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">sample</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Strategy</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">sample</span><span class="p">):</span>
     <span class="n">results</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">x</span><span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">sample</span><span class="p">][</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
     <span class="n">y</span><span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">sample</span><span class="p">][</span><span class="s1">&#39;HML&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1379,11 +1381,10 @@ dtype: float64
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="LeverageandShorting.html"
@@ -1391,7 +1392,7 @@ dtype: float64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9.5. </span>Levering up and Shorting</p>
+        <p class="prev-next-title"><span class="section-number">19.5. </span>Levering up and Shorting</p>
       </div>
     </a>
     <a class="right-next"
@@ -1399,21 +1400,20 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Trading costs and Liquidity</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>Trading costs and Liquidity</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1421,19 +1421,19 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">10.1. The basic problem of overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-to-guard-against-overfitting">10.2. Suggestions to guard against overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-makes-it-worse">10.3. Optimization makes it worse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">10.4. Additional Diagnostics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-t-tests-for-sharpe-ratios">10.4.1. Confidence intervals/T-tests for Sharpe Ratios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-sampling">10.4.2. Distribution sampling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">10.4.3. Adjusting for Discarded Signals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustifying-your-backtests">10.4.4. Robustifying your Backtests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">20.1. The basic problem of overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-to-guard-against-overfitting">20.2. Suggestions to guard against overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-makes-it-worse">20.3. Optimization makes it worse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">20.4. Additional Diagnostics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-t-tests-for-sharpe-ratios">20.4.1. Confidence intervals/T-tests for Sharpe Ratios</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-sampling">20.4.2. Distribution sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">20.4.3. Adjusting for Discarded Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustifying-your-backtests">20.4.4. Robustifying your Backtests</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-for-sample-spliting">10.5. Approaches for sample spliting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dradowns">10.6. Dradowns</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">10.7. Publication bias (or Famous bias or incubation bias…)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-for-sample-spliting">20.5. Approaches for sample spliting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dradowns">20.6. Dradowns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">20.7. Publication bias (or Famous bias or incubation bias…)</a></li>
 </ul>
   </nav></div>
 
@@ -1455,6 +1455,7 @@ By Alan Moreira
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
@@ -1481,8 +1482,8 @@ By Alan Moreira
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

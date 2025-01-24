@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exercises &#8212; Quantitative Investing</title>
   
@@ -15,62 +14,63 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/book.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/book.css?v=c2893119" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/essentials/pandas/Exercises';</script>
     <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/essentials/pandas/Exercises.html" />
-    <link rel="shortcut icon" href="../../../_static/figuremain2.jpg"/>
+    <link rel="icon" href="../../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,23 +78,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -102,7 +95,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,16 +102,27 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -132,9 +135,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
+  
   
   
   
@@ -144,98 +151,96 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../../_static/figuremain2.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../../_static/figuremain2.jpg" class="logo__image only-light" alt="Quantitative Investing - Home"/>
+    <img src="../../../_static/figuremain2.jpg" class="logo__image only-dark pst-js-only" alt="Quantitative Investing - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01/computational-tools.html">1.2. Computational tools</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/getting_started.html">2. Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02/getting_started.html">2. Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../02/local_install.html">2.3. Local installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02/cloud_setup.html">2.4. Cloud Setup</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro.html">3. Python Essentials</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../basics.html">3.1. Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../collections.html">3.2. Collections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../numpy.html">3.3. Numpy</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../introtopandas.html">3.4. Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="the_index.html">3.4.3. Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html">3.4.4. Time-Series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reshape.html">3.4.5. Reshape</a></li>
-<li class="toctree-l3"><a class="reference internal" href="merge.html">3.4.6. Merge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="groupby.html">3.4.7. Group-by</a></li>
-<li class="toctree-l3"><a class="reference internal" href="matplotlib.html">3.4.8. Plotting</a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_clean.html">3.4.9. Cleaning data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="storage_formats.html">3.4.10. Data Storage</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">3. First steps with Python</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Returns.html">14. Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/UsingAPI.html">14.3. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/TheChoiceofFrequency.html">14.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/randomness1.html">14.5. Modeling randomness</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../control_flow.html">3.5. Flow control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../functions.html">3.6. Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../plotting.html">3.7. Plotting</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/PortfolioMath.html">15. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../scientific/linear_algebra1.html">15.7. Linear algebra Review</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Returns.html">4. Asset Returns</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/UsingAPI.html">4.3. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../scientific/randomness1.html">4.5. Modeling randomness</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/MeanVariance.html">16. Mean-Variance Investing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/TradingStrategies.html">17. Trading Strategies</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/FactorModels.html">18. Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MultiFactorModels.html">18.2. Multi Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/ExpectedReturnModels.html">18.3. Factor Models as Models of Expected Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/InterpretingFactorModels.html">18.4. Interpreting Factor Models</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/PortfolioMath.html">5. Portfolios</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../scientific/linear_algebra1.html">5.7. Linear algebra Review</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/crosssectionalequitystrategies.html">19. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/MarketCapweighted.html">19.1. The Market Cap Weighted Portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Valueinvesting.html">19.2. Value factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Momentum.html">19.3. Momentum factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/OtherEquityStrategies.html">19.4. Other Equity strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/LeverageandShorting.html">19.5. Leverage and Shorting</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/MeanVariance.html">6. Mean-Variance Investing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/TradingStrategies.html">7. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/FactorModels.html">8. Factor Models</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/MultiFactorModels.html">8.2. Multi Factor Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/ExpectedReturnModels.html">8.3. Factor Models as Models of Expected Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/InterpretingFactorModels.html">8.4. Interpreting Factor Models</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/Robustness.html">20. Robustness of Quantitative Strategies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/Implementation.html">21. Liquidity</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Timing.html">22. Factor Timing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Finance/Volatilitytiming.html">22.2. Volatility Timing</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/MarketCapweighted.html">9.1. The Market Cap Weighted Portfolio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/Valueinvesting.html">9.2. Value factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/Momentum.html">9.3. Momentum factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/OtherEquityStrategies.html">9.4. Other Equity strategies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/LeverageandShorting.html">9.5. Leverage and Shorting</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/Robustness.html">10. Robustness of Quantitative Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/Implementation.html">11. Liquidity</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Finance/Timing.html">12. Factor Timing</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Finance/Volatilitytiming.html">12.2. Volatility Timing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/RiskManagement.html">13. Risk Management and Capital Allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Finance/MachineLearning.html">14. Machine Learning in Finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../additional/additional.html">15. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Assignments/Assignments.html">16. Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment0.html">16.1. Assigment 0</a></li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/RiskManagement.html">23. Risk Management and Capital Allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Finance/MachineLearning.html">24. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/additional.html">25. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Assignments/Assignments.html">26. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment0.html">26.1. Assigment 0</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment1.html">16.6. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment1.html">26.6. Assignment 1</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment2.html">16.9. Assignment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment2.html">26.9. Assignment 2</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment3.html">16.12. Assignment 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment3.html">26.12. Assignment 3</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment4.html">16.15. Assignment 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Assignments/Assignment4.html">26.15. Assignment 4</a></li>
 
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -244,14 +249,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -260,14 +270,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -292,14 +302,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/essentials/pandas/Exercises.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../../../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../../../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -420,26 +430,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -498,15 +502,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
+<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
 <section id="scientific-numpy">
-<h2>Scientific/Numpy<a class="headerlink" href="#scientific-numpy" title="Permalink to this heading">#</a></h2>
+<h2>Scientific/Numpy<a class="headerlink" href="#scientific-numpy" title="Link to this heading">#</a></h2>
 </section>
 <section id="id1">
-<h2>Exercises<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p><strong>NEED TO CHECK IN exercises are approproiate</strong></p>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
@@ -514,20 +518,20 @@ document.write(`
 3-dimensional array.</p>
 <p>Building an understanding of indexing means working through this
 type of operation several times – without skipping steps!</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>Look at the 2-dimensional array <code class="docutils literal notranslate"><span class="pre">x_2d</span></code>.</p>
 <p>Does the inner-most index correspond to rows or columns? What does the
 outer-most index correspond to?</p>
 <p>Write your thoughts.</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-1"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 3</strong></p>
 <p>What would you do to extract the array <code class="docutils literal notranslate"><span class="pre">[[5,</span> <span class="pre">6],</span> <span class="pre">[50,</span> <span class="pre">60]]</span></code>?</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-2"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 4</strong></p>
 <p>Do you recall what multiplication by an integer did for lists?</p>
 <p>How does this differ?</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-3"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 5</strong></p>
 <p>Let’s revisit a bond pricing example we saw in Control flow.</p>
 <p>Recall that the equation for pricing a bond with coupon payment <span class="math notranslate nohighlight">\( C \)</span>,
@@ -560,13 +564,13 @@ face value <span class="math notranslate nohighlight">\( M \)</span>, yield to m
 </div>
 </div>
 <section id="exercise-1">
-<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p>Consider the polynomial expression</p>
 <p><a id='equation-np-polynom'></a>
 $<span class="math notranslate nohighlight">\(
 p(x) = a_0 + a_1 x + a_2 x^2 + \cdots a_N x^N = \sum_{n=0}^N a_n x^n \tag{1}
 \)</span>$</p>
-<p><a class="reference external" href="https://python-programming.quantecon.org/python_essentials.html#pyess-ex2">Earlier</a>, you wrote a simple function <code class="docutils literal notranslate"><span class="pre">p(x,</span> <span class="pre">coeff)</span></code> to evaluate <span class="xref myst">(9.1)</span> without considering efficiency.</p>
+<p><a class="reference external" href="https://python-programming.quantecon.org/python_essentials.html#pyess-ex2">Earlier</a>, you wrote a simple function <code class="docutils literal notranslate"><span class="pre">p(x,</span> <span class="pre">coeff)</span></code> to evaluate <a class="reference internal" href="#equation-np-polynom"><span class="xref myst">(9.1)</span></a> without considering efficiency.</p>
 <p>Now write a new function that does the same job, but uses NumPy arrays and array operations for its computations, rather than any form of Python loop.</p>
 <p>(Such functionality is already implemented as <code class="docutils literal notranslate"><span class="pre">np.poly1d</span></code>, but for the sake of the exercise don’t use this class)</p>
 <ul class="simple">
@@ -575,14 +579,14 @@ p(x) = a_0 + a_1 x + a_2 x^2 + \cdots a_N x^N = \sum_{n=0}^N a_n x^n \tag{1}
 <p><a id='np-ex2'></a></p>
 </section>
 <section id="exercise-2">
-<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
 <p>Let <code class="docutils literal notranslate"><span class="pre">q</span></code> be a NumPy array of length <code class="docutils literal notranslate"><span class="pre">n</span></code> with <code class="docutils literal notranslate"><span class="pre">q.sum()</span> <span class="pre">==</span> <span class="pre">1</span></code>.</p>
 </section>
 <section id="plotting">
-<h3>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h3>
+<h3>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h3>
 </section>
 <section id="id2">
-<h3>Exercise 1<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Exercise 1<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Plot the function</p>
 <div class="math notranslate nohighlight">
 \[
@@ -594,11 +598,11 @@ f(x) = \cos(\pi \theta x) \exp(-x)
 <p><img alt="https://python-programming.quantecon.org/_static/lecture_specific/matplotlib/matplotlib_ex1.png" src="https://python-programming.quantecon.org/_static/lecture_specific/matplotlib/matplotlib_ex1.png" /></p>
 </section>
 <section id="linear-algebra">
-<h3>Linear algebra<a class="headerlink" href="#linear-algebra" title="Permalink to this heading">#</a></h3>
+<h3>Linear algebra<a class="headerlink" href="#linear-algebra" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="id3">
-<h2>Exercises<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
 <p>Alice is a stock broker who owns two types of assets: A and B. She owns 100
@@ -608,7 +612,7 @@ Each of the A assets have a remaining duration of 6 years and pay
 of 4 years and pay \\\)</span>500 each year. Alice would like to retire if she
 can sell her assets for more than \$500,000. Use vector addition, scalar
 multiplication, and dot products to determine whether she can retire.</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>Which of the following operations will work and which will
 create errors because of size issues?</p>
@@ -631,7 +635,7 @@ create errors because of size issues?</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-1"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 3</strong></p>
 <p>Compare the distribution above to the final values of a long simulation.</p>
 <p>If you multiply the distribution by 1,000,000 (the number of workers), do you get (roughly) the same number as the simulation?</p>
@@ -642,13 +646,13 @@ create errors because of size issues?</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-2"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <section id="randomness">
-<h3>Randomness<a class="headerlink" href="#randomness" title="Permalink to this heading">#</a></h3>
+<h3>Randomness<a class="headerlink" href="#randomness" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="id4">
-<h2>Exercises<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p><strong>EDIT EXERCISESS</strong></p>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
@@ -656,7 +660,7 @@ create errors because of size issues?</p>
 variance of the Uniform(0, 1) distribution are (1/2, 1/12) respectively.</p>
 <p>How could we check whether the numpy random numbers approximate these
 values?</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>Some execise</p>
 <div class="cell docutils container">
@@ -666,7 +670,7 @@ values?</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-2"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 3</strong></p>
 <p>Assume you have been given the opportunity to choose between one of three financial assets:</p>
 <p>You will be given the asset for free, allowed to hold it indefinitely, and keeping all payoffs.</p>
@@ -691,16 +695,16 @@ and express your preferences)</p></li>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-3"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <section id="pandas">
-<h3>Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h3>
+<h3>Pandas<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h3>
 </section>
 <section id="intro">
-<h3>Intro<a class="headerlink" href="#intro" title="Permalink to this heading">#</a></h3>
+<h3>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="id5">
-<h2>Exercises<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
 <p>For each of the following exercises, we recommend reading the documentation
@@ -711,7 +715,7 @@ for help.</p>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to select the lowest/highest unemployment rate shown in the Series.</p></li>
 <li><p>Run the code <code class="docutils literal notranslate"><span class="pre">unemp.dtype</span></code> below. What does it give you? Where do you think it comes from?</p></li>
 </ul>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>For each of the following, we recommend reading the documentation for help.</p>
 <ul class="simple">
@@ -724,13 +728,13 @@ now?</p></li>
 <li><p>Run the code <code class="docutils literal notranslate"><span class="pre">unemp_region.dtypes</span></code> below. What does it give you?
 How does this compare with <code class="docutils literal notranslate"><span class="pre">unemp.dtype</span></code>?</p></li>
 </ul>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-1"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <section id="basics">
-<h3>BASICS<a class="headerlink" href="#basics" title="Permalink to this heading">#</a></h3>
+<h3>BASICS<a class="headerlink" href="#basics" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="id6">
-<h2>Exercises<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
 <p>Looking at the displayed DataFrame above, can you identify the index? The columns?</p>
@@ -742,7 +746,7 @@ How does this compare with <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>Do the following exercises in separate code cells below:</p>
 <ul class="simple">
@@ -789,7 +793,7 @@ variance of their unemployment is above or below 4.</p></li>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-1"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 3</strong></p>
 <p>Imagine that we want to determine whether unemployment was high (&gt; 6.5),
 medium (4.5 &lt; x &lt;= 6.5), or low (&lt;= 4.5) for each state and each month.</p>
@@ -844,7 +848,7 @@ with high unemployment? What about medium and low?</p></li>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-2"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 4</strong></p>
 <ul class="simple">
 <li><p>For a single state of your choice, determine what the mean
@@ -862,19 +866,19 @@ determine this, compute the mean unemployment for each state only for
 months in which the mean unemployment rate in our sample is greater
 than 7.</p></li>
 </ul>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-3"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <section id="the-index">
-<h3>tHE INDEX<a class="headerlink" href="#the-index" title="Permalink to this heading">#</a></h3>
+<h3>tHE INDEX<a class="headerlink" href="#the-index" title="Link to this heading">#</a></h3>
 </section>
 </section>
 <section id="id7">
-<h2>Exercises<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
 <p>What happens when you apply the <code class="docutils literal notranslate"><span class="pre">mean</span></code> method to <code class="docutils literal notranslate"><span class="pre">im_ex_tiny</span></code>?</p>
 <p>In particular, what happens to columns that have missing data? (HINT:
 also looking at the output of the <code class="docutils literal notranslate"><span class="pre">sum</span></code> method might help)</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>For each of the examples below do the following:</p>
 <ul class="simple">
@@ -1682,14 +1686,14 @@ Name: GDP, dtype: float64
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-1"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 3</strong></p>
 <p>Try setting <code class="docutils literal notranslate"><span class="pre">my_df</span></code> to some subset of the rows in <code class="docutils literal notranslate"><span class="pre">wdi</span></code> (use one of the
 <code class="docutils literal notranslate"><span class="pre">.loc</span></code> variations above).</p>
 <p>Then see what happens when you do <code class="docutils literal notranslate"><span class="pre">wdi</span> <span class="pre">/</span> <span class="pre">my_df</span></code> or <code class="docutils literal notranslate"><span class="pre">my_df</span> <span class="pre">**</span> <span class="pre">wdi</span></code>.</p>
 <p>Try changing the subset of rows in <code class="docutils literal notranslate"><span class="pre">my_df</span></code> and repeat until you
 understand what is happening.</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-2"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 4</strong></p>
 <p>Below, we create <code class="docutils literal notranslate"><span class="pre">wdi2</span></code>, which is the same as <code class="docutils literal notranslate"><span class="pre">df4</span></code> except that the
 levels of the index are swapped.</p>
@@ -1727,11 +1731,11 @@ within the <code class="docutils literal notranslate"><span class="pre">pd.Index
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-3"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 5</strong></p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">pd.IndexSlice</span></code> to extract all data from <code class="docutils literal notranslate"><span class="pre">wdiT</span></code> where the <code class="docutils literal notranslate"><span class="pre">year</span></code>
 level of the column names (the second level) is one of 2010, 2012, and 2014</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-4"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 6</strong></p>
 <p>Look up the documentation for the <code class="docutils literal notranslate"><span class="pre">reset_index</span></code> method and study it to
 learn how to do the following:</p>
@@ -1761,13 +1765,13 @@ learn how to do the following:</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-5"><span class="xref myst"><em>back to text</em></span></a>)</p>
 </section>
 <section id="time-series">
-<h2>Time Series<a class="headerlink" href="#time-series" title="Permalink to this heading">#</a></h2>
+<h2>Time Series<a class="headerlink" href="#time-series" title="Link to this heading">#</a></h2>
 </section>
 <section id="id8">
-<h2>Exercises<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p><a id='exerciselist-0'></a>
 <strong>Exercise 1</strong></p>
 <p>By referring to table found at the link above, figure out the correct argument to
@@ -1794,7 +1798,7 @@ pass as <code class="docutils literal notranslate"><span class="pre">format</spa
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-0"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 2</strong></p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">pd.to_datetime</span></code> to express the birthday of one of your friends
 or family members as a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object.</p>
@@ -1803,7 +1807,7 @@ or family members as a <code class="docutils literal notranslate"><span class="p
 </pre></div>
 </div>
 <p>(where the name and date are replaced by the appropriate values)</p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-1"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 3</strong></p>
 <p>For each item in the list, extract the specified data from <code class="docutils literal notranslate"><span class="pre">btc_usd</span></code>:</p>
 <ul class="simple">
@@ -1811,7 +1815,7 @@ or family members as a <code class="docutils literal notranslate"><span class="p
 <li><p>April 25, 2015 to June 10, 2016</p></li>
 <li><p>October 31, 2017</p></li>
 </ul>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-2"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 4</strong></p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">shift</span></code> function, determine the week with the largest percent change
 in the volume of trades (the <code class="docutils literal notranslate"><span class="pre">&quot;Volume</span> <span class="pre">(BTC)&quot;</span></code> column).</p>
@@ -1825,7 +1829,7 @@ in the volume of trades (the <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-3"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 5</strong></p>
 <p>Imagine that you have access to the <a class="reference external" href="https://en.wikipedia.org/wiki/DeLorean_time_machine">DeLorean time machine</a>
 from “Back to the Future”.</p>
@@ -1846,7 +1850,7 @@ the exercise.</p>
 we have written out our answer.)</p>
 <p>To make this decision, we want to know …</p>
 <p><strong>Your answer here</strong></p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-4"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 6</strong></p>
 <p>Do the following:</p>
 <ol class="arabic simple">
@@ -1858,7 +1862,7 @@ we have written out our answer.)</p>
 <p>How much money did you make? Compare with your neighbor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">daily_value</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">daily_value</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="c1"># DELETE `pass` below and replace it with your code</span>
     <span class="k">pass</span>
 
@@ -1869,7 +1873,7 @@ we have written out our answer.)</p>
 </div>
 </div>
 </div>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-5"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 7</strong></p>
 <p>Now suppose you still have access to the DeLorean, but the conditions are
 slightly different.</p>
@@ -1890,7 +1894,7 @@ the exercise.</p>
 our answer.)</p>
 <p>To make the optimal decision we need …</p>
 <p><strong>Your answer here</strong></p>
-<p>(<span class="xref myst"><em>back to text</em></span>)</p>
+<p>(<a class="reference internal" href="#exercise-6"><span class="xref myst"><em>back to text</em></span></a>)</p>
 <p><strong>Exercise 8</strong></p>
 <p>Do the following:</p>
 <ol class="arabic simple">
@@ -1903,7 +1907,7 @@ our answer.)</p>
 <p>Was this strategy more profitable than the previous one? By how much?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">monthly_value</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">monthly_value</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="c1"># DELETE `pass` below and replace it with your code</span>
     <span class="k">pass</span>
 
@@ -1942,23 +1946,21 @@ our answer.)</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2016,6 +2018,7 @@ By Alan Moreira
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2021 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
@@ -2042,8 +2045,8 @@ By Alan Moreira
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
