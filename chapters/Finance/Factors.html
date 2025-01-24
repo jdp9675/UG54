@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>20.9. An overview of the main Factors &#8212; Quantitative Investing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/book.css?v=c2893119" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/Factors';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/Factors.html" />
+    <link rel="icon" href="../../_static/figuremain2.jpg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="20.10. Interpretating Factor models" href="InterpretingFactorModels.html" />
+    <link rel="prev" title="20. Multi-factor models" href="MultiFactorModels.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/figuremain2.jpg" class="logo__image only-light" alt="Quantitative Investing - Home"/>
+    <img src="../../_static/figuremain2.jpg" class="logo__image only-dark pst-js-only" alt="Quantitative Investing - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02/getting_started.html">2. Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02/local_install.html">2.3. Local installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02/cloud_setup.html">2.4. Cloud Setup</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../essentials/intro.html">3. First steps with Python</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Returns.html">14. Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">14.3. Data APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">14.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">14.5. Modeling randomness</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="FactorModels.html">15. Factor Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FactorModelEstimation.html">16. Factor Model Estimation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">17. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">17.8. Leverage and Shorting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance_evaluation.html">18. Performance Evaluation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">19. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Momentum.html">19.3. Momentum factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">19.4. Other Equity strategies</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="MultiFactorModels.html">20. Multi Factor Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">20.9. An overview of factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">20.10. Interpreting Factor Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">21. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">22. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">23. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">23.1. Assigment 0</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">23.6. Assignment 1</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">23.9. Assignment 2</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">23.12. Assignment 3</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">23.15. Assignment 4</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/Factors.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/amoreira2/Fin418" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/Factors.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/Finance/Factors.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>An overview of the main Factors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value">20.9.1. Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-strategies">20.9.2. Return-based strategies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defensive-investing">20.9.3. Defensive Investing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-investing">20.9.4. Quality investing</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="an-overview-of-the-main-factors">
+<h1><span class="section-number">20.9. </span>An overview of the main Factors<a class="headerlink" href="#an-overview-of-the-main-factors" title="Link to this heading">#</a></h1>
+<p>Factors come in many flavors. Academics look for factors that explain expected returns.</p>
+<ul class="simple">
+<li><p>by removing know sources of risk-premia it only gives the strategy credit for what it is “new”</p></li>
+</ul>
+<p>Practitioners want factors that remove return variation that they are not interested in</p>
+<ul class="simple">
+<li><p>removing variation in realized returns allow for better measurement of alpha</p></li>
+<li><p>It also has the benefit of reducing risk</p></li>
+</ul>
+<p>We already have got exposed to a large variety of factors, but it is useful to zoom out and think about what these factors are capturing</p>
+<p>We can state these factors in terms of their characteristic or the associated factor.</p>
+<p>Below I will state the characteristic–but there is always a factor associated characteristic</p>
+<p>Below I have the characteristic. The factor can be recovered with a cross-sectional regression as we saw in “Multi-factor models”</p>
+<p>The first set of factors are broad based features of the market</p>
+<ol class="arabic simple">
+<li><p>The market the asset belong: us, germany, china, and so on.</p>
+<ul class="simple">
+<li><p>Any asset in this market has characteristic 1, 0 otherwise</p></li>
+</ul>
+</li>
+<li><p>The sector of the stock</p>
+<ul class="simple">
+<li><p>any asset in the respective sector get a characteristic of 1, zero otherwise</p></li>
+<li><p>You can split firm from 5 up to 100s of industrial sectors</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>If you are trading other assets, say corporate bonds, you can easily create similar factors in these cases</p></li>
+</ul>
+<p>The second group are factors that are popular in the academic community and have shown to predict returns. Their motivation typically comes from the idea that you can create a proxy for fundamentals or expected returns. They also happen to predict co-movement–imagine if they didn’t…</p>
+<p>The first tries to do that using a combination of accounting and asset price data. I will call accounting-based characteristics</p>
+<p>Accounting-based characteristics
+3. Book to market (also refereed as value): idea is that book might proxy for fundamental value, so the ratio of book to the market value is a measure of how high expected returns are. People might use a variety of other proxys for this fundamental value, but book is the most traditional.</p>
+<ul class="simple">
+<li><p>Other measures are Sales, Dividend, Earnings, …</p></li>
+<li><p>Firms with high book to market have higher expected returns (they are cheap)</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Profitability/quality: The idea is that it proxys for firm quality. The actual measure is the ratio gross profitability to book assets, where gross profitability is profits minus cost of goods sold</p>
+<ul class="simple">
+<li><p>This works particularly well when combined with book-to-market. The issue with book to market is that it is possible  that the market price is low because fundamentals are expected to deteriorate. In fact that is exactly what standard finance theory would predict–market prices should incorporate market participants views about the future of the asset fundamentals! So maybe the stock is cheap because investors think the firm fundamentals are deteriorating</p></li>
+<li><p>So if you get all firms with similar Book-to-market and then sort them by profitability, the idea is that you separate the cheap high quality firms, from the correctly priced junk firms</p></li>
+<li><p>Firm with high profitabiity have higher expected returns specially if you control for book-to-market.</p></li>
+<li><p>There other quality proxys that people use which I discuss below</p></li>
+</ul>
+</li>
+<li><p>Investment: The idea is that manager will invest more if they perceive discount rates to be low, so a firm that is conservative in their investments indicates that management see very high discount rates. The typical measure is CAPEX to assets</p>
+<ul class="simple">
+<li><p>The logic here is to use the decision making of CEO as a way to detect variation in expected returns</p></li>
+<li><p>More conservative firms in their investments earn higher expected returns</p></li>
+</ul>
+</li>
+</ol>
+<p>Returns-based characteristics</p>
+<ol class="arabic simple" start="6">
+<li><p>The beta of the asset with respect to the market factor. The classic one is univariate beta with respect to market portfolios, but this works across many factors. Typically you would think higher beta, higher expected returns, but this relationship flips specially if your model does not have many factors.</p></li>
+<li><p>The total volatility of the asset. Similar to beta, as higher beta stocks are more volatile, but also captures idio volatility. The patterns in returns is most driven by very high volatile stocks–which means this is mostly about the indio piece–i.e. very high idio vol stocks tend to have low expected returns.</p>
+<ul class="simple">
+<li><p>We will discuss “beta” and “vol” in detail below  as defensive investing</p></li>
+</ul>
+</li>
+<li><p>Short-term Reversal: The idea is that in the very high frequency (say monthly,weekly, daily), stocks that drop a lot in prices were likely heavily “sold”, of course someone had to buy them, but the idea is that if they dropped in price is because some liquidity provider like citadel are absorbing the flow as increasingly lower prices. It works symmetrically for stocks that went up a lot. So low recent returns works as a signal of a high future expected return (in the very short horizon). Why? Because if the stock dropped a ton, it indicates that “citadel” is buying and therefore expected returns will be high goign forward</p></li>
+</ol>
+<ul class="simple">
+<li><p>Of course this does nto work in general for any price movement. But if you sort stocks in short term returns you end up caputring this</p></li>
+<li><p>If you had citadel actual positions, or conversely what non-market makers are selling, you would do even better as you would better separate information (price when down because bad information arrived) from price went down because Citadel demanded price concessions to absorb the retail flow</p></li>
+<li><p>So here the short-term losers (low returns) have high future returns, and the winners (high returns) have low returns</p></li>
+</ul>
+<ol class="arabic simple" start="9">
+<li><p>Momentum: Not sure there is a simple consensus view here. One story is that the market does not fully incorporate  that fundamental news has momentum–good news about earnings, ends up translating in more future good news, so if you sort stocks on returns–now 12 month returns, while skipping 1 month to avoid the short-term reversal signal, then winners end up wining, and loosers lose.</p>
+<ul class="simple">
+<li><p>I know. Wild. But now high recent returns predict high future returns and low future return, predict low future returns</p></li>
+<li><p>It is not inconsistent with the short-term reversal trade because the look-back is very different</p></li>
+</ul>
+</li>
+</ol>
+<p>Trading-based characteristics</p>
+<ol class="arabic simple" start="10">
+<li><p>Shorting: The idea is to capture how much investors want to sell an asset short. The idea is that shorting is made mostly by sophisticated investors, and because shorting is very risky, if they are trying to short a lot is because they see the stock as over-valued, so they predict low returns going forward</p>
+<ul class="simple">
+<li><p>People use a few different measures to capture this.</p></li>
+<li><p>borrow rate: how much you have to pay to borrow a stock to short. High borrow rate means lots of people want to do it, but can’t</p></li>
+<li><p>Amount of shorted stocks relative to market cap: measures how big are the shorting positions. sometimes people divide by the float, since for some stocks a big part of market cap is not traded (for example when they have a strong owner-founder)</p></li>
+</ul>
+</li>
+<li><p>Active  holdings:  th idea is to look what activist portfolio managers are doing. If they buy a stock it must mean they think is undervalued. So in a sense is the opposite of the “shorting” play.</p></li>
+</ol>
+<p>Both these trading-based charateristics can go both ways–maybe the traded can be too crowded. So it is also useful to see if your brillian idea is not already getting played by everyone else and it is already crowded. Finance theory would say: if these are the informed and these positions are risky, then they should be predictive and on average they are—but if everyone knows that and everyone is following them, and they don’t really realize it, then it no longer works…so it is complicated</p>
+<p>While for all these characteristics with expected returns is unstable and sample dependent–there is no doubt that each of them captures a very important source of co-movement so are useful for risk-management and performance evaluation even if their use for direct asset allocation is less clear</p>
+<hr class="docutils" />
+<p>Below I have a broader discussion of some of these characteristics/investment strategies</p>
+<section id="value">
+<h2><span class="section-number">20.9.1. </span>Value<a class="headerlink" href="#value" title="Link to this heading">#</a></h2>
+<p>One of the most popular quantitative investing strategies is broadly refered to as “value investing”</p>
+<ul class="simple">
+<li><p>It consists of tilting the portfolio towards stocks that have a low price relative to a proxy for it’s fundamental value</p></li>
+<li><p>and tilt away form stocks with high price relative to fundamentals</p></li>
+<li><p>Broadly speaking: Buy cheap, sell expensive</p></li>
+<li><p>weights:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_t \propto \frac{F_t}{P_t}\]</div>
+<ul class="simple">
+<li><p>Where <span class="math notranslate nohighlight">\(F_t\)</span> is some proxy for the firm’s fundamental value</p></li>
+<li><p>typically some accounting measure</p></li>
+<li><p>There is a vast number of proxys for fundamentals</p>
+<ul>
+<li><p>Dividends</p></li>
+<li><p>Book value</p></li>
+<li><p>Earnings</p></li>
+<li><p>Cash flows</p></li>
+<li><p>Sales</p></li>
+</ul>
+</li>
+<li><p>The strategy is the “cross-sectional” counterpart of market timing strategies that rely on dividend yield of aggregate market as a proxy for whether the market is expensive.</p></li>
+<li><p>However, the evidence is that cross-sectional strategy is more reliable, even if it still quite risky. It actually has done terribly in the last 10 years!</p></li>
+</ul>
+<p><strong>Literature</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www8.gsb.columbia.edu/sites/valueinvesting/files/files/CIER.pdf">Lakonishok, Shleifer, and Vishny (1994) </a>– value and
+growth effect with a behavioral interpretation.</p></li>
+<li><p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1540-6261.1996.tb05202.x">Fama and French (1996)</a> – comprehensive analysis of
+all anomalies, with a rational risk-based interpretation.</p></li>
+</ul>
+<p><strong>Why this might work?</strong></p>
+<ul class="simple">
+<li><p>The fact that the market value is above or below the book value does not mean that the firm is mispriced. It is natural that the expectation of future earnings changed (which is not in book value), or investors’ perception of risk changed.</p></li>
+<li><p>Even in a CAPM world you can see that happening: suppose the beta of a firm increases, then in equilibrium it’s excess return must also increase!</p>
+<ul>
+<li><p>This would mean if it’s market value goes down, Book-to-Market would go up at the same time, making expected returns going forward go up!</p></li>
+<li><p>But in the data we see when BM changes (as firms swing across portfolios), the market beta does not, which is inconsitent with the CAPM</p></li>
+</ul>
+</li>
+<li><p>Lots of theories that attempt to explain the value-growth spread, both “rational” and “behavioral”</p></li>
+<li><p>Here is a flavor of a few of these theories</p></li>
+<li><p>Behavioral: LSV argue that value vs. growth strategies (contrarian strategies) exploit naive investor behavior and are not riskier.</p>
+<ul>
+<li><p>Investors may extrapolate earnings too far in the future, may overreact to news, assume a trend in stock prices, or equate a good company with a good investment.</p></li>
+<li><p>Stocks that have done well in the past are Growth stocks that are ‘glamorous’ to investors. People tend to want to buy these and stampede towards them, pushing up the price, and depressing their future returns. Value stocks have been neglected, people tend to overreact to these poorly performing firms, causing their prices to fall too much, and expected returns to rise. Psychological evidence suggests people form these naive strategies. This is an overreaction story, and a contrarian strategy exploits it.</p></li>
+<li><p>LSV also argue that value stocks are not riskier than growth stocks.</p>
+<ul>
+<li><p>they don’t have higher variance</p></li>
+<li><p>they don’t have high downside risk (i.e., do not underperform often or by that much)</p></li>
+<li><p>they don’t have higher betas</p></li>
+<li><p>they don’t underperform in bad states of the world</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Rational: FF argue Value firms are riskier than growth because thery are more exposed to the risk of distress (for example value did terribly in 2008 and 2020)</p>
+<ul>
+<li><p>The argue it is consistent with equilibrium models of ICAPM/APT</p></li>
+</ul>
+</li>
+<li><p>Overall most academics think there is a behavioral component in value, but quite a bit has to do with more rational factors, i.e. value is riskier than growth in a variety of ways</p></li>
+</ul>
+</section>
+<section id="return-based-strategies">
+<h2><span class="section-number">20.9.2. </span>Return-based strategies<a class="headerlink" href="#return-based-strategies" title="Link to this heading">#</a></h2>
+<p><strong>Momentum</strong> is the fact that stocks that have performed
+<strong>relatively</strong> well in the past continue to perform
+<strong>relatively</strong> well in the future, and stocks that have performed
+<strong>relatively</strong> poorly, continue to perform <strong>relatively</strong>
+poorly.</p>
+<p>A Momentum investment or “relative strength”
+strategy buys stocks which have performed relatively
+well in the past and sells (shorts) stocks which have performed
+relatively poorly.
+Over the <strong>1963-1990</strong> time period, Jegadeesh and Titman
+(1993) found that a strategy that ranked stocks based on
+their past 6 months to a year returns, and bought the top
+10% and shorted the bottom 10% based on this ranking,
+produced abnormal returns of 12% per year.</p>
+<p>Momentum portfolios bet on <strong>cross-sectional</strong> continuation. That is, in a stock did well relative to others in the recent past, the bet is that will continue to do better than the average going forward.</p>
+<p>In some ways momentum is the opposite of a value strategy , since value stocks are stocks that have had very low returns (how else they would be value?)</p>
+<p>The difference is that value/growth focus on the valuation ratio as the signal of how low the price is. So the valuation ratio captures the entire history of returns (what is price if not the result of the historical returns). Momentum instead focus on the last 12 months. Recent, but not too recent. But there many versions of Momentum.</p>
+<p><strong>Construction</strong></p>
+<p>Here is how Daniel and Moskowitz construct their portfolios</p>
+<blockquote>
+<div><p>To form the momentum portfolios, <strong>we first rank stocks based on their cumulative returns
+from 12 months before to one month before the formation date (i.e., the t-12 to t-2-month
+returns)</strong>, we use a one month gap between the end of the ranking period and
+the start of the holding period <strong>to avoid the short-term reversals</strong> documented by Jegadeesh
+(1990) and Lehmann (1990). In particular we will focus on 10% and 90% quantiles of the signal distribution and will construct portfolios of all stocks that are in the bottom and top quintiles</p>
+</div></blockquote>
+<p><strong>Why this might work?</strong></p>
+<ul class="simple">
+<li><p>Behavioral view: The idea here is that markets might be slow to incorporate information, so good/bad news gets into prices slowly over time. For example investors might only slowly get into prices the consequences of a Trump second term.</p></li>
+<li><p>Rational view: Maybe all these stocks are exposed to the same missing risk-factor. They all went up and down at the same time after all! For example all firms that went down in march 2020 are particularly exposed to Covid and the ones that did well are positively exposed. So they will move together as COVID risk fluctuate. It is hard to use a story like that to explain the premium, but it is easy to see how it explains the co-movement.</p></li>
+<li><p>My overall sense is that the majority of academics think that momentum is driven by “behavioral” factors. Note however that momentum tends to crash very badly in high volatility periods such as 2008 and 2020, so it is certainly risky if you zoom out a bit.</p></li>
+</ul>
+<p><strong>Literature</strong></p>
+<p>Lots of work on this.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.annualreviews.org/doi/full/10.1146/annurev-financial-102710-144850">Here is a review of the work on the momentum strategy</a></p></li>
+<li><p><a class="reference external" href="https://www.jstor.org/stable/pdf/2328882.pdf?casa_token=wjU0QYjZvg4AAAAA:aAxgJJLpR7VexgbmcWBBUMveRXin7d5VpGkrYIXDm_UseOs_ETYRZWSNLHzmkGrDFk5A4PNvA6nI8JY4k5khKlSDucppwJ1JNlx0GGqQthOQ4uBY6cA">Here is the paper that first documented the Momentum profitability</a></p></li>
+<li><p><a class="reference external" href="https://github.com/amoreira2/Lectures/blob/a1f2e6ef36e80d32ee12a391b878f564f15c3cd5/assets/papers/Daniel%20Moskowitz%202015.pdf">Here is Daniel and Moskowitz analysis of momentum</a></p></li>
+</ol>
+<p><strong>Past Cross-sectional Return Predictability a summary</strong></p>
+<ol class="arabic simple">
+<li><p>Long-term reversals</p>
+<ul class="simple">
+<li><p>DeBondt and Thaler (1985)</p></li>
+<li><p>3-5 year contrarian strategy</p></li>
+</ul>
+</li>
+<li><p>Short-term (&lt; 1 month) reversals</p>
+<ul class="simple">
+<li><p>Jegadeesh (1990), Lehman (1990), Lo andMacKinlay (1988)</p></li>
+</ul>
+</li>
+<li><p>Intermediate horizon continuation</p>
+<ul class="simple">
+<li><p>Jegadeesh and Titman (1993)</p></li>
+<li><p>3-12 month momentum strategy</p></li>
+<li><p>profits dissipate over 1-year and start to reverse after 2-3 years -&gt; temporary price effect.</p></li>
+<li><p>see similar pattern around earnings announcements (both earnings and price momentum).</p></li>
+</ul>
+</li>
+</ol>
+<p>Below is a plot that summarizes the emprical evidence on return-based strategies. It shows the Sharpe Ratio as a function of the lookback period of the reutrn signal</p>
+<p><img alt="image.png" src="https://github.com/amoreira2/Lectures/raw/main/assets/plots/momentum1.jpg" /></p>
+<ul class="simple">
+<li><p>Can you reproduce this plot?</p></li>
+</ul>
+</section>
+<section id="defensive-investing">
+<h2><span class="section-number">20.9.3. </span>Defensive Investing<a class="headerlink" href="#defensive-investing" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Instead of looking for strategies that performed well in the past, look for strategies that have low risk.</p></li>
+<li><p>The idea is: risk is much easier to predict than returns</p></li>
+<li><p>Relies on a weak risk return trade-off-&gt;your notion of risk is not perfectly related to the implied by the tangency portfolio (which we don’t know!)</p></li>
+<li><p>Three important low risk anomalies</p>
+<ul>
+<li><p>Betting-against-Beta, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0304405X13002675">Pedersen and Frazzini (2011)</a></p></li>
+<li><p>Low Vol , <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1540-6261.2006.00836.x">Ang, Hodrick,….(2012)</a></p></li>
+<li><p>Hedging Risk factors <a class="reference external" href="https://www.dropbox.com/s/yal9dwvxnoksdwz/HedgingRiskFactors.pdf?dl=0">Hersovick, Moreira and Muir (2018)</a></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Betting against beta</strong></p>
+<p>The BAB idea is that beta risk is not compensated, low beta stocks turn out to have big alphas and high beta stocks have very negative alpohas</p>
+<p><img alt="image.png" src="../../_images/othertradingstrategiesB4.jpg" /></p>
+<ul class="simple">
+<li><p>Why that might be the case?</p></li>
+<li><p>how do you use this empirical fact to “beat” the CAPM/market?</p></li>
+</ul>
+<p><strong>Hedging Risk Factors</strong></p>
+<p>HMM create minimum variance portfolios as follows</p>
+<ol class="arabic simple">
+<li><p>Pick a factor model <span class="math notranslate nohighlight">\(F_t\)</span> where F here is possibly a vector of multiple excess return factors</p></li>
+<li><p>For each stock i run the multivariate regresion</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[R^e_{i,t}=\alpha+\beta_{i,F}F_t+\epsilon_{i,t}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Now construct the covariance matrix of all the stocks by assuming <span class="math notranslate nohighlight">\(Var(\epsilon)\)</span> is diagonal, i.e. that the risk unexplained by the factor model is uncorrelated across assets. (this is not true, but estimating this covariance matrix is intractable)</p>
+<ul class="simple">
+<li><p>Stack all the <span class="math notranslate nohighlight">\(\beta_{i,F}\)</span> so you have a big Beta matrix that has dimensions n (number of stocks) by f (number of factors)</p></li>
+</ul>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[Var(R^e)=Beta \times Var(F_t) \times Beta'+Var(\epsilon)\]</div>
+<ul class="simple">
+<li><p>this is a big n by n matrix</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>now construct the minimum-variance portfolio as we saw in class</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[w=1Var(R^e)^{-1}\]</div>
+<p>HMM find very large SR</p>
+<p><img alt="image.png" src="../../_images/othertradingstrategiesB5.jpg" /></p>
+<p>And extremely large alphas with respect to a variety of factor models</p>
+<p><img alt="image.png" src="../../_images/othertradingstrategiesB6.jpg" /></p>
+<p>Thus it pays to bet against risk!</p>
+</section>
+<section id="quality-investing">
+<h2><span class="section-number">20.9.4. </span>Quality investing<a class="headerlink" href="#quality-investing" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What is “quality”  investing?something you are willing to pay a high price for, all else equal!</p></li>
+<li><p>How it relates to value investing?</p></li>
+<li><p>No uniform definition</p>
+<ul>
+<li><p>Profitable</p></li>
+<li><p>Safe</p></li>
+<li><p>Good governance</p></li>
+<li><p>Good growth – asset growth, earnings growth, etc.</p></li>
+<li><p>High payout</p></li>
+<li><p>Creditworthy</p></li>
+<li><p>Well managed</p></li>
+<li><p>Accounting quality – accruals, earnings stability, etc.</p></li>
+</ul>
+</li>
+<li><p>Relation to value investing</p>
+<ul>
+<li><p>Buying high quality assets without paying premium prices is another form of value investing</p></li>
+</ul>
+</li>
+<li><p>Does quality carry a premium on its own?</p></li>
+</ul>
+<p><strong>A Simple Quality Metric – Profitability!</strong></p>
+<ul class="simple">
+<li><p>Simple quality measure = gross profitability = (revenues – COGS)/assets from <a class="reference external" href="http://rnm.simon.rochester.edu/research/OSoV.pdf">Novy-Marx,2013</a></p></li>
+<li><p>Common recurring theme is the strong relation between quality and value</p>
+<ul>
+<li><p>Quality can even be viewed as an alternative implementation of value</p></li>
+<li><p>Buying high quality assets without paying premium prices is just as much value investing as buying average quality assets at a discount</p></li>
+<li><p>Warren Buffett, “far better to buy a wonderful business at a fair price than to buy a fair business at a wonderful price.”</p></li>
+</ul>
+</li>
+<li><p>Quality and value strategies are dissimilar, however, in the stocks that they actually hold</p>
+<ul>
+<li><p>High quality firms tend to be expensive, while value firms tend to be low quality</p></li>
+<li><p>Quality strategies are thus short value, while value strategies are short quality.</p></li>
+<li><p>Each of these strategies consequently tends to do well precisely when the other under-performs</p></li>
+</ul>
+</li>
+<li><p>Value stocks are cheap -&gt; high expected returns and growth stocks are expensive -&gt;  low expected returns</p></li>
+<li><p>Similar arguments suggest that firms with productive assets should yield higher average returns than firms with unproductive assets</p>
+<ul>
+<li><p>Profitable firms that investors demand high average returns to hold should be priced similarly to less productive firms for which investors demand lower returns</p></li>
+<li><p>Variation in productivity identifies variation in required rates of return</p></li>
+</ul>
+</li>
+<li><p>This argument is consistent with both rational risk pricing and behavioral forces</p></li>
+<li><p>Evidence:  gross-profits-to-assets strongly predicts returns, especially controlling for book-to-market (scaled price)</p>
+<ul>
+<li><p>Profitable firms have higher average returns than unprofitable firms</p></li>
+<li><p>Despite having, on average, lower book-to-markets and higher market capitalizations</p></li>
+</ul>
+</li>
+<li><p>Consequently, provides an incredibly valuable hedge for value strategies</p></li>
+<li><p>Combination explains a whole host of accounting-based and earnings-related anomalies, including ROE, market power, default risk, net stock issuance, and organizational capital</p></li>
+</ul>
+<p>Here are the key results of the paper</p>
+<p><img alt="image.png" src="../../_images/othertradingstrategiesB2.jpg" /></p>
+<ul class="simple">
+<li><p>You see that the Profitable minus Unprofitable portfolio has a very sizable alpha relative to the Fama-French 3 factors model( you can see this in the last line of the table in the left)</p></li>
+<li><p>So much so that Fama and French added this factor to their 5 factor model, but they call RmW, Robust minus Weak</p></li>
+<li><p>You see that the alphas are much higher than the premium because of the negative exposure to the value factor</p></li>
+</ul>
+<p>A great success of this strategy is that it helps price a variety of other strategies, so it is a grate factor because allow us to summarize the data better</p>
+<p>You can see this on the table below where Robert compares the 4 factor alpha of a variety of trading strategies with the alpha after including the profitability factor</p>
+<p><img alt="image.png" src="../../_images/othertradingstrategiesB3.jpg" /></p>
+<ul class="simple">
+<li><p>comparing columns 2 and 3 you see that lots of the alphas became insignificant, what means that the profitability factor together with the other 4 factors help span the mean-variance frontier that includes these assets.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/Finance"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MultiFactorModels.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>Multi-factor models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="InterpretingFactorModels.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">20.10. </span>Interpretating  Factor models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value">20.9.1. Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-strategies">20.9.2. Return-based strategies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defensive-investing">20.9.3. Defensive Investing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-investing">20.9.4. Quality investing</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Alan Moreira
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021 Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

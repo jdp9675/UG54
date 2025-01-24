@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Capital Allocation under Benchmarking, Tracking Error Constraints, and Risk Budgets &#8212; Quantitative Investing</title>
+    <title>Capital Allocation &#8212; Quantitative Investing</title>
   
   
   
@@ -61,6 +61,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/CapitalAllocation';</script>
     <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/CapitalAllocation.html" />
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
@@ -191,51 +193,41 @@
 <li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">14.5. Modeling randomness</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">15. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">15.7. Linear algebra Review</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FactorModels.html">15. Factor Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FactorModelEstimation.html">16. Factor Model Estimation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">17. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">17.8. Leverage and Shorting</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="MeanVariance.html">16. Mean-Variance Investing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TradingStrategies.html">17. Trading Strategies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="FactorModels.html">18. Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="MultiFactorModels.html">18.2. Multi Factor Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ExpectedReturnModels.html">18.3. Factor Models as Models of Expected Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">18.4. Interpreting Factor Models</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance_evaluation.html">18. Performance Evaluation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">19. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="MarketCapweighted.html">19.1. The Market Cap Weighted Portfolio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Valueinvesting.html">19.2. Value factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Momentum.html">19.3. Momentum factor</a></li>
 <li class="toctree-l2"><a class="reference internal" href="OtherEquityStrategies.html">19.4. Other Equity strategies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">19.5. Leverage and Shorting</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="Robustness.html">20. Robustness of Quantitative Strategies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Implementation.html">21. Liquidity</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">22. Factor Timing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">22.2. Volatility Timing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">20. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Factors.html">20.9. An overview of factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">20.10. Interpreting Factor Models</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="RiskManagement.html">23. Risk Management and Capital Allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">24. Machine Learning in Finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">25. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">26. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">26.1. Assigment 0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">21. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">22. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">23. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">23.1. Assigment 0</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">26.6. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">23.6. Assignment 1</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">26.9. Assignment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">23.9. Assignment 2</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">26.12. Assignment 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment3.html">23.12. Assignment 3</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">26.15. Assignment 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment4.html">23.15. Assignment 4</a></li>
 
 </ul>
 </details></li>
@@ -439,7 +431,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -450,11 +444,28 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Capital Allocation under Benchmarking, Tracking Error Constraints, and Risk Budgets</h1>
+    <h1>Capital Allocation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-with-time-varying-volatility">Capital Allocation with Time-varying volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-managing-the-market">Volatility managing the market</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-monthly-realized-variance-from-daily-data"><strong>Constructing monthly realized variance from daily data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-signal-to-weights"><strong>From signal to weights</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns"><strong>Construct strategy returns</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -466,17 +477,1540 @@
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_factors</span><span class="p">(</span><span class="n">factors</span><span class="o">=</span><span class="s1">&#39;CAPM&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;daily&#39;</span><span class="p">):</span>   
+    
+    <span class="k">if</span> <span class="n">freq</span><span class="o">==</span><span class="s1">&#39;monthly&#39;</span><span class="p">:</span>
+        <span class="n">freq_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">freq_label</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">freq</span>
+
+
+    <span class="k">if</span> <span class="n">factors</span><span class="o">==</span><span class="s1">&#39;CAPM&#39;</span><span class="p">:</span>
+        <span class="n">fama_french</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Research_Data_Factors&quot;</span><span class="o">+</span><span class="n">freq_label</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1921-01-01&quot;</span><span class="p">)</span>
+        <span class="n">daily_data</span> <span class="o">=</span> <span class="n">fama_french</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+     
+        <span class="n">df_factor</span> <span class="o">=</span> <span class="n">daily_data</span><span class="p">[[</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]]</span> 
+    <span class="k">elif</span> <span class="n">factors</span><span class="o">==</span><span class="s1">&#39;FF3&#39;</span><span class="p">:</span>
+        <span class="n">fama_french</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Research_Data_Factors&quot;</span><span class="o">+</span><span class="n">freq_label</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1921-01-01&quot;</span><span class="p">)</span>
+        <span class="n">daily_data</span> <span class="o">=</span> <span class="n">fama_french</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">df_factor</span> <span class="o">=</span> <span class="n">daily_data</span><span class="p">[[</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span><span class="s1">&#39;HML&#39;</span><span class="p">]]</span>
+    <span class="k">elif</span> <span class="n">factors</span><span class="o">==</span><span class="s1">&#39;FF5&#39;</span><span class="p">:</span>
+
+        <span class="n">fama_french</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Research_Data_Factors&quot;</span><span class="o">+</span><span class="n">freq_label</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1921-01-01&quot;</span><span class="p">)</span>
+        <span class="n">daily_data</span> <span class="o">=</span> <span class="n">fama_french</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">df_factor</span> <span class="o">=</span> <span class="n">daily_data</span><span class="p">[[</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span><span class="s1">&#39;HML&#39;</span><span class="p">]]</span>
+        <span class="n">fama_french2</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Research_Data_5_Factors_2x3&quot;</span><span class="o">+</span><span class="n">freq_label</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1921-01-01&quot;</span><span class="p">)</span>
+        <span class="n">daily_data2</span> <span class="o">=</span> <span class="n">fama_french2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">df_factor2</span> <span class="o">=</span> <span class="n">daily_data2</span><span class="p">[[</span><span class="s1">&#39;RMW&#39;</span><span class="p">,</span><span class="s1">&#39;CMA&#39;</span><span class="p">]]</span>
+        <span class="n">df_factor</span><span class="o">=</span><span class="n">df_factor</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_factor2</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>    
+        
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fama_french</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Research_Data_Factors&quot;</span><span class="o">+</span><span class="n">freq_label</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1921-01-01&quot;</span><span class="p">)</span>
+        <span class="n">daily_data</span> <span class="o">=</span> <span class="n">fama_french</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">df_factor</span> <span class="o">=</span> <span class="n">daily_data</span><span class="p">[[</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span><span class="s1">&#39;HML&#39;</span><span class="p">]]</span>
+        <span class="n">fama_french2</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Research_Data_5_Factors_2x3&quot;</span><span class="o">+</span><span class="n">freq_label</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1921-01-01&quot;</span><span class="p">)</span>
+        <span class="n">daily_data2</span> <span class="o">=</span> <span class="n">fama_french2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">df_factor2</span> <span class="o">=</span> <span class="n">daily_data2</span><span class="p">[[</span><span class="s1">&#39;RMW&#39;</span><span class="p">,</span><span class="s1">&#39;CMA&#39;</span><span class="p">]]</span>
+        <span class="n">df_factor</span><span class="o">=</span><span class="n">df_factor</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_factor2</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>   
+        <span class="n">fama_french</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Momentum_Factor&quot;</span><span class="o">+</span><span class="n">freq_label</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1921-01-01&quot;</span><span class="p">)</span>
+        <span class="n">df_factor</span><span class="o">=</span><span class="n">df_factor</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">fama_french</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+        <span class="n">df_factor</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span><span class="s1">&#39;HML&#39;</span><span class="p">,</span><span class="s1">&#39;RMW&#39;</span><span class="p">,</span><span class="s1">&#39;CMA&#39;</span><span class="p">,</span><span class="s1">&#39;MOM&#39;</span><span class="p">]</span>    
+    <span class="k">if</span> <span class="n">freq</span><span class="o">==</span><span class="s1">&#39;monthly&#39;</span><span class="p">:</span>
+        <span class="n">df_factor</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_factor</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">())</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df_factor</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_factor</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+        
+
+
+    <span class="k">return</span> <span class="n">df_factor</span><span class="o">/</span><span class="mi">100</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="capital-allocation-under-benchmarking-tracking-error-constraints-and-risk-budgets">
-<h1>Capital Allocation under Benchmarking, Tracking Error Constraints, and Risk Budgets<a class="headerlink" href="#capital-allocation-under-benchmarking-tracking-error-constraints-and-risk-budgets" title="Link to this heading">#</a></h1>
-<p>TBD</p>
+<section class="tex2jax_ignore mathjax_ignore" id="capital-allocation">
+<h1>Capital Allocation<a class="headerlink" href="#capital-allocation" title="Link to this heading">#</a></h1>
+<p>How should you allocate capital?</p>
+<p>This question can be decomposed in two:</p>
+<ol class="arabic simple">
+<li><p>How large is my risk portfolio? This comes down to determining how much risk do you want to take</p></li>
+<li><p>How will I split this portfolio across assets</p></li>
+</ol>
+<p>How to approach these questions depend on whether you are investing as principal (i.e. on your behalf) or as a delegate (a manager in a hedge fund)</p>
+<p><strong>1. The Portfolio risk decision</strong></p>
+<p>The benefit of risk-taking is the extra expected return you get relative to the risk-free rate.
+That is true both for a principal and a delegate
+You wealth is expected to grow faster (either directly or indirectly trough your performance compensation)</p>
+<p>The cost is the “risk”. It is important to think exactly what you fear to think about how costly taking on risk is for you</p>
+<p><strong>A. Principal</strong></p>
+<ul class="simple">
+<li><p>What do you want to do with the money and when?</p></li>
+<li><p>How terrible you feel if you have less than you expected</p></li>
+<li><p>How much joy would you enjoy if you had more</p></li>
+<li><p>Do you have commitments that you absolutely need to satisfy?</p>
+<ul>
+<li><p>Minimum retirement income</p></li>
+<li><p>Minimum balance in college fund</p></li>
+<li><p>Minimum budget for health issues</p></li>
+<li><p>Future purchase of a property</p></li>
+</ul>
+</li>
+<li><p>Commitments will push you to take less risk if you currently have enough money to fulfill them</p>
+<ul>
+<li><p>Complete de-risking guarantees you can honor these commitments</p></li>
+</ul>
+</li>
+<li><p>We often talk about someone risk-aversion to describe how painful risk-taking is</p></li>
+</ul>
+<p><strong>B. Delegate</strong></p>
+<ul class="simple">
+<li><p>The delegate certainly has stop loss rule</p></li>
+<li><p>If they lose more than that amount they are forced to liquidate their positions and they are likely to be fired</p></li>
+<li><p>Such stop loss is particularly biding for new managers</p></li>
+<li><p>This stop loss might be explicit:the fund principal literally tells what it is</p></li>
+<li><p>But most likely is implicitly–there is a loss that investors will freak out and pull out</p></li>
+<li><p>You got to think for yourself and have very clearly what the number is</p></li>
+</ul>
+<p><strong>Formalizing their problems</strong></p>
+<ul class="simple">
+<li><p>I think is more useful to think in terms of the one-year ahead looses you are comfortable with.</p>
+<ul>
+<li><p>F is the CDF of a standard normal, and <span class="math notranslate nohighlight">\(F^{-1}\)</span> is it’s quantile function</p></li>
+<li><p>h is a scalar greater than 1 that adjusts for deviation from the normal.</p></li>
+<li><p>For example h=1.5 will mean that a 3 sigma event is as likely as a 3/h=2 sigma event</p>
+<ul>
+<li><p>It is important to always keep in mind that the normal distribution is just an approximation.</p></li>
+<li><p>But better with it, then without it</p></li>
+</ul>
+</li>
+<li><p>You pick a probability, <span class="math notranslate nohighlight">\(\underline{p}\)</span>,</p></li>
+<li><p>And a maximum loss <span class="math notranslate nohighlight">\(\overline{L}\)</span> for  your portfolio in 1 year</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[hF^{-1}(\underline{p})\sigma\geq-\overline{L}\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\sigma\leq-\frac{\overline{L}}{hF^{-1}(\underline{p})}\]</div>
+<p>for <span class="math notranslate nohighlight">\(\underline{p}=5 \%\)</span>, <span class="math notranslate nohighlight">\(\overline{L}=30\%\)</span>,h=2 what do we get?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+
+<span class="n">p</span><span class="o">=</span><span class="mf">0.05</span>
+<span class="n">h</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">L</span><span class="o">=</span><span class="mf">0.3</span>
+<span class="n">sigma</span><span class="o">=-</span><span class="n">L</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+<span class="n">sigma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.09119352478676533
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might want to incorporate your views on the portfolio expected return</p>
+<p>That is relevant in case your horizons are one year or longer.</p>
+<p>For horizons that are 1 month or shorter you are safe ignoring the expected value since the volatility totally dominates</p>
+<p>Now we write the problem as what fraction of your wealth w, you should invest in this portfolio</p>
+<p>the more you invest, the higher the expected growth <span class="math notranslate nohighlight">\(w\mu+rf\)</span>, but also the higher your wealth volatility <span class="math notranslate nohighlight">\(x\sigma\)</span></p>
+<div class="math notranslate nohighlight">
+\[w(hF^{-1}(\underline{p})\sigma+\mu)+rf\geq-\overline{L}\]</div>
+<p>to again represent in terms of total vol you choose to take I will rewrite</p>
+<div class="math notranslate nohighlight">
+\[w\sigma(hF^{-1}(\underline{p})+\frac{\mu}{\sigma})+rf\geq-\overline{L}\]</div>
+<p>Now note that <span class="math notranslate nohighlight">\(F^{-1}(\underline{p})\)</span> is a negative number and <span class="math notranslate nohighlight">\(\frac{\mu}{\sigma}\)</span> is positive</p>
+<p>Lets first assume <span class="math notranslate nohighlight">\(hF^{-1}(\underline{p})+\frac{\mu}{\sigma}&lt;0\)</span> which is the realistic case, unless you are <a class="reference external" href="https://en.wikipedia.org/wiki/Jim_Simons">James Simmons</a></p>
+<div class="math notranslate nohighlight">
+\[w\sigma\leq-\frac{\overline{L}+rf}{(hF^{-1}(\underline{p})+\frac{\mu}{\sigma})}\]</div>
+<ul class="simple">
+<li><p>A higher risk-free rate means you can take more vol, since you start from a higher expected baseline</p>
+<ul>
+<li><p>It is natural to have a real rate here since you probably care about your purchasing power</p></li>
+</ul>
+</li>
+<li><p>Sharpe Ratio: We call the ratio of the portfolio expected excess return relative to the portfolio volatility, the Sharpe Ratio</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[SR=\frac{E[r]-rf}{\sqrt{Var(r)}}=\frac{E[r^e]}{\sigma}=\frac{\mu}{\sigma}\]</div>
+<ul class="simple">
+<li><p>The higher the Sharpe ratio, the less negative is <span class="math notranslate nohighlight">\(hF^{-1}(\underline{p})+\frac{\mu}{\sigma}\)</span> and the higher is the higher the volatility you choose to take</p></li>
+</ul>
+<p>Lets plug some numbers with <span class="math notranslate nohighlight">\(rf=1\%\)</span> and SR=0.4 ( that is the market Sharpe ratio)</p>
+<div class="math notranslate nohighlight">
+\[-\frac{0.3+0.01}{2*(-1.64)+0.4}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="n">sr</span><span class="p">,</span><span class="n">rf</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">L</span><span class="o">+</span><span class="n">rf</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span><span class="n">sr</span><span class="p">)</span>
+
+
+
+
+<span class="c1"># Example usage</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">rf</span><span class="o">=</span><span class="mf">0.01</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="n">rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="mf">3.2896</span><span class="p">,</span><span class="n">rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sigma</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.09423330894632417
+0.10727730277221074
+0.13538848665984968
+-3.2897072539029457
+2890.3377078699764
+</pre></div>
+</div>
+</div>
+</div>
+<p>As your SR grows that loss becomes less likely than 5% and the amount of risk that you can take while being 95% sure that you will not lose 30% of your dollars goes to infinity</p>
+<p>In this case you can simply adjust your confidence probabilities, but boy, what an amazing problem to have!</p>
+<p>Most hedge funds don’t have SR above 1, let alone 3!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span><span class="mf">3.28</span><span class="p">,</span><span class="n">rf</span><span class="p">)</span>
+<span class="n">sr_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.28</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">sigma_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span> <span class="k">for</span> <span class="n">sr</span> <span class="ow">in</span> <span class="n">sr_values</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sr_values</span><span class="p">,</span> <span class="n">sigma_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratio (SR)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sigma&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sigma as a function of Sharpe Ratio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/221e3241dd201e4272aab837b628e20be41ff203f4c21e85e68a44b10ef08101.png" src="../../_images/221e3241dd201e4272aab837b628e20be41ff203f4c21e85e68a44b10ef08101.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Once you Sharpe Ratio is above 3 (as rare as snow in the winter), risk is unlikely to be the limiting factor</p></li>
+<li><p>Wat before then you hit at capacity constraints for your trade since your wealth will be growing so wildly fast</p>
+<ul>
+<li><p>For SR=3, your wealth grows at <span class="math notranslate nohighlight">\(w\sigma*\frac{\mu}{\sigma}=1*3=300\%\)</span> per year!</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>2. How to allocate across assets</strong></p>
+<p>Implicit in our discussion is that you have some desired portfolio with some Sharpe ratio <span class="math notranslate nohighlight">\(SR_p\)</span> and you are deciding how to invest in it.</p>
+<p>We can already see that having a large Sharpe ratio is a nice thing to have:</p>
+<ul class="simple">
+<li><p>Increases the growth of your portfolio per unit of risk</p></li>
+<li><p>For the same growth , you need to take less risk</p></li>
+<li><p>Expected growth means you are less likely to have large losses</p></li>
+</ul>
+<p>But you have to have in mind two things</p>
+<ul class="simple">
+<li><p>There might be stronger  deviations from normality for some trading strategies–for example option based strategies</p></li>
+<li><p>for some strategies the moments are particularly poorly estimated in short samples–again option based strategies!</p></li>
+<li><p>Useful to always check the “realized tail” of your portfolio in a backtest–more on that soon!</p></li>
+</ul>
+<p>How to build a portfolio that maximizes you SR?</p>
+<blockquote>
+<div><p><strong>If you know</strong> the vectors of expected excess returns across your assets and their variance covariance matrix the answer is trivial
+$<span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span><span class="math notranslate nohighlight">\(
+This is the MEAN-VARIANCE EFFICIENT PORTFOLIO associated with moments \)</span>E[R^e]<span class="math notranslate nohighlight">\(,\)</span>\Sigma_{R}$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E[R^e]\)</span> is the vector of  expected excess returns across assets</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma_{R}\)</span> is the FORWARD LOOKING variance-covariance matrix</p></li>
+<li><p>w is a scalar that controls the overall size of your portfolio, but does not impact the SR</p></li>
+</ul>
+</div></blockquote>
+<p><strong>For this portfolio to implement the optimal Sharpe ratio going forward, we need to use the true moments of the FUTURE distribution of returns</strong></p>
+<p>This portfolio solves the following problems</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]-\gamma Var(W'R^e_T)\)</span>, for <span class="math notranslate nohighlight">\(w=\frac{1}{2\gamma}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]~~~subject~~to~~~Var(W'R^e_T)\leq Vmax \)</span>, for <span class="math notranslate nohighlight">\(w=\sqrt{\frac{Vmax}{E[R^e]\Sigma_{R}^{-1}E[R^e]'}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \min_W Var(W'R^e_T)~~~subject~~to~~~E[W'R^e_T]\geq Emin \)</span>, for <span class="math notranslate nohighlight">\(w=\frac{Emin}{E[R^e]\Sigma_{R}^{-1}E[R^e]'}\)</span></p></li>
+</ol>
+<p>Lets apply this to  an international portfolio allocation problem</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/amoreira2/Lectures/main/assets/data/GlobalFinMonthly.csv&quot;</span>
+<span class="n">Data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">na_values</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
+<span class="c1"># tell python Date is date:</span>
+<span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+<span class="c1"># set an an index</span>
+<span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
+<span class="n">Rf</span><span class="o">=</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">]</span>
+<span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MKT</th>
+      <th>USA30yearGovBond</th>
+      <th>EmergingMarkets</th>
+      <th>WorldxUSA</th>
+      <th>WorldxUSAGovBond</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1963-02-28</th>
+      <td>-0.0238</td>
+      <td>-0.004178</td>
+      <td>0.095922</td>
+      <td>-0.005073</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1963-03-31</th>
+      <td>0.0308</td>
+      <td>0.001042</td>
+      <td>0.011849</td>
+      <td>-0.001929</td>
+      <td>-0.000387</td>
+    </tr>
+    <tr>
+      <th>1963-04-30</th>
+      <td>0.0451</td>
+      <td>-0.004343</td>
+      <td>-0.149555</td>
+      <td>-0.005836</td>
+      <td>0.005502</td>
+    </tr>
+    <tr>
+      <th>1963-05-31</th>
+      <td>0.0176</td>
+      <td>-0.004207</td>
+      <td>-0.014572</td>
+      <td>-0.002586</td>
+      <td>0.002289</td>
+    </tr>
+    <tr>
+      <th>1963-06-30</th>
+      <td>-0.0200</td>
+      <td>-0.000634</td>
+      <td>-0.057999</td>
+      <td>-0.013460</td>
+      <td>0.000839</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets assume the sample moments are the true moments of the distribution</span>
+
+
+<span class="n">muR</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">muR</span><span class="p">)</span>
+<span class="n">SigmaR</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">SigmaR</span><span class="p">)</span>
+<span class="c1"># this inverts the variance covariance matrix</span>
+<span class="n">display</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">SigmaR</span><span class="p">))</span>
+<span class="n">W</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">SigmaR</span><span class="p">)</span> <span class="o">@</span> <span class="n">muR</span>
+<span class="n">display</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MKT                 0.005140
+USA30yearGovBond    0.002523
+EmergingMarkets     0.006923
+WorldxUSA           0.004149
+WorldxUSAGovBond    0.002054
+dtype: float64
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MKT</th>
+      <th>USA30yearGovBond</th>
+      <th>EmergingMarkets</th>
+      <th>WorldxUSA</th>
+      <th>WorldxUSAGovBond</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MKT</th>
+      <td>0.001948</td>
+      <td>0.000111</td>
+      <td>0.001292</td>
+      <td>0.001264</td>
+      <td>0.000187</td>
+    </tr>
+    <tr>
+      <th>USA30yearGovBond</th>
+      <td>0.000111</td>
+      <td>0.001227</td>
+      <td>-0.000204</td>
+      <td>-0.000013</td>
+      <td>0.000264</td>
+    </tr>
+    <tr>
+      <th>EmergingMarkets</th>
+      <td>0.001292</td>
+      <td>-0.000204</td>
+      <td>0.003556</td>
+      <td>0.001661</td>
+      <td>0.000249</td>
+    </tr>
+    <tr>
+      <th>WorldxUSA</th>
+      <td>0.001264</td>
+      <td>-0.000013</td>
+      <td>0.001661</td>
+      <td>0.002182</td>
+      <td>0.000422</td>
+    </tr>
+    <tr>
+      <th>WorldxUSAGovBond</th>
+      <td>0.000187</td>
+      <td>0.000264</td>
+      <td>0.000249</td>
+      <td>0.000422</td>
+      <td>0.000407</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 886.9351877 , -163.1566812 , -133.47716321, -463.61463361,
+         260.65110274],
+       [-163.1566812 , 1029.7603189 ,   83.97391735,  201.95839425,
+        -854.35594033],
+       [-133.47716321,   83.97391735,  462.95743432, -276.66588761,
+          10.81093193],
+       [-463.61463361,  201.95839425, -276.66588761, 1113.82507458,
+        -904.79801414],
+       [ 260.65110274, -854.35594033,   10.81093193, -904.79801414,
+        3826.58967227]])
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.83533361,  1.42337262,  1.60522251, -1.02642088,  3.36582305])
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><h5 class="rubric" id="stop-and-think">Stop and Think</h5>
+<ul class="simple">
+<li><p>Can you check that applying the little w above it will indeed solve problems 2 and 3?</p></li>
+<li><p>Can you check that the SR of portfolio w*W is invariant to little w?</p></li>
+<li><p>Can you explain mechanically why this is happening?</p></li>
+</ul>
+</div></blockquote>
+<p>Lets look at the relationship between expected returns and volatility as we vary the size of the portfolio w, while fixing the allocation W</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the range of w values</span>
+<span class="n">w_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculate the portfolio returns and volatilities for each w</span>
+<span class="n">portfolio_returns</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">portfolio_volatilities</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">w_values</span><span class="p">:</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">SigmaR</span><span class="p">)</span> <span class="o">@</span> <span class="n">muR</span>
+    <span class="n">portfolio_return</span> <span class="o">=</span> <span class="n">weights</span> <span class="o">@</span> <span class="n">muR</span>
+    <span class="n">portfolio_volatility</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">weights</span> <span class="o">@</span> <span class="n">SigmaR</span> <span class="o">@</span> <span class="n">weights</span><span class="p">)</span>
+    
+    <span class="n">portfolio_returns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">portfolio_return</span><span class="p">)</span>
+    <span class="n">portfolio_volatilities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">portfolio_volatility</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">portfolio_volatilities</span><span class="p">,</span> <span class="n">portfolio_returns</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Portfolio Volatility&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Return&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Return vs. Portfolio Volatility&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e32af4f9e352fefdf1cd06af74e569ebad0029f0a11a674a97037ac3a485b448.png" src="../../_images/e32af4f9e352fefdf1cd06af74e569ebad0029f0a11a674a97037ac3a485b448.png" />
+</div>
+</div>
+<p>What does it mean that the relationship between Expected return and volatility is linear?</p>
+<p>Is that what you expect? Is that true in general as you change portfolio weights?</p>
+<p><strong>In reality</strong> knowing the true moments of the return distribution is HARD as we discussed a few classes ago</p>
+<ul class="simple">
+<li><p>Here we used the “In Sample” means and variances</p></li>
+<li><p>By construction weight <span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span> will deliver the Highest in sample Sharpe Ratio. It is just math!</p></li>
+<li><p>The issue is to what extent these in sample moments are informative about the forward looking moments</p></li>
+<li><p>See the discussion last class</p></li>
+</ul>
+<p><strong>In reality</strong> your portfolio is not all you care about</p>
+<p>It is useful to decompose your allocation in terms of “factor bets” and “alpha bets”</p>
+<p>We will now focus on the “alpha” aspect of allocation and revisit factor allocation once we introduce multi-factor models</p>
+<p>Most fund managers have tight limits on factor exposures anyways, so factor exposure is more of a consequence of your alpha bets that you need to control rather then a form of investing.</p>
+<p>Let’s say that you identified N trading strategies</p>
+<ul class="simple">
+<li><p>You believe their alphas are A (N by 1)</p></li>
+<li><p>You estimate their factor Betas B (N by 1) (single factor model for now)</p></li>
+<li><p>And their idio variance <span class="math notranslate nohighlight">\(\Sigma_{\epsilon}\)</span>, which is diagonal. These are idio bets after you remove the factor exposure</p></li>
+<li><p>You have a mandate to have zero factor exposure.</p></li>
+</ul>
+<p>What is your optimal portfolio ( we are focusing now on the composition, lets put the level of risk aside) ?</p>
+<ul class="simple">
+<li><p>What is your allocation on each trading strategy?</p></li>
+<li><p>Assuming you can trade the factor, how much of it you buy/sell directly?</p></li>
+</ul>
+<p>The solution is <span class="math notranslate nohighlight">\(w*W\)</span> and <span class="math notranslate nohighlight">\(w*W_f\)</span> for any scalar w, where</p>
+<p><span class="math notranslate nohighlight">\(W=A\Sigma_{\epsilon}^{=1}\)</span></p>
+<p><span class="math notranslate nohighlight">\(W_f=-W'\Beta\)</span></p>
+<p>and you pick w to control the overall volatility of your portfolio and where
+$<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alpha_1,\alpha_2,...,\alpha_N\right]\left[\begin{array}{ccc}\sigma^2_{\epsilon,1} &amp; 0 &amp; 0\\0 &amp; \sigma^2_{\epsilon,i} &amp; 0\\0&amp;0&amp;\sigma^2_{\epsilon,N}\end{array}\right]^{-1}=\left[\begin{array}{c}\frac{\alpha_1}{\sigma^2_{\epsilon,1} }\\\frac{\alpha_2}{\sigma^2_{\epsilon,2} }\\...\\\frac{\alpha_N}{\sigma^2_{\epsilon,N} }\end{array}\right]\)</span>$</p>
+<p>The fact that all the trading strategies are stripped out of the co-movement leads to a really clean formula</p>
+<p>You can rewrite in terms of volatility allocations in each strategy</p>
+<div class="math notranslate nohighlight">
+\[W_i\sigma_{\epsilon,i}=\frac{\alpha_i}{\sigma_{\epsilon,i}}\]</div>
+<p>We refer to <span class="math notranslate nohighlight">\(\frac{\alpha_i}{\sigma_{\epsilon,i}}\)</span> as the strategy <strong>Appraisal Ratio</strong>. Sometimes people call this the “information ratio”. It is the “sharpe ratio” of the trading strategy striped out of factor exposure</p>
+<ul class="simple">
+<li><p>recall that <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}\)</span> is the volatility of the strategy that is long the asset and short the factor in the optimal hedging</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[r^e_i-h^if=\alpha_i+\beta_i*f+\epsilon_i+hf\]</div>
+<p>so if you set <span class="math notranslate nohighlight">\(h=-\beta_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[r^e_i-h^if=\alpha_i+\epsilon_i\]</div>
+<p>and follows that <span class="math notranslate nohighlight">\(E[r^e_i-h^if]=\alpha_i\)</span> and <span class="math notranslate nohighlight">\(Var(r^e_i-h^if)=\sigma_{\epsilon,i}^2\)</span></p>
+<p><strong>Bet sizing under uncertainty</strong></p>
+<p>This is the optimal if you are certain of you alphas</p>
+<p>But of course you don’t really know, so the industry developed many Ad-hoc approaches for <strong>bet sizing</strong></p>
+<p><strong>Bet sizing</strong> is one of the great skills in a portfolio manager because it requires instinct for uncertainty</p>
+<p>The different Approaches (w is a scalar that controls the overall size of the portfolio )</p>
+<ul class="simple">
+<li><p><strong>Mean-variance</strong> rule:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_i=w \frac{\alpha_i}{\sigma_{\epsilon,i}^2}\]</div>
+<ul class="simple">
+<li><p><strong>1/N</strong> rule: ignore the magnitude of the alpha and simply bet on the direction of your idea</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_i=\frac{1}{N}\left((\alpha_i&gt;0)-(\alpha_i&lt;0)\right)\]</div>
+<ul class="simple">
+<li><p>this is good if you have goo hunches for mispricing, but you don’t get the magnitudes quite right</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Proportional</strong> rule: Buy/sell proportional to the alpha</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_i=w \alpha_i\]</div>
+<ul class="simple">
+<li><p><strong>Risky-parity</strong> rule: assumes the Appraisal ratio of your different ideas are the same <span class="math notranslate nohighlight">\(\frac{\mu_i}{\sigma_i}=\frac{\mu_j}{\sigma_j}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_i=w \frac{1}{\sigma_{\epsilon,i}}\]</div>
+<ul class="simple">
+<li><p><strong>Minimum-Variance</strong> rule: you shrink the variance-covariance matrix towards diagonal</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_i=w \frac{1}{\sigma_{\epsilon,i}^2}\]</div>
+<ul class="simple">
+<li><p>This assumes alphas are all the same and focus on using the information in the variance matrix to boost the Sharpe ratio</p></li>
+<li><p><strong>Variance shrinkage</strong> rule: you shrink the variance-covariance matrix towards a particular value</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W_i=w \frac{\alpha_i}{\sigma_{\epsilon,i}^2(1-\tau)+\tau\sigma_{shrink}^2}\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\tau\in[0,1]\)</span> is the shrinkage factor</p></li>
+<li><p><strong>Robust-Mean Variance</strong> rule: TBD</p></li>
+</ul>
+<p>there are equivalents of those for the case that covariance matrix is not diagonal as well, for example, if you did not impose a factor model or is doing allocation across factors</p>
+<ul class="simple">
+<li><p>Mean-Variance: <span class="math notranslate nohighlight">\(W=\mu\Sigma^{-1}\)</span></p></li>
+<li><p>Minimum-Variance: <span class="math notranslate nohighlight">\(W =1_N\Sigma^{-1}\)</span></p></li>
+<li><p>Variance Shrinkage: <span class="math notranslate nohighlight">\(W =\mu(\Sigma(1-\tau)+\tau I\sigma_{shrink}^2)^{-1}\)</span></p></li>
+</ul>
+<p>Some examples you should play with</p>
+<blockquote>
+<div><h3 class="rubric" id="stop-and-practice">Stop and Practice</h3>
+<p>Solve for optimal weights, maximum Sharpe ratio</p>
+<p>Target vol of 10% annualized</p>
+<ol class="arabic simple">
+<li><p>same alpha, same betas, same idio vol</p></li>
+<li><p>different alpha, same beta , same idio vol</p></li>
+<li><p>same alpha, different betas, same idio vol</p></li>
+<li><p>same alpha, same betas, different idio vol</p></li>
+</ol>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+<span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">Sigmae</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">
+<h2>Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor<a class="headerlink" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor" title="Link to this heading">#</a></h2>
+<p>In a few classes we will discuss Multi-factor models and the variety of factors that people in the industry use</p>
+<p>Six factors are particularly popular both in the industry and in the academic community</p>
+<p>A few of them have ETFS that aim to replicate them, which potentially allow retail investors to get exposure to them cheaply and also industry people to easily hedge their factor exposures. (We will investigate carefully to what extent these ETFs do a good job..coming soon in a theater near you!)</p>
+<p>For now we will use this data to take the perspective of a “CAPM-Investor”, i.e. someone that has the market as their risk-factor and see the other factors as non-systematic risk.</p>
+<blockquote>
+<div><h4 class="rubric" id="alert">Alert</h4>
+<p>This will be stylized in the sense that we will use in sample moments, so we cannot really compare Sharpe ratios</p>
+<p>Why not? Because by construction the Mean-variance will always beat everyone else.</p>
+<p>We use these alternative methods exactly because the in sample moments are often not great guide for the forward looking moments we care about, so a in-sample comparison does not reflect the reality of trading that requires use past information to trade.</p>
+<p>We will later discuss how to make this comparison ( it is not rocket science: divide your sample in estimation and testing samples!)</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>We will target Total portfolio with volatility 10%</p></li>
+<li><p>We will get the factors and focus on the sample that we have all the factors available</p></li>
+<li><p>We will estimate out single-factor models for these factors and build our factor model matrixes</p></li>
+<li><p>We will be imposing that the residuals are uncorrelated</p>
+<ol class="arabic simple">
+<li><p>This is never true in a particular sample</p></li>
+<li><p>If you have a good enough factor model, you impose it because whatever correlation is in the sample is noise (it is testable!)</p></li>
+<li><p>Here this is a toy exercise and these correlations are likely real (for example, mom and HML have shown to be correlated in many different situations)</p></li>
+</ol>
+</li>
+<li><p>We will the apply the different rules</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ff6</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;ff6&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_ff6</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RF</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>MOM</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-06-01</th>
+      <td>0.0041</td>
+      <td>0.0277</td>
+      <td>-0.0306</td>
+      <td>-0.0331</td>
+      <td>0.0051</td>
+      <td>-0.0178</td>
+      <td>0.0090</td>
+    </tr>
+    <tr>
+      <th>2024-07-01</th>
+      <td>0.0045</td>
+      <td>0.0124</td>
+      <td>0.0680</td>
+      <td>0.0574</td>
+      <td>0.0022</td>
+      <td>0.0043</td>
+      <td>-0.0242</td>
+    </tr>
+    <tr>
+      <th>2024-08-01</th>
+      <td>0.0048</td>
+      <td>0.0161</td>
+      <td>-0.0355</td>
+      <td>-0.0113</td>
+      <td>0.0085</td>
+      <td>0.0086</td>
+      <td>0.0479</td>
+    </tr>
+    <tr>
+      <th>2024-09-01</th>
+      <td>0.0040</td>
+      <td>0.0174</td>
+      <td>-0.0017</td>
+      <td>-0.0259</td>
+      <td>0.0004</td>
+      <td>-0.0026</td>
+      <td>-0.0061</td>
+    </tr>
+    <tr>
+      <th>2024-10-01</th>
+      <td>0.0039</td>
+      <td>-0.0097</td>
+      <td>-0.0100</td>
+      <td>0.0089</td>
+      <td>-0.0140</td>
+      <td>0.0103</td>
+      <td>0.0284</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="c1"># Define the factors and the market factor</span>
+<span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">]</span>
+<span class="n">market_factor</span> <span class="o">=</span> <span class="s1">&#39;Mkt-RF&#39;</span>
+
+<span class="c1"># Initialize lists to store the results</span>
+<span class="n">Alpha</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Beta</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Alpha_se</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Run univariate regressions</span>
+<span class="k">for</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">factors</span><span class="p">:</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_ff6</span><span class="p">[</span><span class="n">market_factor</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_ff6</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">Alpha</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;const&#39;</span><span class="p">])</span>
+    <span class="n">Beta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">market_factor</span><span class="p">])</span>
+    <span class="n">residuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+
+<span class="c1"># Convert Alpha and Beta to numpy arrays</span>
+<span class="n">Alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Alpha</span><span class="p">)</span>
+<span class="n">Beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Beta</span><span class="p">)</span>
+
+<span class="c1"># Calculate the variance-covariance matrix of the residuals</span>
+<span class="c1">#under the assumption that the residuals are uncorrelated ( they are not!)</span>
+
+<span class="n">residuals_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">Sigma_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">residuals_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+
+<span class="c1"># Display the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alpha:&quot;</span><span class="p">,</span> <span class="n">Alpha</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Beta:&quot;</span><span class="p">,</span> <span class="n">Beta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sigma_e:&quot;</span><span class="p">,</span> <span class="n">Sigma_e</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alpha: [0.00565215 0.04340806 0.04082549 0.04305824 0.08436363]
+Beta: [ 0.20050922 -0.13683445 -0.09207115 -0.16721034 -0.15908574]
+Sigma_e: [[0.01021508 0.         0.         0.         0.        ]
+ [0.         0.01032402 0.         0.         0.        ]
+ [0.         0.         0.00568877 0.         0.        ]
+ [0.         0.         0.         0.00447947 0.        ]
+ [0.         0.         0.         0.         0.02053454]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mean Variance</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.3</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> <span class="c1"># making it monthly as the data</span>
+<span class="n">W</span><span class="o">=</span><span class="n">Alpha</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="c1"># optimal RELATIVE weights, need to calibrate the volatility</span>
+<span class="c1"># compute the variance of the W portoflio</span>
+<span class="n">VarW</span><span class="o">=</span><span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">VarW</span><span class="p">)</span>
+<span class="c1">#adjusting the weights to meet the volatility target</span>
+<span class="n">w</span><span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="c1"># Ww is our final weights with the volatility target</span>
+<span class="n">Ww</span><span class="o">=</span><span class="n">w</span><span class="o">*</span><span class="n">W</span>
+<span class="c1"># final weights</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Ww</span><span class="p">)</span>
+
+<span class="c1"># check vol (must be 30%)</span>
+
+<span class="n">vol</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># market exposure</span>
+
+<span class="n">Portfolio_beta</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="c1"># amount to buy in the market to hedge it completely</span>
+<span class="n">h</span><span class="o">=-</span><span class="n">Portfolio_beta</span>
+
+<span class="n">AppraisalRatio</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;your volatility is </span><span class="si">{</span><span class="n">vol</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your Appraisal Ratio is </span><span class="si">{</span><span class="n">AppraisalRatio</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;So your optimal portfolio with market neutral exposure is </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> in SMB, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> in HML, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2"> in RMW, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> in CMA, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2"> in MOM, and </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> in Mkt-RF&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.55331369 4.20457037 7.17650844 9.61235121 4.10837625]
+0
+0
+[0. 0. 0. 0. 0.]
+your volatility is 0
+Your Appraisal Ratio is 0
+So your optimal portfolio with market neutral exposure is 
+ 0.0 in SMB, 0.0 in HML, 0.0 in RMW, 0.0 in CMA, 0.0 in MOM, and 0 in Mkt-RF
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets wrap it up in a function</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">,</span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.3</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">VarW</span><span class="o">=</span><span class="mi">0</span>
+    <span class="c1">#adjusting the weights to meet the volatility target</span>
+    <span class="n">w</span><span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Ww</span><span class="o">=</span><span class="n">w</span><span class="o">*</span><span class="n">W</span>
+    <span class="n">vol</span><span class="o">=</span><span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;your volatility is </span><span class="si">{</span><span class="n">vol</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">Portfolio_beta</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">h</span><span class="o">=-</span><span class="n">Portfolio_beta</span>
+    <span class="n">AppraisalRatio</span><span class="o">=</span><span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;So your optimal portfolio with market neutral exposure is </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> in SMB, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> in HML, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2"> in RMW, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> in CMA, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2"> in MOM, and </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> in Mkt-RF&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your Appraisal Ratio is </span><span class="si">{</span><span class="n">AppraisalRatio</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">AppraisalRatio</span><span class="p">,</span> <span class="n">Ww</span>
+
+<span class="n">W</span><span class="o">=</span><span class="n">Alpha</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">)</span>
+<span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>your volatility is 0
+So your optimal portfolio with market neutral exposure is 
+ 0.0 in SMB, 0.0 in HML, 0.0 in RMW, 0.0 in CMA, 0.0 in MOM, and 0 in Mkt-RF
+Your Appraisal Ratio is 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>1/N rule</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+<span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>your volatility is 0
+So your optimal portfolio with market neutral exposure is 
+ 0.0 in SMB, 0.0 in HML, 0.0 in RMW, 0.0 in CMA, 0.0 in MOM, and 0 in Mkt-RF
+Your Appraisal Ratio is 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Proportional rule</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">Alpha</span>
+<span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>your volatility is 0
+So your optimal portfolio with market neutral exposure is 
+ 0.0 in SMB, 0.0 in HML, 0.0 in RMW, 0.0 in CMA, 0.0 in MOM, and 0 in Mkt-RF
+Your Appraisal Ratio is 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Risky Parity rule</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>your volatility is 0
+So your optimal portfolio with market neutral exposure is 
+ 0.0 in SMB, 0.0 in HML, 0.0 in RMW, 0.0 in CMA, 0.0 in MOM, and 0 in Mkt-RF
+Your Appraisal Ratio is 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Minimum Variance rule</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">)</span>
+<span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>your volatility is 0
+So your optimal portfolio with market neutral exposure is 
+ 0.0 in SMB, 0.0 in HML, 0.0 in RMW, 0.0 in CMA, 0.0 in MOM, and 0 in Mkt-RF
+Your Appraisal Ratio is 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variance Shrinkage rule</p>
+<ul class="simple">
+<li><p>I will shrink them to the the average vol</p></li>
+<li><p>I will shrink by 50%</p></li>
+<li><p>The idea makes sense when you think the different assets are kind of similar so you think a good chunk of the sample variation is noise</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">sigma_alpha</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Alpha_se</span><span class="p">)</span>
+<span class="n">Sigma</span><span class="o">=</span><span class="n">Sigma_e</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tau</span><span class="p">)</span><span class="o">+</span><span class="n">tau</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">))</span>
+<span class="n">W</span><span class="o">=</span><span class="n">Alpha</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma</span><span class="p">)</span>
+<span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>your volatility is 0
+So your optimal portfolio with market neutral exposure is 
+ 0.0 in SMB, 0.0 in HML, 0.0 in RMW, 0.0 in CMA, 0.0 in MOM, and 0 in Mkt-RF
+Your Appraisal Ratio is 0
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>How to Combine the  Hedged portfolio (alpha) and the Market (beta)</strong></p>
+<ul class="simple">
+<li><p>If you see you investment in the factor as simply a financial issue</p>
+<ul>
+<li><p>you care exclusively about the returns of the portfolio</p></li>
+<li><p>Do not care how the factor (i.e. the market) might co-move with your non-financial wealth</p></li>
+</ul>
+</li>
+<li><p>Then it is basically the same as with the alphas…</p></li>
+<li><p>Recall our formula for the mean-variance efficient weights</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[W^*= Var(R^e)^{-1}E[R^e]\]</div>
+<ul class="simple">
+<li><p>Now this becomes really simple because the covariance of the new Hedged-MVE strategy is zero with the market</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}Var(R^e)=\left[\begin{array}{cc} \sigma^2(R_{MKT}^e) &amp; 0\\0 &amp; \sigma^2(R_{Hedged,i})\end{array}\right]\end{split}\]</div>
+<ul class="simple">
+<li><p>So the optimal weights are just</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}W^* = \left[\begin{array}{c} \frac{E[R^e_{MKT}]}{\sigma^2(R_{MKT}^e)} \\ \frac{\alpha}{\sigma^2(R_{Hedged,i})}\end{array}\right]\end{split}\]</div>
+<ul class="simple">
+<li><p>You invest in each strategy according to the strength of the risk-return trade-off in the strategy</p></li>
+<li><p>Note that anything that invest proportionally in those two assets will still be tangency, i.e. if <span class="math notranslate nohighlight">\(W^*\)</span> is tangency <span class="math notranslate nohighlight">\(0.3*W^*\)</span> is tangency as well!</p></li>
+<li><p>But how much you invest overall will depend on how much risk you want to take</p></li>
+<li><p>Of course similar uncertainty issues might push you to deviate from this rule!</p></li>
+</ul>
+<blockquote>
+<div><p>What is the optimal combination between your alpha combo portfolio and the market?</p>
+</div></blockquote>
+<blockquote>
+<div><p>By how much can you increase your portfolio Sharpe ratio if you combine optimally combine two uncorrelated portfolios?</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>for any two strategies A and B that have <strong>zero correlation</strong> with each other, you can find the maximum achievable Sharpe Ratio with the simple formula</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[SR_{final}=\sqrt{SR_{A}^2+SR_{B}^2}\]</div>
+<ul class="simple">
+<li><p>The Hedged and the market are orthogonal by construction–&gt; we took out any beta exposure the asset might have!</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[SR_{final}=\sqrt{SR_{MKT}^2+SR_{Hedged}^2}\]</div>
+</section>
+<section id="the-rise-of-pod-shops">
+<h2>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
+<p>Hedge funds used to be associated with Principal traders</p>
+<ul class="simple">
+<li><p>George Soros</p></li>
+<li><p>Julian Robertson</p></li>
+<li><p>David Tepper</p></li>
+<li><p>Paul Tudor Jones</p></li>
+<li><p>Steve Cohen</p></li>
+<li><p>John Paulson</p></li>
+</ul>
+<p>Now we have the rise of Citadel and Millenium among a few others</p>
+<p>Pod shops are organized totally different</p>
+<p>Idea generation are done at the pod level in groups of 5-10 people</p>
+<p>Capital is allocated to the pod by the hedge fund principal, who monitors exposures and hedges residual factor risk</p>
+<p>Why pod traders work for Citadel and not choose to manager their own fund?</p>
+<p><strong>A calculation</strong></p>
+<p>Consider a pod shop with N pods with SR sr and total vol <span class="math notranslate nohighlight">\(\sigma\)</span>, what is their alpha? What is their SR?</p>
+<div class="math notranslate nohighlight">
+\[E[\sum x^*_ir_i]=E[\sum \frac{\alpha_i}{\sigma^2_i}\alpha_i]=N*sr^2\]</div>
+<div class="math notranslate nohighlight">
+\[Var[\sum x^*_ir_i]=Var[\sum \frac{\alpha_i}{\sigma^2_i}\epsilon_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2Var[\epsilon_i]\]</div>
+<div class="math notranslate nohighlight">
+\[Var[\sum x^*_ir_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2\sigma^2_i=N sr^2\]</div>
+<p>so the standard deviation of the pool of pods is</p>
+<div class="math notranslate nohighlight">
+\[sr_{pool}=\frac{Nsr_{pod}^2}{\sqrt{N}sr_{pod}}=\sqrt{N}sr_{pod}\]</div>
+<p>The Sharpe ratio of the pool of pods grows with the number of pods</p>
+<p>This means that if managed individually, the average pod will accumulate wealth at rate <span class="math notranslate nohighlight">\(\sigma*sr\)</span></p>
+<p>But if managed in a pool structure, the average pod will accumulate as <span class="math notranslate nohighlight">\(\sqrt{N}\sigma*sr\)</span></p>
+<p>find a new uncorrelated idea is super valuable!</p>
+<p>The marginal change in cash flows are</p>
+<div class="math notranslate nohighlight">
+\[\frac{\sigma*sr_{pool}}{N}\]</div>
+<ul class="simple">
+<li><p>decreases in the number of pods</p></li>
+<li><p>But always positive–if indeed similar SR and uncorrelated!</p></li>
+</ul>
+<p>Note that is Under-estimates the value of the pod structure</p>
+<ul class="simple">
+<li><p>The higher your Sharpe ratio, the more volatility you can take without bearing significant risk of loss (wealth jsut grows too quickly)</p></li>
+</ul>
+<p>But it also not realistic</p>
+<ul class="simple">
+<li><p>Your marginal pod is likely to be worse or correlated with the others</p></li>
+</ul>
+</section>
+<section id="capital-allocation-with-time-varying-volatility">
+<h2>Capital Allocation with Time-varying volatility<a class="headerlink" href="#capital-allocation-with-time-varying-volatility" title="Link to this heading">#</a></h2>
+<p>While detecting alpha/risk-premia variation of a strategy in real time is nearly impossible, we learned a few classes ago that we can detect volatility variation really well.</p>
+<p>Also keeping the risky profile from changing too much is also very desirable for most managers as you though long and deep about how much vol you want. If volatility spikes it suddenly way more likely that you will hit that loss you are fearful of</p>
+<p>These ideas together imply that you probably can do better by taking into account the variation in volatility when you size your portfolios.</p>
+<blockquote>
+<div><h3 class="rubric" id="important">Important</h3>
+<p>The crucial necessary condition for this to work is that there is no time-series relationship between alphas and vols</p>
+<div class="math notranslate nohighlight">
+\[cov(\alpha_{i,t},\sigma^2_{i,t})=0\]</div>
+<p>This is key. Might or might not be true. But tends to be true.
+This only works if the alpha/premium is positive to begin with
+If Sharpe ratio is zero, you can’t increase it by managing risk!</p>
+</div></blockquote>
+<p>(here the t subscript denote the distribution of returns for date t+1 as of date t when I make the portfolio allocation)</p>
+<p>This is true for example in case alpha is constant, or a the very least, you cannot predict variation in it.</p>
+<p>Then your optimal portfolio allocation becomes <span class="math notranslate nohighlight">\(w_i=\frac{\alpha_i}{\sigma_{i,t}^2}\)</span></p>
+<p>So the Sharpe ratio is</p>
+<div class="math notranslate nohighlight">
+\[SR_{\sigma}=\frac{E[x_{i,t}r_{i,t+1}]}{\sqrt{Var(x_{i,t}r_{i,t+1})}}\]</div>
+<div class="math notranslate nohighlight">
+\[SR_{\sigma}=\frac{E[\frac{\alpha_i}{\sigma_{i,t}^2}r_{i,t+1}]}{\sqrt{Var(\frac{\alpha_i}{\sigma_{i,t}^2}r_{i,t+1})}}\]</div>
+<p>After some manipulation it implies</p>
+<div class="math notranslate nohighlight">
+\[SR_{\sigma}=SR\sqrt{E[\sigma_{i,t}^2]E\left[\frac{1}{\sigma_{i,t}^2}\right]}\]</div>
+<p>In general <span class="math notranslate nohighlight">\(SR_{\sigma}&gt;SR\)</span> because of jensen inequality (<span class="math notranslate nohighlight">\(E[F(x)]\geq F(E[X])\)</span> if F is  convex)</p>
+<p>to get some clean closed formulas lets assume</p>
+<p><span class="math notranslate nohighlight">\(\sigma_{t}^2=\sigma^2 e^{\epsilon-\frac{1}{2}\sigma^2_{\sigma}}\)</span>, with <span class="math notranslate nohighlight">\(\epsilon\sim N(0,\sigma^2_{\sigma})\)</span></p>
+<p>which satisfied <span class="math notranslate nohighlight">\(E[\sigma_t]=\sigma\)</span></p>
+<div class="math notranslate nohighlight">
+\[SR_{\sigma}=SR*e^{\frac{1}{4}\sigma^2_{\sigma}}\]</div>
+<p>The more volatility variation you can predict, higher <span class="math notranslate nohighlight">\(\sigma_{\sigma}\)</span>, the higher the boost in you Sharpe ratio</p>
+<blockquote>
+<div><h3 class="rubric" id="note">Note</h3>
+<p>If Alphas are time-varying but Sharpe ratios are constant, i.e. <span class="math notranslate nohighlight">\(\alpha_{i,t}=k\sigma_{i,t}\)</span>, then the optimal allocation becomes proportion to inverse volatility <span class="math notranslate nohighlight">\(w_i=\frac{\alpha_i}{\sigma_{i,t}}\)</span>. What do you get in this case?</p>
+</div></blockquote>
+</section>
+<section id="volatility-managing-the-market">
+<h2>Volatility managing the market<a class="headerlink" href="#volatility-managing-the-market" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>ALAN MOREIRA, TYLER MUIR, Volatility-Managed Portfolios, Journal of Finance, August 2017
+<a class="reference external" href="https://doi.org/10.1111/jofi.12513">https://doi.org/10.1111/jofi.12513</a></p>
+<p>Show that this logic works for the market and many other factors. Since then a huge literature has emerged showing that volatility managing is a great way to boost Sharpe Ratios</p>
+</div></blockquote>
+<p>The construct portfolios</p>
+<div class="math notranslate nohighlight">
+\[x_t=c\frac{E[r^e_{t+1}]}{Var_t(r^e_{t+1})}\]</div>
+<p>The key is to construct a good measure for <span class="math notranslate nohighlight">\( Var_t(r^e_{t+1})\)</span></p>
+<ul>
+<li><p>there are many things that you can do here (see our discussion in the estimation class)</p></li>
+<li><p>We will do something simple and use past vol as a proxy for future vol</p></li>
+<li><p>Of course whether isa good proxy or not depends of how it plays out in the data</p></li>
+<li><p>But as we saw there is tons of volatility clustering so it is likely a good proxy even if not perfect</p></li>
+<li><p>Using daily data for month t, construct the market return “realized variance” during month t</p>
+<div class="math notranslate nohighlight">
+\[rv_t=\sum_{d \in days~ in ~month ~t}\frac{(r_d- \overline{r})^2}{N_{days}},\]</div>
+</li>
+</ul>
+<p>where <span class="math notranslate nohighlight">\(\overline{r}\)</span> is the average return within the month</p>
+<p>We will need daily data to do this</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_factor</span> <span class="o">=</span> <span class="n">get_factors</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="constructing-monthly-realized-variance-from-daily-data">
+<h3><strong>Constructing monthly realized variance from daily data</strong><a class="headerlink" href="#constructing-monthly-realized-variance-from-daily-data" title="Link to this heading">#</a></h3>
+<p>You basically use pandas time series function that shifts all dates to the end of the month, so this way you are technically grouping by the end of the month day.</p>
+<p>Now  I use groupby <code class="docutils literal notranslate"><span class="pre">endofmonth</span></code> to put  all returns of given “year-month” pair together (i.e. with the same date)</p>
+<p>So I can just compute the variance of this group (say 1/1/2020,1/2/2020,…1/31/2020) will all be 1/31/2020</p>
+<p>This will return the daily variance in that month</p>
+<p>If I multiply by the average number of trading days I get the monthly realized variance</p>
+<p>To be more precise I will simply sum the square deviations of the mean (what this adjusts for?)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas.tseries.offsets</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonthEnd</span>
+<span class="n">endofmonth</span><span class="o">=</span><span class="n">df_factor</span><span class="o">.</span><span class="n">index</span><span class="o">+</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">RV</span><span class="o">=</span><span class="n">df_factor</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">endofmonth</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="c1"># rename column to clarify</span>
+<span class="n">RV</span><span class="o">=</span><span class="n">RV</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">:</span><span class="s1">&#39;RV&#39;</span><span class="p">})</span>
+<span class="n">RV</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">RV</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RV</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1926-07-31</th>
+      <td>0.000492</td>
+    </tr>
+    <tr>
+      <th>1926-08-31</th>
+      <td>0.000878</td>
+    </tr>
+    <tr>
+      <th>1926-09-30</th>
+      <td>0.000565</td>
+    </tr>
+    <tr>
+      <th>1926-10-31</th>
+      <td>0.001689</td>
+    </tr>
+    <tr>
+      <th>1926-11-30</th>
+      <td>0.000336</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="../../_images/b8056194ef1aed8ad6df015e25a1c1232861b83347757f3a3f0b8cdf917aee9d.png" src="../../_images/b8056194ef1aed8ad6df015e25a1c1232861b83347757f3a3f0b8cdf917aee9d.png" />
+</div>
+</div>
+<p>Note how clustered volatility is</p>
+<p>If variance was high this month, probably will be high next month too</p>
+<p>You certainly can do better</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># aggregate daily returns to monthly returns</span>
+<span class="n">Ret</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df_factor</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">endofmonth</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span>
+<span class="c1"># rename columns to clarify</span>
+<span class="c1"># Merge Ret (monthly return) with RV (realized variance and weights)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">RV</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">Ret</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># construct excess returns</span>
+
+<span class="c1"># lag RV by one month</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;RV_lag&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RV&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RV        0.002429
+RF        0.002686
+Mkt-RF    0.006849
+RV_lag    0.002431
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create quantile groups based on the RV variable</span>
+
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Quantile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RV_lag&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Group by quantile and calculate the mean for each column</span>
+<span class="n">quantile_means</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Quantile&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">quantile_means</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">quantile_means</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">((</span><span class="n">x</span><span class="o">.</span><span class="n">left</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+
+<span class="n">quantile_means</span> <span class="p">[</span><span class="s1">&#39;priceofrisk&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">quantile_means</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">quantile_means</span><span class="p">[</span><span class="s1">&#39;RV&#39;</span><span class="p">])</span>
+
+
+<span class="c1"># Display the mean of quantiles for each column</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">((</span><span class="n">quantile_means</span><span class="o">.</span><span class="n">RV</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Realized Variance (RV(t+1)) by RV(t) Quantile &#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Vol(t+1)&#39;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">quantile_means</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Market Excess Return (t+1) by RV(t) Quantile&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">)</span>
+
+<span class="n">quantile_means</span><span class="o">.</span><span class="n">priceofrisk</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Price of Risk by Quantile by RV(t) Quantile&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price of Risk&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Quantile&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_17888\1968402388.py:7: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  quantile_means = df.groupby(&#39;Quantile&#39;).mean()
+C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_17888\1968402388.py:8: RuntimeWarning: invalid value encountered in scalar power
+  quantile_means.index = quantile_means.index.map(lambda x: round((x.left*12)**0.5, 2))
+</pre></div>
+</div>
+<img alt="../../_images/a360d081f910d5af87ae16fbd0f879bf32d184e62c23e745e883cc6517f0bde0.png" src="../../_images/a360d081f910d5af87ae16fbd0f879bf32d184e62c23e745e883cc6517f0bde0.png" />
+</div>
+</div>
+<p>We see that following months of high variance–on the right– you don’t really get higher returns</p>
+<p>if you focus on the ratio – the price of risk</p>
+<div class="math notranslate nohighlight">
+\[E[\frac{r^e_{t+1}}{RV_{t+1}(r^e)}|RV_t]\]</div>
+<p>you see that it is massively decreasing with variance</p>
+<p>Average returns are not constant–<strong>but are close to</strong>–</p>
+<p>so the natural strategy to exploit this pattern is to lever up when vol is low and reduce exposure when vol is high.</p>
+<p>Specifically we Buy the market at the closing price of month t according to the rule:</p>
+<div class="math notranslate nohighlight">
+\[w_t=\frac{c}{rv_t},\]</div>
+<p>If W&lt;1, invest in the risk-free rate, if w&gt;1, borrow to fund a bigger position</p>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is some constant.</p>
+<ul class="simple">
+<li><p>Hold the position for a month</p></li>
+<li><p>The returns of the strategy are given by</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ r^{VolTiming}_{t+1}=r_{f,t+1}+\frac{c}{rv_t}r^{MKT-RF}_{t+1}\]</div>
+</section>
+<section id="from-signal-to-weights">
+<h3><strong>From signal to weights</strong><a class="headerlink" href="#from-signal-to-weights" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>weight on the market:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[x_t=c\frac{1}{rv_t}\]</div>
+<ul class="simple">
+<li><p>weight on the risk-free rate: <span class="math notranslate nohighlight">\(1-x_t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span> controls how levered is the strategy on average.</p></li>
+<li><p>As we saw before all timing strategies involved some in and out of the market, but you also need to determine the average position. That is the role of <span class="math notranslate nohighlight">\(c\)</span>.</p></li>
+<li><p>There are many ways to choose c</p></li>
+<li><p>while c does not impact the strategy Sharpe Ratio, it impacts the amount of leverage that the strategy will take</p></li>
+<li><p>Here lets keep it simple and simply choose it so that the position on the market is 1 on average</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E[x_t]=E[c\frac{1}{rv_t}]=1\]</div>
+<p>implies <span class="math notranslate nohighlight">\(c=\frac{1}{E[\frac{1}{rv_t}]}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">df</span><span class="o">.</span><span class="n">RV_lag</span>
+<span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">c</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Weight</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">Weight</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+<img alt="../../_images/0a4feb2910a2af3fafdeda8007c0e4827c99fc5f6eda408705fbbb5d1e16adcf.png" src="../../_images/0a4feb2910a2af3fafdeda8007c0e4827c99fc5f6eda408705fbbb5d1e16adcf.png" />
+</div>
+</div>
+<p>You see that leverage gets really high.</p>
+<p>As high as 10!</p>
+<p>You can see that in your position in the risk-free rate which exactly mirrors that</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the weights on the risk-free rate</span>
+<span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">df</span><span class="o">.</span><span class="n">Weight</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a8cd2928373855e777625bc8d2413dcbce659205bf4199655dd7a55d07be4acd.png" src="../../_images/a8cd2928373855e777625bc8d2413dcbce659205bf4199655dd7a55d07be4acd.png" />
+</div>
+</div>
+</section>
+<section id="construct-strategy-returns">
+<h3><strong>Construct strategy returns</strong><a class="headerlink" href="#construct-strategy-returns" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Now to construct the strategy return recall that we use the relaized variance in month t to buy the market at the closing of month t and earn the return accrued in month t+1</p></li>
+<li><p>I will call the strategy as <span class="math notranslate nohighlight">\(\textbf{VMS}\)</span> (Volatility Managed Strategy)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now construct the return of the strategy</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;VMS&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Weight</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see the cumulative returns of the market and the volatility managed strategy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;VMS&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/36e1c2a0904d032a80a9a324a0b54a20d3f5aaec0eb9b6e09192d6e596bdfb47.png" src="../../_images/36e1c2a0904d032a80a9a324a0b54a20d3f5aaec0eb9b6e09192d6e596bdfb47.png" />
+</div>
+</div>
+<p><strong>Sharpe ratio</strong></p>
+<p>The VMS strategy ends up with a 20% higher Sharpe Ratio</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;VMS&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;VMS&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mkt-RF    0.445526
+VMS       0.514105
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Tail risk</strong></p>
+<p>The VMS bears substantially less tail risk as well</p>
+<p>We can look at the the percentile 0.5% of the return distribution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;VMS&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mkt-RF   -0.181863
+VMS      -0.139248
+Name: 0.005, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Things to try</strong></p>
+<ul class="simple">
+<li><p>How well it works with VIX instead of RV?</p></li>
+<li><p>What If we use a forecasting model to predict variance?</p></li>
+<li><p>How well it works with standard deviation instead of variance</p></li>
+<li><p>How well it works if we put leverage limits</p></li>
+<li><p>How well it works if we combine an expected return signal with the volatility signal?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">volmanaged</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">factor</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="n">endofmonth</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">+</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># signal constuctioon</span>
+    <span class="n">Signal</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">endofmonth</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">Signal</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">Signal</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Signal</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;signal&#39;</span>
+
+    <span class="c1"># compute returns for the month</span>
+    <span class="n">Ret</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">endofmonth</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span>
+   
+    <span class="c1"># Merge Ret (monthly return) with RV (realized variance and weights)</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Signal</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">Ret</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">signal</span>
+    <span class="c1"># Normalize the weight so it is on average 1</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">factor</span><span class="o">+</span><span class="s1">&#39;_volmanaged&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Weight</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span>
+    <span class="c1"># annualized Sharpe ratio</span>
+    <span class="n">SR</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">factor</span><span class="p">,</span><span class="n">factor</span><span class="o">+</span><span class="s1">&#39;_volmanaged&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="n">df</span><span class="p">[[</span><span class="n">factor</span><span class="p">,</span><span class="n">factor</span><span class="o">+</span><span class="s1">&#39;_volmanaged&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="c1"># tail risk</span>
+    <span class="n">TR</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="n">factor</span><span class="p">,</span><span class="n">factor</span><span class="o">+</span><span class="s1">&#39;_volmanaged&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SR</span><span class="p">,</span><span class="n">TR</span><span class="p">,</span><span class="n">df</span>
+
+
+<span class="n">volmanaged</span><span class="p">(</span><span class="n">df_factor</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Mkt-RF               0.445526
+ Mkt-RF_volmanaged    0.514105
+ dtype: float64,
+ Mkt-RF              -0.181863
+ Mkt-RF_volmanaged   -0.139248
+ Name: 0.005, dtype: float64,
+                  signal    Mkt-RF    Weight  Mkt-RF_volmanaged
+ Date                                                          
+ 1926-07-31          NaN  0.028846       NaN                NaN
+ 1926-08-31  2032.427792  0.026697  1.497461           0.039977
+ 1926-09-30  1138.958151  0.003724  0.839167           0.003125
+ 1926-10-31  1770.057704 -0.033011  1.304151          -0.043051
+ 1926-11-30   592.073883  0.025847  0.436231           0.011275
+ ...                 ...       ...       ...                ...
+ 2024-06-30  1314.346208  0.027796  0.968390           0.026917
+ 2024-07-31  3035.939128  0.011986  2.236833           0.026810
+ 2024-08-31   569.108972  0.015949  0.419311           0.006687
+ 2024-09-30   283.257232  0.017348  0.208700           0.003620
+ 2024-10-31   633.015560 -0.009699  0.466396          -0.004524
+ 
+ [1180 rows x 4 columns])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Know the maximum loss you can bear–&gt; figure out how much vol you should have in your portfolio</p></li>
+<li><p>Portfolio composition is all about the Sharpe Ratio</p></li>
+<li><p>Diversification is your friend, estimation uncertainty your mortal enemy</p></li>
+<li><p>Many approaches to sizing–but better to keep it simple and iterate relentlessly (more on that next)</p></li>
+<li><p>Risk-Management is key</p>
+<ul class="simple">
+<li><p>Hedging out factor exposure enhances you Sharpe Ratio. A safer strategy enables more risk-taking, and more growth</p></li>
+<li><p>Dynamic management of risk does the same across time. You take more risk, when compensation is high</p></li>
+</ul>
+</li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -515,6 +2049,31 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-with-time-varying-volatility">Capital Allocation with Time-varying volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-managing-the-market">Volatility managing the market</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-monthly-realized-variance-from-daily-data"><strong>Constructing monthly realized variance from daily data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-signal-to-weights"><strong>From signal to weights</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns"><strong>Construct strategy returns</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">Takeaways</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
