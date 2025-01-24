@@ -85,15 +85,6 @@ sections:
     title: The Choice of Frequency and Annualization of Returns
   - file: chapters/scientific/randomness1
     title: Modeling randomness
-
-
-
-- file: chapters/Finance/PortfolioMath
-  title: Portfolios
-  sections:
-  - file: chapters/scientific/linear_algebra1
-    title: Linear algebra Review
-
 - file: chapters/Finance/FactorModels
   title: Factor Models
 - file: chapters/Finance/FactorModelEstimation
