@@ -14,3 +14,5 @@ You can manually download each chapter from their website.
 Their other chapters are also great intro the data analytics, but are not necessary for our course.
 
 The material in the chapters below build on this basics and draws heavily from https://datascience.quantecon.org/.**
+
+Of course, goes without saying that ChatGpt is your best friend here. It is really good in Python coding, so you should definitely use it. I have less experience with Gemni which is the Google code companion you get when we use colab.
