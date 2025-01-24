@@ -37,3 +37,8 @@ repository:
 sphinx:
   config:
     html_extra_path: ['assets']
+    nbconvert_preprocessor_tags:  # Add this block for preprocessor settings
+      remove_cell_tags:
+        - remove-cell
+      remove_all_outputs_tags:
+        - remove-cell-output
