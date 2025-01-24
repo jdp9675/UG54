@@ -9,10 +9,11 @@ copyright                   : "2021 Creative Commons Attribution-ShareAlike 4.0 
 #######################################################################################
 # Execution settings
 execute:
-  execute_notebooks         : 'off'  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
-  timeout                   : 600    # The maximum time (in seconds) each notebook cell is allowed to run.
   preprocessors:
     - remove_cells.py
+  execute_notebooks         : 'off'  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  timeout                   : 600    # The maximum time (in seconds) each notebook cell is allowed to run.
+
 
 #######################################################################################
 # HTML-specific settings
