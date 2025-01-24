@@ -846,38 +846,6 @@ Done
 <li><p>What is the annualized return?</p></li>
 <li><p>What is the dividend yield?</p></li>
 </ul>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">((</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-
-<span class="nb">print</span><span class="p">((</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">252</span><span class="o">/</span><span class="n">df_UNH</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-
-<span class="p">(</span><span class="n">df_UNH</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">df_UNH</span><span class="o">.</span><span class="n">P</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134.59749454136372
-133.59749454136372
-0.13320600988316555
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/a53f5b94d2460df8e95484e15729535f941dd72e02659087367f8bf6b221e4a3.png" src="../../_images/a53f5b94d2460df8e95484e15729535f941dd72e02659087367f8bf6b221e4a3.png" />
-</div>
-</details>
-</div>
 <p>Suppose we are now at the end of the sample</p>
 <ul class="simple">
 <li><p>You have 1000 dollars invested in this stock in the end of the sample, the next day there’s a 16% chance your portfolio’s value will fall below a certain amount. How would you estimate that value?</p></li>
