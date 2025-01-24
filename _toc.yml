@@ -18,7 +18,7 @@ sections:
     title: Local installation
   - file: chapters/02/cloud_setup
     title: Cloud Setup
-- file: chapters/essentials/intro
+- file: chapters/essentials/intro.md
   title: Python Essentials
   sections:
   - file: chapters/essentials/basics
@@ -52,7 +52,8 @@ sections:
     title: Functions
   - file: chapters/essentials/plotting
     title: Plotting
-- file: chapters/Finance/Returns
+
+- file: chapters/Finance/Returns_working
   title: Asset Returns
   sections:
   - file: chapters/Finance/UsingAPI
