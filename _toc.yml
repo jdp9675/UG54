@@ -116,8 +116,8 @@ sections:
 - file: chapters/Finance/MultiFactorModels
   title: Multi Factor Models
   sections:
-    - file: chapters/Finance/WhichFactors_TBD
-      title: Interpreting Factor Models
+    - file: chapters/Finance/Factors
+      title: An overview of factors
     - file: chapters/Finance/InterpretingFactorModels
       title: Interpreting Factor Models
 - file: chapters/Finance/MachineLearning
