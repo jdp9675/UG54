@@ -52,30 +52,6 @@ sections:
     title: Functions
   - file: chapters/essentials/plotting
     title: Plotting
-
-# - file: chapters/pandas/workingwithdata
-#   title: Working with Data
-  # sections:
-  # - file: chapters/pandas/basics
-  #   title: Pandas Basics
-  # - file: chapters/pandas/the_index
-  #   title: Indexing
-  # - file: chapters/pandas/timeseries
-  #   title: Time-Series
-  # - file: chapters/pandas/data_clean
-  #   title: Cleaning data (opt)
-  # - file: chapters/pandas/reshape
-  #   title: Reshape (opt)
-  # - file: chapters/pandas/merge
-  #   title: Merge (opt)
-  # - file: chapters/pandas/groupby
-  #   title: Group-by (opt)
-  # - file: chapters/pandas/matplotlib
-  #   title: Plotting (opt)
-  # - file: chapters/pandas/storage_formats
-  #   title: Data Storage (opt)
-
-
 - file: chapters/Finance/Returns
   title: Asset Returns
   sections:
@@ -85,15 +61,6 @@ sections:
     title: The Choice of Frequency and Annualization of Returns
   - file: chapters/scientific/randomness1
     title: Modeling randomness
-
-
-
-- file: chapters/Finance/PortfolioMath
-  title: Portfolios
-  sections:
-  - file: chapters/scientific/linear_algebra1
-    title: Linear algebra Review
-
 - file: chapters/Finance/FactorModels
   title: Factor Models
 - file: chapters/Finance/FactorModelEstimation
