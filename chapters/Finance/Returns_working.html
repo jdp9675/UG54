@@ -714,6 +714,8 @@ Done
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#How do we construct returns?</span>
 
+<span class="c1"># what .shift does?</span>
+
 
 <span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
 
