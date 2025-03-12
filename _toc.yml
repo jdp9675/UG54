@@ -64,13 +64,15 @@ sections:
     title: Modeling randomness
 - file: chapters/Finance/FactorModels
   title: Factor Models
-- file: chapters/Finance/FactorModelEstimation
-  title: Factor Model Estimation
-- file: chapters/Finance/PortfolioMath
+  - file: chapters/Finance/PortfolioMath
   title: Portfolios
   sections:
     - file: chapters/Finance/LeverageandShorting
       title: Leverage and Shorting
+- file: chapters/Finance/FactorModelEstimation
+  title: Factor Model Estimation
+- file: chapters/Finance/CapitalAllocation
+  title: Capital Allocation
 - file: chapters/Finance/Performance_evaluation
   title: Performance Evaluation
 - file: chapters/Finance/crosssectionalequitystrategies
