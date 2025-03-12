@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Performance Evaluation &#8212; Quantitative Investing</title>
+    <title>9. Performance Evaluation &#8212; Quantitative Investing</title>
   
   
   
@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/book.css?v=c2893119" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -68,11 +65,10 @@
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="9. Characteristic-Based Trading strategies" href="crosssectionalequitystrategies.html" />
-    <link rel="prev" title="7.8. Levering up and Shorting" href="LeverageandShorting.html" />
+    <link rel="next" title="10. Characteristic-Based Trading strategies" href="crosssectionalequitystrategies.html" />
+    <link rel="prev" title="8. Capital Allocation" href="CapitalAllocation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -88,8 +84,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -97,6 +104,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -104,8 +112,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -121,8 +129,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -152,17 +159,21 @@
     
     
     <img src="../../_static/figuremain2.jpg" class="logo__image only-light" alt="Quantitative Investing - Home"/>
-    <img src="../../_static/figuremain2.jpg" class="logo__image only-dark pst-js-only" alt="Quantitative Investing - Home"/>
+    <script>document.write(`<img src="../../_static/figuremain2.jpg" class="logo__image only-dark" alt="Quantitative Investing - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
@@ -203,24 +214,33 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="FactorModels.html">5. Factor Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FactorModelEstimation.html">6. Factor Model Estimation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">7. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">7.8. Leverage and Shorting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">6. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">6.8. Leverage and Shorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">6.9. Linear Algebra Review</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Performance Evaluation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">9. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Momentum.html">9.3. Momentum factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FactorModelEstimation.html">7. Factor Model Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CapitalAllocation.html">8. Capital Allocation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Performance Evaluation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">10. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Momentum.html">10.3. Momentum factor</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">10. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Factors.html">10.9. An overview of factors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">10.10. Interpreting Factor Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">11. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Factors.html">11.9. An overview of factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">11.10. Interpreting Factor Models</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">11. Machine Learning in Finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">12. Additional Statistics Material</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Assignments/Assignments.html">13. Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">12. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">13. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">14.1. Assigment 0</a></li>
+
+
+
+
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -229,14 +249,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -411,16 +426,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -444,17 +467,17 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-test">8.1. Alpha Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-focus-on-alpha">8.2. Why we focus on Alpha?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">8.3. The basic problem of overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">8.4. Be clear about you goal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">8.5. How to guard against it?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">8.6. Additional Diagnostics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">8.6.1. Adjusting for Discarded Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-test">9.1. Alpha Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-focus-on-alpha">9.2. Why we focus on Alpha?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">9.3. The basic problem of overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">9.4. Be clear about you goal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">9.5. How to guard against it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">9.6. Additional Diagnostics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">9.6.1. Adjusting for Discarded Signals</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">8.7. How to split you sample?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">8.8. Publication bias (or Famous bias or incubation bias…)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">9.7. How to split you sample?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">9.8. Publication bias (or Famous bias or incubation bias…)</a></li>
 </ul>
             </nav>
         </div>
@@ -537,12 +560,12 @@
 </details>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="performance-evaluation">
-<h1><span class="section-number">8. </span>Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Link to this heading">#</a></h1>
 <p>Our premise here is that you are looking to invest in the portfolio with the highest Sharpe Ratio.</p>
 <p>Once we have our trading strategy. Lets say we have been trading for N days and have returns <span class="math notranslate nohighlight">\([r_1,r_2,....r_N]\)</span></p>
 <p>What do we do?</p>
 <section id="alpha-test">
-<h2><span class="section-number">8.1. </span>Alpha Test<a class="headerlink" href="#alpha-test" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Alpha Test<a class="headerlink" href="#alpha-test" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>subtract the risk-free rate</p></li>
 <li><p>Choose  a factor model–We will work with CAPM for now</p></li>
@@ -584,7 +607,7 @@
 <p>But often you will have a hurdle rate higher than zero. For example a pod-shop might want have pods that have sufficiently large alphas</p>
 </section>
 <section id="why-we-focus-on-alpha">
-<h2><span class="section-number">8.2. </span>Why we focus on Alpha?<a class="headerlink" href="#why-we-focus-on-alpha" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Why we focus on Alpha?<a class="headerlink" href="#why-we-focus-on-alpha" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>The Time-series regression asks the following question:</p>
 <blockquote>
@@ -708,7 +731,7 @@ Appraisal=\frac{\alpha}{\sigma_e}
 </section>
 <hr class="docutils" />
 <section id="the-basic-problem-of-overfitting">
-<h2><span class="section-number">8.3. </span>The basic problem of overfitting<a class="headerlink" href="#the-basic-problem-of-overfitting" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>The basic problem of overfitting<a class="headerlink" href="#the-basic-problem-of-overfitting" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In these example we are testing some fixed strategy</p></li>
 <li><p>In practice we use data to design the strategy</p></li>
@@ -915,7 +938,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 <p>You want to leave enough data so that you can actually test the strategy</p>
 </section>
 <section id="be-clear-about-you-goal">
-<h2><span class="section-number">8.4. </span>Be clear about you goal<a class="headerlink" href="#be-clear-about-you-goal" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>Be clear about you goal<a class="headerlink" href="#be-clear-about-you-goal" title="Link to this heading">#</a></h2>
 <p>The central goal is to calibrate your discovery process</p>
 <ul class="simple">
 <li><p>You want to invest in strategies that have alpha, disregard the ones that don’t</p></li>
@@ -926,7 +949,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 </ul>
 </section>
 <section id="how-to-guard-against-it">
-<h2><span class="section-number">8.5. </span>How to guard against it?<a class="headerlink" href="#how-to-guard-against-it" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>How to guard against it?<a class="headerlink" href="#how-to-guard-against-it" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Additional diagnostics</p></li>
 <li><p>Think harder about your  Backtests</p></li>
@@ -934,7 +957,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 </ol>
 </section>
 <section id="additional-diagnostics">
-<h2><span class="section-number">8.6. </span>Additional Diagnostics<a class="headerlink" href="#additional-diagnostics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.6. </span>Additional Diagnostics<a class="headerlink" href="#additional-diagnostics" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Strategy Sharpe Ratio</p></li>
 <li><p>Report t-stat of mean return</p></li>
@@ -1296,7 +1319,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 </div>
 </div>
 <section id="adjusting-for-discarded-signals">
-<h3><span class="section-number">8.6.1. </span>Adjusting for Discarded Signals<a class="headerlink" href="#adjusting-for-discarded-signals" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.6.1. </span>Adjusting for Discarded Signals<a class="headerlink" href="#adjusting-for-discarded-signals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Often we look at many signals to find the one</p></li>
 <li><p>This makes conventional thresholds for t-tests too small</p></li>
@@ -1374,7 +1397,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 </section>
 </section>
 <section id="how-to-split-you-sample">
-<h2><span class="section-number">8.7. </span>How to split you sample?<a class="headerlink" href="#how-to-split-you-sample" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.7. </span>How to split you sample?<a class="headerlink" href="#how-to-split-you-sample" title="Link to this heading">#</a></h2>
 <p>A few popular approaches are</p>
 <ol class="arabic simple">
 <li><p>Rolling window estimation</p></li>
@@ -2163,7 +2186,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 </ul>
 </section>
 <section id="publication-bias-or-famous-bias-or-incubation-bias">
-<h2><span class="section-number">8.8. </span>Publication bias (or Famous bias or incubation bias…)<a class="headerlink" href="#publication-bias-or-famous-bias-or-incubation-bias" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.8. </span>Publication bias (or Famous bias or incubation bias…)<a class="headerlink" href="#publication-bias-or-famous-bias-or-incubation-bias" title="Link to this heading">#</a></h2>
 <p>We discussed that we often look at past performance exactly because a strategy did well. This mechanism of selection renders our statistical analysis biased in the direction of findings that the strategy is amazing.</p>
 <p>It is often hard to deal with this because you need all the data of strategies that look like the one you are interested from the perspective of someone in the start of the reliant sample. That is hard.</p>
 <p>One way to deal with this is to use some hard metric of saliency.</p>
@@ -2719,12 +2742,12 @@ dtype: float64
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="LeverageandShorting.html"
+       href="CapitalAllocation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7.8. </span>Levering up and Shorting</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Capital Allocation</p>
       </div>
     </a>
     <a class="right-next"
@@ -2732,7 +2755,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Characteristic-Based Trading strategies</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Characteristic-Based Trading strategies</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2743,8 +2766,7 @@ dtype: float64
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -2753,17 +2775,17 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-test">8.1. Alpha Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-focus-on-alpha">8.2. Why we focus on Alpha?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">8.3. The basic problem of overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">8.4. Be clear about you goal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">8.5. How to guard against it?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">8.6. Additional Diagnostics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">8.6.1. Adjusting for Discarded Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-test">9.1. Alpha Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-focus-on-alpha">9.2. Why we focus on Alpha?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">9.3. The basic problem of overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">9.4. Be clear about you goal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">9.5. How to guard against it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">9.6. Additional Diagnostics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">9.6.1. Adjusting for Discarded Signals</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">8.7. How to split you sample?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">8.8. Publication bias (or Famous bias or incubation bias…)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">9.7. How to split you sample?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">9.8. Publication bias (or Famous bias or incubation bias…)</a></li>
 </ul>
   </nav></div>
 
@@ -2812,8 +2834,8 @@ By Alan Moreira
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
