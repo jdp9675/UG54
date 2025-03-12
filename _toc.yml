@@ -69,6 +69,8 @@ sections:
   sections:
     - file: chapters/Finance/LeverageandShorting
       title: Leverage and Shorting
+    - file: chapters/scientific/linear_algebra1
+      title: Linear Algebra Review
 - file: chapters/Finance/FactorModelEstimation
   title: Factor Model Estimation
 - file: chapters/Finance/CapitalAllocation
