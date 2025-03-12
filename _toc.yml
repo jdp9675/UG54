@@ -65,7 +65,7 @@ sections:
 - file: chapters/Finance/FactorModels
   title: Factor Models
 - file: chapters/Finance/PortfolioMath
-title: Portfolios
+  title: Portfolios
   sections:
     - file: chapters/Finance/LeverageandShorting
       title: Leverage and Shorting
@@ -99,7 +99,7 @@ title: Portfolios
   title: Assignments
   sections:
   - file: chapters/Assignments/Assignment0
-  #   title: Assignment 0
+    title: Assignment 0
   # - file: chapters/Assignments/Assignment1
   #   title: Assignment 1
   # - file: chapters/Assignments/Assignment2
