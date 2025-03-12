@@ -64,8 +64,8 @@ sections:
     title: Modeling randomness
 - file: chapters/Finance/FactorModels
   title: Factor Models
-  - file: chapters/Finance/PortfolioMath
-  title: Portfolios
+- file: chapters/Finance/PortfolioMath
+title: Portfolios
   sections:
     - file: chapters/Finance/LeverageandShorting
       title: Leverage and Shorting
