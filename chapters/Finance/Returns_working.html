@@ -627,9 +627,15 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first we connect with WRDS database using the wrds package so we need to install it first and import it</span>
-<span class="c1">#%pip install wrds</span>
+<span class="o">%</span><span class="k">pip</span> install wrds
 <span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
-<span class="c1"># lets connect with  the wrds database</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets connect with  the wrds database</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1736,27 +1742,6 @@ dtype: float64
 </ul>
 <p>How do we estimate the amount of idiossyncratic risk?</p>
 <p>How do we estimate the amount of systematic risk?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;the historical variance of asset </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1"> idio risk is </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">*</span><span class="mi">252</span><span class="si">}</span><span class="s1"> annualized&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;the historical standard deviation of asset </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1"> idio risk is </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">252</span><span class="o">**</span><span class="mf">0.5</span><span class="si">}</span><span class="s1"> annualized&#39;</span><span class="p">)</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;the historical variance of the market factor is </span><span class="si">{</span><span class="n">df_re</span><span class="o">.</span><span class="n">SPY</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">*</span><span class="mi">252</span><span class="si">}</span><span class="s1"> annualized&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;the historical standard deviation of the market factor is </span><span class="si">{</span><span class="n">df_re</span><span class="o">.</span><span class="n">SPY</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">252</span><span class="o">**</span><span class="mf">0.5</span><span class="si">}</span><span class="s1"> annualized&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the historical variance of asset JPM idio risk is 0.06755883655421582 annualized
-the historical standard deviation of asset JPM idio risk is 0.25992082747293616 annualized
-the historical variance of the market factor is 0.035166377478007854 annualized
-the historical standard deviation of the market factor is 0.18752700466334934 annualized
-</pre></div>
-</div>
-</div>
-</div>
 <p>Can we say what share of the stock variance is due the market risk factor?</p>
 <p>What is the calculation?</p>
 <blockquote>
