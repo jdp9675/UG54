@@ -502,7 +502,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
@@ -607,13 +607,6 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="returns-excess-returns-and-common-factors">
 <h1><span class="section-number">4. </span>Returns, excess returns, and common factors<a class="headerlink" href="#returns-excess-returns-and-common-factors" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Define what are returns, which is the key variable of analysis in finance (and this class).</p></li>
-<li><p>Discuss how to think them of random variables</p></li>
-<li><p>Discuss the key statistical “moments” that we will use to capture their behavior (i.e. how risky they are)</p></li>
-<li><p>Discuss the normal distribution specifically</p></li>
-<li><p>Define the concept of Excess returns</p></li>
-</ul>
 <section id="what-is-a-return">
 <h2><span class="section-number">4.1. </span>What is a return?<a class="headerlink" href="#what-is-a-return" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -633,7 +626,19 @@ document.write(`
 <p>Lets start by loading Price and Dividend data on a single stock</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first we connect with WRDS database using the wrds package so we need to install it first and import it</span>
+<span class="o">%</span><span class="k">pip</span> install wrds
+<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+<span class="c1"># lets connect with  the wrds database</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We now get daily prices and dividends for the UNH stock</span>
+<span class="c1"># lets not think too hard how we did that--the function is defined above--but for now--lets just used it</span>
 <span class="n">df_UNH</span><span class="o">=</span><span class="n">get_daily_wrds_single_ticker</span><span class="p">(</span><span class="s1">&#39;UNH&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
 <span class="n">df_UNH</span>
 </pre></div>
@@ -743,7 +748,7 @@ Done
 <span class="c1"># what .shift does?</span>
 
 
-<span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">df_UNH</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">=?</span>
 
 <span class="n">df_UNH</span>
 </pre></div>
@@ -881,7 +886,7 @@ Done
 <li><p>What is the expected value of your holdings in one year? How should you think about estimating this?</p></li>
 <li><p>What can you plot  to have a sense of the distribution of 1 day returns? And 1 year
 returns?</p></li>
-<li><p>What plot can you to give you a sense of these returns varying over time?</p></li>
+<li><p>What plot can you to give you a sense of how these returns varying over time?</p></li>
 <li><p>What drives these returns? Why do they vary over time?</p></li>
 </ol>
 </section>
@@ -896,7 +901,7 @@ returns?</p></li>
 </ul>
 </li>
 </ul>
-<p>When investing is essential to understand where you are performance comes from</p>
+<p>When investing is essential to understand where your performance comes from</p>
 <p>We will build towards a framework of investing that thinks differently about investing on systematic risk and idiosyncratic risk</p>
 <p>The first step will be to build this decomposition, which will start now and culminate in our factor models lecture</p>
 <section id="striping-the-risk-free-rate">
@@ -909,8 +914,9 @@ returns?</p></li>
 \[excess~return^{stock~i}=return^{stock~i}-risk~free~rate\]</div>
 <ul class="simple">
 <li><p>We typically use the returns of a 3-month treasury bill to measure the risk-free rate</p></li>
+<li><p>this obviously should be currency dependent</p></li>
 <li><p>We will denote <span class="math notranslate nohighlight">\(rf\)</span> for the risk-free rate</p></li>
-<li><p>We often add superscript e to denote an excess return.</p></li>
+<li><p>We often add superscript “e” to denote an excess return.</p></li>
 <li><p>so if <span class="math notranslate nohighlight">\(r^i\)</span> stands for the return of stock <span class="math notranslate nohighlight">\(i\)</span>, then <span class="math notranslate nohighlight">\(r^{e,i}\)</span> is it’s excess return</p></li>
 <li><p>Conceptually you want to use the risk-free asset for the relevant holding period you are evaluating the asset returns, but for this class you can think of the “Fed Funds Rate” or the “3-month treasury-bill rate”</p></li>
 </ul>
@@ -923,15 +929,13 @@ returns?</p></li>
 <span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Start date (adjust as needed)</span>
 <span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>          <span class="c1"># End date</span>
 
-<span class="c1"># Fetch the data from FRED for 3-month Treasury Bill rates (symbol: DGS3MO)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">df_rf</span> <span class="o">=</span> <span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;DGS3MO&quot;</span><span class="p">,</span> <span class="s2">&quot;fred&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
-    <span class="n">df_rf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df_rf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;rf&quot;</span><span class="p">]</span>
-    <span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">=</span><span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">/</span><span class="mi">100</span>
-    <span class="n">df_rf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">df_rf</span> <span class="o">=</span> <span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;DGS3MO&quot;</span><span class="p">,</span> <span class="s2">&quot;fred&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;rf&quot;</span><span class="p">]</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">=</span><span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 
 <span class="n">df_rf</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -1053,9 +1057,9 @@ returns?</p></li>
 <ul class="simple">
 <li><p>How the historical distributions of ret and rete compare?</p></li>
 <li><p>Are their averages similar?</p></li>
-<li><p>are their historical standard deviations  similar?</p></li>
+<li><p>are their historical standard deviations similar?</p></li>
 <li><p>Do they have similar interpretation?</p></li>
-<li><p>Is the standard-deviation of risk-free rate useful to tell you the distribution of you returns in the end of 3 months?</p></li>
+<li><p>Is the standard-deviation of risk-free rate useful to tell you the distribution of you returns in the end of 3 months for an investments in the risk-free asset?</p></li>
 </ul>
 </section>
 </section>
@@ -1109,14 +1113,10 @@ returns?</p></li>
 <li><p>This funds holds a market-capitalization weighted portfolio of the largest 500 US stocks (roughly)–this consists of about 85% of the total universe of investable US equities</p></li>
 <li><p>The press often cites the DOW JONES as another proxy for the overall movement in stocks–but it is a terrible proxy, since is a equal weighted portfolio of 30 arbitrary chosen stocks. Please never ever use that</p></li>
 <li><p>If you really want to use a portfolio that tracks the entirety of the US stock market universe you can use VTI which is a ETF that holds market-capitalization weighted portfolio of all publicly traded US stocks. About 60 Trillion investment universe</p></li>
-<li><p>For reasons that will be clear later–but don;t matter for now, I will also strip the risk-free rate from our common factor</p></li>
+<li><p>For reasons that will be clear later–but don’t matter for now, I will also strip the risk-free rate from our common factor</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[f=return^{SPY}-rf\]</div>
-<ul class="simple">
-<li><p>Is there only one factor?</p></li>
-<li><p>What other factors beyond the market comes to mind?</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#conn = wrds.Connection()</span>
@@ -1643,6 +1643,7 @@ dtype: float64
 <li><p>For stock 2, it is still positive, so we are taking out too little</p></li>
 <li><p>Taking out 1 dollar of factor exposure for each 1 dollar of stock exposure reduced the factor exposure and the asset volatilities, but we can do better</p></li>
 </ul>
+<p>What should we do? How do we fix this?</p>
 </section>
 </section>
 <section id="towards-a-factor-model">
