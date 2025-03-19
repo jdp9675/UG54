@@ -627,10 +627,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first we connect with WRDS database using the wrds package so we need to install it first and import it</span>
-<span class="o">%</span><span class="k">pip</span> install wrds
+<span class="c1">#%pip install wrds</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
 <span class="c1"># lets connect with  the wrds database</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
+Created .pgpass file successfully.
+You can create this file yourself at any time with the create_pgpass_file() function.
+Loading library list...
+Done
 </pre></div>
 </div>
 </div>
@@ -645,12 +654,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
-Created .pgpass file successfully.
-You can create this file yourself at any time with the create_pgpass_file() function.
-Loading library list...
-Done
-[92655]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[92655]
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -712,33 +716,33 @@ Done
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-12-22</th>
-      <td>520.31000</td>
+      <th>2024-12-24</th>
+      <td>506.10001</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-12-26</th>
-      <td>520.03003</td>
+      <th>2024-12-26</th>
+      <td>511.14999</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-12-27</th>
-      <td>522.78998</td>
+      <th>2024-12-27</th>
+      <td>509.98999</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-12-28</th>
-      <td>524.90002</td>
+      <th>2024-12-30</th>
+      <td>507.79999</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>2023-12-29</th>
-      <td>526.46997</td>
+      <th>2024-12-31</th>
+      <td>505.85999</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>9879 rows × 2 columns</p>
+<p>10131 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -942,10 +946,10 @@ returns?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Date&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/e14ec7c0f76ec4849e44e82a8d96e3fdb03967854d60502f45d95ae7405b12e2.png" src="../../_images/e14ec7c0f76ec4849e44e82a8d96e3fdb03967854d60502f45d95ae7405b12e2.png" />
+<img alt="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" src="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" />
 </div>
 </div>
 <p>How do we interpret this rate?</p>
@@ -1022,33 +1026,33 @@ returns?</p></li>
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-12-22</th>
-      <td>-0.003266</td>
-      <td>0.0544</td>
+      <th>2024-12-24</th>
+      <td>0.003938</td>
+      <td>0.0440</td>
     </tr>
     <tr>
-      <th>2023-12-26</th>
-      <td>0.009195</td>
-      <td>0.0545</td>
+      <th>2024-12-26</th>
+      <td>-0.002068</td>
+      <td>0.0435</td>
     </tr>
     <tr>
-      <th>2023-12-27</th>
-      <td>0.002800</td>
-      <td>0.0544</td>
+      <th>2024-12-27</th>
+      <td>-0.020868</td>
+      <td>0.0431</td>
     </tr>
     <tr>
-      <th>2023-12-28</th>
-      <td>0.002125</td>
-      <td>0.0545</td>
+      <th>2024-12-30</th>
+      <td>0.003503</td>
+      <td>0.0437</td>
     </tr>
     <tr>
-      <th>2023-12-29</th>
-      <td>0.000000</td>
-      <td>0.0540</td>
+      <th>2024-12-31</th>
+      <td>-0.023275</td>
+      <td>0.0437</td>
     </tr>
   </tbody>
 </table>
-<p>6275 rows × 2 columns</p>
+<p>6527 rows × 2 columns</p>
 </div></div></div>
 </div>
 <p>Lets construct another column called ‘ret_e’ for excess returns</p>
@@ -1206,43 +1210,43 @@ returns?</p></li>
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-12-22</th>
-      <td>0.002010</td>
-      <td>0.011951</td>
-      <td>-0.000597</td>
-      <td>0.000216</td>
+      <th>2024-12-24</th>
+      <td>0.011115</td>
+      <td>0.025789</td>
+      <td>0.016444</td>
+      <td>0.000175</td>
     </tr>
     <tr>
-      <th>2023-12-26</th>
-      <td>0.004223</td>
-      <td>-0.001532</td>
-      <td>0.005914</td>
-      <td>0.000216</td>
+      <th>2024-12-26</th>
+      <td>0.000067</td>
+      <td>0.001187</td>
+      <td>0.003425</td>
+      <td>0.000173</td>
     </tr>
     <tr>
-      <th>2023-12-27</th>
-      <td>0.001808</td>
-      <td>0.009398</td>
-      <td>0.005998</td>
-      <td>0.000216</td>
+      <th>2024-12-27</th>
+      <td>-0.010527</td>
+      <td>-0.012178</td>
+      <td>-0.008102</td>
+      <td>0.000171</td>
     </tr>
     <tr>
-      <th>2023-12-28</th>
-      <td>0.000378</td>
-      <td>-0.001964</td>
-      <td>0.005313</td>
-      <td>0.000216</td>
+      <th>2024-12-30</th>
+      <td>-0.011412</td>
+      <td>-0.011892</td>
+      <td>-0.007671</td>
+      <td>0.000173</td>
     </tr>
     <tr>
-      <th>2023-12-29</th>
-      <td>-0.002895</td>
-      <td>0.000508</td>
-      <td>-0.001174</td>
-      <td>0.000214</td>
+      <th>2024-12-31</th>
+      <td>-0.003638</td>
+      <td>-0.002429</td>
+      <td>0.001630</td>
+      <td>0.000173</td>
     </tr>
   </tbody>
 </table>
-<p>7785 rows × 4 columns</p>
+<p>8037 rows × 4 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1322,38 +1326,38 @@ returns?</p></li>
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-12-22</th>
-      <td>0.001794</td>
-      <td>0.011735</td>
-      <td>-0.000813</td>
+      <th>2024-12-24</th>
+      <td>0.010940</td>
+      <td>0.025614</td>
+      <td>0.016269</td>
     </tr>
     <tr>
-      <th>2023-12-26</th>
-      <td>0.004007</td>
-      <td>-0.001748</td>
-      <td>0.005698</td>
+      <th>2024-12-26</th>
+      <td>-0.000106</td>
+      <td>0.001014</td>
+      <td>0.003252</td>
     </tr>
     <tr>
-      <th>2023-12-27</th>
-      <td>0.001592</td>
-      <td>0.009182</td>
-      <td>0.005782</td>
+      <th>2024-12-27</th>
+      <td>-0.010698</td>
+      <td>-0.012349</td>
+      <td>-0.008273</td>
     </tr>
     <tr>
-      <th>2023-12-28</th>
-      <td>0.000162</td>
-      <td>-0.002180</td>
-      <td>0.005097</td>
+      <th>2024-12-30</th>
+      <td>-0.011585</td>
+      <td>-0.012065</td>
+      <td>-0.007844</td>
     </tr>
     <tr>
-      <th>2023-12-29</th>
-      <td>-0.003109</td>
-      <td>0.000294</td>
-      <td>-0.001388</td>
+      <th>2024-12-31</th>
+      <td>-0.003811</td>
+      <td>-0.002602</td>
+      <td>0.001457</td>
     </tr>
   </tbody>
 </table>
-<p>7785 rows × 3 columns</p>
+<p>8037 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1375,7 +1379,11 @@ returns?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e921cc86545c90e5126e9e6615e9cfc661a4a7223c1ae6b32c8890ee9ad399f1.png" src="../../_images/e921cc86545c90e5126e9e6615e9cfc661a4a7223c1ae6b32c8890ee9ad399f1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\scipy\__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.26.0
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
+</pre></div>
+</div>
+<img alt="../../_images/f431df0d9c60ae6812e5f746347d3c58898a17be2698de1bedd79d8b13d652c8.png" src="../../_images/f431df0d9c60ae6812e5f746347d3c58898a17be2698de1bedd79d8b13d652c8.png" />
 </div>
 </div>
 <p>Indeed we see quite a bit of co-movement!</p>
@@ -1415,19 +1423,19 @@ returns?</p></li>
     <tr>
       <th>SPY</th>
       <td>1.000000</td>
-      <td>0.496421</td>
-      <td>0.711185</td>
+      <td>0.492221</td>
+      <td>0.707302</td>
     </tr>
     <tr>
       <th>WMT</th>
-      <td>0.496421</td>
+      <td>0.492221</td>
       <td>1.000000</td>
-      <td>0.328472</td>
+      <td>0.325104</td>
     </tr>
     <tr>
       <th>JPM</th>
-      <td>0.711185</td>
-      <td>0.328472</td>
+      <td>0.707302</td>
+      <td>0.325104</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -1461,16 +1469,14 @@ returns?</p></li>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th>ticker</th>
+      <th></th>
       <th>SPY</th>
       <th>WMT</th>
       <th>JPM</th>
-      <th>WMT_m_spy</th>
-      <th>JPM_m_spy</th>
+      <th>rf</th>
     </tr>
     <tr>
       <th>date</th>
-      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -1483,40 +1489,35 @@ returns?</p></li>
       <td>0.007112</td>
       <td>0.011516</td>
       <td>0.009231</td>
-      <td>0.004404</td>
-      <td>0.002119</td>
+      <td>0.000119</td>
     </tr>
     <tr>
       <th>1993-02-02</th>
       <td>0.002119</td>
       <td>0.005693</td>
       <td>0.003049</td>
-      <td>0.003574</td>
-      <td>0.000930</td>
+      <td>0.000120</td>
     </tr>
     <tr>
       <th>1993-02-03</th>
       <td>0.010571</td>
       <td>0.009434</td>
       <td>0.012158</td>
-      <td>-0.001137</td>
-      <td>0.001587</td>
+      <td>0.000119</td>
     </tr>
     <tr>
       <th>1993-02-04</th>
       <td>0.004184</td>
       <td>-0.003738</td>
       <td>0.012012</td>
-      <td>-0.007922</td>
-      <td>0.007828</td>
+      <td>0.000117</td>
     </tr>
     <tr>
       <th>1993-02-05</th>
       <td>-0.000694</td>
       <td>-0.011257</td>
       <td>0.017804</td>
-      <td>-0.010563</td>
-      <td>0.018498</td>
+      <td>0.000117</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1524,51 +1525,45 @@ returns?</p></li>
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>2023-12-22</th>
-      <td>0.002010</td>
-      <td>0.011951</td>
-      <td>-0.000597</td>
-      <td>0.009941</td>
-      <td>-0.002607</td>
+      <th>2024-12-24</th>
+      <td>0.011115</td>
+      <td>0.025789</td>
+      <td>0.016444</td>
+      <td>0.000175</td>
     </tr>
     <tr>
-      <th>2023-12-26</th>
-      <td>0.004223</td>
-      <td>-0.001532</td>
-      <td>0.005914</td>
-      <td>-0.005755</td>
-      <td>0.001691</td>
+      <th>2024-12-26</th>
+      <td>0.000067</td>
+      <td>0.001187</td>
+      <td>0.003425</td>
+      <td>0.000173</td>
     </tr>
     <tr>
-      <th>2023-12-27</th>
-      <td>0.001808</td>
-      <td>0.009398</td>
-      <td>0.005998</td>
-      <td>0.007590</td>
-      <td>0.004190</td>
+      <th>2024-12-27</th>
+      <td>-0.010527</td>
+      <td>-0.012178</td>
+      <td>-0.008102</td>
+      <td>0.000171</td>
     </tr>
     <tr>
-      <th>2023-12-28</th>
-      <td>0.000378</td>
-      <td>-0.001964</td>
-      <td>0.005313</td>
-      <td>-0.002342</td>
-      <td>0.004935</td>
+      <th>2024-12-30</th>
+      <td>-0.011412</td>
+      <td>-0.011892</td>
+      <td>-0.007671</td>
+      <td>0.000173</td>
     </tr>
     <tr>
-      <th>2023-12-29</th>
-      <td>-0.002895</td>
-      <td>0.000508</td>
-      <td>-0.001174</td>
-      <td>0.003403</td>
-      <td>0.001721</td>
+      <th>2024-12-31</th>
+      <td>-0.003638</td>
+      <td>-0.002429</td>
+      <td>0.001630</td>
+      <td>0.000173</td>
     </tr>
   </tbody>
 </table>
-<p>7785 rows × 5 columns</p>
+<p>8037 rows × 4 columns</p>
 </div></div></div>
 </div>
 <p>What is the trading interpretation in this case? What is the portfolio that yields the ‘ret_m_spy’ payoff?</p>
@@ -1592,7 +1587,7 @@ returns?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9b6f6f35f165e0f955d1e5c942a34b02c47b051dad2ef223941b4abc7b9d80f5.png" src="../../_images/9b6f6f35f165e0f955d1e5c942a34b02c47b051dad2ef223941b4abc7b9d80f5.png" />
+<img alt="../../_images/0275409cf852228aba722c1c7ce0c746d197cea8dc14540b42385320f6206d13.png" src="../../_images/0275409cf852228aba722c1c7ce0c746d197cea8dc14540b42385320f6206d13.png" />
 </div>
 </div>
 <p>Did it work?</p>
@@ -1603,12 +1598,11 @@ returns?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ticker
-SPY          1.000000
-WMT          0.497637
-JPM          0.704236
-WMT_m_spy   -0.266299
-JPM_m_spy    0.261074
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY          1.000000
+WMT          0.492221
+JPM          0.707302
+WMT_m_spy   -0.264076
+JPM_m_spy    0.272552
 Name: SPY, dtype: float64
 </pre></div>
 </div>
@@ -1621,12 +1615,11 @@ Name: SPY, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ticker
-SPY          0.011813
-WMT          0.016023
-JPM          0.023062
-WMT_m_spy    0.014418
-JPM_m_spy    0.016962
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY          0.011617
+WMT          0.015902
+JPM          0.022911
+WMT_m_spy    0.014351
+JPM_m_spy    0.016833
 dtype: float64
 </pre></div>
 </div>
@@ -1663,12 +1656,12 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
 
-<span class="n">factor</span><span class="o">=</span><span class="s1">&#39;SPY&#39;</span>
-<span class="n">asset</span><span class="o">=</span><span class="s1">&#39;WMT&#39;</span>    
-<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="n">factor</span><span class="p">])</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="n">asset</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">_temp</span><span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;WMT&#39;</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;WMT~SPY&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">_temp</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">intercept_wmt</span><span class="p">,</span> <span class="n">beta_wmt</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;beta of asset </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">beta_wmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
@@ -1676,10 +1669,10 @@ dtype: float64
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;WMT&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_wmt</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]))</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;SPY vs WMT Residuals&#39;</span><span class="p">)</span>
 
-<span class="n">factor</span><span class="o">=</span><span class="s1">&#39;SPY&#39;</span>
-<span class="n">asset</span><span class="o">=</span><span class="s1">&#39;JPM&#39;</span>    
-<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="n">factor</span><span class="p">])</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="n">asset</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">_temp</span><span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;JPM&#39;</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;JPM~SPY&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">_temp</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">intercept_jpm</span><span class="p">,</span> <span class="n">beta_jpm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;beta of asset </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">beta_jpm</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
@@ -1693,13 +1686,11 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>beta of asset WMT is 0.6749692108883036
-the &quot;intercept&quot; of asset WMT is 0.04522121157501705 annualized
-beta of asset JPM is 1.374860222270463
-the &quot;intercept&quot; of asset JPM is 0.023283503662360792 annualized
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>beta of asset JPM is 0.6737719432407148
+beta of asset JPM is 1.3949175281635984
 </pre></div>
 </div>
-<img alt="../../_images/cd2bfda774b640a8e550dc284a479e0f7f9fd0d7a1610c5e6a387f845dfcd7fe.png" src="../../_images/cd2bfda774b640a8e550dc284a479e0f7f9fd0d7a1610c5e6a387f845dfcd7fe.png" />
+<img alt="../../_images/fc368ce1918cc647735cdc1ad9893fb9f1df97a5fbe9e3c0870bc48c04473d7d.png" src="../../_images/fc368ce1918cc647735cdc1ad9893fb9f1df97a5fbe9e3c0870bc48c04473d7d.png" />
 </div>
 </div>
 <p>Did it work?</p>
