@@ -496,13 +496,6 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="asset-returns">
 <h1>Asset Returns<a class="headerlink" href="#asset-returns" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Define what are returns, which is the key variable of analysis in finance (and this class).</p></li>
-<li><p>Discuss how to think them of random variables</p></li>
-<li><p>Discuss the key statistical “moments” that we will use to capture their behavior (i.e. how risky they are)</p></li>
-<li><p>Discuss the normal distribution specifically</p></li>
-<li><p>Define the concept of Excess returns</p></li>
-</ul>
 <p><strong>What is a return?</strong></p>
 <ul class="simple">
 <li><p>Lets say you paid <span class="math notranslate nohighlight">\(𝑃_𝑡\)</span> in date <span class="math notranslate nohighlight">\(t\)</span> for an asset</p></li>
@@ -513,19 +506,14 @@ document.write(`
 \[𝑅_{𝑡+1}=\frac{𝑃_{𝑡+1}+𝐷_{𝑡+1}−𝑃_𝑡}{𝑃_𝑡}\]</div>
 <ul class="simple">
 <li><p>It is the gain you made (everything that you go in date t+1), divided by how much you put in ( the price of the asset)</p></li>
-</ul>
-<blockquote>
-<div><p>Our data set Data contains these returns of buying an asset, earning any distributed dividends during the month, and then selling in the end of the month.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>This definition works for ANY asset that has a postive price</p></li>
+<li><p>This definition works for ANY asset that has a positive price</p></li>
 <li><p>This is the case for stocks, bonds, commodities, crypto, most real assets</p></li>
 <li><p>The return simply normalizes the “dollar gain” by the cost of the asset.</p></li>
-<li><p>This makes sense because price levels are arbitrary and non-stationay, so we can’t really do statistics over prices.</p></li>
+<li><p>This makes sense because price levels are arbitrary and non-stationary, so we can’t really do traditional statistics over prices.</p></li>
 </ul>
-<p>Lets start by loadding some return data.</p>
-<p>Below we load a data set that has monthly reutrn data on six different assets (in fact portfolios of assets, but we will get to portfolios later)</p>
-<p>For now we will only use one of the assets which is the United States equity market portfolios, labeled “MKT”</p>
+<p>Lets start by loading some return data.</p>
+<p>Below we load a data set that has monthly return data on six different assets (in fact portfolios of assets, but we will get to portfolios later)</p>
+<p>For now we will only use one of the assets which is the United States equity market portfolios, labeled “MKT”, which we typically refer as “the market”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Online address of the file </span>
@@ -599,8 +587,8 @@ document.write(`
 </div>
 <p><strong>Comments</strong></p>
 <ul class="simple">
-<li><p>“.datetime” is pretty good at indentifying how to interpret the data format, but you always have to check if it interpreted correct by inspecting it</p></li>
-<li><p>If it does not you will have to add the format manually as we discuss in section 6.7</p></li>
+<li><p>“.datetime” is pretty good at identifying how to interpret the data format, but you always have to check if it interpreted correct by inspecting it</p></li>
+<li><p>If it does not you will have to add the format manually as we discuss later</p></li>
 </ul>
 <p><strong>How Returns are distributed?</strong></p>
 <p>Lets start by looking at the moments of the distribution of returns for the “market” portfolio</p>
