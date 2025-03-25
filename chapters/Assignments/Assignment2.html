@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assignment 2 &#8212; Quantitative Investing</title>
+    <title>14.9. Assignment 2 &#8212; Quantitative Investing</title>
   
   
   
@@ -65,6 +65,7 @@
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="14.6. Assignment 1" href="Assignment1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,8 +128,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -176,7 +175,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
@@ -233,13 +232,16 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../Finance/MachineLearning.html">12. Machine Learning in Finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">13. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Assignments.html">14. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Assignments.html">14. Assignments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Assignment0.html">14.1. Assigment 0</a></li>
 
 
 
 
 <li class="toctree-l2"><a class="reference internal" href="Assignment1.html">14.6. Assignment 1</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">14.9. Assignment 2</a></li>
 
 
 </ul>
@@ -470,9 +472,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 2</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">14.9. Assignment 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">14.10. Write your name and simon email</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">14.11. Exercises</a></li>
 </ul>
 
             </nav>
@@ -486,10 +488,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-2">
-<h1>Assignment 2<a class="headerlink" href="#assignment-2" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14.9. </span>Assignment 2<a class="headerlink" href="#assignment-2" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="write-your-name-and-simon-email">
-<h1>Write your name and simon email<a class="headerlink" href="#write-your-name-and-simon-email" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14.10. </span>Write your name and simon email<a class="headerlink" href="#write-your-name-and-simon-email" title="Link to this heading">#</a></h1>
 <p>Please write names below</p>
 <ol class="arabic simple">
 <li><p>[Name, student ID, email]:</p></li>
@@ -498,11 +500,11 @@ document.write(`
 </ol>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14.11. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
 <p>We will start by redoing the dataset construction of Assignment 1. ( Feel free to use your previous code!)</p>
 <p>Start by importing pandas, numpy, maplotlib, and loading the data set.</p>
 <p>The dataset has address</p>
-<p><code class="docutils literal notranslate"><span class="pre">url='https://github.com/amoreira2/Fin418/blob/main/assets/data/Returns50stocks.xlsx?raw=true'</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">url='https://github.com/amoreira2/Fin418/raw/refs/heads/main/assets/data/Retuns50stocks.xlsx'</span></code></p>
 <p>I strongly recommend you download first and look at the data set.</p>
 <p>This file contains multiple sheets, you should use <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to get the data that contains the 49 value-weighted industry portfolios.</p>
 <p>See here:<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html</a> .</p>
@@ -590,9 +592,9 @@ document.write(`
 <p><strong>Exercise 9. A decomposition</strong></p>
 <p>We now want to build a function that outputs only the terms due to the variance terms</p>
 <p>That is, instead of computing <span class="math notranslate nohighlight">\(Var(WR)=W&#64;Var(R)&#64;W=\sum_i\sum_jW_iW_jCov(R_i,R_j)\)</span> which gives you the variance of a portfolio with weight W,</p>
-<p>I want you do compute <code class="docutils literal notranslate"><span class="pre">\sum_iW_i^2Var(R_i)</span></code>, this component of the portfolio variance that comes only from the variance terms</p>
+<p>I want you do compute <span class="math notranslate nohighlight">\(\sum_iW_i^2Var(R_i)\)</span>, this component of the portfolio variance that comes only from the variance terms</p>
 <p>Then subtract this term from the total variance term</p>
-<p>Show the three lines in a plot as function of N ( the total variance (and also the market like in exercise 7), the component due to variance, and the residual (the component due to the covariance terms) )</p>
+<p>Show the three lines in a plot as functions of N (1. the total variance (and also the market like in exercise 7), 2. the component coming only from the variance terms, and 3. the residual (the component due to the covariance terms) )</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
@@ -602,6 +604,69 @@ document.write(`
 </div>
 <p><strong>Exercise 10. Interpretation 2</strong></p>
 <p>looking at this new plot, what do you learn? What does that imply about portfolio construction?</p>
+<p>your answer here</p>
+<p><strong>Exercise 11. Factor betas</strong></p>
+<p>Randomly select 10 stocks from <code class="docutils literal notranslate"><span class="pre">df</span></code> and draw a figure that plots the returns of these industries along with the market return.</p>
+<p>Just by looking, which seems seems to have the highest beta?</p>
+<p>Why is it important to measure beta correctly? i.e. explain how you can use beta to improve a trade that you have in one of these companies</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Your answer here</p>
+<p><strong>Exercise 12. Factor betas 2</strong></p>
+<p>Run regressions of all stocks in <code class="docutils literal notranslate"><span class="pre">df</span></code> on the market return you saved in <code class="docutils literal notranslate"><span class="pre">df_market</span></code>. Include intercepts in the regressions.</p>
+<p>Just follow the code below to run regressions.</p>
+<p>The coefficients to the market return are the betas to each industry.</p>
+<p>Now suppose you are a fund manager and you have a mandate to keep your beta equal to 0.5.</p>
+<p>Provide portfolio weights based on the regressions above to hit the mandate beta.</p>
+<p>Give at least <em>five</em> such portfolios that satisfy that restriction. At least one of these portfolios has to play in more than one stock at a time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="c1"># Put your market return here</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># Adds a constant term to the predictor</span>
+<span class="n">y</span> <span class="o">=</span> <span class="c1"># Put industry returns here (perform regressions one-by-one)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 13. Factor risk</strong></p>
+<p>Find beta-hedged portfolio returns using the five mandate portfolios you provided in Exercise 12.</p>
+<p>Draw a plot drawing these portfolio returns together.(i.e. spy in the x-axis, hedge portfolio in the y)</p>
+<p>Do they show any co-movement?  Can you say they are all “risk free”? In what sense they are free of risk and what sense they are not?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Your answer here</p>
+<p><strong>Exercise 14. Alphas</strong></p>
+<p>Let us assume that the risk-free rate is fixed at 0. (recall that we are working with returns here, so the intercept is not alpha, but alpha+(1-beta)(average rf))</p>
+<p>Then, the intercepts to regression in Exercise 12 can be interpreted as alphas</p>
+<p>Find the largest alpha stock and the lowest alpha stock from Exercise 12.</p>
+<p>If you were trying to pick one trade, would picking up the asset with the highest alpha the best that we can do?</p>
+<p>What other consideration might be relevant for your “best” strategy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Your answer here</p>
+<p><strong>Exercise 15. optional</strong></p>
+<p>Suppose you pick the portfolio that is best according to the criteria you outline above. Is that the best that we can do? Discuss how you could further improve your portfolio</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -634,6 +699,15 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Assignment1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">14.6. </span>Assignment 1</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -650,9 +724,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 2</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">14.9. Assignment 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">14.10. Write your name and simon email</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">14.11. Exercises</a></li>
 </ul>
 
   </nav></div>

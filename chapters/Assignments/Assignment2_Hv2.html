@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.1. Statistical Techniques &#8212; Quantitative Investing</title>
+    <title>Assignment 2 &#8212; Quantitative Investing</title>
   
   
   
@@ -58,13 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01/statistical-techniques';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/01/statistical-techniques.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Assignments/Assignment2_Hv2';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Assignments/Assignment2_Hv2.html" />
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.2. Computational Tools" href="computational-tools.html" />
-    <link rel="prev" title="1. What is Quantitative Investing?" href="what-is-quant-investing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +127,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -174,10 +176,10 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="what-is-quant-investing.html">1. What is Quantitative Investing?</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1. Statistical Techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="computational-tools.html">1.2. Computational tools</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02/getting_started.html">2. Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -231,16 +233,16 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../Finance/MachineLearning.html">12. Machine Learning in Finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">13. Additional Statistics Material</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">14. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">14.1. Assigment 0</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Assignments.html">14. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Assignment0.html">14.1. Assigment 0</a></li>
 
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">14.6. Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Assignment1.html">14.6. Assignment 1</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment2.html">14.9. Assignment 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Assignment2.html">14.9. Assignment 2</a></li>
 
 
 </ul>
@@ -291,6 +293,37 @@
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Assignments/Assignment2_Hv2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -316,7 +349,7 @@
       
       
       
-      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/01/statistical-techniques.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Assignments/Assignment2_Hv2.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -346,7 +379,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/01/statistical-techniques.md" target="_blank"
+      <li><a href="../../_sources/chapters/Assignments/Assignment2_Hv2.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +389,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -417,7 +450,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -428,11 +463,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Statistical Techniques</h1>
+    <h1>Assignment 2</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -442,38 +488,186 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="statistical-techniques">
-<h1><span class="section-number">1.1. </span>Statistical Techniques<a class="headerlink" href="#statistical-techniques" title="Link to this heading">#</a></h1>
-<p>Most important decisions are made with only partial information and uncertain
-outcomes. However, the degree of uncertainty for many decisions can be reduced
-sharply by access to large data sets and the computational tools
-required to analyze them effectively. Data-driven decision making has already
-transformed a tremendous breadth of industries, including finance, advertising,
-manufacturing, and real estate. At the same time, a wide range of academic
-disciplines are evolving rapidly to incorporate large-scale data analysis into
-their theory and practice.</p>
-<p>The discipline of statistics has long addressed the same fundamental challenge
-as data science: how to draw robust conclusions about the world using incomplete
-information. One of the most important contributions of statistics is a
-consistent and precise vocabulary for describing the relationship between
-observations and conclusions. This text continues in the same tradition,
-focusing on a set of core inferential problems from statistics: testing
-hypotheses, estimating confidence, and predicting unknown quantities.</p>
-<p>Data science extends the field of statistics by taking full advantage of
-computing, data visualization, machine learning, optimization, and access
-to information. The combination of fast computers and the Internet gives
-anyone the ability to access and analyze
-vast datasets: millions of news articles, full encyclopedias, databases for
-any domain, and massive repositories of music, photos, and video.</p>
-<p>Applications to real data sets motivate the statistical techniques that we
-describe throughout the text. Real data often do not follow regular patterns or
-match standard equations. The interesting variation in real data can be lost by
-focusing too much attention on simplistic summaries such as average values.
-Computers enable a family of methods based on resampling that apply to a wide
-range of different inference problems, take into account all available
-information, and require few assumptions or conditions. Although these
-techniques have often been reserved for advanced courses in statistics, their
-flexibility and simplicity are a natural fit for data science applications.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-2">
+<h1>Assignment 2<a class="headerlink" href="#assignment-2" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="write-your-name-and-simon-email">
+<h1>Write your name and simon email<a class="headerlink" href="#write-your-name-and-simon-email" title="Link to this heading">#</a></h1>
+<p>Please write names below</p>
+<ol class="arabic simple">
+<li><p>[Name, student ID, email]:</p></li>
+<li><p>[Name, student ID, email]:</p></li>
+<li><p>[Name, student ID, email]:</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<p>We will start by redoing the dataset construction of Assignment 1. ( Feel free to use your previous code!)</p>
+<p>Start by importing pandas, numpy, maplotlib, and loading the data set.</p>
+<p>The dataset has address</p>
+<p><code class="docutils literal notranslate"><span class="pre">url='https://github.com/amoreira2/Fin418/raw/refs/heads/main/assets/data/Retuns50stocks.xlsx'</span></code></p>
+<p>I strongly recommend you download first and look at the data set.</p>
+<p>This file contains multiple sheets, you should use <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to get the data that contains the 49 value-weighted industry portfolios.</p>
+<p>See here:<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html</a> .</p>
+<p>Do the followings:</p>
+<ol class="arabic simple">
+<li><p>Import this dataframe as <code class="docutils literal notranslate"><span class="pre">df</span></code></p>
+<ul class="simple">
+<li><p>Use “skip_rows” to skip the initial rows before the data.</p></li>
+<li><p>Figure out what is the code for missing value and change the option <code class="docutils literal notranslate"><span class="pre">na_values</span></code> appropriately</p></li>
+</ul>
+</li>
+<li><p>Change the name of the column with the date information to “Date”</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> so python understand the column date as a datetime object (you will have to use the option format)</p></li>
+<li><p>Set date as index</p></li>
+<li><p>convert the date from the start of the month to end of the month.</p></li>
+<li><p>Drop any date with a missing observations (it will be just one date)</p></li>
+<li><p>Find the market in the columns and save the stocks in a data frame (df) and the market in a different data frame called df_market</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 1. Portfolio Moments</strong></p>
+<p>Construct a portfolio that equal weights the first five stocks. Compute this portfolio variance in this sample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 2. Annualize it</strong></p>
+<p>Report this number in yearly units</p>
+<p><strong>Exercise 3. Function 1</strong></p>
+<p>Construct a function that takes as input the number of stocks in the portfolio, lets call that parameter N, and outputs the (yearly) variance of the portfolio that equal weight the first N stocks</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 4. Function 2</strong></p>
+<p>Construct a function that takes as input the number of stocks in the portfolio and also, lets call that parameter N, and outputs the (yearly) variance of the portfolio that equal weight N randomly picked stocks</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 5. A simulation</strong></p>
+<p>Construct a function that that takes as an input the number of stocks N and then use the function above (excercise 4) to simulate 100 different portfolios and output the average of these 100 portfolios</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 6. A plot</strong></p>
+<p>Call the function above for N=1 to N=50 and plot the variance as function of N</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 7. the market</strong></p>
+<p>Add the market variance to the plot as an horizontal line to the plot you made above</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 8. Interpretation</strong></p>
+<p>Explain what you see in the plot. Try to articulate what you think is happening</p>
+<p>your answer here</p>
+<p><strong>Exercise 9. A decomposition</strong></p>
+<p>We now want to build a function that outputs only the terms due to the variance terms</p>
+<p>That is, instead of computing <span class="math notranslate nohighlight">\(Var(WR)=W&#64;Var(R)&#64;W=\sum_i\sum_jW_iW_jCov(R_i,R_j)\)</span> which gives you the variance of a portfolio with weight W,</p>
+<p>I want you do compute <span class="math notranslate nohighlight">\(\sum_iW_i^2Var(R_i)\)</span>, this component of the portfolio variance that comes only from the variance terms</p>
+<p>Then subtract this term from the total variance term</p>
+<p>Show the three lines in a plot as functions of N (1. the total variance (and also the market like in exercise 7), 2. the component coming only from the variance terms, and 3. the residual (the component due to the covariance terms) )</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 10. Interpretation 2</strong></p>
+<p>looking at this new plot, what do you learn? What does that imply about portfolio construction?</p>
+<p>your answer here</p>
+<p><strong>Exercise 11. Factor betas</strong></p>
+<p>Randomly select 10 stocks from <code class="docutils literal notranslate"><span class="pre">df</span></code> and draw a figure that plots the returns of these industries along with the market return.</p>
+<p>Just by looking, which seems seems to have the highest beta?</p>
+<p>Why is it important to measure beta correctly? i.e. explain how you can use beta to improve a trade that you have in one of these companies</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Your answer here</p>
+<p><strong>Exercise 12. Factor betas 2</strong></p>
+<p>Run regressions of all stocks in <code class="docutils literal notranslate"><span class="pre">df</span></code> on the market return you saved in <code class="docutils literal notranslate"><span class="pre">df_market</span></code>. Include intercepts in the regressions.</p>
+<p>Just follow the code below to run regressions.</p>
+<p>The coefficients to the market return are the betas to each industry.</p>
+<p>Now suppose you are a fund manager and you have a mandate to keep your beta equal to 0.5.</p>
+<p>Provide portfolio weights based on the regressions above to hit the mandate beta.</p>
+<p>Give at least <em>five</em> such portfolios that satisfy that restriction. At least one of these portfolios has to play in more than one stock at a time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="c1"># Put your market return here</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># Adds a constant term to the predictor</span>
+<span class="n">y</span> <span class="o">=</span> <span class="c1"># Put industry returns here (perform regressions one-by-one)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 13. Factor risk</strong></p>
+<p>Find beta-hedged portfolio returns using the five mandate portfolios you provided in Exercise 12.</p>
+<p>Draw a plot drawing these portfolio returns together.(i.e. spy in the x-axis, hedge portfolio in the y)</p>
+<p>Do they show any co-movement?  Can you say they are all “risk free”? In what sense they are free of risk and what sense they are not?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Your answer here</p>
+<p><strong>Exercise 14. Alphas</strong></p>
+<p>Let us assume that the risk-free rate is fixed at 0. (recall that we are working with returns here, so the intercept is not alpha, but alpha+(1-beta)(average rf))</p>
+<p>Then, the intercepts to regression in Exercise 12 can be interpreted as alphas</p>
+<p>Find the largest alpha stock and the lowest alpha stock from Exercise 12.</p>
+<p>If you were trying to pick one trade, would picking up the asset with the highest alpha the best that we can do?</p>
+<p>What other consideration might be relevant for your “best” strategy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code below</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Your answer here</p>
+<p><strong>Exercise 15. optional</strong></p>
+<p>Suppose you pick the portfolio that is best according to the criteria you outline above. Is that the best that we can do? Discuss how you could further improve your portfolio</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -489,7 +683,7 @@ flexibility and simplicity are a natural fit for data science applications.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/01"
+            path: "./chapters/Assignments"
         },
         predefinedOutput: true
     }
@@ -506,30 +700,30 @@ flexibility and simplicity are a natural fit for data science applications.</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="what-is-quant-investing.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>What is Quantitative Investing?</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="computational-tools.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>Computational Tools</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
