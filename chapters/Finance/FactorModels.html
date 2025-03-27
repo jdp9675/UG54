@@ -676,6 +676,7 @@ What if the market crashes before apple surprises and your investors pull out?</
 <li><p>We refer to portfolio <span class="math notranslate nohighlight">\((1,-\beta)\times(AAPL,SPY)\)</span> as the Apple-factor hedged portfolio, or simply the “hedged-portfolio”</p></li>
 <li><p>and refer to <span class="math notranslate nohighlight">\(-\beta \times \)</span> (SPY) as the “Hedging Portfolio”</p></li>
 </ul>
+<p><strong>Implementing</strong></p>
 <p>Lets do this!</p>
 <p>I will use a regression to get some numbers for us to do this strategy</p>
 <p>but for now, just think those as numbers I am giving you <strong>and don’t think of the regression as giving the right numbers necessarily.</strong></p>
@@ -940,7 +941,8 @@ Mean of market factor (mu_f): 0.00035668848435262666
 <blockquote>
 <div><h4 class="rubric" id="stop-and-think">Stop and Think</h4>
 <ul class="simple">
-<li><p>What frequency are these parmeters? How to I make it comparable say with the annual risk-free rate?</p></li>
+<li><p>What frequency are these parameters?</p></li>
+<li><p>How to I make it comparable say with the annual risk-free rate?</p></li>
 <li><p>What does the alpha mean? How should you think about it? Do you think is informative about future MSFT alpha? Why? Why not?</p></li>
 <li><p>What about the variance terms? And the covariance terms?</p></li>
 </ul>
@@ -1002,6 +1004,8 @@ Mean of market factor (mu_f): 0.00035668848435262666
 </div>
 </div>
 </div>
+<p>Often shops have risk-adjusted PnL. So while you might expect to make <code class="docutils literal notranslate"><span class="pre">x*(beta*mu_f+alpha)*252</span></code> for the fund, they only comp you based on <code class="docutils literal notranslate"><span class="pre">x*(alpha)*252</span></code></p>
+<p><strong>Focusing on your edge</strong></p>
 <p>Now suppose you focus your edge–i.e. investing in MSFT but hedging the market risk</p>
 <ol class="arabic simple">
 <li><p>How much of the market do I need to short per dollar invested in MSFT?</p></li>
@@ -1041,6 +1045,7 @@ Mean of market factor (mu_f): 0.00035668848435262666
 <div class="math notranslate nohighlight">
 \[Var(rh)=Var(\alpha+\epsilon)=Var(\epsilon)\]</div>
 <ul class="simple">
+<li><p>What is you expected  PnL?</p></li>
 <li><p>What is you expected “factor-adjusted PnL”?</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1057,12 +1062,7 @@ Mean of market factor (mu_f): 0.00035668848435262666
 </div>
 <ul class="simple">
 <li><p>What is your portfolio Sharpe Ratio? what is Sharpe Ratio anyways?</p></li>
-</ul>
-<p>What is you portfolio Sharpe with the hedge and without the hedge?</p>
-<ul class="simple">
-<li><p>Some shops pay you for your full PnL but Impose constraints on how much factor risk you can have. For example they might impose a maximum 20% of your total risk in factor risk</p></li>
-<li><p>Are you better off hedging everything anyways? Or do you want to hedge just enough to be at 20%?</p></li>
-<li><p>Is your answer the same for any factor? What does it depend on?</p></li>
+<li><p>What is you portfolio Sharpe with the hedge and without the hedge?</p></li>
 </ul>
 <p><strong>Tracking Portfolios</strong></p>
 <p>We also refer to it as “hedging portfolios” or “mimicking portfolios”</p>
