@@ -245,6 +245,9 @@
 <li class="toctree-l2"><a class="reference internal" href="Assignment2.html">14.9. Assignment 2</a></li>
 
 
+<li class="toctree-l2"><a class="reference internal" href="Assignment3.html">14.12. Assignment 3</a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -523,19 +526,27 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">___</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">___</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1963</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">__________</span><span class="p">,</span><span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
 <span class="n">df</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="n">_</span><span class="p">]</span>
 <span class="n">df</span><span class="o">.</span><span class="n">____</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">____</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">())</span>
-
-
 </pre></div>
 </div>
 <p><strong>Exercise 2</strong></p>
-<p>What are the units of the data?  In you invested 100 dollars in the start of the sample in the market portfolio. How much model would you have at the end of 2023 (recall that the market portfolio is not a factor, but can be created by combining it with the risk-free rate )</p>
+<p>What are the units of the data?  In you invested 100 dollars in the start of the sample in the market portfolio. How much money would you have at the end of 2023 (recall that the market portfolio is not a factor, but can be created by combining it with the risk-free rate )</p>
 <p><strong>Exercise 3</strong></p>
 <p>I would like you to build on the portfolio construction we did on the Trading Strategies lecture</p>
 <p>Let’s start by computing the mean-variance optimal portfolio across these five factors</p>
-<p>I would like you start by using the full sample to estiamte the weights and the leverage up the weights so this portfolio has the same in sample volatiltiy as the market portfolio</p>
+<p>I would like you start by using the full sample to estimate the weights and then leverage up the weights so this portfolio has the same in sample volatiltiy as the market portfolio</p>
 <p>report weights and  the Sharpe ratio of the MVE portfolio</p>
 <p><strong>Exercise 4</strong></p>
 <p>Lets construct weights for four alternative strategies (using the full sample)</p>
@@ -543,7 +554,7 @@ document.write(`
 <li><p>Invest in the market portfolio in the whole sample</p></li>
 <li><p>Invest equally in each factor</p></li>
 <li><p>Risk Parity 1: Assume expected returns of each factor are of the form <span class="math notranslate nohighlight">\(E[R^i_t]=c*\sigma(R^i_t)\)</span> so they are exactly proportional to their standard deviation. Meaning that instead of estimating expected returns you simply use the vector of standard deviations <span class="math notranslate nohighlight">\(c[\sigma(R^1_t),\sigma(R^2_t),\sigma(R^3_t),..]\)</span>. Apply the MVE formula given the estimated covariance matrix and these “estimates” for expected returns</p></li>
-<li><p>Risk Parity 2: In addition to assuming that the off-diagonal terms of the covariance matrix are zero. Assuming that all factors have zero correlation with each other</p></li>
+<li><p>Risk Parity 2: Assume that the off-diagonal terms of the covariance matrix are zero.</p></li>
 </ol>
 <p><strong>Exercise 5</strong></p>
 <p>Compute the full sample Sharpe Ratio of all five trading strategies.</p>
@@ -575,7 +586,7 @@ document.write(`
 </div>
 <p><strong>Exercise 7</strong></p>
 <p>Compute their Sharpe Ratios, volatilities, and expected returns</p>
-<p>Is there a conclusion? What statistical test can you to see if the differences in expected returns is statistically significant?</p>
+<p>Is there a conclusion? What statistical test can you do to see if the differences in expected returns is statistically significant?</p>
 <p>Would that be enough to know that one of them is better strategy?  What source of difference of expected returns might not be so interesting for an investor</p>
 <p><strong>Exercise 8</strong></p>
 <p>Lets take a step back and simply estimate the CAPM betas of the different factors–using ‘MKT-RF’ as a proxy for market.</p>
@@ -608,8 +619,8 @@ document.write(`
 </div>
 <p><strong>Exercise 8</strong></p>
 <p>Lets construct market hedged factors!</p>
-<p>Say for each factor factor, you have the returns <span class="math notranslate nohighlight">\(R^{factor}_t\)</span> ina dataframe. You also have it’s beta <span class="math notranslate nohighlight">\(\beta\)</span>, and the returns on the market portfolio (the excess return to be precise) <span class="math notranslate nohighlight">\(R^{mkt-rf}_t\)</span></p>
-<p>So you cna construct the market hedged as</p>
+<p>Say for each factor factor, you have the returns <span class="math notranslate nohighlight">\(R^{factor}_t\)</span> in a dataframe. You also have it’s beta <span class="math notranslate nohighlight">\(\beta\)</span>, and the returns on the market portfolio (the excess return to be precise) <span class="math notranslate nohighlight">\(R^{mkt-rf}_t\)</span></p>
+<p>So you can construct the market hedged as</p>
 <div class="math notranslate nohighlight">
 \[R^{factor-market}_t=R^{factor}_t-\beta*R^{mkt-rf}_t\]</div>
 <p>Compute this for all other four factors</p>

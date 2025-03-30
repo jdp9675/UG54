@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assignment 1 &#8212; Quantitative Investing</title>
+    <title>Assignment 3 &#8212; Quantitative Investing</title>
   
   
   
@@ -58,8 +58,10 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Assignments/Assignment1_24';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Assignments/Assignment1_24.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Assignments/Assignment3_oo';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Assignments/Assignment3_oo.html" />
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -302,7 +304,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Assignments/Assignment1_24.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Assignments/Assignment3_oo.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +352,7 @@
       
       
       
-      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Assignments/Assignment1_24.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Assignments/Assignment3_oo.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +382,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/Assignments/Assignment1_24.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/Assignments/Assignment3_oo.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -464,7 +466,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment 1</h1>
+    <h1>Assignment 3</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -474,7 +476,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 3</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
@@ -489,8 +491,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-1">
-<h1>Assignment 1<a class="headerlink" href="#assignment-1" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-3">
+<h1>Assignment 3<a class="headerlink" href="#assignment-3" title="Link to this heading">#</a></h1>
+<p>Please check that you are submitting the correct file. One way to avoid mistakes is to save it with a different name.</p>
+<p>Comments:</p>
+<ul class="simple">
+<li><p>Make sure that everything is compiled before saving it.</p></li>
+<li><p>Obviously feel free to add as many cells as needed in each section.</p></li>
+<li><p>Cells should not be too large. Keep code organized and clean.</p></li>
+</ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="write-your-name-and-simon-email">
 <h1>Write your name and simon email<a class="headerlink" href="#write-your-name-and-simon-email" title="Link to this heading">#</a></h1>
@@ -503,170 +512,120 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="exercises">
 <h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
 <p><strong>Exercise 1</strong></p>
-<p>Start by importing pandas, numpy, maplotlib, and loading the data set.</p>
-<p>The dataset has address</p>
-<p><code class="docutils literal notranslate"><span class="pre">url='https://github.com/amoreira2/Fin418/blob/main/assets/data/Assignment1.xlsx?raw=true'</span></code></p>
-<p>I strongly recommend you download first and look at the data set.</p>
-<p>This file contains multiple sheets, you should use <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> to get the data that contains the 49 value-weighted industry portfolios.</p>
-<p>See here:<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html</a> .</p>
-<p>Do the followings:</p>
-<ol class="arabic simple">
-<li><p>Import this dataframe as <code class="docutils literal notranslate"><span class="pre">df_ind</span></code></p>
-<ul class="simple">
-<li><p>Use “sheet_name” to select the desired excel sheet.</p></li>
-<li><p>Use “skip_rows” to skip the initial rows before the data.</p></li>
-<li><p>Figure out what is the code for missing value and change the option <code class="docutils literal notranslate"><span class="pre">na_values</span></code> appropriately</p></li>
-<li><p>If you look at the excel file you will see that there are other data sets stacked horizontally. Use the <code class="docutils literal notranslate"><span class="pre">usecols</span></code> option to select the range of columns you want imported</p></li>
-<li><p>You can take a look at Lab3 material for some examples of importing excel data and using these options.</p></li>
-</ul>
-</li>
-<li><p>Change the name of the column with the date information to date</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code> so python understand the column date as a datetime object (you will have to use the option format)</p></li>
-<li><p>Set date as index</p></li>
-<li><p>Call <code class="docutils literal notranslate"><span class="pre">df_ind.info()</span></code> so you check all the tasks were accomplished.</p></li>
-<li><p>In the next cell, call <code class="docutils literal notranslate"><span class="pre">df_ind.head()</span></code></p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pandas.tseries.offsets</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonthEnd</span>
+<p>Lets start by importing our data.</p>
+<p>We will import monthly data on the five factor model.</p>
+<p>You should go to Ken French website and figure out the name of the data set.</p>
+<p>An alternative way is to use</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">pandas_datareader.famafrench</span> <span class="pre">import</span> <span class="pre">get_available_datasets</span></code></p>
+<p>And call get_available_datasets to see the name of the different data set available</p>
+<p>TIP: The data set should have 7 columns: Date, factors and the risk-free rate</p>
+<p>Also note that there is a lot of stuff on a given file, i.e., <code class="docutils literal notranslate"><span class="pre">ds</span></code> below will contain multiple datasets associated with this dataset you choose</p>
+<p>you have to choose the right one–the one that contains monthly return data!</p>
+<p>Finally make sure the index is in the datetime format</p>
+<p>Here is the code to get you started!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">___</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="c1"># your code below</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 2. Advanced date manipulation</strong></p>
-<ol class="arabic simple">
-<li><p>convert the date from the start of the month to end of the month.</p></li>
-<li><p>call <code class="docutils literal notranslate"><span class="pre">df_ind.head()</span></code> and verify it works</p></li>
-</ol>
-<p><strong><em>Hint:</em></strong></p>
-<ul class="simple">
-<li><p>Read this link: <a class="reference external" href="https://stackoverflow.com/questions/37354105/find-the-end-of-the-month-of-a-pandas-dataframe-series">https://stackoverflow.com/questions/37354105/find-the-end-of-the-month-of-a-pandas-dataframe-series</a>.
-If you google “pandas end of month” that is the first thing that comes out. Read the answer and apply to your problem.</p></li>
-<li><p>you aready set date as index, so you cannot do stuff like <code class="docutils literal notranslate"><span class="pre">df_ind.date</span></code> or <code class="docutils literal notranslate"><span class="pre">df_ind['date']</span></code>  and have to adjust the code accordingly. Think about how to access the index.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">ds</span><span class="p">[</span><span class="n">_</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">____</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">____</span><span class="o">.</span><span class="n">to_timestamp</span><span class="p">())</span>
 
-<span class="n">df_ind</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 3. Importing risk-free rate</strong></p>
-<ol class="arabic simple">
-<li><p>In this same file there is another sheet with market returns and the risk-free rate. Import them as <code class="docutils literal notranslate"><span class="pre">df_rmrf</span></code> by following all the steps you did in the above two questions</p></li>
-<li><p>Call <code class="docutils literal notranslate"><span class="pre">df_rmrf.info()</span></code> so you check all the tasks were accomplished.</p></li>
-<li><p>In the next cell, call <code class="docutils literal notranslate"><span class="pre">df_rmrf.head()</span></code></p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 4. Constructing excess returns A</strong></p>
-<ol class="arabic simple">
-<li><p>for the industry <code class="docutils literal notranslate"><span class="pre">Agric</span></code>, construct the excess return by subtracting the risk-free rate RF from it.</p></li>
-<li><p>compute the mean of this excess return.</p></li>
-<li><p>print it along with the mean of the raw returns and the risk free rate to compare</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 5. Constructing excess returns B</strong></p>
-<ol class="arabic simple">
-<li><p>construct excess returns for all portfolio by subtracting the risk-free rate from all of columns at the same time</p></li>
-<li><p>name the new data frame <code class="docutils literal notranslate"><span class="pre">df_inde</span></code> ( for excess returns)</p></li>
-</ol>
-<p><strong><em>Hint:</em></strong></p>
-<ul class="simple">
-<li><p>You can do that using the method <code class="docutils literal notranslate"><span class="pre">.subtract()</span></code> with the option axis to tell along which dimension</p></li>
-<li><p>Go ahead , google “pandas subtract” to see how this works</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below </span>
 
-<span class="n">df_inde</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p><strong>Exercise 6. Drop missing observations</strong></p>
-<p>You may notice that excess returns of some industries are not available at the beginning of the sample.</p>
-<p>If we want all the industries to have same period of data in <code class="docutils literal notranslate"><span class="pre">df_inde</span></code>, we need to drop some observations.</p>
-<p>Do the followings:</p>
+<p><strong>Exercise 2</strong></p>
+<p>What are the units of the data?  In you invested 100 dollars in the start of the sample in the market portfolio. How much model would you have at the end of 2023 (recall that the market portfolio is not a factor, but can be created by combining it with the risk-free rate )</p>
+<p><strong>Exercise 3</strong></p>
+<p>I would like you to build on the portfolio construction we did on the Trading Strategies lecture</p>
+<p>Let’s start by computing the mean-variance optimal portfolio across these five factors</p>
+<p>I would like you start by using the full sample to estiamte the weights and the leverage up the weights so this portfolio has the same in sample volatiltiy as the market portfolio</p>
+<p>report weights and  the Sharpe ratio of the MVE portfolio</p>
+<p><strong>Exercise 4</strong></p>
+<p>Lets construct weights for four alternative strategies (using the full sample)</p>
 <ol class="arabic simple">
-<li><p>Use method <code class="docutils literal notranslate"><span class="pre">dropna</span></code> to drop rows in <code class="docutils literal notranslate"><span class="pre">df_inde</span></code> if <strong>ANY</strong> industry is missing.</p></li>
-<li><p>After that, <code class="docutils literal notranslate"><span class="pre">print(df_inde.shape)</span></code> to see the changes in the length.</p></li>
+<li><p>Invest in the market portfolio in the whole sample</p></li>
+<li><p>Invest equally in each factor</p></li>
+<li><p>Risk Parity 1: Assume expected returns of each factor are of the form <span class="math notranslate nohighlight">\(E[R^i_t]=c*\sigma(R^i_t)\)</span> so they are exactly proportional to their standard deviation. Meaning that instead of estimating expected returns you simply use the vector of standard deviations <span class="math notranslate nohighlight">\(c[\sigma(R^1_t),\sigma(R^2_t),\sigma(R^3_t),..]\)</span>. Apply the MVE formula given the estimated covariance matrix and these “estimates” for expected returns</p></li>
+<li><p>Risk Parity 2: In addition to assuming that the off-diagonal terms of the covariance matrix are zero. Assuming that all factors have zero correlation with each other</p></li>
 </ol>
-<p><strong><em>Hint</em></strong></p>
-<ul class="simple">
-<li><p>when you call <code class="docutils literal notranslate"><span class="pre">dropna</span></code> function, use <code class="docutils literal notranslate"><span class="pre">axis</span></code> and <code class="docutils literal notranslate"><span class="pre">how</span></code> option to drop missing values if <strong>ANY</strong> industry is missing</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+<p><strong>Exercise 5</strong></p>
+<p>Compute the full sample Sharpe Ratio of all five trading strategies.</p>
+<p>Discuss what we can learn and not learn from such exercise. What are the issues with interpreting the differences in performance?</p>
+<p><strong>Exercise 6</strong></p>
+<p>Lets pursue a rolling approach to evaluate these strategies.</p>
+<p>I would like you to split the sample down the middle–how to find the middle of the sample?</p>
+<p>And then proceed by estimating in the first half, then looking at the performance in the following month.</p>
+<p>Then adding this month to the estimation sample, and so on.</p>
+<p>I provide code below that constructs this for the standard MVE strategy.</p>
+<p>I advise you to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">Rp</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[],</span><span class="n">columns</span><span class="o">=</span><span class="p">[],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">Re</span><span class="o">=</span><span class="n">__</span>
+<span class="n">start_date</span><span class="o">=</span><span class="n">__</span>
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">Re</span><span class="p">[</span><span class="n">start_date</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="c1"># I am using DateOffset function to tell python to stop on month before </span>
+    <span class="c1"># so the estimation sample will be all months up to one month before the return that I </span>
+    <span class="c1">#I will be trading</span>
+    <span class="c1"># this guarantees the strategy is VALID with respect to information</span>
+    <span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">CovRe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+    <span class="n">Target_vol</span><span class="o">=</span><span class="n">___</span>
+
+    <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span> <span class="p">(</span><span class="n">Targetvol</span><span class="o">/</span><span class="p">(</span><span class="n">ERe</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1">#store the strategy returns of the relevant month</span>
+    <span class="n">Rp</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;MVE&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">X</span> <span class="o">@</span> <span class="n">Re</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p><strong>Exercise 7. Moments</strong></p>
-<p>We will now estimate the risk-premium in each of these portfolio and the covariance between these portfolios.</p>
-<p>Do the followings:</p>
-<ol class="arabic simple">
-<li><p>using the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> on the excess return data frame to obtain a vector of average excess returns.</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">std</span></code> construct an estimator for each asset standard deviation.</p></li>
-<li><p>use <code class="docutils literal notranslate"><span class="pre">cov</span></code> method to estimate the covariance of excess returns.</p></li>
-<li><p>Discuss in each units these variables are</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
+<p><strong>Exercise 7</strong></p>
+<p>Compute their Sharpe Ratios, volatilities, and expected returns</p>
+<p>Is there a conclusion? What statistical test can you to see if the differences in expected returns is statistically significant?</p>
+<p>Would that be enough to know that one of them is better strategy?  What source of difference of expected returns might not be so interesting for an investor</p>
+<p><strong>Exercise 8</strong></p>
+<p>Lets take a step back and simply estimate the CAPM betas of the different factors–using ‘MKT-RF’ as a proxy for market.</p>
+<p>So I want you to run a time-series regression of each factor on the market portfolio.</p>
+<p>Report the CAPM betas of each factor.</p>
+<p>Do the same for the trading strategies that you constructed.</p>
+<p>Discuss what these findings imply for the discussion in exercise 7. How these different betas might impact your evalaution?</p>
+<p>Please find code below that estimates the regression and reports the beta</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="c1"># Define the dependent variable </span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">_</span><span class="p">]</span>
+
+<span class="c1"># Define the independent variable</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Add a constant term to the independent variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Fit the regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Print the regression results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="n">beta</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ERe</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CovRe</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 8. Plotting</strong></p>
-<p>Choose a couple of industry portfolios to plot their time-series.</p>
-<p>Use the behavior of these two assets to discuss an important economic event in US history</p>
-<p>as you discuss make sure to use the magnitudes in your discussion to show that you do understand what this data means</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code below</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 9. Cumulative returns</strong></p>
-<p>Choose two industry portfolios to plot the cumulative returns over time.</p>
-<p>You cna plot for the whole period or just a subperiod.</p>
-<p>You should explain what the numbers mean in terms of how much money people would have if they had invested in these assets</p>
+<p><strong>Exercise 8</strong></p>
+<p>Lets construct market hedged factors!</p>
+<p>Say for each factor factor, you have the returns <span class="math notranslate nohighlight">\(R^{factor}_t\)</span> ina dataframe. You also have it’s beta <span class="math notranslate nohighlight">\(\beta\)</span>, and the returns on the market portfolio (the excess return to be precise) <span class="math notranslate nohighlight">\(R^{mkt-rf}_t\)</span></p>
+<p>So you cna construct the market hedged as</p>
+<div class="math notranslate nohighlight">
+\[R^{factor-market}_t=R^{factor}_t-\beta*R^{mkt-rf}_t\]</div>
+<p>Compute this for all other four factors</p>
+<p>Report means, standard deviations, and also the beta with respect to the market</p>
+<p><strong>Exercise 9</strong></p>
+<p>What is the interpretation of the mean return for the hedged portfolios? What is the interpretation of the volatility?</p>
+<p>In what sense the Sharpe ratio of the hedged factor might be a better guide then their individual Sharpe Ratios?</p>
+<p><strong>Exercise 10</strong></p>
+<p>Lets construct the correlation of residuals.</p>
+<p>you can do that by either getting the residuals of the regression you did (model.resid)</p>
+<p>Or more easily put all the hedged factors in one dataframe and compute the correlation across hedged factors</p>
+<p>When you compare with the correlation of the raw factors what do you notice? Why that happen?</p>
+<p>What the fact that it didn’t go all the way to zero might tell us?</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -715,7 +674,7 @@ If you google “pandas end of month” that is the first thing that comes out. 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 3</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
