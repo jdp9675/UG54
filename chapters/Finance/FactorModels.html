@@ -478,8 +478,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.1. Alpha and Beta(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.2. Focus on your skill, hedge all the residual risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.3. Variance Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-means-you-need-to-estimate-less-parameters">5.4. Factor models means you need to estimate LESS parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.3. Tacking, Hedging and Hedged portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.4. Variance Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.5. Factor models and Variance-covariance Matrixes Estimation</a></li>
 </ul>
             </nav>
         </div>
@@ -507,7 +508,7 @@ document.write(`
 <div class="cell tag_hidden-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define functions  </span>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_daily_wrds_multiple_ticker</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span><span class="n">conn</span><span class="p">):</span>
   
     <span class="c1"># Retrieve PERMNOs for the specified tickers</span>
     <span class="n">permnos</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">library</span><span class="o">=</span><span class="s1">&#39;crsp&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;stocknames&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;namedt&#39;</span><span class="p">,</span> <span class="s1">&#39;nameenddt&#39;</span><span class="p">])</span>
@@ -518,20 +519,22 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">permno_list</span><span class="p">)</span>
 
     <span class="c1"># Query daily stock file for the specified PERMNOs</span>
-    
     <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        SELECT permno, date, ret, retx, prc       </span>
 <span class="s2">        FROM crsp.dsf</span>
 <span class="s2">        WHERE permno IN (</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">permno_list</span><span class="p">))</span><span class="si">}</span><span class="s2">)</span>
-<span class="s2">        ORDER BY date,permno</span>
+<span class="s2">        ORDER BY date</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
     <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">permnos</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-<span class="c1"># Pivot data to have dates as index and tickers as columns</span>
+    <span class="c1"># Pivot data to have dates as index and tickers as columns</span>
     <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>    
     <span class="n">daily_returns</span><span class="o">=</span><span class="n">daily_returns</span><span class="p">[</span><span class="n">tickers</span><span class="p">]</span>
 
+
+
     <span class="k">return</span> <span class="n">daily_returns</span>
+
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_factors</span><span class="p">(</span><span class="n">ff6</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -695,7 +698,7 @@ What if the market crashes before apple surprises and your investors pull out?</
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
 <span class="n">ticker</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MSFT&#39;</span><span class="p">]</span>
-<span class="n">df_returns</span> <span class="o">=</span> <span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">ticker</span><span class="p">)</span>
+<span class="n">df_returns</span> <span class="o">=</span> <span class="n">get_daily_wrds_multiple_ticker</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_returns</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 <span class="n">df_returns</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -950,6 +953,122 @@ Mean of market factor (mu_f): 0.00035668848435262666
 <li><p>What about the variance terms? And the covariance terms?</p></li>
 </ul>
 </div></blockquote>
+</section>
+<section id="tacking-hedging-and-hedged-portfolios">
+<h2><span class="section-number">5.3. </span>Tacking, Hedging and Hedged portfolios<a class="headerlink" href="#tacking-hedging-and-hedged-portfolios" title="Link to this heading">#</a></h2>
+<p><strong>Tracking Portfolios</strong></p>
+<p>We also refer to it as “hedging portfolios” or “mimicking portfolios”</p>
+<p>Tracking portfolios are the portfolios that use a set of factors to track the returns on an asset.</p>
+<ul>
+<li><p>It can be used as a way to construct hedges for corporations, hedges for trading strategies, or a way to define a benchmark for an active management.</p></li>
+<li><p>It is used to construct what people in the industry calls “portable alpha”, because it allows one to separate the alpha of a trading strategy’s factor exposure</p></li>
+<li><p>The idea of the tracking portfolio is to track the component of an asset return that can be obtained by investing in a simple traded factor (or combos of traded factors). For now, this means the market portfolio.</p></li>
+<li><p>For a given factor model representation of a trading strategy</p>
+<div class="math notranslate nohighlight">
+\[r^e_i=\alpha_i+\beta_if+\epsilon_i, \]</div>
+<p>with <span class="math notranslate nohighlight">\(var(\epsilon_i)=\sigma_e^2\)</span></p>
+</li>
+<li><p>the <span class="math notranslate nohighlight">\(i^{th}\)</span> Tracking portfolio is <span class="math notranslate nohighlight">\(\beta_iW^{MKT}\)</span>, where <span class="math notranslate nohighlight">\(W^{MKT}\)</span> is the vector of weights of the market portfolio.</p></li>
+<li><p>or if one is trading directly on the total market portfolio as an asset, the tracking portfolio weight on the market portfolio asset is simply <span class="math notranslate nohighlight">\(\beta_i\)</span></p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>In our case above we say the tracking portfolio of the stock is <span class="math notranslate nohighlight">\(\beta\)</span> and the hedging portfolio -<span class="math notranslate nohighlight">\(\beta\)</span> on the market</p></li>
+</ul>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns on the tracking portfolio</span>
+
+<span class="n">Portfolio</span><span class="o">=</span><span class="n">df_eret</span>
+<span class="n">MKT</span><span class="o">=</span><span class="n">df_factor</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span>
+<span class="n">Tracking</span><span class="o">=</span><span class="n">MKT</span><span class="o">*</span><span class="n">beta</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Tracking</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a31fcc2d4636bbcedc7e286e030f9e6f928d2663aae7d5d8ddd3678630011bb7.png" src="../../_images/a31fcc2d4636bbcedc7e286e030f9e6f928d2663aae7d5d8ddd3678630011bb7.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>We see here the obvious fact that we cannot track at all variation in the market with the market portfolio so they capture  different risks</p></li>
+<li><p>Another way of looking at it is to put the factor returns on the x-axis</p></li>
+<li><p>The tracking is a perfect straight line where the slope is the beta of the asset</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Portfolio</span><span class="o">=</span><span class="n">df_eret</span>
+<span class="n">MKT</span><span class="o">=</span><span class="n">df_factor</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span>
+<span class="n">Tracking</span><span class="o">=</span><span class="n">MKT</span><span class="o">*</span><span class="n">beta</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Tracking</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/529c85e27d1c0976bbbf7df032c759324d693aae39f953ee1ebd71b5fca915d1.png" src="../../_images/529c85e27d1c0976bbbf7df032c759324d693aae39f953ee1ebd71b5fca915d1.png" />
+</div>
+</div>
+<p><strong>Hedged portfolio</strong></p>
+<p>The Hedged strategy return (also called portable alpha) is</p>
+<div class="math notranslate nohighlight">
+\[r^{hedged}_i=r^e_i-\beta_ir^{MKT}\]</div>
+<ul class="simple">
+<li><p>This portfolio can be constructed simply by <span class="math notranslate nohighlight">\(W^i-\beta^iW^{MKT}\)</span>, the weights of the trading strategy minus the tracking portfolio weights.</p></li>
+<li><p>The excess returns take out risk-free rate effects, and the hedged portfolio takes out market factor effects</p></li>
+</ul>
+<p>A few observations</p>
+<ul class="simple">
+<li><p>The mean return of the hedged portfolio is just the time series alpha!</p></li>
+<li><p>The volatility of the strategy is the vol of the residuals of the time series regression</p></li>
+<li><p>If you run a regression on the market you will see that the hedged portfolios have <span class="math notranslate nohighlight">\(\beta=0\)</span>, which is by construction.</p></li>
+<li><p>This is the reason why sometimes people call these portfolios “Pure Alpha”, or as Bridgwater calls it, “Portable Alpha”</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns on the hedged portfolio</span>
+<span class="n">Hedged</span><span class="o">=</span><span class="n">Portfolio</span><span class="o">-</span><span class="n">Tracking</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">MKT</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Hedged</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/fd2e14200957ae30c823a81e42f72cd6cad0c658ee685fff86c01f37a7424e3d.png" src="../../_images/fd2e14200957ae30c823a81e42f72cd6cad0c658ee685fff86c01f37a7424e3d.png" />
+</div>
+</div>
+<blockquote>
+<div><h4 class="rubric" id="insight">Insight</h4>
+<p>The average excess return on the hedged portfolio is the alpha of the unhedged portfolio!
+Intuition: The hedged portfolio has mechanically zero beta (in-sample) so it’s excess return is “pure” alpha</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hedge portfolio excess returns&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Hedged</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;alpha of unhedge portfolio&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hedge portfolio excess returns
+0.007026839113857923
+alpha of unhedge portfolio
+0.007026839113857951
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Factor Models and Risk Budgets</strong></p>
 <p>Lets say we have 1 million dollar per month volatility (i.e. standard deviation) budget</p>
 <p>What that means?</p>
 <p>Means that the size of my position times the monthly volatility of my position must be less than 1 million dollars?</p>
@@ -1067,124 +1186,11 @@ Mean of market factor (mu_f): 0.00035668848435262666
 <li><p>What is your portfolio Sharpe Ratio? what is Sharpe Ratio anyways?</p></li>
 <li><p>What is you portfolio Sharpe with the hedge and without the hedge?</p></li>
 </ul>
-<p><strong>Tracking Portfolios</strong></p>
-<p>We also refer to it as “hedging portfolios” or “mimicking portfolios”</p>
-<p>Tracking portfolios are the portfolios that use a set of factors to track the returns on an asset.</p>
-<ul class="simple">
-<li><p>It can be used as a way to construct hedges for corporations, hedges for trading strategies, or a way to define a benchmark for an active management.</p></li>
-<li><p>It is used to construct what people in the industry calls “portable alpha”, because it allows one to separate the alpha of a trading strategy’s factor exposure</p></li>
-<li><p>The idea of the tracking portoflio is to track the component of an asset return that can be obtained by investing in a simple traded factor (or combos of traded factors). For now, this means the market portfolio.</p></li>
-</ul>
-<p>How to do it?</p>
-<ul>
-<li><p>For a given trading strategy, consider the following relation</p>
-<div class="math notranslate nohighlight">
-\[r^e_i=\alpha_i+\beta_ir^{MKT}+\epsilon_i, \]</div>
-<p>with <span class="math notranslate nohighlight">\(var(\epsilon_i)=\sigma_e^2\)</span></p>
-</li>
-<li><p>the <span class="math notranslate nohighlight">\(i^{th}\)</span> Tracking portfolio is <span class="math notranslate nohighlight">\(\beta_iW^{MKT}\)</span>, where <span class="math notranslate nohighlight">\(W^{MKT}\)</span> is the vector of weights of the market portfolio.</p></li>
-<li><p>or if one is trading directly on the total market portfolio as an asset, the tracking portfolio weight on the market portfolio asset is simply <span class="math notranslate nohighlight">\(\beta_i\)</span></p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>In our case above we say the tracking portfolio of the stock is <span class="math notranslate nohighlight">\(\beta\)</span> and the hedging portfolio -<span class="math notranslate nohighlight">\(\beta\)</span> on the market</p></li>
-</ul>
-</div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns on the tracking portfolio</span>
-
-<span class="n">Portfolio</span><span class="o">=</span><span class="n">df_eret</span>
-<span class="n">MKT</span><span class="o">=</span><span class="n">df_factor</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span>
-<span class="n">Tracking</span><span class="o">=</span><span class="n">MKT</span><span class="o">*</span><span class="n">beta</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Tracking</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/a31fcc2d4636bbcedc7e286e030f9e6f928d2663aae7d5d8ddd3678630011bb7.png" src="../../_images/a31fcc2d4636bbcedc7e286e030f9e6f928d2663aae7d5d8ddd3678630011bb7.png" />
-</div>
-</div>
-<p>We see here the obvious fact that we cannot track at all variation in the market with the market portfolio so they capture  different risks</p>
-<p>another way of looking at it is to put the factor returns on the x-axis</p>
-<p>The tracking is a perfect straight line where the slope is the beta of the asset</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Portfolio</span><span class="o">=</span><span class="n">df_eret</span>
-<span class="n">MKT</span><span class="o">=</span><span class="n">df_factor</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span>
-<span class="n">Tracking</span><span class="o">=</span><span class="n">MKT</span><span class="o">*</span><span class="n">beta</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Portfolio</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Tracking</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/529c85e27d1c0976bbbf7df032c759324d693aae39f953ee1ebd71b5fca915d1.png" src="../../_images/529c85e27d1c0976bbbf7df032c759324d693aae39f953ee1ebd71b5fca915d1.png" />
-</div>
-</div>
-<p><strong>Hedged portfolio</strong></p>
-<p>The Hedged strategy return (also called portable alpha) is</p>
-<div class="math notranslate nohighlight">
-\[r^{hedged}_i=r^e_i-\beta_ir^{MKT}\]</div>
-<ul class="simple">
-<li><p>This portfolio can be constructed simply by <span class="math notranslate nohighlight">\(W^i-\beta^iW^{MKT}\)</span>, the weights of the trading strategy minus the tracking portfolio weights.</p></li>
-<li><p>The excess returns take out risk-free rate effects, and the hedged portfolio takes out market factor effects</p></li>
-</ul>
-<p>A few observations</p>
-<ul class="simple">
-<li><p>The mean return of the hedged portfolio is just the time series alpha!</p></li>
-<li><p>The volatility of the strategy is the vol of the residuals of the time series regression</p></li>
-<li><p>If you run a regression on the market you will see that the hedged portfolios have <span class="math notranslate nohighlight">\(\beta=0\)</span>, which is by construction.</p></li>
-<li><p>This is the reason why sometimes people call these portfolios “Pure Alpha”, or as Bridgwater calls it, “Portable Alpha”</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns on the hedged portfolio</span>
-<span class="n">Hedged</span><span class="o">=</span><span class="n">Portfolio</span><span class="o">-</span><span class="n">Tracking</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">MKT</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">MKT</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">Hedged</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/fd2e14200957ae30c823a81e42f72cd6cad0c658ee685fff86c01f37a7424e3d.png" src="../../_images/fd2e14200957ae30c823a81e42f72cd6cad0c658ee685fff86c01f37a7424e3d.png" />
-</div>
-</div>
-<blockquote>
-<div><h4 class="rubric" id="insight">Insight</h4>
-<p>The average excess return on the hedged portfolio is the alpha of the unhedged portfolio!
-Intuition: The hedged portfolio has mechanically zero beta (in-sample) so it’s excess return is “pure” alpha</p>
-</div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hedge portfolio excess returns&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Hedged</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;alpha of unhedge portfolio&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hedge portfolio excess returns
-0.007026839113857923
-alpha of unhedge portfolio
-0.007026839113857951
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="variance-decomposition">
-<h2><span class="section-number">5.3. </span>Variance Decomposition<a class="headerlink" href="#variance-decomposition" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>Variance Decomposition<a class="headerlink" href="#variance-decomposition" title="Link to this heading">#</a></h2>
 <p>Factor models are essential to manage risk</p>
-<p>A pod shop mananager , a manager in a mutual fund in a large mutual fund company, a hedge fund trader in a large hedge fund,…all of those will typically have tight limits on the TOTAL risk of their portfolio, i.e. <span class="math notranslate nohighlight">\(var(r)\)</span> but also on the factor component of their portfolio</p>
+<p>A pod shop manager , a manager in a mutual fund in a large mutual fund company, a hedge fund trader in a large hedge fund,…all of those will typically have tight limits on the TOTAL risk of their portfolio, i.e. <span class="math notranslate nohighlight">\(var(r)\)</span> but also on the factor component of their portfolio</p>
 <p>But even if you don’t, and you are an active manager with freedom of trading, you still want to control quite carefully how much non-essential risks you are taking in your portfolio</p>
 <p>The decomposition here with single factor is really easy, but once you understand it, the multi-factor decomposition will be also easy to understand ( even it a little more involved)</p>
 <ol class="arabic simple">
@@ -1260,8 +1266,8 @@ So both your total risk grows as the share of factor risk</p>
 </div>
 </div>
 </section>
-<section id="factor-models-means-you-need-to-estimate-less-parameters">
-<h2><span class="section-number">5.4. </span>Factor models means you need to estimate LESS parameters<a class="headerlink" href="#factor-models-means-you-need-to-estimate-less-parameters" title="Link to this heading">#</a></h2>
+<section id="factor-models-and-variance-covariance-matrixes-estimation">
+<h2><span class="section-number">5.5. </span>Factor models and Variance-covariance Matrixes Estimation<a class="headerlink" href="#factor-models-and-variance-covariance-matrixes-estimation" title="Link to this heading">#</a></h2>
 <p>We will see how we can compute covariance matrixes easily under the assumption that the factor captures most sources of co-movement across stocks</p>
 <p>In this case the assumption is very bad…and not even close to holding for most assets…but will allow us to get the intuition</p>
 <p>We will then learn how to do it with many factors as is standard in the industry</p>
@@ -1300,10 +1306,7 @@ var(\epsilon_{i,t}) &amp; 0 \\
 0&amp;  var(\epsilon_{j,t})
 \end{array}\right]\end{split}\]</div>
 <p>We see that now for N assets we only need to estimate N factor exposures, N asset specific volatilities , and the factor volatility</p>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(2N+1\)</span> vs <span class="math notranslate nohighlight">\((N^2-N)/2+N\)</span></p>
-</div></blockquote>
-<p>That is a huge difference</p>
+<p>If we were estimating a variance-covariance matrix without imposing the factor model we would have to estimate N covariances and <span class="math notranslate nohighlight">\((N^2-N)/2\)</span> covariance terms: <span class="math notranslate nohighlight">\(2N+1\)</span> vs <span class="math notranslate nohighlight">\((N^2-N)/2+N\)</span> is huge as N grows</p>
 <p>Suppose we have many assets, all respecting this factor model. Say <span class="math notranslate nohighlight">\(R_t^e\)</span> is the big N by 1 vector of excess return <span class="math notranslate nohighlight">\([r_{t}^{e,1},r_{t}^{e,2},...]\)</span> for all these assets</p>
 <div class="math notranslate nohighlight">
 \[R_t^e=Bf_t+U_t\]</div>
@@ -1317,13 +1320,14 @@ var(\epsilon_{i,t}) &amp; 0 \\
 <li><p>This will give you a vector S with N numbers, the you can use <code class="docutils literal notranslate"><span class="pre">np.diag(S)</span></code> to created a diagonal matrix with these variances in the diagonal</p></li>
 </ul>
 <blockquote>
-<div><h3 class="rubric" id="practice">Practice</h3>
+<div><p><strong>Practice</strong></p>
 <ul class="simple">
 <li><p>Choose a five  tickers you like plus SPY</p></li>
-<li><p>Estimate their unrestricted covariance matrix?</p></li>
-<li><p>estimate the single-factor model (single factor=SPY) implied covariance matrix?</p></li>
-<li><p>Can you compare the number of parameters you need to estimate in each case?</p></li>
-<li><p>Can you discuss if it such model is a good one in this case?</p></li>
+<li><p>Estimate their unrestricted covariance matrix</p></li>
+<li><p>Estimate the single-factor model (single factor=SPY)</p></li>
+<li><p>Build the factor implied covariance matrix</p></li>
+<li><p>Can you compare the number of parameters you need to estimate in each case</p></li>
+<li><p>Can you discuss if it such model is a good one in this case</p></li>
 </ul>
 </div></blockquote>
 </section>
@@ -1395,8 +1399,9 @@ var(\epsilon_{i,t}) &amp; 0 \\
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.1. Alpha and Beta(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.2. Focus on your skill, hedge all the residual risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.3. Variance Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-means-you-need-to-estimate-less-parameters">5.4. Factor models means you need to estimate LESS parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.3. Tacking, Hedging and Hedged portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.4. Variance Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.5. Factor models and Variance-covariance Matrixes Estimation</a></li>
 </ul>
   </nav></div>
 
