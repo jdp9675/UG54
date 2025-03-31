@@ -1194,7 +1194,7 @@ Notes:
 <h2><span class="section-number">7.4. </span>Factor Risk-Premia<a class="headerlink" href="#factor-risk-premia" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>While conceptually both alpha and risk premia are both expected excess returns, in practice our approach is very different</p></li>
-<li><p>Factor risk-premia might move around, but we think of then as more stable features of the economic environment</p></li>
+<li><p>Factor risk-premia likely move around, but we think of then as more stable features of the economic environment</p></li>
 <li><p>They are compensation for systematic risk, so they don’t go away just because investors are aware of it</p>
 <ul>
 <li><p>Specially true for risk-premia on the market factor</p></li>
@@ -1214,8 +1214,6 @@ Notes:
 <li><p>The longer the sample, the higher our precision, the lower the standard errors</p></li>
 <li><p>The higher the asset variance, the higher our standard errors, the lower our precision</p></li>
 </ul>
-<p>look at market risk-premia, mean , standard errors, sub samples</p>
-<p>discuss how to think about reasonable sample sizes given the volatilities</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the average for the market</span>
@@ -1279,9 +1277,9 @@ t-stat relative to zero null: 4.47195671186148
 </div>
 </div>
 <p>note that the t-stat is invariant to frequency transformation</p>
-<p>This makes the important that sampling more frequently does not lead to more precise estimates of the mean</p>
+<p>This makes the important point that <strong>sampling more frequently does not lead to more precise estimates of the expected return</strong></p>
 <p>“only time will tell” could not be any truer for means: Both mean and variance are scaled up by the frequency.</p>
-<p>Long sample allow us to be very confident that the market risk-premium is positive (if it is really constant!)</p>
+<p>Long sample allow us to be very confident that the market risk-premium is positive on average</p>
 <p>We can be fairly confident even that risk-premium is higher than 3%</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1298,7 +1296,7 @@ t-stat relative to zero null: 4.47195671186148
 </div>
 <p>Suppose risk-premium is time-varying but moves kind of slowly</p>
 <p>Also lets suppose the variance is constant at the sample mean</p>
-<p>How long a sample do I need to be 95% confident that the expected value is higher than x</p>
+<p>How long a sample do I need to be 95% confident that the expected value is higher than the value “x”</p>
 <p>I need t-stat</p>
 <div class="math notranslate nohighlight">
 \[t-stat&gt;F^{-1}(0.95)=1.64\]</div>
@@ -1312,7 +1310,7 @@ t-stat relative to zero null: 4.47195671186148
 <div class="math notranslate nohighlight">
 \[T=1.64^2*\left(\frac{\hat{E}[r^e]-x}{\sigma(r^e_t)}\right)^{-2}\]</div>
 <ul class="simple">
-<li><p>The more confident you want to be, the higher the sample</p></li>
+<li><p>The more confident you want to be, the longer the sample you need</p></li>
 <li><p>The more volatile the asset the longer the sample</p></li>
 <li><p>The higher the expected value you have for the asset, the shorten the sample</p></li>
 <li><p>in the case of x=0 this becomes</p></li>
@@ -1339,7 +1337,9 @@ t-stat relative to zero null: 4.47195671186148
 </div>
 </div>
 </div>
-<p>What does it tell you about opening a hedge fund?</p>
+<blockquote>
+<div><p>What does it tell you about opening a hedge fund?</p>
+</div></blockquote>
 <p>Lets look at the market spliting it in 15 year periods</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1359,7 +1359,7 @@ t-stat relative to zero null: 4.47195671186148
 </div>
 </div>
 <ul class="simple">
-<li><p>even then there would be multiple 15 year periods where we would not be 15% sure that the market has a positive expected value</p></li>
+<li><p>even then there would be multiple 15 year periods where we would not be 10% sure that the market has a positive expected value</p></li>
 <li><p>If you think the market risk-premium moves much faster than this, then the sample mean is fairly unreliable estimator</p></li>
 <li><p>This insight will be very important to think about alphas</p></li>
 <li><p>This also tells you that timing the market based on past performance–even 15 past performance is a disaster!</p></li>
@@ -1385,8 +1385,12 @@ t-stat relative to zero null: 4.47195671186148
 \[\alpha=E[r^e-\beta f]\]</div>
 <ul class="simple">
 <li><p>So you might think the longer the sample, the better right?</p></li>
-<li><p>But while for factor premia we have lots of theory telling us that it should move very slowly–it is about aggregate risk–and it should not go away just because people know it–it is compensation for aggregate risk–people choose not to go all the way because it is risky!</p></li>
-<li><p>For alphas, it is the opposite, everyone is jumping at alpha. The whole point is that alpha, real alpha, are premiums that you earn after you HEDGE out any aggregate factor exposure you portfolio have</p></li>
+<li><p>But while for factor premia we have lots of theory telling us that it should move very slowly–it is about aggregate risk–and it should not go away just because people know it</p>
+<ul>
+<li><p>it is compensation for aggregate risk!!–people choose not to go all the way because it is risky!</p></li>
+</ul>
+</li>
+<li><p>For alphas, it is the opposite, everyone is jumping when alpha is detected. The whole point is that alpha, real alpha, are premiums that you earn after you HEDGE out any aggregate factor exposure you portfolio have</p></li>
 <li><p>What happens with the price as more people buy an asset?</p></li>
 <li><p>What happens with the asset actual long-term value?</p></li>
 <li><p>What happens with the alpha?</p></li>
@@ -1530,8 +1534,8 @@ t-stat relative to zero null: 4.47195671186148
 </div>
 <ul class="simple">
 <li><p>You see that no matter the horizon there is no PREDICTIVE relationship, last period alpha is not related to future period alpha</p></li>
-<li><p>You see that even if you sort on t-stat is not better</p></li>
-<li><p>Even quite high T-states are not associated with higher future alphas</p></li>
+<li><p>You see that even if you sort on t-stat, it is not better</p></li>
+<li><p>Even quite high T-stats are not associated with higher future alphas</p></li>
 <li><p>This is not surprising!</p></li>
 <li><p>Alpha is all you want and all you need. So everyone is chasing it</p></li>
 </ul>
@@ -1553,7 +1557,7 @@ t-stat relative to zero null: 4.47195671186148
 <li><p>Once too much capital is in the trade we say that the trade is “crowded”</p></li>
 <li><p>A Crowded trade can yield NEGATIVE alpha, even if the original idea was right!</p></li>
 <li><p>You have to be right, but also early.</p></li>
-<li><p>If the trade gets crowded after you already in, it is good, you get the price moving in your direction and you close your position</p></li>
+<li><p>If the trade gets crowded after you already in, is that good or bad? What do you do?</p></li>
 </ul>
 </li>
 </ul>
@@ -1564,24 +1568,27 @@ t-stat relative to zero null: 4.47195671186148
 <ul class="simple">
 <li><p>Valuation. You understand a business/market and think the market is not seeing what you are seeing. IT can be short-term insight, like a big client will cancel their services, or long-term prospects for the company business.</p>
 <ul>
-<li><p>Warren Buffet whole stick is about this. Read his letters to share-holders. It is all about finding good firms at good value</p></li>
+<li><p>Warren Buffet whole stick is about this. Read his letters to shareholders. It is all about finding good firms at good value</p></li>
 <li><p>David Einhorn is another example. He famously betted against Leahman Brothers.</p></li>
-<li><p>Often this view will be formed by not only looking at balance sheets , but interacting with company insiders. Even though interactions are public, access allow a good fundamental analyst to see things more clearly (if you get private information, it is of course “earier” but it is illegal and you might end up in jail!)</p></li>
+<li><p>Often this view will be formed by not only looking at balance sheets , but interacting with company insiders. Even though interactions are public, access allow a good fundamental analyst to see things more clearly (if you get private information, it is of course “easier” but it is illegal and you might end up in jail!)</p></li>
 <li><p>Edge here is having good business judgment. You need to be confident that you are seeing something different form the market and you are right!</p></li>
+<li><p>IT is good discipline to think why people are thinking the wrong thing–you need to understand why the opportunity is there in the first place</p></li>
 </ul>
 </li>
 <li><p>Liquidity provision</p>
 <ul>
 <li><p>When firms are downgraded some fund are forced to sell, this often creates reversals</p></li>
 <li><p>Similar effect happens when a firm is dropped from an index, say SP500</p></li>
-<li><p>And it happens in reversal when it is added to the index</p></li>
-<li><p>When mutual fund suffers outflows, they often have to sell, this often creates reversals</p></li>
+<li><p>And it happens in the opposite direction when it is added to the index</p></li>
+<li><p>When mutual fund suffers outflows, they often have to sell, this often creates reversals are as well</p></li>
+<li><p>The bet here is that you understand the reason these buy and sells are happening–and that they are not about fundamental news</p></li>
+<li><p>So you bet the price movements triggered by them will ultimate revert, so you take the other side of the trade–i.e. provide liquidity (at a sweet premium of course)</p></li>
 </ul>
 </li>
 <li><p>Data that other people don’t have.</p>
 <ul>
-<li><p>Famous example are satellite pictures of parking lots of retail stores</p></li>
-<li><p>Flow information of who is buying/selling what. Citadel securities for example.</p></li>
+<li><p>Famous example are satellite pictures of parking lots of retail stores–might allow you to predict sales better which hopefully translates into predictions about prices once the market becomes aware of the sales</p></li>
+<li><p>Flow data–this is slightly different from liquidity provision–as you can front run buys/sells if you know that the flows are coming and that they will move markets</p></li>
 <li><p>flooding data, exposure to temperature,</p></li>
 <li><p>supplier data</p></li>
 <li><p>See below a diagram by JP Morgan illustrating the variety of data sources</p></li>
@@ -1589,43 +1596,31 @@ t-stat relative to zero null: 4.47195671186148
 </li>
 </ul>
 <p><img alt="Alternative Data" src="../../_images/alternativedata.png" /></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">0.8</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.03650751600100388
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="alpha-quantification-procedure">
 <h2><span class="section-number">7.8. </span>Alpha Quantification Procedure<a class="headerlink" href="#alpha-quantification-procedure" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>regardless how you get to you alpha, in the end you have to put your trading insights in the same playing field</p></li>
+<li><p>Regardless how you get to you alpha, in the end you have to put your trading insights in the same playing field</p></li>
 <li><p>Need to choose an horizon, say a month, and put all your alpha in that frequency.</p></li>
 </ul>
 <p>Example:</p>
 <ul class="simple">
-<li><p>Say you have a theory that NVDIA currently trading at 1000 will be at 800 in one year due things that entirely specific to NVDIA (that is a -20% return)</p></li>
-<li><p>Suppose you do not have a theory of when exactly that will happen like an earnings announcement</p></li>
+<li><p>Say you have a theory that NVDIA currently trading at 1000 will be at 800 in one year due to things that entirely specific to NVDIA (that is a -20% return)</p></li>
+<li><p>Suppose you do not have a theory of when exactly that will happen</p></li>
 <li><p>Then you alpha for next month is <span class="math notranslate nohighlight">\((0.8)^{(1/12)}-1\approx-1.8\%\)</span></p></li>
-<li><p>Now suppose you know the timing–so you know this is bad news is likely to come only on the last two earnings of the year, then you alpha=0 for the first size months of the year and <span class="math notranslate nohighlight">\((0.8)^{(1/6)}-1\approx-3.6\%\)</span> for last six months of the year</p></li>
+<li><p>Now suppose you know the timing–so you know this  bad news is likely to come only on the last two earnings of the year, then you alpha=0 for the first six months of the year and <span class="math notranslate nohighlight">\((0.8)^{(1/6)}-1\approx-3.6\%\)</span> for last six months of the year</p></li>
 </ul>
 </section>
 <section id="alpha-is-unique-and-cannot-be-driven-by-broad-macro-factors">
 <h2><span class="section-number">7.9. </span>Alpha is unique and cannot be driven by broad macro factors<a class="headerlink" href="#alpha-is-unique-and-cannot-be-driven-by-broad-macro-factors" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>IT is useful to develop views for a range of firms/ industries to check that you are nto implicitly making a market-wide bet</p></li>
+<li><p>It is useful to develop views for a range of firms/ industries to check that you are not implicitly making a market-wide bet</p></li>
 <li><p>if that is your bet, it is silly to hedge market risk–and it is stupid to buy a single stock to trade this view</p></li>
 <li><p>You should just buy the market in this case!</p></li>
-<li><p>And it is important to be aware because it is hard to be right!</p></li>
-<li><p>In pr0active the notion of “broad macro factors” is much broader then market beta and will often include exposure to a variety of factors, including industry factors</p></li>
-<li><p>While it is ok to make a bet on an industry, it is important to know that what you trade is</p></li>
-<li><p>Buying NVDIA because your bullish on the tech sector is stupid–you should buy the whole tech sector in that case–much less risk per unit of exposure!</p></li>
+<li><p>And it is important to be aware because it is much hard to be right!</p></li>
+<li><p>In practice the notion of “broad macro factors” is much broader then market beta and will often include exposure to a variety of factors, including industry factors</p></li>
+<li><p>While it is ok to make a bet on an industry, it is important to know exactly what your trade is</p></li>
+<li><p>Buying NVDIA because your bullish on the tech sector is stupid–you should buy the whole tech sector in that case–much less risk per unit of exposure- as it is not exposed to NVDIA specific factors?</p></li>
 </ul>
 <blockquote>
 <div><h4 class="rubric" id="extra-material-the-normal-distribution">Extra Material: The Normal distribution</h4>
