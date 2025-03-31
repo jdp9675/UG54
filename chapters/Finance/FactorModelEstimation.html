@@ -607,7 +607,7 @@ document.write(`
 <p>Do we want to know how it behaved in the recent past?</p>
 <p>When should we care about historical data?</p>
 <p>We need to know these parameters for our investment period, say next month or next year</p>
-<p>Some of those we observe directly in financial markets like the risk-free rate</p>
+<p>Some of those we observe directly in financial markets like the risk-free rate–financial markets tell you exactly how much your will ear goign forward</p>
 <p>others we need to use some data to form our views</p>
 <p>I will discuss each one by one</p>
 </section>
@@ -624,13 +624,15 @@ document.write(`
 <li><p>What this notation means?</p></li>
 <li><p>It is asking to what extent the asset returns are above it’s expected values when the factor is above it’s expected value</p></li>
 <li><p>It normalizes everything by the variance of the factor</p></li>
-<li><p>So a beta of 1 means that the asset is EXPECTED to move 1 for 1 with factor</p></li>
+<li><p>So a beta of 1 means that the asset is EXPECTED to move 1 for 1 with the factor</p></li>
 <li><p>But of course it can have some additional idio risk on top</p></li>
-<li><p>The subscripts in the covariance and variance means that it is these moments from the perspective of someone that is a date <span class="math notranslate nohighlight">\(t\)</span></p></li>
-<li><p>That is, you don;t know the particular realization of the variables</p></li>
+<li><p>The subscripts in the covariance and variance means that it is these moments from the perspective of someone that has all the informationup to  date <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p>That is, you don’t know the particular realization of the variables</p></li>
 </ul>
 <p>How do we estimate betas?</p>
-<p>We run a regression. We typically do not use the whole sample when using individual stocks–stocks change. So we want the most up to date behavior–but cannot be too short otherwise you cannot say anything. Academic literature likes to use between 1 year to 2 years if using daily data</p>
+<p>We run a regression!</p>
+<p>We typically do not use the whole sample when using individual stocks–stocks behavior change. So we want the most up to date behavior–but cannot be too short otherwise you cannot say anything as estimation uncertainty will be very high!</p>
+<p>Academic literature likes to use between 1 year to 2 years if using daily data</p>
 <p>(when working with illiquid stocks daily data might be problematic and weekly or monthly might be more advisable, but the sample period will have to be increased. For example, for monthly people use 5 years)</p>
 <p>We will focus on simple regressions, and briefly discuss alternatives</p>
 <div class="cell docutils container">
@@ -755,7 +757,8 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>barely any uncertainty, but we are quite sure it is above 1. How sure?</p>
+<p>barely any uncertainty and we are quite sure it is above 1.</p>
+<p>How sure?</p>
 <p>Note that the null in the table is for the null hypothesis that beta=0</p>
 <div class="math notranslate nohighlight">
 \[t=\frac{\beta-1}{se(\beta)}\]</div>
