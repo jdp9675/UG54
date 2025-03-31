@@ -556,8 +556,7 @@ document.write(`
 
     <span class="k">return</span> <span class="n">daily_returns</span>
 
-
-<span class="k">def</span><span class="w"> </span><span class="nf">get_daily_wrds_multiple_ticker</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span><span class="n">conn</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
   
     <span class="c1"># Retrieve PERMNOs for the specified tickers</span>
     <span class="n">permnos</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">library</span><span class="o">=</span><span class="s1">&#39;crsp&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;stocknames&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;namedt&#39;</span><span class="p">,</span> <span class="s1">&#39;nameenddt&#39;</span><span class="p">])</span>
@@ -568,44 +567,20 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">permno_list</span><span class="p">)</span>
 
     <span class="c1"># Query daily stock file for the specified PERMNOs</span>
+    
     <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        SELECT permno, date, ret, retx, prc       </span>
 <span class="s2">        FROM crsp.dsf</span>
 <span class="s2">        WHERE permno IN (</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">permno_list</span><span class="p">))</span><span class="si">}</span><span class="s2">)</span>
-<span class="s2">        ORDER BY date</span>
+<span class="s2">        ORDER BY date,permno</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
     <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">permnos</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-    <span class="c1"># Pivot data to have dates as index and tickers as columns</span>
-    <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>    
+<span class="c1"># Pivot data to have dates as index and tickers as columns</span>
+    <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>    
     <span class="n">daily_returns</span><span class="o">=</span><span class="n">daily_returns</span><span class="p">[</span><span class="n">tickers</span><span class="p">]</span>
 
-
-
     <span class="k">return</span> <span class="n">daily_returns</span>
-
-
-<span class="c1"># tickers = [&#39;UNH&#39;]</span>
-<span class="c1"># # Retrieve PERMNOs for the specified tickers</span>
-<span class="c1"># permnos = conn.get_table(library=&#39;crsp&#39;, table=&#39;stocknames&#39;, columns=[&#39;permno&#39;, &#39;ticker&#39;, &#39;namedt&#39;, &#39;nameenddt&#39;])</span>
-<span class="c1"># permnos[&#39;nameenddt&#39;]=pd.to_datetime(permnos[&#39;nameenddt&#39;])</span>
-<span class="c1"># permnos = permnos[(permnos[&#39;ticker&#39;].isin(tickers)) &amp; (permnos[&#39;nameenddt&#39;]==permnos[&#39;nameenddt&#39;].max())]</span>
-
-<span class="c1"># # Extract unique PERMNOs</span>
-<span class="c1"># permno_list = permnos[&#39;permno&#39;].unique().tolist()</span>
-
-<span class="c1"># # Query daily stock file for the specified PERMNOs</span>
-<span class="c1"># query = f&quot;&quot;&quot;</span>
-<span class="c1">#     SELECT permno, date, ret,       </span>
-<span class="c1">#     FROM crsp.dsf</span>
-<span class="c1">#     WHERE permno IN ({&#39;,&#39;.join(map(str, permno_list))})</span>
-<span class="c1">#     ORDER BY date</span>
-<span class="c1"># &quot;&quot;&quot;</span>
-<span class="c1"># daily_returns = conn.raw_sql(query, date_cols=[&#39;date&#39;])</span>
-<span class="c1"># daily_returns = daily_returns.merge(permnos[[&#39;permno&#39;, &#39;ticker&#39;]], on=&#39;permno&#39;, how=&#39;left&#39;)</span>
-<span class="c1"># # Pivot data to have dates as index and tickers as columns</span>
-<span class="c1"># daily_returns = daily_returns.pivot(index=&#39;date&#39;, columns=&#39;ticker&#39;, values=&#39;ret&#39;)</span>
-<span class="c1"># daily_returns=daily_returns[&#39;2000&#39;:]</span>
 </pre></div>
 </div>
 </div>
@@ -1136,7 +1111,9 @@ returns?</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#conn = wrds.Connection()</span>
-<span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds_multiple_ticker</span><span class="p">([</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">],</span><span class="n">conn</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">])</span>
 <span class="c1">#Why did I divide by 252?</span>
 <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rf</span><span class="o">/</span><span class="mi">252</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 <span class="n">df</span>

@@ -508,7 +508,7 @@ document.write(`
 <div class="cell tag_hidden-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define functions  </span>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_daily_wrds_multiple_ticker</span><span class="p">(</span><span class="n">tickers</span><span class="p">,</span><span class="n">conn</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
   
     <span class="c1"># Retrieve PERMNOs for the specified tickers</span>
     <span class="n">permnos</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">library</span><span class="o">=</span><span class="s1">&#39;crsp&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;stocknames&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;namedt&#39;</span><span class="p">,</span> <span class="s1">&#39;nameenddt&#39;</span><span class="p">])</span>
@@ -519,19 +519,18 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">permno_list</span><span class="p">)</span>
 
     <span class="c1"># Query daily stock file for the specified PERMNOs</span>
+    
     <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        SELECT permno, date, ret, retx, prc       </span>
 <span class="s2">        FROM crsp.dsf</span>
 <span class="s2">        WHERE permno IN (</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">permno_list</span><span class="p">))</span><span class="si">}</span><span class="s2">)</span>
-<span class="s2">        ORDER BY date</span>
+<span class="s2">        ORDER BY date,permno</span>
 <span class="s2">    &quot;&quot;&quot;</span>
     <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
     <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">permnos</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-    <span class="c1"># Pivot data to have dates as index and tickers as columns</span>
-    <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>    
+<span class="c1"># Pivot data to have dates as index and tickers as columns</span>
+    <span class="n">daily_returns</span> <span class="o">=</span> <span class="n">daily_returns</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>    
     <span class="n">daily_returns</span><span class="o">=</span><span class="n">daily_returns</span><span class="p">[</span><span class="n">tickers</span><span class="p">]</span>
-
-
 
     <span class="k">return</span> <span class="n">daily_returns</span>
 
@@ -698,7 +697,7 @@ What if the market crashes before apple surprises and your investors pull out?</
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
 <span class="n">ticker</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MSFT&#39;</span><span class="p">]</span>
-<span class="n">df_returns</span> <span class="o">=</span> <span class="n">get_daily_wrds_multiple_ticker</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
+<span class="n">df_returns</span> <span class="o">=</span> <span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="n">ticker</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_returns</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 <span class="n">df_returns</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>

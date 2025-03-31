@@ -635,6 +635,14 @@ document.write(`
 <p>We will focus on simple regressions, and briefly discuss alternatives</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install wrds
+<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
 <span class="n">ticker</span><span class="o">=</span><span class="s1">&#39;GE&#39;</span>
 <span class="n">df_returns</span> <span class="o">=</span> <span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,[</span><span class="n">ticker</span><span class="p">])</span>
