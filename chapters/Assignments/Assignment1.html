@@ -246,6 +246,9 @@
 <li class="toctree-l2"><a class="reference internal" href="Assignment3.html">14.12. Assignment 3</a></li>
 
 
+<li class="toctree-l2"><a class="reference internal" href="Assignment4.html">14.15. Assignment 4</a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -535,10 +538,434 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pandas.tseries.offsets</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonthEnd</span>
 
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/amoreira2/Fin418/blob/main/assets/data/Assignment1.xlsx?raw=true&#39;</span>
+
+<span class="c1"># Import the data</span>
+<span class="n">df_ind</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span>
+    <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;49_Industry_Portfolios&#39;</span><span class="p">,</span>
+    <span class="n">skiprows</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="n">na_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-99.99&#39;</span><span class="p">],</span>
+    <span class="n">usecols</span><span class="o">=</span><span class="s2">&quot;A:AX&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Rename the column with date information</span>
+<span class="n">df_ind</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">df_ind</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="s1">&#39;date&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Convert the date column to datetime</span>
+<span class="n">df_ind</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_ind</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%m&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set date as the index</span>
+<span class="n">df_ind</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Check the dataframe</span>
+<span class="n">df_ind</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 <span class="c1"># your code below</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 1069 entries, 1926-07-01 to 2015-07-01
+Data columns (total 49 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   Agric   1069 non-null   float64
+ 1   Food    1069 non-null   float64
+ 2   Soda    625 non-null    float64
+ 3   Beer    1069 non-null   float64
+ 4   Smoke   1069 non-null   float64
+ 5   Toys    1069 non-null   float64
+ 6   Fun     1069 non-null   float64
+ 7   Books   1069 non-null   float64
+ 8   Hshld   1069 non-null   float64
+ 9   Clths   1069 non-null   float64
+ 10  Hlth    553 non-null    float64
+ 11  MedEq   1069 non-null   float64
+ 12  Drugs   1069 non-null   float64
+ 13  Chems   1069 non-null   float64
+ 14  Rubbr   1009 non-null   float64
+ 15  Txtls   1069 non-null   float64
+ 16  BldMt   1069 non-null   float64
+ 17  Cnstr   1069 non-null   float64
+ 18  Steel   1069 non-null   float64
+ 19  FabPr   625 non-null    float64
+ 20  Mach    1069 non-null   float64
+ 21  ElcEq   1069 non-null   float64
+ 22  Autos   1069 non-null   float64
+ 23  Aero    1069 non-null   float64
+ 24  Ships   1069 non-null   float64
+ 25  Guns    625 non-null    float64
+ 26  Gold    625 non-null    float64
+ 27  Mines   1069 non-null   float64
+ 28  Coal    1069 non-null   float64
+ 29  Oil     1069 non-null   float64
+ 30  Util    1069 non-null   float64
+ 31  Telcm   1069 non-null   float64
+ 32  PerSv   1057 non-null   float64
+ 33  BusSv   1069 non-null   float64
+ 34  Hardw   1069 non-null   float64
+ 35  Softw   601 non-null    float64
+ 36  Chips   1069 non-null   float64
+ 37  LabEq   1069 non-null   float64
+ 38  Paper   1024 non-null   float64
+ 39  Boxes   1069 non-null   float64
+ 40  Trans   1069 non-null   float64
+ 41  Whlsl   1069 non-null   float64
+ 42  Rtail   1069 non-null   float64
+ 43  Meals   1069 non-null   float64
+ 44  Banks   1069 non-null   float64
+ 45  Insur   1069 non-null   float64
+ 46  RlEst   1069 non-null   float64
+ 47  Fin     1069 non-null   float64
+ 48  Other   1069 non-null   float64
+dtypes: float64(49)
+memory usage: 417.6 KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ind</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Agric</th>
+      <th>Food</th>
+      <th>Soda</th>
+      <th>Beer</th>
+      <th>Smoke</th>
+      <th>Toys</th>
+      <th>Fun</th>
+      <th>Books</th>
+      <th>Hshld</th>
+      <th>Clths</th>
+      <th>...</th>
+      <th>Boxes</th>
+      <th>Trans</th>
+      <th>Whlsl</th>
+      <th>Rtail</th>
+      <th>Meals</th>
+      <th>Banks</th>
+      <th>Insur</th>
+      <th>RlEst</th>
+      <th>Fin</th>
+      <th>Other</th>
+    </tr>
+    <tr>
+      <th>date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1926-07-01</th>
+      <td>2.37</td>
+      <td>0.12</td>
+      <td>NaN</td>
+      <td>-5.19</td>
+      <td>1.29</td>
+      <td>8.65</td>
+      <td>2.50</td>
+      <td>50.21</td>
+      <td>-0.48</td>
+      <td>8.08</td>
+      <td>...</td>
+      <td>7.70</td>
+      <td>1.94</td>
+      <td>-23.79</td>
+      <td>0.07</td>
+      <td>1.87</td>
+      <td>4.61</td>
+      <td>-0.54</td>
+      <td>2.89</td>
+      <td>-4.85</td>
+      <td>5.20</td>
+    </tr>
+    <tr>
+      <th>1926-08-01</th>
+      <td>2.23</td>
+      <td>2.68</td>
+      <td>NaN</td>
+      <td>27.03</td>
+      <td>6.50</td>
+      <td>16.81</td>
+      <td>-0.76</td>
+      <td>42.98</td>
+      <td>-3.58</td>
+      <td>-2.51</td>
+      <td>...</td>
+      <td>-2.38</td>
+      <td>4.88</td>
+      <td>5.39</td>
+      <td>-0.75</td>
+      <td>-0.13</td>
+      <td>11.83</td>
+      <td>2.57</td>
+      <td>5.30</td>
+      <td>-0.57</td>
+      <td>6.76</td>
+    </tr>
+    <tr>
+      <th>1926-09-01</th>
+      <td>-0.57</td>
+      <td>1.58</td>
+      <td>NaN</td>
+      <td>4.02</td>
+      <td>1.26</td>
+      <td>8.33</td>
+      <td>6.42</td>
+      <td>-4.91</td>
+      <td>0.73</td>
+      <td>-0.51</td>
+      <td>...</td>
+      <td>-5.54</td>
+      <td>0.06</td>
+      <td>-7.87</td>
+      <td>0.25</td>
+      <td>-0.56</td>
+      <td>-1.75</td>
+      <td>0.72</td>
+      <td>-3.06</td>
+      <td>-3.14</td>
+      <td>-3.86</td>
+    </tr>
+    <tr>
+      <th>1926-10-01</th>
+      <td>-0.46</td>
+      <td>-3.68</td>
+      <td>NaN</td>
+      <td>-3.31</td>
+      <td>1.06</td>
+      <td>-1.40</td>
+      <td>-5.09</td>
+      <td>5.37</td>
+      <td>-4.68</td>
+      <td>0.12</td>
+      <td>...</td>
+      <td>-5.08</td>
+      <td>-2.64</td>
+      <td>-15.38</td>
+      <td>-2.20</td>
+      <td>-4.11</td>
+      <td>-11.82</td>
+      <td>-4.28</td>
+      <td>-5.74</td>
+      <td>2.07</td>
+      <td>-8.49</td>
+    </tr>
+    <tr>
+      <th>1926-11-01</th>
+      <td>6.75</td>
+      <td>6.26</td>
+      <td>NaN</td>
+      <td>7.29</td>
+      <td>4.55</td>
+      <td>0.00</td>
+      <td>1.82</td>
+      <td>-6.40</td>
+      <td>-0.54</td>
+      <td>1.87</td>
+      <td>...</td>
+      <td>3.84</td>
+      <td>1.60</td>
+      <td>4.67</td>
+      <td>6.52</td>
+      <td>4.33</td>
+      <td>-2.97</td>
+      <td>3.58</td>
+      <td>2.21</td>
+      <td>4.92</td>
+      <td>4.00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2015-03-01</th>
+      <td>-5.28</td>
+      <td>2.47</td>
+      <td>-4.64</td>
+      <td>-2.07</td>
+      <td>-8.82</td>
+      <td>-4.11</td>
+      <td>-2.35</td>
+      <td>0.48</td>
+      <td>-1.98</td>
+      <td>1.23</td>
+      <td>...</td>
+      <td>-3.25</td>
+      <td>-3.62</td>
+      <td>0.61</td>
+      <td>0.99</td>
+      <td>-0.29</td>
+      <td>-0.83</td>
+      <td>2.28</td>
+      <td>3.91</td>
+      <td>-0.57</td>
+      <td>-2.13</td>
+    </tr>
+    <tr>
+      <th>2015-04-01</th>
+      <td>1.07</td>
+      <td>-0.23</td>
+      <td>-0.43</td>
+      <td>-0.52</td>
+      <td>5.94</td>
+      <td>9.25</td>
+      <td>2.62</td>
+      <td>-4.07</td>
+      <td>-2.41</td>
+      <td>-1.53</td>
+      <td>...</td>
+      <td>-1.72</td>
+      <td>-1.14</td>
+      <td>-1.20</td>
+      <td>-2.88</td>
+      <td>0.51</td>
+      <td>2.13</td>
+      <td>-1.78</td>
+      <td>-2.72</td>
+      <td>0.48</td>
+      <td>0.34</td>
+    </tr>
+    <tr>
+      <th>2015-05-01</th>
+      <td>3.43</td>
+      <td>2.82</td>
+      <td>0.20</td>
+      <td>2.00</td>
+      <td>1.28</td>
+      <td>-3.63</td>
+      <td>1.68</td>
+      <td>2.02</td>
+      <td>0.39</td>
+      <td>0.04</td>
+      <td>...</td>
+      <td>0.33</td>
+      <td>-3.06</td>
+      <td>1.42</td>
+      <td>0.53</td>
+      <td>1.56</td>
+      <td>2.61</td>
+      <td>4.64</td>
+      <td>0.68</td>
+      <td>2.07</td>
+      <td>0.84</td>
+    </tr>
+    <tr>
+      <th>2015-06-01</th>
+      <td>-7.59</td>
+      <td>-0.79</td>
+      <td>-2.34</td>
+      <td>-1.71</td>
+      <td>-2.57</td>
+      <td>0.46</td>
+      <td>1.42</td>
+      <td>0.20</td>
+      <td>-0.11</td>
+      <td>4.17</td>
+      <td>...</td>
+      <td>-3.34</td>
+      <td>-3.25</td>
+      <td>-2.80</td>
+      <td>-0.48</td>
+      <td>0.29</td>
+      <td>1.67</td>
+      <td>2.17</td>
+      <td>-2.98</td>
+      <td>-0.58</td>
+      <td>-3.84</td>
+    </tr>
+    <tr>
+      <th>2015-07-01</th>
+      <td>-2.75</td>
+      <td>3.55</td>
+      <td>6.68</td>
+      <td>3.51</td>
+      <td>9.59</td>
+      <td>-3.85</td>
+      <td>8.00</td>
+      <td>-2.99</td>
+      <td>0.97</td>
+      <td>5.97</td>
+      <td>...</td>
+      <td>-0.90</td>
+      <td>3.27</td>
+      <td>-1.30</td>
+      <td>5.78</td>
+      <td>4.15</td>
+      <td>2.67</td>
+      <td>1.66</td>
+      <td>1.55</td>
+      <td>0.25</td>
+      <td>2.85</td>
+    </tr>
+  </tbody>
+</table>
+<p>1069 rows × 49 columns</p>
+</div></div></div>
 </div>
 <p><strong>Exercise 2. Advanced date manipulation</strong></p>
 <ol class="arabic simple">
