@@ -479,16 +479,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">8.1. Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">8.2. The rise of “pod shops”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-with-time-varying-volatility">8.3. Capital Allocation with Time-varying volatility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-managing-the-market">8.4. Volatility managing the market</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-monthly-realized-variance-from-daily-data">8.4.1. <strong>Constructing monthly realized variance from daily data</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-signal-to-weights">8.4.2. <strong>From signal to weights</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns">8.4.3. <strong>Construct strategy returns</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-allocate-across-assets">8.1. How to allocate across assets?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">8.2. Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">8.3. How to Combine the  Hedged portfolio (alpha) and the Market (beta)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">8.4. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-with-time-varying-volatility">8.5. Capital Allocation with Time-varying volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-managing-the-market">8.6. Volatility managing the market</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-monthly-realized-variance-from-daily-data">8.6.1. <strong>Constructing monthly realized variance from daily data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-signal-to-weights">8.6.2. <strong>From signal to weights</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns">8.6.3. <strong>Construct strategy returns</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">8.5. Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">8.7. Takeaways</a></li>
 </ul>
             </nav>
         </div>
@@ -506,7 +508,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_factors</span><span class="p">(</span><span class="n">factors</span><span class="o">=</span><span class="s1">&#39;CAPM&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;daily&#39;</span><span class="p">):</span>   
@@ -573,11 +575,11 @@ document.write(`
 <li><p>How large is my risk portfolio? This comes down to determining how much risk do you want to take</p></li>
 <li><p>How will I split this portfolio across assets</p></li>
 </ol>
-<p>How to approach these questions depend on whether you are investing as principal (i.e. on your behalf) or as a delegate (a manager in a hedge fund)</p>
+<p>How to approach these questions depend on whether you are investing as principal (i.e. on your behalf ) or as a delegate (i.e. a manager in a hedge fund, mutual fund)</p>
 <p><strong>1. The Portfolio risk decision</strong></p>
-<p>The benefit of risk-taking is the extra expected return you get relative to the risk-free rate.
-That is true both for a principal and a delegate
-You wealth is expected to grow faster (either directly or indirectly trough your performance compensation)</p>
+<p>The benefit of risk-taking is the extra expected return you get relative to the risk-free rate.</p>
+<p>That is true both for a principal and a delegate</p>
+<p>You wealth is expected to grow faster (either directly or indirectly due to your performance)</p>
 <p>The cost is the “risk”. It is important to think exactly what you fear to think about how costly taking on risk is for you</p>
 <p><strong>A. Principal</strong></p>
 <ul class="simple">
@@ -601,23 +603,25 @@ You wealth is expected to grow faster (either directly or indirectly trough your
 </ul>
 <p><strong>B. Delegate</strong></p>
 <ul class="simple">
-<li><p>The delegate certainly has stop loss rule</p></li>
+<li><p>The delegate certainly has stop loss rule–at some point the principal will jump in a stop the fund</p></li>
 <li><p>If they lose more than that amount they are forced to liquidate their positions and they are likely to be fired</p></li>
 <li><p>Such stop loss is particularly biding for new managers</p></li>
-<li><p>This stop loss might be explicit:the fund principal literally tells what it is</p></li>
+<li><p>This stop loss might be explicit: the fund principal literally tells what it is</p></li>
 <li><p>But most likely is implicitly–there is a loss that investors will freak out and pull out</p></li>
 <li><p>You got to think for yourself and have very clearly what the number is</p></li>
+<li><p>Investing as a delegate without that number in mind is reckless</p></li>
 </ul>
 <p><strong>Formalizing their problems</strong></p>
 <ul class="simple">
-<li><p>I think is more useful to think in terms of the one-year ahead looses you are comfortable with.</p>
+<li><p>I think is more useful to think in terms of the one-year ahead looses you are comfortable with.</p></li>
+<li><p>Lets start with some simple notation</p>
 <ul>
 <li><p>F is the CDF of a standard normal, and <span class="math notranslate nohighlight">\(F^{-1}\)</span> is it’s quantile function</p></li>
 <li><p>h is a scalar greater than 1 that adjusts for deviation from the normal.</p></li>
 <li><p>For example h=1.5 will mean that a 3 sigma event is as likely as a 3/h=2 sigma event</p>
 <ul>
 <li><p>It is important to always keep in mind that the normal distribution is just an approximation.</p></li>
-<li><p>But better with it, then without it</p></li>
+<li><p>But better with it, then without it–allows you to do some simple calculations!</p></li>
 </ul>
 </li>
 <li><p>You pick a probability, <span class="math notranslate nohighlight">\(\underline{p}\)</span>,</p></li>
@@ -630,30 +634,18 @@ You wealth is expected to grow faster (either directly or indirectly trough your
 <p>Then</p>
 <div class="math notranslate nohighlight">
 \[\sigma\leq-\frac{\overline{L}}{hF^{-1}(\underline{p})}\]</div>
+<p>Lets do a calculation</p>
 <p>for <span class="math notranslate nohighlight">\(\underline{p}=5 \%\)</span>, <span class="math notranslate nohighlight">\(\overline{L}=30\%\)</span>,h=2 what do we get?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
-
-<span class="n">p</span><span class="o">=</span><span class="mf">0.05</span>
-<span class="n">h</span><span class="o">=</span><span class="mi">2</span>
-<span class="n">L</span><span class="o">=</span><span class="mf">0.3</span>
-<span class="n">sigma</span><span class="o">=-</span><span class="n">L</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
-<span class="n">sigma</span>
+<p>Note that you will need the normal quantile function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.09119352478676533
-</pre></div>
-</div>
-</div>
 </div>
 <p>You might want to incorporate your views on the portfolio expected return</p>
-<p>That is relevant in case your horizons are one year or longer.</p>
-<p>For horizons that are 1 month or shorter you are safe ignoring the expected value since the volatility totally dominates</p>
+<p>That is relevant in case your horizon is one year or longer.</p>
+<p>For horizons that are 1 month or shorter you are safe ignoring the expected value since the volatility totally dominates it– have Sharpe Ratios north of 3</p>
 <p>Now we write the problem as what fraction of your wealth w, you should invest in this portfolio</p>
-<p>the more you invest, the higher the expected growth <span class="math notranslate nohighlight">\(w\mu+rf\)</span>, but also the higher your wealth volatility <span class="math notranslate nohighlight">\(x\sigma\)</span></p>
+<p>The more you invest, the higher the expected growth <span class="math notranslate nohighlight">\(w\mu+rf\)</span>, but also the higher your wealth volatility <span class="math notranslate nohighlight">\(x\sigma\)</span></p>
 <div class="math notranslate nohighlight">
 \[w(hF^{-1}(\underline{p})\sigma+\mu)+rf\geq-\overline{L}\]</div>
 <p>to again represent in terms of total vol you choose to take I will rewrite</p>
@@ -664,7 +656,7 @@ You wealth is expected to grow faster (either directly or indirectly trough your
 <div class="math notranslate nohighlight">
 \[w\sigma\leq-\frac{\overline{L}+rf}{(hF^{-1}(\underline{p})+\frac{\mu}{\sigma})}\]</div>
 <ul class="simple">
-<li><p>A higher risk-free rate means you can take more vol, since you start from a higher expected baseline</p>
+<li><p>A higher risk-free rate means you can take more vol (holding L fixed), since you start from a higher expected baseline</p>
 <ul>
 <li><p>It is natural to have a real rate here since you probably care about your purchasing power</p></li>
 </ul>
@@ -674,7 +666,7 @@ You wealth is expected to grow faster (either directly or indirectly trough your
 <div class="math notranslate nohighlight">
 \[SR=\frac{E[r]-rf}{\sqrt{Var(r)}}=\frac{E[r^e]}{\sigma}=\frac{\mu}{\sigma}\]</div>
 <ul class="simple">
-<li><p>The higher the Sharpe ratio, the less negative is <span class="math notranslate nohighlight">\(hF^{-1}(\underline{p})+\frac{\mu}{\sigma}\)</span> and the higher is the higher the volatility you choose to take</p></li>
+<li><p>The higher the Sharpe ratio, the less negative is <span class="math notranslate nohighlight">\(hF^{-1}(\underline{p})+\frac{\mu}{\sigma}\)</span> and the higher the SR  is, the higher the volatility you choose to take–It is intuitive! It pays more to take risk!</p></li>
 </ul>
 <p>Lets plug some numbers with <span class="math notranslate nohighlight">\(rf=1\%\)</span> and SR=0.4 ( that is the market Sharpe ratio)</p>
 <div class="math notranslate nohighlight">
@@ -715,7 +707,7 @@ You wealth is expected to grow faster (either directly or indirectly trough your
 </div>
 </div>
 <p>As your SR grows that loss becomes less likely than 5% and the amount of risk that you can take while being 95% sure that you will not lose 30% of your dollars goes to infinity</p>
-<p>In this case you can simply adjust your confidence probabilities, but boy, what an amazing problem to have!</p>
+<p>In this case you can simply adjust your confidence probabilities, but what an amazing problem to have!</p>
 <p>Most hedge funds don’t have SR above 1, let alone 3!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -738,14 +730,15 @@ You wealth is expected to grow faster (either directly or indirectly trough your
 </div>
 </div>
 <ul class="simple">
-<li><p>Once you Sharpe Ratio is above 3 (as rare as snow in the winter), risk is unlikely to be the limiting factor</p></li>
-<li><p>Wat before then you hit at capacity constraints for your trade since your wealth will be growing so wildly fast</p>
+<li><p>Once you Sharpe Ratio is above 3 (as rare as snow in the summer), risk is unlikely to be the limiting factor</p></li>
+<li><p>In this scenario you are likely tp  hit at capacity constraints for your trade since your wealth will be growing so wildly fast</p>
 <ul>
 <li><p>For SR=3, your wealth grows at <span class="math notranslate nohighlight">\(w\sigma*\frac{\mu}{\sigma}=1*3=300\%\)</span> per year!</p></li>
 </ul>
 </li>
 </ul>
-<p><strong>2. How to allocate across assets</strong></p>
+<section id="how-to-allocate-across-assets">
+<h2><span class="section-number">8.1. </span>How to allocate across assets?<a class="headerlink" href="#how-to-allocate-across-assets" title="Link to this heading">#</a></h2>
 <p>Implicit in our discussion is that you have some desired portfolio with some Sharpe ratio <span class="math notranslate nohighlight">\(SR_p\)</span> and you are deciding how to invest in it.</p>
 <p>We can already see that having a large Sharpe ratio is a nice thing to have:</p>
 <ul class="simple">
@@ -765,7 +758,7 @@ You wealth is expected to grow faster (either directly or indirectly trough your
 $<span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span><span class="math notranslate nohighlight">\(
 This is the MEAN-VARIANCE EFFICIENT PORTFOLIO associated with moments \)</span>E[R^e]<span class="math notranslate nohighlight">\(,\)</span>\Sigma_{R}$</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(E[R^e]\)</span> is the vector of  expected excess returns across assets</p></li>
+<li><p><span class="math notranslate nohighlight">\(E[R^e]\)</span> is the vector of FORWARD LOOKING expected excess returns across assets</p></li>
 <li><p><span class="math notranslate nohighlight">\(\Sigma_{R}\)</span> is the FORWARD LOOKING variance-covariance matrix</p></li>
 <li><p>w is a scalar that controls the overall size of your portfolio, but does not impact the SR</p></li>
 </ul>
@@ -983,8 +976,9 @@ dtype: float64
 </div>
 <blockquote>
 <div><h5 class="rubric" id="stop-and-think">Stop and Think</h5>
-<ul class="simple">
-<li><p>Can you check that applying the little w above it will indeed solve problems 2 and 3?</p></li>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
 <li><p>Can you check that the SR of portfolio w*W is invariant to little w?</p></li>
 <li><p>Can you explain mechanically why this is happening?</p></li>
 </ul>
@@ -1023,17 +1017,16 @@ dtype: float64
 </div>
 <p>What does it mean that the relationship between Expected return and volatility is linear?</p>
 <p>Is that what you expect? Is that true in general as you change portfolio weights?</p>
-<p><strong>In reality</strong> knowing the true moments of the return distribution is HARD as we discussed a few classes ago</p>
+<p><strong>In reality</strong> knowing the true moments of the return distribution is HARD as we discussed in the last few weeks</p>
 <ul class="simple">
 <li><p>Here we used the “In Sample” means and variances</p></li>
 <li><p>By construction weight <span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span> will deliver the Highest in sample Sharpe Ratio. It is just math!</p></li>
 <li><p>The issue is to what extent these in sample moments are informative about the forward looking moments</p></li>
-<li><p>See the discussion last class</p></li>
 </ul>
 <p><strong>In reality</strong> your portfolio is not all you care about</p>
 <p>It is useful to decompose your allocation in terms of “factor bets” and “alpha bets”</p>
 <p>We will now focus on the “alpha” aspect of allocation and revisit factor allocation once we introduce multi-factor models</p>
-<p>Most fund managers have tight limits on factor exposures anyways, so factor exposure is more of a consequence of your alpha bets that you need to control rather then a form of investing.</p>
+<p>Most fund managers have tight limits on factor exposures anyways, so factor exposure is more of a consequence of your alpha bets that you need to control rather then a form of investing for most fund managers. If you are a large capital allocator, like a Pension fund or a university endowment then factor bets are also very important.</p>
 <p>Let’s say that you identified N trading strategies</p>
 <ul class="simple">
 <li><p>You believe their alphas are A (N by 1)</p></li>
@@ -1066,7 +1059,7 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 \[r^e_i-h^if=\alpha_i+\epsilon_i\]</div>
 <p>and follows that <span class="math notranslate nohighlight">\(E[r^e_i-h^if]=\alpha_i\)</span> and <span class="math notranslate nohighlight">\(Var(r^e_i-h^if)=\sigma_{\epsilon,i}^2\)</span></p>
 <p><strong>Bet sizing under uncertainty</strong></p>
-<p>This is the optimal if you are certain of you alphas</p>
+<p>This is the optimal IF YOU ARE 100% CONFIDENT of your alphas</p>
 <p>But of course you don’t really know, so the industry developed many Ad-hoc approaches for <strong>bet sizing</strong></p>
 <p><strong>Bet sizing</strong> is one of the great skills in a portfolio manager because it requires instinct for uncertainty</p>
 <p>The different Approaches (w is a scalar that controls the overall size of the portfolio )</p>
@@ -1081,7 +1074,7 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 <div class="math notranslate nohighlight">
 \[W_i=\frac{1}{N}\left((\alpha_i&gt;0)-(\alpha_i&lt;0)\right)\]</div>
 <ul class="simple">
-<li><p>this is good if you have goo hunches for mispricing, but you don’t get the magnitudes quite right</p></li>
+<li><p>this is good if you have good hunches for mispricing, but you don’t get the magnitudes quite right</p></li>
 </ul>
 <ul class="simple">
 <li><p><strong>Proportional</strong> rule: Buy/sell proportional to the alpha</p></li>
@@ -1094,7 +1087,7 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 <div class="math notranslate nohighlight">
 \[W_i=w \frac{1}{\sigma_{\epsilon,i}}\]</div>
 <ul class="simple">
-<li><p><strong>Minimum-Variance</strong> rule: you shrink the variance-covariance matrix towards diagonal</p></li>
+<li><p><strong>Minimum-Variance</strong> rule:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[W_i=w \frac{1}{\sigma_{\epsilon,i}^2}\]</div>
@@ -1106,13 +1099,6 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 \[W_i=w \frac{\alpha_i}{\sigma_{\epsilon,i}^2(1-\tau)+\tau\sigma_{shrink}^2}\]</div>
 <ul class="simple">
 <li><p>where <span class="math notranslate nohighlight">\(\tau\in[0,1]\)</span> is the shrinkage factor</p></li>
-<li><p><strong>Robust-Mean Variance</strong> rule: TBD</p></li>
-</ul>
-<p>there are equivalents of those for the case that covariance matrix is not diagonal as well, for example, if you did not impose a factor model or is doing allocation across factors</p>
-<ul class="simple">
-<li><p>Mean-Variance: <span class="math notranslate nohighlight">\(W=\mu\Sigma^{-1}\)</span></p></li>
-<li><p>Minimum-Variance: <span class="math notranslate nohighlight">\(W =1_N\Sigma^{-1}\)</span></p></li>
-<li><p>Variance Shrinkage: <span class="math notranslate nohighlight">\(W =\mu(\Sigma(1-\tau)+\tau I\sigma_{shrink}^2)^{-1}\)</span></p></li>
 </ul>
 <p>Some examples you should play with</p>
 <blockquote>
@@ -1135,8 +1121,9 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 </div>
 </div>
 </div>
+</section>
 <section id="exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">
-<h2><span class="section-number">8.1. </span>Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor<a class="headerlink" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor<a class="headerlink" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor" title="Link to this heading">#</a></h2>
 <p>In a few classes we will discuss Multi-factor models and the variety of factors that people in the industry use</p>
 <p>Six factors are particularly popular both in the industry and in the academic community</p>
 <p>A few of them have ETFS that aim to replicate them, which potentially allow retail investors to get exposure to them cheaply and also industry people to easily hedge their factor exposures. (We will investigate carefully to what extent these ETFs do a good job..coming soon in a theater near you!)</p>
@@ -1159,7 +1146,7 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 <li><p>Here this is a toy exercise and these correlations are likely real (for example, mom and HML have shown to be correlated in many different situations)</p></li>
 </ol>
 </li>
-<li><p>We will the apply the different rules</p></li>
+<li><p>We will  apply the different rules</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1169,20 +1156,6 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1222,26 +1195,6 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
   </thead>
   <tbody>
     <tr>
-      <th>2024-06-01</th>
-      <td>0.0041</td>
-      <td>0.0277</td>
-      <td>-0.0306</td>
-      <td>-0.0331</td>
-      <td>0.0051</td>
-      <td>-0.0178</td>
-      <td>0.0090</td>
-    </tr>
-    <tr>
-      <th>2024-07-01</th>
-      <td>0.0045</td>
-      <td>0.0124</td>
-      <td>0.0680</td>
-      <td>0.0574</td>
-      <td>0.0022</td>
-      <td>0.0043</td>
-      <td>-0.0242</td>
-    </tr>
-    <tr>
       <th>2024-08-01</th>
       <td>0.0048</td>
       <td>0.0161</td>
@@ -1259,17 +1212,37 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
       <td>-0.0259</td>
       <td>0.0004</td>
       <td>-0.0026</td>
-      <td>-0.0061</td>
+      <td>-0.0060</td>
     </tr>
     <tr>
       <th>2024-10-01</th>
       <td>0.0039</td>
       <td>-0.0097</td>
-      <td>-0.0100</td>
+      <td>-0.0101</td>
       <td>0.0089</td>
-      <td>-0.0140</td>
+      <td>-0.0138</td>
       <td>0.0103</td>
-      <td>0.0284</td>
+      <td>0.0287</td>
+    </tr>
+    <tr>
+      <th>2024-11-01</th>
+      <td>0.0040</td>
+      <td>0.0651</td>
+      <td>0.0463</td>
+      <td>-0.0005</td>
+      <td>-0.0262</td>
+      <td>-0.0217</td>
+      <td>0.0090</td>
+    </tr>
+    <tr>
+      <th>2024-12-01</th>
+      <td>0.0037</td>
+      <td>-0.0317</td>
+      <td>-0.0273</td>
+      <td>-0.0295</td>
+      <td>0.0182</td>
+      <td>-0.0110</td>
+      <td>0.0005</td>
     </tr>
   </tbody>
 </table>
@@ -1315,13 +1288,17 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alpha: [0.00565215 0.04340806 0.04082549 0.04305824 0.08436363]
-Beta: [ 0.20050922 -0.13683445 -0.09207115 -0.16721034 -0.15908574]
-Sigma_e: [[0.01021508 0.         0.         0.         0.        ]
- [0.         0.01032402 0.         0.         0.        ]
- [0.         0.         0.00568877 0.         0.        ]
- [0.         0.         0.         0.00447947 0.        ]
- [0.         0.         0.         0.         0.02053454]]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\scipy\__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.26.0
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alpha: [0.00570763 0.04279558 0.04072549 0.04250479 0.08432384]
+Beta: [ 0.20237897 -0.13569538 -0.09332071 -0.16729257 -0.15829589]
+Sigma_e: [[0.01021215 0.         0.         0.         0.        ]
+ [0.         0.01031929 0.         0.         0.        ]
+ [0.         0.         0.00568454 0.         0.        ]
+ [0.         0.         0.         0.00447722 0.        ]
+ [0.         0.         0.         0.         0.02048366]]
 </pre></div>
 </div>
 </div>
@@ -1329,7 +1306,9 @@ Sigma_e: [[0.01021508 0.         0.         0.         0.        ]
 <p>Mean Variance</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.3</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> <span class="c1"># making it monthly as the data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The zeros below need to be replaced by the actual values!</span>
+
+<span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.3</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> <span class="c1"># making it monthly as the data</span>
 <span class="n">W</span><span class="o">=</span><span class="n">Alpha</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
 <span class="c1"># optimal RELATIVE weights, need to calibrate the volatility</span>
@@ -1364,7 +1343,7 @@ Sigma_e: [[0.01021508 0.         0.         0.         0.        ]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.55331369 4.20457037 7.17650844 9.61235121 4.10837625]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.55890596 4.14714181 7.16424937 9.49356702 4.1166404 ]
 0
 0
 [0. 0. 0. 0. 0.]
@@ -1381,6 +1360,7 @@ So your optimal portfolio with market neutral exposure is
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets wrap it up in a function</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">,</span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.3</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="c1"># need to replace the zeros below with the actual values!</span>
     <span class="n">VarW</span><span class="o">=</span><span class="mi">0</span>
     <span class="c1">#adjusting the weights to meet the volatility target</span>
     <span class="n">w</span><span class="o">=</span> <span class="mi">0</span>
@@ -1507,15 +1487,18 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 </div>
 </div>
 </div>
-<p><strong>How to Combine the  Hedged portfolio (alpha) and the Market (beta)</strong></p>
+</section>
+<section id="how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">
+<h2><span class="section-number">8.3. </span>How to Combine the  Hedged portfolio (alpha) and the Market (beta)<a class="headerlink" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>If you see you investment in the factor as simply a financial issue</p>
 <ul>
 <li><p>you care exclusively about the returns of the portfolio</p></li>
-<li><p>Do not care how the factor (i.e. the market) might co-move with your non-financial wealth</p></li>
+<li><p>Do not care how the factor (i.e. the market) might co-move with your non-financial wealth–say when the market tanks, recession is more likely and you are more likely to lose your job</p></li>
 </ul>
 </li>
 <li><p>Then it is basically the same as with the alphas…</p></li>
+<li><p>But still useful to separate as you probably have different confidence on the market risk-premium than on the alphas</p></li>
 <li><p>Recall our formula for the mean-variance efficient weights</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -1554,7 +1537,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 \[SR_{final}=\sqrt{SR_{MKT}^2+SR_{Hedged}^2}\]</div>
 </section>
 <section id="the-rise-of-pod-shops">
-<h2><span class="section-number">8.2. </span>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4. </span>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
 <p>Hedge funds used to be associated with Principal traders</p>
 <ul class="simple">
 <li><p>George Soros</p></li>
@@ -1568,7 +1551,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 <p>Pod shops are organized totally different</p>
 <p>Idea generation are done at the pod level in groups of 5-10 people</p>
 <p>Capital is allocated to the pod by the hedge fund principal, who monitors exposures and hedges residual factor risk</p>
-<p>Why pod traders work for Citadel and not choose to manager their own fund?</p>
+<p>Why pod traders work for Citadel and not choose to manage their own fund?</p>
 <p><strong>A calculation</strong></p>
 <p>Consider a pod shop with N pods with SR sr and total vol <span class="math notranslate nohighlight">\(\sigma\)</span>, what is their alpha? What is their SR?</p>
 <div class="math notranslate nohighlight">
@@ -1577,13 +1560,13 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 \[Var[\sum x^*_ir_i]=Var[\sum \frac{\alpha_i}{\sigma^2_i}\epsilon_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2Var[\epsilon_i]\]</div>
 <div class="math notranslate nohighlight">
 \[Var[\sum x^*_ir_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2\sigma^2_i=N sr^2\]</div>
-<p>so the standard deviation of the pool of pods is</p>
+<p>so the Sharpe Ration of the pool of pods is</p>
 <div class="math notranslate nohighlight">
 \[sr_{pool}=\frac{Nsr_{pod}^2}{\sqrt{N}sr_{pod}}=\sqrt{N}sr_{pod}\]</div>
 <p>The Sharpe ratio of the pool of pods grows with the number of pods</p>
 <p>This means that if managed individually, the average pod will accumulate wealth at rate <span class="math notranslate nohighlight">\(\sigma*sr\)</span></p>
 <p>But if managed in a pool structure, the average pod will accumulate as <span class="math notranslate nohighlight">\(\sqrt{N}\sigma*sr\)</span></p>
-<p>find a new uncorrelated idea is super valuable!</p>
+<p>Finding a new uncorrelated idea is super valuable!</p>
 <p>The marginal change in cash flows are</p>
 <div class="math notranslate nohighlight">
 \[\frac{\sigma*sr_{pool}}{N}\]</div>
@@ -1591,9 +1574,9 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 <li><p>decreases in the number of pods</p></li>
 <li><p>But always positive–if indeed similar SR and uncorrelated!</p></li>
 </ul>
-<p>Note that is Under-estimates the value of the pod structure</p>
+<p>Note that this calculation under-estimates the value of the pod structure</p>
 <ul class="simple">
-<li><p>The higher your Sharpe ratio, the more volatility you can take without bearing significant risk of loss (wealth jsut grows too quickly)</p></li>
+<li><p>The higher your Sharpe ratio, the more volatility you can take without bearing significant risk of loss (wealth just grows too quickly)</p></li>
 </ul>
 <p>But it also not realistic</p>
 <ul class="simple">
@@ -1601,16 +1584,19 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 </ul>
 </section>
 <section id="capital-allocation-with-time-varying-volatility">
-<h2><span class="section-number">8.3. </span>Capital Allocation with Time-varying volatility<a class="headerlink" href="#capital-allocation-with-time-varying-volatility" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.5. </span>Capital Allocation with Time-varying volatility<a class="headerlink" href="#capital-allocation-with-time-varying-volatility" title="Link to this heading">#</a></h2>
 <p>While detecting alpha/risk-premia variation of a strategy in real time is nearly impossible, we learned a few classes ago that we can detect volatility variation really well.</p>
-<p>Also keeping the risky profile from changing too much is also very desirable for most managers as you though long and deep about how much vol you want. If volatility spikes it suddenly way more likely that you will hit that loss you are fearful of</p>
+<p>Also keeping the risky profile from changing too much is also very desirable for most managers as you thought long and deep about how much vol you want.</p>
+<p>If volatility spikes it suddenly way more likely that you will hit that loss you are fearful of</p>
 <p>These ideas together imply that you probably can do better by taking into account the variation in volatility when you size your portfolios.</p>
 <blockquote>
 <div><h3 class="rubric" id="important">Important</h3>
-<p>The crucial necessary condition for this to work is that there is no time-series relationship between alphas and vols</p>
+<p>The crucial necessary condition for this to work is that there is no time-series relationship between alphas and vols (or at the very least that this relationship if weak)</p>
 <div class="math notranslate nohighlight">
 \[cov(\alpha_{i,t},\sigma^2_{i,t})=0\]</div>
-<p>This is key. Might or might not be true. But tends to be true.
+</div></blockquote>
+<blockquote>
+<div><p>This is key. Might or might not be true. But tends to be true.
 This only works if the alpha/premium is positive to begin with
 If Sharpe ratio is zero, you can’t increase it by managing risk!</p>
 </div></blockquote>
@@ -1625,8 +1611,16 @@ If Sharpe ratio is zero, you can’t increase it by managing risk!</p>
 <p>After some manipulation it implies</p>
 <div class="math notranslate nohighlight">
 \[SR_{\sigma}=SR\sqrt{E[\sigma_{i,t}^2]E\left[\frac{1}{\sigma_{i,t}^2}\right]}\]</div>
-<p>In general <span class="math notranslate nohighlight">\(SR_{\sigma}&gt;SR\)</span> because of jensen inequality (<span class="math notranslate nohighlight">\(E[F(x)]\geq F(E[X])\)</span> if F is  convex)</p>
-<p>to get some clean closed formulas lets assume</p>
+<blockquote>
+<div><p>Inside baseball:</p>
+</div></blockquote>
+<blockquote>
+<div><p>In general <span class="math notranslate nohighlight">\(SR_{\sigma}&gt;SR\)</span> because of jensen inequality (<span class="math notranslate nohighlight">\(E[F(x)]\geq F(E[X])\)</span> if F is  convex)</p>
+</div></blockquote>
+<blockquote>
+<div><p>Draw a figure to illustrate</p>
+</div></blockquote>
+<p>To get some clean closed formulas lets assume vol is log-normal (it is mostly not)</p>
 <p><span class="math notranslate nohighlight">\(\sigma_{t}^2=\sigma^2 e^{\epsilon-\frac{1}{2}\sigma^2_{\sigma}}\)</span>, with <span class="math notranslate nohighlight">\(\epsilon\sim N(0,\sigma^2_{\sigma})\)</span></p>
 <p>which satisfied <span class="math notranslate nohighlight">\(E[\sigma_t]=\sigma\)</span></p>
 <div class="math notranslate nohighlight">
@@ -1634,11 +1628,11 @@ If Sharpe ratio is zero, you can’t increase it by managing risk!</p>
 <p>The more volatility variation you can predict, higher <span class="math notranslate nohighlight">\(\sigma_{\sigma}\)</span>, the higher the boost in you Sharpe ratio</p>
 <blockquote>
 <div><h3 class="rubric" id="note">Note</h3>
-<p>If Alphas are time-varying but Sharpe ratios are constant, i.e. <span class="math notranslate nohighlight">\(\alpha_{i,t}=k\sigma_{i,t}\)</span>, then the optimal allocation becomes proportion to inverse volatility <span class="math notranslate nohighlight">\(w_i=\frac{\alpha_i}{\sigma_{i,t}}\)</span>. What do you get in this case?</p>
+<p>If Alphas are time-varying but Sharpe ratios are constant, i.e. <span class="math notranslate nohighlight">\(\alpha_{i,t}=k\sigma_{i,t}\)</span>, then the optimal allocation becomes proportion to inverse volatility <span class="math notranslate nohighlight">\(w_i=\frac{\alpha_i}{\sigma_{i,t}}\)</span>.</p>
 </div></blockquote>
 </section>
 <section id="volatility-managing-the-market">
-<h2><span class="section-number">8.4. </span>Volatility managing the market<a class="headerlink" href="#volatility-managing-the-market" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.6. </span>Volatility managing the market<a class="headerlink" href="#volatility-managing-the-market" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>ALAN MOREIRA, TYLER MUIR, Volatility-Managed Portfolios, Journal of Finance, August 2017
 <a class="reference external" href="https://doi.org/10.1111/jofi.12513">https://doi.org/10.1111/jofi.12513</a></p>
@@ -1674,7 +1668,7 @@ If Sharpe ratio is zero, you can’t increase it by managing risk!</p>
 </div>
 </div>
 <section id="constructing-monthly-realized-variance-from-daily-data">
-<h3><span class="section-number">8.4.1. </span><strong>Constructing monthly realized variance from daily data</strong><a class="headerlink" href="#constructing-monthly-realized-variance-from-daily-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.6.1. </span><strong>Constructing monthly realized variance from daily data</strong><a class="headerlink" href="#constructing-monthly-realized-variance-from-daily-data" title="Link to this heading">#</a></h3>
 <p>You basically use pandas time series function that shifts all dates to the end of the month, so this way you are technically grouping by the end of the month day.</p>
 <p>Now  I use groupby <code class="docutils literal notranslate"><span class="pre">endofmonth</span></code> to put  all returns of given “year-month” pair together (i.e. with the same date)</p>
 <p>So I can just compute the variance of this group (say 1/1/2020,1/2/2020,…1/31/2020) will all be 1/31/2020</p>
@@ -1840,7 +1834,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_17888\1968402388.py:8: Runtim
 \[ r^{VolTiming}_{t+1}=r_{f,t+1}+\frac{c}{rv_t}r^{MKT-RF}_{t+1}\]</div>
 </section>
 <section id="from-signal-to-weights">
-<h3><span class="section-number">8.4.2. </span><strong>From signal to weights</strong><a class="headerlink" href="#from-signal-to-weights" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.6.2. </span><strong>From signal to weights</strong><a class="headerlink" href="#from-signal-to-weights" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>weight on the market:</p></li>
 </ul>
@@ -1891,7 +1885,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_17888\1968402388.py:8: Runtim
 </div>
 </section>
 <section id="construct-strategy-returns">
-<h3><span class="section-number">8.4.3. </span><strong>Construct strategy returns</strong><a class="headerlink" href="#construct-strategy-returns" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.6.3. </span><strong>Construct strategy returns</strong><a class="headerlink" href="#construct-strategy-returns" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Now to construct the strategy return recall that we use the relaized variance in month t to buy the market at the closing of month t and earn the return accrued in month t+1</p></li>
 <li><p>I will call the strategy as <span class="math notranslate nohighlight">\(\textbf{VMS}\)</span> (Volatility Managed Strategy)</p></li>
@@ -2022,7 +2016,7 @@ Name: 0.005, dtype: float64
 </section>
 </section>
 <section id="takeaways">
-<h2><span class="section-number">8.5. </span>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.7. </span>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Know the maximum loss you can bear–&gt; figure out how much vol you should have in your portfolio</p></li>
 <li><p>Portfolio composition is all about the Sharpe Ratio</p></li>
@@ -2102,16 +2096,18 @@ Name: 0.005, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">8.1. Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">8.2. The rise of “pod shops”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-with-time-varying-volatility">8.3. Capital Allocation with Time-varying volatility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-managing-the-market">8.4. Volatility managing the market</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-monthly-realized-variance-from-daily-data">8.4.1. <strong>Constructing monthly realized variance from daily data</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-signal-to-weights">8.4.2. <strong>From signal to weights</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns">8.4.3. <strong>Construct strategy returns</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-allocate-across-assets">8.1. How to allocate across assets?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">8.2. Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">8.3. How to Combine the  Hedged portfolio (alpha) and the Market (beta)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">8.4. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-with-time-varying-volatility">8.5. Capital Allocation with Time-varying volatility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-managing-the-market">8.6. Volatility managing the market</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-monthly-realized-variance-from-daily-data">8.6.1. <strong>Constructing monthly realized variance from daily data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-signal-to-weights">8.6.2. <strong>From signal to weights</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns">8.6.3. <strong>Construct strategy returns</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">8.5. Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">8.7. Takeaways</a></li>
 </ul>
   </nav></div>
 
