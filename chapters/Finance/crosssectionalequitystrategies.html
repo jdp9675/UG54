@@ -502,11 +502,14 @@ document.write(`
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install wrds</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_factors</span><span class="p">(</span><span class="n">factors</span><span class="o">=</span><span class="s1">&#39;CAPM&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;daily&#39;</span><span class="p">):</span>   
@@ -674,7 +677,16 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install wrds</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span><span class="o">=</span><span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
+Created .pgpass file successfully.
+You can create this file yourself at any time with the create_pgpass_file() function.
+Loading library list...
+Done
 </pre></div>
 </div>
 </div>
@@ -682,13 +694,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span> 
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">dateutil.relativedelta</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pandas.tseries.offsets</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1">###################</span>
-<span class="n">conn</span><span class="o">=</span><span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span> 
+
 
 
 <span class="n">crsp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
@@ -699,14 +710,14 @@ document.write(`
 <span class="s2">                      on a.permno=b.permno</span>
 <span class="s2">                      and b.namedt&lt;=a.date</span>
 <span class="s2">                      and a.date&lt;=b.nameendt</span>
-<span class="s2">                      where a.date between &#39;01/31/1990&#39; and &#39;12/31/2019&#39;</span>
+<span class="s2">                      where a.date between &#39;01/31/1990&#39; and &#39;12/31/2016&#39;</span>
 <span class="s2">                      and b.exchcd between 1 and 3</span>
 <span class="s2">                      and b.shrcd between 10 and 11</span>
 <span class="s2">                      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span> 
 
 
 <span class="c1"># this saves it</span>
-<span class="c1">#crsp_m.to_pickle(&#39;../../assets/data/crspm2005_2020.pkl&#39;)</span>
+<span class="n">crsp</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../../assets/data/crspm.pkl&#39;</span><span class="p">)</span>
 <span class="c1"># variables downloaded</span>
 
 <span class="c1"># 1. Permno-- are unique indentifier to a security </span>
@@ -721,15 +732,6 @@ document.write(`
 <span class="c1"># 4. ret,retx, shrout,  prc, are the stock return, the stock return excluding dividends, number of shares outstanding, and price</span>
 
 <span class="c1"># 5. date is the trading date of the return</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WRDS recommends setting up a .pgpass file.
-Created .pgpass file successfully.
-You can create this file yourself at any time with the create_pgpass_file() function.
-Loading library list...
-Done
 </pre></div>
 </div>
 </div>
