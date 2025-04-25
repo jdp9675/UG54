@@ -481,14 +481,18 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-test">9.1. Alpha Test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-focus-on-alpha">9.2. Why we focus on Alpha?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">9.3. The basic problem of overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">9.4. Be clear about you goal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">9.5. How to guard against it?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">9.6. Additional Diagnostics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">9.6.1. Adjusting for Discarded Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mve-allocation-across-factors">9.3. Example: MVE allocation across factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">9.4. The basic problem of overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">9.5. Be clear about you goal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">9.6. How to guard against it?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">9.6.1. Additional Diagnostics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">9.6.2. Adjusting for Discarded Signals</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">9.7. How to split you sample?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">9.7. How to split you sample?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustifying-your-backtests">9.7.1. Robustifying your Backtests</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">9.8. Publication bias (or Famous bias or incubation bias…)</a></li>
 </ul>
             </nav>
@@ -511,10 +515,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>wrds
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">get_factors</span><span class="p">(</span><span class="n">factors</span><span class="o">=</span><span class="s1">&#39;CAPM&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;daily&#39;</span><span class="p">):</span>   
@@ -640,18 +643,6 @@ The betas are exactly such replicating portfolio</p>
 <li><p>The alpha test literally asks if the factor is the tangency portfolio with respect to the investment opportunity that includes the test asset (the asset in the left of the regression) and the factor (the asset on the right)</p></li>
 <li><p>A different way to put it is that a non-zero alpha means that the asset expands the mean-variance frontier relative to an opportunity set that only has the reference factor</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2533471031357997
-</pre></div>
-</div>
-</div>
-</div>
 <p>Example:</p>
 <p>Suppose you are a principal  at Citadel deciding on a new pod to the hedge fund.</p>
 <p>You are monitoring performance of several outside groups. What do you have to see to invite them to join citadel?</p>
@@ -745,133 +736,39 @@ Appraisal=\frac{\alpha}{\sigma_e}
 </ul>
 </section>
 <hr class="docutils" />
-<section id="the-basic-problem-of-overfitting">
-<h2><span class="section-number">9.3. </span>The basic problem of overfitting<a class="headerlink" href="#the-basic-problem-of-overfitting" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>In these example we are testing some fixed strategy</p></li>
-<li><p>In practice we use data to design the strategy</p></li>
-<li><p>Any sample estimate  is itself a random variable.  The uncertainty in these estimates may encourage us to:</p>
-<ul>
-<li><p>Select signals that are pure noise with no real predictive power.</p></li>
-<li><p>Select real signals but overweight their importance to the model.</p></li>
-<li><p>Reject signals that are real but that did not show up in the sample.</p></li>
-<li><p>Make inaccurate assessments of strategy quality and poor resource allocation.</p></li>
-<li><p>When choosing model weights, implicitly and explicitly (through optimization) we assign weights that exaggerate the overfitting problem.</p></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<div><h3 class="rubric" id="example-mve-allocation-across-factors">Example: MVE allocation across factors</h3>
-</div></blockquote>
+<section id="example-mve-allocation-across-factors">
+<h2><span class="section-number">9.3. </span>Example: MVE allocation across factors<a class="headerlink" href="#example-mve-allocation-across-factors" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets build a function that takes two dataframes, one for the estimation period and one for the test period</span>
-<span class="c1"># then computes Sharpe Ratios and vols for the estimation and test periods</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">MVE</span><span class="p">(</span><span class="n">df_est</span><span class="p">,</span><span class="n">df_test</span><span class="p">,</span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.1</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">):</span>
-    <span class="n">VarR</span><span class="o">=</span><span class="n">df_est</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
-    <span class="n">ER</span><span class="o">=</span><span class="n">df_est</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">MVE</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.1</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="c1"># strategy estimation</span>
+    <span class="n">VarR</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+    <span class="n">ER</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="n">W</span><span class="o">=</span><span class="n">ER</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">VarR</span><span class="p">)</span>
     <span class="n">VarW</span><span class="o">=</span><span class="n">W</span><span class="nd">@VarR@W</span>
+    <span class="c1"># leverage to target volatility</span>
     <span class="n">w</span><span class="o">=</span> <span class="n">VolTarget</span><span class="o">/</span><span class="n">VarW</span><span class="o">**</span><span class="mf">0.5</span>
     <span class="n">Ww</span><span class="o">=</span><span class="n">w</span><span class="o">*</span><span class="n">W</span>
-    <span class="n">SR_est</span><span class="o">=</span><span class="p">(</span><span class="n">df_est</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">df_est</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> 
-    <span class="n">vol_est</span><span class="o">=</span><span class="p">(</span><span class="n">df_est</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
-    <span class="n">SR_test</span><span class="o">=</span><span class="p">(</span><span class="n">df_test</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">df_test</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
-    <span class="n">vol_test</span><span class="o">=</span><span class="p">(</span><span class="n">df_test</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">SR</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> 
+    <span class="n">vol</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+
 
     <span class="c1"># Estimate alpha of Ww portfolio relative to market in estimation period</span>
-    <span class="n">x_est</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_est</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
-    <span class="n">y_est</span> <span class="o">=</span> <span class="n">df_est</span> <span class="o">@</span> <span class="n">Ww</span>
-    <span class="n">regresult_est</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_est</span><span class="p">,</span> <span class="n">x_est</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="n">alpha_est</span> <span class="o">=</span> <span class="n">regresult_est</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span>
-    <span class="n">t_alpha_est</span> <span class="o">=</span> <span class="n">regresult_est</span><span class="o">.</span><span class="n">tvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df</span> <span class="o">@</span> <span class="n">Ww</span>
+    <span class="n">regresult</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">regresult</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span>
+    <span class="n">t_alpha</span> <span class="o">=</span> <span class="n">regresult</span><span class="o">.</span><span class="n">tvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="n">AR_est</span><span class="o">=</span><span class="n">alpha_est</span><span class="o">/</span><span class="p">(</span><span class="n">regresult_est</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
-
-    <span class="c1"># Estimate alpha of Ww portfolio relative to market in test period</span>
-    <span class="n">x_test</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
-    <span class="n">y_test</span> <span class="o">=</span> <span class="n">df_test</span> <span class="o">@</span> <span class="n">Ww</span>
-    <span class="n">regresult_test</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">x_test</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="n">alpha_test</span> <span class="o">=</span> <span class="n">regresult_test</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span>
-    <span class="n">t_alpha_test</span> <span class="o">=</span> <span class="n">regresult_test</span><span class="o">.</span><span class="n">tvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">AR_test</span><span class="o">=</span><span class="n">alpha_test</span><span class="o">/</span><span class="p">(</span><span class="n">regresult_test</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">AR</span><span class="o">=</span><span class="n">alpha</span><span class="o">/</span><span class="p">(</span><span class="n">regresult</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
 
 
-    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;SR Est&#39;</span><span class="p">:</span> <span class="n">SR_est</span><span class="p">,</span><span class="s1">&#39;SR Test&#39;</span><span class="p">:</span><span class="n">SR_test</span><span class="p">,</span> <span class="s1">&#39;Vol Est&#39;</span><span class="p">:</span> <span class="n">vol_est</span><span class="p">,</span><span class="s1">&#39;Vol Test&#39;</span><span class="p">:</span> <span class="n">vol_test</span><span class="p">,</span><span class="s1">&#39;Alpha Est&#39;</span><span class="p">:</span> <span class="n">alpha_est</span><span class="p">,</span><span class="s1">&#39;Alpha Test&#39;</span><span class="p">:</span> <span class="n">alpha_test</span><span class="p">,</span><span class="s1">&#39;t Alpha Est&#39;</span><span class="p">:</span> <span class="n">t_alpha_est</span><span class="p">,</span><span class="s1">&#39;t Alpha Test&#39;</span><span class="p">:</span> <span class="n">t_alpha_test</span><span class="p">,</span><span class="s1">&#39;AR Est&#39;</span><span class="p">:</span> <span class="n">AR_est</span><span class="p">,</span><span class="s1">&#39;AR Test&#39;</span><span class="p">:</span> <span class="n">AR_test</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;SR&#39;</span><span class="p">:</span> <span class="n">SR</span><span class="p">,</span> <span class="s1">&#39;Vol&#39;</span><span class="p">:</span> <span class="n">vol</span><span class="p">,</span><span class="s1">&#39;Alpha&#39;</span><span class="p">:</span> <span class="n">alpha</span><span class="p">,</span><span class="s1">&#39;tAlpha&#39;</span><span class="p">:</span> <span class="n">t_alpha</span><span class="p">,</span><span class="s1">&#39;AR&#39;</span><span class="p">:</span> <span class="n">AR</span><span class="p">}</span>
+
+<span class="n">df_ff6</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;ff6&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 
 
-
-<span class="c1"># def MVE(df,VolTarget=0.1/12**0.5):</span>
-<span class="c1">#     VarR=df.cov()</span>
-<span class="c1">#     ER=df.mean()</span>
-<span class="c1">#     W=ER@np.linalg.inv(VarR)</span>
-<span class="c1">#     VarW=W@VarR@W</span>
-<span class="c1">#     w= VolTarget/VarW**0.5</span>
-<span class="c1">#     Ww=w*W</span>
-
-<span class="c1">#     return Ww</span>
-
-<span class="c1"># def Diagnostics(df,W):</span>
-
-<span class="c1">#     R = df @ W</span>
-<span class="c1">#     SR=(R).mean()/(R).std()*12**0.5 </span>
-<span class="c1">#     vol=(R).std()*12**0.5</span>
-<span class="c1">#  # Estimate alpha of Ww portfolio relative to market in test period</span>
-<span class="c1">#     x= sm.add_constant(df[&#39;Mkt-RF&#39;])</span>
-<span class="c1">#     y = R</span>
-<span class="c1">#     regresult = sm.OLS(y, x).fit()</span>
-<span class="c1">#     alpha = regresult.params[0]*12</span>
-<span class="c1">#     t_alpha = regresult.tvalues[0]</span>
-<span class="c1">#     AR=alpha/(regresult.resid.std()*12**0.5)</span>
-
-
-<span class="c1">#     return SR,vol,alpha,t_alpha,AR</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ff6</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;ff6&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">split_year</span><span class="o">=</span><span class="mi">2013</span>
-<span class="n">MVE</span><span class="p">(</span><span class="n">df_ff6</span><span class="p">[</span><span class="s1">&#39;1963&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">split_year</span><span class="p">)]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;RF&#39;</span><span class="p">),</span><span class="n">df_ff6</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">split_year</span><span class="o">+</span><span class="mi">1</span><span class="p">):]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;RF&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
-  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
-C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:20: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  alpha_est = regresult_est.params[0]*12
-C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:21: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  t_alpha_est = regresult_est.tvalues[0]
-C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:29: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  alpha_test = regresult_test.params[0]*12
-C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: FutureWarning: Series.__getitem__ treating keys as positions is deprecated. In a future version, integer keys will always be treated as labels (consistent with DataFrame behavior). To access a value by position, use `ser.iloc[pos]`
-  t_alpha_test = regresult_test.tvalues[0]
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SR Est&#39;: 1.3561414693457017,
- &#39;SR Test&#39;: 0.6023418391240137,
- &#39;Vol Est&#39;: 0.1,
- &#39;Vol Test&#39;: 0.11973072478790676,
- &#39;Alpha Est&#39;: 0.1246855068040558,
- &#39;Alpha Test&#39;: 0.03798785773253954,
- &#39;t Alpha Est&#39;: 9.17650054043701,
- &#39;t Alpha Test&#39;: 1.0987875260488962,
- &#39;AR Est&#39;: 1.3003506696401776,
- &#39;AR Test&#39;: 0.342973966236513}
+<span class="n">MVE</span><span class="p">(</span><span class="n">df_ff6</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;RF&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -910,9 +807,56 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 </li>
 </ul>
 </div></blockquote>
-<p>Not surprisingly Alpha goes down by 70% in the testing sample</p>
-<p>But we can’t even reject a zero alpha?</p>
+<p>Lets now replicate how a trader could implement this strategy in reality</p>
+<p>They obviously would not be able to trade in the same sample that they estimate the returns moments that was the input for optimization– this would violate the information requirement state above.</p>
+<p>To replicate this will split in two samples</p>
 <ul class="simple">
+<li><p>Estimation sample up to 2013</p></li>
+<li><p>Testing sample 2014-2024</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">MVE</span><span class="p">(</span><span class="n">df_est</span><span class="p">,</span><span class="n">df_test</span><span class="p">,</span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.1</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="c1"># strategy estimation</span>
+    <span class="n">VarR</span><span class="o">=</span><span class="n">df_est</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+    <span class="n">ER</span><span class="o">=</span><span class="n">df_est</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">W</span><span class="o">=</span><span class="n">ER</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">VarR</span><span class="p">)</span>
+    <span class="n">VarW</span><span class="o">=</span><span class="n">W</span><span class="nd">@VarR@W</span>
+    <span class="c1"># leverage to target volatility</span>
+    <span class="n">w</span><span class="o">=</span> <span class="n">VolTarget</span><span class="o">/</span><span class="n">VarW</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">Ww</span><span class="o">=</span><span class="n">w</span><span class="o">*</span><span class="n">W</span>
+    <span class="n">SR</span><span class="o">=</span><span class="p">(</span><span class="n">df_test</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">df_test</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> 
+    <span class="n">vol</span><span class="o">=</span><span class="p">(</span><span class="n">df_test</span><span class="nd">@Ww</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+
+
+    <span class="c1"># Estimate alpha of Ww portfolio relative to market in estimation period</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_test</span> <span class="o">@</span> <span class="n">Ww</span>
+    <span class="n">regresult</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">regresult</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span>
+    <span class="n">t_alpha</span> <span class="o">=</span> <span class="n">regresult</span><span class="o">.</span><span class="n">tvalues</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">AR</span><span class="o">=</span><span class="n">alpha</span><span class="o">/</span><span class="p">(</span><span class="n">regresult</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;SR&#39;</span><span class="p">:</span> <span class="n">SR</span><span class="p">,</span> <span class="s1">&#39;Vol&#39;</span><span class="p">:</span> <span class="n">vol</span><span class="p">,</span><span class="s1">&#39;Alpha&#39;</span><span class="p">:</span> <span class="n">alpha</span><span class="p">,</span><span class="s1">&#39;tAlpha&#39;</span><span class="p">:</span> <span class="n">t_alpha</span><span class="p">,</span><span class="s1">&#39;AR&#39;</span><span class="p">:</span> <span class="n">AR</span><span class="p">}</span>
+
+
+
+<span class="c1"># estimate and test in the same period (up to 2013)</span>
+<span class="n">MVE</span><span class="p">(</span><span class="n">df_ff6</span><span class="p">[:</span><span class="s1">&#39;2013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;RF&#39;</span><span class="p">),</span><span class="n">df_ff6</span><span class="p">[:</span><span class="s1">&#39;2013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;RF&#39;</span><span class="p">))</span>
+
+<span class="c1"># estimate with data up to 2013 and test in the period (2014-2024)</span>
+<span class="n">MVE</span><span class="p">(</span><span class="n">df_ff6</span><span class="p">[:</span><span class="s1">&#39;2013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;RF&#39;</span><span class="p">),</span><span class="n">df_ff6</span><span class="p">[</span><span class="s1">&#39;2014&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;RF&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>What do you see here?</p></li>
+<li><p>Is that expected?</p></li>
+<li><p>Why this is happening?</p></li>
+<li><p>we can’t even reject a zero alpha?</p></li>
 <li><p>Is 10 years enough time to tell? Maybe the sample is too short</p></li>
 <li><p>Key question is: If we think our AR is 1.3, would 10 years be enough to reject the null of zero alpha?</p></li>
 </ul>
@@ -925,11 +869,12 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the parameters</span>
 <span class="n">alpha_est</span> <span class="o">=</span> <span class="mf">0.12</span>
 <span class="n">alpha_test</span> <span class="o">=</span> <span class="mf">0.038</span>
-<span class="n">sigmae_test</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">0.34</span><span class="o">*</span><span class="n">ar_test</span> <span class="c1">#( I am recovering the sigmae from the AR)</span>
+<span class="n">ar_est</span><span class="o">=</span><span class="mf">1.3</span>
+<span class="n">sigmae_est</span><span class="o">=</span><span class="n">alpha_est</span><span class="o">/</span><span class="n">ar_est</span> <span class="c1">#( I am recovering the sigmae from the AR)</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>  <span class="c1"># 10 years</span>
 
-<span class="c1"># Calculate the probabilities</span>
-<span class="n">probabilities</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">((</span><span class="n">alpha_test</span> <span class="o">-</span> <span class="n">alpha_est</span><span class="p">)</span><span class="o">/</span><span class="n">sigmae_test</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="c1"># Calculate the probabilities that we would observe such low alpha in a sample that large if out estimation sample is correct</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">((</span><span class="n">alpha_test</span> <span class="o">-</span> <span class="n">alpha_est</span><span class="p">)</span><span class="o">/</span><span class="n">sigmae_est</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
 
 <span class="c1"># Plot the probabilities</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -944,16 +889,62 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9aa601d65989a85c59e91fa14812fdbb1a0032c9953220af5c424a40e1c1e8cf.png" src="../../_images/9aa601d65989a85c59e91fa14812fdbb1a0032c9953220af5c424a40e1c1e8cf.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">alpha_est</span> <span class="o">=</span> <span class="mf">0.12</span>
+
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">alpha_test</span> <span class="o">=</span> <span class="mf">0.038</span>
+
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">sigmae_est</span><span class="o">=</span><span class="n">alpha_est</span><span class="o">/</span><span class="n">ar_est</span> <span class="c1">#( I am recovering the sigmae from the AR)</span>
+
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>  <span class="c1"># 10 years</span>
+
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Calculate the probabilities</span>
+
+
+
+<span class="ne">NameError</span>: name &#39;ar_est&#39; is not defined
+</pre></div>
 </div>
 </div>
-<p>Thinking clearly about the desired size of your estimation sample is very important</p>
-<p>A sample that is too short, will not allow you properly test your strategy</p>
-<p>you see that with 1 year of sample and a mediocre alpha you still assign north of 20% probability that the strategy has the alpha in the estimation sample</p>
-<p>You want to leave enough data so that you can actually test the strategy</p>
+</div>
+<ul class="simple">
+<li><p>This give us a quickly way to diagnostic if the sample is large enough</p></li>
+<li><p>For example, if you shrink the sample you will see that observing such low alpha becomes increasingly likely suggesting the test sample would not be large enough</p></li>
+<li><p>You have to design your test sample having in mind what do you want to test</p></li>
+<li><p>Thinking clearly about the desired size of your estimation sample is very important</p></li>
+<li><p>A sample that is too short, will not allow you properly test your strategy</p></li>
+<li><p>You see that with 1 year of sample and a mediocre alpha you still assign north of 20% probability that the strategy has the alpha in the estimation sample</p></li>
+<li><p>You want to leave enough data so that you can actually test the strategy</p></li>
+</ul>
+</section>
+<section id="the-basic-problem-of-overfitting">
+<h2><span class="section-number">9.4. </span>The basic problem of overfitting<a class="headerlink" href="#the-basic-problem-of-overfitting" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In these example we are testing some fixed strategy</p></li>
+<li><p>In practice we use data to design the strategy</p></li>
+<li><p>Any sample estimate  is itself a random variable.  The uncertainty in these estimates may encourage us to:</p>
+<ul>
+<li><p>Select signals that are pure noise with no real predictive power.</p></li>
+<li><p>Select real signals but overweight their importance to the model.</p></li>
+<li><p>Reject signals that are real but that did not show up in the sample.</p></li>
+<li><p>When choosing model weights, implicitly and explicitly (through optimization) we assign weights that exaggerate the overfitting problem.</p></li>
+</ul>
+</li>
+</ul>
+<p>Here is a fun twitter thread about this basic problem</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://twitter.com/macrocephalopod/status/1362165448205295620?s=20">overfiting</a></p></li>
+</ul>
+<p>It has this really nice plot that illustrates the fundamental issue</p>
+<p><img alt="outofsample" src="../../_images/outofsample1.jpg" /></p>
 </section>
 <section id="be-clear-about-you-goal">
-<h2><span class="section-number">9.4. </span>Be clear about you goal<a class="headerlink" href="#be-clear-about-you-goal" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>Be clear about you goal<a class="headerlink" href="#be-clear-about-you-goal" title="Link to this heading">#</a></h2>
 <p>The central goal is to calibrate your discovery process</p>
 <ul class="simple">
 <li><p>You want to invest in strategies that have alpha, disregard the ones that don’t</p></li>
@@ -964,15 +955,14 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 </ul>
 </section>
 <section id="how-to-guard-against-it">
-<h2><span class="section-number">9.5. </span>How to guard against it?<a class="headerlink" href="#how-to-guard-against-it" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.6. </span>How to guard against it?<a class="headerlink" href="#how-to-guard-against-it" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Additional diagnostics</p></li>
 <li><p>Think harder about your  Backtests</p></li>
 <li><p>Estimation/validation/Out of Sample analysis</p></li>
 </ol>
-</section>
 <section id="additional-diagnostics">
-<h2><span class="section-number">9.6. </span>Additional Diagnostics<a class="headerlink" href="#additional-diagnostics" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">9.6.1. </span>Additional Diagnostics<a class="headerlink" href="#additional-diagnostics" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Strategy Sharpe Ratio</p></li>
 <li><p>Report t-stat of mean return</p></li>
@@ -985,8 +975,10 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 </li>
 <li><p>Report percentage of observations with +/- 3 std events</p></li>
 <li><p>Remove “influential data points”: Calculate fraction of data points needed to halve estimated Sharpe ratio.</p></li>
+<li><p>When comparing Strategies, always do it over the same sample period**</p></li>
 </ol>
-<p><strong>When comparing Strategies, always do it over the same sample period</strong></p>
+<p>We will now split up our code in terms of strategy weight estimation and diagnostics</p>
+<p>This makes the function very portable to evaluate alternative strategies</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">MVE</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">VolTarget</span><span class="p">):</span>
@@ -1012,6 +1004,9 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
 </div>
 </div>
 </div>
+<p>Here is our diagnostic function</p>
+<p>It is still incomplete as we will be adding additional diagnostics through the notebook</p>
+<p>you should think as a function that we add all diagnostics you want to see and then you run any strategy through it</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Diagnostics</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1045,17 +1040,21 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2413028784.py:30: Future
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;tails_factor&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">Factor</span> <span class="o">&lt;-</span><span class="mi">3</span><span class="o">*</span><span class="n">Factor</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">+</span><span class="p">(</span><span class="n">Factor</span> <span class="o">&gt;</span><span class="mi">3</span><span class="o">*</span><span class="n">Factor</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;min_ret&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">R</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;min_factor&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">Factor</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
     <span class="c1"># cumulative returs</span>
     <span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">Rf</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="p">(</span><span class="n">Rf</span><span class="o">+</span><span class="n">Factor</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">,</span><span class="s1">&#39;Market&#39;</span><span class="p">])</span>
-
-    <span class="c1">#drawdown plots to be implemented</span>
-
+ 
 
 
-    
+<span class="c1">### Things to add that we discuss below</span>
+
+    <span class="c1"># 2. Drawdown plots</span>
+    <span class="c1"># 3. Fraction of observation to half the mean returns</span>
+    <span class="c1"># 4. Sharpe Ratio standard deviation/t-test</span>
+
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;t_SR&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># to be implemented</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;t_SR_factor&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># to be implemented</span>
     <span class="n">results</span><span class="p">[</span><span class="s1">&#39;fraction_tohalf&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span> <span class="c1"># to be implemented</span>
@@ -1219,23 +1218,26 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 <ol class="arabic simple">
 <li><p>Compute the volatility of a Sharpe ratio</p></li>
 <li><p>Compute the fraction of data points needed to halve the Sharpe ratio</p></li>
-<li><p>Drawdowns</p></li>
+<li><p>Drawdowns and cumulative return plots</p></li>
 </ol>
-<p><strong>What is the volatility of the Sharpe Ratio</strong></p>
-<ul>
+<p><strong>What is the volatility of the Sharpe Ratio?</strong></p>
+<ul class="simple">
+<li><p>SR is different because it is not an average, thus our standard way to compute standard errors don’t quite work out</p></li>
+<li><p>We have two options:</p></li>
+</ul>
+<ol class="arabic">
 <li><p>we can assume normal distribution to get</p>
 <div class="math notranslate nohighlight">
 \[\sigma(SR)=\sqrt{\frac{1}{T-1}(1+SR^2/2)}\]</div>
 </li>
-<li><p>we can bootstrap from the data with replacement to create alternative sample</p></li>
-</ul>
+<li><p>We can bootstrap from the data with replacement to create alternative sample</p></li>
+</ol>
 <blockquote>
-<div><h3 class="rubric" id="distribution-sampling">Distribution sampling</h3>
+<div><h3 class="rubric" id="bootstraping">Bootstraping</h3>
 <ul class="simple">
 <li><p>Instead of assuming returns have a particular distribution we can sample from the realized distribution to obtain alternative realization of the world</p></li>
-</ul>
-<p><strong>Bootstrap</strong></p>
-<ul class="simple">
+<li><p>Here how it works</p>
+<ul>
 <li><p>Draw from the data with replacement T times. This gives you a “new sample”.</p></li>
 <li><p>Construct The sharpe ratio in this sample, save it</p></li>
 <li><p>Do that M times and compute the standard deviation of the SR across samples</p></li>
@@ -1243,10 +1245,12 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 <li><p>This give you the different SR that can be produced by the same truth</p></li>
 <li><p>Can ask questions like: how bad the SR is likely to be with only 1 year of data</p></li>
 </ul>
+</li>
+</ul>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sharpe ratio</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sharpe ratio standard error using the normal assumption</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">SR_vol</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
     <span class="n">SR</span><span class="o">=</span><span class="n">R</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="n">R</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
     <span class="n">T</span><span class="o">=</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1254,6 +1258,8 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 
 <span class="n">SR_vol</span><span class="p">(</span><span class="n">df_est</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
 
+
+<span class="c1"># Sharpe ratio standard error using the bootstrap method</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">SR_vol_boot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
     <span class="n">SR</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
@@ -1281,14 +1287,17 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fraction to half. Code is incomplete. I need to remove the point that has the most impact on the Sharpe Ratio, not the frst point</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fraction to half. Code is incomplete. I need to remove the point that has the most impact on the Sharpe Ratio, not the first point. \</span>
+<span class="c1"># which point should I remove?</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">fractiontohalf</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
     <span class="n">SR</span><span class="o">=</span><span class="n">R</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="n">R</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
     <span class="n">target_sharpe</span><span class="o">=</span><span class="n">SR</span><span class="o">/</span><span class="mi">2</span>
     <span class="n">T</span><span class="o">=</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">removed_points</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">SR</span> <span class="o">&gt;</span> <span class="n">target_sharpe</span><span class="p">:</span>
-        <span class="n">idx_to_remove</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># this is simply the first point. What is the point that I should take out for maximum impact?</span>
+    <span class="c1"># this is simply the first point. What is the point that I should take out for maximum impact?</span>
+    
+        <span class="n">idx_to_remove</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
         <span class="n">R</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">idx_to_remove</span><span class="p">)</span>
         <span class="n">SR</span><span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">R</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
         <span class="n">removed_points</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -1333,8 +1342,9 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 <img alt="../../_images/0754b9a5728c1b7df5969a474602046ea15dbd9f8441f1b71e2f7d4c8f133357.png" src="../../_images/0754b9a5728c1b7df5969a474602046ea15dbd9f8441f1b71e2f7d4c8f133357.png" />
 </div>
 </div>
+</section>
 <section id="adjusting-for-discarded-signals">
-<h3><span class="section-number">9.6.1. </span>Adjusting for Discarded Signals<a class="headerlink" href="#adjusting-for-discarded-signals" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.6.2. </span>Adjusting for Discarded Signals<a class="headerlink" href="#adjusting-for-discarded-signals" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Often we look at many signals to find the one</p></li>
 <li><p>This makes conventional thresholds for t-tests too small</p></li>
@@ -1420,27 +1430,6 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 <li><p>Split sample in half, estimation and test sample</p></li>
 <li><p>Split in three: estimation, test for model selection, hold-out sample</p></li>
 </ol>
-<blockquote>
-<div><h3 class="rubric" id="robustifying-your-backtests">Robustifying your Backtests</h3>
-<ul class="simple">
-<li><p>Calculate TRUE out of sample Sharpe ratios: Have a hold-out sample not used in backtest to test out of sample performance.</p></li>
-<li><p>Be careful to not use out of sample results for tunning and model choice</p></li>
-<li><p>If you use result of the test sample to choose a model parameter or pick a strategy–evaluate in a third holdout sample</p></li>
-<li><p>Be very careful for information of the test sample to leak into the estimation.</p>
-<ul>
-<li><p>For example, your idea might be motivated by a few months where you know these firms did well. Be sure to check the results are not driving by this</p></li>
-</ul>
-</li>
-<li><p>When tuning/model choice is needed you must have</p>
-<ul>
-<li><p>Estimation</p></li>
-<li><p>Test sample</p></li>
-<li><p>Hold out sample</p></li>
-</ul>
-</li>
-<li><p>Keep track of your discarded ideas going forward</p></li>
-</ul>
-</div></blockquote>
 <p><strong>Aplication 1: optimal combitation of Momentum and value strategies</strong></p>
 <p>We will split our sample into two halves:</p>
 <ol class="arabic simple">
@@ -1651,6 +1640,29 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\2111628766.py:25: Future
 <li><p>Does that matter?</p></li>
 <li><p>Does that change the interpretation of the results?</p></li>
 </ul>
+<section id="robustifying-your-backtests">
+<h3><span class="section-number">9.7.1. </span>Robustifying your Backtests<a class="headerlink" href="#robustifying-your-backtests" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Calculate TRUE out of sample Sharpe ratios: Have a hold-out sample not used in backtest to test out of sample performance.</p></li>
+<li><p>Be careful to not use out of sample results for tunning and model choice</p></li>
+<li><p>If you use result of the test sample to choose a model parameter or pick a strategy–evaluate in a third holdout sample</p></li>
+<li><p>Be very careful for information of the test sample to not leak into the estimation.</p>
+<ul>
+<li><p>For example, your idea might be motivated by a few months where you know these firms did well.</p></li>
+<li><p>Be sure to check the results are not driving by this</p></li>
+</ul>
+</li>
+<li><p>When tuning/model choice is needed you must have</p>
+<ul>
+<li><p>Estimation</p></li>
+<li><p>Test sample</p></li>
+<li><p>Hold out sample</p></li>
+</ul>
+</li>
+<li><p>Keep track of your discarded ideas going forward</p></li>
+</ul>
+</div></blockquote>
 <p><strong>Application 2: fine-tuning the look-back window</strong></p>
 <p>Now we will compare a variety of models to see which one works best outside of the test sample</p>
 <p>So we will have the estimation sample where we will estimate the different models– which in this case will be strategies with different look-back windows</p>
@@ -2200,6 +2212,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_4008\1814499040.py:25: Future
 <li><p>So what do you conclude?</p></li>
 </ul>
 </section>
+</section>
 <section id="publication-bias-or-famous-bias-or-incubation-bias">
 <h2><span class="section-number">9.8. </span>Publication bias (or Famous bias or incubation bias…)<a class="headerlink" href="#publication-bias-or-famous-bias-or-incubation-bias" title="Link to this heading">#</a></h2>
 <p>We discussed that we often look at past performance exactly because a strategy did well. This mechanism of selection renders our statistical analysis biased in the direction of findings that the strategy is amazing.</p>
@@ -2712,10 +2725,7 @@ dtype: float64
 <p>Here are a few Twitter threads from people in the industry about this</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://twitter.com/macrocephalopod/status/1359810769433616384">someone tells you they have a strategy with a Sharpe of S. What questions should you be asking about the strategy to verify that it’s real?</a></p></li>
-<li><p><a class="reference external" href="https://twitter.com/macrocephalopod/status/1362165448205295620?s=20">overfiting</a></p></li>
 </ul>
-<p>It has this really nice plot</p>
-<p><img alt="outofsample" src="../../_images/outofsample1.jpg" /></p>
 <blockquote>
 <div><p>What does it tell us?</p>
 </div></blockquote>
@@ -2792,14 +2802,18 @@ dtype: float64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-test">9.1. Alpha Test</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-we-focus-on-alpha">9.2. Why we focus on Alpha?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">9.3. The basic problem of overfitting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">9.4. Be clear about you goal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">9.5. How to guard against it?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">9.6. Additional Diagnostics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">9.6.1. Adjusting for Discarded Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-mve-allocation-across-factors">9.3. Example: MVE allocation across factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-problem-of-overfitting">9.4. The basic problem of overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-clear-about-you-goal">9.5. Be clear about you goal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-guard-against-it">9.6. How to guard against it?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-diagnostics">9.6.1. Additional Diagnostics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusting-for-discarded-signals">9.6.2. Adjusting for Discarded Signals</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">9.7. How to split you sample?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-split-you-sample">9.7. How to split you sample?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustifying-your-backtests">9.7.1. Robustifying your Backtests</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publication-bias-or-famous-bias-or-incubation-bias">9.8. Publication bias (or Famous bias or incubation bias…)</a></li>
 </ul>
   </nav></div>
