@@ -591,6 +591,20 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="returns-excess-returns-and-common-factors">
 <h1><span class="section-number">4. </span>Returns, excess returns, and common factors<a class="headerlink" href="#returns-excess-returns-and-common-factors" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>🎯 Learning Objectives</strong></p>
+<p>By the end of this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>Define and compute total returns</strong><br />
+Build returns from price and dividend data, recognizing that “return” is the normalized gain relative to the initial price and works for any positive‐priced asset.</p></li>
+<li><p><strong>Strip out the risk-free rate</strong><br />
+Convert raw returns to <em>excess returns</em> so that every subsequent statistic measures compensation over a truly “safe” alternative.</p></li>
+<li><p><strong>Introduce the idea of a risk premium</strong><br />
+Understand that the expected value of excess return is the reward for bearing risk, and that estimating it requires a long view of historical data</p></li>
+<li><p><strong>Motivate the need for a factor model</strong><br />
+See why differing betas demand a formal model and set the stage for multi-factor extensions covered in later notebooks.</p></li>
+</ol>
+<hr class="docutils" />
 <section id="what-is-a-return">
 <h2><span class="section-number">4.1. </span>What is a return?<a class="headerlink" href="#what-is-a-return" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -1730,17 +1744,19 @@ dtype: float64
 <p>How do we estimate the amount of systematic risk?</p>
 <p>Can we say what share of the stock variance is due the market risk factor?</p>
 <p>What is the calculation?</p>
-<blockquote>
-<div><h3 class="rubric" id="takeaways">Takeaways</h3>
+<hr class="docutils" />
+<p><strong>📝 Key Takeaways</strong></p>
 <ul class="simple">
-<li><p>How to construct returns from prices and dividends</p></li>
-<li><p>How to use moments of the return distribution to think about what you expect in the future</p></li>
-<li><p>We learn about risk-premiums</p></li>
-<li><p>We learned how to decompose an asset risk into a factor component and an asset specific component</p></li>
-<li><p>We learned how to decompose the amount of variance is coming from each of these componenents</p></li>
+<li><p><strong>Return = price change + income, normalized.</strong>  Whether for stocks, bonds, or crypto, total return compares what you end with to what you put in.</p></li>
+<li><p><strong>Excess return is the correct performance yardstick.</strong>  Subtracting the risk-free rate lets you focus on compensation for taking risk, not for simply waiting.</p></li>
+<li><p><strong>Risk premiums are expectations, not guarantees.</strong>  The historical average of excess returns is noisy and must be interpreted with care.</p></li>
+<li><p><strong>Stocks do not share the same market sensitivity.</strong>  Removing one dollar of market exposure from each asset under- or over-hedges depending on its true beta.</p></li>
+<li><p><strong>Regression fixes the mismatch.</strong>  Estimating beta and then subtracting β·factor yields residuals that are, by construction, uncorrelated with the market.</p></li>
+<li><p><strong>Systematic and idiosyncratic risks add up to total variance.</strong>  Beta squared times factor variance is the market slice; the remainder is asset-specific noise.</p></li>
+<li><p><strong>A single-factor view is the first step toward richer models.</strong>  The CAPM decomposition you coded here provides the intuition and machinery for multi-factor analysis later in the course.</p></li>
 </ul>
-</div></blockquote>
 </section>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
 </div>
 </section>

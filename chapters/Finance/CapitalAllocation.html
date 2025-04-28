@@ -480,11 +480,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-decides-how-much-risk-to-take">8.1. Who Decides How Much Risk to Take?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">8.1.1. 🎯 Learning Objectives</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-if-youre-the-principal">8.1.2. 🧍 A. If You’re the <strong>Principal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-if-youre-the-delegate">8.1.3. 🧑‍💼 B. If You’re the <strong>Delegate</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">8.1.4. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">8.1.5. ✅ Check Your Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-if-youre-the-principal">8.1.1. 🧍 A. If You’re the <strong>Principal</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-if-youre-the-delegate">8.1.2. 🧑‍💼 B. If You’re the <strong>Delegate</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">8.1.3. 🔁 Summary: Why This Distinction Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">8.1.4. ✅ Check Your Understanding</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-losses-to-portfolio-risk">8.2. From Losses to Portfolio Risk</a></li>
@@ -499,7 +498,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns">8.8.3. <strong>Construct strategy returns</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">8.9. Takeaways</a></li>
 </ul>
             </nav>
         </div>
@@ -578,6 +576,27 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="capital-allocation">
 <h1><span class="section-number">8. </span>Capital Allocation<a class="headerlink" href="#capital-allocation" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>🎯 Learning Objectives</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Decompose the capital-allocation problem into two decisions.</strong><br />
+Separate “How large should my <em>risk</em> portfolio be?” from “How do I spread that risk across assets?” and see why each question has distinct inputs.</p></li>
+<li><p><strong>Compare the principal vs. delegate perspective.</strong><br />
+Understand how required spending, liabilities, or performance evaluation alter the optimal amount of risk for an individual investor versus a professional manager.</p></li>
+<li><p><strong>Translate expected return and covariance into optimal weights.</strong><br />
+Apply the mean–variance framework (or its CAPM special case) to derive recommended positions across stocks, bonds, and factor portfolios.</p></li>
+<li><p><strong>Allocate between market beta and portable alpha.</strong><br />
+Learn the mechanics of combining a hedged long-short (zero-beta) strategy with a market position, and see how the separation theorem guides sizing.</p></li>
+<li><p><strong>Evaluate characteristic-based factors through a CAPM lens.</strong><br />
+Treat value, momentum, and other factor spreads as investable assets; estimate their alphas, betas, and incremental Sharpe contribution.</p></li>
+<li><p><strong>Incorporate time-varying volatility into the risk budget.</strong><br />
+Construct rolling realized variance, convert it into a volatility-managed target weight, and examine how the strategy alters return paths.</p></li>
+<li><p><strong>Explore the economics behind “pod shops.”</strong><br />
+Understand why multi-manager platforms combine dozens of market-neutral pods, each run at tight risk limits and scaled to a common volatility target.</p></li>
+<li><p><strong>Build data pipelines from signal to strategy returns.</strong><br />
+Practice fetching daily factor data, aggregating to monthly realized variance, converting signals into weights, and computing hierarchical portfolio P&amp;L.</p></li>
+</ol>
+<hr class="docutils" />
 <p>Every investor faces this question: <em>How much risk should I take, and how should I spread that risk across different assets?</em></p>
 <p>This chapter will walk you through key concepts and hands-on tools to:</p>
 <ul class="simple">
@@ -596,19 +615,8 @@ document.write(`
 <div><p>💬 <strong>Who is choosing the portfolio—and what do they care about?</strong></p>
 </div></blockquote>
 <p>Every investment decision is ultimately shaped by this.</p>
-<hr class="docutils" />
-<section id="learning-objectives">
-<h3><span class="section-number">8.1.1. </span>🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h3>
-<p>By the end of this section, you should be able to:</p>
-<ul class="simple">
-<li><p>Distinguish between the <strong>Principal</strong> and <strong>Delegate</strong> investor perspectives.</p></li>
-<li><p>Understand how <strong>risk aversion</strong> shapes optimal portfolio decisions.</p></li>
-<li><p>Recognize how <strong>career concerns and constraints</strong> affect delegated asset management.</p></li>
-</ul>
-</section>
-<hr class="docutils" />
 <section id="a-if-youre-the-principal">
-<h3><span class="section-number">8.1.2. </span>🧍 A. If You’re the <strong>Principal</strong><a class="headerlink" href="#a-if-youre-the-principal" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.1.1. </span>🧍 A. If You’re the <strong>Principal</strong><a class="headerlink" href="#a-if-youre-the-principal" title="Link to this heading">#</a></h3>
 <p>You’re investing your own money, and <strong>you bear all the risks and rewards</strong>.</p>
 <p>Your optimal portfolio depends on:</p>
 <ul class="simple">
@@ -646,7 +654,7 @@ document.write(`
 <p>-This is certainly a good start, but it essentially assumes all your wealth comes from financial assets–which is mostly not true unless you are Warren Buffet.</p>
 </section>
 <section id="b-if-youre-the-delegate">
-<h3><span class="section-number">8.1.3. </span>🧑‍💼 B. If You’re the <strong>Delegate</strong><a class="headerlink" href="#b-if-youre-the-delegate" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.1.2. </span>🧑‍💼 B. If You’re the <strong>Delegate</strong><a class="headerlink" href="#b-if-youre-the-delegate" title="Link to this heading">#</a></h3>
 <p>Now imagine you’re a <strong>fund manager</strong> investing on behalf of others.</p>
 <p>You may be evaluated based on:</p>
 <ul class="simple">
@@ -672,7 +680,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="summary-why-this-distinction-matters">
-<h3><span class="section-number">8.1.4. </span>🔁 Summary: Why This Distinction Matters<a class="headerlink" href="#summary-why-this-distinction-matters" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.1.3. </span>🔁 Summary: Why This Distinction Matters<a class="headerlink" href="#summary-why-this-distinction-matters" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Perspective</p></th>
@@ -704,7 +712,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="check-your-understanding">
-<h3><span class="section-number">8.1.5. </span>✅ Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.1.4. </span>✅ Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h3>
 <p><strong>Q1</strong>: Why might a delegate choose a lower-risk portfolio than a principal?</p>
 <details>
 <summary>Click to see the answer</summary>
@@ -2118,22 +2126,25 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="takeaways">
-<h2><span class="section-number">8.9. </span>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Know the maximum loss you can bear–&gt; figure out how much vol you should have in your portfolio</p></li>
-<li><p>Portfolio composition is all about the Sharpe Ratio</p></li>
-<li><p>Diversification is your friend, estimation uncertainty your mortal enemy</p></li>
-<li><p>Many approaches to sizing–but better to keep it simple and iterate relentlessly (more on that next)</p></li>
-<li><p>Risk-Management is key</p>
+<hr class="docutils" />
+<p><strong>📝 Key Takeaways</strong></p>
 <ul class="simple">
+<li><p><strong>Risk size and asset mix are separate levers.</strong>  First decide how much volatility (or drawdown) you can stomach; only then choose the combination of assets or factors that delivers the best reward for that risk.</p></li>
+<li><p><strong>Know your maximum loss</strong>: figure out how much vol you should have in your portfolio</p></li>
+<li><p><strong>Portfolio composition</strong> is all about the Sharpe Ratio</p></li>
+<li><p><strong>Portable alpha plus market beta is a practical implementation of the separation theorem.</strong>  A zero-beta long–short can be layered on top of any core market exposure to raise expected return without changing systematic risk.</p></li>
+<li><p><strong>Characteristic factors need the same discipline as traditional assets.</strong>  Evaluate their alpha, beta, and covariance before adding them—high standalone Sharpe means little if the factor simply doubles your market risk.</p></li>
+<li><p><strong>Diversification is your friend</strong>, estimation uncertainty your mortal enemy</p></li>
+<li><p><strong>Many approaches to sizing</strong>: better to keep it simple and iterate relentlessly</p></li>
+<li><p><strong>Risk-Management is key</strong></p>
+<ul>
 <li><p>Hedging out factor exposure enhances you Sharpe Ratio. A safer strategy enables more risk-taking, and more growth</p></li>
-<li><p>Dynamic management of risk does the same across time. You take more risk, when compensation is high</p></li>
+<li><p>Dynamic management of risk does the same across time. You should take more risk, when compensation is high</p></li>
 </ul>
 </li>
-</ol>
+</ul>
+<hr class="docutils" />
+</section>
 </section>
 </section>
 
@@ -2202,11 +2213,10 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-decides-how-much-risk-to-take">8.1. Who Decides How Much Risk to Take?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">8.1.1. 🎯 Learning Objectives</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-if-youre-the-principal">8.1.2. 🧍 A. If You’re the <strong>Principal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-if-youre-the-delegate">8.1.3. 🧑‍💼 B. If You’re the <strong>Delegate</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">8.1.4. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">8.1.5. ✅ Check Your Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-if-youre-the-principal">8.1.1. 🧍 A. If You’re the <strong>Principal</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-if-youre-the-delegate">8.1.2. 🧑‍💼 B. If You’re the <strong>Delegate</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">8.1.3. 🔁 Summary: Why This Distinction Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">8.1.4. ✅ Check Your Understanding</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-losses-to-portfolio-risk">8.2. From Losses to Portfolio Risk</a></li>
@@ -2221,7 +2231,6 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-strategy-returns">8.8.3. <strong>Construct strategy returns</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">8.9. Takeaways</a></li>
 </ul>
   </nav></div>
 
