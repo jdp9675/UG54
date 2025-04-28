@@ -579,6 +579,27 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="performance-evaluation">
 <h1><span class="section-number">9. </span>Performance Evaluation<a class="headerlink" href="#performance-evaluation" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>🎯 Learning Objectives</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Frame performance through risk-adjusted metrics.</strong><br />
+Distinguish raw returns from <em>Sharpe ratio</em> and <em>alpha</em>; see why investors focus on excess return per unit of risk and on intercepts from factor regressions.</p></li>
+<li><p><strong>Run an alpha test with the CAPM (and beyond).</strong><br />
+Subtract the risk-free rate, regress the strategy’s returns on the market factor, interpret ( \alpha ), ( \beta ), t-statistics, and p-values, and decide whether apparent out-performance is statistically real.</p></li>
+<li><p><strong>Quantify estimation error and sampling variation.</strong><br />
+Recognize that every backtest statistic is itself a random variable; learn to compute standard errors, confidence bands, and rolling Sharpe ratios to judge stability through time.</p></li>
+<li><p><strong>Diagnose and mitigate over-fitting.</strong><br />
+Understand how data-mining inflates t-stats, learn the dangers of tuning on noise, and practice safeguards such as white-noise checks, cross-validation, and multiple-testing adjustments.</p></li>
+<li><p><strong>Design robust backtests with true out-of-sample evidence.</strong><br />
+Build hold-out periods, k-fold splits, and alternating-month/-year samples; evaluate whether a discovery survives when it has <em>never</em> been seen by the model.</p></li>
+<li><p><strong>Combine strategies intelligently.</strong><br />
+Explore the joint evaluation of momentum and value portfolios, estimating optimal weights in one subsample and validating them in another; appreciate how covariance matters as much as individual Sharpe ratios.</p></li>
+<li><p><strong>Detect publication and incubation bias.</strong><br />
+Compare pre- and post-publication performance, measure how fame or capital influx erodes returns, and adjust expectations accordingly.</p></li>
+<li><p><strong>Translate diagnostics into portfolio sizing.</strong><br />
+Use a clear, calibrated discovery process to accept, size, or discard strategies based on the reliability of their alpha and the robustness of their risk profile.</p></li>
+</ol>
+<hr class="docutils" />
 <p>Our premise here is that you are looking to invest in the portfolio with the highest Sharpe Ratio.</p>
 <p>Once we have our trading strategy. Lets say we have been trading for N days and have returns <span class="math notranslate nohighlight">\([r_1,r_2,....r_N]\)</span></p>
 <p>What do we do?</p>
@@ -2643,6 +2664,19 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_7236\2254644634.py:26: Future
 <li><p><a class="reference external" href="https://imarketsignals.com/2021/outperforming-the-sp-500-with-50-consensus-stock-holdings-of-40-large-hedge-funds/">The dumbest strategy ever created</a></p></li>
 <li><p><a class="reference external" href="https://twitter.com/nope_its_lily/status/1368623837961621505">We are always looking for patterns, be careful!</a></p></li>
 </ul>
+<hr class="docutils" />
+<p><strong>📝 Key Takeaways</strong></p>
+<ul class="simple">
+<li><p><strong>Sharpe and alpha complement each other.</strong>  The Sharpe ratio ranks the strategy standalone risk-return efficiency, while factor α  and appraisal ratio reveals skill over systematic risks</p></li>
+<li><p><strong>Subtract the risk-free rate and test against factors—always.</strong>  Raw excess returns can look great until market beta or other factor loadings are accounted for.</p></li>
+<li><p><strong>Statistical significance is fragile.</strong>  A high in-sample t-stat may vanish once you allow for multiple trials, shifting windows, or fresh data. Especially true when you did optimization in sample!</p></li>
+<li><p><strong>Hold-out and cross-validation are your best friends.</strong>  True out-of-sample Sharpe ratios provide the clearest window on future performance.</p></li>
+<li><p><strong>Over-fitting is the default, not the exception.</strong>  Without disciplined controls you will gravitate toward noise that “worked” by chance.</p></li>
+<li><p><strong>Strategy blends demand covariance awareness.</strong>  Combining two high-Sharpe ideas poorly can lower overall risk-adjusted returns; optimizing weights on one half and testing on the other guards against that trap.</p></li>
+<li><p><strong>Publication bias is real and costly.</strong>  Many celebrated anomalies fade once they become popular; splitting the sample before and after notoriety helps set realistic alphas.</p></li>
+<li><p><strong>A rigorous evaluation process is an edge in itself.</strong>  Clear goals, transparent diagnostics, and robust testing protect capital better than any single clever signal.</p></li>
+</ul>
+<hr class="docutils" />
 </section>
 </section>
 
