@@ -65,7 +65,7 @@
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6.8. Levering up and Shorting" href="LeverageandShorting.html" />
+    <link rel="next" title="6.7. Levering up and Shorting" href="LeverageandShorting.html" />
     <link rel="prev" title="5. Introduction to Factor models" href="FactorModels.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -215,8 +215,8 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="FactorModels.html">5. Factor Models</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">6. Portfolios</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">6.8. Leverage and Shorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">6.9. Linear Algebra Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LeverageandShorting.html">6.7. Leverage and Shorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">6.8. Linear Algebra Review</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="FactorModelEstimation.html">7. Factor Model Estimation</a></li>
@@ -485,7 +485,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-variance">6.4. <strong>Portfolio Variance</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">6.5. Portfolios and factor models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">6.6. Risk Profile Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">6.7. Takeaways</a></li>
 </ul>
             </nav>
         </div>
@@ -806,8 +805,27 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="portfolio-math-and-diversification">
 <h1><span class="section-number">6. </span>Portfolio Math  and Diversification<a class="headerlink" href="#portfolio-math-and-diversification" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>🎯 Learning Objectives</strong></p>
 <p>In this section we will learn how to do some basic math at portfolio level. You will know how to calculate return, expected return, and volatility given portfolio weights.</p>
-<p>A portfolio is described by a set of assets and a set of weights invested in each asset.</p>
+<p>By the end of this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>See risk through a portfolio lens.</strong><br />
+Grasp Markowitz’s insight that an asset’s danger depends on what it adds to the <em>whole</em> mix, not on its stand-alone volatility.</p></li>
+<li><p><strong>Express returns, means, and variance with matrix algebra.</strong><br />
+Use (R_p   =  R W), (E[R_p]=W’ E[R]), and (\text{Var}(R_p)=W’ \Sigma W) to avoid loops and scale instantly from two assets to hundreds.</p></li>
+<li><p><strong>Quantify diversification benefits.</strong><br />
+Investigate how adding a higher-volatility asset can <em>lower</em> portfolio variance when correlations are below one, and plot the US–international efficient frontier.</p></li>
+<li><p><strong>Compute and interpret portfolio weights.</strong><br />
+Distinguish long-only, short, and leveraged positions; verify that weights sum to one (or note where leverage breaks that rule).</p></li>
+<li><p><strong>Decompose variance into systematic and idiosyncratic pieces.</strong><br />
+Link portfolio math to a single-factor model: ( \text{Var}(R_p)= (W’ B)^2 \text{Var}(f) + W’ \text{Var}(U) W ).</p></li>
+<li><p><strong>Identify marginal contributions to risk.</strong><br />
+Apply (2 B (B’ W) \text{Var}(f) + 2 \text{Var}(U) W) to see which asset trims factor risk most effectively per unit of trading.</p></li>
+<li><p><strong>Build intuition with real data.</strong><br />
+Load five global equity and bond portfolios, construct equal-weight and custom mixes, and observe how statistics change across decades.</p></li>
+</ol>
+<hr class="docutils" />
 <section id="why-do-you-need-to-think-about-portfolios">
 <h2><span class="section-number">6.1. </span>Why do you need to think about portfolios?<a class="headerlink" href="#why-do-you-need-to-think-about-portfolios" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -3677,15 +3695,20 @@ dtype: float64
 <li><p>Which asset achieves the highest reduction in risk?</p></li>
 <li><p>Now suppose I want to reduce factor risk, which asset allows me to reduce factor risk more efficiently?</p></li>
 </ul>
+<hr class="docutils" />
+<p><strong>📝 Key Takeaways</strong></p>
+<ul class="simple">
+<li><p><strong>Matrix algebra is the portfolio engineer’s power tool.</strong>  A single line replaces nested loops when calculating returns, expectations, and variance.</p></li>
+<li><p><strong>Diversification is all about correlations.</strong>  Pairing volatile but imperfectly correlated assets can cut overall risk more than simply holding the lower-volatility asset alone.</p></li>
+<li><p><strong>Weights, not volatilities, drive portfolio behavior.</strong>  A 1 % holding that goes to zero costs exactly 1 % no matter how wild that asset’s price path was.</p></li>
+<li><p><strong>Variance scales quadratically with weights.</strong>  The covariance matrix shows why small weight shifts in highly correlated assets can have outsized impact on risk.</p></li>
+<li><p><strong>Factor models slot neatly into portfolio math.</strong>  Aggregate beta is (W’B); systematic risk is that beta squared times factor variance, with the remainder coming from idiosyncratic noise.</p></li>
+<li><p><strong>Marginal-risk analysis guides rebalancing.</strong>  The gradient formula pinpoints which asset sale—or purchase—delivers the biggest drop in total or factor risk.</p></li>
+<li><p><strong>Efficient-frontier plots reveal trade-offs.</strong>  Visualizing returns versus volatility helps choose among competing mixes and highlights when international exposure improves a U.S.-centric portfolio.</p></li>
+<li><p><strong>All calculations hinge on clean data and consistent scaling.</strong>  Always annualize means and standard deviations the same way, and remember that sample estimates shift as new data arrive.</p></li>
+</ul>
 </section>
-<section id="takeaways">
-<h2><span class="section-number">6.7. </span>Takeaways<a class="headerlink" href="#takeaways" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Matrix algebra is your best friend to easily compute portfolio returns, expected returns and variances as a function of moments of the original assets</p></li>
-<li><p>Diversification effects are powerful. Adding a bit of a more volatile asset will reduce the portfolio volatility as long the correlations are not 1</p></li>
-<li><p>Factor models work well with portfolios</p></li>
-</ol>
-</section>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -3734,7 +3757,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.8. </span>Levering up and Shorting</p>
+        <p class="prev-next-title"><span class="section-number">6.7. </span>Levering up and Shorting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -3760,7 +3783,6 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-variance">6.4. <strong>Portfolio Variance</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">6.5. Portfolios and factor models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">6.6. Risk Profile Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaways">6.7. Takeaways</a></li>
 </ul>
   </nav></div>
 
