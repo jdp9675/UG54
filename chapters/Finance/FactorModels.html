@@ -558,6 +558,26 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-factor-models">
 <h1><span class="section-number">5. </span>Introduction to Factor models<a class="headerlink" href="#introduction-to-factor-models" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>🎯 Learning Objectives</strong></p>
+<p>By the end of this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>Decode the α / β decomposition.</strong><br />
+Learn how any asset’s excess return can be split into a factor‐driven piece (β × factor) and an asset-specific alpha, and see how this dual role lets factor models describe both risk and expected return.</p></li>
+<li><p><strong>Estimate factor exposure and alpha with regression.</strong><br />
+Use time-series regressions of excess returns on factor returns to obtain β, α, residuals, and the associated statistics that guide portfolio design.</p></li>
+<li><p><strong>Create tracking and hedged portfolios.</strong><br />
+Build a <em>tracking</em> portfolio equal to β times the factor, and a <em>hedged</em> (portable-alpha) portfolio that subtracts the tracking position—delivering pure alpha with zero in-sample factor risk.</p></li>
+<li><p><strong>Size positions under explicit risk budgets.</strong><br />
+Apply volatility budgets at daily, monthly, or annual horizons; compute how much capital you can allocate to an unhedged position versus a hedged one, given its variance components.</p></li>
+<li><p><strong>Perform variance decomposition and risk-share analysis.</strong><br />
+Break total variance into a factor part (β² Var f) and an idiosyncratic part (Var ε); measure the fraction of factor risk and adjust hedges to meet risk-share limits.</p></li>
+<li><p><strong>Build factor-implied covariance matrices.</strong><br />
+See how a single-factor structure collapses the number of parameters from O(N²) to O(N); practice constructing the matrix as (B B’ Var f + \text{diag}(\sigma_ε^2)).</p></li>
+<li><p><strong>Appreciate the practical uses of factor models.</strong><br />
+Understand why asset managers, pod shops, and risk desks rely on factor models to separate skill from beta, impose discipline on risk taking, and communicate performance.</p></li>
+</ol>
+<hr class="docutils" />
 <p>Let <span class="math notranslate nohighlight">\(r^e\)</span> be an asset excess return over the risk-free rate</p>
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> be a traded factor, for now  the excess returns on SPY ETF (that holds a basket that replicates the S&amp;P 500 index)</p>
 <p>Then we can write</p>
@@ -1332,6 +1352,27 @@ var(\epsilon_{i,t}) &amp; 0 \\
 <li><p>Can you discuss if it such model is a good one in this case</p></li>
 </ul>
 </div></blockquote>
+<hr class="docutils" />
+<p><strong>📝 Key Takeaways</strong></p>
+<ul class="simple">
+<li><p><strong>Factor models separate what you <em>earn</em> from what you <em>ride</em>.</strong><br />
+Beta captures common market movements; alpha is the slice of return not explained by those movements.</p></li>
+<li><p><strong>Hedging out β turns views into “portable” alpha.</strong><br />
+Going long the asset and short β units of the factor neutralizes systematic risk, leaving a position whose mean excess return equals its alpha and whose volatility equals the residual variance.</p></li>
+<li><p><strong>Risk budgets shrink once you hedge intelligently.</strong><br />
+A hedged position’s lower volatility allows you to deploy more capital for the same risk cap—and to earn more alpha-attributed P&amp;L.</p></li>
+<li><p><strong>Variance decomposition is your monitoring dashboard.</strong><br />
+It tells you how much of today’s risk is coming from factors versus idiosyncratic shocks and highlights when market turmoil swells the factor share.</p></li>
+<li><p><strong>Tracking portfolios clarify performance attribution.</strong><br />
+By explicitly matching the factor component, you can assess whether a manager’s outperformance is genuine skill or just hidden beta.</p></li>
+<li><p><strong>Factor-implied covariance matrices are parsimonious and , maybe, more intuitive.</strong><br />
+Estimating only N betas, N idiosyncratic variances, and one factor variance yields a workable covariance estimate even when the full N × N matrix is unmanageable.</p></li>
+<li><p><strong>All numbers are frequency-specific.</strong><br />
+Alpha, variances, co-variances and Sharpe ratios must be annualized (or otherwise scaled) consistently before comparison or budgeting.  Beta is the only one that is theoretically invariant</p></li>
+<li><p><strong>Good questions drive good models.</strong><br />
+Throughout the notebook “Stop and Think” prompts remind you to check data frequency, interpret α’s forecasting value, and judge whether the single-factor assumption is adequate for your application.</p></li>
+</ul>
+<hr class="docutils" />
 </section>
 </section>
 
