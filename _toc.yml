@@ -14,10 +14,11 @@ sections:
 - file: chapters/02/getting_started
   title: Getting Started
   sections:
-  - file: chapters/02/local_install
-    title: Local installation
   - file: chapters/02/cloud_setup
     title: Cloud Setup
+  - file: chapters/02/local_install
+    title: Local installation
+
 - file: chapters/essentials/intro.md
   title: Python Essentials
   sections:
