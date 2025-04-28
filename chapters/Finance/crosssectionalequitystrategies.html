@@ -227,8 +227,8 @@
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">11. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Factors.html">11.11. An overview of factors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">11.12. Interpreting Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factors.html">11.9. An overview of factors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">11.10. Interpreting Factor Models</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">12. Machine Learning in Finance</a></li>
@@ -571,6 +571,23 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="characteristic-based-trading-strategies">
 <h1><span class="section-number">10. </span>Characteristic-Based Trading strategies<a class="headerlink" href="#characteristic-based-trading-strategies" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>🎯 Learning Objectives</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Contrast timing vs. cross-sectional approaches</strong><br />
+Recognize that characteristic-based strategies keep aggregate market exposure roughly constant and instead shift weight across individual stocks according to firm-level signals.</p></li>
+<li><p><strong>Master the four-step portfolio recipe</strong><br />
+<em>Build a signal</em> → <em>sort stocks each month</em> → <em>weight within buckets (equal or market-cap)</em> → <em>form the long-short spread (top – bottom)</em>, always using information that is known on the trade date.</p></li>
+<li><p><strong>Construct the market-cap-weighted benchmark correctly</strong><br />
+Compute market capitalizations from lagged price × shares-outstanding and show how to aggregate them to the total-market portfolio, avoiding look-ahead bias.</p></li>
+<li><p><strong>Organize large equity data sets efficiently</strong><br />
+Work with “stacked” (date-firm) data frames, merge CRSP returns with characteristics, and reshape the grouped returns so they are ready for analysis and plotting.</p></li>
+<li><p><strong>Code a reusable function that maps any signal to portfolios</strong><br />
+Generalize the recipe into a single function that takes a signal (<code class="docutils literal notranslate"><span class="pre">X</span></code>), number of groups, and weighting choice, and then delivers decile returns, cumulative-return plots, and the long-short series.</p></li>
+<li><p><strong>Develop empirical intuition about trade-offs</strong><br />
+Explore how the number of groups, the dispersion of the signal, and the choice of weights influence the return spread, volatility, and diversification of the resulting portfolios.</p></li>
+</ol>
+<hr class="docutils" />
 <ul class="simple">
 <li><p>So far we have looked at strategies that go in and out of a particular asset according to a signal.</p></li>
 <li><p>We looked at past average returns, past  volatility, and past co-variances</p></li>
@@ -2914,18 +2931,19 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\3445167417.py:3: Deprec
 </div></div><img alt="../../_images/dff98609a5bec67fdb3f88a930bfc792892a2c190cc386e9cdf5eb2b94bf7fe7.png" src="../../_images/dff98609a5bec67fdb3f88a930bfc792892a2c190cc386e9cdf5eb2b94bf7fe7.png" />
 </div>
 </div>
-<blockquote>
-<div><h2 class="rubric" id="takeaways">Takeaways</h2>
+<hr class="docutils" />
+<p><strong>📝 Key Takeaways</strong></p>
 <ul class="simple">
-<li><p>Working with large portfolios of stocks requires stacked dataframes</p></li>
-<li><p>Market-cap weighted portfolios should be the default option for portfolio construction–Important to used lagged market cap to avoid look-ahead bias</p></li>
-<li><p>Characteristic-based portfolio require data by date-firm on the specific characteristic</p></li>
-<li><p>These portfolios focus on spread in the signal across assets in a given date</p></li>
-<li><p>Tradeoff between signal strength and diversification</p></li>
+<li><p><strong>Stacked data frames are the backbone</strong> when working with thousands of stocks and multiple characteristics.</p></li>
+<li><p><strong>Lagged market-cap weights should be the default</strong>: they minimize turnover, reflect realistic trading capacity, and eliminate look-ahead bias.</p></li>
+<li><p><strong>Characteristic-sorted portfolios isolate cross-sectional spreads</strong> in the signal; the long-short “top minus bottom” position delivers a clean test of the signal’s pricing power.</p></li>
+<li><p><strong>Portfolio design choices matter</strong>: more groups widen the average-return spread but shrink the number of stocks per bucket; equal-weighting boosts the influence of small caps, while value-weighting is closer to how real money is run.</p></li>
+<li><p><strong>A single, well-structured function automates experimentation</strong> across different signals, making it easy to investigate which characteristics generate higher alpha, when they underperform, and how their long-short returns co-move.</p></li>
+<li><p><strong>The core tension is signal strength versus diversification</strong>: stronger signals often come with higher concentration and trading costs, so practical implementation always balances these forces.</p></li>
 </ul>
-</div></blockquote>
 </section>
 </section>
+<hr class="docutils" />
 <div class="toctree-wrapper compound">
 </div>
 </section>
