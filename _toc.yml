@@ -83,12 +83,6 @@ sections:
   sections:
     - file: chapters/Finance/Momentum
       title: Momentum factor
-    - file: chapters/Finance/Valueinvesting
-      title: Value
-    - file: chapters/Finance/OtherEquityStrategies
-      title: Other Equity strategies
-
-
 
 
 - file: chapters/Finance/MultiFactorModels
