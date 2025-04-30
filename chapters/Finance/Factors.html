@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11.9. An overview of the main Factors &#8212; Quantitative Investing</title>
+    <title>11.9. What Are Factors? &#8212; Quantitative Investing</title>
   
   
   
@@ -469,7 +469,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>An overview of the main Factors</h1>
+    <h1>What Are Factors?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -479,10 +479,54 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value">11.9.1. Value</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-strategies">11.9.2. Return-based strategies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defensive-investing">11.9.3. Defensive Investing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-investing">11.9.4. Quality investing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-sector-membership">11.9.1. 🌍 Market &amp; Sector Membership</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-based-factors">11.9.2. 🧾 Accounting-Based Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-factors">11.9.3. 📉 Return-Based Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-based-factors">11.9.4. 🔁 Trading-Based Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">11.9.5. Final Note</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-investing-deep-dive">11.9.6. 💼 Value Investing – Deep Dive</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-it">11.9.6.1. 🔎 What is it?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#academic-foundations">11.9.6.2. 📚 Academic Foundations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-it-work">11.9.6.3. 🧠 Why Might It Work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.9.6.4. ⚖️ Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-strategies">11.9.7. 📈 Return-Based Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-vs-value">11.9.7.1. ⚖️ Momentum vs. Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-construct-a-momentum-portfolio">11.9.7.2. 🛠️ How to Construct a Momentum Portfolio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.9.7.3. 🤔 Why Might It Work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-literature">11.9.7.4. 📚 Key Literature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#related-return-predictability-patterns">11.9.7.5. 🔁 Related Return Predictability Patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-evidence">11.9.7.6. 📊 Empirical Evidence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defensive-investing">11.9.8. 🛡️ Defensive Investing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">11.9.8.1. 🤔 Motivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-key-low-risk-anomalies">11.9.8.2. 📉 Three Key Low-Risk Anomalies</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#betting-against-beta-bab">11.9.8.2.1. 1. <strong>Betting Against Beta (BAB)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#low-volatility-anomaly">11.9.8.2.2. 2. <strong>Low Volatility Anomaly</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hedging-risk-factors">11.9.8.2.3. 3. <strong>Hedging Risk Factors</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-hmm-method">11.9.8.3. 🧮 How It Works (HMM Method)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-results-from-hmm">11.9.8.4. 📊 Empirical Results from HMM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-performance-sharpe-ratios">11.9.8.4.1. Portfolio Performance (Sharpe Ratios):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-relative-to-factor-models">11.9.8.4.2. Alpha Relative to Factor Models:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-this-work">11.9.8.5. 🧠 Why Might This Work?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-investing">11.9.9. 🏆 Quality Investing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-quality-defined">11.9.9.1. 🔍 How Is Quality Defined?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-vs-value">11.9.9.2. 🔁 Quality vs Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quality-signal-gross-profitability">11.9.9.3. 💡 Simple Quality Signal: Gross Profitability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-quality-work">11.9.9.4. 📉 Why Might Quality Work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.9.9.5. 🧪 Empirical Evidence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-role-of-quality">11.9.9.6. 🧩 Strategic Role of Quality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-expands-the-frontier">11.9.9.7. 📈 Quality Expands the Frontier</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -494,358 +538,423 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="an-overview-of-the-main-factors">
-<h1><span class="section-number">11.9. </span>An overview of the main Factors<a class="headerlink" href="#an-overview-of-the-main-factors" title="Link to this heading">#</a></h1>
-<p>Factors come in many flavors. Academics look for factors that explain expected returns.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-are-factors">
+<h1><span class="section-number">11.9. </span>What Are Factors?<a class="headerlink" href="#what-are-factors" title="Link to this heading">#</a></h1>
+<p>Factors are characteristics or signals that help explain asset returns. They serve both as <strong>risk indicators</strong> and as <strong>return drivers</strong>. Academics emphasize their ability to explain <strong>expected returns</strong> and remove known sources of variation so that only “new” sources of alpha remain. Practitioners value them for improving <strong>performance measurement</strong>, <strong>risk management</strong>, and <strong>portfolio construction</strong>.</p>
+<p>We can group factors based on what they aim to capture:</p>
+<hr class="docutils" />
+<section id="market-sector-membership">
+<h2><span class="section-number">11.9.1. </span>🌍 Market &amp; Sector Membership<a class="headerlink" href="#market-sector-membership" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>by removing know sources of risk-premia it only gives the strategy credit for what it is “new”</p></li>
+<li><p><strong>Market</strong>: Whether the asset belongs to a region (e.g., US, China). Encoded as 1 if present, 0 otherwise.</p></li>
+<li><p><strong>Sector</strong>: Broad industry grouping (e.g., tech, healthcare). Can be split into 5 to 100+ categories.</p></li>
+<li><p>Works beyond equities—applicable to credit markets, bonds, etc.</p></li>
 </ul>
-<p>Practitioners want factors that remove return variation that they are not interested in</p>
+<p>These “membership” factors help isolate common shocks shared within countries or sectors.</p>
+<hr class="docutils" />
+</section>
+<section id="accounting-based-factors">
+<h2><span class="section-number">11.9.2. </span>🧾 Accounting-Based Factors<a class="headerlink" href="#accounting-based-factors" title="Link to this heading">#</a></h2>
+<p>These aim to proxy for fundamentals and predict returns:</p>
 <ul class="simple">
-<li><p>removing variation in realized returns allow for better measurement of alpha</p></li>
-<li><p>It also has the benefit of reducing risk</p></li>
+<li><p><strong>Value (Book-to-Market)</strong>: Cheap stocks (high book relative to price) have historically earned higher returns. This remains one of the most studied and used factors in practice.</p></li>
+<li><p><strong>Profitability / Quality</strong>: Gross profitability (Revenue – COGS) / Assets helps separate high-quality stocks from deteriorating ones. Other signals include ROE, margins, earnings stability, accruals, and low debt levels.</p></li>
+<li><p><strong>Investment</strong>: Firms that invest less (e.g., low asset growth, low capital expenditures) tend to outperform, potentially because high investment reflects low marginal value or managerial empire-building.</p></li>
+<li><p><strong>Composite Quality Scores</strong>: Many practitioners combine profitability, stability, leverage, and growth into a single “quality” score for screening or weighting.</p></li>
 </ul>
-<p>We already have got exposed to a large variety of factors, but it is useful to zoom out and think about what these factors are capturing</p>
-<p>We can state these factors in terms of their characteristic or the associated factor.</p>
-<p>Below I will state the characteristic–but there is always a factor associated characteristic</p>
-<p>Below I have the characteristic. The factor can be recovered with a cross-sectional regression as we saw in “Multi-factor models”</p>
-<p>The first set of factors are broad based features of the market</p>
-<ol class="arabic simple">
-<li><p>The market the asset belong: us, germany, china, and so on.</p>
+<p>Combining quality with value is especially powerful: among firms with similar value metrics, those with high profitability tend to outperform.</p>
+<hr class="docutils" />
+</section>
+<section id="return-based-factors">
+<h2><span class="section-number">11.9.3. </span>📉 Return-Based Factors<a class="headerlink" href="#return-based-factors" title="Link to this heading">#</a></h2>
+<p>These come from past return patterns and risk exposures:</p>
 <ul class="simple">
-<li><p>Any asset in this market has characteristic 1, 0 otherwise</p></li>
+<li><p><strong>Beta</strong>: Measures sensitivity to the market factor. The CAPM suggests a linear relation between beta and expected return, but empirically this relationship often breaks down.</p></li>
+<li><p><strong>Volatility</strong>: High total or idiosyncratic volatility is often associated with <em>lower</em> expected returns. Low-volatility stocks have outperformed in many global markets.</p></li>
+<li><p><strong>Short-Term Reversal</strong>: Stocks with very poor short-term performance tend to revert upwards, likely due to liquidity shocks, overreactions, or temporary flows.</p></li>
+<li><p><strong>Momentum</strong>: One of the strongest factors. Past 12-month return (excluding the most recent month) predicts future returns. Often interpreted as a proxy for underreaction or investor herding.</p></li>
+<li><p><strong>Skewness / Tail Risks</strong>: Assets with negatively skewed returns (lottery-like) may be overpriced due to behavioral demand.</p></li>
 </ul>
-</li>
-<li><p>The sector of the stock</p>
+<hr class="docutils" />
+</section>
+<section id="trading-based-factors">
+<h2><span class="section-number">11.9.4. </span>🔁 Trading-Based Factors<a class="headerlink" href="#trading-based-factors" title="Link to this heading">#</a></h2>
+<p>These reflect investor behavior and flow-driven dynamics:</p>
 <ul class="simple">
-<li><p>any asset in the respective sector get a characteristic of 1, zero otherwise</p></li>
-<li><p>You can split firm from 5 up to 100s of industrial sectors</p></li>
+<li><p><strong>Short Interest</strong>: High short interest or high borrow cost signals pessimism and often predicts underperformance.</p></li>
+<li><p><strong>Active Ownership</strong>: Stocks targeted by activists or insiders tend to outperform, especially if tied to governance or restructuring.</p></li>
+<li><p><strong>Liquidity / Amihud Illiquidity</strong>: Illiquid stocks earn higher returns, possibly compensating for trading costs and risk.</p></li>
+<li><p><strong>Turnover / Share Issuance</strong>: High share issuance and high turnover have been linked to lower future returns, possibly reflecting overpricing.</p></li>
 </ul>
-</li>
-</ol>
-<ul class="simple">
-<li><p>If you are trading other assets, say corporate bonds, you can easily create similar factors in these cases</p></li>
-</ul>
-<p>The second group are factors that are popular in the academic community and have shown to predict returns. Their motivation typically comes from the idea that you can create a proxy for fundamentals or expected returns. They also happen to predict co-movement–imagine if they didn’t…</p>
-<p>The first tries to do that using a combination of accounting and asset price data. I will call accounting-based characteristics</p>
-<p>Accounting-based characteristics
-3. Book to market (also refereed as value): idea is that book might proxy for fundamental value, so the ratio of book to the market value is a measure of how high expected returns are. People might use a variety of other proxys for this fundamental value, but book is the most traditional.</p>
-<ul class="simple">
-<li><p>Other measures are Sales, Dividend, Earnings, …</p></li>
-<li><p>Firms with high book to market have higher expected returns (they are cheap)</p></li>
-</ul>
-<ol class="arabic simple" start="4">
-<li><p>Profitability/quality: The idea is that it proxys for firm quality. The actual measure is the ratio gross profitability to book assets, where gross profitability is profits minus cost of goods sold</p>
-<ul class="simple">
-<li><p>This works particularly well when combined with book-to-market. The issue with book to market is that it is possible  that the market price is low because fundamentals are expected to deteriorate. In fact that is exactly what standard finance theory would predict–market prices should incorporate market participants views about the future of the asset fundamentals! So maybe the stock is cheap because investors think the firm fundamentals are deteriorating</p></li>
-<li><p>So if you get all firms with similar Book-to-market and then sort them by profitability, the idea is that you separate the cheap high quality firms, from the correctly priced junk firms</p></li>
-<li><p>Firm with high profitabiity have higher expected returns specially if you control for book-to-market.</p></li>
-<li><p>There other quality proxys that people use which I discuss below</p></li>
-</ul>
-</li>
-<li><p>Investment: The idea is that manager will invest more if they perceive discount rates to be low, so a firm that is conservative in their investments indicates that management see very high discount rates. The typical measure is CAPEX to assets</p>
-<ul class="simple">
-<li><p>The logic here is to use the decision making of CEO as a way to detect variation in expected returns</p></li>
-<li><p>More conservative firms in their investments earn higher expected returns</p></li>
-</ul>
-</li>
-</ol>
-<p>Returns-based characteristics</p>
-<ol class="arabic simple" start="6">
-<li><p>The beta of the asset with respect to the market factor. The classic one is univariate beta with respect to market portfolios, but this works across many factors. Typically you would think higher beta, higher expected returns, but this relationship flips specially if your model does not have many factors.</p></li>
-<li><p>The total volatility of the asset. Similar to beta, as higher beta stocks are more volatile, but also captures idio volatility. The patterns in returns is most driven by very high volatile stocks–which means this is mostly about the indio piece–i.e. very high idio vol stocks tend to have low expected returns.</p>
-<ul class="simple">
-<li><p>We will discuss “beta” and “vol” in detail below  as defensive investing</p></li>
-</ul>
-</li>
-<li><p>Short-term Reversal: The idea is that in the very high frequency (say monthly,weekly, daily), stocks that drop a lot in prices were likely heavily “sold”, of course someone had to buy them, but the idea is that if they dropped in price is because some liquidity provider like citadel are absorbing the flow as increasingly lower prices. It works symmetrically for stocks that went up a lot. So low recent returns works as a signal of a high future expected return (in the very short horizon). Why? Because if the stock dropped a ton, it indicates that “citadel” is buying and therefore expected returns will be high goign forward</p></li>
-</ol>
-<ul class="simple">
-<li><p>Of course this does nto work in general for any price movement. But if you sort stocks in short term returns you end up caputring this</p></li>
-<li><p>If you had citadel actual positions, or conversely what non-market makers are selling, you would do even better as you would better separate information (price when down because bad information arrived) from price went down because Citadel demanded price concessions to absorb the retail flow</p></li>
-<li><p>So here the short-term losers (low returns) have high future returns, and the winners (high returns) have low returns</p></li>
-</ul>
-<ol class="arabic simple" start="9">
-<li><p>Momentum: Not sure there is a simple consensus view here. One story is that the market does not fully incorporate  that fundamental news has momentum–good news about earnings, ends up translating in more future good news, so if you sort stocks on returns–now 12 month returns, while skipping 1 month to avoid the short-term reversal signal, then winners end up wining, and loosers lose.</p>
-<ul class="simple">
-<li><p>I know. Wild. But now high recent returns predict high future returns and low future return, predict low future returns</p></li>
-<li><p>It is not inconsistent with the short-term reversal trade because the look-back is very different</p></li>
-</ul>
-</li>
-</ol>
-<p>Trading-based characteristics</p>
-<ol class="arabic simple" start="10">
-<li><p>Shorting: The idea is to capture how much investors want to sell an asset short. The idea is that shorting is made mostly by sophisticated investors, and because shorting is very risky, if they are trying to short a lot is because they see the stock as over-valued, so they predict low returns going forward</p>
-<ul class="simple">
-<li><p>People use a few different measures to capture this.</p></li>
-<li><p>borrow rate: how much you have to pay to borrow a stock to short. High borrow rate means lots of people want to do it, but can’t</p></li>
-<li><p>Amount of shorted stocks relative to market cap: measures how big are the shorting positions. sometimes people divide by the float, since for some stocks a big part of market cap is not traded (for example when they have a strong owner-founder)</p></li>
-</ul>
-</li>
-<li><p>Active  holdings:  th idea is to look what activist portfolio managers are doing. If they buy a stock it must mean they think is undervalued. So in a sense is the opposite of the “shorting” play.</p></li>
-</ol>
-<p>Both these trading-based charateristics can go both ways–maybe the traded can be too crowded. So it is also useful to see if your brillian idea is not already getting played by everyone else and it is already crowded. Finance theory would say: if these are the informed and these positions are risky, then they should be predictive and on average they are—but if everyone knows that and everyone is following them, and they don’t really realize it, then it no longer works…so it is complicated</p>
-<p>While for all these characteristics with expected returns is unstable and sample dependent–there is no doubt that each of them captures a very important source of co-movement so are useful for risk-management and performance evaluation even if their use for direct asset allocation is less clear</p>
+<p>Crowdedness matters: signals can lose predictive power when overused. Many trading-based factors capture frictions or flow-induced mispricing that decay with scale.</p>
+<hr class="docutils" />
+</section>
+<section id="final-note">
+<h2><span class="section-number">11.9.5. </span>Final Note<a class="headerlink" href="#final-note" title="Link to this heading">#</a></h2>
+<p>Even if a factor does not reliably predict <em>expected returns</em>, it may still explain <em>co-movement</em> across assets. That alone makes it essential for risk management and performance attribution. A robust understanding of both risk-based and behavioral interpretations helps in building resilient portfolios and separating true alpha from systematic exposure.</p>
 <hr class="docutils" />
 <p>Below I have a broader discussion of some of these characteristics/investment strategies</p>
-<section id="value">
-<h2><span class="section-number">11.9.1. </span>Value<a class="headerlink" href="#value" title="Link to this heading">#</a></h2>
-<p>One of the most popular quantitative investing strategies is broadly refered to as “value investing”</p>
+</section>
+<section id="value-investing-deep-dive">
+<h2><span class="section-number">11.9.6. </span>💼 Value Investing – Deep Dive<a class="headerlink" href="#value-investing-deep-dive" title="Link to this heading">#</a></h2>
+<p>Value investing is one of the most widely studied and implemented quantitative strategies.</p>
+<section id="what-is-it">
+<h3><span class="section-number">11.9.6.1. </span>🔎 What is it?<a class="headerlink" href="#what-is-it" title="Link to this heading">#</a></h3>
+<p>A strategy that tilts the portfolio toward stocks that appear <em>cheap</em> relative to a fundamental anchor—and away from those that appear <em>expensive</em>.</p>
+<p>Mathematically:
+$<span class="math notranslate nohighlight">\(
+W_t \propto \frac{F_t}{P_t}
+\)</span>$
+Where ( F_t ) is a proxy for a firm’s fundamental value and ( P_t ) is its price.</p>
+<p>Common choices for ( F_t ):</p>
 <ul class="simple">
-<li><p>It consists of tilting the portfolio towards stocks that have a low price relative to a proxy for it’s fundamental value</p></li>
-<li><p>and tilt away form stocks with high price relative to fundamentals</p></li>
-<li><p>Broadly speaking: Buy cheap, sell expensive</p></li>
-<li><p>weights:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[W_t \propto \frac{F_t}{P_t}\]</div>
-<ul class="simple">
-<li><p>Where <span class="math notranslate nohighlight">\(F_t\)</span> is some proxy for the firm’s fundamental value</p></li>
-<li><p>typically some accounting measure</p></li>
-<li><p>There is a vast number of proxys for fundamentals</p>
-<ul>
-<li><p>Dividends</p></li>
-<li><p>Book value</p></li>
+<li><p>Book Value</p></li>
 <li><p>Earnings</p></li>
-<li><p>Cash flows</p></li>
+<li><p>Dividends</p></li>
+<li><p>Cash Flows</p></li>
 <li><p>Sales</p></li>
 </ul>
-</li>
-<li><p>The strategy is the “cross-sectional” counterpart of market timing strategies that rely on dividend yield of aggregate market as a proxy for whether the market is expensive.</p></li>
-<li><p>However, the evidence is that cross-sectional strategy is more reliable, even if it still quite risky. It actually has done terribly in the last 10 years!</p></li>
-</ul>
-<p><strong>Literature</strong></p>
+<p>This is the cross-sectional counterpart to time-series strategies that time the market based on aggregate valuation metrics like the dividend yield. However, cross-sectional value strategies tend to be more robust—even if they can underperform for long periods (as seen in the 2010s).</p>
+</section>
+<section id="academic-foundations">
+<h3><span class="section-number">11.9.6.2. </span>📚 Academic Foundations<a class="headerlink" href="#academic-foundations" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www8.gsb.columbia.edu/sites/valueinvesting/files/files/CIER.pdf">Lakonishok, Shleifer, and Vishny (1994) </a>– value and
-growth effect with a behavioral interpretation.</p></li>
-<li><p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1540-6261.1996.tb05202.x">Fama and French (1996)</a> – comprehensive analysis of
-all anomalies, with a rational risk-based interpretation.</p></li>
+<li><p><strong><a class="reference external" href="https://www8.gsb.columbia.edu/sites/valueinvesting/files/files/CIER.pdf">Lakonishok, Shleifer, and Vishny (1994) </a></strong>: Behavioral view—investors overreact to past growth or bad news. Value stocks exploit these biases.</p></li>
+<li><p><strong><a class="reference external" href="https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1540-6261.1996.tb05202.x">Fama and French (1996)</a></strong>: Rational risk-based view—value stocks are riskier, consistent with multifactor models.</p></li>
 </ul>
-<p><strong>Why this might work?</strong></p>
+</section>
+<section id="why-might-it-work">
+<h3><span class="section-number">11.9.6.3. </span>🧠 Why Might It Work?<a class="headerlink" href="#why-might-it-work" title="Link to this heading">#</a></h3>
+<p><strong>1. Mispricing (Behavioral Story)</strong></p>
 <ul class="simple">
-<li><p>The fact that the market value is above or below the book value does not mean that the firm is mispriced. It is natural that the expectation of future earnings changed (which is not in book value), or investors’ perception of risk changed.</p></li>
-<li><p>Even in a CAPM world you can see that happening: suppose the beta of a firm increases, then in equilibrium it’s excess return must also increase!</p>
-<ul>
-<li><p>This would mean if it’s market value goes down, Book-to-Market would go up at the same time, making expected returns going forward go up!</p></li>
-<li><p>But in the data we see when BM changes (as firms swing across portfolios), the market beta does not, which is inconsitent with the CAPM</p></li>
+<li><p>Investors extrapolate trends or overreact to news.</p></li>
+<li><p>Growth stocks become overpriced (“glamorous”); value stocks are neglected (“ugly”).</p></li>
+<li><p>Contrarian rebalancing can capture mean-reversion in sentiment.</p></li>
 </ul>
-</li>
-<li><p>Lots of theories that attempt to explain the value-growth spread, both “rational” and “behavioral”</p></li>
-<li><p>Here is a flavor of a few of these theories</p></li>
-<li><p>Behavioral: LSV argue that value vs. growth strategies (contrarian strategies) exploit naive investor behavior and are not riskier.</p>
-<ul>
-<li><p>Investors may extrapolate earnings too far in the future, may overreact to news, assume a trend in stock prices, or equate a good company with a good investment.</p></li>
-<li><p>Stocks that have done well in the past are Growth stocks that are ‘glamorous’ to investors. People tend to want to buy these and stampede towards them, pushing up the price, and depressing their future returns. Value stocks have been neglected, people tend to overreact to these poorly performing firms, causing their prices to fall too much, and expected returns to rise. Psychological evidence suggests people form these naive strategies. This is an overreaction story, and a contrarian strategy exploits it.</p></li>
-<li><p>LSV also argue that value stocks are not riskier than growth stocks.</p>
-<ul>
-<li><p>they don’t have higher variance</p></li>
-<li><p>they don’t have high downside risk (i.e., do not underperform often or by that much)</p></li>
-<li><p>they don’t have higher betas</p></li>
-<li><p>they don’t underperform in bad states of the world</p></li>
+<p><strong>2. Risk (Rational Story)</strong></p>
+<ul class="simple">
+<li><p>Value firms may be fundamentally riskier: more distress-prone, less flexible, or more sensitive to macro shocks.</p></li>
+<li><p>This explains why value did poorly in crises like 2008 and 2020.</p></li>
 </ul>
-</li>
+<p><strong>Empirical Challenge to CAPM:</strong></p>
+<ul class="simple">
+<li><p>In CAPM, higher expected return implies higher beta.</p></li>
+<li><p>But as firms transition between value/growth portfolios, their beta doesn’t change accordingly.</p></li>
+<li><p>This inconsistency suggests that beta alone can’t explain value spreads.</p></li>
 </ul>
-</li>
-<li><p>Rational: FF argue Value firms are riskier than growth because thery are more exposed to the risk of distress (for example value did terribly in 2008 and 2020)</p>
-<ul>
-<li><p>The argue it is consistent with equilibrium models of ICAPM/APT</p></li>
+</section>
+<section id="summary">
+<h3><span class="section-number">11.9.6.4. </span>⚖️ Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<p>Most researchers believe there’s a blend of both:</p>
+<ul class="simple">
+<li><p><strong>Behavioral</strong> elements (investor overreaction, underreaction, salience).</p></li>
+<li><p><strong>Risk-based</strong> explanations (distress risk, macro exposure).</p></li>
 </ul>
-</li>
-<li><p>Overall most academics think there is a behavioral component in value, but quite a bit has to do with more rational factors, i.e. value is riskier than growth in a variety of ways</p></li>
-</ul>
+<p>Despite recent underperformance, value remains foundational in both academic research and institutional practice.</p>
+</section>
 </section>
 <section id="return-based-strategies">
-<h2><span class="section-number">11.9.2. </span>Return-based strategies<a class="headerlink" href="#return-based-strategies" title="Link to this heading">#</a></h2>
-<p><strong>Momentum</strong> is the fact that stocks that have performed
-<strong>relatively</strong> well in the past continue to perform
-<strong>relatively</strong> well in the future, and stocks that have performed
-<strong>relatively</strong> poorly, continue to perform <strong>relatively</strong>
-poorly.</p>
-<p>A Momentum investment or “relative strength”
-strategy buys stocks which have performed relatively
-well in the past and sells (shorts) stocks which have performed
-relatively poorly.
-Over the <strong>1963-1990</strong> time period, Jegadeesh and Titman
-(1993) found that a strategy that ranked stocks based on
-their past 6 months to a year returns, and bought the top
-10% and shorted the bottom 10% based on this ranking,
-produced abnormal returns of 12% per year.</p>
-<p>Momentum portfolios bet on <strong>cross-sectional</strong> continuation. That is, in a stock did well relative to others in the recent past, the bet is that will continue to do better than the average going forward.</p>
-<p>In some ways momentum is the opposite of a value strategy , since value stocks are stocks that have had very low returns (how else they would be value?)</p>
-<p>The difference is that value/growth focus on the valuation ratio as the signal of how low the price is. So the valuation ratio captures the entire history of returns (what is price if not the result of the historical returns). Momentum instead focus on the last 12 months. Recent, but not too recent. But there many versions of Momentum.</p>
-<p><strong>Construction</strong></p>
-<p>Here is how Daniel and Moskowitz construct their portfolios</p>
+<h2><span class="section-number">11.9.7. </span>📈 Return-Based Strategies<a class="headerlink" href="#return-based-strategies" title="Link to this heading">#</a></h2>
+<p><strong>Momentum</strong> is the tendency for stocks that have performed <strong>relatively well</strong> in the recent past to continue performing well in the near future—and likewise for recent underperformers. This is a <strong>cross-sectional</strong> phenomenon: it’s about relative strength across stocks, not absolute performance.</p>
+<p>A classic <strong>momentum strategy</strong> buys recent winners and shorts recent losers. Over the 1963–1990 period, Jegadeesh and Titman (1993) showed that a strategy ranking stocks by past 6-to-12-month returns and taking long/short positions in the top/bottom deciles delivered <strong>abnormal returns of 12% per year</strong>.</p>
+<section id="momentum-vs-value">
+<h3><span class="section-number">11.9.7.1. </span>⚖️ Momentum vs. Value<a class="headerlink" href="#momentum-vs-value" title="Link to this heading">#</a></h3>
+<p>While <strong>value</strong> strategies buy beaten-down stocks based on fundamentals, <strong>momentum</strong> buys recent outperformers based on price trends. In fact, value and momentum often load on opposite ends of the performance spectrum:</p>
+<ul class="simple">
+<li><p><strong>Value stocks</strong> have low recent returns (hence low prices vs. fundamentals)</p></li>
+<li><p><strong>Momentum stocks</strong> have high recent returns (regardless of valuation)</p></li>
+</ul>
+</section>
+<section id="how-to-construct-a-momentum-portfolio">
+<h3><span class="section-number">11.9.7.2. </span>🛠️ How to Construct a Momentum Portfolio<a class="headerlink" href="#how-to-construct-a-momentum-portfolio" title="Link to this heading">#</a></h3>
+<p><strong>Daniel and Moskowitz (2015)</strong> provide a standard implementation:</p>
 <blockquote>
-<div><p>To form the momentum portfolios, <strong>we first rank stocks based on their cumulative returns
-from 12 months before to one month before the formation date (i.e., the t-12 to t-2-month
-returns)</strong>, we use a one month gap between the end of the ranking period and
-the start of the holding period <strong>to avoid the short-term reversals</strong> documented by Jegadeesh
-(1990) and Lehmann (1990). In particular we will focus on 10% and 90% quantiles of the signal distribution and will construct portfolios of all stocks that are in the bottom and top quintiles</p>
+<div><p>Rank stocks based on cumulative returns from <strong>t–12 to t–2 months</strong>, skipping the most recent month to avoid short-term reversal effects. Select stocks in the top and bottom deciles to form long and short portfolios.</p>
 </div></blockquote>
-<p><strong>Why this might work?</strong></p>
-<ul class="simple">
-<li><p>Behavioral view: The idea here is that markets might be slow to incorporate information, so good/bad news gets into prices slowly over time. For example investors might only slowly get into prices the consequences of a Trump second term.</p></li>
-<li><p>Rational view: Maybe all these stocks are exposed to the same missing risk-factor. They all went up and down at the same time after all! For example all firms that went down in march 2020 are particularly exposed to Covid and the ones that did well are positively exposed. So they will move together as COVID risk fluctuate. It is hard to use a story like that to explain the premium, but it is easy to see how it explains the co-movement.</p></li>
-<li><p>My overall sense is that the majority of academics think that momentum is driven by “behavioral” factors. Note however that momentum tends to crash very badly in high volatility periods such as 2008 and 2020, so it is certainly risky if you zoom out a bit.</p></li>
-</ul>
-<p><strong>Literature</strong></p>
-<p>Lots of work on this.</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://www.annualreviews.org/doi/full/10.1146/annurev-financial-102710-144850">Here is a review of the work on the momentum strategy</a></p></li>
-<li><p><a class="reference external" href="https://www.jstor.org/stable/pdf/2328882.pdf?casa_token=wjU0QYjZvg4AAAAA:aAxgJJLpR7VexgbmcWBBUMveRXin7d5VpGkrYIXDm_UseOs_ETYRZWSNLHzmkGrDFk5A4PNvA6nI8JY4k5khKlSDucppwJ1JNlx0GGqQthOQ4uBY6cA">Here is the paper that first documented the Momentum profitability</a></p></li>
-<li><p><a class="reference external" href="https://github.com/amoreira2/Lectures/blob/a1f2e6ef36e80d32ee12a391b878f564f15c3cd5/assets/papers/Daniel%20Moskowitz%202015.pdf">Here is Daniel and Moskowitz analysis of momentum</a></p></li>
-</ol>
-<p><strong>Past Cross-sectional Return Predictability a summary</strong></p>
-<ol class="arabic simple">
-<li><p>Long-term reversals</p>
-<ul class="simple">
-<li><p>DeBondt and Thaler (1985)</p></li>
-<li><p>3-5 year contrarian strategy</p></li>
-</ul>
-</li>
-<li><p>Short-term (&lt; 1 month) reversals</p>
-<ul class="simple">
-<li><p>Jegadeesh (1990), Lehman (1990), Lo andMacKinlay (1988)</p></li>
-</ul>
-</li>
-<li><p>Intermediate horizon continuation</p>
-<ul class="simple">
-<li><p>Jegadeesh and Titman (1993)</p></li>
-<li><p>3-12 month momentum strategy</p></li>
-<li><p>profits dissipate over 1-year and start to reverse after 2-3 years -&gt; temporary price effect.</p></li>
-<li><p>see similar pattern around earnings announcements (both earnings and price momentum).</p></li>
-</ul>
-</li>
-</ol>
-<p>Below is a plot that summarizes the emprical evidence on return-based strategies. It shows the Sharpe Ratio as a function of the lookback period of the reutrn signal</p>
-<p><img alt="image.png" src="https://github.com/amoreira2/Lectures/raw/main/assets/plots/momentum1.jpg" /></p>
-<ul class="simple">
-<li><p>Can you reproduce this plot?</p></li>
-</ul>
+<p>This 1-month skip is important to sidestep short-term noise and ensure the signal captures true momentum.</p>
 </section>
+<section id="id1">
+<h3><span class="section-number">11.9.7.3. </span>🤔 Why Might It Work?<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><strong>Behavioral Explanation</strong>:</p>
+<ul class="simple">
+<li><p>Investors are slow to fully process new information</p></li>
+<li><p>News and sentiment get incorporated into prices gradually</p></li>
+<li><p>Examples include political developments, earnings trends, or macro regime shifts (e.g., COVID, elections)</p></li>
+</ul>
+<p><strong>Rational Explanation</strong>:</p>
+<ul class="simple">
+<li><p>Stocks with similar momentum may share exposure to unobserved risk factors</p></li>
+<li><p>Momentum return could reflect compensation for time-varying risk exposures</p></li>
+<li><p>However, it’s hard to find a well-defined risk factor that explains the magnitude and persistence of the momentum premium</p></li>
+</ul>
+<p>Most academics lean toward behavioral explanations, though some admit rational risks may help explain co-movement.</p>
+<p>⚠️ <strong>Caveat</strong>: Momentum <strong>crashes hard in high-volatility environments</strong>—notably in 2008 and 2020. So while profitable, it is <strong>not low risk</strong>.</p>
+</section>
+<section id="key-literature">
+<h3><span class="section-number">11.9.7.4. </span>📚 Key Literature<a class="headerlink" href="#key-literature" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.jstor.org/stable/pdf/2328882.pdf">Jegadeesh and Titman (1993): The original paper</a></p></li>
+<li><p><a class="reference external" href="https://github.com/amoreira2/Lectures/blob/a1f2e6ef36e80d32ee12a391b878f564f15c3cd5/assets/papers/Daniel%20Moskowitz%202015.pdf">Daniel and Moskowitz (2015): Momentum Crashes</a></p></li>
+<li><p><a class="reference external" href="https://www.annualreviews.org/doi/full/10.1146/annurev-financial-102710-144850">Comprehensive Momentum Review (Asness et al.)</a></p></li>
+</ol>
+</section>
+<section id="related-return-predictability-patterns">
+<h3><span class="section-number">11.9.7.5. </span>🔁 Related Return Predictability Patterns<a class="headerlink" href="#related-return-predictability-patterns" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Horizon</p></th>
+<th class="head"><p>Pattern</p></th>
+<th class="head"><p>Key Papers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Long-term (3–5 years)</strong></p></td>
+<td><p>Reversal (contrarian effect)</p></td>
+<td><p>DeBondt &amp; Thaler (1985)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Short-term (&lt;1 month)</strong></p></td>
+<td><p>Reversal (microstructure, overreaction)</p></td>
+<td><p>Jegadeesh (1990), Lehmann (1990)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Intermediate (3–12 months)</strong></p></td>
+<td><p>Continuation (momentum)</p></td>
+<td><p>Jegadeesh &amp; Titman (1993)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Returns tend to reverse over very short and very long horizons—but continue in the intermediate range. This supports the idea of <strong>temporary mispricing</strong> that corrects over time.</p>
+</section>
+<section id="empirical-evidence">
+<h3><span class="section-number">11.9.7.6. </span>📊 Empirical Evidence<a class="headerlink" href="#empirical-evidence" title="Link to this heading">#</a></h3>
+<p>Below is a plot summarizing Sharpe ratios as a function of return lookback periods used for momentum signals:</p>
+<p><img alt="Momentum Sharpe Ratio by Lookback" src="https://github.com/amoreira2/Lectures/raw/main/assets/plots/momentum1.jpg" /></p>
+<p>🧪 <strong>Challenge</strong>: Can you reproduce this plot using CRSP data and simple momentum signal construction?</p>
+<hr class="docutils" />
+<p>Momentum is one of the most powerful and puzzling return anomalies. Despite its risks, it remains central to many quantitative strategies and academic debates.</p>
+</section>
+</section>
+<hr class="docutils" />
 <section id="defensive-investing">
-<h2><span class="section-number">11.9.3. </span>Defensive Investing<a class="headerlink" href="#defensive-investing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.9.8. </span>🛡️ Defensive Investing<a class="headerlink" href="#defensive-investing" title="Link to this heading">#</a></h2>
+<p><strong>Core idea</strong>:<br />
+Don’t chase high-return signals—target <strong>low-risk</strong> assets instead. Defensive investing is about recognizing that <strong>risk is more predictable than return</strong> and using that predictability to build superior portfolios.</p>
+<blockquote>
+<div><p>“Why look for high-return assets if lower-risk ones consistently outperform on a risk-adjusted basis?”</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="motivation">
+<h3><span class="section-number">11.9.8.1. </span>🤔 Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Instead of looking for strategies that performed well in the past, look for strategies that have low risk.</p></li>
-<li><p>The idea is: risk is much easier to predict than returns</p></li>
-<li><p>Relies on a weak risk return trade-off-&gt;your notion of risk is not perfectly related to the implied by the tangency portfolio (which we don’t know!)</p></li>
-<li><p>Three important low risk anomalies</p>
-<ul>
-<li><p>Betting-against-Beta, <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0304405X13002675">Pedersen and Frazzini (2011)</a></p></li>
-<li><p>Low Vol , <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/j.1540-6261.2006.00836.x">Ang, Hodrick,….(2012)</a></p></li>
-<li><p>Hedging Risk factors <a class="reference external" href="https://www.dropbox.com/s/yal9dwvxnoksdwz/HedgingRiskFactors.pdf?dl=0">Hersovick, Moreira and Muir (2018)</a></p></li>
+<li><p><strong>Traditional theory</strong> (e.g., CAPM) links higher expected return to higher beta.</p></li>
+<li><p>But in the data, <strong>beta is not reliably compensated</strong>.</p></li>
+<li><p>Instead, <strong>low-risk stocks often outperform high-risk ones</strong> on a risk-adjusted basis.</p></li>
+<li><p>The <strong>tangency portfolio</strong> (true mean-variance optimal portfolio) is unobservable—real-world risk-return trade-offs may deviate from theory.</p></li>
 </ul>
-</li>
-</ul>
-<p><strong>Betting against beta</strong></p>
-<p>The BAB idea is that beta risk is not compensated, low beta stocks turn out to have big alphas and high beta stocks have very negative alpohas</p>
-<p><img alt="image.png" src="../../_images/othertradingstrategiesB4.jpg" /></p>
-<ul class="simple">
-<li><p>Why that might be the case?</p></li>
-<li><p>how do you use this empirical fact to “beat” the CAPM/market?</p></li>
-</ul>
-<p><strong>Hedging Risk Factors</strong></p>
-<p>HMM create minimum variance portfolios as follows</p>
-<ol class="arabic simple">
-<li><p>Pick a factor model <span class="math notranslate nohighlight">\(F_t\)</span> where F here is possibly a vector of multiple excess return factors</p></li>
-<li><p>For each stock i run the multivariate regresion</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[R^e_{i,t}=\alpha+\beta_{i,F}F_t+\epsilon_{i,t}\]</div>
-<ol class="arabic simple" start="3">
-<li><p>Now construct the covariance matrix of all the stocks by assuming <span class="math notranslate nohighlight">\(Var(\epsilon)\)</span> is diagonal, i.e. that the risk unexplained by the factor model is uncorrelated across assets. (this is not true, but estimating this covariance matrix is intractable)</p>
-<ul class="simple">
-<li><p>Stack all the <span class="math notranslate nohighlight">\(\beta_{i,F}\)</span> so you have a big Beta matrix that has dimensions n (number of stocks) by f (number of factors)</p></li>
-</ul>
-</li>
-</ol>
-<div class="math notranslate nohighlight">
-\[Var(R^e)=Beta \times Var(F_t) \times Beta'+Var(\epsilon)\]</div>
-<ul class="simple">
-<li><p>this is a big n by n matrix</p></li>
-</ul>
-<ol class="arabic simple" start="4">
-<li><p>now construct the minimum-variance portfolio as we saw in class</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[w=1Var(R^e)^{-1}\]</div>
-<p>HMM find very large SR</p>
-<p><img alt="image.png" src="../../_images/othertradingstrategiesB5.jpg" /></p>
-<p>And extremely large alphas with respect to a variety of factor models</p>
-<p><img alt="image.png" src="../../_images/othertradingstrategiesB6.jpg" /></p>
-<p>Thus it pays to bet against risk!</p>
 </section>
+<hr class="docutils" />
+<section id="three-key-low-risk-anomalies">
+<h3><span class="section-number">11.9.8.2. </span>📉 Three Key Low-Risk Anomalies<a class="headerlink" href="#three-key-low-risk-anomalies" title="Link to this heading">#</a></h3>
+<section id="betting-against-beta-bab">
+<h4><span class="section-number">11.9.8.2.1. </span>1. <strong>Betting Against Beta (BAB)</strong><a class="headerlink" href="#betting-against-beta-bab" title="Link to this heading">#</a></h4>
+<p><strong>Source</strong>: Frazzini &amp; Pedersen (2014)</p>
+<ul class="simple">
+<li><p>Strategy: Long <strong>low-beta</strong> stocks, short <strong>high-beta</strong> stocks, leverage up to equalize risk.</p></li>
+<li><p>Empirical finding: Low-beta stocks earn <strong>high alphas</strong>, high-beta stocks earn <strong>very negative alphas</strong>.</p></li>
+</ul>
+<p>📊 BAB Sharpe Ratio Evidence:<br />
+<img alt="BAB Performance" src="../../_images/othertradingstrategiesB4.jpg" /></p>
+<blockquote>
+<div><p>✅ This contradicts CAPM predictions and reveals an exploitable anomaly.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="low-volatility-anomaly">
+<h4><span class="section-number">11.9.8.2.2. </span>2. <strong>Low Volatility Anomaly</strong><a class="headerlink" href="#low-volatility-anomaly" title="Link to this heading">#</a></h4>
+<p><strong>Source</strong>: Ang, Hodrick, Xing, Zhang (2006, 2009)</p>
+<ul class="simple">
+<li><p>Stocks with <strong>lower total or idiosyncratic volatility</strong> have historically outperformed riskier stocks.</p></li>
+<li><p>Intuition: Investors overpay for volatility (e.g., “lottery tickets”).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="hedging-risk-factors">
+<h4><span class="section-number">11.9.8.2.3. </span>3. <strong>Hedging Risk Factors</strong><a class="headerlink" href="#hedging-risk-factors" title="Link to this heading">#</a></h4>
+<p><strong>Source</strong>: Hersovick, Moreira &amp; Muir (2018)</p>
+<p>Rather than targeting individual stocks, this strategy builds <strong>minimum-variance portfolios</strong> relative to a factor model.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-it-works-hmm-method">
+<h3><span class="section-number">11.9.8.3. </span>🧮 How It Works (HMM Method)<a class="headerlink" href="#how-it-works-hmm-method" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Choose a factor model</strong>:<br />
+Let ( F_t ) be a vector of factor returns (e.g., market, value, momentum, etc.).</p></li>
+<li><p><strong>Run time-series regressions</strong> for each stock ( i ):<br />
+[
+R^e_{i,t} = \alpha_i + \beta_{i,F} F_t + \varepsilon_{i,t}
+]</p></li>
+<li><p><strong>Build the total return covariance matrix</strong>:</p>
+<ul class="simple">
+<li><p>Stack all ( \beta_{i,F} ) into a matrix</p></li>
+<li><p>Assume residuals ( \varepsilon_{i,t} ) are uncorrelated across stocks (diagonal ( \text{Var}(\varepsilon) ))</p></li>
+<li><p>Use:
+[
+\text{Var}(R^e) = \beta \cdot \text{Var}(F_t) \cdot \beta^\top + \text{Var}(\varepsilon)
+]</p></li>
+</ul>
+</li>
+<li><p><strong>Construct the minimum variance portfolio</strong>:
+[
+w \propto \text{Var}(R^e)^{-1} \cdot \mathbf{1}
+]</p></li>
+</ol>
+<p>This yields a <strong>zero-cost, risk-minimized portfolio</strong> that aggressively hedges exposure to systematic risk.</p>
+</section>
+<hr class="docutils" />
+<section id="empirical-results-from-hmm">
+<h3><span class="section-number">11.9.8.4. </span>📊 Empirical Results from HMM<a class="headerlink" href="#empirical-results-from-hmm" title="Link to this heading">#</a></h3>
+<section id="portfolio-performance-sharpe-ratios">
+<h4><span class="section-number">11.9.8.4.1. </span>Portfolio Performance (Sharpe Ratios):<a class="headerlink" href="#portfolio-performance-sharpe-ratios" title="Link to this heading">#</a></h4>
+<p><img alt="HMM Sharpe" src="../../_images/othertradingstrategiesB5.jpg" /></p>
+</section>
+<section id="alpha-relative-to-factor-models">
+<h4><span class="section-number">11.9.8.4.2. </span>Alpha Relative to Factor Models:<a class="headerlink" href="#alpha-relative-to-factor-models" title="Link to this heading">#</a></h4>
+<p><img alt="HMM Alpha" src="../../_images/othertradingstrategiesB6.jpg" /></p>
+<blockquote>
+<div><p>📌 These strategies deliver <strong>extremely high Sharpe ratios and alphas</strong>, consistently beating traditional models.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section id="why-might-this-work">
+<h3><span class="section-number">11.9.8.5. </span>🧠 Why Might This Work?<a class="headerlink" href="#why-might-this-work" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Investors face <strong>leverage constraints</strong>: They prefer high-beta assets to boost returns, ignoring their poor risk-adjusted performance.</p></li>
+<li><p>This creates <strong>overpricing</strong> in high-beta stocks and <strong>underpricing</strong> in low-beta stocks.</p></li>
+<li><p>Defensive strategies exploit that mispricing, effectively <strong>betting against risk</strong>.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<hr class="docutils" />
 <section id="quality-investing">
-<h2><span class="section-number">11.9.4. </span>Quality investing<a class="headerlink" href="#quality-investing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.9.9. </span>🏆 Quality Investing<a class="headerlink" href="#quality-investing" title="Link to this heading">#</a></h2>
+<p><strong>What is “quality” investing?</strong><br />
+It’s investing in businesses you’re willing to pay more for—all else equal. These firms are often fundamentally stronger: profitable, well-managed, and resilient.</p>
+<hr class="docutils" />
+<section id="how-is-quality-defined">
+<h3><span class="section-number">11.9.9.1. </span>🔍 How Is Quality Defined?<a class="headerlink" href="#how-is-quality-defined" title="Link to this heading">#</a></h3>
+<p>There’s no single definition, but common indicators include:</p>
 <ul class="simple">
-<li><p>What is “quality”  investing?something you are willing to pay a high price for, all else equal!</p></li>
-<li><p>How it relates to value investing?</p></li>
-<li><p>No uniform definition</p>
-<ul>
-<li><p>Profitable</p></li>
-<li><p>Safe</p></li>
-<li><p>Good governance</p></li>
-<li><p>Good growth – asset growth, earnings growth, etc.</p></li>
-<li><p>High payout</p></li>
-<li><p>Creditworthy</p></li>
-<li><p>Well managed</p></li>
-<li><p>Accounting quality – accruals, earnings stability, etc.</p></li>
+<li><p><strong>Profitability</strong> (gross profits, margins, ROE)</p></li>
+<li><p><strong>Safety</strong> (low leverage, stable earnings)</p></li>
+<li><p><strong>Good governance</strong> (shareholder-aligned incentives)</p></li>
+<li><p><strong>Growth</strong> (asset growth, earnings growth)</p></li>
+<li><p><strong>High payout ratios</strong></p></li>
+<li><p><strong>Creditworthiness</strong></p></li>
+<li><p><strong>Well-managed operations</strong></p></li>
+<li><p><strong>Accounting quality</strong> (low accruals, consistent earnings)</p></li>
 </ul>
-</li>
-<li><p>Relation to value investing</p>
-<ul>
-<li><p>Buying high quality assets without paying premium prices is another form of value investing</p></li>
-</ul>
-</li>
-<li><p>Does quality carry a premium on its own?</p></li>
-</ul>
-<p><strong>A Simple Quality Metric – Profitability!</strong></p>
+<blockquote>
+<div><p>In practice, many investors use <strong>composite quality scores</strong> that combine multiple of the above.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="quality-vs-value">
+<h3><span class="section-number">11.9.9.2. </span>🔁 Quality vs Value<a class="headerlink" href="#quality-vs-value" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Simple quality measure = gross profitability = (revenues – COGS)/assets from <a class="reference external" href="http://rnm.simon.rochester.edu/research/OSoV.pdf">Novy-Marx,2013</a></p></li>
-<li><p>Common recurring theme is the strong relation between quality and value</p>
-<ul>
-<li><p>Quality can even be viewed as an alternative implementation of value</p></li>
-<li><p>Buying high quality assets without paying premium prices is just as much value investing as buying average quality assets at a discount</p></li>
-<li><p>Warren Buffett, “far better to buy a wonderful business at a fair price than to buy a fair business at a wonderful price.”</p></li>
+<li><p>Value = <strong>Buy what’s cheap</strong></p></li>
+<li><p>Quality = <strong>Buy what’s strong</strong></p></li>
 </ul>
-</li>
-<li><p>Quality and value strategies are dissimilar, however, in the stocks that they actually hold</p>
-<ul>
-<li><p>High quality firms tend to be expensive, while value firms tend to be low quality</p></li>
-<li><p>Quality strategies are thus short value, while value strategies are short quality.</p></li>
-<li><p>Each of these strategies consequently tends to do well precisely when the other under-performs</p></li>
-</ul>
-</li>
-<li><p>Value stocks are cheap -&gt; high expected returns and growth stocks are expensive -&gt;  low expected returns</p></li>
-<li><p>Similar arguments suggest that firms with productive assets should yield higher average returns than firms with unproductive assets</p>
-<ul>
-<li><p>Profitable firms that investors demand high average returns to hold should be priced similarly to less productive firms for which investors demand lower returns</p></li>
-<li><p>Variation in productivity identifies variation in required rates of return</p></li>
-</ul>
-</li>
-<li><p>This argument is consistent with both rational risk pricing and behavioral forces</p></li>
-<li><p>Evidence:  gross-profits-to-assets strongly predicts returns, especially controlling for book-to-market (scaled price)</p>
-<ul>
-<li><p>Profitable firms have higher average returns than unprofitable firms</p></li>
-<li><p>Despite having, on average, lower book-to-markets and higher market capitalizations</p></li>
-</ul>
-</li>
-<li><p>Consequently, provides an incredibly valuable hedge for value strategies</p></li>
-<li><p>Combination explains a whole host of accounting-based and earnings-related anomalies, including ROE, market power, default risk, net stock issuance, and organizational capital</p></li>
-</ul>
-<p>Here are the key results of the paper</p>
-<p><img alt="image.png" src="../../_images/othertradingstrategiesB2.jpg" /></p>
+<p>Yet the two are often linked:</p>
+<blockquote>
+<div><p>“Buying high-quality firms without paying a premium is another form of value investing.”</p>
+</div></blockquote>
+<p>💬 Warren Buffett:</p>
+<blockquote>
+<div><p>“It’s far better to buy a wonderful business at a fair price than a fair business at a wonderful price.”</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="simple-quality-signal-gross-profitability">
+<h3><span class="section-number">11.9.9.3. </span>💡 Simple Quality Signal: Gross Profitability<a class="headerlink" href="#simple-quality-signal-gross-profitability" title="Link to this heading">#</a></h3>
+<p>One of the most effective and intuitive quality signals is:</p>
+<p>[
+\text{Gross Profitability} = \frac{\text{Revenue} - \text{COGS}}{\text{Assets}}
+]</p>
+<p>✅ Introduced in <a class="reference external" href="http://rnm.simon.rochester.edu/research/OSoV.pdf">Novy-Marx (2013)</a>, this measure predicts returns even when controlling for book-to-market.</p>
+</section>
+<hr class="docutils" />
+<section id="why-might-quality-work">
+<h3><span class="section-number">11.9.9.4. </span>📉 Why Might Quality Work?<a class="headerlink" href="#why-might-quality-work" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Rational view</strong>:</p>
 <ul class="simple">
-<li><p>You see that the Profitable minus Unprofitable portfolio has a very sizable alpha relative to the Fama-French 3 factors model( you can see this in the last line of the table in the left)</p></li>
-<li><p>So much so that Fama and French added this factor to their 5 factor model, but they call RmW, Robust minus Weak</p></li>
-<li><p>You see that the alphas are much higher than the premium because of the negative exposure to the value factor</p></li>
+<li><p>Productive firms (profitable) should command higher expected returns.</p></li>
+<li><p>Investors might demand higher returns for riskier, lower-quality companies.</p></li>
 </ul>
-<p>A great success of this strategy is that it helps price a variety of other strategies, so it is a grate factor because allow us to summarize the data better</p>
-<p>You can see this on the table below where Robert compares the 4 factor alpha of a variety of trading strategies with the alpha after including the profitability factor</p>
-<p><img alt="image.png" src="../../_images/othertradingstrategiesB3.jpg" /></p>
+</li>
+<li><p><strong>Behavioral view</strong>:</p>
 <ul class="simple">
-<li><p>comparing columns 2 and 3 you see that lots of the alphas became insignificant, what means that the profitability factor together with the other 4 factors help span the mean-variance frontier that includes these assets.</p></li>
+<li><p>Investors overvalue “glamour” growth firms and neglect boring but profitable ones.</p></li>
+<li><p>Mispricing arises when investors chase growth narratives without accounting for real productivity.</p></li>
 </ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3><span class="section-number">11.9.9.5. </span>🧪 Empirical Evidence<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Gross profitability strongly predicts returns—even <strong>after</strong> controlling for book-to-market.</p></li>
+<li><p>Profitable firms:</p>
+<ul>
+<li><p>Have higher average returns</p></li>
+<li><p>Tend to have <strong>lower B/M ratios</strong></p></li>
+<li><p>Are larger (higher market caps)</p></li>
+</ul>
+</li>
+</ul>
+<p>📊 Evidence from Novy-Marx (2013):<br />
+<img alt="Profitability Alpha" src="../../_images/othertradingstrategiesB2.jpg" /></p>
+<ul class="simple">
+<li><p>The <strong>Profitable Minus Unprofitable (PMU)</strong> portfolio earns a <strong>high alpha</strong> even relative to the Fama-French 3-factor model.</p></li>
+<li><p>Fama and French later incorporated this into their 5-factor model as <strong>RMW (Robust Minus Weak)</strong>.</p></li>
+<li><p>The <strong>alpha is large</strong> in part because quality is negatively correlated with value—quality strategies tend to short cheap but low-quality stocks.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="strategic-role-of-quality">
+<h3><span class="section-number">11.9.9.6. </span>🧩 Strategic Role of Quality<a class="headerlink" href="#strategic-role-of-quality" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Quality is a valuable hedge for value</strong>: it outperforms precisely when value underperforms.</p></li>
+<li><p>Value strategies tend to hold low-quality names. Quality strategies often avoid them.</p></li>
+<li><p>Combining value and quality enhances Sharpe and reduces downside risk.</p></li>
+</ul>
+<p>📊 This synergy helps explain several other anomalies:</p>
+<ul class="simple">
+<li><p>Return on Equity (ROE)</p></li>
+<li><p>Net stock issuance</p></li>
+<li><p>Default risk</p></li>
+<li><p>Organizational capital</p></li>
+<li><p>Earnings stability</p></li>
+<li><p>Market power</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quality-expands-the-frontier">
+<h3><span class="section-number">11.9.9.7. </span>📈 Quality Expands the Frontier<a class="headerlink" href="#quality-expands-the-frontier" title="Link to this heading">#</a></h3>
+<p>Quality doesn’t just earn returns—it helps explain others.</p>
+<p>Robert Novy-Marx’s table shows that many previously “anomalous” strategies lose their alpha once the profitability factor is included:</p>
+<p>📊 Impact of Profitability Factor:<br />
+<img alt="Factor Comparison" src="../../_images/othertradingstrategiesB3.jpg" /></p>
+<blockquote>
+<div><p>Columns 2 and 3 compare 4-factor vs 5-factor models.<br />
+Many alphas vanish when profitability is added—proving it spans the efficient frontier more effectively.</p>
+</div></blockquote>
+<hr class="docutils" />
+</section>
 </section>
 </section>
 
@@ -913,10 +1022,54 @@ the start of the holding period <strong>to avoid the short-term reversals</stron
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value">11.9.1. Value</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-strategies">11.9.2. Return-based strategies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defensive-investing">11.9.3. Defensive Investing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-investing">11.9.4. Quality investing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-sector-membership">11.9.1. 🌍 Market &amp; Sector Membership</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounting-based-factors">11.9.2. 🧾 Accounting-Based Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-factors">11.9.3. 📉 Return-Based Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trading-based-factors">11.9.4. 🔁 Trading-Based Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-note">11.9.5. Final Note</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#value-investing-deep-dive">11.9.6. 💼 Value Investing – Deep Dive</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-it">11.9.6.1. 🔎 What is it?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#academic-foundations">11.9.6.2. 📚 Academic Foundations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-it-work">11.9.6.3. 🧠 Why Might It Work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">11.9.6.4. ⚖️ Summary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-based-strategies">11.9.7. 📈 Return-Based Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#momentum-vs-value">11.9.7.1. ⚖️ Momentum vs. Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-construct-a-momentum-portfolio">11.9.7.2. 🛠️ How to Construct a Momentum Portfolio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.9.7.3. 🤔 Why Might It Work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-literature">11.9.7.4. 📚 Key Literature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#related-return-predictability-patterns">11.9.7.5. 🔁 Related Return Predictability Patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-evidence">11.9.7.6. 📊 Empirical Evidence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defensive-investing">11.9.8. 🛡️ Defensive Investing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">11.9.8.1. 🤔 Motivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-key-low-risk-anomalies">11.9.8.2. 📉 Three Key Low-Risk Anomalies</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#betting-against-beta-bab">11.9.8.2.1. 1. <strong>Betting Against Beta (BAB)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#low-volatility-anomaly">11.9.8.2.2. 2. <strong>Low Volatility Anomaly</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hedging-risk-factors">11.9.8.2.3. 3. <strong>Hedging Risk Factors</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-hmm-method">11.9.8.3. 🧮 How It Works (HMM Method)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-results-from-hmm">11.9.8.4. 📊 Empirical Results from HMM</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-performance-sharpe-ratios">11.9.8.4.1. Portfolio Performance (Sharpe Ratios):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-relative-to-factor-models">11.9.8.4.2. Alpha Relative to Factor Models:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-this-work">11.9.8.5. 🧠 Why Might This Work?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-investing">11.9.9. 🏆 Quality Investing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-quality-defined">11.9.9.1. 🔍 How Is Quality Defined?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-vs-value">11.9.9.2. 🔁 Quality vs Value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quality-signal-gross-profitability">11.9.9.3. 💡 Simple Quality Signal: Gross Profitability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-quality-work">11.9.9.4. 📉 Why Might Quality Work?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.9.9.5. 🧪 Empirical Evidence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-role-of-quality">11.9.9.6. 🧩 Strategic Role of Quality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-expands-the-frontier">11.9.9.7. 📈 Quality Expands the Frontier</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
