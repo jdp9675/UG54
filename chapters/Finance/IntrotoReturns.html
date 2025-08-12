@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. Returns, excess returns, and common factors &#8212; Quantitative Investing</title>
+    <title>4. Introduction to Asset Returns &#8212; Quantitative Investing</title>
   
   
   
@@ -60,12 +60,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/Returns_working';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/Returns_working.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/IntrotoReturns';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/IntrotoReturns.html" />
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.5. Dat APIs" href="UsingAPI.html" />
+    <link rel="next" title="4.4. The choice of frequency and Annualization of returns" href="TheChoiceofFrequency.html" />
     <link rel="prev" title="3.7. Plotting" href="../essentials/plotting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -207,10 +207,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Asset Returns</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Introduction to Asset Returns</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">4.5. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.6. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">4.7. Modeling randomness</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="FactorModels.html">5. Factor Models</a></li>
@@ -308,7 +307,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/Returns_working.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/IntrotoReturns.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +355,7 @@
       
       
       
-      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/Returns_working.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/IntrotoReturns.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +385,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/Finance/Returns_working.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/Finance/IntrotoReturns.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -470,7 +469,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Returns, excess returns, and common factors</h1>
+    <h1>Introduction to Asset Returns</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -489,7 +488,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stripping-the-common-factor">4.3.1. Stripping the common factor</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">4.4. Towards a factor Model</a></li>
 </ul>
             </nav>
         </div>
@@ -590,8 +588,8 @@ document.write(`
 </div>
 </details>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="returns-excess-returns-and-common-factors">
-<h1><span class="section-number">4. </span>Returns, excess returns, and common factors<a class="headerlink" href="#returns-excess-returns-and-common-factors" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction-to-asset-returns">
+<h1><span class="section-number">4. </span>Introduction to Asset Returns<a class="headerlink" href="#introduction-to-asset-returns" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <p><strong>🎯 Learning Objectives</strong></p>
 <p>By the end of this chapter, you should be able to:</p>
@@ -1644,107 +1642,6 @@ dtype: float64
 <li><p>Taking out 1 dollar of factor exposure for each 1 dollar of stock exposure reduced the factor exposure and the asset volatilities, but we can do better</p></li>
 </ul>
 <p>What should we do? How do we fix this?</p>
-</section>
-</section>
-<section id="towards-a-factor-model">
-<h2><span class="section-number">4.4. </span>Towards a factor Model<a class="headerlink" href="#towards-a-factor-model" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>First idea is that stocks might have different degree of co-movement</p></li>
-<li><p>For example, Defensive stocks like utilities, supermarkets, and so on might not suffer as much when the market tanks</p>
-<ul>
-<li><p>Their cash flow might be more recession proof for example</p></li>
-<li><p>While luxury good producers like LMVH might be more sensitive to the stock market given its consumer base</p></li>
-</ul>
-</li>
-<li><p>Small stocks, stocks with high leverage and so one might particularly suffer during economic busts</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[(excess~return)=(intercept)+(stock~beta)*(factor~excess~return)+ (idio~risk)\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
-
-
-<span class="n">_temp</span><span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;WMT&#39;</span><span class="p">])</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;WMT~SPY&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">_temp</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">intercept_wmt</span><span class="p">,</span> <span class="n">beta_wmt</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;beta of asset WMT is </span><span class="si">{</span><span class="n">beta_wmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;WMT&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_wmt</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;SPY vs WMT Residuals&#39;</span><span class="p">)</span>
-
-
-<span class="n">_temp</span><span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;JPM&#39;</span><span class="p">])</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;JPM~SPY&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">_temp</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">intercept_jpm</span><span class="p">,</span> <span class="n">beta_jpm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;beta of asset JPM is </span><span class="si">{</span><span class="n">beta_jpm</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;JPM&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_jpm</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;SPY vs JPM Residuals&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>beta of asset JPM is 0.6737719432407148
-beta of asset JPM is 1.3949175281635984
-</pre></div>
-</div>
-<img alt="../../_images/fc368ce1918cc647735cdc1ad9893fb9f1df97a5fbe9e3c0870bc48c04473d7d.png" src="../../_images/fc368ce1918cc647735cdc1ad9893fb9f1df97a5fbe9e3c0870bc48c04473d7d.png" />
-</div>
-</div>
-<p>Did it work?</p>
-<ul class="simple">
-<li><p>With the regression we have a statistical decomposition</p></li>
-<li><p>At least in sample, the regression guarantees that the stock specific component is completely orthogonal to the factor</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[stock~specific~component=(excess~return)-(stock~beta)*(factor~excess~return)\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;JPM&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_jpm</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ticker
-SPY    1.656269e-16
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;WMT&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_wmt</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ticker
-SPY    5.141267e-17
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta\)</span> , that is beta, measures factor exposure and together with the factor variance, it tells us the amount of factor risk in the asset</p></li>
-<li><p><span class="math notranslate nohighlight">\(\epsilon\)</span> is the idiossyncratic, non-factor risk component of the asset–all the risk that is leftover after we take out the co-movement with the factor</p></li>
-<li><p>intercept is going to be very important</p></li>
-<li><p>We will discuss this later in detail</p></li>
-</ul>
-<p>How do we estimate the amount of idiossyncratic risk?</p>
-<p>How do we estimate the amount of systematic risk?</p>
-<p>Can we say what share of the stock variance is due the market risk factor?</p>
-<p>What is the calculation?</p>
 <hr class="docutils" />
 <p><strong>📝 Key Takeaways</strong></p>
 <ul class="simple">
@@ -1752,10 +1649,8 @@ dtype: float64
 <li><p><strong>Excess return is the correct performance yardstick.</strong>  Subtracting the risk-free rate lets you focus on compensation for taking risk, not for simply waiting.</p></li>
 <li><p><strong>Risk premiums are expectations, not guarantees.</strong>  The historical average of excess returns is noisy and must be interpreted with care.</p></li>
 <li><p><strong>Stocks do not share the same market sensitivity.</strong>  Removing one dollar of market exposure from each asset under- or over-hedges depending on its true beta.</p></li>
-<li><p><strong>Regression fixes the mismatch.</strong>  Estimating beta and then subtracting β·factor yields residuals that are, by construction, uncorrelated with the market.</p></li>
-<li><p><strong>Systematic and idiosyncratic risks add up to total variance.</strong>  Beta squared times factor variance is the market slice; the remainder is asset-specific noise.</p></li>
-<li><p><strong>A single-factor view is the first step toward richer models.</strong>  The CAPM decomposition you coded here provides the intuition and machinery for multi-factor analysis later in the course.</p></li>
 </ul>
+</section>
 </section>
 <hr class="docutils" />
 <div class="toctree-wrapper compound">
@@ -1802,11 +1697,11 @@ dtype: float64
       </div>
     </a>
     <a class="right-next"
-       href="UsingAPI.html"
+       href="TheChoiceofFrequency.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.5. </span>Dat APIs</p>
+        <p class="prev-next-title"><span class="section-number">4.4. </span>The choice of frequency and Annualization of returns</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1835,7 +1730,6 @@ dtype: float64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stripping-the-common-factor">4.3.1. Stripping the common factor</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">4.4. Towards a factor Model</a></li>
 </ul>
   </nav></div>
 

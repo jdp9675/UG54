@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="6. Portfolio Math and Diversification" href="PortfolioMath.html" />
-    <link rel="prev" title="4.7. Randomness" href="../scientific/randomness1.html" />
+    <link rel="prev" title="4.5. Dat APIs" href="UsingAPI.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -207,10 +207,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Returns_working.html">4. Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="IntrotoReturns.html">4. Introduction to Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">4.5. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.6. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">4.7. Modeling randomness</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Factor Models</a></li>
@@ -480,11 +479,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.1. Alpha and Beta(s)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.2. Focus on your skill, hedge all the residual risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.3. Tacking, Hedging and Hedged portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.4. Variance Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.5. Factor models and Variance-covariance Matrixes Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">5.1. Towards a factor Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-come-in-two-flavors">5.2. Factor Models come in two flavors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.3. Alpha and Beta(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.4. Focus on your skill, hedge all the residual risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.5. Tacking, Hedging and Hedged portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.6. Variance Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.7. Factor models and Variance-covariance Matrixes Estimation</a></li>
 </ul>
             </nav>
         </div>
@@ -591,6 +592,123 @@ See how a single-factor structure collapses the number of parameters from O(N²)
 Understand why asset managers, pod shops, and risk desks rely on factor models to separate skill from beta, impose discipline on risk taking, and communicate performance.</p></li>
 </ol>
 <hr class="docutils" />
+<section id="towards-a-factor-model">
+<h2><span class="section-number">5.1. </span>Towards a factor Model<a class="headerlink" href="#towards-a-factor-model" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>First idea is that stocks might have different degree of co-movement</p></li>
+<li><p>For example, Defensive stocks like utilities, supermarkets, and so on might not suffer as much when the market tanks</p>
+<ul>
+<li><p>Their cash flow might be more recession proof for example</p></li>
+<li><p>While luxury good producers like LMVH might be more sensitive to the stock market given its consumer base</p></li>
+</ul>
+</li>
+<li><p>Small stocks, stocks with high leverage and so one might particularly suffer during economic busts</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[(excess~return)=(intercept)+(stock~beta)*(factor~excess~return)+ (idio~risk)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.formula.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">smf</span>
+
+
+<span class="n">_temp</span><span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;WMT&#39;</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;WMT~SPY&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">_temp</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">intercept_wmt</span><span class="p">,</span> <span class="n">beta_wmt</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;beta of asset WMT is </span><span class="si">{</span><span class="n">beta_wmt</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;WMT&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_wmt</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]))</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;SPY vs WMT Residuals&#39;</span><span class="p">)</span>
+
+
+<span class="n">_temp</span><span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="s1">&#39;JPM&#39;</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;JPM~SPY&#39;</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">_temp</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">intercept_jpm</span><span class="p">,</span> <span class="n">beta_jpm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;beta of asset JPM is </span><span class="si">{</span><span class="n">beta_jpm</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;JPM&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_jpm</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;SPY vs JPM Residuals&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>beta of asset JPM is 0.6737719432407148
+beta of asset JPM is 1.3949175281635984
+</pre></div>
+</div>
+<img alt="../../_images/fc368ce1918cc647735cdc1ad9893fb9f1df97a5fbe9e3c0870bc48c04473d7d.png" src="../../_images/fc368ce1918cc647735cdc1ad9893fb9f1df97a5fbe9e3c0870bc48c04473d7d.png" />
+</div>
+</div>
+<p>Did it work?</p>
+<ul class="simple">
+<li><p>With the regression we have a statistical decomposition</p></li>
+<li><p>At least in sample, the regression guarantees that the stock specific component is completely orthogonal to the factor</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[stock~specific~component=(excess~return)-(stock~beta)*(factor~excess~return)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;JPM&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_jpm</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ticker
+SPY    1.656269e-16
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;WMT&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">beta_wmt</span><span class="o">*</span><span class="n">df_re</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ticker
+SPY    5.141267e-17
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>How do we estimate the amount of idiosyncratic risk?</p>
+<p>How do we estimate the amount of systematic risk?</p>
+</section>
+<section id="factor-models-come-in-two-flavors">
+<h2><span class="section-number">5.2. </span>Factor Models come in two flavors<a class="headerlink" href="#factor-models-come-in-two-flavors" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>It can be useful for measuring risk if</p>
+<ul class="simple">
+<li><p>The risk <span class="math notranslate nohighlight">\(\epsilon\)</span> is specific to asset <span class="math notranslate nohighlight">\(i\)</span> and only weakly correlated with other assets (ideally completely)</p></li>
+<li><p>i.e if the factor explains lots of the common variation in stock returns</p></li>
+<li><p>You don’t really care whether the factors face premia, but only if they explain variation in returns</p></li>
+</ul>
+</li>
+<li><p>It can be useful for measuring expected returns if</p>
+<ul class="simple">
+<li><p>The premium on the factor f, <span class="math notranslate nohighlight">\(E[f]\)</span> summarize well the known “priced” systematic risk factors</p></li>
+<li><p>By “priced” we mean risk-factors that earn a risk premium  <span class="math notranslate nohighlight">\(E[f]&gt;0\)</span></p></li>
+<li><p>A model can be a good model of expected returns, but not explain much of realized returns</p></li>
+<li><p>Such model is useful for performance evaluation</p></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<div><p>We will call the first a factor model of risk, and the second a factor model of expected returns. However, this distinction is often blurry.
+Arbitrage logic tells us that if we have a really good model of risk, we should also have a good model of expected returns
+But in practice for stocks, there is lots and lots of unexplained variation</p>
+</div></blockquote>
+<p>People start with a factor model with priced factors and then add additional factors to explain risk.</p>
 <p>Let <span class="math notranslate nohighlight">\(r^e\)</span> be an asset excess return over the risk-free rate</p>
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> be a traded factor, for now  the excess returns on SPY ETF (that holds a basket that replicates the S&amp;P 500 index)</p>
 <p>Then we can write</p>
@@ -600,24 +718,11 @@ Understand why asset managers, pod shops, and risk desks rely on factor models t
 <blockquote>
 <div><p>We can always write things that way–it is just a statistical decomposition</p>
 </div></blockquote>
+<p>Whether we are working with a “Risk Model” or an “Expected Return” model will come down to the following</p>
 <ol class="arabic simple">
-<li><p>It can be useful for measuring risk if</p>
-<ul class="simple">
-<li><p>The risk <span class="math notranslate nohighlight">\(\epsilon\)</span> is specific to asset <span class="math notranslate nohighlight">\(i\)</span> and only weakly correlated with other assets (ideally completely)</p></li>
-<li><p>i.e if the factor explains lots of the common variation in stock returns</p></li>
-</ul>
-</li>
-<li><p>It can be useful for measuring expected returns if</p>
-<ul class="simple">
-<li><p>The premium on the factor f, <span class="math notranslate nohighlight">\(E[f]\)</span> summarize well the known “priced” systematic risk factors</p></li>
-<li><p>By “priced” we mean risk-factors that earn a risk premium  <span class="math notranslate nohighlight">\(E[f]&gt;0\)</span></p></li>
-</ul>
-</li>
+<li><p>For risk model we assume <span class="math notranslate nohighlight">\(\epsilon\)</span> uncorrelated across stocks</p></li>
+<li><p>For Expected return model, we assume <span class="math notranslate nohighlight">\(\alpha=0\)</span> for all stocks/strategies</p></li>
 </ol>
-<blockquote>
-<div><p>We will call the first a factor model of risk, and the second a factor model of expected returns. However, this distinction is often blurry.</p>
-</div></blockquote>
-<p>People start with a factor model with priced factors and then add additional factors to explain risk.</p>
 <p>What use is a factor model?</p>
 <ul class="simple">
 <li><p>the alpha/Beta decomposition is how the money management industry is organized.</p>
@@ -634,8 +739,9 @@ Understand why asset managers, pod shops, and risk desks rely on factor models t
 </ul>
 </li>
 </ul>
+</section>
 <section id="alpha-and-beta-s">
-<h2><span class="section-number">5.1. </span>Alpha and Beta(s)<a class="headerlink" href="#alpha-and-beta-s" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Alpha and Beta(s)<a class="headerlink" href="#alpha-and-beta-s" title="Link to this heading">#</a></h2>
 <p>Note that</p>
 <div class="math notranslate nohighlight">
 \[E[r]=E[rf+r^{e}]=rf+E[\alpha_i + b*f+\epsilon]\]</div>
@@ -651,7 +757,7 @@ $<span class="math notranslate nohighlight">\(E[r]=rf+\alpha+b*E[f]\)</span>$</p
 </ul>
 </section>
 <section id="focus-on-your-skill-hedge-all-the-residual-risk">
-<h2><span class="section-number">5.2. </span>Focus on your skill, hedge all the residual risk<a class="headerlink" href="#focus-on-your-skill-hedge-all-the-residual-risk" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>Focus on your skill, hedge all the residual risk<a class="headerlink" href="#focus-on-your-skill-hedge-all-the-residual-risk" title="Link to this heading">#</a></h2>
 <p>No matter who you are, you will face dollar risk limits</p>
 <p>So it is essential that you deploy risk wisely</p>
 <p>The key use of the factor model is to give you discipline to separate your edge from the rest</p>
@@ -990,7 +1096,7 @@ Mean of market factor (mu_f): 0.00035668848435262666
 </div></blockquote>
 </section>
 <section id="tacking-hedging-and-hedged-portfolios">
-<h2><span class="section-number">5.3. </span>Tacking, Hedging and Hedged portfolios<a class="headerlink" href="#tacking-hedging-and-hedged-portfolios" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>Tacking, Hedging and Hedged portfolios<a class="headerlink" href="#tacking-hedging-and-hedged-portfolios" title="Link to this heading">#</a></h2>
 <p><strong>Tracking Portfolios</strong></p>
 <p>We also refer to it as “hedging portfolios” or “mimicking portfolios”</p>
 <p>Tracking portfolios are the portfolios that use a set of factors to track the returns on an asset.</p>
@@ -1223,7 +1329,7 @@ alpha of unhedge portfolio
 </ul>
 </section>
 <section id="variance-decomposition">
-<h2><span class="section-number">5.4. </span>Variance Decomposition<a class="headerlink" href="#variance-decomposition" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6. </span>Variance Decomposition<a class="headerlink" href="#variance-decomposition" title="Link to this heading">#</a></h2>
 <p>Factor models are essential to manage risk</p>
 <p>A pod shop manager , a manager in a mutual fund in a large mutual fund company, a hedge fund trader in a large hedge fund,…all of those will typically have tight limits on the TOTAL risk of their portfolio, i.e. <span class="math notranslate nohighlight">\(var(r)\)</span> but also on the factor component of their portfolio</p>
 <p>But even if you don’t, and you are an active manager with freedom of trading, you still want to control quite carefully how much non-essential risks you are taking in your portfolio</p>
@@ -1302,7 +1408,7 @@ So both your total risk grows as the share of factor risk</p>
 </div>
 </section>
 <section id="factor-models-and-variance-covariance-matrixes-estimation">
-<h2><span class="section-number">5.5. </span>Factor models and Variance-covariance Matrixes Estimation<a class="headerlink" href="#factor-models-and-variance-covariance-matrixes-estimation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.7. </span>Factor models and Variance-covariance Matrixes Estimation<a class="headerlink" href="#factor-models-and-variance-covariance-matrixes-estimation" title="Link to this heading">#</a></h2>
 <p>We will see how we can compute covariance matrixes easily under the assumption that the factor captures most sources of co-movement across stocks</p>
 <p>In this case the assumption is very bad…and not even close to holding for most assets…but will allow us to get the intuition</p>
 <p>We will then learn how to do it with many factors as is standard in the industry</p>
@@ -1342,18 +1448,6 @@ var(\epsilon_{i,t}) &amp; 0 \\
 \end{array}\right]\end{split}\]</div>
 <p>We see that now for N assets we only need to estimate N factor exposures, N asset specific volatilities , and the factor volatility</p>
 <p>If we were estimating a variance-covariance matrix without imposing the factor model we would have to estimate N covariances and <span class="math notranslate nohighlight">\((N^2-N)/2\)</span> covariance terms: <span class="math notranslate nohighlight">\(2N+1\)</span> vs <span class="math notranslate nohighlight">\((N^2-N)/2+N\)</span> is huge as N grows</p>
-<p>Suppose we have many assets, all respecting this factor model. Say <span class="math notranslate nohighlight">\(R_t^e\)</span> is the big N by 1 vector of excess return <span class="math notranslate nohighlight">\([r_{t}^{e,1},r_{t}^{e,2},...]\)</span> for all these assets</p>
-<div class="math notranslate nohighlight">
-\[R_t^e=Bf_t+U_t\]</div>
-<p>where <span class="math notranslate nohighlight">\(B\)</span> is also a N by 1 vector of exposures <span class="math notranslate nohighlight">\([\beta_1,\beta_2,...\beta_N]\)</span>  and <span class="math notranslate nohighlight">\(u_t\)</span> is the N by 1 vector of shocks <span class="math notranslate nohighlight">\([\epsilon_1,\epsilon_2,...]\)</span></p>
-<p>Then their variance-covariance matrix is simply</p>
-<div class="math notranslate nohighlight">
-\[Var(R^e_t)=B &#64; B' Var(f_t)+ Var(U_t)\]</div>
-<ul class="simple">
-<li><p>Armed with the variance covariance of assets we have the variance of any portfolio of these assets</p></li>
-<li><p>To construct <span class="math notranslate nohighlight">\(Var(U_t)\)</span> you can stack all the residuals of the individual regression in a dataframe and compute the variance</p></li>
-<li><p>This will give you a vector S with N numbers, the you can use <code class="docutils literal notranslate"><span class="pre">np.diag(S)</span></code> to created a diagonal matrix with these variances in the diagonal</p></li>
-</ul>
 <blockquote>
 <div><p><strong>Practice</strong></p>
 <ul class="simple">
@@ -1420,12 +1514,12 @@ Throughout the notebook “Stop and Think” prompts remind you to check data fr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../scientific/randomness1.html"
+       href="UsingAPI.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.7. </span>Randomness</p>
+        <p class="prev-next-title"><span class="section-number">4.5. </span>Dat APIs</p>
       </div>
     </a>
     <a class="right-next"
@@ -1453,11 +1547,13 @@ Throughout the notebook “Stop and Think” prompts remind you to check data fr
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.1. Alpha and Beta(s)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.2. Focus on your skill, hedge all the residual risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.3. Tacking, Hedging and Hedged portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.4. Variance Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.5. Factor models and Variance-covariance Matrixes Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-a-factor-model">5.1. Towards a factor Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-come-in-two-flavors">5.2. Factor Models come in two flavors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.3. Alpha and Beta(s)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.4. Focus on your skill, hedge all the residual risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.5. Tacking, Hedging and Hedged portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.6. Variance Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.7. Factor models and Variance-covariance Matrixes Estimation</a></li>
 </ul>
   </nav></div>
 

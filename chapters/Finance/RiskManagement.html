@@ -207,10 +207,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Returns_working.html">4. Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="IntrotoReturns.html">4. Introduction to Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">4.5. Data APIs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.6. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../scientific/randomness1.html">4.7. Modeling randomness</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="FactorModels.html">5. Factor Models</a></li>
@@ -1288,6 +1287,18 @@ You can get quite sophisticated.</p>
 <li><p>One can use exactly the same model to compute the tracking error</p></li>
 <li><p>it is simply the volatility of a relative return</p></li>
 <li><p>How would you adjust our math above to estimate the tracking error instead of the absolute risk?</p></li>
+</ul>
+<p>Suppose we have many assets, all respecting this factor model. Say <span class="math notranslate nohighlight">\(R_t^e\)</span> is the big N by 1 vector of excess return <span class="math notranslate nohighlight">\([r_{t}^{e,1},r_{t}^{e,2},...]\)</span> for all these assets</p>
+<div class="math notranslate nohighlight">
+\[R_t^e=Bf_t+U_t\]</div>
+<p>where <span class="math notranslate nohighlight">\(B\)</span> is also a N by 1 vector of exposures <span class="math notranslate nohighlight">\([\beta_1,\beta_2,...\beta_N]\)</span>  and <span class="math notranslate nohighlight">\(u_t\)</span> is the N by 1 vector of shocks <span class="math notranslate nohighlight">\([\epsilon_1,\epsilon_2,...]\)</span></p>
+<p>Then their variance-covariance matrix is simply</p>
+<div class="math notranslate nohighlight">
+\[Var(R^e_t)=B &#64; B' Var(f_t)+ Var(U_t)\]</div>
+<ul class="simple">
+<li><p>Armed with the variance covariance of assets we have the variance of any portfolio of these assets</p></li>
+<li><p>To construct <span class="math notranslate nohighlight">\(Var(U_t)\)</span> you can stack all the residuals of the individual regression in a dataframe and compute the variance</p></li>
+<li><p>This will give you a vector S with N numbers, the you can use <code class="docutils literal notranslate"><span class="pre">np.diag(S)</span></code> to created a diagonal matrix with these variances in the diagonal</p></li>
 </ul>
 </section>
 </section>
