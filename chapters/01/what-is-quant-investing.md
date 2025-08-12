@@ -65,7 +65,7 @@ There are different types of "quants":
 
  In some ways the father of quantitative investing is Jack Bogle who operationalized the index fund in a way that is cheap and accessible. This essentially build the conditions for showing that active managers were mostly big losers relative to easy/cheap index fund, and induce the quant investing revolution that moved from a personality centric culture to a data centric culture.
 
- In lots of ways Eugene Fama and Kenneth French (**UofR Simon** grad!) are the academic founders that in lots of ways were way ahead of what was begin done in the industry at the time. They developed or perfected most of the techniques used to construct and evaluate quant strategies and were instrumental in building clean and organized data repositories for financial data.
+ In lots of ways Eugene Fama and Kenneth French are the academic founders that in lots of ways were way ahead of what was begin done in the industry at the time. They developed or perfected most of the techniques used to construct and evaluate quant strategies and were instrumental in building clean and organized data repositories for financial data.
 
 
  ![fig](../../assets/plots/intro5.jpg)
