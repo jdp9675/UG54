@@ -54,15 +54,15 @@ sections:
   - file: chapters/essentials/plotting
     title: Plotting
 
-- file: chapters/Finance/Returns_working
-  title: Asset Returns
+- file: chapters/Finance/IntrotoReturns
+  title: Introduction to Asset Returns
   sections:
-  - file: chapters/Finance/UsingAPI
-    title: Data APIs
   - file: chapters/Finance/TheChoiceofFrequency
     title: The Choice of Frequency and Annualization of Returns
-  - file: chapters/scientific/randomness1
-    title: Modeling randomness
+  - file: chapters/Finance/UsingAPI
+    title: Data APIs
+#  - file: chapters/scientific/randomness1
+#    title: Modeling randomness
 - file: chapters/Finance/FactorModels
   title: Factor Models
 - file: chapters/Finance/PortfolioMath
