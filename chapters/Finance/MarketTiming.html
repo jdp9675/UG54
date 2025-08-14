@@ -480,7 +480,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-timing">Market Timing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-return-timing">Expected Return Timing</a></li>
 </ul>
             </nav>
         </div>
@@ -513,8 +513,9 @@ document.write(`
 <li><p>To keep it simple we always think of timing as moving money between on factor and cash</p></li>
 <li><p>While one can time any factor, lets start with the most important one, the market</p></li>
 </ul>
-<p><strong>Market timing: Theoretical intuition</strong></p>
-<p>Lets consider the problem of this mean-variance investor that allocates between a risky asset (the market) and a risk-free asset. (For convenience the risky asset will already by an excess return, but that doesn’t matter)</p>
+<p><strong>Factor timing: Theoretical intuition</strong></p>
+<p>Lets consider the problem of this mean-variance investor that allocates between a factor (the market) and a risk-free asset. (For convenience the risky asset will already by an excess return, but that doesn’t matter)</p>
+<p>There is nothing special about the market, this could also be the aggregate portfolio of the fund</p>
 <div class="math notranslate nohighlight">
 \[\max_{x_t} E_t[x_tr_{t+1} +(1-x_t)rf_{t+1}]-\frac{\gamma}{2}Var_t(x_tr^e_{t+1} +(1-x_t)rf_{t+1})\]</div>
 <ul class="simple">
@@ -540,15 +541,16 @@ document.write(`
 <li><p>If risk-premiums goes up more than the variance, you lever up</p></li>
 <li><p>If variance goes up more than risk-premiums, you lever down</p></li>
 </ul>
-<section id="market-timing">
-<h2>Market Timing<a class="headerlink" href="#market-timing" title="Link to this heading">#</a></h2>
+<section id="expected-return-timing">
+<h2>Expected Return Timing<a class="headerlink" href="#expected-return-timing" title="Link to this heading">#</a></h2>
 <p>The most classic timing strategies are motivated by the fact that high dividend yield periods seems to be followed by above average returns</p>
 <p>The plot shows the dividend-yield of the stock market overlayed with the future 7 year returns
 <img alt="MVfrontier" src="../../_images/Timing1.jpg" /></p>
 <p>It tell us that in this sample, periods when the dividend yield was high were periods where the returns were really high going forward</p>
-<p>This might be intuitive to you, but it is really a fact that puzzled lots of people and earned people a few Nobel Prizes.</p>
-<p>It tells us that when the price (per dividend) is low what actually happens is NOT that the dividends go down going forward, but instead prices go up.</p>
-<p>So the EXPECTED returns to invest in the market change a lot overtime.</p>
+<p>This might be intuitive to you, but it is really a fact that puzzled lots of people and earned Robert Shiller a nobel prize</p>
+<img src="https://som.yale.edu/sites/default/files/styles/square_1280/public/profile_pictures/shiller-bob.jpg.webp?itok=TgThr2LT" alt="Rober shiller" style="width: 50%;">
+<p>It tells us that when the price (per dividend) is low what actually happens is NOT that the dividends go down going forward which would be intuitive–if the price is low is probably because payouts will be low– but instead prices go up–meaning expected returns were high!</p>
+<p>So this suggests EXPECTED returns to invest in the market change a lot overtime.</p>
 <p>A trading strategy that exploits this would have weights that depend on the dividend yield signal.</p>
 <p>for example you would have a weight</p>
 <div class="math notranslate nohighlight">
@@ -655,7 +657,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-timing">Market Timing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-return-timing">Expected Return Timing</a></li>
 </ul>
   </nav></div>
 
