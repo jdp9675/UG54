@@ -68,21 +68,25 @@ sections:
 - file: chapters/Finance/PortfolioMath
   title: Portfolios
   sections:
-    - file: chapters/Finance/LeverageandShorting
-      title: Leverage and Shorting
     - file: chapters/scientific/linear_algebra1
       title: Linear Algebra Review
+
+- file: chapters/Finance/CapitalAllocationI
+  title: Capital Allocation 
 - file: chapters/Finance/FactorModelEstimation
   title: Factor Model Estimation
-- file: chapters/Finance/CapitalAllocation
-  title: Capital Allocation
-- file: chapters/Finance/Performance_evaluation
-  title: Performance Evaluation
+- file: chapters/Finance/CapitalAllocationII
+  title: Capital Allocation II 
+- file: chapters/Finance/TimingStrategies
+  title: Timing Strategies
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
     - file: chapters/Finance/Momentum
       title: Momentum factor
+
+- file: chapters/Finance/Performance_evaluation
+  title: Performance Evaluation
 
 
 - file: chapters/Finance/MultiFactorModels
