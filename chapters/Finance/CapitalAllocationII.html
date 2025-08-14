@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor &#8212; Quantitative Investing</title>
+    <title>Capital Allocation II &#8212; Quantitative Investing</title>
   
   
   
@@ -469,7 +469,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</h1>
+    <h1>Capital Allocation II</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -479,11 +479,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">Portfolios and factor models</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">Risk Profile Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bet-sizing-under-uncertainty">Bet sizing under uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">Portfolios and factor models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">Risk Profile Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">The rise of “pod shops”</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -496,10 +496,10 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
 
@@ -559,13 +559,392 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>Bet sizing under uncertainty</strong></p>
-<p>This is the optimal IF YOU ARE 100% CONFIDENT of your alphas</p>
-<p>But of course you don’t really know, so the industry developed many Ad-hoc approaches for <strong>bet sizing</strong></p>
-<p><strong>Bet sizing</strong> is one of the great skills in a portfolio manager because it requires instinct for uncertainty</p>
-<p>The different Approaches (w is a scalar that controls the overall size of the portfolio )</p>
+<section class="tex2jax_ignore mathjax_ignore" id="capital-allocation-ii">
+<h1>Capital Allocation II<a class="headerlink" href="#capital-allocation-ii" title="Link to this heading">#</a></h1>
+<p>We learned how to maximize Sharpe Ratio if we are sure about the moments</p>
+<div class="math notranslate nohighlight">
+\[E[R^e]Var(R^e)^{-1}\]</div>
 <ul class="simple">
-<li><p><strong>Mean-variance</strong> rule:</p></li>
+<li><p>Investment managers rarely apply the Markowitz framework blindly</p></li>
+</ul>
+<ul class="simple">
+<li><p>Why not used more often?</p></li>
+<li><p>It requires specifying expected returns for entire universe of assets</p></li>
+<li><p>Mean-variance optimization weights heavily on assets that have extreme average returns in the sample and with attractive covariance properties, i.e., high correlation with asset yielding slightly different return</p></li>
+</ul>
+<p><strong>In reality</strong> knowing the true moments of the return distribution is HARD as we discussed in the last few weeks</p>
+<ul class="simple">
+<li><p>We will start by using “In Sample” means and variances</p></li>
+<li><p>By construction weight <span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span> will deliver the Highest in sample Sharpe Ratio. It is just math!</p></li>
+<li><p>The issue is to what extent these in sample moments are informative about the forward looking moments</p></li>
+</ul>
+<ul class="simple">
+<li><p>What problems that might cause?</p></li>
+<li><p>The key problem is that we are dealing with a limited sample of data</p></li>
+<li><p>We are interested in finding the “ex-ante” tangency portfolio</p></li>
+<li><p>But the basic MV analysis identifies the ex-post tangency portfolio, i.e. a portfolio that did well in the sample, but it can be a statistical fluke</p></li>
+<li><p>The issue is that we do not observe the true population expectation and covariances, but only have a sample estimate</p></li>
+<li><p>Whatever your research process, you are likely to end up quite uncertain about the alphas of your trading strategies</p></li>
+</ul>
+<ul class="simple">
+<li><p>We will start by using what we learned and measuring  the uncertainty regarding our risk premia estimates for each asset</p></li>
+<li><p>We will then show how the weights change as we pertubate these estimates in a way that is consistent with the amount of uncertainty in our estimates</p></li>
+<li><p>We will then show how sensitive the benefits of optimization are</p></li>
+</ul>
+<p>We will use 6 classic academic strategies: Market, Size, Value, Profitability, Investment, and Momentum.</p>
+<p>These six factors are particularly popular both in the industry and in the academic community</p>
+<p>Our portfolio problem will be to find the maximum SR combination out of these strategies</p>
+<p>In a couple weeks we will learn how to construct these strategies from scratch</p>
+<p>A few of them have ETFS that aim to replicate them, which potentially allow retail investors to get exposure to them cheaply and also industry people to easily hedge their factor exposures. (We will investigate carefully to what extent these ETFs do a good job..coming soon in a theater near you!)</p>
+<p>For now we will use this data to take the perspective of an investor that does not differentiate across the factors and simply cares for the final SR</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ff6</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;ff6&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_ff6</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.py:114: FutureWarning: The argument &#39;date_parser&#39; is deprecated and will be removed in a future version. Please use &#39;date_format&#39; instead, or read your data in as &#39;object&#39; dtype and then call &#39;to_datetime&#39;.
+  df = read_csv(StringIO(&quot;Date&quot; + src[start:]), **params)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RF</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>MOM</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2025-02-01</th>
+      <td>0.0033</td>
+      <td>-0.0244</td>
+      <td>-0.0579</td>
+      <td>0.0491</td>
+      <td>0.0110</td>
+      <td>0.0306</td>
+      <td>-0.0081</td>
+    </tr>
+    <tr>
+      <th>2025-03-01</th>
+      <td>0.0034</td>
+      <td>-0.0639</td>
+      <td>-0.0276</td>
+      <td>0.0290</td>
+      <td>0.0211</td>
+      <td>-0.0047</td>
+      <td>-0.0284</td>
+    </tr>
+    <tr>
+      <th>2025-04-01</th>
+      <td>0.0035</td>
+      <td>-0.0084</td>
+      <td>-0.0059</td>
+      <td>-0.0340</td>
+      <td>-0.0285</td>
+      <td>-0.0267</td>
+      <td>0.0497</td>
+    </tr>
+    <tr>
+      <th>2025-05-01</th>
+      <td>0.0038</td>
+      <td>0.0606</td>
+      <td>0.0070</td>
+      <td>-0.0288</td>
+      <td>0.0126</td>
+      <td>0.0251</td>
+      <td>0.0221</td>
+    </tr>
+    <tr>
+      <th>2025-06-01</th>
+      <td>0.0034</td>
+      <td>0.0486</td>
+      <td>0.0083</td>
+      <td>-0.0160</td>
+      <td>-0.0319</td>
+      <td>0.0145</td>
+      <td>-0.0265</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I will drop the risk-free asset and allocate only across excess returns</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df_ff6</span><span class="p">[</span><span class="s1">&#39;1965&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span>
+
+<span class="n">W</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+<span class="c1"># lets leverage it to have a yearly vol of 16%</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">W</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">df</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span> <span class="o">@</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.16</span>
+<span class="n">W</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.54580584, 1.68734284, 0.60113252, 4.15873819, 4.59852945,
+       2.05279602])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now what? What should we look at?</p>
+<ul class="simple">
+<li><p>In sample Vol</p></li>
+<li><p>In sample SR</p></li>
+<li><p>Out of sample Vol</p></li>
+<li><p>Out of Sample SR</p></li>
+</ul>
+<p><strong>Optimal Weights sensitivity to uncertainty</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets look at what happens with weights and Sharpes as we manipulate the mean of the market return by one standard deviation</span>
+
+
+
+<span class="n">Wmve</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">ERe</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">CovRe</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+<span class="n">T</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">manipulation</span><span class="o">=</span><span class="mi">2</span>
+    <span class="n">mu</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">asset</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="c1"># the standard deviation of the sample mean is the standard deviation of the asset divided by the square root of the number of observations</span>
+    <span class="n">musigma</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">asset</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">/</span><span class="n">T</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="c1"># I am creating a copy of the average return vector so I can manipulate it below </span>
+    <span class="n">ERemsig</span><span class="o">=</span><span class="n">ERe</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="n">ERemsig</span><span class="p">[</span><span class="n">asset</span><span class="p">]</span><span class="o">=</span><span class="n">mu</span><span class="o">-</span><span class="n">manipulation</span><span class="o">*</span><span class="n">musigma</span>
+
+    <span class="c1"># mve for sample mean</span>
+
+    <span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERe</span>
+    <span class="n">Wmve</span><span class="p">[</span><span class="s1">&#39;samplemean&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">W</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">CovRe</span> <span class="o">@</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.16</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="c1"># mve for perturbed mean</span>
+    <span class="n">W</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERemsig</span>
+    <span class="c1"># lets leverage it to have a yearly vol of 16%  similar to the market</span>
+    <span class="c1"># the 12**0.5 is due to the fact that the data is monthly</span>
+    <span class="n">Wmve</span><span class="p">[</span><span class="n">asset</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">manipulation</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">CovRe</span> <span class="o">@</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.16</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="n">Wmve</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>samplemean</th>
+      <th>Mkt-RF-2std</th>
+      <th>SMB-2std</th>
+      <th>HML-2std</th>
+      <th>RMW-2std</th>
+      <th>CMA-2std</th>
+      <th>MOM-2std</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mkt-RF</th>
+      <td>0.734911</td>
+      <td>0.520451</td>
+      <td>0.822647</td>
+      <td>0.727309</td>
+      <td>0.786210</td>
+      <td>0.693475</td>
+      <td>0.764402</td>
+    </tr>
+    <tr>
+      <th>SMB</th>
+      <td>0.487094</td>
+      <td>0.656413</td>
+      <td>0.065126</td>
+      <td>0.477350</td>
+      <td>0.366378</td>
+      <td>0.479881</td>
+      <td>0.544483</td>
+    </tr>
+    <tr>
+      <th>HML</th>
+      <td>0.173532</td>
+      <td>0.217508</td>
+      <td>0.182509</td>
+      <td>-0.499773</td>
+      <td>0.277651</td>
+      <td>0.702197</td>
+      <td>0.047779</td>
+    </tr>
+    <tr>
+      <th>RMW</th>
+      <td>1.200524</td>
+      <td>1.320447</td>
+      <td>1.025730</td>
+      <td>1.271688</td>
+      <td>0.712395</td>
+      <td>1.169612</td>
+      <td>1.375193</td>
+    </tr>
+    <tr>
+      <th>CMA</th>
+      <td>1.327481</td>
+      <td>1.286719</td>
+      <td>1.311413</td>
+      <td>1.960872</td>
+      <td>1.325569</td>
+      <td>0.318267</td>
+      <td>1.566690</td>
+    </tr>
+    <tr>
+      <th>MOM</th>
+      <td>0.592591</td>
+      <td>0.630909</td>
+      <td>0.621360</td>
+      <td>0.488529</td>
+      <td>0.685222</td>
+      <td>0.693325</td>
+      <td>0.361953</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>I am here</p>
+<p><strong>Performance sensitivity</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SR</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">Wmve</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">Wmve</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">SR</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">col</span><span class="p">,</span><span class="s1">&#39;SR&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">Wmve</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">@</span> <span class="n">ERe</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Wmve</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">@</span> <span class="n">CovRe</span> <span class="o">@</span> <span class="n">Wmve</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
+
+    
+<span class="n">SR</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>samplemean</th>
+      <td>1.179649</td>
+    </tr>
+    <tr>
+      <th>Mkt-RF-2std</th>
+      <td>1.150683</td>
+    </tr>
+    <tr>
+      <th>SMB-2std</th>
+      <td>1.142918</td>
+    </tr>
+    <tr>
+      <th>HML-2std</th>
+      <td>1.124095</td>
+    </tr>
+    <tr>
+      <th>RMW-2std</th>
+      <td>1.147552</td>
+    </tr>
+    <tr>
+      <th>CMA-2std</th>
+      <td>1.118807</td>
+    </tr>
+    <tr>
+      <th>MOM-2std</th>
+      <td>1.151143</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="bet-sizing-under-uncertainty">
+<h2>Bet sizing under uncertainty<a class="headerlink" href="#bet-sizing-under-uncertainty" title="Link to this heading">#</a></h2>
+<p>The industry developed many Ad-hoc approaches for <strong>bet sizing</strong>  exactly to deal with the fact that Mean-variance optimization is quite sensitive to inputs</p>
+<p><strong>Bet sizing</strong> is one of the great skills in a portfolio manager because it requires instinct for uncertainty</p>
+<p>I show some of the different approaches below</p>
+<p>Here I am applying them to the problem of combining “alpha” strategies, i.e. after you took out obvious sources of co-movement</p>
+<p>(w is a scalar that controls the overall size of the portfolio )</p>
+<ul class="simple">
+<li><p><strong>Mean-variance</strong> rule (the one we looked so far):</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[W_i=w \frac{\alpha_i}{\sigma_{\epsilon,i}^2}\]</div>
@@ -574,26 +953,39 @@ document.write(`
 </ul>
 <div class="math notranslate nohighlight">
 \[W_i=\frac{1}{N}\left((\alpha_i&gt;0)-(\alpha_i&lt;0)\right)\]</div>
-<ul class="simple">
-<li><p>this is good if you have good hunches for mispricing, but you don’t get the magnitudes quite right</p></li>
-</ul>
+<blockquote>
+<div><p>this is good if you have good hunches for mispricing, but you don’t get the magnitudes quite right</p>
+</div></blockquote>
 <ul class="simple">
 <li><p><strong>Proportional</strong> rule: Buy/sell proportional to the alpha</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[W_i=w \alpha_i\]</div>
-<ul class="simple">
-<li><p><strong>Risky-parity</strong> rule: assumes the Appraisal ratio of your different ideas are the same <span class="math notranslate nohighlight">\(\frac{\mu_i}{\sigma_i}=\frac{\mu_j}{\sigma_j}\)</span></p></li>
+<blockquote>
+<div><p>This ignore variance information and might be relevant if cannot take leverage</p>
+</div></blockquote>
+<ul>
+<li><p><strong>Risky-parity</strong> rule: assumes the Appraisal ratio of your different ideas are the same</p>
+<div class="math notranslate nohighlight">
+\[\frac{\alpha_i}{\sigma_i}=\frac{\alpha_j}{\sigma_j}\]</div>
+<p>If you apply this to the MV rule you get</p>
+</li>
 </ul>
 <div class="math notranslate nohighlight">
 \[W_i=w \frac{1}{\sigma_{\epsilon,i}}\]</div>
+<p>which essentially mean you allocate the same vol for each strategy</p>
+<div class="math notranslate nohighlight">
+\[W_i\sigma_{\epsilon,i}=W_j\sigma_{\epsilon,j}\]</div>
 <ul class="simple">
 <li><p><strong>Minimum-Variance</strong> rule:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[W_i=w \frac{1}{\sigma_{\epsilon,i}^2}\]</div>
+<blockquote>
+<div><p>This assumes alphas are all the same and focus on using the information in the variance matrix to boost the Sharpe ratio
+When applying this you want to make flip the strategy to make sure they are all have positive alphas. For example, if the idea is that AI is overvalued jsut make the trading strategy to be short AI stocks</p>
+</div></blockquote>
 <ul class="simple">
-<li><p>This assumes alphas are all the same and focus on using the information in the variance matrix to boost the Sharpe ratio</p></li>
 <li><p><strong>Variance shrinkage</strong> rule: you shrink the variance-covariance matrix towards a particular value</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -601,6 +993,10 @@ document.write(`
 <ul class="simple">
 <li><p>where <span class="math notranslate nohighlight">\(\tau\in[0,1]\)</span> is the shrinkage factor</p></li>
 </ul>
+<blockquote>
+<div><p>This makes the variance-covariance matrix behaved and less likely to have very specific correlation patterns
+It is good idea to do that in general–so to some extent this is really the MV approach with a better variance estimator</p>
+</div></blockquote>
 <p>Some examples you should play with</p>
 <blockquote>
 <div><h3 class="rubric" id="stop-and-practice">Stop and Practice</h3>
@@ -615,22 +1011,18 @@ document.write(`
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
 <span class="n">B</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">])</span>
 <span class="n">Sigmae</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor">
-<h1>Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor<a class="headerlink" href="#exercise-investing-in-characteristic-based-factors-from-the-perspective-of-a-capm-investor" title="Link to this heading">#</a></h1>
-<p>In a few classes we will discuss Multi-factor models and the variety of factors that people in the industry use</p>
-<p>Six factors are particularly popular both in the industry and in the academic community</p>
-<p>A few of them have ETFS that aim to replicate them, which potentially allow retail investors to get exposure to them cheaply and also industry people to easily hedge their factor exposures. (We will investigate carefully to what extent these ETFs do a good job..coming soon in a theater near you!)</p>
-<p>For now we will use this data to take the perspective of a “CAPM-Investor”, i.e. someone that has the market as their risk-factor and see the other factors as non-systematic risk.</p>
 <blockquote>
 <div><h4 class="rubric" id="alert">Alert</h4>
-<p>This will be stylized in the sense that we will use in sample moments, so we cannot really compare Sharpe ratios</p>
+</div></blockquote>
+<blockquote>
+<div><p>This will be stylized in the sense that we will use in sample moments, so we cannot really compare Sharpe ratios</p>
 <p>Why not? Because by construction the Mean-variance will always beat everyone else.</p>
 <p>We use these alternative methods exactly because the in sample moments are often not great guide for the forward looking moments we care about, so a in-sample comparison does not reflect the reality of trading that requires use past information to trade.</p>
 <p>We will later discuss how to make this comparison ( it is not rocket science: divide your sample in estimation and testing samples!)</p>
@@ -650,7 +1042,7 @@ document.write(`
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_ff6</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;ff6&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ff6</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;ff6&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">df_ff6</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -750,7 +1142,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
 
 <span class="c1"># Define the factors and the market factor</span>
 <span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">]</span>
@@ -806,7 +1198,7 @@ Sigma_e: [[0.01021215 0.         0.         0.         0.        ]
 <p>Mean Variance</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The zeros below need to be replaced by the actual values!</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The zeros below need to be replaced by the actual values!</span>
 
 <span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.3</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span> <span class="c1"># making it monthly as the data</span>
 <span class="n">W</span><span class="o">=</span><span class="n">Alpha</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">)</span>
@@ -839,7 +1231,6 @@ Sigma_e: [[0.01021215 0.         0.         0.         0.        ]
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;your volatility is </span><span class="si">{</span><span class="n">vol</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your Appraisal Ratio is </span><span class="si">{</span><span class="n">AppraisalRatio</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;So your optimal portfolio with market neutral exposure is </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> in SMB, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> in HML, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2"> in RMW, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2"> in CMA, </span><span class="si">{</span><span class="n">Ww</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">}</span><span class="s2"> in MOM, and </span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2"> in Mkt-RF&quot;</span><span class="p">)</span>
-
 </pre></div>
 </div>
 </div>
@@ -858,7 +1249,7 @@ So your optimal portfolio with market neutral exposure is
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets wrap it up in a function</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets wrap it up in a function</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">,</span><span class="n">VolTarget</span><span class="o">=</span><span class="mf">0.3</span><span class="o">/</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">):</span>
     <span class="c1"># need to replace the zeros below with the actual values!</span>
@@ -892,7 +1283,7 @@ Your Appraisal Ratio is 0
 <p>1/N rule</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">/</span><span class="mi">5</span>
 <span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -909,7 +1300,7 @@ Your Appraisal Ratio is 0
 <p>Proportional rule</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">Alpha</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">Alpha</span>
 <span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -926,7 +1317,7 @@ Your Appraisal Ratio is 0
 <p>Risky Parity rule</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -943,7 +1334,7 @@ Your Appraisal Ratio is 0
 <p>Minimum Variance rule</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">)</span>
 <span class="n">sr_alpha</span><span class="p">,</span><span class="n">W_alpha</span><span class="o">=</span><span class="n">sizing</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">Alpha</span><span class="p">,</span><span class="n">Sigma_e</span><span class="p">,</span><span class="n">Beta</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -965,7 +1356,7 @@ Your Appraisal Ratio is 0
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tau</span><span class="o">=</span><span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau</span><span class="o">=</span><span class="mf">0.5</span>
 <span class="n">sigma_alpha</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Alpha_se</span><span class="p">)</span>
 <span class="n">Sigma</span><span class="o">=</span><span class="n">Sigma_e</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tau</span><span class="p">)</span><span class="o">+</span><span class="n">tau</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Sigma_e</span><span class="p">))</span>
 <span class="n">W</span><span class="o">=</span><span class="n">Alpha</span><span class="nd">@np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Sigma</span><span class="p">)</span>
@@ -990,7 +1381,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 </div>
 </section>
 <section id="portfolios-and-factor-models">
-<h1>Portfolios and factor models<a class="headerlink" href="#portfolios-and-factor-models" title="Link to this heading">#</a></h1>
+<h2>Portfolios and factor models<a class="headerlink" href="#portfolios-and-factor-models" title="Link to this heading">#</a></h2>
 <p>Say you have</p>
 <ul class="simple">
 <li><p>a vector of asset excess returns R (N by 1),</p></li>
@@ -1015,7 +1406,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 <p>-This is the total portfolio variance, What is the portfolio factor risk?</p>
 </section>
 <section id="risk-profile-analysis">
-<h1>Risk Profile Analysis<a class="headerlink" href="#risk-profile-analysis" title="Link to this heading">#</a></h1>
+<h2>Risk Profile Analysis<a class="headerlink" href="#risk-profile-analysis" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>What each asset is contributing to my overall portfolio risk?</p></li>
 <li><p>what is the asset that at the margin contributes the most?</p></li>
@@ -1037,7 +1428,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 <p>For now just think this as blackbox that is giving you numbers for B, Var(f), Var(U)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">factor_model_estimation</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1083,9 +1474,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-
-<span class="n">B</span><span class="p">,</span> <span class="n">Varf</span><span class="p">,</span> <span class="n">VarU</span><span class="o">=</span><span class="n">factor_model_estimation</span><span class="p">(</span><span class="n">Data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="p">,</span> <span class="n">Varf</span><span class="p">,</span> <span class="n">VarU</span><span class="o">=</span><span class="n">factor_model_estimation</span><span class="p">(</span><span class="n">Data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Varf</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">VarU</span><span class="p">)</span>
@@ -1118,14 +1507,14 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 \[2B&#64;(B.T&#64;W)Var(f)+2Var(U)&#64;W\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="n">B</span> <span class="o">@</span> <span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">W</span><span class="p">)</span> <span class="o">*</span> <span class="n">Varf</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">VarU</span> <span class="o">@</span> <span class="n">W</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">*</span><span class="n">B</span> <span class="o">@</span> <span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">W</span><span class="p">)</span> <span class="o">*</span> <span class="n">Varf</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">VarU</span> <span class="o">@</span> <span class="n">W</span>
 </pre></div>
 </div>
 </div>
@@ -1139,6 +1528,54 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
 </div>
 </div>
 </div>
+</section>
+<section id="the-rise-of-pod-shops">
+<h2>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
+<p>Hedge funds used to be associated with Principal traders</p>
+<ul class="simple">
+<li><p>George Soros</p></li>
+<li><p>Julian Robertson</p></li>
+<li><p>David Tepper</p></li>
+<li><p>Paul Tudor Jones</p></li>
+<li><p>Steve Cohen</p></li>
+<li><p>John Paulson</p></li>
+</ul>
+<p>Now we have the rise of Citadel and Millenium among a few others</p>
+<p>Pod shops are organized totally different</p>
+<p>Idea generation are done at the pod level in groups of 5-10 people</p>
+<p>Capital is allocated to the pod by the hedge fund principal, who monitors exposures and hedges residual factor risk</p>
+<p>Why pod traders work for Citadel and not choose to manage their own fund?</p>
+<p><strong>A calculation</strong></p>
+<p>Consider a pod shop with N pods with SR sr and total vol <span class="math notranslate nohighlight">\(\sigma\)</span>, what is their alpha? What is their SR?</p>
+<div class="math notranslate nohighlight">
+\[E[\sum x^*_ir_i]=E[\sum \frac{\alpha_i}{\sigma^2_i}\alpha_i]=N*sr^2\]</div>
+<div class="math notranslate nohighlight">
+\[Var[\sum x^*_ir_i]=Var[\sum \frac{\alpha_i}{\sigma^2_i}\epsilon_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2Var[\epsilon_i]\]</div>
+<div class="math notranslate nohighlight">
+\[Var[\sum x^*_ir_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2\sigma^2_i=N sr^2\]</div>
+<p>so the Sharpe Ratio of the pool of pods is</p>
+<div class="math notranslate nohighlight">
+\[sr_{pool}=\frac{Nsr_{pod}^2}{\sqrt{N}sr_{pod}}=\sqrt{N}sr_{pod}\]</div>
+<p>The Sharpe ratio of the pool of pods grows with the number of pods</p>
+<p>This means that if managed individually, the average pod will accumulate wealth at rate <span class="math notranslate nohighlight">\(\sigma*sr\)</span></p>
+<p>But if managed in a pool structure, the average pod will accumulate as <span class="math notranslate nohighlight">\(\sqrt{N}\sigma*sr\)</span></p>
+<p>Finding a new uncorrelated idea is super valuable!</p>
+<p>The marginal change in cash flows are</p>
+<div class="math notranslate nohighlight">
+\[\frac{\sigma*sr_{pool}}{N}\]</div>
+<ul class="simple">
+<li><p>decreases in the number of pods</p></li>
+<li><p>But always positive–if indeed similar SR and uncorrelated!</p></li>
+</ul>
+<p>Note that this calculation under-estimates the value of the pod structure</p>
+<ul class="simple">
+<li><p>The higher your Sharpe ratio, the more volatility you can take without bearing significant risk of loss (wealth just grows too quickly)</p></li>
+</ul>
+<p>But it also not realistic</p>
+<ul class="simple">
+<li><p>Your marginal pod is likely to be worse or correlated with the others</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1187,11 +1624,11 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\numpy\core\_methods.py:129: Ru
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise: Investing in characteristic-based factors from the perspective of a CAPM investor</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">Portfolios and factor models</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">Risk Profile Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bet-sizing-under-uncertainty">Bet sizing under uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">Portfolios and factor models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">Risk Profile Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">The rise of “pod shops”</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

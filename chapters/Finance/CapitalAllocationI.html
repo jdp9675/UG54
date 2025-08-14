@@ -502,7 +502,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell tag_hide-cell docutils container">
+  <p>Note <strong>Need to trim this notebook. Certainly move the pod shop stuff , but maybe more</strong></p>
+<div class="cell tag_hide-cell docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
 <p class="collapsed admonition-title">Show code cell content</p>
@@ -586,14 +587,8 @@ Understand how required spending, liabilities, or performance evaluation alter t
 Apply the mean–variance framework (or its CAPM special case) to derive recommended positions across stocks, bonds, and factor portfolios.</p></li>
 <li><p><strong>Allocate between market beta and portable alpha.</strong><br />
 Learn the mechanics of combining a hedged long-short (zero-beta) strategy with a market position, and see how the separation theorem guides sizing.</p></li>
-<li><p><strong>Evaluate characteristic-based factors through a CAPM lens.</strong><br />
-Treat value, momentum, and other factor spreads as investable assets; estimate their alphas, betas, and incremental Sharpe contribution.</p></li>
-<li><p><strong>Incorporate time-varying volatility into the risk budget.</strong><br />
-Construct rolling realized variance, convert it into a volatility-managed target weight, and examine how the strategy alters return paths.</p></li>
 <li><p><strong>Explore the economics behind “pod shops.”</strong><br />
 Understand why multi-manager platforms combine dozens of market-neutral pods, each run at tight risk limits and scaled to a common volatility target.</p></li>
-<li><p><strong>Build data pipelines from signal to strategy returns.</strong><br />
-Practice fetching daily factor data, aggregating to monthly realized variance, converting signals into weights, and computing hierarchical portfolio P&amp;L.</p></li>
 </ol>
 <hr class="docutils" />
 <p>Every investor faces this question: <em>How much risk should I take, and how should I spread that risk across different assets?</em></p>
@@ -829,8 +824,7 @@ Because delegates often face external constraints and career risks. Their incent
 <p>Most hedge funds don’t have SR above 1, let alone 3!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span><span class="mf">3.28</span><span class="p">,</span><span class="n">rf</span><span class="p">)</span>
-<span class="n">sr_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.28</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sr_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.28</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">sigma_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span> <span class="k">for</span> <span class="n">sr</span> <span class="ow">in</span> <span class="n">sr_values</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sr_values</span><span class="p">,</span> <span class="n">sigma_values</span><span class="p">)</span>
@@ -884,20 +878,27 @@ This is the MEAN-VARIANCE EFFICIENT PORTFOLIO associated with moments \)</span>E
 </div></blockquote>
 <p>This same portfolio solves the all following problems</p>
 <ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]-\gamma Var(W'R^e_T)\)</span>, for <span class="math notranslate nohighlight">\(w=\frac{1}{2\gamma}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]~~~subject~~to~~~Var(W'R^e_T)\leq Vmax \)</span>, for <span class="math notranslate nohighlight">\(w=\sqrt{\frac{Vmax}{E[R^e]\Sigma_{R}^{-1}E[R^e]'}}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\( \min_W Var(W'R^e_T)~~~subject~~to~~~E[W'R^e_T]\geq Emin \)</span>, for <span class="math notranslate nohighlight">\(w=\frac{Emin}{E[R^e]\Sigma_{R}^{-1}E[R^e]'}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]-\gamma/2 Var(W'R^e_T)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]~~~subject~~to~~~Var(W'R^e_T)\leq Vmax \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \min_W Var(W'R^e_T)~~~subject~~to~~~E[W'R^e_T]\geq Emin \)</span></p></li>
 </ol>
 <p>It should not be surprising! They all want the highest SR, but use it to achieve different goals</p>
-<p>Here is the solution of the first one</p>
-<p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]-\gamma Var(W'R^e_T)\)</span></p>
-<p><span class="math notranslate nohighlight">\( \max_W W'E[R^e_T]-\gamma W'Var(R^e_T)W\)</span></p>
+<p>Here is the solution for the first one</p>
+<p><span class="math notranslate nohighlight">\( \max_W E[W'R^e_T]-\gamma/2 Var(W'R^e_T)\)</span></p>
+<p><span class="math notranslate nohighlight">\( \max_W W'E[R^e_T]-\gamma/2 W'Var(R^e_T)W\)</span></p>
 <p>You again find any maximum by setting the derivative of the objective with
 respect to the choice variable to zero. The only difference is that now you are choosing a vector!</p>
-<p><span class="math notranslate nohighlight">\( E[R^e_T]-2\gamma Var(R^e_T)W=0\)</span></p>
-<p><span class="math notranslate nohighlight">\( E[R^e_T]=2\gamma Var(R^e_T)W\)</span></p>
-<p><span class="math notranslate nohighlight">\( (2\gamma Var(R^e_T))^{-1}E[R^e_T]=(2\gamma Var(R^e_T))^{-1}2\gamma Var(R^e_T)W\)</span></p>
-<p><span class="math notranslate nohighlight">\( W=\frac{1}{2\gamma}Var(R^e_T)^{-1}E[R^e_T] \)</span></p>
+<p><span class="math notranslate nohighlight">\( E[R^e_T]-\gamma Var(R^e_T)W=0\)</span></p>
+<p><span class="math notranslate nohighlight">\( E[R^e_T]=\gamma Var(R^e_T)W\)</span></p>
+<p><span class="math notranslate nohighlight">\( (\gamma Var(R^e_T))^{-1}E[R^e_T]=(\gamma Var(R^e_T))^{-1}2\gamma Var(R^e_T)W\)</span></p>
+<p><span class="math notranslate nohighlight">\( W=\frac{1}{\gamma}Var(R^e_T)^{-1}E[R^e_T] \)</span></p>
+<blockquote>
+<div><p>Insight:</p>
+<p><span class="math notranslate nohighlight">\(\frac{1}{\gamma}\)</span> is simply a scalar that lever-delever your portfolio to hit your desired goal</p>
+<p>The maximum Sharpe Ratio portfolio is really given by the term <span class="math notranslate nohighlight">\( W^*=Var(R^e_T)^{-1}E[R^e_T] \)</span></p>
+<p>This means that to hit a variance target or a expected return target all you need to do is solve for the leverage that implements it!</p>
+<p>For example, suppose I want to hit an expected excess return target of <span class="math notranslate nohighlight">\(\mu\)</span>, What is my portfolio?</p>
+</div></blockquote>
 <p>Lets apply this to  an international portfolio allocation problem</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1267,7 +1268,7 @@ You care about the appraisal ratio of the strategy relative to your portfolio</p
 \[Var[\sum x^*_ir_i]=Var[\sum \frac{\alpha_i}{\sigma^2_i}\epsilon_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2Var[\epsilon_i]\]</div>
 <div class="math notranslate nohighlight">
 \[Var[\sum x^*_ir_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2\sigma^2_i=N sr^2\]</div>
-<p>so the Sharpe Ration of the pool of pods is</p>
+<p>so the Sharpe Ratio of the pool of pods is</p>
 <div class="math notranslate nohighlight">
 \[sr_{pool}=\frac{Nsr_{pod}^2}{\sqrt{N}sr_{pod}}=\sqrt{N}sr_{pod}\]</div>
 <p>The Sharpe ratio of the pool of pods grows with the number of pods</p>
@@ -1298,13 +1299,6 @@ You care about the appraisal ratio of the strategy relative to your portfolio</p
 <li><p><strong>Portable alpha plus market beta is a practical implementation of the separation theorem.</strong>  A zero-beta long–short can be layered on top of any core market exposure to raise expected return without changing systematic risk.</p></li>
 <li><p><strong>Characteristic factors need the same discipline as traditional assets.</strong>  Evaluate their alpha, beta, and covariance before adding them—high standalone Sharpe means little if the factor simply doubles your market risk.</p></li>
 <li><p><strong>Diversification is your friend</strong>, estimation uncertainty your mortal enemy</p></li>
-<li><p><strong>Many approaches to sizing</strong>: better to keep it simple and iterate relentlessly</p></li>
-<li><p><strong>Risk-Management is key</strong></p>
-<ul>
-<li><p>Hedging out factor exposure enhances you Sharpe Ratio. A safer strategy enables more risk-taking, and more growth</p></li>
-<li><p>Dynamic management of risk does the same across time. You should take more risk, when compensation is high</p></li>
-</ul>
-</li>
 </ul>
 <hr class="docutils" />
 </section>
