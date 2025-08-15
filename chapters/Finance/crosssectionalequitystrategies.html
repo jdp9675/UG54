@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Characteristic-Based Trading strategies &#8212; Quantitative Investing</title>
+    <title>11. Cross-Sectional Trading strategies &#8212; Quantitative Investing</title>
   
   
   
@@ -476,7 +476,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Characteristic-Based Trading strategies</h1>
+    <h1>Cross-Sectional Trading strategies</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -486,9 +486,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-market-cap-weighted-strategy">11.1. The Market-Cap Weighted strategy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-construction-implementing-the-recipe">11.2. Factor Construction: Implementing the recipe</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-these-characteristics">11.2.1. What are these characteristics?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-market-cap-weighted-strategy">11.1. The Market-Cap Weighted strategy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-datasets">11.1.1. Stacked Datasets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristic-based-strategies">11.2. Characteristic-Based Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-value-investing">11.2.1. Example: Value investing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-recipe">11.2.2. Implementing the recipe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#our-characteristic-data">11.2.2.1. Our Characteristic  data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-these-characteristics">11.2.2.2. What are these characteristics?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#group-assets-by-signal">11.2.2.3. Group assets by signal</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -576,8 +585,8 @@ document.write(`
 </div>
 </details>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="characteristic-based-trading-strategies">
-<h1><span class="section-number">11. </span>Characteristic-Based Trading strategies<a class="headerlink" href="#characteristic-based-trading-strategies" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="cross-sectional-trading-strategies">
+<h1><span class="section-number">11. </span>Cross-Sectional Trading strategies<a class="headerlink" href="#cross-sectional-trading-strategies" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <p><strong>🎯 Learning Objectives</strong></p>
 <ol class="arabic simple">
@@ -595,72 +604,14 @@ Generalize the recipe into a single function that takes a signal (<code class="d
 Explore how the number of groups, the dispersion of the signal, and the choice of weights influence the return spread, volatility, and diversification of the resulting portfolios.</p></li>
 </ol>
 <hr class="docutils" />
-<ul class="simple">
-<li><p>So far we have looked at strategies that go in and out of a particular asset according to a signal.</p></li>
-<li><p>Now we will look at strategies that trade of asset characteristics</p></li>
-</ul>
-<p><strong>The  recipe</strong></p>
-<ol class="arabic simple">
-<li><p>Construct a characteristic for each stock.</p>
-<ul class="simple">
-<li><p>It can be based on accounting data (aka fundamentals), return data, textual data from earning calls, twitter activity, ownership, shorting activity, satellite images–</p></li>
-<li><p>You can do for anything</p></li>
-<li><p>What is important is that for each stock in each date you have a value for this characteristic</p></li>
-<li><p>And you have a sense/theory of how this chracteristic relates to expected returns</p></li>
-</ul>
-</li>
-<li><p>On a given date sort stocks by this characteristic.</p>
-<ul class="simple">
-<li><p>It is key that this characteristic is in fact known at sorting date!</p></li>
-<li><p>Extremely careful not to introduce “look-ahead” bias</p></li>
-</ul>
-</li>
-<li><p>Construct portfolios by dividing stocks in deciles/quintiles and “10” form portfolios of stocks that have similar characteristic</p>
-<ul class="simple">
-<li><p>You can either equal weight or value weight within portfolio</p></li>
-<li><p>Value-weighed portfolios are easier to trade, but if you are focused on large caps, you can go with either</p></li>
-<li><p>But what is important is that each portfolio will have stocks of have very different characteristic values</p></li>
-</ul>
-</li>
-<li><p>Construct the long-short where you go long portfolio “10” and short portfolio “1” (or vice versa) but the point is to take a bet on the characteristic spread</p></li>
-</ol>
-<blockquote>
-<div><p><strong>The goal here is to produce alpha</strong></p>
-</div></blockquote>
-<blockquote>
-<div><ul class="simple">
-<li><p>this is a simple and algorithimic  way to implement your idea in a way that harvest the benefits of diversification</p></li>
-<li><p>Instead of betting on Apple because it is exposed to tariffs, build a tariff exposure “characteristic”</p></li>
-</ul>
-</div></blockquote>
-<p><strong>From “names”  to characteristics</strong></p>
-<ul class="simple">
-<li><p>The  sorting by date keeps the stocks inside the portfolios with similar characteristics</p></li>
-<li><p>This sorting will “work” if these chracteristics are good proxies for the behavior of the stock returns</p></li>
-<li><p>Indeed, the key is that each portfolio has stocks of vastly different characterisitcs and keeps churning as firms change</p>
-<ul>
-<li><p>Let’s take MSFT (microsoft) as an example:</p></li>
-<li><p>MSFT transitioned from being small in the 80’s to be gigantic in the 90’s, as a result, it moved up from the small portfolio to the big portfolio</p></li>
-<li><p>During the Tech boom when MSFT had a huge valuation relative to it’s book value, it went to the low BM portfolio</p></li>
-<li><p>But then MSFT transtioned back to the high BM portfolio once it’s market valuation collapsed in the aftermath of the techbubble</p></li>
-<li><p>Now with AI, MSFT is back into the low BM portfolio</p></li>
-<li><p>During these 80 years MSFT changed dramatically and the characteristic changed with it…</p></li>
-</ul>
-</li>
-<li><p>The key is that firms’ characteristics change over time, by constructing  portfolios, we hope to estimate some stable parameters (for example, alpha and beta)</p></li>
-<li><p>But it doesn’t work always, if you use the first letter of stock ticker to construct 26 portfolios you are unlikely to get spread in average returns and most likely each portfolio will resemble the market portfolio but with much more volatility.</p></li>
-</ul>
-<blockquote>
-<div><h3 class="rubric" id="large-data">Large Data</h3>
-<ul class="simple">
-<li><p>We will now work with large data sets</p></li>
-<li><p>Data sets that include all US stocks</p></li>
-<li><p>Because there are many stocks, we have to work with it stacked</p></li>
-<li><p>As a warm up for you first factor construction we will construct the returns on the market portfolio</p></li>
-</ul>
-</div></blockquote>
 <section id="the-market-cap-weighted-strategy">
 <h2><span class="section-number">11.1. </span>The Market-Cap Weighted strategy<a class="headerlink" href="#the-market-cap-weighted-strategy" title="Link to this heading">#</a></h2>
+<p>As a warm up for you first factor construction we will construct the returns on the market portfolio</p>
+<ul class="simple">
+<li><p>In some way that is the most important strategy ever</p></li>
+<li><p>It completely revolutionized Wall Street leading to the rise of index funds</p></li>
+</ul>
+<p>How to do it?</p>
 <ul class="simple">
 <li><p>start with a vector of market capitalization for all relevant assets <span class="math notranslate nohighlight">\(M_t=[m_t^{AAPL},m_t^{GOOG},m_t^{TSLA},..]\)</span></p></li>
 </ul>
@@ -669,15 +620,20 @@ Explore how the number of groups, the dispersion of the signal, and the choice o
 <p>The strategy then set the weights simply to</p>
 <div class="math notranslate nohighlight">
 \[X_t=\frac{M_t}{\sum_i^Im^i_t}\]</div>
-<p>So at end of month <strong>t</strong> you look at the market caps, construct the weights, and buy the assets with weights <span class="math notranslate nohighlight">\(X_t\)</span> to earn</p>
+<p>So at end of month <strong>t</strong> you look at the market caps, construct the weights, and buy the assets with weights <span class="math notranslate nohighlight">\(X_t\)</span> (at prices <span class="math notranslate nohighlight">\(P_t\)</span>) to earn</p>
 <div class="math notranslate nohighlight">
 \[R^{mcap}_{t+1}=X_tR_{t+1}\]</div>
 <p>at the end of the next month.</p>
+<p>That is you pay <span class="math notranslate nohighlight">\(P_t\)</span> and get back <span class="math notranslate nohighlight">\(P_{t+1}+D_{t+1}\)</span>, hence return <span class="math notranslate nohighlight">\(R_{t+1}=\frac{P_{t+1}+D_{t+1}}{P_t}\)</span></p>
 <p>This portfolio has nice properties</p>
 <ol class="arabic simple">
-<li><p>This portfolio is very easy to trade. It does not require re-balancing as you weights naturally go up if the stock rallies and go down if the stock crashes</p></li>
+<li><p>This portfolio is very easy to trade. It does not require re-balancing as your weights naturally go up if the stock rallies and go down if the stock crashes</p></li>
 <li><p>You can implement this approach to any subset of firms (for example SP500 or Russel2000) are market cap indexes that track a particular universe of stocks and we will be using it in our characteristic-based portfolios shortly</p></li>
-<li><p>By buying proportionally to market cap you never have to build a huge position in a tiny stock</p></li>
+<li><p>By buying proportionally to market cap you never have to build a huge position in a tiny stock–so this is much easier to trade!</p>
+<ul class="simple">
+<li><p>Equal weighted portfolio tend to be very hard to trade and the alphas that you get there are mostly a mirrage, unless you focus on large caps</p></li>
+</ul>
+</li>
 </ol>
 <blockquote>
 <div><p><strong>Steps</strong></p>
@@ -687,6 +643,15 @@ Explore how the number of groups, the dispersion of the signal, and the choice o
 <li><p>Make sure to lag the market cap signal so that we use prices from last month to trade at the start of this month ( we could also skip another month to be extra sure)</p></li>
 <li><p>Construct the weighted average of returns across stocks for each date</p></li>
 </ol>
+</div></blockquote>
+<section id="stacked-datasets">
+<h3><span class="section-number">11.1.1. </span>Stacked Datasets<a class="headerlink" href="#stacked-datasets" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>We will now work with large data sets</p></li>
+<li><p>Data sets that include all US stocks</p></li>
+<li><p>Because there are many stocks, we have to work with it stacked</p></li>
+</ul>
 </div></blockquote>
 <p><strong>Organizing the data</strong></p>
 <p>The objective here is to have a data set with</p>
@@ -731,14 +696,14 @@ Done
 <span class="s2">                      on a.permno=b.permno</span>
 <span class="s2">                      and b.namedt&lt;=a.date</span>
 <span class="s2">                      and a.date&lt;=b.nameendt</span>
-<span class="s2">                      where a.date between &#39;01/31/2002&#39; and &#39;12/31/2016&#39;</span>
+<span class="s2">                      where a.date between &#39;01/31/2015&#39; and &#39;12/31/2024&#39;</span>
 <span class="s2">                      and b.exchcd between 1 and 3</span>
 <span class="s2">                      and b.shrcd between 10 and 11</span>
 <span class="s2">                      &quot;&quot;&quot;</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span> 
 
 
 <span class="c1"># this saves it</span>
-<span class="n">crsp</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../../assets/data/crspm20022016.pkl&#39;</span><span class="p">)</span>
+<span class="n">crsp</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;../../assets/data/crspm.pkl&#39;</span><span class="p">)</span>
 <span class="c1"># variables downloaded</span>
 
 <span class="c1"># 1. Permno-- are unique indentifier to a security </span>
@@ -765,6 +730,125 @@ Done
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">crsp</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://github.com/amoreira2/Fin418/blob/main/assets/data/crspm20022016.pkl?raw=true&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="o">=</span><span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permco&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;shrout&#39;</span><span class="p">,</span><span class="s1">&#39;prc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># change variable format to int</span>
+<span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Line up date to be end of month </span>
+<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># calculate market equity</span>
+<span class="c1"># why do we use absolute value of price?</span>
+<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;prc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">*</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;shrout&#39;</span><span class="p">]</span> 
+
+<span class="c1"># sort by permno and date and also drop duplicates</span>
+<span class="n">crsp</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="n">crsp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>permco</th>
+      <th>permno</th>
+      <th>ticker</th>
+      <th>date</th>
+      <th>ret</th>
+      <th>shrout</th>
+      <th>prc</th>
+      <th>me</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>60</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-02-28</td>
+      <td>0.035898</td>
+      <td>10488.0</td>
+      <td>10.10</td>
+      <td>105928.80</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-03-31</td>
+      <td>-0.000495</td>
+      <td>10452.0</td>
+      <td>9.96</td>
+      <td>104101.92</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-04-30</td>
+      <td>0.011044</td>
+      <td>10452.0</td>
+      <td>10.07</td>
+      <td>105251.64</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-05-31</td>
+      <td>-0.006951</td>
+      <td>10488.0</td>
+      <td>10.00</td>
+      <td>104880.00</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-06-30</td>
+      <td>0.030000</td>
+      <td>10493.0</td>
+      <td>10.30</td>
+      <td>108077.90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -881,7 +965,7 @@ Done
 </div></div></div>
 </div>
 <blockquote>
-<div><h3 class="rubric" id="take-time-to-note-the-stacked-structure-of-the-data-set">Take time to note the stacked structure of the data set</h3>
+<div><p>Take time to note the stacked structure of the data set</p>
 <ul class="simple">
 <li><p>Before with a “rectangular” data set  we need two coordinates, row and column, to identify the return of an asset in a particular date</p></li>
 <li><p>It was easier to manipulate but we would need one dataframe for each different firm variable: In this case one for return and one for market equity</p></li>
@@ -893,224 +977,6 @@ Done
 <li><p>Now we need two coordinates both in columns, “date” and “permco”, to identify one firm-date observation, and then a third coordinate, the column names to identify the particular variable for that firm-date pair</p></li>
 </ul>
 </div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">705</span><span class="p">:</span><span class="mi">725</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>permco</th>
-      <th>permno</th>
-      <th>ticker</th>
-      <th>date</th>
-      <th>ret</th>
-      <th>me</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>454</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-09-30</td>
-      <td>0.000527</td>
-      <td>2.122714e+06</td>
-    </tr>
-    <tr>
-      <th>455</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-10-31</td>
-      <td>0.080327</td>
-      <td>2.293226e+06</td>
-    </tr>
-    <tr>
-      <th>456</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-11-30</td>
-      <td>-0.049760</td>
-      <td>2.180282e+06</td>
-    </tr>
-    <tr>
-      <th>457</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-12-31</td>
-      <td>0.003257</td>
-      <td>2.179046e+06</td>
-    </tr>
-    <tr>
-      <th>458</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-01-31</td>
-      <td>-0.074484</td>
-      <td>2.017714e+06</td>
-    </tr>
-    <tr>
-      <th>459</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-02-29</td>
-      <td>0.026023</td>
-      <td>2.070222e+06</td>
-    </tr>
-    <tr>
-      <th>460</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-03-31</td>
-      <td>-0.019135</td>
-      <td>2.015849e+06</td>
-    </tr>
-    <tr>
-      <th>461</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-04-30</td>
-      <td>-0.066033</td>
-      <td>1.882939e+06</td>
-    </tr>
-    <tr>
-      <th>462</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-05-31</td>
-      <td>0.043212</td>
-      <td>1.964304e+06</td>
-    </tr>
-    <tr>
-      <th>463</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-06-30</td>
-      <td>0.134218</td>
-      <td>2.220569e+06</td>
-    </tr>
-    <tr>
-      <th>464</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-07-31</td>
-      <td>0.019619</td>
-      <td>2.268999e+06</td>
-    </tr>
-    <tr>
-      <th>465</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-08-31</td>
-      <td>0.003207</td>
-      <td>2.276276e+06</td>
-    </tr>
-    <tr>
-      <th>466</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-09-30</td>
-      <td>-0.020410</td>
-      <td>2.223732e+06</td>
-    </tr>
-    <tr>
-      <th>467</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-10-31</td>
-      <td>0.025437</td>
-      <td>2.280296e+06</td>
-    </tr>
-    <tr>
-      <th>468</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-11-30</td>
-      <td>-0.005894</td>
-      <td>2.268677e+06</td>
-    </tr>
-    <tr>
-      <th>469</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-12-31</td>
-      <td>0.102281</td>
-      <td>2.494741e+06</td>
-    </tr>
-    <tr>
-      <th>104</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-01-31</td>
-      <td>-0.244118</td>
-      <td>1.262641e+04</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-02-28</td>
-      <td>-0.017510</td>
-      <td>1.240532e+04</td>
-    </tr>
-    <tr>
-      <th>106</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-03-31</td>
-      <td>-0.168317</td>
-      <td>1.031940e+04</td>
-    </tr>
-    <tr>
-      <th>107</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-04-30</td>
-      <td>-0.030952</td>
-      <td>9.999990e+03</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <blockquote>
 <div><p><strong>Lagging the market cap signal</strong></p>
 <ul class="simple">
@@ -1131,16 +997,14 @@ Done
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort by permno and date and set as index</span>
 <span class="n">crsp</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># done incorrectly</span>
-<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">crsp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">705</span><span class="p">:</span><span class="mi">725</span><span class="p">]</span>
-<span class="c1"># what is the problem  here?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span>
 </pre></div>
 </div>
 </div>
@@ -1168,210 +1032,426 @@ Done
       <th>ticker</th>
       <th>date</th>
       <th>ret</th>
+      <th>shrout</th>
+      <th>prc</th>
       <th>me</th>
       <th>me_l1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>454</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-09-30</td>
-      <td>0.000527</td>
-      <td>2.122714e+06</td>
-      <td>2.130938e+06</td>
+      <th>60</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-02-28</td>
+      <td>0.035898</td>
+      <td>10488.0</td>
+      <td>10.10000</td>
+      <td>1.059288e+05</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>455</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-10-31</td>
-      <td>0.080327</td>
-      <td>2.293226e+06</td>
-      <td>2.122714e+06</td>
+      <th>61</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-03-31</td>
+      <td>-0.000495</td>
+      <td>10452.0</td>
+      <td>9.96000</td>
+      <td>1.041019e+05</td>
+      <td>1.059288e+05</td>
     </tr>
     <tr>
-      <th>456</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-11-30</td>
-      <td>-0.049760</td>
-      <td>2.180282e+06</td>
-      <td>2.293226e+06</td>
+      <th>62</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-04-30</td>
+      <td>0.011044</td>
+      <td>10452.0</td>
+      <td>10.07000</td>
+      <td>1.052516e+05</td>
+      <td>1.041019e+05</td>
     </tr>
     <tr>
-      <th>457</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-12-31</td>
-      <td>0.003257</td>
-      <td>2.179046e+06</td>
-      <td>2.180282e+06</td>
+      <th>63</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-05-31</td>
+      <td>-0.006951</td>
+      <td>10488.0</td>
+      <td>10.00000</td>
+      <td>1.048800e+05</td>
+      <td>1.052516e+05</td>
     </tr>
     <tr>
-      <th>458</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-01-31</td>
-      <td>-0.074484</td>
-      <td>2.017714e+06</td>
-      <td>2.179046e+06</td>
+      <th>64</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2015-06-30</td>
+      <td>0.030000</td>
+      <td>10493.0</td>
+      <td>10.30000</td>
+      <td>1.080779e+05</td>
+      <td>1.048800e+05</td>
     </tr>
     <tr>
-      <th>459</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-02-29</td>
-      <td>0.026023</td>
-      <td>2.070222e+06</td>
-      <td>2.017714e+06</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>460</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-03-31</td>
-      <td>-0.019135</td>
-      <td>2.015849e+06</td>
-      <td>2.070222e+06</td>
+      <th>456021</th>
+      <td>53453</td>
+      <td>93436</td>
+      <td>TSLA</td>
+      <td>2024-08-31</td>
+      <td>-0.077391</td>
+      <td>3194640.0</td>
+      <td>214.11000</td>
+      <td>6.840044e+08</td>
+      <td>7.413801e+08</td>
     </tr>
     <tr>
-      <th>461</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-04-30</td>
-      <td>-0.066033</td>
-      <td>1.882939e+06</td>
-      <td>2.015849e+06</td>
+      <th>456022</th>
+      <td>53453</td>
+      <td>93436</td>
+      <td>TSLA</td>
+      <td>2024-09-30</td>
+      <td>0.221942</td>
+      <td>3207000.0</td>
+      <td>261.63000</td>
+      <td>8.390474e+08</td>
+      <td>6.840044e+08</td>
     </tr>
     <tr>
-      <th>462</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-05-31</td>
-      <td>0.043212</td>
-      <td>1.964304e+06</td>
-      <td>1.882939e+06</td>
+      <th>456023</th>
+      <td>53453</td>
+      <td>93436</td>
+      <td>TSLA</td>
+      <td>2024-10-31</td>
+      <td>-0.045025</td>
+      <td>3210060.0</td>
+      <td>249.85001</td>
+      <td>8.020335e+08</td>
+      <td>8.390474e+08</td>
     </tr>
     <tr>
-      <th>463</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-06-30</td>
-      <td>0.134218</td>
-      <td>2.220569e+06</td>
-      <td>1.964304e+06</td>
+      <th>456024</th>
+      <td>53453</td>
+      <td>93436</td>
+      <td>TSLA</td>
+      <td>2024-11-30</td>
+      <td>0.381469</td>
+      <td>3210060.0</td>
+      <td>345.16000</td>
+      <td>1.107984e+09</td>
+      <td>8.020335e+08</td>
     </tr>
     <tr>
-      <th>464</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-07-31</td>
-      <td>0.019619</td>
-      <td>2.268999e+06</td>
-      <td>2.220569e+06</td>
+      <th>456025</th>
+      <td>53453</td>
+      <td>93436</td>
+      <td>TSLA</td>
+      <td>2024-12-31</td>
+      <td>0.170008</td>
+      <td>3210060.0</td>
+      <td>403.84000</td>
+      <td>1.296351e+09</td>
+      <td>1.107984e+09</td>
     </tr>
-    <tr>
-      <th>465</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-08-31</td>
-      <td>0.003207</td>
-      <td>2.276276e+06</td>
-      <td>2.268999e+06</td>
+  </tbody>
+</table>
+<p>457062 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>permco</th>
+      <th>permno</th>
+      <th>ticker</th>
+      <th>date</th>
+      <th>ret</th>
+      <th>shrout</th>
+      <th>prc</th>
+      <th>me</th>
+      <th>me_l1</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
-      <th>466</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-09-30</td>
-      <td>-0.020410</td>
-      <td>2.223732e+06</td>
-      <td>2.276276e+06</td>
-    </tr>
-    <tr>
-      <th>467</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
+      <th>302</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
       <td>2016-10-31</td>
-      <td>0.025437</td>
-      <td>2.280296e+06</td>
-      <td>2.223732e+06</td>
+      <td>0.619948</td>
+      <td>10520.0</td>
+      <td>12.350</td>
+      <td>129922.00</td>
+      <td>80657.72</td>
     </tr>
     <tr>
-      <th>468</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
+      <th>303</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
       <td>2016-11-30</td>
-      <td>-0.005894</td>
-      <td>2.268677e+06</td>
-      <td>2.280296e+06</td>
+      <td>0.012146</td>
+      <td>10520.0</td>
+      <td>12.500</td>
+      <td>131500.00</td>
+      <td>129922.00</td>
     </tr>
     <tr>
-      <th>469</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
+      <th>304</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
       <td>2016-12-31</td>
-      <td>0.102281</td>
-      <td>2.494741e+06</td>
-      <td>2.268677e+06</td>
+      <td>0.010000</td>
+      <td>10520.0</td>
+      <td>12.550</td>
+      <td>132026.00</td>
+      <td>131500.00</td>
     </tr>
     <tr>
-      <th>104</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-01-31</td>
-      <td>-0.244118</td>
-      <td>1.262641e+04</td>
-      <td>2.494741e+06</td>
+      <th>305</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2017-01-31</td>
+      <td>0.007968</td>
+      <td>10520.0</td>
+      <td>12.650</td>
+      <td>133078.00</td>
+      <td>132026.00</td>
     </tr>
     <tr>
-      <th>105</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-02-28</td>
-      <td>-0.017510</td>
-      <td>1.240532e+04</td>
-      <td>1.262641e+04</td>
+      <th>306</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2017-02-28</td>
+      <td>0.000000</td>
+      <td>10520.0</td>
+      <td>12.650</td>
+      <td>133078.00</td>
+      <td>133078.00</td>
     </tr>
     <tr>
-      <th>106</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-03-31</td>
-      <td>-0.168317</td>
-      <td>1.031940e+04</td>
-      <td>1.240532e+04</td>
+      <th>307</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2017-03-31</td>
+      <td>0.009881</td>
+      <td>10520.0</td>
+      <td>12.700</td>
+      <td>133604.00</td>
+      <td>133078.00</td>
     </tr>
     <tr>
-      <th>107</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-04-30</td>
-      <td>-0.030952</td>
-      <td>9.999990e+03</td>
-      <td>1.031940e+04</td>
+      <th>308</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2017-04-30</td>
+      <td>-0.015748</td>
+      <td>10520.0</td>
+      <td>12.500</td>
+      <td>131500.00</td>
+      <td>133604.00</td>
+    </tr>
+    <tr>
+      <th>309</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2017-05-31</td>
+      <td>0.016000</td>
+      <td>10520.0</td>
+      <td>12.700</td>
+      <td>133604.00</td>
+      <td>131500.00</td>
+    </tr>
+    <tr>
+      <th>310</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2017-06-30</td>
+      <td>0.023622</td>
+      <td>10520.0</td>
+      <td>12.925</td>
+      <td>135971.00</td>
+      <td>133604.00</td>
+    </tr>
+    <tr>
+      <th>311</th>
+      <td>7953</td>
+      <td>10001</td>
+      <td>EGAS</td>
+      <td>2017-07-31</td>
+      <td>0.001934</td>
+      <td>10520.0</td>
+      <td>12.950</td>
+      <td>136234.00</td>
+      <td>135971.00</td>
+    </tr>
+    <tr>
+      <th>1010</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-02-28</td>
+      <td>0.010976</td>
+      <td>5083.0</td>
+      <td>50.660</td>
+      <td>257504.78</td>
+      <td>136234.00</td>
+    </tr>
+    <tr>
+      <th>1011</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-03-31</td>
+      <td>0.086459</td>
+      <td>5083.0</td>
+      <td>55.040</td>
+      <td>279768.32</td>
+      <td>257504.78</td>
+    </tr>
+    <tr>
+      <th>1012</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-04-30</td>
+      <td>-0.089753</td>
+      <td>5103.0</td>
+      <td>50.100</td>
+      <td>255660.30</td>
+      <td>279768.32</td>
+    </tr>
+    <tr>
+      <th>1013</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-05-31</td>
+      <td>-0.001397</td>
+      <td>5103.0</td>
+      <td>50.030</td>
+      <td>255303.09</td>
+      <td>255660.30</td>
+    </tr>
+    <tr>
+      <th>1014</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-06-30</td>
+      <td>0.103338</td>
+      <td>5103.0</td>
+      <td>55.200</td>
+      <td>281685.60</td>
+      <td>255303.09</td>
+    </tr>
+    <tr>
+      <th>1015</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-07-31</td>
+      <td>-0.124094</td>
+      <td>5103.0</td>
+      <td>48.350</td>
+      <td>246730.05</td>
+      <td>281685.60</td>
+    </tr>
+    <tr>
+      <th>1016</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-08-31</td>
+      <td>0.126163</td>
+      <td>5103.0</td>
+      <td>54.450</td>
+      <td>277858.35</td>
+      <td>246730.05</td>
+    </tr>
+    <tr>
+      <th>1017</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-09-30</td>
+      <td>0.052893</td>
+      <td>5103.0</td>
+      <td>57.330</td>
+      <td>292554.99</td>
+      <td>277858.35</td>
+    </tr>
+    <tr>
+      <th>1018</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-10-31</td>
+      <td>0.395430</td>
+      <td>5103.0</td>
+      <td>80.000</td>
+      <td>408240.00</td>
+      <td>292554.99</td>
+    </tr>
+    <tr>
+      <th>1019</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2015-11-30</td>
+      <td>0.139750</td>
+      <td>5103.0</td>
+      <td>91.180</td>
+      <td>465291.54</td>
+      <td>408240.00</td>
     </tr>
   </tbody>
 </table>
@@ -1380,7 +1460,8 @@ Done
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">me</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">crsp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">705</span><span class="p">:</span><span class="mi">725</span><span class="p">]</span>
+<span class="n">change_idx</span> <span class="o">=</span> <span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ne</span><span class="p">(</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">())</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+<span class="n">crsp</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">40</span><span class="p">]</span>
 <span class="c1"># did it get fixed?</span>
 </pre></div>
 </div>
@@ -1409,210 +1490,252 @@ Done
       <th>ticker</th>
       <th>date</th>
       <th>ret</th>
+      <th>shrout</th>
+      <th>prc</th>
       <th>me</th>
       <th>me_l1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>454</th>
+      <th>1030</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2016-10-31</td>
+      <td>0.003932</td>
+      <td>5114.0</td>
+      <td>109.55</td>
+      <td>560238.70</td>
+      <td>559318.18</td>
+    </tr>
+    <tr>
+      <th>1031</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2016-11-30</td>
+      <td>0.075764</td>
+      <td>5114.0</td>
+      <td>117.85</td>
+      <td>602684.90</td>
+      <td>560238.70</td>
+    </tr>
+    <tr>
+      <th>1032</th>
+      <td>7975</td>
+      <td>10025</td>
+      <td>AEPI</td>
+      <td>2016-12-31</td>
+      <td>-0.014849</td>
+      <td>5114.0</td>
+      <td>116.10</td>
+      <td>593735.40</td>
+      <td>602684.90</td>
+    </tr>
+    <tr>
+      <th>756</th>
+      <td>7976</td>
+      <td>10026</td>
+      <td>JJSF</td>
+      <td>2015-02-28</td>
+      <td>0.031288</td>
+      <td>18688.0</td>
+      <td>101.19</td>
+      <td>1891038.72</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>757</th>
+      <td>7976</td>
+      <td>10026</td>
+      <td>JJSF</td>
+      <td>2015-03-31</td>
+      <td>0.058010</td>
+      <td>18689.0</td>
+      <td>106.70</td>
+      <td>1994116.30</td>
+      <td>1891038.72</td>
+    </tr>
+    <tr>
+      <th>758</th>
+      <td>7976</td>
+      <td>10026</td>
+      <td>JJSF</td>
+      <td>2015-04-30</td>
+      <td>-0.022212</td>
+      <td>18691.0</td>
+      <td>104.33</td>
+      <td>1950032.03</td>
+      <td>1994116.30</td>
+    </tr>
+    <tr>
+      <th>759</th>
+      <td>7976</td>
+      <td>10026</td>
+      <td>JJSF</td>
+      <td>2015-05-31</td>
+      <td>0.033260</td>
+      <td>18691.0</td>
+      <td>107.80</td>
+      <td>2014889.80</td>
+      <td>1950032.03</td>
+    </tr>
+    <tr>
+      <th>760</th>
+      <td>7976</td>
+      <td>10026</td>
+      <td>JJSF</td>
+      <td>2015-06-30</td>
+      <td>0.029963</td>
+      <td>18692.0</td>
+      <td>110.67</td>
+      <td>2068643.64</td>
+      <td>2014889.80</td>
+    </tr>
+    <tr>
+      <th>761</th>
+      <td>7976</td>
+      <td>10026</td>
+      <td>JJSF</td>
+      <td>2015-07-31</td>
+      <td>0.069486</td>
+      <td>18699.0</td>
+      <td>118.36</td>
+      <td>2213213.64</td>
+      <td>2068643.64</td>
+    </tr>
+    <tr>
+      <th>762</th>
+      <td>7976</td>
+      <td>10026</td>
+      <td>JJSF</td>
+      <td>2015-08-31</td>
+      <td>-0.037175</td>
+      <td>18699.0</td>
+      <td>113.96</td>
+      <td>2130938.04</td>
+      <td>2213213.64</td>
+    </tr>
+    <tr>
+      <th>763</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2015-09-30</td>
       <td>0.000527</td>
-      <td>2.122714e+06</td>
-      <td>2130938.040</td>
+      <td>18676.0</td>
+      <td>113.66</td>
+      <td>2122714.16</td>
+      <td>2130938.04</td>
     </tr>
     <tr>
-      <th>455</th>
+      <th>764</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2015-10-31</td>
       <td>0.080327</td>
-      <td>2.293226e+06</td>
-      <td>2122714.160</td>
+      <td>18676.0</td>
+      <td>122.79</td>
+      <td>2293226.04</td>
+      <td>2122714.16</td>
     </tr>
     <tr>
-      <th>456</th>
+      <th>765</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2015-11-30</td>
       <td>-0.049760</td>
-      <td>2.180282e+06</td>
-      <td>2293226.040</td>
+      <td>18686.0</td>
+      <td>116.68</td>
+      <td>2180282.48</td>
+      <td>2293226.04</td>
     </tr>
     <tr>
-      <th>457</th>
+      <th>766</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2015-12-31</td>
       <td>0.003257</td>
-      <td>2.179046e+06</td>
-      <td>2180282.480</td>
+      <td>18677.0</td>
+      <td>116.67</td>
+      <td>2179045.59</td>
+      <td>2180282.48</td>
     </tr>
     <tr>
-      <th>458</th>
+      <th>767</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2016-01-31</td>
       <td>-0.074484</td>
-      <td>2.017714e+06</td>
-      <td>2179045.590</td>
+      <td>18686.0</td>
+      <td>107.98</td>
+      <td>2017714.28</td>
+      <td>2179045.59</td>
     </tr>
     <tr>
-      <th>459</th>
+      <th>768</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2016-02-29</td>
       <td>0.026023</td>
-      <td>2.070222e+06</td>
-      <td>2017714.280</td>
+      <td>18686.0</td>
+      <td>110.79</td>
+      <td>2070221.94</td>
+      <td>2017714.28</td>
     </tr>
     <tr>
-      <th>460</th>
+      <th>769</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2016-03-31</td>
       <td>-0.019135</td>
-      <td>2.015849e+06</td>
-      <td>2070221.940</td>
+      <td>18617.0</td>
+      <td>108.28</td>
+      <td>2015848.76</td>
+      <td>2070221.94</td>
     </tr>
     <tr>
-      <th>461</th>
+      <th>770</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2016-04-30</td>
       <td>-0.066033</td>
-      <td>1.882939e+06</td>
-      <td>2015848.760</td>
+      <td>18619.0</td>
+      <td>101.13</td>
+      <td>1882939.47</td>
+      <td>2015848.76</td>
     </tr>
     <tr>
-      <th>462</th>
+      <th>771</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2016-05-31</td>
       <td>0.043212</td>
-      <td>1.964304e+06</td>
-      <td>1882939.470</td>
+      <td>18619.0</td>
+      <td>105.50</td>
+      <td>1964304.50</td>
+      <td>1882939.47</td>
     </tr>
     <tr>
-      <th>463</th>
+      <th>772</th>
       <td>7976</td>
       <td>10026</td>
       <td>JJSF</td>
       <td>2016-06-30</td>
       <td>0.134218</td>
-      <td>2.220569e+06</td>
-      <td>1964304.500</td>
-    </tr>
-    <tr>
-      <th>464</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-07-31</td>
-      <td>0.019619</td>
-      <td>2.268999e+06</td>
-      <td>2220568.860</td>
-    </tr>
-    <tr>
-      <th>465</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-08-31</td>
-      <td>0.003207</td>
-      <td>2.276276e+06</td>
-      <td>2268999.380</td>
-    </tr>
-    <tr>
-      <th>466</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-09-30</td>
-      <td>-0.020410</td>
-      <td>2.223732e+06</td>
-      <td>2276276.000</td>
-    </tr>
-    <tr>
-      <th>467</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-10-31</td>
-      <td>0.025437</td>
-      <td>2.280296e+06</td>
-      <td>2223732.160</td>
-    </tr>
-    <tr>
-      <th>468</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-11-30</td>
-      <td>-0.005894</td>
-      <td>2.268677e+06</td>
-      <td>2280296.200</td>
-    </tr>
-    <tr>
-      <th>469</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-12-31</td>
-      <td>0.102281</td>
-      <td>2.494741e+06</td>
-      <td>2268676.690</td>
-    </tr>
-    <tr>
-      <th>104</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-01-31</td>
-      <td>-0.244118</td>
-      <td>1.262641e+04</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-02-28</td>
-      <td>-0.017510</td>
-      <td>1.240532e+04</td>
-      <td>12626.410</td>
-    </tr>
-    <tr>
-      <th>106</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-03-31</td>
-      <td>-0.168317</td>
-      <td>1.031940e+04</td>
-      <td>12405.325</td>
-    </tr>
-    <tr>
-      <th>107</th>
-      <td>7978</td>
-      <td>10028</td>
-      <td>DGSE</td>
-      <td>2002-04-30</td>
-      <td>-0.030952</td>
-      <td>9.999990e+03</td>
-      <td>10319.400</td>
+      <td>18618.0</td>
+      <td>119.27</td>
+      <td>2220568.86</td>
+      <td>1964304.50</td>
     </tr>
   </tbody>
 </table>
@@ -1640,7 +1763,7 @@ Done
 <span class="n">df</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;CAPM&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;monthly&#39;</span><span class="p">)</span>
 
 <span class="p">(</span><span class="n">Rmkt</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])[</span><span class="s1">&#39;2002&#39;</span><span class="p">:</span><span class="s1">&#39;2016&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])[</span><span class="s1">&#39;2015&#39;</span><span class="p">:</span><span class="s1">&#39;2024&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1654,7 +1777,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/b760311e6f00238475a82e36f81363a71ec8107873c026b64f4bebabf4c61b6f.png" src="../../_images/b760311e6f00238475a82e36f81363a71ec8107873c026b64f4bebabf4c61b6f.png" />
+<img alt="../../_images/1224c734b5634d49ce43998d9ab6c69be313355317aa67e3bff1e28a69147a9a.png" src="../../_images/1224c734b5634d49ce43998d9ab6c69be313355317aa67e3bff1e28a69147a9a.png" />
 </div>
 </div>
 <p><strong>Things to try</strong></p>
@@ -1664,8 +1787,71 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 <li><p>Suppose you drop the stocks with “negative” prices, does it make a difference?</p></li>
 </ul>
 </section>
-<section id="factor-construction-implementing-the-recipe">
-<h2><span class="section-number">11.2. </span>Factor Construction: Implementing the recipe<a class="headerlink" href="#factor-construction-implementing-the-recipe" title="Link to this heading">#</a></h2>
+</section>
+<section id="characteristic-based-strategies">
+<h2><span class="section-number">11.2. </span>Characteristic-Based Strategies<a class="headerlink" href="#characteristic-based-strategies" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>So far we have looked at strategies that go in and out of a particular asset according to a signal.</p></li>
+<li><p>Now we will look at strategies that trade of asset characteristics</p></li>
+</ul>
+<p><strong>The  recipe</strong></p>
+<ol class="arabic simple">
+<li><p>Construct a characteristic for each stock.</p>
+<ul class="simple">
+<li><p>It can be based on accounting data (aka fundamentals), return data, textual data from earning calls, twitter activity, ownership, shorting activity, satellite images–</p></li>
+<li><p>You can do for anything</p></li>
+<li><p>What is important is that for each stock in each date you have a value for this characteristic</p></li>
+<li><p>And you have a sense/theory of how this chracteristic relates to expected returns</p></li>
+</ul>
+</li>
+<li><p>On a given date sort stocks by this characteristic.</p>
+<ul class="simple">
+<li><p>It is key that this characteristic is in fact known at sorting date!</p></li>
+<li><p>Extremely careful not to introduce “look-ahead” bias</p></li>
+</ul>
+</li>
+<li><p>Construct portfolios by dividing stocks in deciles/quintiles and “10” form portfolios of stocks that have similar characteristic</p>
+<ul class="simple">
+<li><p>You can either equal weight or value weight within portfolio</p></li>
+<li><p>Value-weighed portfolios are easier to trade, but if you are focused on large caps, you can go with either</p></li>
+<li><p>But what is important is that each portfolio will have stocks of have very different characteristic values</p></li>
+</ul>
+</li>
+<li><p>Construct the long-short where you go long portfolio “10” and short portfolio “1” (or vice versa) but the point is to take a bet on the characteristic spread</p></li>
+</ol>
+<blockquote>
+<div><p><strong>The goal here is to produce alpha</strong></p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>this is a simple and algorithimic  way to implement your idea in a way that harvest the benefits of diversification</p></li>
+<li><p>Instead of betting on Apple because it is exposed to tariffs, build a tariff exposure “characteristic”</p></li>
+</ul>
+</div></blockquote>
+<p><strong>From “names”  to characteristics</strong></p>
+<ul class="simple">
+<li><p>The  sorting by date keeps the stocks inside the portfolios with similar characteristics</p></li>
+<li><p>This sorting will “work” if these chracteristics are good proxies for the behavior of the stock returns</p></li>
+<li><p>Indeed, the key is that each portfolio has stocks of vastly different characterisitcs and keeps churning as firms change</p>
+<ul>
+<li><p>Let’s take MSFT (microsoft) as an example:</p></li>
+<li><p>MSFT transitioned from being small in the 80’s to be gigantic in the 90’s, as a result, it moved up from the small portfolio to the big portfolio</p></li>
+<li><p>During the Tech boom when MSFT had a huge valuation relative to it’s book value, it went to the low BM portfolio</p></li>
+<li><p>But then MSFT transtioned back to the high BM portfolio once it’s market valuation collapsed in the aftermath of the techbubble</p></li>
+<li><p>Now with AI, MSFT is back into the low BM portfolio</p></li>
+<li><p>During these 80 years MSFT changed dramatically and the characteristic changed with it…</p></li>
+</ul>
+</li>
+<li><p>The key is that firms’ characteristics change over time, by constructing  portfolios, we hope to estimate some stable parameters (for example, alpha and beta)</p></li>
+<li><p>But it doesn’t work always, if you use the first letter of stock ticker to construct 26 portfolios you are unlikely to get spread in average returns and most likely each portfolio will resemble the market portfolio but with much more volatility.</p></li>
+<li><p>The characteristics have to capture the right economics/market dynamics</p></li>
+</ul>
+<section id="example-value-investing">
+<h3><span class="section-number">11.2.1. </span>Example: Value investing<a class="headerlink" href="#example-value-investing" title="Link to this heading">#</a></h3>
+<p>Wall street talks a lot in terms of earnings</p>
+</section>
+<section id="implementing-the-recipe">
+<h3><span class="section-number">11.2.2. </span>Implementing the recipe<a class="headerlink" href="#implementing-the-recipe" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>We will start with a constructed characteristic <span class="math notranslate nohighlight">\(c_{i,t}\)</span></p></li>
 <li><p>Produce 10 portfolios based on this characteristic</p>
@@ -1680,6 +1866,9 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 </ul>
 </li>
 </ol>
+<p>We start by loading a dataset where you have many signals</p>
+<section id="our-characteristic-data">
+<h4><span class="section-number">11.2.2.1. </span>Our Characteristic  data<a class="headerlink" href="#our-characteristic-data" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/amoreira2/Fin418/blob/main/assets/data/characteristics20022016.pkl?raw=true&quot;</span>
@@ -1687,14 +1876,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 <span class="n">df_X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">df_X</span><span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">df_X</span><span class="o">.</span><span class="n">date</span><span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">date</span><span class="o">+</span><span class="n">pd</span><span class="o">.</span><span class="n">tseries</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthEnd</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_merged</span><span class="o">=</span><span class="n">crsp</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_X</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span>
-<span class="n">crsp_merged</span>
+<span class="n">df_X</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1717,16 +1899,16 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>permco</th>
-      <th>permno</th>
-      <th>ticker</th>
       <th>date</th>
-      <th>ret</th>
-      <th>me</th>
-      <th>me_l1</th>
+      <th>permno</th>
       <th>re</th>
       <th>rf</th>
       <th>rme</th>
+      <th>size</th>
+      <th>value</th>
+      <th>prof</th>
+      <th>fscore</th>
+      <th>debtiss</th>
       <th>...</th>
       <th>momrev</th>
       <th>valuem</th>
@@ -1742,272 +1924,200 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-10-31</td>
-      <td>0.080327</td>
-      <td>2.293226e+06</td>
-      <td>2.122714e+06</td>
-      <td>0.080327</td>
-      <td>0.0000</td>
-      <td>0.0775</td>
+      <th>count</th>
+      <td>163913</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
       <td>...</td>
-      <td>0.026234</td>
-      <td>-1.235953</td>
-      <td>0.693495</td>
-      <td>0.000527</td>
-      <td>0.010276</td>
-      <td>0.979836</td>
-      <td>0.019387</td>
-      <td>4.733212</td>
-      <td>5.880533</td>
-      <td>0.547529</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
+      <td>163913.000000</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2015-11-30</td>
-      <td>-0.049760</td>
-      <td>2.180282e+06</td>
-      <td>2.293226e+06</td>
-      <td>-0.049760</td>
-      <td>0.0000</td>
-      <td>0.0056</td>
+      <th>mean</th>
+      <td>2009-07-17 14:37:46.612166400</td>
+      <td>60452.050222</td>
+      <td>0.007979</td>
+      <td>0.001032</td>
+      <td>0.005875</td>
+      <td>15.550336</td>
+      <td>-0.912667</td>
+      <td>-1.556057</td>
+      <td>4.933819</td>
+      <td>0.362827</td>
       <td>...</td>
-      <td>-0.018624</td>
-      <td>-1.283899</td>
-      <td>0.693495</td>
-      <td>0.080327</td>
-      <td>0.007560</td>
-      <td>0.980258</td>
-      <td>0.024293</td>
-      <td>4.810476</td>
-      <td>5.883322</td>
-      <td>0.549169</td>
+      <td>0.057370</td>
+      <td>-0.948673</td>
+      <td>0.700911</td>
+      <td>0.014663</td>
+      <td>0.015696</td>
+      <td>1.032455</td>
+      <td>0.006188</td>
+      <td>3.664508</td>
+      <td>5.512095</td>
+      <td>1.057609</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-01-31</td>
-      <td>-0.074484</td>
-      <td>2.017714e+06</td>
-      <td>2.179046e+06</td>
-      <td>-0.074584</td>
-      <td>0.0001</td>
-      <td>-0.0577</td>
+      <th>min</th>
+      <td>2002-01-31 00:00:00</td>
+      <td>10026.000000</td>
+      <td>-0.870345</td>
+      <td>0.000000</td>
+      <td>-0.172300</td>
+      <td>11.501877</td>
+      <td>-8.756389</td>
+      <td>-10.213809</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>...</td>
-      <td>0.121467</td>
-      <td>-1.232827</td>
-      <td>0.693120</td>
-      <td>0.003257</td>
-      <td>0.011044</td>
-      <td>0.972599</td>
-      <td>-0.024166</td>
-      <td>4.759349</td>
-      <td>5.888878</td>
-      <td>0.543436</td>
+      <td>-3.055986</td>
+      <td>-8.818536</td>
+      <td>0.329881</td>
+      <td>-0.868645</td>
+      <td>0.000463</td>
+      <td>0.241380</td>
+      <td>-0.820129</td>
+      <td>0.570980</td>
+      <td>3.637586</td>
+      <td>0.003904</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-02-29</td>
-      <td>0.026023</td>
-      <td>2.070222e+06</td>
-      <td>2.017714e+06</td>
-      <td>0.025823</td>
-      <td>0.0002</td>
-      <td>-0.0007</td>
+      <th>25%</th>
+      <td>2005-10-31 00:00:00</td>
+      <td>35238.000000</td>
+      <td>-0.040199</td>
+      <td>0.000000</td>
+      <td>-0.018300</td>
+      <td>14.676361</td>
+      <td>-1.351522</td>
+      <td>-2.087953</td>
+      <td>4.000000</td>
+      <td>0.000000</td>
       <td>...</td>
-      <td>0.151384</td>
-      <td>-1.200693</td>
-      <td>0.693094</td>
-      <td>-0.074484</td>
-      <td>0.011646</td>
-      <td>0.966853</td>
-      <td>-0.062979</td>
-      <td>4.681946</td>
-      <td>5.891644</td>
-      <td>0.577112</td>
+      <td>-0.053707</td>
+      <td>-1.384280</td>
+      <td>0.682923</td>
+      <td>-0.035392</td>
+      <td>0.009952</td>
+      <td>0.851590</td>
+      <td>-0.033465</td>
+      <td>3.258097</td>
+      <td>5.003946</td>
+      <td>0.748381</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>7976</td>
-      <td>10026</td>
-      <td>JJSF</td>
-      <td>2016-03-31</td>
-      <td>-0.019135</td>
-      <td>2.015849e+06</td>
-      <td>2.070222e+06</td>
-      <td>-0.019335</td>
-      <td>0.0002</td>
-      <td>0.0696</td>
+      <th>50%</th>
+      <td>2009-06-30 00:00:00</td>
+      <td>73139.000000</td>
+      <td>0.008931</td>
+      <td>0.000200</td>
+      <td>0.009200</td>
+      <td>15.293713</td>
+      <td>-0.850813</td>
+      <td>-1.346370</td>
+      <td>5.000000</td>
+      <td>0.000000</td>
       <td>...</td>
-      <td>0.092101</td>
-      <td>-1.168166</td>
-      <td>0.693094</td>
-      <td>0.026023</td>
-      <td>0.008756</td>
-      <td>0.958969</td>
-      <td>0.007363</td>
-      <td>4.707637</td>
-      <td>5.894403</td>
-      <td>0.580431</td>
+      <td>0.072849</td>
+      <td>-0.900369</td>
+      <td>0.694412</td>
+      <td>0.013158</td>
+      <td>0.013612</td>
+      <td>1.003569</td>
+      <td>0.002659</td>
+      <td>3.679082</td>
+      <td>5.575949</td>
+      <td>0.999129</td>
     </tr>
     <tr>
-      <th>...</th>
+      <th>75%</th>
+      <td>2013-03-31 00:00:00</td>
+      <td>84168.000000</td>
+      <td>0.056648</td>
+      <td>0.001500</td>
+      <td>0.032300</td>
+      <td>16.240260</td>
+      <td>-0.378992</td>
+      <td>-0.875085</td>
+      <td>6.000000</td>
+      <td>1.000000</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <td>0.191116</td>
+      <td>-0.417606</td>
+      <td>0.701702</td>
+      <td>0.061674</td>
+      <td>0.019028</td>
+      <td>1.178665</td>
+      <td>0.040915</td>
+      <td>4.063370</td>
+      <td>6.165418</td>
+      <td>1.312665</td>
     </tr>
     <tr>
-      <th>163360</th>
-      <td>53453</td>
-      <td>93436</td>
-      <td>TSLA</td>
-      <td>2016-08-31</td>
-      <td>-0.097023</td>
-      <td>3.164016e+07</td>
-      <td>3.491163e+07</td>
-      <td>-0.097223</td>
-      <td>0.0002</td>
-      <td>0.0050</td>
+      <th>max</th>
+      <td>2016-12-31 00:00:00</td>
+      <td>93436.000000</td>
+      <td>1.597907</td>
+      <td>0.004400</td>
+      <td>0.113500</td>
+      <td>20.388632</td>
+      <td>2.370495</td>
+      <td>0.837982</td>
+      <td>8.000000</td>
+      <td>1.000000</td>
       <td>...</td>
-      <td>0.187434</td>
-      <td>-3.467612</td>
-      <td>0.774498</td>
-      <td>0.106039</td>
-      <td>0.023503</td>
-      <td>1.202041</td>
-      <td>0.016793</td>
-      <td>5.458691</td>
-      <td>4.330733</td>
-      <td>2.039172</td>
+      <td>3.302411</td>
+      <td>2.329125</td>
+      <td>2.711109</td>
+      <td>2.596567</td>
+      <td>0.218682</td>
+      <td>2.350102</td>
+      <td>2.134880</td>
+      <td>11.631769</td>
+      <td>6.555357</td>
+      <td>4.319359</td>
     </tr>
     <tr>
-      <th>163361</th>
-      <td>53453</td>
-      <td>93436</td>
-      <td>TSLA</td>
-      <td>2016-09-30</td>
-      <td>-0.037640</td>
-      <td>3.056879e+07</td>
-      <td>3.164016e+07</td>
-      <td>-0.037840</td>
-      <td>0.0002</td>
-      <td>0.0025</td>
+      <th>std</th>
+      <td>NaN</td>
+      <td>27258.977322</td>
+      <td>0.094412</td>
+      <td>0.001368</td>
+      <td>0.041751</td>
+      <td>1.161036</td>
+      <td>0.782885</td>
+      <td>0.965714</td>
+      <td>1.290275</td>
+      <td>0.480817</td>
       <td>...</td>
-      <td>0.267903</td>
-      <td>-3.484510</td>
-      <td>0.765204</td>
-      <td>-0.097023</td>
-      <td>0.020798</td>
-      <td>1.216683</td>
-      <td>-0.092388</td>
-      <td>5.356633</td>
-      <td>4.343805</td>
-      <td>1.908743</td>
-    </tr>
-    <tr>
-      <th>163362</th>
-      <td>53453</td>
-      <td>93436</td>
-      <td>TSLA</td>
-      <td>2016-10-31</td>
-      <td>-0.030878</td>
-      <td>2.963795e+07</td>
-      <td>3.056879e+07</td>
-      <td>-0.031078</td>
-      <td>0.0002</td>
-      <td>-0.0202</td>
-      <td>...</td>
-      <td>0.202814</td>
-      <td>-3.450063</td>
-      <td>0.762938</td>
-      <td>-0.037640</td>
-      <td>0.015124</td>
-      <td>1.225626</td>
-      <td>-0.034816</td>
-      <td>5.318267</td>
-      <td>4.356709</td>
-      <td>1.724083</td>
-    </tr>
-    <tr>
-      <th>163363</th>
-      <td>53453</td>
-      <td>93436</td>
-      <td>TSLA</td>
-      <td>2016-11-30</td>
-      <td>-0.042128</td>
-      <td>2.840318e+07</td>
-      <td>2.963795e+07</td>
-      <td>-0.042228</td>
-      <td>0.0001</td>
-      <td>0.0486</td>
-      <td>...</td>
-      <td>0.274511</td>
-      <td>-3.419139</td>
-      <td>0.762969</td>
-      <td>-0.030878</td>
-      <td>0.016082</td>
-      <td>1.251558</td>
-      <td>0.001584</td>
-      <td>5.286902</td>
-      <td>4.369448</td>
-      <td>1.792732</td>
-    </tr>
-    <tr>
-      <th>163364</th>
-      <td>53453</td>
-      <td>93436</td>
-      <td>TSLA</td>
-      <td>2016-12-31</td>
-      <td>0.128247</td>
-      <td>3.452397e+07</td>
-      <td>2.840318e+07</td>
-      <td>0.127947</td>
-      <td>0.0003</td>
-      <td>0.0182</td>
-      <td>...</td>
-      <td>-0.088376</td>
-      <td>-2.422126</td>
-      <td>0.763229</td>
-      <td>-0.042128</td>
-      <td>0.018539</td>
-      <td>1.255059</td>
-      <td>-0.109353</td>
-      <td>5.243861</td>
-      <td>4.382027</td>
-      <td>1.919764</td>
+      <td>0.259801</td>
+      <td>0.784227</td>
+      <td>0.060812</td>
+      <td>0.095684</td>
+      <td>0.008647</td>
+      <td>0.251549</td>
+      <td>0.077490</td>
+      <td>0.685092</td>
+      <td>0.726630</td>
+      <td>0.435991</td>
     </tr>
   </tbody>
 </table>
-<p>163365 rows × 39 columns</p>
+<p>8 rows × 34 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2017,7 +2127,7 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">crsp_merged</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_X</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2052,31 +2162,9 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
   </thead>
   <tbody>
     <tr>
-      <th>permco</th>
-      <td>163365.0</td>
-      <td>20298.65372</td>
-      <td>7.0</td>
-      <td>10657.0</td>
-      <td>20561.0</td>
-      <td>24345.0</td>
-      <td>54638.0</td>
-      <td>13219.775632</td>
-    </tr>
-    <tr>
-      <th>permno</th>
-      <td>163365.0</td>
-      <td>60414.817403</td>
-      <td>10026.0</td>
-      <td>35167.0</td>
-      <td>73139.0</td>
-      <td>84129.0</td>
-      <td>93436.0</td>
-      <td>27276.949546</td>
-    </tr>
-    <tr>
       <th>date</th>
-      <td>163365</td>
-      <td>2009-07-16 00:19:52.617758208</td>
+      <td>163913</td>
+      <td>2009-07-17 14:37:46.612166400</td>
       <td>2002-01-31 00:00:00</td>
       <td>2005-10-31 00:00:00</td>
       <td>2009-06-30 00:00:00</td>
@@ -2085,53 +2173,31 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
       <td>NaN</td>
     </tr>
     <tr>
-      <th>ret</th>
-      <td>163365.0</td>
-      <td>0.009015</td>
-      <td>-0.868645</td>
-      <td>-0.039067</td>
-      <td>0.010025</td>
-      <td>0.057652</td>
-      <td>1.598007</td>
-      <td>0.094329</td>
-    </tr>
-    <tr>
-      <th>me</th>
-      <td>163365.0</td>
-      <td>14220771.14716</td>
-      <td>182907.67</td>
-      <td>2494377.6</td>
-      <td>4492401.0</td>
-      <td>11627819.34</td>
-      <td>750709577.84</td>
-      <td>32887588.091769</td>
-    </tr>
-    <tr>
-      <th>me_l1</th>
-      <td>162550.0</td>
-      <td>14167493.57439</td>
-      <td>808087.32</td>
-      <td>2480508.3</td>
-      <td>4466405.195</td>
-      <td>11576256.8375</td>
-      <td>750709577.84</td>
-      <td>32774756.047214</td>
+      <th>permno</th>
+      <td>163913.0</td>
+      <td>60452.050222</td>
+      <td>10026.0</td>
+      <td>35238.0</td>
+      <td>73139.0</td>
+      <td>84168.0</td>
+      <td>93436.0</td>
+      <td>27258.977322</td>
     </tr>
     <tr>
       <th>re</th>
-      <td>163365.0</td>
-      <td>0.007986</td>
+      <td>163913.0</td>
+      <td>0.007979</td>
       <td>-0.870345</td>
-      <td>-0.040201</td>
-      <td>0.008928</td>
-      <td>0.056658</td>
+      <td>-0.040199</td>
+      <td>0.008931</td>
+      <td>0.056648</td>
       <td>1.597907</td>
-      <td>0.094384</td>
+      <td>0.094412</td>
     </tr>
     <tr>
       <th>rf</th>
-      <td>163365.0</td>
-      <td>0.001033</td>
+      <td>163913.0</td>
+      <td>0.001032</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0002</td>
@@ -2141,373 +2207,376 @@ c:\Users\alan.moreira\Anaconda3\lib\site-packages\pandas_datareader\famafrench.p
     </tr>
     <tr>
       <th>rme</th>
-      <td>163365.0</td>
-      <td>0.005873</td>
+      <td>163913.0</td>
+      <td>0.005875</td>
       <td>-0.1723</td>
       <td>-0.0183</td>
       <td>0.0092</td>
       <td>0.0323</td>
       <td>0.1135</td>
-      <td>0.041749</td>
+      <td>0.041751</td>
     </tr>
     <tr>
       <th>size</th>
-      <td>163365.0</td>
-      <td>15.551836</td>
+      <td>163913.0</td>
+      <td>15.550336</td>
       <td>11.501877</td>
-      <td>14.676478</td>
-      <td>15.295781</td>
-      <td>16.241431</td>
+      <td>14.676361</td>
+      <td>15.293713</td>
+      <td>16.24026</td>
       <td>20.388632</td>
-      <td>1.161892</td>
+      <td>1.161036</td>
     </tr>
     <tr>
       <th>value</th>
-      <td>163365.0</td>
-      <td>-0.91192</td>
+      <td>163913.0</td>
+      <td>-0.912667</td>
       <td>-8.756389</td>
-      <td>-1.351318</td>
-      <td>-0.849579</td>
-      <td>-0.376958</td>
+      <td>-1.351522</td>
+      <td>-0.850813</td>
+      <td>-0.378992</td>
       <td>2.370495</td>
-      <td>0.783478</td>
+      <td>0.782885</td>
     </tr>
     <tr>
       <th>prof</th>
-      <td>163365.0</td>
-      <td>-1.554901</td>
+      <td>163913.0</td>
+      <td>-1.556057</td>
       <td>-10.213809</td>
-      <td>-2.086967</td>
-      <td>-1.343962</td>
-      <td>-0.874001</td>
+      <td>-2.087953</td>
+      <td>-1.34637</td>
+      <td>-0.875085</td>
       <td>0.837982</td>
-      <td>0.966444</td>
+      <td>0.965714</td>
     </tr>
     <tr>
       <th>fscore</th>
-      <td>163365.0</td>
-      <td>4.934147</td>
+      <td>163913.0</td>
+      <td>4.933819</td>
       <td>0.0</td>
       <td>4.0</td>
       <td>5.0</td>
       <td>6.0</td>
       <td>8.0</td>
-      <td>1.290554</td>
+      <td>1.290275</td>
     </tr>
     <tr>
       <th>debtiss</th>
-      <td>163365.0</td>
-      <td>0.363309</td>
+      <td>163913.0</td>
+      <td>0.362827</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
-      <td>0.480954</td>
+      <td>0.480817</td>
     </tr>
     <tr>
       <th>repurch</th>
-      <td>163365.0</td>
-      <td>0.650972</td>
+      <td>163913.0</td>
+      <td>0.650784</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
       <td>1.0</td>
       <td>1.0</td>
-      <td>0.476664</td>
+      <td>0.476724</td>
     </tr>
     <tr>
       <th>nissa</th>
-      <td>163365.0</td>
-      <td>0.701906</td>
+      <td>163913.0</td>
+      <td>0.701982</td>
       <td>0.329881</td>
-      <td>0.683462</td>
-      <td>0.694587</td>
+      <td>0.683511</td>
+      <td>0.694598</td>
       <td>0.702139</td>
       <td>4.265005</td>
-      <td>0.062536</td>
+      <td>0.062679</td>
     </tr>
     <tr>
       <th>growth</th>
-      <td>163365.0</td>
-      <td>0.108078</td>
+      <td>163913.0</td>
+      <td>0.108029</td>
       <td>-2.535166</td>
-      <td>0.008125</td>
-      <td>0.069392</td>
+      <td>0.008043</td>
+      <td>0.069293</td>
       <td>0.156135</td>
       <td>4.030048</td>
-      <td>0.220854</td>
+      <td>0.220803</td>
     </tr>
     <tr>
       <th>aturnover</th>
-      <td>163365.0</td>
-      <td>-0.523389</td>
+      <td>163913.0</td>
+      <td>-0.525027</td>
       <td>-9.784996</td>
-      <td>-0.982183</td>
-      <td>-0.348118</td>
-      <td>0.114555</td>
+      <td>-0.983022</td>
+      <td>-0.351011</td>
+      <td>0.113567</td>
       <td>2.578508</td>
-      <td>0.992149</td>
+      <td>0.991602</td>
     </tr>
     <tr>
       <th>gmargins</th>
-      <td>163365.0</td>
-      <td>0.424288</td>
+      <td>163913.0</td>
+      <td>0.424387</td>
       <td>0.001052</td>
-      <td>0.247455</td>
-      <td>0.385171</td>
-      <td>0.584865</td>
+      <td>0.247732</td>
+      <td>0.385029</td>
+      <td>0.585019</td>
       <td>1.0</td>
-      <td>0.225488</td>
+      <td>0.225407</td>
     </tr>
     <tr>
       <th>ep</th>
-      <td>163365.0</td>
-      <td>0.040365</td>
+      <td>163913.0</td>
+      <td>0.040381</td>
       <td>-3.820301</td>
       <td>0.03121</td>
       <td>0.049545</td>
-      <td>0.067319</td>
+      <td>0.067294</td>
       <td>0.677732</td>
-      <td>0.11509</td>
+      <td>0.114934</td>
     </tr>
     <tr>
       <th>sgrowth</th>
-      <td>163365.0</td>
-      <td>0.745937</td>
+      <td>163913.0</td>
+      <td>0.745931</td>
       <td>0.098861</td>
-      <td>0.695625</td>
+      <td>0.695602</td>
       <td>0.732543</td>
-      <td>0.778439</td>
+      <td>0.778532</td>
       <td>8.217025</td>
-      <td>0.140554</td>
+      <td>0.140543</td>
     </tr>
     <tr>
       <th>lev</th>
-      <td>163365.0</td>
-      <td>0.075772</td>
+      <td>163913.0</td>
+      <td>0.075147</td>
       <td>-3.810427</td>
-      <td>-0.620447</td>
-      <td>-0.009652</td>
-      <td>0.68928</td>
+      <td>-0.619852</td>
+      <td>-0.011205</td>
+      <td>0.687159</td>
       <td>4.520271</td>
-      <td>1.023697</td>
+      <td>1.022683</td>
     </tr>
     <tr>
       <th>roaa</th>
-      <td>163365.0</td>
-      <td>0.051794</td>
+      <td>163913.0</td>
+      <td>0.051826</td>
       <td>-4.83761</td>
-      <td>0.018558</td>
-      <td>0.048949</td>
+      <td>0.018625</td>
+      <td>0.048987</td>
       <td>0.086154</td>
       <td>0.578345</td>
-      <td>0.083018</td>
+      <td>0.082937</td>
     </tr>
     <tr>
       <th>roea</th>
-      <td>163365.0</td>
+      <td>163913.0</td>
       <td>0.000175</td>
       <td>-0.029224</td>
       <td>0.000069</td>
       <td>0.000121</td>
       <td>0.000186</td>
       <td>0.336472</td>
-      <td>0.003025</td>
+      <td>0.00302</td>
     </tr>
     <tr>
       <th>sp</th>
-      <td>163365.0</td>
-      <td>0.001011</td>
+      <td>163913.0</td>
+      <td>0.001009</td>
       <td>0.0</td>
-      <td>0.000347</td>
-      <td>0.000634</td>
-      <td>0.001143</td>
+      <td>0.000346</td>
+      <td>0.000632</td>
+      <td>0.00114</td>
       <td>0.036622</td>
-      <td>0.001364</td>
+      <td>0.001362</td>
     </tr>
     <tr>
       <th>mom</th>
-      <td>163365.0</td>
-      <td>0.056389</td>
+      <td>163913.0</td>
+      <td>0.05646</td>
       <td>-3.034658</td>
-      <td>-0.053444</td>
-      <td>0.069818</td>
-      <td>0.184181</td>
+      <td>-0.053369</td>
+      <td>0.069856</td>
+      <td>0.184213</td>
       <td>2.029381</td>
-      <td>0.239937</td>
+      <td>0.239901</td>
     </tr>
     <tr>
       <th>indmom</th>
-      <td>163365.0</td>
-      <td>24.522364</td>
+      <td>163913.0</td>
+      <td>24.522405</td>
       <td>1.0</td>
       <td>14.0</td>
       <td>24.0</td>
       <td>35.0</td>
       <td>49.0</td>
-      <td>12.985215</td>
+      <td>12.98161</td>
     </tr>
     <tr>
       <th>mom12</th>
-      <td>163365.0</td>
-      <td>0.100095</td>
+      <td>163913.0</td>
+      <td>0.100258</td>
       <td>-3.475013</td>
-      <td>-0.049783</td>
-      <td>0.115557</td>
-      <td>0.270708</td>
+      <td>-0.049678</td>
+      <td>0.115646</td>
+      <td>0.270788</td>
       <td>3.519333</td>
-      <td>0.318618</td>
+      <td>0.318652</td>
     </tr>
     <tr>
       <th>momrev</th>
-      <td>163365.0</td>
-      <td>0.057322</td>
+      <td>163913.0</td>
+      <td>0.05737</td>
       <td>-3.055986</td>
-      <td>-0.053735</td>
-      <td>0.072792</td>
-      <td>0.191096</td>
+      <td>-0.053707</td>
+      <td>0.072849</td>
+      <td>0.191116</td>
       <td>3.302411</td>
-      <td>0.259886</td>
+      <td>0.259801</td>
     </tr>
     <tr>
       <th>valuem</th>
-      <td>163365.0</td>
-      <td>-0.947892</td>
+      <td>163913.0</td>
+      <td>-0.948673</td>
       <td>-8.818536</td>
-      <td>-1.383948</td>
-      <td>-0.899214</td>
-      <td>-0.416147</td>
+      <td>-1.38428</td>
+      <td>-0.900369</td>
+      <td>-0.417606</td>
       <td>2.329125</td>
-      <td>0.784728</td>
+      <td>0.784227</td>
     </tr>
     <tr>
       <th>nissm</th>
-      <td>163365.0</td>
-      <td>0.700823</td>
+      <td>163913.0</td>
+      <td>0.700911</td>
       <td>0.329881</td>
-      <td>0.682876</td>
-      <td>0.694395</td>
-      <td>0.701693</td>
+      <td>0.682923</td>
+      <td>0.694412</td>
+      <td>0.701702</td>
       <td>2.711109</td>
-      <td>0.060654</td>
+      <td>0.060812</td>
     </tr>
     <tr>
       <th>strev</th>
-      <td>163365.0</td>
-      <td>0.014656</td>
+      <td>163913.0</td>
+      <td>0.014663</td>
       <td>-0.868645</td>
-      <td>-0.035408</td>
-      <td>0.013152</td>
-      <td>0.06167</td>
+      <td>-0.035392</td>
+      <td>0.013158</td>
+      <td>0.061674</td>
       <td>2.596567</td>
-      <td>0.095662</td>
+      <td>0.095684</td>
     </tr>
     <tr>
       <th>ivol</th>
-      <td>163365.0</td>
-      <td>0.015697</td>
+      <td>163913.0</td>
+      <td>0.015696</td>
       <td>0.000463</td>
-      <td>0.009957</td>
-      <td>0.01362</td>
-      <td>0.019031</td>
+      <td>0.009952</td>
+      <td>0.013612</td>
+      <td>0.019028</td>
       <td>0.218682</td>
       <td>0.008647</td>
     </tr>
     <tr>
       <th>betaarb</th>
-      <td>163365.0</td>
-      <td>1.032453</td>
+      <td>163913.0</td>
+      <td>1.032455</td>
       <td>0.24138</td>
-      <td>0.851409</td>
-      <td>1.00342</td>
-      <td>1.178522</td>
+      <td>0.85159</td>
+      <td>1.003569</td>
+      <td>1.178665</td>
       <td>2.350102</td>
-      <td>0.251657</td>
+      <td>0.251549</td>
     </tr>
     <tr>
       <th>indrrev</th>
-      <td>163365.0</td>
-      <td>0.006184</td>
+      <td>163913.0</td>
+      <td>0.006188</td>
       <td>-0.820129</td>
-      <td>-0.033459</td>
-      <td>0.002653</td>
-      <td>0.04091</td>
+      <td>-0.033465</td>
+      <td>0.002659</td>
+      <td>0.040915</td>
       <td>2.13488</td>
-      <td>0.077457</td>
+      <td>0.07749</td>
     </tr>
     <tr>
       <th>price</th>
-      <td>163365.0</td>
-      <td>3.663736</td>
+      <td>163913.0</td>
+      <td>3.664508</td>
       <td>0.57098</td>
-      <td>3.257712</td>
-      <td>3.678829</td>
+      <td>3.258097</td>
+      <td>3.679082</td>
       <td>4.06337</td>
       <td>11.631769</td>
-      <td>0.684454</td>
+      <td>0.685092</td>
     </tr>
     <tr>
       <th>age</th>
-      <td>163365.0</td>
-      <td>5.512324</td>
+      <td>163913.0</td>
+      <td>5.512095</td>
       <td>3.637586</td>
       <td>5.003946</td>
       <td>5.575949</td>
       <td>6.165418</td>
       <td>6.555357</td>
-      <td>0.726802</td>
+      <td>0.72663</td>
     </tr>
     <tr>
       <th>shvol</th>
-      <td>163365.0</td>
-      <td>1.05774</td>
+      <td>163913.0</td>
+      <td>1.057609</td>
       <td>0.003904</td>
-      <td>0.748607</td>
-      <td>0.999488</td>
-      <td>1.31278</td>
+      <td>0.748381</td>
+      <td>0.999129</td>
+      <td>1.312665</td>
       <td>4.319359</td>
-      <td>0.43543</td>
+      <td>0.435991</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+</section>
 <section id="what-are-these-characteristics">
-<h3><span class="section-number">11.2.1. </span>What are these characteristics?<a class="headerlink" href="#what-are-these-characteristics" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">11.2.2.2. </span>What are these characteristics?<a class="headerlink" href="#what-are-these-characteristics" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>They are based on various accounting and market based information</p></li>
-<li><p>For detailed description see pages of</p></li>
 <li><p>Each characteristic is constructed differently–we will discuss in detail a handful of them</p></li>
-<li><p>But the characteristics signals we have here are equal to cross-sectional ranks of a given stock’s characteristic, centered, and normalized by the sum of absolute values of all ranks in the cross section.
-$<span class="math notranslate nohighlight">\(\frac{c_{i,t}-\overline{c}_t}{\sum_i|c_{i,t}-\overline{c}_t|}\)</span>$</p></li>
+<li><p>The construction of each signal is full of painful details and there are many details that matter</p></li>
+<li><p>Observation:</p>
+<ul>
+<li><p>size is log market cap</p></li>
+<li><p>Value is Book-to-market (Why is this called value?)</p></li>
 </ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>For what we are doing here this does not matter at all. Our sorting procedure is already defacto doing that</p></li>
-<li><p>This will matter if we use these characteristics to run regressions directly–more on this soon</p></li>
+</li>
 </ul>
-</div></blockquote>
-<p><strong>Group assets by signal</strong></p>
+</section>
+<section id="group-assets-by-signal">
+<h4><span class="section-number">11.2.2.3. </span>Group assets by signal<a class="headerlink" href="#group-assets-by-signal" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>We select our characteristic</p></li>
 <li><p>We now need to assign groups to each stocks. These groups will identify which portfolio each stock belongs in a particular date according to the position of the characteristic in that date</p></li>
 <li><p>We will do this by applying the function <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.qcut.html">pd.qcut</a>  to the chosen characteristic. This will “cut” the signal distribution in the chosen number of groups.</p></li>
 <li><p>The important aspects is that we will applying this date by date. This make the strategy cross-sectional because you are using the distribution of the signal as given date to the grouping– Very much like curved grades by cohort</p></li>
-<li><p>Details</p>
-<ul>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Details</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">duplicates='drop'</span></code>: In case there are two stocks with exactly the same signal that are exactly in the cutoff of the groups, we drop one of the observations</p></li>
 <li><p><code class="docutils literal notranslate"> <span class="pre">labels=False</span></code>: The method simply label the groups with numbers. For example if <code class="docutils literal notranslate"><span class="pre">ngroups=10</span></code> then it will assign <code class="docutils literal notranslate"><span class="pre">0</span></code> to the stocks with the  bottom 10% returns in a given date, <code class="docutils literal notranslate"><span class="pre">1</span></code> to stocks with returns in between 10% and 20% of the signal distribution on a given date, …, and 9 for stocks in the top 10% (signal in between 90% and 100% of the return distribution on a given date) .</p></li>
-</ul>
-</li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="s1">&#39;value&#39;</span>
-
 <span class="n">ngroups</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">crsp_merged</span><span class="p">[</span><span class="s1">&#39;X_group&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">])[</span><span class="n">X</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ngroups</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">duplicates</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">))</span>
-<span class="n">crsp_merged</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permco&#39;</span><span class="p">,</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">]]</span>
+<span class="n">df_X</span><span class="p">[</span><span class="s1">&#39;X_group&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">])[</span><span class="n">X</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ngroups</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">duplicates</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">))</span>
+<span class="n">df_X</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -2531,8 +2600,7 @@ $<span class="math notranslate nohighlight">\(\frac{c_{i,t}-\overline{c}_t}{\sum
     <tr style="text-align: right;">
       <th></th>
       <th>date</th>
-      <th>permco</th>
-      <th>ticker</th>
+      <th>permno</th>
       <th>value</th>
       <th>X_group</th>
     </tr>
@@ -2540,43 +2608,38 @@ $<span class="math notranslate nohighlight">\(\frac{c_{i,t}-\overline{c}_t}{\sum
   <tbody>
     <tr>
       <th>0</th>
-      <td>2015-10-31</td>
-      <td>7976</td>
-      <td>JJSF</td>
-      <td>-1.207554</td>
-      <td>4</td>
+      <td>2002-01-31</td>
+      <td>10078</td>
+      <td>-2.471709</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2015-11-30</td>
-      <td>7976</td>
-      <td>JJSF</td>
-      <td>-1.207554</td>
-      <td>4</td>
+      <td>2002-01-31</td>
+      <td>10104</td>
+      <td>-3.183480</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2016-01-31</td>
-      <td>7976</td>
-      <td>JJSF</td>
-      <td>-1.207554</td>
-      <td>4</td>
+      <td>2002-01-31</td>
+      <td>10107</td>
+      <td>-1.696643</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2016-02-29</td>
-      <td>7976</td>
-      <td>JJSF</td>
-      <td>-1.207554</td>
-      <td>4</td>
+      <td>2002-01-31</td>
+      <td>10108</td>
+      <td>-1.461118</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2016-03-31</td>
-      <td>7976</td>
-      <td>JJSF</td>
-      <td>-1.207554</td>
-      <td>4</td>
+      <td>2002-01-31</td>
+      <td>10119</td>
+      <td>-0.521094</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2584,51 +2647,45 @@ $<span class="math notranslate nohighlight">\(\frac{c_{i,t}-\overline{c}_t}{\sum
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>163360</th>
-      <td>2016-08-31</td>
-      <td>53453</td>
-      <td>TSLA</td>
-      <td>-3.328269</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>163361</th>
-      <td>2016-09-30</td>
-      <td>53453</td>
-      <td>TSLA</td>
-      <td>-3.328269</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>163362</th>
-      <td>2016-10-31</td>
-      <td>53453</td>
-      <td>TSLA</td>
-      <td>-3.328269</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>163363</th>
-      <td>2016-11-30</td>
-      <td>53453</td>
-      <td>TSLA</td>
-      <td>-3.328269</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>163364</th>
+      <th>163908</th>
       <td>2016-12-31</td>
-      <td>53453</td>
-      <td>TSLA</td>
+      <td>93420</td>
+      <td>1.049163</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>163909</th>
+      <td>2016-12-31</td>
+      <td>93422</td>
+      <td>0.829353</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>163910</th>
+      <td>2016-12-31</td>
+      <td>93423</td>
+      <td>-2.128977</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>163911</th>
+      <td>2016-12-31</td>
+      <td>93429</td>
+      <td>-3.001095</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>163912</th>
+      <td>2016-12-31</td>
+      <td>93436</td>
       <td>-3.328269</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>163365 rows × 5 columns</p>
+<p>163913 rows × 4 columns</p>
 </div></div></div>
 </div>
 <blockquote>
@@ -2654,7 +2711,7 @@ $<span class="math notranslate nohighlight">\(\frac{c_{i,t}-\overline{c}_t}{\sum
 <p><strong>Equal weighted returns</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_byX_ew</span> <span class="o">=</span><span class="n">crsp_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">ret</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_byX_ew</span> <span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">re</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">ret_byX_ew</span><span class="o">=</span><span class="n">ret_byX_ew</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">(</span><span class="n">ret_byX_ew</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
@@ -2664,29 +2721,52 @@ $<span class="math notranslate nohighlight">\(\frac{c_{i,t}-\overline{c}_t}{\sum
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/ed324cd791dc338f87b4dada405b3da712c893418ef509d44c83e6b1807c5a64.png" src="../../_images/ed324cd791dc338f87b4dada405b3da712c893418ef509d44c83e6b1807c5a64.png" />
+<img alt="../../_images/b5f0cd54a261b862a08c2958b9360c839072958f2b0bf54f019d90772e9fe41e.png" src="../../_images/b5f0cd54a261b862a08c2958b9360c839072958f2b0bf54f019d90772e9fe41e.png" />
 </div>
 </div>
 <p><strong>Market cap weighted returns</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret_byX_vw</span> <span class="o">=</span><span class="n">crsp_merged</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="n">x</span><span class="o">.</span><span class="n">ret</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">me_l1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">me_l1</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_X</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">])</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">df_X</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         17.748484
+1         18.481351
+2         19.789216
+3         15.902263
+4         14.275648
+            ...    
+163908    14.337515
+163909    15.256946
+163910    15.502888
+163911    15.504722
+163912    17.262975
+Name: size, Length: 163913, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_X</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">df_X</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">])</span>
+<span class="n">ret_byX_vw</span> <span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="n">x</span><span class="o">.</span><span class="n">re</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">me_l1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">me_l1</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="n">ret_byX_vw</span><span class="o">=</span><span class="n">ret_byX_vw</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="p">(</span><span class="n">ret_byX_vw</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\709199391.py:1: RuntimeWarning: invalid value encountered in scalar divide
-  ret_byX_vw =crsp_merged.groupby([&#39;date&#39;,&#39;X_group&#39;]).apply(lambda x:(x.ret*x.me_l1).sum()/x.me_l1.sum())
-C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\709199391.py:1: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
-  ret_byX_vw =crsp_merged.groupby([&#39;date&#39;,&#39;X_group&#39;]).apply(lambda x:(x.ret*x.me_l1).sum()/x.me_l1.sum())
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_24324\2208835029.py:2: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  ret_byX_vw =df_X.groupby([&#39;date&#39;,&#39;X_group&#39;]).apply(lambda x:(x.re*x.me_l1).sum()/x.me_l1.sum())
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/bbfe712e49a151a4fada01a867035eeccd7fde529f0e4f4f0378d2043f2b9e5f.png" src="../../_images/bbfe712e49a151a4fada01a867035eeccd7fde529f0e4f4f0378d2043f2b9e5f.png" />
+<img alt="../../_images/5fc262617f6037edb3469c3c80432b7abf4c1b761dbe35b16b5b00a4f47307ef.png" src="../../_images/5fc262617f6037edb3469c3c80432b7abf4c1b761dbe35b16b5b00a4f47307ef.png" />
 </div>
 </div>
 <p>If we focus on a particular stock, we can see how it’s portfolio membership changed over time.</p>
@@ -2694,20 +2774,38 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\709199391.py:1: Depreca
 <p>While others, like momentum change very frequently.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp_merged</span><span class="p">[</span><span class="n">crsp_merged</span><span class="o">.</span><span class="n">ticker</span><span class="o">==</span><span class="s1">&#39;MSFT&#39;</span><span class="p">][[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;X_group&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_temp</span><span class="o">=</span><span class="n">df_X</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">])</span>
+<span class="n">top</span><span class="o">=</span><span class="n">_temp</span><span class="p">[</span><span class="n">_temp</span><span class="o">.</span><span class="n">date</span><span class="o">==</span><span class="s1">&#39;2002-01-31&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">permno</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">top</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;date&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[77418, 21936, 70519, 11850, 10107]
 </pre></div>
 </div>
-<img alt="../../_images/114a1560c91b86a1f199436d99949b8059dc4833fc7d2c31a0967331b9dfbbf3.png" src="../../_images/114a1560c91b86a1f199436d99949b8059dc4833fc7d2c31a0967331b9dfbbf3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">firm</span> <span class="ow">in</span> <span class="n">top</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">df_X</span><span class="p">[</span><span class="n">df_X</span><span class="o">.</span><span class="n">permno</span><span class="o">==</span><span class="n">firm</span><span class="p">][[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">]]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;X_group&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">firm</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Portfolio Membership (X_group)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Portfolio Membership Over Time for Top  Firms&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/32caef11011905c5c7848c91c4feaad888ff2544d071b1f08c6341c5358163e1.png" src="../../_images/32caef11011905c5c7848c91c4feaad888ff2544d071b1f08c6341c5358163e1.png" />
 </div>
 </div>
 <blockquote>
-<div><h3 class="rubric" id="wrapping-all-in-a-function-that-goes-from-the-signal-to-the-portfolio">Wrapping all in a function that goes from the signal to the portfolio</h3>
-<p>Things to try</p>
+<div><p>Things to try</p>
 <ul class="simple">
 <li><p>Play with different number of groups, how the spread in X across portfolios change? How the volatility of the individual portfolios change?</p></li>
 <li><p>Look at different characteristics. Which ones create higher spread in average returns</p></li>
@@ -2717,224 +2815,6 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\709199391.py:1: Depreca
 <li><p>How correlated are the returns of the long-shorts of different characteristics?</p></li>
 </ul>
 </div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">returnbyX</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="n">X</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">,</span><span class="n">ngroups</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X_group&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">])[</span><span class="n">X</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ngroups</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">duplicates</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">))</span>
-    <span class="n">ret</span> <span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;X_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:(</span><span class="n">x</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;me_l1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-    <span class="n">ret</span><span class="o">=</span><span class="n">ret</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">y</span><span class="o">==</span><span class="s1">&#39;ret&#39;</span><span class="p">:</span>
-            <span class="p">(</span><span class="n">ret</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">ret</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">ret</span>
-
-
-<span class="n">returnbyX</span><span class="p">(</span><span class="n">crsp_merged</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="n">X</span><span class="o">=</span><span class="s1">&#39;lev&#39;</span><span class="p">,</span><span class="n">ngroups</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\3445167417.py:3: RuntimeWarning: invalid value encountered in scalar divide
-  ret =df.groupby([&#39;date&#39;,&#39;X_group&#39;]).apply(lambda x:(x[y]*x[&#39;me_l1&#39;]).sum()/x[&#39;me_l1&#39;].sum())
-C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\3445167417.py:3: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
-  ret =df.groupby([&#39;date&#39;,&#39;X_group&#39;]).apply(lambda x:(x[y]*x[&#39;me_l1&#39;]).sum()/x[&#39;me_l1&#39;].sum())
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>X_group</th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-      <th>9</th>
-    </tr>
-    <tr>
-      <th>date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2002-01-31</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2002-02-28</th>
-      <td>-0.053561</td>
-      <td>-0.039466</td>
-      <td>0.004963</td>
-      <td>-0.011140</td>
-      <td>0.008576</td>
-      <td>0.012135</td>
-      <td>-0.010474</td>
-      <td>-0.024351</td>
-      <td>-0.008889</td>
-      <td>-0.015949</td>
-    </tr>
-    <tr>
-      <th>2002-03-31</th>
-      <td>0.005538</td>
-      <td>0.040591</td>
-      <td>0.064328</td>
-      <td>0.023602</td>
-      <td>0.047272</td>
-      <td>0.031937</td>
-      <td>0.046027</td>
-      <td>0.054631</td>
-      <td>0.076157</td>
-      <td>0.077783</td>
-    </tr>
-    <tr>
-      <th>2002-04-30</th>
-      <td>-0.105371</td>
-      <td>-0.052429</td>
-      <td>-0.054811</td>
-      <td>-0.078009</td>
-      <td>-0.015114</td>
-      <td>-0.043753</td>
-      <td>-0.026744</td>
-      <td>-0.032535</td>
-      <td>-0.041836</td>
-      <td>0.011104</td>
-    </tr>
-    <tr>
-      <th>2002-05-31</th>
-      <td>-0.028019</td>
-      <td>-0.026982</td>
-      <td>0.001821</td>
-      <td>0.014756</td>
-      <td>0.019451</td>
-      <td>0.014131</td>
-      <td>-0.020531</td>
-      <td>-0.015612</td>
-      <td>-0.009811</td>
-      <td>0.011111</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2016-08-31</th>
-      <td>0.001801</td>
-      <td>-0.011386</td>
-      <td>-0.006908</td>
-      <td>0.011154</td>
-      <td>-0.003089</td>
-      <td>-0.011194</td>
-      <td>-0.006691</td>
-      <td>-0.020183</td>
-      <td>0.007104</td>
-      <td>0.069210</td>
-    </tr>
-    <tr>
-      <th>2016-09-30</th>
-      <td>0.010313</td>
-      <td>-0.004204</td>
-      <td>0.007539</td>
-      <td>0.005398</td>
-      <td>-0.007480</td>
-      <td>0.007861</td>
-      <td>0.005350</td>
-      <td>0.021656</td>
-      <td>-0.002003</td>
-      <td>-0.026213</td>
-    </tr>
-    <tr>
-      <th>2016-10-31</th>
-      <td>-0.027826</td>
-      <td>-0.013372</td>
-      <td>-0.024505</td>
-      <td>-0.034533</td>
-      <td>-0.014934</td>
-      <td>-0.024761</td>
-      <td>-0.017477</td>
-      <td>-0.026599</td>
-      <td>-0.020499</td>
-      <td>0.038941</td>
-    </tr>
-    <tr>
-      <th>2016-11-30</th>
-      <td>-0.009767</td>
-      <td>0.025708</td>
-      <td>0.006382</td>
-      <td>0.027384</td>
-      <td>0.047259</td>
-      <td>0.065512</td>
-      <td>0.070915</td>
-      <td>0.052560</td>
-      <td>0.049177</td>
-      <td>0.169220</td>
-    </tr>
-    <tr>
-      <th>2016-12-31</th>
-      <td>-0.003069</td>
-      <td>0.016948</td>
-      <td>0.029364</td>
-      <td>-0.007042</td>
-      <td>0.007901</td>
-      <td>0.013187</td>
-      <td>0.028496</td>
-      <td>0.038300</td>
-      <td>0.024847</td>
-      <td>0.046967</td>
-    </tr>
-  </tbody>
-</table>
-<p>180 rows × 10 columns</p>
-</div></div><img alt="../../_images/dff98609a5bec67fdb3f88a930bfc792892a2c190cc386e9cdf5eb2b94bf7fe7.png" src="../../_images/dff98609a5bec67fdb3f88a930bfc792892a2c190cc386e9cdf5eb2b94bf7fe7.png" />
-</div>
-</div>
 <hr class="docutils" />
 <p><strong>📝 Key Takeaways</strong></p>
 <ul class="simple">
@@ -2945,6 +2825,7 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\3445167417.py:3: Deprec
 <li><p><strong>A single, well-structured function automates experimentation</strong> across different signals, making it easy to investigate which characteristics generate higher alpha, when they underperform, and how their long-short returns co-move.</p></li>
 <li><p><strong>The core tension is signal strength versus diversification</strong>: stronger signals often come with higher concentration and trading costs, so practical implementation always balances these forces.</p></li>
 </ul>
+</section>
 </section>
 </section>
 <hr class="docutils" />
@@ -3016,9 +2897,18 @@ C:\Users\alan.moreira\AppData\Local\Temp\ipykernel_18052\3445167417.py:3: Deprec
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-market-cap-weighted-strategy">11.1. The Market-Cap Weighted strategy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-construction-implementing-the-recipe">11.2. Factor Construction: Implementing the recipe</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-these-characteristics">11.2.1. What are these characteristics?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-market-cap-weighted-strategy">11.1. The Market-Cap Weighted strategy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-datasets">11.1.1. Stacked Datasets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristic-based-strategies">11.2. Characteristic-Based Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-value-investing">11.2.1. Example: Value investing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-recipe">11.2.2. Implementing the recipe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#our-characteristic-data">11.2.2.1. Our Characteristic  data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-these-characteristics">11.2.2.2. What are these characteristics?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#group-assets-by-signal">11.2.2.3. Group assets by signal</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
