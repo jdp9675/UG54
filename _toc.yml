@@ -82,7 +82,7 @@ sections:
   sections:
     - file: chapters/Finance/MarketTiming
       title: Expected Returns Timing
-    - file: chapters/Finance/VolatilityTiming
+    - file: chapters/Finance/Volatilitytiming
       title: Volatility Timing
       
 
