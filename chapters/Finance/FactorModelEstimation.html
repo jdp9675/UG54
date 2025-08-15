@@ -222,6 +222,8 @@
 <li class="toctree-l1"><a class="reference internal" href="CapitalAllocationII.html">9. Capital Allocation II</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="MarketTiming.html">10.1. Expected Returns Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Capital Allocation with Time-varying volatility</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1425,11 +1427,19 @@ Notes:
 <p>If vol persistent–surely looks like it–b&gt;0 and past vol allow us to forecast future vol</p>
 <p>In practice people use very rich models ARCH, GARCH, Multi-frequency AR models, and also data from option markets–for example VIX</p>
 <p>We will start by looking at monthly realized variance</p>
+<ul>
+<li><p>Using daily data for month t, construct the market return “realized variance” during month t</p>
+<div class="math notranslate nohighlight">
+\[rv_t=\sum_{d \in days~ in ~month ~t}\frac{(r_d- \overline{r})^2}{N_{days}},\]</div>
+</li>
+</ul>
+<p>where <span class="math notranslate nohighlight">\(\overline{r}\)</span> is the average return within the month</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group the data by month-end dates</span>
 <span class="c1"># pd.offsets.MonthEnd(0) ensures that the grouping aligns with the month-end of each date</span>
 <span class="c1"># so all returns in the same month are grouped together</span>
+<span class="c1">#So I can just compute the variance of this group (say 1/1/2020,1/2/2020,...1/31/2020) will all be 1/31/2020</span>
 <span class="c1"># For each group, i.e. returns in the same month, calculate the variance of &#39;Mkt-RF&#39; and annualize it by multiplying by 252</span>
 
 <span class="n">df_var</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">+</span><span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">*</span><span class="mi">252</span><span class="p">)</span>

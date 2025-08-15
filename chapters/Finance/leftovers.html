@@ -222,6 +222,8 @@
 <li class="toctree-l1"><a class="reference internal" href="CapitalAllocationII.html">9. Capital Allocation II</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="MarketTiming.html">10.1. Expected Returns Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Capital Allocation with Time-varying volatility</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -494,6 +496,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-tangency-portfolio"><strong>Properties of the Tangency Portfolio</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocaiton-ii">CAPItal allocaiton II</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#voltiming">Voltiming</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#it-was-in-untilted">it was in untilted</a></li>
 </ul>
 
             </nav>
@@ -1178,6 +1181,163 @@ $<span class="math notranslate nohighlight">\(W_{minvariance}=\frac{Var(R)^{-1}\
 \[SR_{\sigma}=SR*e^{\frac{1}{4}\sigma^2_{\sigma}}\]</div>
 <p>The more volatility variation you can predict, higher <span class="math notranslate nohighlight">\(\sigma_{\sigma}\)</span>, the higher the boost in you Sharpe ratio</p>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="it-was-in-untilted">
+<h1>it was in untilted<a class="headerlink" href="#it-was-in-untilted" title="Link to this heading">#</a></h1>
+<p>Do I need this?</p>
+<p><strong>But what is your risk-aversion?</strong></p>
+<p>That is a hard question to answer!</p>
+<p>A more productive way to think about this choice is in terms of the level of volatility that you are comfortable with.</p>
+<p>You can basically choose a gamma that implements your desired volatility</p>
+<p>using the weights <span class="math notranslate nohighlight">\(X^*=\frac{1}{\gamma}E[R^e]'Var(R^e)^{-1}\)</span> we get</p>
+<div class="math notranslate nohighlight">
+\[Var((X^*)'R^e)=Var(\frac{1}{\gamma}E[R^e]'Var(R^e)^{-1}R^e)\]</div>
+<p>We first pull the <span class="math notranslate nohighlight">\(1/\gamma\)</span> out. Recall that <span class="math notranslate nohighlight">\(Var(nx)=n^2Var(x)\)</span></p>
+<div class="math notranslate nohighlight">
+\[Var((X^*)'R^e)=\frac{1}{\gamma^2}Var(E[R^e]'Var(R^e)^{-1}R^e)\]</div>
+<p>We now simply pull the vector <span class="math notranslate nohighlight">\(E[R^e]'Var(R^e)^{-1}\)</span> out which because it is a vector the math is a bit different.</p>
+<p>In this case if the random variable X is a vector being multiplied by another vector W, then <span class="math notranslate nohighlight">\(Var(WX)=WVar(X)W^T\)</span>. Apply this here we get</p>
+<div class="math notranslate nohighlight">
+\[Var((W^*)'R^e)=\frac{1}{\gamma^2}E[R^e]'Var(R^e)^{-1}Var(R^e)Var(R^e)^{-1}E[R^e]\]</div>
+<p>Using that <span class="math notranslate nohighlight">\(Var(R^e)^{-1}Var(R^e)=I\)</span>, i.e. the identity matrix, we get</p>
+<p><span class="math notranslate nohighlight">\(Var((W^*)'R^e)=\frac{1}{\gamma^2}E[R^e]'Var(R^e)^{-1}E[R^e]\)</span></p>
+<p>We can now solve for the desired level, say you want you portfolio to be mean-variance efficient and have volatility  equal to a target <span class="math notranslate nohighlight">\(\sigma^{D}\)</span>, D for desired.</p>
+<p><span class="math notranslate nohighlight">\(\sigma^D=\sqrt{Var((W^*)'R^e)}=\frac{1}{\gamma}\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}\)</span></p>
+<p>where above we took the square root to go from variance to volatility.</p>
+<p>We can now solve for <span class="math notranslate nohighlight">\(\gamma\)</span> consisten with the desired vol</p>
+<div class="math notranslate nohighlight">
+\[\gamma=\frac{\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}}{\sigma^D}\]</div>
+<p>Thus the optimal weights are</p>
+<div class="math notranslate nohighlight">
+\[W^*(\sigma^D)'=\frac{\sigma^D}{\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}}E[R^e]'Var(R^e)^{-1}\]</div>
+<p>Looks complicated!</p>
+<p>But it is not</p>
+<p>Note: <span class="math notranslate nohighlight">\(\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}\)</span> is the volatility of the optimal portfolio with risk-aversion 1 ,i.e. the portfolio <span class="math notranslate nohighlight">\(W^*=E[R^e]'Var(R^e)^{-1}\)</span>.</p>
+<p>You simply leverage up\leverage down the weights up and down to hit your desired volatility level</p>
+<p>The important point is that <span class="math notranslate nohighlight">\(\frac{\sigma^D}{\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}}\)</span> is a scalar, so you are increasing/decreasing exposure in the risky asset proportionally.</p>
+<p>Your position in the risk-free asset can be simply solved for</p>
+<div class="math notranslate nohighlight">
+\[1-1'X^*=1- \frac{\sigma^D}{\sqrt{E[R^e]'Var(R^e)^{-1}E[R^e]}}1'Var(R^e)^{-1}E[R^e]\]</div>
+<p>Where <span class="math notranslate nohighlight">\(1'X^*=x^*_1+x^*_2+...+x^*_I\)</span> because 1 here is a vector of 1’s</p>
+<p>When you do the dot product of a vector on 1’s with any vector it has the effect of summing the different entries of that vector</p>
+<p>So the more volatility you want, the less you invest in the risk-free asset and the more you invest in the risky assets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">InSampleResults</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">Strategy</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">sigmaD</span><span class="o">=</span><span class="mf">0.15</span><span class="o">/</span><span class="p">(</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">Emv</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">Re</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">Re</span><span class="p">[</span><span class="s1">&#39;1973-1&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">CovRe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+     <span class="c1"># the only difference is that now I use the vector ones instead of </span>
+        <span class="c1">#sample means for expected returns</span>
+    <span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">Emv</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigmaD</span><span class="o">/</span><span class="p">(</span><span class="n">Emv</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRe</span><span class="p">)</span> <span class="o">@</span> <span class="n">Emv</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">InSampleResults</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;avgreturn&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">W</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span><span class="mi">12</span>
+    <span class="n">InSampleResults</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;volatility&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">CovRe</span> <span class="o">@</span> <span class="n">W</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">InSampleResults</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;sharperatio&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">W</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span><span class="mi">12</span><span class="o">/</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">CovRe</span> <span class="o">@</span> <span class="n">W</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">Strategy</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">W</span> <span class="o">@</span> <span class="n">Re</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">InSampleResults</span><span class="o">.</span><span class="n">sharperatio</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="c1"># Iam using this as trick to plot an horizontal line. So I am getting the dataframing with all the dates and simply subsituting the value of Sharpe ratio below</span>
+<span class="n">OutofSample</span><span class="o">=</span><span class="n">InSampleResults</span><span class="o">.</span><span class="n">sharperatio</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">OutofSample</span><span class="p">[:]</span><span class="o">=</span><span class="p">(</span><span class="n">Strategy</span><span class="o">.</span><span class="n">Returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Strategy</span><span class="o">.</span><span class="n">Returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">OutofSample</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;in sample&#39;</span><span class="p">,</span><span class="s1">&#39;out of sample&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratio&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Sharpe Ratio&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/01aeb52135595e44279cc1f343de2b081e94a38395f7880f23b7fe3bb3ee0177.png" src="../../_images/01aeb52135595e44279cc1f343de2b081e94a38395f7880f23b7fe3bb3ee0177.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Re</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 513.35357526,  815.14734135,  281.19004241,  458.3662201 ,
+       2459.19902061])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Re</span><span class="o">.</span><span class="n">cov</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00194798, 0.        , 0.        , 0.        , 0.        ],
+       [0.        , 0.00122677, 0.        , 0.        , 0.        ],
+       [0.        , 0.        , 0.00355631, 0.        , 0.        ],
+       [0.        , 0.        , 0.        , 0.00218166, 0.        ],
+       [0.        , 0.        , 0.        , 0.        , 0.00040664]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">InSampleResults</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">Strategy</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">sigmaD</span><span class="o">=</span><span class="mf">0.15</span><span class="o">/</span><span class="p">(</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">Ones</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">Re</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">Re</span><span class="p">[</span><span class="s1">&#39;1973-1&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="n">ERe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">CovRe</span><span class="o">=</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+    
+    <span class="c1"># this below is the key difference where I coistruct the covriance </span>
+    <span class="c1"># and the expected returns under the risk parity assumption to construc the weights </span>
+    <span class="n">CovRP</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">()))</span>
+    <span class="n">ERP</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Re</span><span class="p">[:</span><span class="n">date</span><span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span><span class="o">**</span><span class="mf">0.5</span>
+
+    <span class="n">W</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRP</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERP</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigmaD</span><span class="o">/</span><span class="p">(</span><span class="n">ERP</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">CovRP</span><span class="p">)</span> <span class="o">@</span> <span class="n">ERP</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">InSampleResults</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;avgreturn&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">W</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span><span class="mi">12</span>
+    <span class="n">InSampleResults</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;volatility&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">CovRe</span> <span class="o">@</span> <span class="n">W</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">InSampleResults</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;sharperatio&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">W</span> <span class="o">@</span> <span class="n">ERe</span><span class="o">*</span><span class="mi">12</span><span class="o">/</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">CovRe</span> <span class="o">@</span> <span class="n">W</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
+    <span class="n">Strategy</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">date</span><span class="p">,</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">W</span> <span class="o">@</span> <span class="n">Re</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">date</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">InSampleResults</span><span class="o">.</span><span class="n">sharperatio</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="c1"># Iam using this as trick to plot an horizontal line. So I am getting the dataframing with all the dates and simply subsituting the value of Sharpe ratio below</span>
+<span class="n">OutofSample</span><span class="o">=</span><span class="n">InSampleResults</span><span class="o">.</span><span class="n">sharperatio</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">OutofSample</span><span class="p">[:]</span><span class="o">=</span><span class="p">(</span><span class="n">Strategy</span><span class="o">.</span><span class="n">Returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Strategy</span><span class="o">.</span><span class="n">Returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">OutofSample</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;in sample&#39;</span><span class="p">,</span><span class="s1">&#39;out of sample&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratio&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Sharpe Ratio&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/023a9bb29dd1925e987d829f4c086a2ef7ce9de22567d9034788b69b8bab87dd.png" src="../../_images/023a9bb29dd1925e987d829f4c086a2ef7ce9de22567d9034788b69b8bab87dd.png" />
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1235,6 +1395,7 @@ $<span class="math notranslate nohighlight">\(W_{minvariance}=\frac{Var(R)^{-1}\
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-tangency-portfolio"><strong>Properties of the Tangency Portfolio</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocaiton-ii">CAPItal allocaiton II</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#voltiming">Voltiming</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#it-was-in-untilted">it was in untilted</a></li>
 </ul>
 
   </nav></div>

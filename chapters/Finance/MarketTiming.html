@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10.1. Timing &#8212; Quantitative Investing</title>
+    <title>10.1. Expected Return Timing &#8212; Quantitative Investing</title>
   
   
   
@@ -65,7 +65,7 @@
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11. Characteristic-Based Trading strategies" href="crosssectionalequitystrategies.html" />
+    <link rel="next" title="10.2. Capital Allocation with Time-varying volatility" href="Volatilitytiming.html" />
     <link rel="prev" title="10. Timing" href="Timing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -222,6 +222,8 @@
 <li class="toctree-l1"><a class="reference internal" href="CapitalAllocationII.html">9. Capital Allocation II</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">10.1. Expected Returns Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Capital Allocation with Time-varying volatility</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -461,9 +463,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -474,19 +474,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Timing</h1>
+    <h1>Expected Return Timing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-return-timing">10.1.1. Expected Return Timing</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -562,47 +554,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="timing">
-<h1><span class="section-number">10.1. </span>Timing<a class="headerlink" href="#timing" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>So far we focused on strategies that overweight some assets and underweight others</p></li>
-<li><p>While these strategies are dynamic–since the portfolios change every year or even every month</p></li>
-<li><p>These strategies do not explicitly exploit the possibility that the risk and returns of the factors are time-varying</p></li>
-<li><p>To the extent that they are, then you might benefit of dynamically change you exposure to the factor</p></li>
-<li><p>Say for example, if, every thing else constant, you know that expected returns on the market next year is below the average, then you would reduce your position in it relative to what you typically have. You would move your money into cash or into other candidate asset</p></li>
-<li><p>To keep it simple we always think of timing as moving money between on factor and cash</p></li>
-<li><p>While one can time any factor, lets start with the most important one, the market</p></li>
-</ul>
-<p><strong>Factor timing: Theoretical intuition</strong></p>
-<p>Lets consider the problem of this mean-variance investor that allocates between a factor (the market) and a risk-free asset. (For convenience the risky asset will already by an excess return, but that doesn’t matter)</p>
-<p>There is nothing special about the market, this could also be the aggregate portfolio of the fund</p>
-<div class="math notranslate nohighlight">
-\[\max_{x_t} E_t[x_tr_{t+1} +(1-x_t)rf_{t+1}]-\frac{\gamma}{2}Var_t(x_tr^e_{t+1} +(1-x_t)rf_{t+1})\]</div>
-<ul class="simple">
-<li><p>The only difference from the previous mve analysis is that now it is only one risky asset, so this is particular case of that problem.</p></li>
-<li><p>The other important difference is the <code class="docutils literal notranslate"><span class="pre">t</span></code> subscripts in the moments.</p></li>
-<li><p>It means that the moments can be varying overtime.</p></li>
-</ul>
-<p>The solution to this problem is super simple</p>
-<div class="math notranslate nohighlight">
-\[x_t=\frac{E_t[r_{t+1}-r^f_{t+1}]}{\gamma Var_t(r_{t+1})}\]</div>
-<p>So you invest proportionally to the risk-return trade-off.</p>
-<ul class="simple">
-<li><p>lever up if expected returns are higher</p></li>
-<li><p>lever down if variance is higher</p></li>
-</ul>
-<p>A nice result is that you target the volatility of your portfolio to move up and down with the factor Sharpe ratio</p>
-<div class="math notranslate nohighlight">
-\[x_t\sigma_t(r_{t+1})=\frac{1}{\gamma}\frac{E_t[r_{t+1}-r^f_{t+1}]}{ \sigma_t(r_{t+1})}=SR_t(r_{t+1})\]</div>
-<p>If SR is up you choose to have a more volatile portfolio</p>
-<ul class="simple">
-<li><p>makes sense!it is more attractive to take risk!</p></li>
-<li><p>The theory tells us that is all about the ratio of premium to variance</p></li>
-<li><p>If risk-premiums goes up more than the variance, you lever up</p></li>
-<li><p>If variance goes up more than risk-premiums, you lever down</p></li>
-</ul>
-<section id="expected-return-timing">
-<h2><span class="section-number">10.1.1. </span>Expected Return Timing<a class="headerlink" href="#expected-return-timing" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="expected-return-timing">
+<h1><span class="section-number">10.1. </span>Expected Return Timing<a class="headerlink" href="#expected-return-timing" title="Link to this heading">#</a></h1>
 <p>The most classic timing strategies are motivated by the fact that high dividend yield periods seems to be followed by above average returns</p>
 <p>The plot shows the dividend-yield of the stock market overlayed with the future 7 year returns
 <img alt="MVfrontier" src="../../_images/Timing1.jpg" /></p>
@@ -1054,7 +1007,6 @@ on the market excess return, and <span class="math notranslate nohighlight">\(a+
 </li>
 </ul>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1096,11 +1048,11 @@ on the market excess return, and <span class="math notranslate nohighlight">\(a+
       </div>
     </a>
     <a class="right-next"
-       href="crosssectionalequitystrategies.html"
+       href="Volatilitytiming.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Characteristic-Based Trading strategies</p>
+        <p class="prev-next-title"><span class="section-number">10.2. </span>Capital Allocation with Time-varying volatility</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1110,21 +1062,6 @@ on the market excess return, and <span class="math notranslate nohighlight">\(a+
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-return-timing">10.1.1. Expected Return Timing</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

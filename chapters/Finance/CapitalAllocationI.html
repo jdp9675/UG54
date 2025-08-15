@@ -222,6 +222,8 @@
 <li class="toctree-l1"><a class="reference internal" href="CapitalAllocationII.html">9. Capital Allocation II</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="MarketTiming.html">10.1. Expected Returns Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Capital Allocation with Time-varying volatility</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -486,16 +488,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-decides-how-much-risk-to-take">7.1. Who Decides How Much Risk to Take?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-if-youre-the-principal">7.1.1. 🧍 A. If You’re the <strong>Principal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-if-youre-the-delegate">7.1.2. 🧑‍💼 B. If You’re the <strong>Delegate</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">7.1.3. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">7.1.4. ✅ Check Your Understanding</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">7.2. From Maximum Losses to Portfolio Risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-allocate-across-assets">7.3. How to allocate across assets?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-bets">7.4. Alpha bets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">7.5. How to Combine the  Hedged portfolio (alpha) and the Market (beta)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">7.6. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-allocate-across-assets-and-trading-strategies">7.2. How to allocate across assets and trading strategies?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-bets">7.3. Alpha bets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">7.4. How to Combine the  Hedged portfolio (alpha) and the Market (beta)</a></li>
 </ul>
             </nav>
         </div>
@@ -673,190 +670,9 @@ respect to the choice variable to zero:</p>
 </pre></div>
 </div>
 </section>
-<section id="b-if-youre-the-delegate">
-<h3><span class="section-number">7.1.2. </span>🧑‍💼 B. If You’re the <strong>Delegate</strong><a class="headerlink" href="#b-if-youre-the-delegate" title="Link to this heading">#</a></h3>
-<p>Now imagine you’re a <strong>fund manager</strong> investing on behalf of others.</p>
-<p>You may be evaluated based on:</p>
-<ul class="simple">
-<li><p><strong>Performance relative to a benchmark</strong></p></li>
-<li><p><strong>Short-term volatility</strong></p></li>
-<li><p><strong>Client satisfaction or redemptions</strong></p></li>
-</ul>
-<p>In this case, your <strong>utility function is no longer your own</strong>. You may also face:</p>
-<ul class="simple">
-<li><p><strong>Constraints</strong> (e.g., can’t hold too much cash)</p></li>
-<li><p><strong>Reputation risks</strong> (doing poorly relative to peers)</p></li>
-<li><p><strong>Incentives</strong> tied to short-term returns</p></li>
-</ul>
-<ul class="simple">
-<li><p>The delegate certainly has <strong>stop loss rule</strong>–at some point the principal will pull the plug</p></li>
-<li><p>If the manager lose more than that amount they are forced to liquidate their positions and they are likely to be fired</p></li>
-<li><p>Such stop loss is particularly biding for new managers</p></li>
-<li><p>This stop loss might be explicit: the fund principal literally tells what it is</p></li>
-<li><p>But most likely is implicitly–there is a loss that investors will freak out and pull out</p></li>
-<li><p>You got to think for yourself and have very clearly what the number is</p></li>
-<li><p>Investing as a delegate without that number in mind is reckless</p></li>
-</ul>
 </section>
-<hr class="docutils" />
-<section id="summary-why-this-distinction-matters">
-<h3><span class="section-number">7.1.3. </span>🔁 Summary: Why This Distinction Matters<a class="headerlink" href="#summary-why-this-distinction-matters" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Perspective</p></th>
-<th class="head"><p>Risk Tolerance</p></th>
-<th class="head"><p>Goal</p></th>
-<th class="head"><p>Constraints</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Principal</p></td>
-<td><p>Personal</p></td>
-<td><p>Maximize lifetime utility</p></td>
-<td><p>Few (internal)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Delegate</p></td>
-<td><p>Institutional</p></td>
-<td><p>Maximize performance within mandate</p></td>
-<td><p>Many (external)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Understanding whether you’re the principal or delegate affects:</p>
-<ul class="simple">
-<li><p>Portfolio size,</p></li>
-<li><p>Reaction to volatility,</p></li>
-<li><p>Interpretation of performance metrics (like Sharpe ratios).</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="check-your-understanding">
-<h3><span class="section-number">7.1.4. </span>✅ Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h3>
-<p><strong>Q1</strong>: Why might a delegate choose a lower-risk portfolio than a principal?</p>
-<details>
-<summary>Click to see the answer</summary>
-Because delegates often face external constraints and career risks. Their incentives may penalize short-term underperformance, leading them to reduce exposure to volatility—even if it means lower expected returns.
-</details>
-<hr class="docutils" />
-<p>👉 In the next section, we’ll use this framework to build actual portfolios that mix risky and risk-free assets.</p>
-</section>
-</section>
-<section id="from-maximum-losses-to-portfolio-risk">
-<h2><span class="section-number">7.2. </span>From Maximum Losses to Portfolio Risk<a class="headerlink" href="#from-maximum-losses-to-portfolio-risk" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Lets think in terms of the one-year ahead looses you are comfortable with.</p></li>
-<li><p>This can come from your internal judgment or from a stop loss reasoning</p></li>
-<li><p>Lets that you want to loose more than L (L is a number like 20%) with probability lower than p (say 5%)</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[Prob(rf+xr_p\leq -L)=p\]</div>
-<ul class="simple">
-<li><p>assume <span class="math notranslate nohighlight">\(rf=\mu\approx 0\)</span>–for example if the horizon is short</p></li>
-</ul>
-<p>first step is to transform our variable in into a standard normal random variable</p>
-<div class="math notranslate nohighlight">
-\[Prob(\frac{xrp}{x\sigma(rp)}\leq -\frac{L}{x\sigma(rp)})=p\]</div>
-<p>We have that <span class="math notranslate nohighlight">\(\frac{xrp}{x\sigma(rp)}\sim N(0,1)\)</span>, then</p>
-<div class="math notranslate nohighlight">
-\[F(-\frac{L}{x\sigma(rp)})=p\]</div>
-<ul class="simple">
-<li><p>Where  F is the CDF of a standard normal, and <span class="math notranslate nohighlight">\(F^{-1}\)</span> is it’s quantile function</p></li>
-<li><p>F takes a number in the real line and returns a probability</p></li>
-<li><p><span class="math notranslate nohighlight">\(F^{-1}\)</span> take a probability and returns a number in the real line</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[F^{-1}(p)x\sigma\geq-L\]</div>
-<p>Then</p>
-<div class="math notranslate nohighlight">
-\[x\sigma\leq-\frac{L}{F^{-1}(p)}\]</div>
-<p>Lets do a calculation</p>
-<p>for <span class="math notranslate nohighlight">\(p=5 \%\)</span>, <span class="math notranslate nohighlight">\(L=30\%\)</span> what do we get?</p>
-<p>Note that you will need the normal quantile function</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
-<span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>You might want to incorporate your views on the portfolio expected return</p>
-<ul class="simple">
-<li><p>That is relevant in case your horizon is one year or longer.</p></li>
-<li><p>For horizons that are 1 month or shorter you are safe ignoring the expected value since the volatility totally dominates it</p></li>
-</ul>
-<p>You might adjust for deviations from normality by augmenting your losses by a factor <span class="math notranslate nohighlight">\(h\geq1\)</span></p>
-<p>The more you invest, the higher the expected growth <span class="math notranslate nohighlight">\(x\mu+rf\)</span>, but also the higher your wealth volatility <span class="math notranslate nohighlight">\(x\sigma\)</span></p>
-<div class="math notranslate nohighlight">
-\[x(hF^{-1}(p)\sigma+\mu)+rf\geq-\overline{L}\]</div>
-<div class="math notranslate nohighlight">
-\[x\sigma(hF^{-1}(p)+\frac{\mu}{\sigma})+rf\geq-\overline{L}\]</div>
-<p>Now note that <span class="math notranslate nohighlight">\(F^{-1}(p)\)</span> is a negative number and <span class="math notranslate nohighlight">\(\frac{\mu}{\sigma}\)</span> is positive</p>
-<p>Lets first assume <span class="math notranslate nohighlight">\(hF^{-1}(p)+\frac{\mu}{\sigma}&lt;0\)</span> which is the realistic case, unless you are <a class="reference external" href="https://en.wikipedia.org/wiki/Jim_Simons">James Simmons</a></p>
-<div class="math notranslate nohighlight">
-\[x\sigma\leq-\frac{\overline{L}+rf}{(hF^{-1}(p)+\frac{\mu}{\sigma})}\]</div>
-<ul class="simple">
-<li><p>A higher risk-free rate means you can take more vol (holding L fixed), since you start from a higher expected baseline</p>
-<ul>
-<li><p>It is natural to have a real rate here since you probably care about your purchasing power</p></li>
-</ul>
-</li>
-<li><p>The higher the Sharpe ratio, the less negative is <span class="math notranslate nohighlight">\(hF^{-1}(p)+\frac{\mu}{\sigma}\)</span> and the higher the volatility you choose to take</p></li>
-<li><p>The higher your SR, the less likely you hit that loss!</p></li>
-</ul>
-<p>Lets plug some numbers with <span class="math notranslate nohighlight">\(rf=1\%\)</span> and SR=0.4 ( that is the market Sharpe ratio)</p>
-<div class="math notranslate nohighlight">
-\[-\frac{0.3+0.01}{2*(-1.64)+0.4}\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="n">sr</span><span class="p">,</span><span class="n">rf</span><span class="p">):</span>
-    <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">L</span><span class="o">+</span><span class="n">rf</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span><span class="n">sr</span><span class="p">)</span>
-<span class="nd">@interact</span><span class="p">(</span><span class="n">StopLoss</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">SharpeRatio</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_optimal_vol</span><span class="p">(</span><span class="n">StopLoss</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">SharpeRatio</span><span class="p">):</span>
-	<span class="n">sigma</span> <span class="o">=</span> <span class="n">calculate_sigma</span><span class="p">(</span><span class="n">StopLoss</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SharpeRatio</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span>
-	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal vol: </span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6fa20386afb9440b802e96bbca2c8f87", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<p>As your SR grows that loss becomes less likely than 5% and the amount of risk that you can take while being 95% sure that you will not lose 30% of your dollars goes to infinity</p>
-<p>In this case you can simply adjust your confidence probabilities, but what an amazing problem to have!</p>
-<p>Most hedge funds don’t have SR above 1, let alone 3!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sr_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.28</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">sigma_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span> <span class="k">for</span> <span class="n">sr</span> <span class="ow">in</span> <span class="n">sr_values</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sr_values</span><span class="p">,</span> <span class="n">sigma_values</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratio (SR)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sigma&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sigma as a function of Sharpe Ratio&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/221e3241dd201e4272aab837b628e20be41ff203f4c21e85e68a44b10ef08101.png" src="../../_images/221e3241dd201e4272aab837b628e20be41ff203f4c21e85e68a44b10ef08101.png" />
-</div>
-</div>
-<ul class="simple">
-<li><p>Once you Sharpe Ratio is above 3 (as rare as snow in the summer), risk is unlikely to be the limiting factor</p></li>
-<li><p>In this scenario you are likely tp  hit at capacity constraints for your trade since your wealth will be growing so wildly fast</p>
-<ul>
-<li><p>For SR=3, your wealth grows at <span class="math notranslate nohighlight">\(w\sigma*\frac{\mu}{\sigma}=1*3=300\%\)</span> per year!</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="how-to-allocate-across-assets">
-<h2><span class="section-number">7.3. </span>How to allocate across assets?<a class="headerlink" href="#how-to-allocate-across-assets" title="Link to this heading">#</a></h2>
+<section id="how-to-allocate-across-assets-and-trading-strategies">
+<h2><span class="section-number">7.2. </span>How to allocate across assets and trading strategies?<a class="headerlink" href="#how-to-allocate-across-assets-and-trading-strategies" title="Link to this heading">#</a></h2>
 <p>Implicit in our discussion is that you have some desired portfolio with some Sharpe ratio <span class="math notranslate nohighlight">\(SR_p\)</span> and you are deciding how to invest in it.</p>
 <p>We can already see that having a large Sharpe ratio is a nice thing to have:</p>
 <ul class="simple">
@@ -909,9 +725,7 @@ respect to the choice variable to zero. The only difference is that now you are 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/amoreira2/Lectures/main/assets/data/GlobalFinMonthly.csv&quot;</span>
 <span class="n">Data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">na_values</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
-<span class="c1"># tell python Date is date:</span>
 <span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
-<span class="c1"># set an an index</span>
 <span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>
 <span class="n">Rf</span><span class="o">=</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">]</span>
 <span class="n">Data</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">Data</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1149,16 +963,9 @@ dtype: float64
 </div>
 <p>What does it mean that the relationship between Expected return and volatility is linear?</p>
 <p>Is that what you expect? Is that true in general as you change portfolio weights?</p>
-<p><strong>In reality</strong> knowing the true moments of the return distribution is HARD as we discussed in the last few weeks</p>
-<ul class="simple">
-<li><p>Here we used the “In Sample” means and variances</p></li>
-<li><p>By construction weight <span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span> will deliver the Highest in sample Sharpe Ratio. It is just math!</p></li>
-<li><p>The issue is to what extent these in sample moments are informative about the forward looking moments</p></li>
-</ul>
-<p><strong>In reality</strong> your portfolio is not all you care about</p>
 </section>
 <section id="alpha-bets">
-<h2><span class="section-number">7.4. </span>Alpha bets<a class="headerlink" href="#alpha-bets" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Alpha bets<a class="headerlink" href="#alpha-bets" title="Link to this heading">#</a></h2>
 <p>It is useful to decompose your allocation in terms of “factor bets” and “alpha bets”</p>
 <p>Most fund managers have tight limits on factor exposures anyways, so factor exposure is more of a consequence of your alpha bets that you need to control rather then a form of investing for most fund managers. If you are a large capital allocator, like a Pension fund or a university endowment then factor bets are also very important, since on average most portfolios risk must be dominated by common factors</p>
 <p>Let’s say that you identified N trading strategies</p>
@@ -1177,7 +984,7 @@ dtype: float64
 <p><span class="math notranslate nohighlight">\(W=A\Sigma_{\epsilon}^{-1}\)</span></p>
 <p><span class="math notranslate nohighlight">\(W_f=-W'\Beta\)</span></p>
 <p>and you pick w to control the overall volatility of your portfolio and where
-$<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alpha_1,\alpha_2,...,\alpha_N\right]\left[\begin{array}{ccc}\sigma^2_{\epsilon,1} &amp; 0 &amp; 0\\0 &amp; \sigma^2_{\epsilon,i} &amp; 0\\0&amp;0&amp;\sigma^2_{\epsilon,N}\end{array}\right]^{-1}=\left[\begin{array}{c}\frac{\alpha_1}{\sigma^2_{\epsilon,1} }\\\frac{\alpha_2}{\sigma^2_{\epsilon,2} }\\...\\\frac{\alpha_N}{\sigma^2_{\epsilon,N} }\end{array}\right]\)</span>$</p>
+$<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{-1}=\left[\alpha_1,\alpha_2,...,\alpha_N\right]\left[\begin{array}{ccc}\sigma^2_{\epsilon,1} &amp; 0 &amp; 0\\0 &amp; \sigma^2_{\epsilon,i} &amp; 0\\0&amp;0&amp;\sigma^2_{\epsilon,N}\end{array}\right]^{-1}=\left[\begin{array}{c}\frac{\alpha_1}{\sigma^2_{\epsilon,1} }\\\frac{\alpha_2}{\sigma^2_{\epsilon,2} }\\...\\\frac{\alpha_N}{\sigma^2_{\epsilon,N} }\end{array}\right]\)</span>$</p>
 <p>The fact that all the trading strategies are stripped out of the co-movement leads to a really clean formula</p>
 <p>You can rewrite in terms of volatility allocations in each strategy</p>
 <div class="math notranslate nohighlight">
@@ -1195,9 +1002,75 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 <blockquote>
 <div><p>How do we do this for this international allocation problem using the US market as the common factor?</p>
 </div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ADJUST</span> <span class="o">!</span>!!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+<span class="c1"># Define the factors and the market factor</span>
+<span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span> <span class="s1">&#39;HML&#39;</span><span class="p">,</span> <span class="s1">&#39;RMW&#39;</span><span class="p">,</span> <span class="s1">&#39;CMA&#39;</span><span class="p">,</span> <span class="s1">&#39;MOM&#39;</span><span class="p">]</span>
+<span class="n">market_factor</span> <span class="o">=</span> <span class="s1">&#39;Mkt-RF&#39;</span>
+
+<span class="c1"># Initialize lists to store the results</span>
+<span class="n">Alpha</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Beta</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Alpha_se</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Hedged_factors</span><span class="o">=</span><span class="p">[]</span>
+<span class="c1"># Run univariate regressions with the market as the factor</span>
+<span class="n">df_sample</span><span class="o">=</span><span class="n">df_ff6</span><span class="p">[</span><span class="s1">&#39;1970&#39;</span><span class="p">:</span><span class="s1">&#39;2000&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">factors</span><span class="p">:</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_ff6</span><span class="p">[</span><span class="n">market_factor</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_ff6</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">Alpha</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;const&#39;</span><span class="p">])</span>
+    <span class="n">Beta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">market_factor</span><span class="p">])</span>
+    <span class="n">residuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+    <span class="n">Hedged_factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;const&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+    <span class="c1"># What is an alternative approach to construct the hedged factor?</span>
+
+
+<span class="c1"># Convert Alpha and Beta to numpy arrays</span>
+<span class="n">Alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Alpha</span><span class="p">)</span>
+<span class="n">Beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Beta</span><span class="p">)</span>
+
+<span class="c1"># Calculate the variance-covariance matrix of the residuals</span>
+<span class="n">Hedged_factors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">Hedged_factors</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">Hedged_factors</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">factors</span>
+<span class="n">residuals_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">Sigma_e</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">residuals_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+<span class="c1"># Display the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alpha:&quot;</span><span class="p">,</span> <span class="n">Alpha</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Beta:&quot;</span><span class="p">,</span> <span class="n">Beta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sigma_e:&quot;</span><span class="p">,</span> <span class="n">Sigma_e</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># optimal weights for the hedged factors</span>
+<span class="n">W</span><span class="o">=</span><span class="n">Hedged_factors</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">Hedged_factors</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+<span class="c1"># lets leverage it to have a yearly vol of 16%</span>
+
+<span class="n">W</span> <span class="o">=</span> <span class="n">W</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">W</span> <span class="o">@</span> <span class="n">Hedged_factors</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span> <span class="o">@</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.16</span>
+
+
+<span class="n">W</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">
-<h2><span class="section-number">7.5. </span>How to Combine the  Hedged portfolio (alpha) and the Market (beta)<a class="headerlink" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>How to Combine the  Hedged portfolio (alpha) and the Market (beta)<a class="headerlink" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>If you see your investment in the factor as simply a financial issue</p>
 <ul>
@@ -1248,53 +1121,6 @@ $<span class="math notranslate nohighlight">\(A\Sigma_{\epsilon}^{=1}=\left[\alp
 You instead care about the Sharpe ratio of the strategy after you hedged out your current portfolio
 You care about the appraisal ratio of the strategy relative to your portfolio</p>
 </div></blockquote>
-</section>
-<section id="the-rise-of-pod-shops">
-<h2><span class="section-number">7.6. </span>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
-<p>Hedge funds used to be associated with Principal traders</p>
-<ul class="simple">
-<li><p>George Soros</p></li>
-<li><p>Julian Robertson</p></li>
-<li><p>David Tepper</p></li>
-<li><p>Paul Tudor Jones</p></li>
-<li><p>Steve Cohen</p></li>
-<li><p>John Paulson</p></li>
-</ul>
-<p>Now we have the rise of Citadel and Millenium among a few others</p>
-<p>Pod shops are organized totally different</p>
-<p>Idea generation are done at the pod level in groups of 5-10 people</p>
-<p>Capital is allocated to the pod by the hedge fund principal, who monitors exposures and hedges residual factor risk</p>
-<p>Why pod traders work for Citadel and not choose to manage their own fund?</p>
-<p><strong>A calculation</strong></p>
-<p>Consider a pod shop with N pods with SR sr and total vol <span class="math notranslate nohighlight">\(\sigma\)</span>, what is their alpha? What is their SR?</p>
-<div class="math notranslate nohighlight">
-\[E[\sum x^*_ir_i]=E[\sum \frac{\alpha_i}{\sigma^2_i}\alpha_i]=N*sr^2\]</div>
-<div class="math notranslate nohighlight">
-\[Var[\sum x^*_ir_i]=Var[\sum \frac{\alpha_i}{\sigma^2_i}\epsilon_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2Var[\epsilon_i]\]</div>
-<div class="math notranslate nohighlight">
-\[Var[\sum x^*_ir_i]=\sum (\frac{\alpha_i}{\sigma^2_i})^2\sigma^2_i=N sr^2\]</div>
-<p>so the Sharpe Ratio of the pool of pods is</p>
-<div class="math notranslate nohighlight">
-\[sr_{pool}=\frac{Nsr_{pod}^2}{\sqrt{N}sr_{pod}}=\sqrt{N}sr_{pod}\]</div>
-<p>The Sharpe ratio of the pool of pods grows with the number of pods</p>
-<p>This means that if managed individually, the average pod will accumulate wealth at rate <span class="math notranslate nohighlight">\(\sigma*sr\)</span></p>
-<p>But if managed in a pool structure, the average pod will accumulate as <span class="math notranslate nohighlight">\(\sqrt{N}\sigma*sr\)</span></p>
-<p>Finding a new uncorrelated idea is super valuable!</p>
-<p>The marginal change in cash flows are</p>
-<div class="math notranslate nohighlight">
-\[\frac{\sigma*sr_{pool}}{N}\]</div>
-<ul class="simple">
-<li><p>decreases in the number of pods</p></li>
-<li><p>But always positive–if indeed similar SR and uncorrelated!</p></li>
-</ul>
-<p>Note that this calculation under-estimates the value of the pod structure</p>
-<ul class="simple">
-<li><p>The higher your Sharpe ratio, the more volatility you can take without bearing significant risk of loss (wealth just grows too quickly)</p></li>
-</ul>
-<p>But it also not realistic</p>
-<ul class="simple">
-<li><p>Your marginal pod is likely to be worse or correlated with the others</p></li>
-</ul>
 <hr class="docutils" />
 <p><strong>📝 Key Takeaways</strong></p>
 <ul class="simple">
@@ -1375,16 +1201,11 @@ You care about the appraisal ratio of the strategy relative to your portfolio</p
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#who-decides-how-much-risk-to-take">7.1. Who Decides How Much Risk to Take?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-if-youre-the-principal">7.1.1. 🧍 A. If You’re the <strong>Principal</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-if-youre-the-delegate">7.1.2. 🧑‍💼 B. If You’re the <strong>Delegate</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">7.1.3. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">7.1.4. ✅ Check Your Understanding</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">7.2. From Maximum Losses to Portfolio Risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-allocate-across-assets">7.3. How to allocate across assets?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-bets">7.4. Alpha bets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">7.5. How to Combine the  Hedged portfolio (alpha) and the Market (beta)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">7.6. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-allocate-across-assets-and-trading-strategies">7.2. How to allocate across assets and trading strategies?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-bets">7.3. Alpha bets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-combine-the-hedged-portfolio-alpha-and-the-market-beta">7.4. How to Combine the  Hedged portfolio (alpha) and the Market (beta)</a></li>
 </ul>
   </nav></div>
 
