@@ -77,8 +77,15 @@ sections:
   title: Factor Model Estimation
 - file: chapters/Finance/CapitalAllocationII
   title: Capital Allocation II 
-- file: chapters/Finance/TimingStrategies
+- file: chapters/Finance/Timing
   title: Timing Strategies
+  sections:
+    - file: chapters/Finance/MarketTiming
+      title: Expected Returns Timing
+    - file: chapters/Finance/VolatilityTiming
+      title: Volatility Timing
+      
+
 - file: chapters/Finance/crosssectionalequitystrategies
   title: Cross-Sectional Equity Strategies
   sections:
