@@ -597,19 +597,16 @@ Explore how the number of groups, the dispersion of the signal, and the choice o
 <hr class="docutils" />
 <ul class="simple">
 <li><p>So far we have looked at strategies that go in and out of a particular asset according to a signal.</p></li>
-<li><p>We looked at past average returns, past  volatility, and past co-variances</p></li>
 <li><p>Now we will look at strategies that trade of asset characteristics</p></li>
-<li><p>A characteristic is anything that you can associate to a particular stock</p></li>
-<li><p>Past average returns, past volatility are types of charateristics</p></li>
-<li><p>but it is much more general than that</p></li>
 </ul>
 <p><strong>The  recipe</strong></p>
 <ol class="arabic simple">
 <li><p>Construct a characteristic for each stock.</p>
 <ul class="simple">
-<li><p>It can be based on accounting data, return data, textual data from earning calls, twitter activity, ownership, shorting activity, satellite images–</p></li>
+<li><p>It can be based on accounting data (aka fundamentals), return data, textual data from earning calls, twitter activity, ownership, shorting activity, satellite images–</p></li>
 <li><p>You can do for anything</p></li>
 <li><p>What is important is that for each stock in each date you have a value for this characteristic</p></li>
+<li><p>And you have a sense/theory of how this chracteristic relates to expected returns</p></li>
 </ul>
 </li>
 <li><p>On a given date sort stocks by this characteristic.</p>
@@ -618,22 +615,22 @@ Explore how the number of groups, the dispersion of the signal, and the choice o
 <li><p>Extremely careful not to introduce “look-ahead” bias</p></li>
 </ul>
 </li>
-<li><p>Construct portfolios by dividing stocks in deciles/quintiles and form portfolios of stocks that have similar characteristic</p>
+<li><p>Construct portfolios by dividing stocks in deciles/quintiles and “10” form portfolios of stocks that have similar characteristic</p>
 <ul class="simple">
 <li><p>You can either equal weight or value weight within portfolio</p></li>
 <li><p>Value-weighed portfolios are easier to trade, but if you are focused on large caps, you can go with either</p></li>
 <li><p>But what is important is that each portfolio will have stocks of have very different characteristic values</p></li>
 </ul>
 </li>
-<li><p>Construct the long-short where you go long portfolio 10 and short portfolio 1 (or vice versa) but the point is to take a bet on the characteristic spread</p></li>
+<li><p>Construct the long-short where you go long portfolio “10” and short portfolio “1” (or vice versa) but the point is to take a bet on the characteristic spread</p></li>
 </ol>
 <blockquote>
-<div><p><strong>But the goal here is to produce alpha</strong></p>
-<ul class="simple">
-<li><p>this is a simply and algorithimic  way to implement your idea in a way that harvest the benefits of diversification</p></li>
-<li><p>Instead of betting on Tesla because Musk is close to trump, build a trump connection “characteristic”</p></li>
-<li><p>How exactly? Now sure…but I am sure someone is thinking…</p></li>
-<li><p>What are potential characteristcs that might be interesting right now in 2025 with a new administration?</p></li>
+<div><p><strong>The goal here is to produce alpha</strong></p>
+</div></blockquote>
+<blockquote>
+<div><ul class="simple">
+<li><p>this is a simple and algorithimic  way to implement your idea in a way that harvest the benefits of diversification</p></li>
+<li><p>Instead of betting on Apple because it is exposed to tariffs, build a tariff exposure “characteristic”</p></li>
 </ul>
 </div></blockquote>
 <p><strong>From “names”  to characteristics</strong></p>

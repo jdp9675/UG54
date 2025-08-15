@@ -505,7 +505,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -569,6 +574,7 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <section id="volatility-timing">
 <h1><span class="section-number">10.2. </span>Volatility Timing<a class="headerlink" href="#volatility-timing" title="Link to this heading">#</a></h1>
@@ -896,7 +902,12 @@ dtype: float64
 <li><p>How well it works if we combine an expected return signal with the volatility signal?</p></li>
 <li><p>What about the other factors? Does it work there as well?</p></li>
 </ul>
-<p>Lets wrap it all in a function</p>
+<ul class="simple">
+<li><p>Before copying and pasting this code 20 times, simply put it all together in a function</p></li>
+<li><p>As you try different things adjust the function to be more flexible</p></li>
+</ul>
+<p>Below is the basic vol managed strategy</p>
+<p>It returns the time-series of the strategy returns, but you should all the outcomes you are interest on</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">volmanaged</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -912,9 +923,8 @@ dtype: float64
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">signal</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="n">df</span><span class="p">[</span><span class="n">factor</span><span class="o">+</span><span class="s1">&#39;_volmanaged&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">Weight</span><span class="o">*</span><span class="n">df</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span>
-    <span class="c1"># annualized Sharpe ratio</span>
-    <span class="n">SR</span><span class="o">=</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">factor</span><span class="p">,</span><span class="n">factor</span><span class="o">+</span><span class="s1">&#39;_volmanaged&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="n">df</span><span class="p">[[</span><span class="n">factor</span><span class="p">,</span><span class="n">factor</span><span class="o">+</span><span class="s1">&#39;_volmanaged&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span>
-    <span class="k">return</span> <span class="n">SR</span><span class="p">,</span><span class="n">TR</span><span class="p">,</span><span class="n">df</span>
+
+    <span class="k">return</span> <span class="n">df</span>
 
 
 <span class="n">df_factor</span> <span class="o">=</span> <span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;FF6&#39;</span><span class="p">)</span>
