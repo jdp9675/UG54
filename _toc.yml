@@ -75,8 +75,6 @@ sections:
   title: Capital Allocation 
 - file: chapters/Finance/FactorModelEstimation
   title: Factor Model Estimation
-- file: chapters/Finance/CapitalAllocationII
-  title: Capital Allocation II 
 - file: chapters/Finance/Timing
   title: Timing Strategies
   sections:
@@ -91,21 +89,21 @@ sections:
   sections:
     - file: chapters/Finance/Momentum
       title: Momentum factor
-
-- file: chapters/Finance/Performance_evaluation
-  title: Performance Evaluation
-
-
-- file: chapters/Finance/MultiFactorModels
-  title: Multi Factor Models
-  sections:
     - file: chapters/Finance/Factors
       title: An overview of factors
-    - file: chapters/Finance/InterpretingFactorModels
-      title: Interpreting Factor Models
+
+- file: chapters/Finance/CapitalAllocationII
+  title: Capital Allocation II 
+- file: chapters/Finance/Performance_evaluation
+  title: Performance Evaluation
 - file: chapters/Finance/MachineLearning
   title: Machine Learning in Finance
 - file: chapters/additional/additional
+- file: chapters/Finance/MultiFactorModels
+  title: Multi Factor Models
+  sections:
+    - file: chapters/Finance/InterpretingFactorModels
+      title: Interpreting Factor Models
   title: Additional Statistics Material
 - file: chapters/Assignments/Assignments
   title: Assignments
