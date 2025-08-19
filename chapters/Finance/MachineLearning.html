@@ -488,22 +488,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso-regression">13.1. 1. <strong>Lasso Regression</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso-regression">13.1. <strong>Lasso Regression</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-interactions">13.1.1. Including Interactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-models">13.1.2. Non-Parametric Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#original-linear-model">13.1.2.1. Original Linear Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-percentile-based-model">13.1.2.2. Non-Parametric Percentile-Based Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation">13.1.2.3. Explanation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-models">13.1.2. Non-Parametric Models</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-regression">13.1.3. 2. <strong>Random Forest Regression</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-regression-trees-gbrt">13.1.4. 4. <strong>Gradient Boosted Regression Trees (GBRT)</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-net-regression">13.1.5. 5. <strong>Elastic Net Regression</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-regression">13.1.6. 6. <strong>Neural Network Regression</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-whole-shebang">13.1.7. The Whole Shebang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-regression">13.2. <strong>Random Forest Regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-regression-trees-gbrt">13.3. <strong>Gradient Boosted Regression Trees (GBRT)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-net-regression">13.4. <strong>Elastic Net Regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-regression">13.5. <strong>Neural Network Regression</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-whole-shebang">13.5.1. The Whole Shebang</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">13.2. Wrap up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">13.6. Wrap up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">13.7. 🧠 Key Takeaways</a></li>
 </ul>
             </nav>
         </div>
@@ -533,6 +531,15 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="machine-learning">
 <h1><span class="section-number">13. </span>Machine Learning<a class="headerlink" href="#machine-learning" title="Link to this heading">#</a></h1>
+<p><strong>🎯 Learning Objectives</strong></p>
+<p>By the end of this notebook, you should be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>Differentiate</strong> supervised vs. unsupervised learning and select appropriate models for tabular, text, image, and time-series data.</p></li>
+<li><p><strong>Build baselines</strong> and compare models using proper <strong>cross-validation</strong> and <strong>out-of-sample</strong> evaluation.</p></li>
+<li><p><strong>Control overfitting</strong> with <strong>regularization</strong>, feature engineering, and early stopping.</p></li>
+<li><p><strong>Interpret models</strong> (coefficients, feature importance, SHAP/partial dependence) to inform decisions.</p></li>
+<li><p><strong>Deploy practical heuristics</strong> about when each method shines given <strong>data type</strong>, <strong>size</strong>, <strong>noise</strong>, and <strong>compute</strong> constraints.</p></li>
+</ol>
 <p>The basic issue in finance is that we want to know how expected returns move around, but we only observe realized returns</p>
 <p>We can compile lots and lots of information/data about different assets</p>
 <p>We saw how to run OLS regression of returns on a large set of characteristics ( I think it was 30)</p>
@@ -1273,7 +1280,7 @@ document.write(`
 </div></div></div>
 </div>
 <section id="lasso-regression">
-<h2><span class="section-number">13.1. </span>1. <strong>Lasso Regression</strong><a class="headerlink" href="#lasso-regression" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span><strong>Lasso Regression</strong><a class="headerlink" href="#lasso-regression" title="Link to this heading">#</a></h2>
 <p>Lasso (Least Absolute Shrinkage and Selection Operator) regression is a linear regression model with L1 regularization. It minimizes the following objective:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1648,10 +1655,9 @@ Feature Names: [&#39;size&#39; &#39;value&#39; &#39;prof&#39; &#39;fscore&#39; &
 </section>
 <section id="non-parametric-models">
 <h3><span class="section-number">13.1.2. </span>Non-Parametric Models<a class="headerlink" href="#non-parametric-models" title="Link to this heading">#</a></h3>
-<p>Instead of assuming that the relationship between the dependent variable $ y ) and the characteristic ( size ) is linear, we consider a more flexible model. In this approach, the relationship is linear in terms of the <strong>percentiles</strong> of the characteristic.</p>
-<section id="original-linear-model">
-<h4><span class="section-number">13.1.2.1. </span>Original Linear Model<a class="headerlink" href="#original-linear-model" title="Link to this heading">#</a></h4>
-<p>In a linear regression, the model is typically expressed as:</p>
+<p>Instead of assuming that the relationship between the dependent variable y and the characteristic size is linear, we consider a more flexible model. In this approach, the relationship is linear in terms of the <strong>percentiles</strong> of the characteristic.</p>
+<p><strong>Original Linear Model</strong>
+In a linear regression, the model is typically expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
 y_{i, t+1} = \beta \cdot size_{i, t}
@@ -1662,9 +1668,7 @@ y_{i, t+1} = \beta \cdot size_{i, t}
 <li><p><span class="math notranslate nohighlight">\( size_{i, t} \)</span>: A characteristic of asset <span class="math notranslate nohighlight">\( i \)</span> at time <span class="math notranslate nohighlight">\( t \)</span> (e.g., market capitalization).</p></li>
 <li><p><span class="math notranslate nohighlight">\( \beta \)</span>: A regression coefficient indicating the relationship between <span class="math notranslate nohighlight">\( size_{i, t} \)</span> and <span class="math notranslate nohighlight">\( y_{i, t+1} \)</span>.</p></li>
 </ul>
-</section>
-<section id="non-parametric-percentile-based-model">
-<h4><span class="section-number">13.1.2.2. </span>Non-Parametric Percentile-Based Model<a class="headerlink" href="#non-parametric-percentile-based-model" title="Link to this heading">#</a></h4>
+<p><strong>Non-Parametric Percentile-Based Model</strong></p>
 <p>To introduce non-linearity, we instead model <span class="math notranslate nohighlight">\( y_{i, t+1} \)</span> as a function of the percentiles of <span class="math notranslate nohighlight">\( size \)</span> within each time period. The model becomes:</p>
 <p>[
 y_{i, t+1} = \sum_p \beta_p \cdot 1_{{size_{i, t} \in \text{Percentile}(p, \text{size}_t)}}
@@ -1675,9 +1679,7 @@ y_{i, t+1} = \sum_p \beta_p \cdot 1_{{size_{i, t} \in \text{Percentile}(p, \text
 <li><p><span class="math notranslate nohighlight">\( \beta_p \)</span>: The regression coefficient for percentile <span class="math notranslate nohighlight">\( p \)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\( 1_{\{size_{i, t} \in \text{Percentile}(p, \text{size}_t)\}} \)</span>: An indicator function that equals 1 if <span class="math notranslate nohighlight">\( size_{i, t} \)</span> falls in the <span class="math notranslate nohighlight">\( p \)</span>-th percentile of the <span class="math notranslate nohighlight">\( size \)</span> distribution for time <span class="math notranslate nohighlight">\( t \)</span>, and 0 otherwise.</p></li>
 </ul>
-</section>
-<section id="explanation">
-<h4><span class="section-number">13.1.2.3. </span>Explanation<a class="headerlink" href="#explanation" title="Link to this heading">#</a></h4>
+<p><strong>Explanation</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Intuition</strong>: Instead of assuming a linear relationship between <span class="math notranslate nohighlight">\( y \)</span> and <span class="math notranslate nohighlight">\( size \)</span>, the model captures how <span class="math notranslate nohighlight">\( y \)</span> varies across different percentile ranges of <span class="math notranslate nohighlight">\( size \)</span>.</p></li>
 <li><p><strong>Flexibility</strong>: The model allows for different effects (<span class="math notranslate nohighlight">\( \beta_p \)</span>) for each percentile range, enabling it to capture non-linear relationships.</p></li>
@@ -2114,7 +2116,7 @@ New DataFrame shape after adding percentiles: (204284, 145)
 </section>
 <hr class="docutils" />
 <section id="random-forest-regression">
-<h3><span class="section-number">13.1.3. </span>2. <strong>Random Forest Regression</strong><a class="headerlink" href="#random-forest-regression" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">13.2. </span><strong>Random Forest Regression</strong><a class="headerlink" href="#random-forest-regression" title="Link to this heading">#</a></h2>
 <p><img alt="Neural Networks" src="../../_images/regressionTree.jpg" /></p>
 <p>Random Forest is an ensemble method that combines multiple decision trees to make predictions. Each tree is trained on a bootstrap sample of the data, and predictions are averaged:</p>
 <div class="math notranslate nohighlight">
@@ -2252,7 +2254,7 @@ Feature Importances:
 </section>
 <hr class="docutils" />
 <section id="gradient-boosted-regression-trees-gbrt">
-<h3><span class="section-number">13.1.4. </span>4. <strong>Gradient Boosted Regression Trees (GBRT)</strong><a class="headerlink" href="#gradient-boosted-regression-trees-gbrt" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">13.3. </span><strong>Gradient Boosted Regression Trees (GBRT)</strong><a class="headerlink" href="#gradient-boosted-regression-trees-gbrt" title="Link to this heading">#</a></h2>
 <p>GBRT is an ensemble technique that builds trees sequentially, where each tree corrects the errors of the previous one. The prediction is updated iteratively:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2385,7 +2387,7 @@ Feature Importances:
 </section>
 <hr class="docutils" />
 <section id="elastic-net-regression">
-<h3><span class="section-number">13.1.5. </span>5. <strong>Elastic Net Regression</strong><a class="headerlink" href="#elastic-net-regression" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">13.4. </span><strong>Elastic Net Regression</strong><a class="headerlink" href="#elastic-net-regression" title="Link to this heading">#</a></h2>
 <p>Elastic Net combines L1 (Lasso) and L2 (Ridge) regularization to balance feature selection and multicollinearity handling. The objective function is:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2528,7 +2530,7 @@ Coefficients:
 </section>
 <hr class="docutils" />
 <section id="neural-network-regression">
-<h3><span class="section-number">13.1.6. </span>6. <strong>Neural Network Regression</strong><a class="headerlink" href="#neural-network-regression" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">13.5. </span><strong>Neural Network Regression</strong><a class="headerlink" href="#neural-network-regression" title="Link to this heading">#</a></h2>
 <p><img alt="Neural Networks" src="../../_images/neural_networks.jpg" /></p>
 <p>A neural network is a flexible, non-linear model that uses layers of neurons to approximate complex relationships between inputs (( X )) and outputs (( Y )). The simplest form of a feedforward neural network can be expressed as:</p>
 <div class="math notranslate nohighlight">
@@ -2715,12 +2717,15 @@ Epoch 10/10
 </div>
 </div>
 </div>
-</section>
 <section id="the-whole-shebang">
-<h3><span class="section-number">13.1.7. </span>The Whole Shebang<a class="headerlink" href="#the-whole-shebang" title="Link to this heading">#</a></h3>
-<p>You can potentially combine the Non-Parametric Percentile-Based Model with the interactions.</p>
-<p>The key issue is tha as you make the model richer and richer the scope for the training to produce garabage increases</p>
-<p>You need to do much more validation/model regularization</p>
+<h3><span class="section-number">13.5.1. </span>The Whole Shebang<a class="headerlink" href="#the-whole-shebang" title="Link to this heading">#</a></h3>
+<p>You can potentially combine a non-parametric  Model with interactions.</p>
+<p>The key issue is tha as you make the model richer and richer the scope for the training to produce garabage increases–</p>
+<p>so you need</p>
+<ul class="simple">
+<li><p>more and more data</p></li>
+<li><p>much more validation/model regularization</p></li>
+</ul>
 <p>Examples include</p>
 <ul class="simple">
 <li><p>L1 regularization:L1 regularization adds a penalty to the loss function based on the absolute values of the weights, encouraging sparsity by driving some weights to zero. This prevents overfitting and simplifies the model, making it useful in high-dimensional data or feature selection.</p></li>
@@ -2732,7 +2737,7 @@ Epoch 10/10
 </section>
 <hr class="docutils" />
 <section id="wrap-up">
-<h2><span class="section-number">13.2. </span>Wrap up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.6. </span>Wrap up<a class="headerlink" href="#wrap-up" title="Link to this heading">#</a></h2>
 <p>Comparison  Table across methods</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -2771,8 +2776,15 @@ Epoch 10/10
 </tbody>
 </table>
 </div>
-<p>Let me know if you’d like additional detail or comparisons!</p>
 <p>For an academic investigation of these methods see  “Empirical Asset Pricing via Machine Learning” (<a class="reference external" href="https://academic.oup.com/rfs/article/33/5/2223/5758276?login=true">https://academic.oup.com/rfs/article/33/5/2223/5758276?login=true</a>). The figures used in this notebook are also from that paper.</p>
+</section>
+<section id="key-takeaways">
+<h2><span class="section-number">13.7. </span>🧠 Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Start with <strong>simple, strong baselines</strong> (logistic/linear + regularization), then escalate to ensembles or deep nets if justified by data.</p></li>
+<li><p><strong>Pipelines</strong> with proper Cross Validation prevent leakage; evaluate <strong>out-of-sample</strong> with task-appropriate metrics.</p></li>
+<li><p>Use <strong>regularization and early stopping</strong> to control variance; track <strong>learning curves</strong> to diagnose bias vs. variance.</p></li>
+</ul>
 </section>
 </section>
 
@@ -2840,22 +2852,20 @@ Epoch 10/10
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso-regression">13.1. 1. <strong>Lasso Regression</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lasso-regression">13.1. <strong>Lasso Regression</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-interactions">13.1.1. Including Interactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-models">13.1.2. Non-Parametric Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#original-linear-model">13.1.2.1. Original Linear Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-percentile-based-model">13.1.2.2. Non-Parametric Percentile-Based Model</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation">13.1.2.3. Explanation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-parametric-models">13.1.2. Non-Parametric Models</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-regression">13.1.3. 2. <strong>Random Forest Regression</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-regression-trees-gbrt">13.1.4. 4. <strong>Gradient Boosted Regression Trees (GBRT)</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-net-regression">13.1.5. 5. <strong>Elastic Net Regression</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-regression">13.1.6. 6. <strong>Neural Network Regression</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-whole-shebang">13.1.7. The Whole Shebang</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-regression">13.2. <strong>Random Forest Regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosted-regression-trees-gbrt">13.3. <strong>Gradient Boosted Regression Trees (GBRT)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-net-regression">13.4. <strong>Elastic Net Regression</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-regression">13.5. <strong>Neural Network Regression</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-whole-shebang">13.5.1. The Whole Shebang</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">13.2. Wrap up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">13.6. Wrap up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">13.7. 🧠 Key Takeaways</a></li>
 </ul>
   </nav></div>
 
