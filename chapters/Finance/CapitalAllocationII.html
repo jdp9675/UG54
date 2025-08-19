@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Capital Allocation II &#8212; Quantitative Investing</title>
+    <title>11. Capital Allocation II &#8212; Quantitative Investing</title>
   
   
   
@@ -65,8 +65,8 @@
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. Timing" href="Timing.html" />
-    <link rel="prev" title="8. Estimation: From historical data to the future dynamics of returns" href="FactorModelEstimation.html" />
+    <link rel="next" title="12. Performance Evaluation" href="Performance_evaluation.html" />
+    <link rel="prev" title="10.4. What Are Factors?" href="Factors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -219,27 +219,27 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="CapitalAllocationI.html">7. Capital Allocation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FactorModelEstimation.html">8. Factor Model Estimation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Capital Allocation II</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">10. Timing Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="MarketTiming.html">10.1. Expected Returns Timing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">10.2. Volatility Timing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">9. Timing Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="MarketTiming.html">9.1. Expected Returns Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">9.2. Volatility Timing</a></li>
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">11. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Momentum.html">11.3. Momentum factor</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">10. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Momentum.html">10.3. Momentum factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factors.html">10.4. An overview of factors</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Capital Allocation II</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Performance_evaluation.html">12. Performance Evaluation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">13. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Factors.html">13.9. An overview of factors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">13.10. 📊 Interpreting Factor Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">13. Machine Learning in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">14. Additional Statistics Material</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">15. Additional Statistics Material</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">15.9. 📊 Interpreting Factor Models</a></li>
 
 
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">14. Machine Learning in Finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">15. Additional Statistics Material</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">16. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment0.html">16.1. Assigment 0</a></li>
 
@@ -486,21 +486,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-under-uncertainty">9.1. Capital allocation under uncertainty</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-sensitivity-to-uncertainty">9.1.1. Weights sensitivity to uncertainty</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-sensitivity-to-uncertainty">9.1.2. Performance sensitivity to uncertainty</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bet-sizing-under-uncertainty">9.1.3. Bet sizing under uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-under-uncertainty">11.1. Capital allocation under uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-sensitivity-to-uncertainty">11.1.1. Weights sensitivity to uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-sensitivity-to-uncertainty">11.1.2. Performance sensitivity to uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bet-sizing-under-uncertainty">11.1.3. Bet sizing under uncertainty</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">9.2. Portfolios and Factor models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">9.3. Risk Profile Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">9.4. The rise of “pod shops”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-capital-allocation-if-youre-the-delegate">9.5. Aggregate Capital Allocation If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">9.5.1. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">9.5.2. ✅ Check Your Understanding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">9.5.3. From Maximum Losses to Portfolio Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">11.2. Portfolios and Factor models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">11.3. Risk Profile Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">11.4. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-capital-allocation-if-youre-the-delegate">11.5. Aggregate Capital Allocation If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">11.5.1. 🔁 Summary: Why This Distinction Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">11.5.2. ✅ Check Your Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">11.5.3. From Maximum Losses to Portfolio Risk</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">11.6. 🧠 Key Takeaways</a></li>
 </ul>
             </nav>
         </div>
@@ -584,20 +585,21 @@ document.write(`
 </details>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="capital-allocation-ii">
-<h1><span class="section-number">9. </span>Capital Allocation II<a class="headerlink" href="#capital-allocation-ii" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Capital Allocation II<a class="headerlink" href="#capital-allocation-ii" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
-<p><strong>🎯 Learning Objectives</strong> TBD!</p>
+<p><strong>🎯 Learning Objectives</strong></p>
 <p>By the end of this chapter, you should be able to:</p>
 <ol class="arabic simple">
-<li><p><strong>Sensitivity of Mean-variance optimization to inputs</strong></p></li>
-<li><p><strong>Bet sizing under uncertainty</strong></p></li>
-<li><p><strong>Factor Risk Analysis</strong></p></li>
-<li><p><strong>The economics of Pod shops</strong></p></li>
-<li><p><strong>Capital allocation when you are a delegate</strong></p></li>
+<li><p><strong>Diagnose estimation risk</strong> in mean–variance (MV) optimization and explain how uncertainty in <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\Sigma\)</span> affects optimal weights and Sharpe ratio.</p></li>
+<li><p><strong>Run sensitivity analyses</strong> for portfolio weights and performance by perturbing expected returns/covariances within plausible error bands.</p></li>
+<li><p><strong>Compare bet-sizing heuristics</strong> (MV, <span class="math notranslate nohighlight">\(1/N\)</span>, volatility targeting, risk parity, shrinkage/regularization) and articulate when each is robust.</p></li>
+<li><p><strong>Apply factor models</strong> to decompose portfolio risk by factor and by asset; compute marginal and component risk contributions.</p></li>
+<li><p><strong>Translate loss tolerances (VaR-style)</strong> into risk/position limits given distributional assumptions, horizon, and Sharpe ratio.</p></li>
+<li><p><strong>Think as a delegate</strong> (fund-of-strategies): set risk budgets, account for correlations and capacity, and monitor out-of-sample performance.</p></li>
 </ol>
 <hr class="docutils" />
 <section id="capital-allocation-under-uncertainty">
-<h2><span class="section-number">9.1. </span>Capital allocation under uncertainty<a class="headerlink" href="#capital-allocation-under-uncertainty" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Capital allocation under uncertainty<a class="headerlink" href="#capital-allocation-under-uncertainty" title="Link to this heading">#</a></h2>
 <p>We learned how to maximize Sharpe Ratio if we are sure about the moments</p>
 <div class="math notranslate nohighlight">
 \[E[R^e]Var(R^e)^{-1}\]</div>
@@ -611,9 +613,9 @@ document.write(`
 </ul>
 <p><strong>In reality</strong> knowing the true moments of the return distribution is HARD as we discussed in the last few weeks</p>
 <ul class="simple">
-<li><p>We will start by using “In Sample” means and variances</p></li>
-<li><p>By construction weight <span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span> will deliver the Highest in sample Sharpe Ratio. It is just math!</p></li>
-<li><p>The issue is to what extent these in sample moments are informative about the forward looking moments</p></li>
+<li><p>We will start by using “In-sample” means and variances</p></li>
+<li><p>By construction weight <span class="math notranslate nohighlight">\(W=w E[R^e]\Sigma_{R}^{-1} \)</span> will deliver the Highest In-sample Sharpe Ratio. It is just math!</p></li>
+<li><p>The issue is to what extent these In-sample moments are informative about the forward looking moments</p></li>
 </ul>
 <ul class="simple">
 <li><p>What problems that might cause?</p></li>
@@ -750,15 +752,16 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now what? What should we look at?</p>
-<ul class="simple">
-<li><p>In sample Vol</p></li>
-<li><p>In sample SR</p></li>
-<li><p>Out of sample Vol</p></li>
-<li><p>Out of Sample SR</p></li>
-</ul>
+<blockquote>
+<div><p>Now what? What should we look at to gauge the impact of uncertainty?</p>
+</div></blockquote>
 <section id="weights-sensitivity-to-uncertainty">
-<h3><span class="section-number">9.1.1. </span>Weights sensitivity to uncertainty<a class="headerlink" href="#weights-sensitivity-to-uncertainty" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.1.1. </span>Weights sensitivity to uncertainty<a class="headerlink" href="#weights-sensitivity-to-uncertainty" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>📌</p>
+<p>Small changes in inputs can flip sigs!</p>
+<p>Large uncertainty means your weights can be way off</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets look at what happens with weights and Sharpes as we manipulate the mean of the market return by one standard deviation</span>
@@ -874,7 +877,7 @@ document.write(`
 </div>
 </section>
 <section id="performance-sensitivity-to-uncertainty">
-<h3><span class="section-number">9.1.2. </span>Performance sensitivity to uncertainty<a class="headerlink" href="#performance-sensitivity-to-uncertainty" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.1.2. </span>Performance sensitivity to uncertainty<a class="headerlink" href="#performance-sensitivity-to-uncertainty" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SR</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">Wmve</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
@@ -944,7 +947,7 @@ document.write(`
 <p>an out of sample test let the data speak in the most pure form and it is closer to capture what real life trading is like</p>
 </section>
 <section id="bet-sizing-under-uncertainty">
-<h3><span class="section-number">9.1.3. </span>Bet sizing under uncertainty<a class="headerlink" href="#bet-sizing-under-uncertainty" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.1.3. </span>Bet sizing under uncertainty<a class="headerlink" href="#bet-sizing-under-uncertainty" title="Link to this heading">#</a></h3>
 <p>The industry developed many Ad-hoc approaches for <strong>bet sizing</strong>  exactly to deal with the fact that Mean-variance optimization is quite sensitive to inputs</p>
 <p><strong>Bet sizing</strong> is one of the great skills in a portfolio manager because it requires instinct for uncertainty</p>
 <p>I show some of the different approaches below.</p>
@@ -1356,7 +1359,7 @@ How would implement this from the perspective of a CAPM capital allocator that w
 </section>
 </section>
 <section id="portfolios-and-factor-models">
-<h2><span class="section-number">9.2. </span>Portfolios and Factor models<a class="headerlink" href="#portfolios-and-factor-models" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Portfolios and Factor models<a class="headerlink" href="#portfolios-and-factor-models" title="Link to this heading">#</a></h2>
 <p>Say you have</p>
 <ul class="simple">
 <li><p>a vector of asset excess returns R (N by 1),</p></li>
@@ -1474,7 +1477,7 @@ What is the benefit of this more involved approach?</p>
 </div></blockquote>
 </section>
 <section id="risk-profile-analysis">
-<h2><span class="section-number">9.3. </span>Risk Profile Analysis<a class="headerlink" href="#risk-profile-analysis" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Risk Profile Analysis<a class="headerlink" href="#risk-profile-analysis" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>What each asset is contributing to my overall portfolio risk?</p></li>
 <li><p>what is the asset that at the margin contributes the most?</p></li>
@@ -1493,7 +1496,7 @@ What is the benefit of this more involved approach?</p>
 <p>For now just think this as blackbox that is giving you numbers for B, Var(f), Var(U)</p>
 </section>
 <section id="the-rise-of-pod-shops">
-<h2><span class="section-number">9.4. </span>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
 <p>Hedge funds used to be associated with Principal traders</p>
 <ul class="simple">
 <li><p>George Soros</p></li>
@@ -1540,7 +1543,7 @@ What is the benefit of this more involved approach?</p>
 </ul>
 </section>
 <section id="aggregate-capital-allocation-if-youre-the-delegate">
-<h2><span class="section-number">9.5. </span>Aggregate Capital Allocation If You’re the <strong>Delegate</strong><a class="headerlink" href="#aggregate-capital-allocation-if-youre-the-delegate" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>Aggregate Capital Allocation If You’re the <strong>Delegate</strong><a class="headerlink" href="#aggregate-capital-allocation-if-youre-the-delegate" title="Link to this heading">#</a></h2>
 <p>Now imagine you’re a <strong>fund manager</strong> investing on behalf of others.</p>
 <p>You may be evaluated based on:</p>
 <ul class="simple">
@@ -1565,7 +1568,7 @@ What is the benefit of this more involved approach?</p>
 </ul>
 <hr class="docutils" />
 <section id="summary-why-this-distinction-matters">
-<h3><span class="section-number">9.5.1. </span>🔁 Summary: Why This Distinction Matters<a class="headerlink" href="#summary-why-this-distinction-matters" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.1. </span>🔁 Summary: Why This Distinction Matters<a class="headerlink" href="#summary-why-this-distinction-matters" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Perspective</p></th>
@@ -1597,7 +1600,7 @@ What is the benefit of this more involved approach?</p>
 </section>
 <hr class="docutils" />
 <section id="check-your-understanding">
-<h3><span class="section-number">9.5.2. </span>✅ Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.2. </span>✅ Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h3>
 <p><strong>Q1</strong>: Why might a delegate choose a lower-risk portfolio than a principal?</p>
 <details>
 <summary>Click to see the answer</summary>
@@ -1607,7 +1610,7 @@ Because delegates often face external constraints and career risks. Their incent
 <p>👉 In the next section, we’ll use this framework to build actual portfolios that mix risky and risk-free assets.</p>
 </section>
 <section id="from-maximum-losses-to-portfolio-risk">
-<h3><span class="section-number">9.5.3. </span>From Maximum Losses to Portfolio Risk<a class="headerlink" href="#from-maximum-losses-to-portfolio-risk" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.3. </span>From Maximum Losses to Portfolio Risk<a class="headerlink" href="#from-maximum-losses-to-portfolio-risk" title="Link to this heading">#</a></h3>
 <p>This might have to move to capital allocation II</p>
 <ul class="simple">
 <li><p>Lets think in terms of the one-year ahead looses you are comfortable with.</p></li>
@@ -1721,6 +1724,18 @@ Because delegates often face external constraints and career risks. Their incent
 </ul>
 </section>
 </section>
+<section id="key-takeaways">
+<h2><span class="section-number">11.6. </span>🧠 Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Estimation risk matters.</strong> MV weights are highly sensitive when signals are weak or assets are collinear; always stress test inputs.</p></li>
+<li><p><strong>Robust bet sizing.</strong> Simple baselines (e.g., <span class="math notranslate nohighlight">\(1/N\)</span>, vol targeting, risk parity) often outperform noisy MV in real time without aggressive views.</p></li>
+<li><p><strong>Shrinkage helps.</strong> Regularizing <span class="math notranslate nohighlight">\(\\Sigma\)</span> (and sometimes <span class="math notranslate nohighlight">\(\\mu\)</span>) stabilizes weights and improves out-of-sample SR.</p></li>
+<li><p><strong>Factor lens.</strong> Decomposing risk by factor clarifies whether diversification is <strong>true</strong> (low common exposures) or <strong>illusory</strong> (highly correlated bets).</p></li>
+<li><p><strong>From losses to risk.</strong> Translate maximum tolerated <strong>loss</strong> into quantitative <strong>risk limits</strong> using <span class="math notranslate nohighlight">\((\\mu,\\sigma)\)</span>, horizon, and distributional assumptions.</p></li>
+<li><p><strong>Delegate mindset.</strong> Allocate risk budgets across strategies, respect capacity/fees, and monitor <strong>out-of-sample</strong> performance relentlessly.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1754,20 +1769,20 @@ Because delegates often face external constraints and career risks. Their incent
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="FactorModelEstimation.html"
+       href="Factors.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Estimation: From historical data to the future dynamics of returns</p>
+        <p class="prev-next-title"><span class="section-number">10.4. </span>What Are Factors?</p>
       </div>
     </a>
     <a class="right-next"
-       href="Timing.html"
+       href="Performance_evaluation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Timing</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Performance Evaluation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1787,21 +1802,22 @@ Because delegates often face external constraints and career risks. Their incent
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-under-uncertainty">9.1. Capital allocation under uncertainty</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-sensitivity-to-uncertainty">9.1.1. Weights sensitivity to uncertainty</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-sensitivity-to-uncertainty">9.1.2. Performance sensitivity to uncertainty</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bet-sizing-under-uncertainty">9.1.3. Bet sizing under uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-allocation-under-uncertainty">11.1. Capital allocation under uncertainty</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weights-sensitivity-to-uncertainty">11.1.1. Weights sensitivity to uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-sensitivity-to-uncertainty">11.1.2. Performance sensitivity to uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bet-sizing-under-uncertainty">11.1.3. Bet sizing under uncertainty</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">9.2. Portfolios and Factor models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">9.3. Risk Profile Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">9.4. The rise of “pod shops”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-capital-allocation-if-youre-the-delegate">9.5. Aggregate Capital Allocation If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">9.5.1. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">9.5.2. ✅ Check Your Understanding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">9.5.3. From Maximum Losses to Portfolio Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">11.2. Portfolios and Factor models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">11.3. Risk Profile Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">11.4. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-capital-allocation-if-youre-the-delegate">11.5. Aggregate Capital Allocation If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">11.5.1. 🔁 Summary: Why This Distinction Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">11.5.2. ✅ Check Your Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">11.5.3. From Maximum Losses to Portfolio Risk</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">11.6. 🧠 Key Takeaways</a></li>
 </ul>
   </nav></div>
 
