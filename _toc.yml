@@ -98,12 +98,18 @@ sections:
   title: Performance Evaluation
 - file: chapters/Finance/MachineLearning
   title: Machine Learning in Finance
-- file: chapters/additional/additional
 - file: chapters/Finance/MultiFactorModels
   title: Multi Factor Models
   sections:
     - file: chapters/Finance/InterpretingFactorModels
       title: Interpreting Factor Models
+- file: chapters/Finance/RiskManagement
+  title: Risk Management
+- file: chapters/Finance/Tradingcosts
+  title: Trading Cost Management
+- file: chapters/Finance/LeverageandShorting
+  title: Leverage, Shorting, and Limits to Arbitrage
+- file: chapters/additional/additional
   title: Additional Statistics Material
 - file: chapters/Assignments/Assignments
   title: Assignments
