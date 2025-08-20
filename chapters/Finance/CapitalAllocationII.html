@@ -495,15 +495,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">11.2. Portfolios and Factor models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">11.3. Risk Profile Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">11.4. The rise of “pod shops”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-capital-allocation-if-youre-the-delegate">11.5. Aggregate Capital Allocation If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">11.5.1. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">11.5.2. ✅ Check Your Understanding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">11.5.3. From Maximum Losses to Portfolio Risk</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">11.6. 🧠 Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">11.3. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">11.4. 🧠 Key Takeaways</a></li>
 </ul>
             </nav>
         </div>
@@ -1362,6 +1355,9 @@ How would implement this from the perspective of a CAPM capital allocator that w
 </section>
 <section id="portfolios-and-factor-models">
 <h2><span class="section-number">11.2. </span>Portfolios and Factor models<a class="headerlink" href="#portfolios-and-factor-models" title="Link to this heading">#</a></h2>
+<p>Here we show how portfolio returns can be decomposed into factor exposures, alphas, and residuals using a linear factor model.</p>
+<p>We derive the expected return and variance formulas for a portfolio under this model, highlighting the role of factor risk and idiosyncratic risk.</p>
+<p>The objective is to set up the framework for estimating and analyzing portfolio risk and return using factor model outputs.</p>
 <p>Say you have</p>
 <ul class="simple">
 <li><p>a vector of asset excess returns R (N by 1),</p></li>
@@ -1382,7 +1378,12 @@ How would implement this from the perspective of a CAPM capital allocator that w
 \[Var[r_p]=Var(W.T &#64;(A+Bf+U))=(W.T&#64;B)&#64;Var(f)&#64;(W.T&#64;B).T+W.T&#64;Var(U)&#64;W\]</div>
 <p>If we are working with a single factor then Var(f) is a scalar and it simplifies this way</p>
 <div class="math notranslate nohighlight">
-\[Var[r_p]=Var(W.T &#64;(A+Bf+U))=(W.T&#64;B)&#64;(B.T&#64;W)*Var(f)+W.T&#64;Var(U)&#64;W\]</div>
+\[Var[r_p]=Var(W.T &#64;(A+Bf+U))=(W.T&#64;B)^2*Var(f)+W.T&#64;Var(U)&#64;W\]</div>
+<ul class="simple">
+<li><p>How do you compute the share of variance that is systematic/idiosyncratic?</p></li>
+<li><p>Why not simply use the in-sample variance of your portfolio?</p></li>
+<li><p>What is the important assumption that likely fails in reality? how to deal with it?</p></li>
+</ul>
 <p>To implement this lets starts start by estimating our factor model for these trading strategies</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1468,37 +1469,9 @@ Sigma_e:
 </div>
 </div>
 </div>
-<p>Now pick a portfolio W</p>
-<ul class="simple">
-<li><p>what this is the total portfolio variance?</p></li>
-<li><p>What is the portfolio factor risk?</p></li>
-</ul>
-<blockquote>
-<div><p>What are simpler approach to do these calculations?
-What is the benefit of this more involved approach?</p>
-</div></blockquote>
-</section>
-<section id="risk-profile-analysis">
-<h2><span class="section-number">11.3. </span>Risk Profile Analysis<a class="headerlink" href="#risk-profile-analysis" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>What each asset is contributing to my overall portfolio risk?</p></li>
-<li><p>what is the asset that at the margin contributes the most?</p></li>
-<li><p>If I want to reduce my factor risk, what is the asset that would reduce it most efficiently?</p></li>
-<li><p>For that we can compute</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\frac{\Delta Var[r_p]}{\Delta W}=2B&#64;(B.T&#64;W)Var(f)+2Var(U)&#64;W\]</div>
-<p>This is a vector where each entry tells you the increase in risk produced my a marginal increase in each asset</p>
-<p>So the highest number in this vector tell us what is the asset that allows us to achieve the highest risk reduction per change in position</p>
-<blockquote>
-<div><p>Question: How do you find the asset that would lead to highest reduction in factor risk?</p>
-</div></blockquote>
-<p>Lets apply this to our problem</p>
-<p>I will estiamte a signle factor model here so we cna use realistic numbers, but we will dsicuss this step next class.</p>
-<p>For now just think this as blackbox that is giving you numbers for B, Var(f), Var(U)</p>
 </section>
 <section id="the-rise-of-pod-shops">
-<h2><span class="section-number">11.4. </span>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>The rise of “pod shops”<a class="headerlink" href="#the-rise-of-pod-shops" title="Link to this heading">#</a></h2>
 <p>Hedge funds used to be associated with Principal traders</p>
 <ul class="simple">
 <li><p>George Soros</p></li>
@@ -1544,197 +1517,13 @@ What is the benefit of this more involved approach?</p>
 <li><p>Your marginal pod is likely to be worse or correlated with the others</p></li>
 </ul>
 </section>
-<section id="aggregate-capital-allocation-if-youre-the-delegate">
-<h2><span class="section-number">11.5. </span>Aggregate Capital Allocation If You’re the <strong>Delegate</strong><a class="headerlink" href="#aggregate-capital-allocation-if-youre-the-delegate" title="Link to this heading">#</a></h2>
-<p>Now imagine you’re a <strong>fund manager</strong> investing on behalf of others.</p>
-<p>You may be evaluated based on:</p>
-<ul class="simple">
-<li><p><strong>Performance relative to a benchmark</strong></p></li>
-<li><p><strong>Short-term volatility</strong></p></li>
-<li><p><strong>Client satisfaction or redemptions</strong></p></li>
-</ul>
-<p>In this case, your <strong>utility function is no longer your own</strong>. You may also face:</p>
-<ul class="simple">
-<li><p><strong>Constraints</strong> (e.g., can’t hold too much cash)</p></li>
-<li><p><strong>Reputation risks</strong> (doing poorly relative to peers)</p></li>
-<li><p><strong>Incentives</strong> tied to short-term returns</p></li>
-</ul>
-<ul class="simple">
-<li><p>The delegate certainly has <strong>stop loss rule</strong>–at some point the principal will pull the plug</p></li>
-<li><p>If the manager lose more than that amount they are forced to liquidate their positions and they are likely to be fired</p></li>
-<li><p>Such stop loss is particularly biding for new managers</p></li>
-<li><p>This stop loss might be explicit: the fund principal literally tells what it is</p></li>
-<li><p>But most likely is implicitly–there is a loss that investors will freak out and pull out</p></li>
-<li><p>You got to think for yourself and have very clearly what the number is</p></li>
-<li><p>Investing as a delegate without that number in mind is reckless</p></li>
-</ul>
-<hr class="docutils" />
-<section id="summary-why-this-distinction-matters">
-<h3><span class="section-number">11.5.1. </span>🔁 Summary: Why This Distinction Matters<a class="headerlink" href="#summary-why-this-distinction-matters" title="Link to this heading">#</a></h3>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Perspective</p></th>
-<th class="head"><p>Risk Tolerance</p></th>
-<th class="head"><p>Goal</p></th>
-<th class="head"><p>Constraints</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Principal</p></td>
-<td><p>Personal</p></td>
-<td><p>Maximize lifetime utility</p></td>
-<td><p>Few (internal)</p></td>
-</tr>
-<tr class="row-odd"><td><p>Delegate</p></td>
-<td><p>Institutional</p></td>
-<td><p>Maximize performance within mandate</p></td>
-<td><p>Many (external)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Understanding whether you’re the principal or delegate affects:</p>
-<ul class="simple">
-<li><p>Portfolio size,</p></li>
-<li><p>Reaction to volatility,</p></li>
-<li><p>Interpretation of performance metrics (like Sharpe ratios).</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="check-your-understanding">
-<h3><span class="section-number">11.5.2. </span>✅ Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h3>
-<p><strong>Q1</strong>: Why might a delegate choose a lower-risk portfolio than a principal?</p>
-<details>
-<summary>Click to see the answer</summary>
-Because delegates often face external constraints and career risks. Their incentives may penalize short-term underperformance, leading them to reduce exposure to volatility—even if it means lower expected returns.
-</details>
-<hr class="docutils" />
-<p>👉 In the next section, we’ll use this framework to build actual portfolios that mix risky and risk-free assets.</p>
-</section>
-<section id="from-maximum-losses-to-portfolio-risk">
-<h3><span class="section-number">11.5.3. </span>From Maximum Losses to Portfolio Risk<a class="headerlink" href="#from-maximum-losses-to-portfolio-risk" title="Link to this heading">#</a></h3>
-<p>This might have to move to capital allocation II</p>
-<ul class="simple">
-<li><p>Lets think in terms of the one-year ahead looses you are comfortable with.</p></li>
-<li><p>This can come from your internal judgment or from a stop loss reasoning</p></li>
-<li><p>Lets that you want to loose more than L (L is a number like 20%) with probability lower than p (say 5%)</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[Prob(rf+xr_p\leq -L)=p\]</div>
-<ul class="simple">
-<li><p>assume <span class="math notranslate nohighlight">\(rf=\mu\approx 0\)</span>–for example if the horizon is short</p></li>
-</ul>
-<p>first step is to transform our variable in into a standard normal random variable</p>
-<div class="math notranslate nohighlight">
-\[Prob(\frac{xrp}{x\sigma(rp)}\leq -\frac{L}{x\sigma(rp)})=p\]</div>
-<p>We have that <span class="math notranslate nohighlight">\(\frac{xrp}{x\sigma(rp)}\sim N(0,1)\)</span>, then</p>
-<div class="math notranslate nohighlight">
-\[F(-\frac{L}{x\sigma(rp)})=p\]</div>
-<ul class="simple">
-<li><p>Where  F is the CDF of a standard normal, and <span class="math notranslate nohighlight">\(F^{-1}\)</span> is it’s quantile function</p></li>
-<li><p>F takes a number in the real line and returns a probability</p></li>
-<li><p><span class="math notranslate nohighlight">\(F^{-1}\)</span> take a probability and returns a number in the real line</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[F^{-1}(p)x\sigma\geq-L\]</div>
-<p>Then</p>
-<div class="math notranslate nohighlight">
-\[x\sigma\leq-\frac{L}{F^{-1}(p)}\]</div>
-<p>Lets do a calculation</p>
-<p>for <span class="math notranslate nohighlight">\(p=5 \%\)</span>, <span class="math notranslate nohighlight">\(L=30\%\)</span> what do we get?</p>
-<p>Note that you will need the normal quantile function</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
-<span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>You might want to incorporate your views on the portfolio expected return</p>
-<ul class="simple">
-<li><p>That is relevant in case your horizon is one year or longer.</p></li>
-<li><p>For horizons that are 1 month or shorter you are safe ignoring the expected value since the volatility totally dominates it</p></li>
-</ul>
-<p>You might adjust for deviations from normality by augmenting your losses by a factor <span class="math notranslate nohighlight">\(h\geq1\)</span></p>
-<p>The more you invest, the higher the expected growth <span class="math notranslate nohighlight">\(x\mu+rf\)</span>, but also the higher your wealth volatility <span class="math notranslate nohighlight">\(x\sigma\)</span></p>
-<div class="math notranslate nohighlight">
-\[x(hF^{-1}(p)\sigma+\mu)+rf\geq-\overline{L}\]</div>
-<div class="math notranslate nohighlight">
-\[x\sigma(hF^{-1}(p)+\frac{\mu}{\sigma})+rf\geq-\overline{L}\]</div>
-<p>Now note that <span class="math notranslate nohighlight">\(F^{-1}(p)\)</span> is a negative number and <span class="math notranslate nohighlight">\(\frac{\mu}{\sigma}\)</span> is positive</p>
-<p>Lets first assume <span class="math notranslate nohighlight">\(hF^{-1}(p)+\frac{\mu}{\sigma}&lt;0\)</span> which is the realistic case, unless you are <a class="reference external" href="https://en.wikipedia.org/wiki/Jim_Simons">James Simmons</a></p>
-<div class="math notranslate nohighlight">
-\[x\sigma\leq-\frac{\overline{L}+rf}{(hF^{-1}(p)+\frac{\mu}{\sigma})}\]</div>
-<ul class="simple">
-<li><p>A higher risk-free rate means you can take more vol (holding L fixed), since you start from a higher expected baseline</p>
-<ul>
-<li><p>It is natural to have a real rate here since you probably care about your purchasing power</p></li>
-</ul>
-</li>
-<li><p>The higher the Sharpe ratio, the less negative is <span class="math notranslate nohighlight">\(hF^{-1}(p)+\frac{\mu}{\sigma}\)</span> and the higher the volatility you choose to take</p></li>
-<li><p>The higher your SR, the less likely you hit that loss!</p></li>
-</ul>
-<p>Lets plug some numbers with <span class="math notranslate nohighlight">\(rf=1\%\)</span> and SR=0.4 ( that is the market Sharpe ratio)</p>
-<div class="math notranslate nohighlight">
-\[-\frac{0.3+0.01}{2*(-1.64)+0.4}\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="n">sr</span><span class="p">,</span><span class="n">rf</span><span class="p">):</span>
-    <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">L</span><span class="o">+</span><span class="n">rf</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span><span class="n">sr</span><span class="p">)</span>
-<span class="nd">@interact</span><span class="p">(</span><span class="n">StopLoss</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">SharpeRatio</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">calculate_optimal_vol</span><span class="p">(</span><span class="n">StopLoss</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">SharpeRatio</span><span class="p">):</span>
-	<span class="n">sigma</span> <span class="o">=</span> <span class="n">calculate_sigma</span><span class="p">(</span><span class="n">StopLoss</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SharpeRatio</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span>
-	<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal vol: </span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6fa20386afb9440b802e96bbca2c8f87", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<p>As your SR grows that loss becomes less likely than 5% and the amount of risk that you can take while being 95% sure that you will not lose 30% of your dollars goes to infinity</p>
-<p>In this case you can simply adjust your confidence probabilities, but what an amazing problem to have!</p>
-<p>Most hedge funds don’t have SR above 1, let alone 3!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sr_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.28</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">sigma_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span> <span class="k">for</span> <span class="n">sr</span> <span class="ow">in</span> <span class="n">sr_values</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sr_values</span><span class="p">,</span> <span class="n">sigma_values</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratio (SR)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sigma&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sigma as a function of Sharpe Ratio&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/221e3241dd201e4272aab837b628e20be41ff203f4c21e85e68a44b10ef08101.png" src="../../_images/221e3241dd201e4272aab837b628e20be41ff203f4c21e85e68a44b10ef08101.png" />
-</div>
-</div>
-<ul class="simple">
-<li><p>Once you Sharpe Ratio is above 3 (as rare as snow in the summer), risk is unlikely to be the limiting factor</p></li>
-<li><p>In this scenario you are likely tp  hit at capacity constraints for your trade since your wealth will be growing so wildly fast</p>
-<ul>
-<li><p>For SR=3, your wealth grows at <span class="math notranslate nohighlight">\(w\sigma*\frac{\mu}{\sigma}=1*3=300\%\)</span> per year!</p></li>
-</ul>
-</li>
-</ul>
-</section>
-</section>
 <section id="key-takeaways">
-<h2><span class="section-number">11.6. </span>🧠 Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>🧠 Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Estimation risk matters.</strong> MV weights are highly sensitive when signals are weak or assets are collinear; always stress test inputs.</p></li>
 <li><p><strong>Robust bet sizing.</strong> Simple baselines (e.g., <span class="math notranslate nohighlight">\(1/N\)</span>, vol targeting, risk parity) often outperform noisy MV in real time without aggressive views.</p></li>
-<li><p><strong>Shrinkage helps.</strong> Regularizing <span class="math notranslate nohighlight">\(\\Sigma\)</span> (and sometimes <span class="math notranslate nohighlight">\(\\mu\)</span>) stabilizes weights and improves out-of-sample SR.</p></li>
+<li><p><strong>Shrinkage helps.</strong> Regularizing <span class="math notranslate nohighlight">\(\Sigma\)</span> (and sometimes <span class="math notranslate nohighlight">\(\mu\)</span>) stabilizes weights and improves out-of-sample SR.</p></li>
 <li><p><strong>Factor lens.</strong> Decomposing risk by factor clarifies whether diversification is <strong>true</strong> (low common exposures) or <strong>illusory</strong> (highly correlated bets).</p></li>
-<li><p><strong>From losses to risk.</strong> Translate maximum tolerated <strong>loss</strong> into quantitative <strong>risk limits</strong> using <span class="math notranslate nohighlight">\((\\mu,\\sigma)\)</span>, horizon, and distributional assumptions.</p></li>
-<li><p><strong>Delegate mindset.</strong> Allocate risk budgets across strategies, respect capacity/fees, and monitor <strong>out-of-sample</strong> performance relentlessly.</p></li>
 </ul>
 <hr class="docutils" />
 </section>
@@ -1811,15 +1600,8 @@ Because delegates often face external constraints and career risks. Their incent
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolios-and-factor-models">11.2. Portfolios and Factor models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-profile-analysis">11.3. Risk Profile Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">11.4. The rise of “pod shops”</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-capital-allocation-if-youre-the-delegate">11.5. Aggregate Capital Allocation If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">11.5.1. 🔁 Summary: Why This Distinction Matters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">11.5.2. ✅ Check Your Understanding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">11.5.3. From Maximum Losses to Portfolio Risk</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">11.6. 🧠 Key Takeaways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rise-of-pod-shops">11.3. The rise of “pod shops”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">11.4. 🧠 Key Takeaways</a></li>
 </ul>
   </nav></div>
 

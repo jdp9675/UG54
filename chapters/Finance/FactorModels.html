@@ -493,8 +493,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.3. Alpha and Beta(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.4. Focus on your skill, hedge all the residual risk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.5. Tacking, Hedging and Hedged portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.6. Variance Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.7. Factor models and Variance-covariance Matrixes Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.6. Variance Decomposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitting-factor-target">5.6.1. Hitting Factor target</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -520,19 +522,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define functions  </span>
+<span class="c1"># define functions  </span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
   
     <span class="c1"># Retrieve PERMNOs for the specified tickers</span>
@@ -593,10 +583,6 @@ Use time-series regressions of excess returns on factor returns to obtain β, α
 Build a <em>tracking</em> portfolio equal to β times the factor, and a <em>hedged</em> (portable-alpha) portfolio that subtracts the tracking position—delivering pure alpha with zero in-sample factor risk.</p></li>
 <li><p><strong>Size positions under explicit risk budgets.</strong><br />
 Apply volatility budgets at daily, monthly, or annual horizons; compute how much capital you can allocate to an unhedged position versus a hedged one, given its variance components.</p></li>
-<li><p><strong>Perform variance decomposition and risk-share analysis.</strong><br />
-Break total variance into a factor part (β² Var f) and an idiosyncratic part (Var ε); measure the fraction of factor risk and adjust hedges to meet risk-share limits.</p></li>
-<li><p><strong>Build factor-implied covariance matrices.</strong><br />
-See how a single-factor structure collapses the number of parameters from O(N²) to O(N); practice constructing the matrix as (B B’ Var f + \text{diag}(\sigma_ε^2)).</p></li>
 <li><p><strong>Appreciate the practical uses of factor models.</strong><br />
 Understand why asset managers, pod shops, and risk desks rely on factor models to separate skill from beta, impose discipline on risk taking, and communicate performance.</p></li>
 </ol>
@@ -615,6 +601,44 @@ Understand why asset managers, pod shops, and risk desks rely on factor models t
 </ul>
 <div class="math notranslate nohighlight">
 \[(excess~return)=(intercept)+(stock~beta)*(factor~excess~return)+ (idio~risk)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataReader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="c1"># first we connect with WRDS database using the wrds package so we need to install it first and import it</span>
+<span class="o">%</span><span class="k">pip</span> install wrds
+<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+<span class="c1"># lets connect with  the wrds database</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+
+<span class="c1"># get our stock returns</span>
+
+<span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">])</span>
+
+<span class="c1"># GET RISK FREE RATE</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Start date (adjust as needed)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>          <span class="c1"># End date</span>
+<span class="n">df_rf</span> <span class="o">=</span> <span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;DGS3MO&quot;</span><span class="p">,</span> <span class="s2">&quot;fred&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;rf&quot;</span><span class="p">]</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">=</span><span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># merge with the risk-free rate</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rf</span><span class="o">/</span><span class="mi">252</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">df_re</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;rf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rf&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_re</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" src="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" />
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -1373,6 +1397,8 @@ So both your total risk grows as the share of factor risk</p>
 </div>
 </div>
 </div>
+<section id="hitting-factor-target">
+<h3><span class="section-number">5.6.1. </span>Hitting Factor target<a class="headerlink" href="#hitting-factor-target" title="Link to this heading">#</a></h3>
 <p>Suppose I want to get this to the 20% limit. What do I do?</p>
 <p>Lets say xh is your position on the market, then your portfolio is</p>
 <div class="math notranslate nohighlight">
@@ -1415,59 +1441,6 @@ So both your total risk grows as the share of factor risk</p>
 </div>
 </div>
 </div>
-</section>
-<section id="factor-models-and-variance-covariance-matrixes-estimation">
-<h2><span class="section-number">5.7. </span>Factor models and Variance-covariance Matrixes Estimation<a class="headerlink" href="#factor-models-and-variance-covariance-matrixes-estimation" title="Link to this heading">#</a></h2>
-<p>We will see how we can compute covariance matrixes easily under the assumption that the factor captures most sources of co-movement across stocks</p>
-<p>In this case the assumption is very bad…and not even close to holding for most assets…but will allow us to get the intuition</p>
-<p>We will then learn how to do it with many factors as is standard in the industry</p>
-<p>Here I will use i,j for a individual stock</p>
-<div class="math notranslate nohighlight">
-\[r^{e,i}=\alpha_i+\beta_{i,f}f+\epsilon_{i}\]</div>
-<ul class="simple">
-<li><p>non-factor component <span class="math notranslate nohighlight">\(\epsilon_i\)</span> of the asset return of asset <span class="math notranslate nohighlight">\(i\)</span>. Assumed to uncorrelated between any two assets</p></li>
-</ul>
-<p>Now this is just a regression!</p>
-<p>We have that</p>
-<div class="math notranslate nohighlight">
-\[Var(r^{e,i})=\beta_i^2Var(f)+var(\epsilon_{i})\]</div>
-<p>This gives us a nice decomposition of risk as we saw above</p>
-<ul class="simple">
-<li><p>the risk component that is driven by the common factor</p></li>
-<li><p>the asset specific comment</p></li>
-</ul>
-<p>Now if our assumption holds,i.e. the non-factor risk is uncorrelated across assets</p>
-<div class="math notranslate nohighlight">
-\[cov(\epsilon_{i,t},\epsilon_{j,t})=0\]</div>
-<blockquote>
-<div><h4 class="rubric" id="this-will-never-hold-in-any-sample-it-is-an-assumption-that-you-impose-after-you-think-that-you-add-enough-factors-to-capture-the-co-movement-across-assets">This will never hold in any sample. It is an assumption that you impose after you think that you add enough factors to capture the  co-movement across assets</h4>
-</div></blockquote>
-<p>Then</p>
-<div class="math notranslate nohighlight">
-\[Cov(r_t^{e,i},r_t^{e,j})=Cov(\alpha_i+\beta_{i}f_t+\epsilon_{i,t},\alpha_j+\beta_{j}f_t+\epsilon_{j,t})=\beta_i\beta_jVar(f_t)\]</div>
-<p>And the covariance matrix is simply</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\left[\begin{array}{cc}
-\beta_i^2 &amp; \beta_i\beta_j \\
-\beta_i\beta_j &amp;  \beta_j^2 
-\end{array}\right]var(f_t)+\left[\begin{array}{cc}
-var(\epsilon_{i,t}) &amp; 0 \\
-0&amp;  var(\epsilon_{j,t})
-\end{array}\right]\end{split}\]</div>
-<p>We see that now for N assets we only need to estimate N factor exposures, N asset specific volatilities , and the factor volatility</p>
-<p>If we were estimating a variance-covariance matrix without imposing the factor model we would have to estimate N covariances and <span class="math notranslate nohighlight">\((N^2-N)/2\)</span> covariance terms: <span class="math notranslate nohighlight">\(2N+1\)</span> vs <span class="math notranslate nohighlight">\((N^2-N)/2+N\)</span> is huge as N grows</p>
-<blockquote>
-<div><p><strong>Practice</strong></p>
-<ul class="simple">
-<li><p>Choose a five  tickers you like plus SPY</p></li>
-<li><p>Estimate their unrestricted covariance matrix</p></li>
-<li><p>Estimate the single-factor model (single factor=SPY)</p></li>
-<li><p>Build the factor implied covariance matrix</p></li>
-<li><p>Can you compare the number of parameters you need to estimate in each case</p></li>
-<li><p>Can you discuss if it such model is a good one in this case</p></li>
-</ul>
-</div></blockquote>
 <hr class="docutils" />
 <p><strong>📝 Key Takeaways</strong></p>
 <ul class="simple">
@@ -1489,6 +1462,7 @@ Alpha, variances, co-variances and Sharpe ratios must be annualized (or otherwis
 Throughout the notebook “Stop and Think” prompts remind you to check data frequency, interpret α’s forecasting value, and judge whether the single-factor assumption is adequate for your application.</p></li>
 </ul>
 <hr class="docutils" />
+</section>
 </section>
 </section>
 
@@ -1561,8 +1535,10 @@ Throughout the notebook “Stop and Think” prompts remind you to check data fr
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-and-beta-s">5.3. Alpha and Beta(s)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-on-your-skill-hedge-all-the-residual-risk">5.4. Focus on your skill, hedge all the residual risk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tacking-hedging-and-hedged-portfolios">5.5. Tacking, Hedging and Hedged portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.6. Variance Decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-models-and-variance-covariance-matrixes-estimation">5.7. Factor models and Variance-covariance Matrixes Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">5.6. Variance Decomposition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hitting-factor-target">5.6.1. Hitting Factor target</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
