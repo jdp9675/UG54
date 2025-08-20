@@ -488,16 +488,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-time-varying-risk">15.1. Measuring Time-varying risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2. Single factor example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.2.1. Time-varying risk in a single asset (or trading strategy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.2.2. The Realized variance approach</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.2.3. The GARCH approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-taking-if-youre-the-delegate">15.1. Risk Taking If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">15.1.1. 🔁 Summary: Why This Distinction Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">15.1.2. ✅ Check Your Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">15.1.3. From Maximum Losses to Portfolio Risk</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.3. Dynamic Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.4. Risk-Budget Constraint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.5. Tracking Error Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix-estimation">15.2. Variance-Covariance Matrix Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2.1. Single factor example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-factors">15.2.2. Multiple Factors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-risk-analysis">15.3. Factor Risk  Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-risk-management">15.4. Dynamic Risk Management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.5. Single factor example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.5.1. Time-varying risk in a single asset (or trading strategy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.5.2. The Realized variance approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.5.3. The GARCH approach</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.6. Dynamic Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.7. Risk-Budget Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.8. Tracking Error Constraint</a></li>
 </ul>
             </nav>
         </div>
@@ -516,18 +528,70 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
+<span class="c1"># define functions  </span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  
+    <span class="c1"># Retrieve PERMNOs for the specified tickers</span>
+    <span class="n">permnos</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">get_table</span><span class="p">(</span><span class="n">library</span><span class="o">=</span><span class="s1">&#39;crsp&#39;</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="s1">&#39;stocknames&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;namedt&#39;</span><span class="p">,</span> <span class="s1">&#39;nameenddt&#39;</span><span class="p">])</span>
+    <span class="n">permnos</span><span class="p">[</span><span class="s1">&#39;nameenddt&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">permnos</span><span class="p">[</span><span class="s1">&#39;nameenddt&#39;</span><span class="p">])</span>
+    <span class="n">permnos</span> <span class="o">=</span> <span class="n">permnos</span><span class="p">[(</span><span class="n">permnos</span><span class="p">[</span><span class="s1">&#39;ticker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">tickers</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">permnos</span><span class="p">[</span><span class="s1">&#39;nameenddt&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">permnos</span><span class="p">[</span><span class="s1">&#39;nameenddt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+    <span class="c1"># Extract unique PERMNOs</span>
+    <span class="n">permno_list</span> <span class="o">=</span> <span class="n">permnos</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">permno_list</span><span class="p">)</span>
+
+    <span class="c1"># Query daily stock file for the specified PERMNOs</span>
+    
+    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        SELECT permno, date, ret, retx, prc       </span>
+<span class="s2">        FROM crsp.dsf</span>
+<span class="s2">        WHERE permno IN (</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="w"> </span><span class="n">permno_list</span><span class="p">))</span><span class="si">}</span><span class="s2">)</span>
+<span class="s2">        ORDER BY date,permno</span>
+<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="n">returns</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">raw_sql</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">date_cols</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+    <span class="n">returns</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">permnos</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="c1"># Pivot data to have dates as index and tickers as columns</span>
+    <span class="n">returns</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;ticker&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;ret&#39;</span><span class="p">)</span>    
+    <span class="n">returns</span><span class="o">=</span><span class="n">returns</span><span class="p">[</span><span class="n">tickers</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">returns</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_factors</span><span class="p">(</span><span class="n">ff6</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    
+    <span class="n">fama_french</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Research_Data_5_Factors_2x3_daily&quot;</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1926-01-01&quot;</span><span class="p">)</span>
+    <span class="n">daily_data</span> <span class="o">=</span> <span class="n">fama_french</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># The first DataFrame contains the daily data</span>
+    <span class="n">daily_data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">daily_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># Ensure index is datetime</span>
+    <span class="k">if</span> <span class="n">ff6</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="n">df_factor</span> <span class="o">=</span> <span class="n">daily_data</span><span class="p">[[</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]]</span>  <span class="c1"># Extract the Risk-Free Rate (RF)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df_factor</span> <span class="o">=</span> <span class="n">daily_data</span><span class="p">[[</span><span class="s1">&#39;RF&#39;</span><span class="p">,</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">,</span><span class="s1">&#39;SMB&#39;</span><span class="p">,</span><span class="s1">&#39;HML&#39;</span><span class="p">,</span><span class="s1">&#39;RMW&#39;</span><span class="p">,</span><span class="s1">&#39;CMA&#39;</span><span class="p">]]</span>
+        <span class="n">fama_french</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;F-F_Momentum_Factor_daily&quot;</span><span class="p">,</span> <span class="s2">&quot;famafrench&quot;</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;1926-01-01&quot;</span><span class="p">)</span>
+        <span class="n">df_factor</span><span class="o">=</span><span class="n">df_factor</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">fama_french</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df_factor</span><span class="o">/</span><span class="mi">100</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="risk-management">
 <h1><span class="section-number">15. </span>Risk Management<a class="headerlink" href="#risk-management" title="Link to this heading">#</a></h1>
+<p>stale text</p>
 <p>Fund managers, endowment managers, and professional delegated money managers in general very rarely can allocate capital freely</p>
 <p>It is frequently the case that the ultimate investors impose on them a variety of restriction in the investment opportunity set.</p>
 <ul class="simple">
@@ -544,8 +608,498 @@ document.write(`
 <li><p>Tracking error constraints: given a benchmark, this imposes limits on the portfolio residual risk–the volatility of the portfolio abnormal return relative to the benchmark</p></li>
 </ul>
 <p>What makes implementation of these limits challenging is that risk is highly time-varying.</p>
-<section id="measuring-time-varying-risk">
-<h2><span class="section-number">15.1. </span>Measuring Time-varying risk<a class="headerlink" href="#measuring-time-varying-risk" title="Link to this heading">#</a></h2>
+<p><strong>🎯 Learning Objectives</strong></p>
+<p>In this section we will learn how did deeper into risk management
+By the end of this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>Think about risk as a delegate</strong></p></li>
+<li><p><strong>Build portfolio risk from the ground up</strong></p></li>
+<li><p><strong>Decompose factor risk and evaluate best hedging opportunities</strong></p></li>
+<li><p><strong>Think about risk dynamically</strong></p></li>
+</ol>
+<section id="risk-taking-if-youre-the-delegate">
+<h2><span class="section-number">15.1. </span>Risk Taking If You’re the <strong>Delegate</strong><a class="headerlink" href="#risk-taking-if-youre-the-delegate" title="Link to this heading">#</a></h2>
+<p>Now imagine you’re a <strong>fund manager</strong> investing on behalf of others.</p>
+<p>You may be evaluated based on:</p>
+<ul class="simple">
+<li><p><strong>Performance relative to a benchmark</strong></p></li>
+<li><p><strong>Short-term volatility</strong></p></li>
+<li><p><strong>Client satisfaction or redemptions</strong></p></li>
+</ul>
+<p>In this case, your <strong>utility function is no longer your own</strong>. You may also face:</p>
+<ul class="simple">
+<li><p><strong>Constraints</strong> (e.g., can’t hold too much cash)</p></li>
+<li><p><strong>Reputation risks</strong> (doing poorly relative to peers)</p></li>
+<li><p><strong>Incentives</strong> tied to short-term returns</p></li>
+</ul>
+<ul class="simple">
+<li><p>The delegate certainly has <strong>stop loss rule</strong>–at some point the principal will pull the plug</p></li>
+<li><p>If the manager lose more than that amount they are forced to liquidate their positions and they are likely to be fired</p></li>
+<li><p>Such stop loss is particularly biding for new managers</p></li>
+<li><p>This stop loss might be explicit: the fund principal literally tells what it is</p></li>
+<li><p>But most likely is implicitly–there is a loss that investors will freak out and pull out</p></li>
+<li><p>You got to think for yourself and have very clearly what the number is</p></li>
+<li><p>Investing as a delegate without that number in mind is reckless</p></li>
+</ul>
+<hr class="docutils" />
+<section id="summary-why-this-distinction-matters">
+<h3><span class="section-number">15.1.1. </span>🔁 Summary: Why This Distinction Matters<a class="headerlink" href="#summary-why-this-distinction-matters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Perspective</p></th>
+<th class="head"><p>Risk Tolerance</p></th>
+<th class="head"><p>Goal</p></th>
+<th class="head"><p>Constraints</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Principal</p></td>
+<td><p>Personal</p></td>
+<td><p>Maximize lifetime utility</p></td>
+<td><p>Few (internal)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Delegate</p></td>
+<td><p>Institutional</p></td>
+<td><p>Maximize performance within mandate</p></td>
+<td><p>Many (external)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Understanding whether you’re the principal or delegate affects:</p>
+<ul class="simple">
+<li><p>Portfolio size,</p></li>
+<li><p>Reaction to volatility,</p></li>
+<li><p>Interpretation of performance metrics (like Sharpe ratios).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="check-your-understanding">
+<h3><span class="section-number">15.1.2. </span>✅ Check Your Understanding<a class="headerlink" href="#check-your-understanding" title="Link to this heading">#</a></h3>
+<p><strong>Q1</strong>: Why might a delegate choose a lower-risk portfolio than a principal?</p>
+<details>
+<summary>Click to see the answer</summary>
+Because delegates often face external constraints and career risks. Their incentives may penalize short-term underperformance, leading them to reduce exposure to volatility—even if it means lower expected returns.
+</details>
+<hr class="docutils" />
+<p>👉 In the next section, we’ll use this framework to build actual portfolios that mix risky and risk-free assets.</p>
+</section>
+<section id="from-maximum-losses-to-portfolio-risk">
+<h3><span class="section-number">15.1.3. </span>From Maximum Losses to Portfolio Risk<a class="headerlink" href="#from-maximum-losses-to-portfolio-risk" title="Link to this heading">#</a></h3>
+<p>This might have to move to capital allocation II</p>
+<ul class="simple">
+<li><p>Lets think in terms of the one-year ahead looses you are comfortable with.</p></li>
+<li><p>This can come from your internal judgment or from a stop loss reasoning</p></li>
+<li><p>Lets that you want to loose more than L (L is a number like 20%) with probability lower than p (say 5%)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Prob(rf+xr_p\leq -L)=p\]</div>
+<ul class="simple">
+<li><p>assume <span class="math notranslate nohighlight">\(rf=\mu\approx 0\)</span>–for example if the horizon is short</p></li>
+</ul>
+<p>first step is to transform our variable in into a standard normal random variable</p>
+<div class="math notranslate nohighlight">
+\[Prob(\frac{xrp}{x\sigma(rp)}\leq -\frac{L}{x\sigma(rp)})=p\]</div>
+<p>We have that <span class="math notranslate nohighlight">\(\frac{xrp}{x\sigma(rp)}\sim N(0,1)\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[F(-\frac{L}{x\sigma(rp)})=p\]</div>
+<ul class="simple">
+<li><p>Where  F is the CDF of a standard normal, and <span class="math notranslate nohighlight">\(F^{-1}\)</span> is it’s quantile function</p></li>
+<li><p>F takes a number in the real line and returns a probability</p></li>
+<li><p><span class="math notranslate nohighlight">\(F^{-1}\)</span> take a probability and returns a number in the real line</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[F^{-1}(p)x\sigma\geq-L\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[x\sigma\leq-\frac{L}{F^{-1}(p)}\]</div>
+<p>Lets do a calculation</p>
+<p>for <span class="math notranslate nohighlight">\(p=5 \%\)</span>, <span class="math notranslate nohighlight">\(L=30\%\)</span> what do we get?</p>
+<p>Note that you will need the normal quantile function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">norm</span>
+<span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.6448536269514729
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might want to incorporate your views on the portfolio expected return</p>
+<ul class="simple">
+<li><p>That is relevant in case your horizon is one year or longer.</p></li>
+<li><p>For horizons that are 1 month or shorter you are safe ignoring the expected value since the volatility totally dominates it</p></li>
+</ul>
+<p>You might adjust for deviations from normality by augmenting your losses by a factor <span class="math notranslate nohighlight">\(h\geq1\)</span></p>
+<p>The more you invest, the higher the expected growth <span class="math notranslate nohighlight">\(x\mu+rf\)</span>, but also the higher your wealth volatility <span class="math notranslate nohighlight">\(x\sigma\)</span></p>
+<div class="math notranslate nohighlight">
+\[x(hF^{-1}(p)\sigma+\mu)+rf\geq-\overline{L}\]</div>
+<div class="math notranslate nohighlight">
+\[x\sigma(hF^{-1}(p)+\frac{\mu}{\sigma})+rf\geq-\overline{L}\]</div>
+<p>Now note that <span class="math notranslate nohighlight">\(F^{-1}(p)\)</span> is a negative number and <span class="math notranslate nohighlight">\(\frac{\mu}{\sigma}\)</span> is positive</p>
+<p>Lets first assume <span class="math notranslate nohighlight">\(hF^{-1}(p)+\frac{\mu}{\sigma}&lt;0\)</span> which is the realistic case, unless you are <a class="reference external" href="https://en.wikipedia.org/wiki/Jim_Simons">James Simmons</a></p>
+<div class="math notranslate nohighlight">
+\[x\sigma\leq-\frac{\overline{L}+rf}{(hF^{-1}(p)+\frac{\mu}{\sigma})}\]</div>
+<ul class="simple">
+<li><p>A higher risk-free rate means you can take more vol (holding L fixed), since you start from a higher expected baseline</p>
+<ul>
+<li><p>It is natural to have a real rate here since you probably care about your purchasing power</p></li>
+</ul>
+</li>
+<li><p>The higher the Sharpe ratio, the less negative is <span class="math notranslate nohighlight">\(hF^{-1}(p)+\frac{\mu}{\sigma}\)</span> and the higher the volatility you choose to take</p></li>
+<li><p>The higher your SR, the less likely you hit that loss!</p></li>
+</ul>
+<p>Lets plug some numbers with <span class="math notranslate nohighlight">\(rf=1\%\)</span> and SR=0.4 ( that is the market Sharpe ratio)</p>
+<div class="math notranslate nohighlight">
+\[-\frac{0.3+0.01}{2*(-1.64)+0.4}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_sigma</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">sr</span><span class="p">,</span> <span class="n">rf</span><span class="p">):</span>
+	<span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="n">rf</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">sr</span><span class="p">)</span>
+
+<span class="nd">@interact</span><span class="p">(</span><span class="n">StopLoss</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">SharpeRatio</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_optimal_vol</span><span class="p">(</span><span class="n">StopLoss</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">SharpeRatio</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
+	<span class="n">sigma</span> <span class="o">=</span> <span class="n">calculate_sigma</span><span class="p">(</span><span class="n">StopLoss</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">SharpeRatio</span><span class="p">,</span> <span class="n">rf</span><span class="p">)</span>
+	<span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Optimal vol: </span><span class="si">{</span><span class="n">sigma</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span>
+	
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f17baacd8bd748daa3d294086439b13f", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<ul class="simple">
+<li><p>What happens if you take a 10% loss?</p></li>
+<li><p>What happens if you have a very high SR?</p></li>
+<li><p>What happens if you suddenly think returns are very fat tailed?</p></li>
+<li></li>
+</ul>
+</section>
+</section>
+<section id="variance-covariance-matrix-estimation">
+<h2><span class="section-number">15.2. </span>Variance-Covariance Matrix Estimation<a class="headerlink" href="#variance-covariance-matrix-estimation" title="Link to this heading">#</a></h2>
+<p>Say you have</p>
+<ul class="simple">
+<li><p>a vector of asset excess returns R (N by 1),</p></li>
+<li><p>weights W (N by 1),</p></li>
+</ul>
+<p>You can estimate your portfolio variance in three different ways</p>
+<ul class="simple">
+<li><p>Var(W’R): compute the portfolio in sample return variance</p></li>
+<li><p>W’Var(R)W: Compute the individual assets variance-covariance matrix</p></li>
+<li><p>Var(W’ &#64;(A+Bf+U)): Use a factor model</p></li>
+<li><p>What are the advantages and disadvantages of each approach?</p></li>
+<li><p>Which approach is unlikely to work well for funds that trade a lot?</p></li>
+<li><p>Which approach needs more data?</p></li>
+</ul>
+<section id="single-factor-example">
+<h3><span class="section-number">15.2.1. </span>Single factor example<a class="headerlink" href="#single-factor-example" title="Link to this heading">#</a></h3>
+<p>Here I will use i,j for a individual stock</p>
+<div class="math notranslate nohighlight">
+\[r^{e,i}=\alpha_i+\beta_{i,f}f+u_{i}\]</div>
+<ul class="simple">
+<li><p>non-factor component <span class="math notranslate nohighlight">\(u_i\)</span> of the asset return of asset <span class="math notranslate nohighlight">\(i\)</span>. Assumed to uncorrelated between any two assets</p></li>
+</ul>
+<p>Now this is just a regression!</p>
+<p>We have that</p>
+<div class="math notranslate nohighlight">
+\[Var(r^{e,i})=\beta_i^2Var(f)+var(u_{i})\]</div>
+<p>Now to harvest the power of the factor model for risk management we need to make a big assumption</p>
+<div class="math notranslate nohighlight">
+\[cov(u_{i,t},u_{j,t})=0\]</div>
+<p>The assumption here is that our factors–in this case a single factor–captures all the co-movement across stocks</p>
+<p>This is very strong assumption if you just have a single factor</p>
+<p>But gets closer to the truth as you saturate the model with factors (funds use 10-100 factors!)</p>
+<p>This assumption is essential to make progress otherwise we are just moving the estimation problem</p>
+<p>With this assumption pairwise covariances are fully captured by the factor exposures</p>
+<div class="math notranslate nohighlight">
+\[Cov(r_t^{e,i},r_t^{e,j})=Cov(\alpha_i+\beta_{i}f_t+u_{i,t},\alpha_j+\beta_{j}f_t+u_{j,t})=\beta_i\beta_jVar(f_t)\]</div>
+<p>And the covariance matrix is simply</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left[\begin{array}{cc}
+\beta_i^2 &amp; \beta_i\beta_j \\
+\beta_i\beta_j &amp;  \beta_j^2 
+\end{array}\right]var(f_t)+\left[\begin{array}{cc}
+var(\epsilon_{i,t}) &amp; 0 \\
+0&amp;  var(\epsilon_{j,t})
+\end{array}\right]\end{split}\]</div>
+<p>We see that now for N assets we only need to estimate N factor exposures, N asset specific volatilities , and the factor volatility</p>
+<p>If we were estimating a variance-covariance matrix without imposing the factor model we would have to estimate N covariances and <span class="math notranslate nohighlight">\((N^2-N)/2\)</span> covariance terms: <span class="math notranslate nohighlight">\(2N+1\)</span> vs <span class="math notranslate nohighlight">\((N^2-N)/2+N\)</span> is huge as N grows</p>
+<blockquote>
+<div><p><strong>Practice</strong></p>
+<ul class="simple">
+<li><p>Choose a a few tickers  tickers you like plus SPY</p></li>
+<li><p>Estimate their unrestricted covariance matrix</p></li>
+<li><p>Estimate the single-factor model (single factor=SPY)</p></li>
+<li><p>Build the factor implied covariance matrix</p></li>
+<li><p>Can you compare the number of parameters you need to estimate in each case</p></li>
+<li><p>Can you discuss if it such model is a good one in this case</p></li>
+<li><p>Can you calculate the implied portfolio variance for a set of weights of your choosing?</p></li>
+</ul>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataReader</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+
+
+<span class="c1"># first we connect with WRDS database using the wrds package so we need to install it first and import it</span>
+<span class="o">%</span><span class="k">pip</span> install wrds
+<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
+<span class="c1"># lets connect with  the wrds database</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
+
+<span class="c1"># get our stock returns</span>
+<span class="n">Tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">,</span><span class="s1">&#39;AAPL&#39;</span><span class="p">,</span><span class="s1">&#39;MSFT&#39;</span><span class="p">,</span><span class="s1">&#39;GOOGL&#39;</span><span class="p">,</span><span class="s1">&#39;AMZN&#39;</span><span class="p">,</span><span class="s1">&#39;META&#39;</span><span class="p">,</span><span class="s1">&#39;TSLA&#39;</span><span class="p">,</span><span class="s1">&#39;NVDA&#39;</span><span class="p">,</span><span class="s1">&#39;BRK.B&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="n">Tickers</span><span class="p">)</span>
+
+<span class="c1"># GET RISK FREE RATE</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Start date (adjust as needed)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>          <span class="c1"># End date</span>
+<span class="n">df_rf</span> <span class="o">=</span> <span class="n">DataReader</span><span class="p">(</span><span class="s2">&quot;DGS3MO&quot;</span><span class="p">,</span> <span class="s2">&quot;fred&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;rf&quot;</span><span class="p">]</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">=</span><span class="n">df_rf</span><span class="o">.</span><span class="n">rf</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">df_rf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># merge with the risk-free rate</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rf</span><span class="o">/</span><span class="mi">252</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="n">df_re</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;rf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rf&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_re</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" src="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_ff6</span><span class="o">=</span><span class="n">get_factors</span><span class="p">(</span><span class="s1">&#39;ff6&#39;</span><span class="p">,</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;daily&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span>
+<span class="n">df_ff6</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+
+<span class="c1"># Define the factors and the market factor</span>
+
+<span class="n">factor</span> <span class="o">=</span> <span class="s1">&#39;Mkt-RF&#39;</span>
+<span class="n">df_factor</span><span class="o">=</span><span class="n">df_ff6</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span>
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_factor</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">df_merged</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+
+
+<span class="c1"># Initialize lists to store the results</span>
+
+<span class="n">Beta</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Alpha_se</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Run univariate regressions</span>
+<span class="c1"># here we are running a regression of each factor on the market factor</span>
+<span class="k">for</span> <span class="n">stock</span> <span class="ow">in</span> <span class="n">Tickers</span><span class="p">:</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="n">factor</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">stock</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">Beta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">factor</span><span class="p">])</span>
+    <span class="c1"># I am storying the entire time-series of residuals</span>
+    <span class="n">residuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+
+
+<span class="n">Beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Beta</span><span class="p">)</span>
+
+<span class="n">VarF</span><span class="o">=</span><span class="n">df_merged</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="c1"># Calculate the variance-covariance matrix of the residuals</span>
+<span class="n">residuals_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
+<span class="n">VarU</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">residuals_matrix</span><span class="p">)</span>
+<span class="c1">#now under the assumption that the residuals are uncorrelated ( they are not!)</span>
+
+
+<span class="n">VarU_uncorr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">residuals_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Beta:&quot;</span><span class="p">,</span> <span class="n">Beta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VarU:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VarU</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VarU_uncorr:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VarU_uncorr</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alpha: [0.00324195 0.04349594 0.03955175 0.04143328 0.08341451]
+Beta: [ 0.19954208 -0.13719646 -0.09352601 -0.16246303 -0.16205943]
+Sigma_e:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.00563313e-02, -9.24337485e-04, -2.82466739e-03,
+        -5.14453377e-04,  1.36587317e-06],
+       [-9.24337485e-04,  1.01484903e-02,  3.74978561e-04,
+         4.47136746e-03, -3.41595108e-03],
+       [-2.82466739e-03,  3.74978561e-04,  5.70013428e-03,
+        -3.92044656e-04,  5.51842057e-04],
+       [-5.14453377e-04,  4.47136746e-03, -3.92044656e-04,
+         4.46193077e-03, -7.83303223e-04],
+       [ 1.36587317e-06, -3.41595108e-03,  5.51842057e-04,
+        -7.83303223e-04,  2.03162979e-02]])
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sigma_e_uncorr:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00083899, 0.        , 0.        , ..., 0.        , 0.        ,
+        0.        ],
+       [0.        , 0.00270649, 0.        , ..., 0.        , 0.        ,
+        0.        ],
+       [0.        , 0.        , 0.00027303, ..., 0.        , 0.        ,
+        0.        ],
+       ...,
+       [0.        , 0.        , 0.        , ..., 0.01326286, 0.        ,
+        0.        ],
+       [0.        , 0.        , 0.        , ..., 0.        , 0.00629202,
+        0.        ],
+       [0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+        0.00475249]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="multiple-factors">
+<h3><span class="section-number">15.2.2. </span>Multiple Factors<a class="headerlink" href="#multiple-factors" title="Link to this heading">#</a></h3>
+<p>Say you have</p>
+<ul class="simple">
+<li><p>factor loadings B now are a matrix (N by M),</p></li>
+<li><p>f is now a vector with M factors (M by 1)</p></li>
+</ul>
+<p>Then I can write my portfolio return as</p>
+<div class="math notranslate nohighlight">
+\[r_p=W.T &#64;R=W.T &#64;(A+Bf+U)\]</div>
+<p>Because <span class="math notranslate nohighlight">\(E[U]=0\)</span>, Thus it follows that</p>
+<div class="math notranslate nohighlight">
+\[E[r_p]=W.T &#64;(A+BE[f])\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[Var[r_p]=Var(W.T &#64;(A+Bf+U))=(W.T&#64;B)&#64;Var(f)&#64;(B.T&#64;W).T+W.T&#64;Var(U)&#64;W\]</div>
+<ul class="simple">
+<li><p>(W.T&#64;B) is a 1 by M vector or your portfolio betas with respect to each of the M factors–it is just a weighted average of the asset betas!</p></li>
+<li><p>Var(f) is an M by M variance-covariance matrix</p></li>
+</ul>
+<p>You can also just think of this as the weights multiplying the factor-implied variance-covariance matrix</p>
+<div class="math notranslate nohighlight">
+\[Var[r_p]=Var(W.T &#64;(A+Bf+U))=W.T&#64; Var(Bf+U)&#64;W=W.T(B&#64;Var(f)B.T+Var(U))&#64;W\]</div>
+<p>Now pick a portfolio W and use all the 6 factors</p>
+<ul class="simple">
+<li><p>what this is the total portfolio variance?</p></li>
+<li><p>What is systematic risk share?</p></li>
+</ul>
+<p>Lets now use all the six factors in our model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor</span> <span class="o">=</span> <span class="s1">&#39;Mkt-RF&#39;</span>
+<span class="n">factors</span><span class="o">=</span><span class="n">df_ff6</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_ff6</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">df_merged</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Beta</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Alpha_se</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Run univariate regressions</span>
+<span class="c1"># here we are running a regression of each factor on the market factor</span>
+<span class="k">for</span> <span class="n">stock</span> <span class="ow">in</span> <span class="n">Tickers</span><span class="p">:</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="n">factors</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">stock</span><span class="p">]</span><span class="n">s</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">Beta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">factors</span><span class="p">])</span>
+    <span class="c1"># I am storying the entire time-series of residuals</span>
+    <span class="n">residuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+
+
+<span class="n">Beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">Beta</span><span class="p">)</span>
+
+<span class="c1"># Calculate the variance-covariance matrix of the residuals</span>
+<span class="n">residuals_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
+<span class="n">VarF</span><span class="o">=</span><span class="n">df_merged</span><span class="p">[</span><span class="n">factors</span><span class="p">]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span> 
+<span class="c1"># why not .var()?</span>
+<span class="n">VarU</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">residuals_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Beta:&quot;</span><span class="p">,</span> <span class="n">Beta</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VarU:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VarU</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VarF:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VarF</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">stock</span><span class="p">]</span><span class="n">s</span>
+                        <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p>Can you construct the variance of the portfolio?</p>
+</section>
+</section>
+<section id="factor-risk-analysis">
+<h2><span class="section-number">15.3. </span>Factor Risk  Analysis<a class="headerlink" href="#factor-risk-analysis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What each asset is contributing to my overall portfolio risk?</p></li>
+<li><p>what is the asset that at the margin contributes the most?</p></li>
+<li><p>If I want to reduce my factor risk, what is the asset that would reduce it most efficiently?</p></li>
+<li><p>For that we can compute</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{\Delta Var[r_p]}{\Delta W}=2B&#64;Var(f)(B.T &#64;W)+2Var(U)&#64;W\]</div>
+<p>This is a vector where each entry tells you the increase in risk produced my a marginal increase in each asset</p>
+<p>So the highest number in this vector tell us what is the asset that allows us to achieve the highest risk reduction per change in position</p>
+<p>Lets apply this to our problem</p>
+<p>Suppose I am interested in reducing the risk in a particular factor</p>
+<p>The portfolio factor risk is</p>
+<div class="math notranslate nohighlight">
+\[ cov(r_p,f)=cov(W'BF+u,I(i)F)=W'BVar(F)I(i)'\]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(I(i)\)</span> is a vector that picks the relevant factor</p></li>
+<li><p>Note that W’B is an 1 by M beta vector–the multi-factor betas of your portfolio</p></li>
+<li><p>W’BVar(F) is a 1 by M vector of covariances</p></li>
+<li><p>So W’BVar(F)I(i)’ simply selects the ith covariance, i.e. <span class="math notranslate nohighlight">\([W'BVar(F)]_i\)</span></p></li>
+<li><p>My risk limit can be absolute: <span class="math notranslate nohighlight">\([W'BVar(F)]_i\)</span> times the size of my position</p></li>
+</ul>
+<p>In this case the direction of steepest reduction in factor i risk is</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\([BVar(F)]_i\)</span>: if the factors were uncorrelated, the asset beta would be all I needed, but in general we see that the factor covariances will matter as well</p></li>
+<li><p>my risk-limit can be also a share of total:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{[W'BVar(F)]_i}{W.T(B&#64;Var(f)B.T+Var(U))&#64;W}\]</div>
+</section>
+<section id="dynamic-risk-management">
+<h2><span class="section-number">15.4. </span>Dynamic Risk Management<a class="headerlink" href="#dynamic-risk-management" title="Link to this heading">#</a></h2>
 <p>The variance of a portfolio is</p>
 <div class="math notranslate nohighlight">
 \[Var_t(X_tR^e_{t+1})\]</div>
@@ -570,8 +1124,8 @@ document.write(`
 <li><p>For each asset specific idiosyncratic volatility</p></li>
 </ul>
 </section>
-<section id="single-factor-example">
-<h2><span class="section-number">15.2. </span>Single factor example<a class="headerlink" href="#single-factor-example" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2><span class="section-number">15.5. </span>Single factor example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>We should never use a single factor if your goal is risk-management</p>
 <p>The goal here is to saturate the model so that the residuals are really uncorrelated</p>
 <p>But single factor makes for easier math :)</p>
@@ -602,7 +1156,7 @@ document.write(`
 </ul>
 <p>Note: These are all assumptions. You have to check if they are good approximation and ultimate if indeed they help you forecast the variance of your portfolio!</p>
 <section id="time-varying-risk-in-a-single-asset-or-trading-strategy">
-<h3><span class="section-number">15.2.1. </span>Time-varying risk in a single asset (or trading strategy)<a class="headerlink" href="#time-varying-risk-in-a-single-asset-or-trading-strategy" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.5.1. </span>Time-varying risk in a single asset (or trading strategy)<a class="headerlink" href="#time-varying-risk-in-a-single-asset-or-trading-strategy" title="Link to this heading">#</a></h3>
 <p>There are two main approaches we can take</p>
 <ul class="simple">
 <li><p>Realized Variance</p></li>
@@ -610,7 +1164,7 @@ document.write(`
 </ul>
 </section>
 <section id="the-realized-variance-approach">
-<h3><span class="section-number">15.2.2. </span>The Realized variance approach<a class="headerlink" href="#the-realized-variance-approach" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.5.2. </span>The Realized variance approach<a class="headerlink" href="#the-realized-variance-approach" title="Link to this heading">#</a></h3>
 <p>Say you have daily data on the returns of an asset <span class="math notranslate nohighlight">\(R_{t}\)</span>. The realized variance is defined as:</p>
 <div class="math notranslate nohighlight">
 \[RV_{t} = \sum_{i=1}^{N} R_{t-i}^{2}\]</div>
@@ -1010,7 +1564,7 @@ Notes:
 <p>CLUE: What happen with the sample?</p>
 </section>
 <section id="the-garch-approach">
-<h3><span class="section-number">15.2.3. </span>The GARCH approach<a class="headerlink" href="#the-garch-approach" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.5.3. </span>The GARCH approach<a class="headerlink" href="#the-garch-approach" title="Link to this heading">#</a></h3>
 <p>The GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model is a popular statistical model used for predicting and modeling the volatility, or variance, of financial time series data. It is widely used in finance and risk management to estimate and forecast the volatility of asset returns.</p>
 <p>The GARCH model takes into account both the past values of the time series and the past values of the conditional variance itself.</p>
 <p>The GARCH model is typically expressed as follows:</p>
@@ -1275,7 +1829,7 @@ to globally set reindex to True and silence this warning.
 </section>
 </section>
 <section id="dynamic-portfolios">
-<h2><span class="section-number">15.3. </span>Dynamic Portfolios<a class="headerlink" href="#dynamic-portfolios" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.6. </span>Dynamic Portfolios<a class="headerlink" href="#dynamic-portfolios" title="Link to this heading">#</a></h2>
 <p>The key idea here will be to use the factor structure idea for returns together with a GARCH or RV model for the market return volatility.</p>
 <p>The idea here is</p>
 <ul class="simple">
@@ -1327,7 +1881,7 @@ You can get quite sophisticated.</p>
 <p>Note: These are all assumptions. You have to check if they are good approximation and ultimate if indeed they help you forecast the variance of your portfolio!</p>
 </section>
 <section id="risk-budget-constraint">
-<h2><span class="section-number">15.4. </span>Risk-Budget Constraint<a class="headerlink" href="#risk-budget-constraint" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.7. </span>Risk-Budget Constraint<a class="headerlink" href="#risk-budget-constraint" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>How this is used in practice?</p></li>
 <li><p>In practice a fund or a “trading pod” is allocated some capital and some maximum risk-limits</p></li>
@@ -1344,7 +1898,7 @@ You can get quite sophisticated.</p>
 </ul>
 </section>
 <section id="tracking-error-constraint">
-<h2><span class="section-number">15.5. </span>Tracking Error Constraint<a class="headerlink" href="#tracking-error-constraint" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.8. </span>Tracking Error Constraint<a class="headerlink" href="#tracking-error-constraint" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>One can use exactly the same model to compute the tracking error</p></li>
 <li><p>it is simply the volatility of a relative return</p></li>
@@ -1429,16 +1983,28 @@ You can get quite sophisticated.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-time-varying-risk">15.1. Measuring Time-varying risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2. Single factor example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.2.1. Time-varying risk in a single asset (or trading strategy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.2.2. The Realized variance approach</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.2.3. The GARCH approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-taking-if-youre-the-delegate">15.1. Risk Taking If You’re the <strong>Delegate</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">15.1.1. 🔁 Summary: Why This Distinction Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">15.1.2. ✅ Check Your Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">15.1.3. From Maximum Losses to Portfolio Risk</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.3. Dynamic Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.4. Risk-Budget Constraint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.5. Tracking Error Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix-estimation">15.2. Variance-Covariance Matrix Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2.1. Single factor example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-factors">15.2.2. Multiple Factors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-risk-analysis">15.3. Factor Risk  Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-risk-management">15.4. Dynamic Risk Management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.5. Single factor example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.5.1. Time-varying risk in a single asset (or trading strategy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.5.2. The Realized variance approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.5.3. The GARCH approach</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.6. Dynamic Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.7. Risk-Budget Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.8. Tracking Error Constraint</a></li>
 </ul>
   </nav></div>
 
