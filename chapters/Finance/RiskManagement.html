@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. Risk Management and Capital Allocation &#8212; Quantitative Investing</title>
+    <title>15. Risk Management &#8212; Quantitative Investing</title>
   
   
   
@@ -478,7 +478,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Risk Management and Capital Allocation</h1>
+    <h1>Risk Management</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -488,15 +488,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-time-varying-risk">15.1. Measuring Time-varying risk</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.1.1. Time-varying risk in a single asset (or trading strategy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.1.2. The Realized variance approach</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.1.3. The GARCH approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-time-varying-risk">15.1. Measuring Time-varying risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2. Single factor example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.2.1. Time-varying risk in a single asset (or trading strategy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.2.2. The Realized variance approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.2.3. The GARCH approach</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.2. Dynamic Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.3. Risk-Budget Constraint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.4. Tracking Error Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.3. Dynamic Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.4. Risk-Budget Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.5. Tracking Error Constraint</a></li>
 </ul>
             </nav>
         </div>
@@ -525,8 +526,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="risk-management-and-capital-allocation">
-<h1><span class="section-number">15. </span>Risk Management and Capital Allocation<a class="headerlink" href="#risk-management-and-capital-allocation" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="risk-management">
+<h1><span class="section-number">15. </span>Risk Management<a class="headerlink" href="#risk-management" title="Link to this heading">#</a></h1>
 <p>Fund managers, endowment managers, and professional delegated money managers in general very rarely can allocate capital freely</p>
 <p>It is frequently the case that the ultimate investors impose on them a variety of restriction in the investment opportunity set.</p>
 <ul class="simple">
@@ -543,7 +544,6 @@ document.write(`
 <li><p>Tracking error constraints: given a benchmark, this imposes limits on the portfolio residual risk–the volatility of the portfolio abnormal return relative to the benchmark</p></li>
 </ul>
 <p>What makes implementation of these limits challenging is that risk is highly time-varying.</p>
-<p>We start discussing a very standard approach to measure risk</p>
 <section id="measuring-time-varying-risk">
 <h2><span class="section-number">15.1. </span>Measuring Time-varying risk<a class="headerlink" href="#measuring-time-varying-risk" title="Link to this heading">#</a></h2>
 <p>The variance of a portfolio is</p>
@@ -555,8 +555,54 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(R_{t+1}\)</span> is the vector of asset excess returns during the holding period, i.e. from date <span class="math notranslate nohighlight">\(t\)</span> to date <span class="math notranslate nohighlight">\(t+1\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(Var_t() denotes the variance of this random variable given all we know in date \)</span>t$</p></li>
 </ul>
+<p>The idea here is</p>
+<ul class="simple">
+<li><p>Correlations do change, but they change slower than variance so we will use standard rolling window to estimate correlations–essentially assuming that they are constant in our forecast horizon.</p></li>
+<li><p>And use our model to forecast the the variance</p></li>
+</ul>
+<p>IF returns have a factor structure we have</p>
+<div class="math notranslate nohighlight">
+\[Var_t(R_{t+1})=Var(\beta_t F_{t+1}+u_{t+1})=\beta_t Var_t(F) \beta_t'+Var_t(u)\]</div>
+<p>We thus need to produce time-varying estimates</p>
+<ul class="simple">
+<li><p>For betas</p></li>
+<li><p>For factor covariance matrix</p></li>
+<li><p>For each asset specific idiosyncratic volatility</p></li>
+</ul>
+</section>
+<section id="single-factor-example">
+<h2><span class="section-number">15.2. </span>Single factor example<a class="headerlink" href="#single-factor-example" title="Link to this heading">#</a></h2>
+<p>We should never use a single factor if your goal is risk-management</p>
+<p>The goal here is to saturate the model so that the residuals are really uncorrelated</p>
+<p>But single factor makes for easier math :)</p>
+<div class="math notranslate nohighlight">
+\[Var_t(R_{t+1})=\beta_{t} \beta_{t}'\sigma^2_{f,t} +\Sigma_{u,t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Sigma_{u,t}\)</span> is a diagonal matrix</p>
+<p>so our portfolio is</p>
+<div class="math notranslate nohighlight">
+\[Var_t(X_t'R_{t+1})=X_t'\beta_{t} \beta_{t}'X_t\sigma^2_{f,t} +X_t'\Sigma_{u,t}X_t\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_p=X_t'\beta_{t}\)</span> is the beta of your portfolio (given holdings at date t)</p></li>
+</ul>
+<blockquote>
+<div><p>Why not simply estimate your portfolio beta directly?</p>
+</div></blockquote>
+<p>To get started:</p>
+<ul class="simple">
+<li><p>Rolling 5 year window estimate for the betas</p></li>
+<li><p>Assume variances move together with the market variance</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Sigma_{u,t}=\Sigma_{u}*\frac{\sigma^2_{market,t}}{\sigma^2_{market}}\]</div>
+<div class="math notranslate nohighlight">
+\[\Sigma_{F,t}=\Sigma_{F}*\frac{\sigma^2_{market,t}}{\sigma^2_{market}}\]</div>
+<ul class="simple">
+<li><p>Invest in trying to forecast market variance well</p></li>
+<li><p>use factor model to extrapolate implications to variance-covariance matrix</p></li>
+</ul>
+<p>Note: These are all assumptions. You have to check if they are good approximation and ultimate if indeed they help you forecast the variance of your portfolio!</p>
 <section id="time-varying-risk-in-a-single-asset-or-trading-strategy">
-<h3><span class="section-number">15.1.1. </span>Time-varying risk in a single asset (or trading strategy)<a class="headerlink" href="#time-varying-risk-in-a-single-asset-or-trading-strategy" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.2.1. </span>Time-varying risk in a single asset (or trading strategy)<a class="headerlink" href="#time-varying-risk-in-a-single-asset-or-trading-strategy" title="Link to this heading">#</a></h3>
 <p>There are two main approaches we can take</p>
 <ul class="simple">
 <li><p>Realized Variance</p></li>
@@ -564,7 +610,7 @@ document.write(`
 </ul>
 </section>
 <section id="the-realized-variance-approach">
-<h3><span class="section-number">15.1.2. </span>The Realized variance approach<a class="headerlink" href="#the-realized-variance-approach" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.2.2. </span>The Realized variance approach<a class="headerlink" href="#the-realized-variance-approach" title="Link to this heading">#</a></h3>
 <p>Say you have daily data on the returns of an asset <span class="math notranslate nohighlight">\(R_{t}\)</span>. The realized variance is defined as:</p>
 <div class="math notranslate nohighlight">
 \[RV_{t} = \sum_{i=1}^{N} R_{t-i}^{2}\]</div>
@@ -964,7 +1010,7 @@ Notes:
 <p>CLUE: What happen with the sample?</p>
 </section>
 <section id="the-garch-approach">
-<h3><span class="section-number">15.1.3. </span>The GARCH approach<a class="headerlink" href="#the-garch-approach" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">15.2.3. </span>The GARCH approach<a class="headerlink" href="#the-garch-approach" title="Link to this heading">#</a></h3>
 <p>The GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model is a popular statistical model used for predicting and modeling the volatility, or variance, of financial time series data. It is widely used in finance and risk management to estimate and forecast the volatility of asset returns.</p>
 <p>The GARCH model takes into account both the past values of the time series and the past values of the conditional variance itself.</p>
 <p>The GARCH model is typically expressed as follows:</p>
@@ -1229,7 +1275,7 @@ to globally set reindex to True and silence this warning.
 </section>
 </section>
 <section id="dynamic-portfolios">
-<h2><span class="section-number">15.2. </span>Dynamic Portfolios<a class="headerlink" href="#dynamic-portfolios" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.3. </span>Dynamic Portfolios<a class="headerlink" href="#dynamic-portfolios" title="Link to this heading">#</a></h2>
 <p>The key idea here will be to use the factor structure idea for returns together with a GARCH or RV model for the market return volatility.</p>
 <p>The idea here is</p>
 <ul class="simple">
@@ -1281,7 +1327,7 @@ You can get quite sophisticated.</p>
 <p>Note: These are all assumptions. You have to check if they are good approximation and ultimate if indeed they help you forecast the variance of your portfolio!</p>
 </section>
 <section id="risk-budget-constraint">
-<h2><span class="section-number">15.3. </span>Risk-Budget Constraint<a class="headerlink" href="#risk-budget-constraint" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.4. </span>Risk-Budget Constraint<a class="headerlink" href="#risk-budget-constraint" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>How this is used in practice?</p></li>
 <li><p>In practice a fund or a “trading pod” is allocated some capital and some maximum risk-limits</p></li>
@@ -1298,7 +1344,7 @@ You can get quite sophisticated.</p>
 </ul>
 </section>
 <section id="tracking-error-constraint">
-<h2><span class="section-number">15.4. </span>Tracking Error Constraint<a class="headerlink" href="#tracking-error-constraint" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.5. </span>Tracking Error Constraint<a class="headerlink" href="#tracking-error-constraint" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>One can use exactly the same model to compute the tracking error</p></li>
 <li><p>it is simply the volatility of a relative return</p></li>
@@ -1383,15 +1429,16 @@ You can get quite sophisticated.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-time-varying-risk">15.1. Measuring Time-varying risk</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.1.1. Time-varying risk in a single asset (or trading strategy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.1.2. The Realized variance approach</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.1.3. The GARCH approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-time-varying-risk">15.1. Measuring Time-varying risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2. Single factor example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.2.1. Time-varying risk in a single asset (or trading strategy)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.2.2. The Realized variance approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.2.3. The GARCH approach</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.2. Dynamic Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.3. Risk-Budget Constraint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.4. Tracking Error Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.3. Dynamic Portfolios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.4. Risk-Budget Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.5. Tracking Error Constraint</a></li>
 </ul>
   </nav></div>
 
