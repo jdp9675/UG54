@@ -105,25 +105,27 @@ sections:
       title: Interpreting Factor Models
 - file: chapters/Finance/RiskManagement
   title: Risk Management
-- file: chapters/Finance/Tradingcosts
-  title: Trading Cost Management
+- file: chapters/Finance/TradingCosts
+  title: Liquidity and Trading Cost Management
 - file: chapters/Finance/LeverageandShorting
   title: Leverage, Shorting, and Limits to Arbitrage
+- file: chapters/Finance/GenAIandLLMsinFinance
+  title: Gen AI and LLMs in Finance
 - file: chapters/additional/additional
   title: Additional Statistics Material
 - file: chapters/Assignments/Assignments
   title: Assignments
   sections:
-  - file: chapters/Assignments/Assignment0
-    title: Assignment 0
   - file: chapters/Assignments/Assignment1
     title: Assignment 1
-  - file: chapters/Assignments/Assignment2
-    title: Assignment 2
-  - file: chapters/Assignments/Assignment3
-    title: Assignment 3
-  - file: chapters/Assignments/Assignment4
-    title: Assignment 4
+  # - file: chapters/Assignments/Assignment1
+  #   title: Assignment 1
+  # - file: chapters/Assignments/Assignment2
+  #   title: Assignment 2
+  # - file: chapters/Assignments/Assignment3
+  #   title: Assignment 3
+  # - file: chapters/Assignments/Assignment4
+  #   title: Assignment 4
   # - file: chapters/Assignments/Assignment5
   #   title: Assignment 5
   # - file: chapters/Assignments/Final Project
