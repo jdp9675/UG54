@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assignment 3 &#8212; Quantitative Investing</title>
+    <title>18. Gen AI and LLMs in Finance &#8212; Quantitative Investing</title>
   
   
   
@@ -58,11 +58,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Assignments old/Assignment3';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Assignments old/Assignment3.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/GenAIandLLMsinFinance';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/GenAIandLLMsinFinance.html" />
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="19. Additional Statistics Material" href="../additional/additional.html" />
+    <link rel="prev" title="17. Levering up and Shorting" href="LeverageandShorting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +127,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -174,7 +174,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01/what-is-quant-investing.html">1. What is Quantitative Investing?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01/statistical-techniques.html">1.1. Statistical Techniques</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01/computational-tools.html">1.2. Computational tools</a></li>
@@ -205,42 +205,42 @@
 <li class="toctree-l2"><a class="reference internal" href="../essentials/plotting.html">3.7. Plotting</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/IntrotoReturns.html">4. Introduction to Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/UsingAPI.html">4.5. Data APIs</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="IntrotoReturns.html">4. Introduction to Asset Returns</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="TheChoiceofFrequency.html">4.4. The Choice of Frequency and Annualization of Returns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingAPI.html">4.5. Data APIs</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/FactorModels.html">5. Factor Models</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/PortfolioMath.html">6. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1"><a class="reference internal" href="FactorModels.html">5. Factor Models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="PortfolioMath.html">6. Portfolios</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../scientific/linear_algebra1.html">6.5. Linear Algebra Review</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/CapitalAllocationI.html">7. Capital Allocation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/FactorModelEstimation.html">8. Factor Model Estimation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/Timing.html">9. Timing Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/MarketTiming.html">9.1. Expected Returns Timing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Volatilitytiming.html">9.2. Volatility Timing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CapitalAllocationI.html">7. Capital Allocation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FactorModelEstimation.html">8. Factor Model Estimation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Timing.html">9. Timing Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="MarketTiming.html">9.1. Expected Returns Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Volatilitytiming.html">9.2. Volatility Timing</a></li>
 
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/crosssectionalequitystrategies.html">10. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Momentum.html">10.3. Momentum factor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/Factors.html">10.4. An overview of factors</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="crosssectionalequitystrategies.html">10. Cross-Sectional Equity Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Momentum.html">10.3. Momentum factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Factors.html">10.4. An overview of factors</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/CapitalAllocationII.html">11. Capital Allocation II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/Performance_evaluation.html">12. Performance Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/MachineLearning.html">13. Machine Learning in Finance</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Finance/MultiFactorModels.html">14. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Finance/InterpretingFactorModels.html">14.6. 📊 Interpreting Factor Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CapitalAllocationII.html">11. Capital Allocation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Performance_evaluation.html">12. Performance Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">13. Machine Learning in Finance</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">14. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">14.6. 📊 Interpreting Factor Models</a></li>
 
 
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/RiskManagement.html">15. Risk Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/TradingCosts.html">16. Liquidity and Trading Cost Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/LeverageandShorting.html">17. Leverage, Shorting, and Limits to Arbitrage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Finance/GenAIandLLMsinFinance.html">18. Gen AI and LLMs in Finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RiskManagement.html">15. Risk Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TradingCosts.html">16. Liquidity and Trading Cost Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LeverageandShorting.html">17. Leverage, Shorting, and Limits to Arbitrage</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Gen AI and LLMs in Finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/additional.html">19. Additional Statistics Material</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Assignments/Assignments.html">20. Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Assignments/Assignment1.html">20.1. Assigment 0</a></li>
@@ -304,7 +304,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Assignments old/Assignment3.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/GenAIandLLMsinFinance.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -352,7 +352,7 @@
       
       
       
-      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Assignments old/Assignment3.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/GenAIandLLMsinFinance.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -382,7 +382,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/Assignments old/Assignment3.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/Finance/GenAIandLLMsinFinance.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -453,9 +453,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -466,23 +464,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment 3</h1>
+    <h1>Gen AI and LLMs in Finance</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 3</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-forum-assignment">Discussion Forum Assignment</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -492,188 +478,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-3">
-<h1>Assignment 3<a class="headerlink" href="#assignment-3" title="Link to this heading">#</a></h1>
-<p>Instructions: This problem set should be done individually.</p>
-<p>Answer each question in the designated space below.</p>
-<p>After you are done, save and upload in blackboard.</p>
-<p>Please check that you are submitting the correct file. One way to avoid mistakes is to save it with a different name.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="write-your-name-and-simon-email">
-<h1>Write your name and simon email<a class="headerlink" href="#write-your-name-and-simon-email" title="Link to this heading">#</a></h1>
-<p>Please write names below</p>
-<ul class="simple">
-<li><p>[Name]:</p></li>
-<li><p>[email]:</p></li>
-</ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="discussion-forum-assignment">
-<h1>Discussion Forum Assignment<a class="headerlink" href="#discussion-forum-assignment" title="Link to this heading">#</a></h1>
-<p>Click on the “Market Efficiency” link in the discussion forum assignment</p>
-<p><a class="reference external" href="https://edstem.org/us/courses/30665/discussion/1972568">https://edstem.org/us/courses/30665/discussion/1972568</a></p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
-<p><strong>Exercise 1.</strong></p>
-<p>Start by importing pandas and loading the data set.</p>
-<p>The dataset has address <code class="docutils literal notranslate"><span class="pre">https://raw.githubusercontent.com/amoreira2/Lectures/main/assets/data/CAhousing.csv</span></code></p>
-<p>Name <code class="docutils literal notranslate"><span class="pre">housing</span></code> this dataset, then print <code class="docutils literal notranslate"><span class="pre">print(housing)</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="c1"># import data here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 2.</strong></p>
-<p>Print the first 5 rows of the dataframe.</p>
-<p>Hint: use <code class="docutils literal notranslate"><span class="pre">head</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 3.</strong></p>
-<p>Write a Pandas program to find the number of rows and columns and data type of each column of housing DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of rows and columns:&quot;</span><span class="p">)</span>
-<span class="c1"># your code here</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data type of each column:&quot;</span><span class="p">)</span>
-<span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 4.</strong></p>
-<p>Write a Pandas program to combine longitude and latitude into one new column. Name the new column ‘Coordinates’. Each value has the format of <code class="docutils literal notranslate"><span class="pre">[longitude,latitude]</span></code>. For example, the first row has the value of <code class="docutils literal notranslate"><span class="pre">[-122.23,37.88]</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 5.</strong></p>
-<p>Write a Pandas program to set the column of <code class="docutils literal notranslate"><span class="pre">population</span></code> as the index of the DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">housing</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 6.</strong></p>
-<p>Reimport the data to drop the changes in the preceding exercises.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import data here</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">housing</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 7.</strong></p>
-<p>create a new column, call it “incomeLevel”, assign values using the following rule:</p>
-<ul class="simple">
-<li><p>“Low” if medianIncome is at the bottom the 25th percentile</p></li>
-<li><p>“Below Median” if medianIncome is above the 25th percentile but below the 50th percentile</p></li>
-<li><p>“Above Median” if medianIncome is above the 50th percentile but below the 75th percentile</p></li>
-<li><p>“High” if medianIncome is at the top 25th percentile</p></li>
-</ul>
-<p>Hint: use <code class="docutils literal notranslate"><span class="pre">quantile</span></code> function</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">housing</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 8.</strong>(hard)</p>
-<p>Write a Pandas program and use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to calculate count, minimum, maximum for medianHouseValue for each category of incomeLevel</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 9.</strong></p>
-<p>Write a Pandas program to show the data where the incomeLevel is either ‘High’ or ‘Above Median’.</p>
-<p>Hint: try using <code class="docutils literal notranslate"><span class="pre">isin</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 10.</strong></p>
-<p>Write a Pandas program to read rows 0 through 2 (inclusive), columns ‘totalRooms’ and ‘totalBedrooms’ of the DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 11.</strong></p>
-<p>Write a Pandas program to create a histogram of the ‘households’ Series (distribution of a numerical variable) of the DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 12.</strong></p>
-<p>Write a Pandas program to get 5 randomly sampled rows from the DataFrame.</p>
-<p>Hint: you will need <code class="docutils literal notranslate"><span class="pre">sample</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 13.</strong></p>
-<p>Write a Pandas program to show the data where populaiton&gt;2500 and medianIncome&gt;12.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 14.</strong></p>
-<p>Write a Pandas program to display all column name of the DataFrame.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Exercise 15.</strong></p>
-<p>Write a Pandas program to sort the data by the value of medianHouseValue in a descending order.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="gen-ai-and-llms-in-finance">
+<h1><span class="section-number">18. </span>Gen AI and LLMs in Finance<a class="headerlink" href="#gen-ai-and-llms-in-finance" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -689,7 +495,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapters/Assignments old"
+            path: "./chapters/Finance"
         },
         predefinedOutput: true
     }
@@ -706,31 +512,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="LeverageandShorting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>Levering up and Shorting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../additional/additional.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>Additional Statistics Material</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assignment 3</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-name-and-simon-email">Write your name and simon email</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-forum-assignment">Discussion Forum Assignment</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

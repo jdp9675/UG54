@@ -1,4 +1,4 @@
-# Quantitative Investing
+# Data Driven Investing with Python
 
 
 By [Alan Moreira](https://sites.google.com/view/alanmoreira/)
