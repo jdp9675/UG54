@@ -8,7 +8,7 @@ By [Alan Moreira](https://sites.google.com/view/alanmoreira/)
 
 **The remaining chapters were developed for the course and are free to use with proper reference**
 
-This text was originally developed for the University of Rochester course  Fin 418: Quantitative Investing with Python.
+This text is intended  for NYU STERN course UG 54: Data Driven Investing with Python.
 
 
 The contents of this book are licensed under the following license:

@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="16. Levering up and Shorting" href="LeverageandShorting.html" />
-    <link rel="prev" title="14.9. 📊 Interpreting Factor Models" href="InterpretingFactorModels.html" />
+    <link rel="prev" title="14.6. 📊 Interpreting Factor Models" href="InterpretingFactorModels.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -234,7 +234,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Performance_evaluation.html">12. Performance Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">13. Machine Learning in Finance</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">14. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">14.9. 📊 Interpreting Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">14.6. 📊 Interpreting Factor Models</a></li>
 
 
 </ul>
@@ -492,24 +492,18 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">15.1.1. 🔁 Summary: Why This Distinction Matters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">15.1.2. ✅ Check Your Understanding</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">15.1.3. From Maximum Losses to Portfolio Risk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.1.4. Risk-Budget Constraint</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix-estimation">15.2. Variance-Covariance Matrix Estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2.1. Single factor example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-factors">15.2.2. Multiple Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-factor-risk">15.2. Managing Factor Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix-estimation">15.3. Variance-Covariance Matrix Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-based-covariance-estimation">15.3.1. Factor-Based Covariance Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shrinkage-methods">15.3.2. Shrinkage methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-will-your-portfolio-risk-change-as-you-add-positions">15.3.3. How will your portfolio risk change as you add positions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-risk-analysis">15.3. Factor Risk  Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-risk-management">15.4. Dynamic Risk Management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.5. Single factor example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.5.1. Time-varying risk in a single asset (or trading strategy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.5.2. The Realized variance approach</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.5.3. The GARCH approach</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.6. Dynamic Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.7. Risk-Budget Constraint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.8. Tracking Error Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-mandates">15.5. Tracking Error Mandates</a></li>
 </ul>
             </nav>
         </div>
@@ -783,10 +777,228 @@ Because delegates often face external constraints and career risks. Their incent
 <li></li>
 </ul>
 </section>
+<section id="risk-budget-constraint">
+<h3><span class="section-number">15.1.4. </span>Risk-Budget Constraint<a class="headerlink" href="#risk-budget-constraint" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How this is used in practice?</p></li>
+<li><p>In practice a fund or a “trading pod” is allocated some capital and some maximum risk-limits</p></li>
+<li><p>If you breach the risk-limit you have to de-risk</p></li>
+<li><p>Why is typically so hard to de-risk?</p></li>
+<li><p>Think about Melvin Capital (fund that failed during the Gamestop craziness)</p>
+<ul>
+<li><p>How should you think about de-risking? Should you comply? What is the trade-off?</p></li>
+<li><p>What are the incentives the manager faces? What does it depend on?</p></li>
+<li><p>How are these incentives different from a wealth individual invest in her own behalf?</p></li>
+</ul>
+</li>
+<li><p>Should our past losses matter for our decision to de-risk?</p></li>
+</ul>
+</section>
+</section>
+<section id="managing-factor-risk">
+<h2><span class="section-number">15.2. </span>Managing Factor Risk<a class="headerlink" href="#managing-factor-risk" title="Link to this heading">#</a></h2>
+<p>The betas measure the exposure of the asset return to the factor, but it does not give an accurate way of thinking which factor drives the most of the variation in the asset as factors can have very different variances</p>
+<div class="math notranslate nohighlight">
+\[1=\frac{Cov(r^i_t,r^i_t)}{Var(r^i_t)}=\frac{Cov(r^i_t,\sum_j^m \beta_{i,j}f^j_t+\epsilon^i_t)}{Var(r^i_t)}\]</div>
+<div class="math notranslate nohighlight">
+\[1=\frac{\sum_j^m \beta_{i,j}Cov(r^i_t,f^j_t)+\sigma^2_{\epsilon}}{Var(r^i_t)}\]</div>
+<p>The the variance share of factor j is <span class="math notranslate nohighlight">\(\frac{\beta_{i,j}Cov(r^i_t,f^j_t)}{Var(r^i_t)}\)</span> and the share of non-factor variance is <span class="math notranslate nohighlight">\(\frac{\sigma^2_{\epsilon}}{Var(r^i_t)}\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VarianceDecomposition</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">tickers</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">FactorLoadings</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">tickers</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">VarianceIdiosyncratic</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">tickers</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;epsilon&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="n">tickers</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_ETF</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span>
+    <span class="n">Factors</span> <span class="o">=</span> <span class="n">df_factor</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">Factors</span><span class="p">)</span> 
+    <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># get the covariance matrix of the factors and the dependent variable</span>
+    <span class="n">CovMatrix</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">y</span><span class="p">,</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+    <span class="c1"># get the column of the covariance matrix corresponding to the dependent variable and exclude itself to get the covariance of </span>
+    <span class="c1"># the dependent variable with each factor</span>
+    <span class="n">FactorLoadings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,:]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="n">VarianceIdiosyncratic</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span><span class="s1">&#39;epsilon&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+    <span class="n">VarianceDecomposition</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,:]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">*</span><span class="n">CovMatrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">y</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+    <span class="c1"># Get the residual variance</span>
+    <span class="n">VarianceDecomposition</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span><span class="s1">&#39;epsilon&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">/</span><span class="n">y</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+
+
+
+<span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">VarianceDecomposition</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RMW</th>
+      <th>CMA</th>
+      <th>MOM</th>
+      <th>epsilon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MTUM</th>
+      <td>85</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>SPMO</th>
+      <td>85</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>2</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>XMMO</th>
+      <td>83</td>
+      <td>4</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>-2</td>
+      <td>13.0</td>
+    </tr>
+    <tr>
+      <th>IMTM</th>
+      <td>68</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>XSMO</th>
+      <td>70</td>
+      <td>16</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>-3</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>PDP</th>
+      <td>90</td>
+      <td>1</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>-2</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>JMOM</th>
+      <td>90</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>DWAS</th>
+      <td>64</td>
+      <td>23</td>
+      <td>-1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>VFMO</th>
+      <td>82</td>
+      <td>7</td>
+      <td>-2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>XSVM</th>
+      <td>60</td>
+      <td>18</td>
+      <td>10</td>
+      <td>-2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>QMOM</th>
+      <td>58</td>
+      <td>6</td>
+      <td>-2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>7</td>
+      <td>23.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>What do we learn?</p>
+<p>Decompositions like that extensively in the money management industry</p>
+<ul class="simple">
+<li><p>Used to classify managers in terms of styles–often called style analysis</p></li>
+<li><p>Used to control own portfolio factor risk to satisfy investment mandates</p></li>
+</ul>
+<p>When looking at a portfolio/fund you have two approaches to measure it’s factor exposures</p>
+<ul class="simple">
+<li><p>Top down: what we did so far. run a time-series regression of the portfolio returns on the factor return</p></li>
+<li><p>Bottom up: from the asset factor exposures build the portfolio factor exposure</p></li>
+</ul>
+<p>What are the benefits and drawbacks of each?</p>
 </section>
 <section id="variance-covariance-matrix-estimation">
-<h2><span class="section-number">15.2. </span>Variance-Covariance Matrix Estimation<a class="headerlink" href="#variance-covariance-matrix-estimation" title="Link to this heading">#</a></h2>
-<p>Say you have</p>
+<h2><span class="section-number">15.3. </span>Variance-Covariance Matrix Estimation<a class="headerlink" href="#variance-covariance-matrix-estimation" title="Link to this heading">#</a></h2>
+<p>A key step in measuring risk well is to have a good estimate of the covariance-matrix</p>
+<p>The covariance matrixes can be thought as two pieces</p>
+<ul class="simple">
+<li><p>The overall variance of each asset</p></li>
+<li><p>The degree of co-movement between them, i.e. the correlation</p></li>
+</ul>
+<p>The variance piece tends to be easier–for each asset you need to estimate one moment</p>
+<p>The correlation is harder because as the assets grow, the number of correlation grows explosively</p>
+<p>Here three different approaches to estimate a portfolio risk</p>
+<p>Notation:</p>
 <ul class="simple">
 <li><p>a vector of asset excess returns R (N by 1),</p></li>
 <li><p>weights W (N by 1),</p></li>
@@ -796,12 +1008,316 @@ Because delegates often face external constraints and career risks. Their incent
 <li><p>Var(W’R): compute the portfolio in sample return variance</p></li>
 <li><p>W’Var(R)W: Compute the individual assets variance-covariance matrix</p></li>
 <li><p>Var(W’ &#64;(A+Bf+U)): Use a factor model</p></li>
+<li><p>Note that in the first method we skip the estimation of the covariance-matrix and estimated the variance of the portfolio directly</p>
+<ul>
+<li><p>For example, that is the approach that we we take to estimate the market portfolio variance</p></li>
+<li><p>You are assuming that</p></li>
+</ul>
+</li>
 <li><p>What are the advantages and disadvantages of each approach?</p></li>
 <li><p>Which approach is unlikely to work well for funds that trade a lot?</p></li>
 <li><p>Which approach needs more data?</p></li>
 </ul>
-<section id="single-factor-example">
-<h3><span class="section-number">15.2.1. </span>Single factor example<a class="headerlink" href="#single-factor-example" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(Var(R)\)</span> can be very large</p>
+<ul class="simple">
+<li><p>For N assets, this means estimating <span class="math notranslate nohighlight">\((N^2-N)/2\)</span> correlations and N variances</p></li>
+<li><p>With limited time-series data our estimator will mistake chance for real relationships</p></li>
+</ul>
+<p>We need need to impose something in the data.</p>
+<ol class="arabic simple">
+<li><p>Use factor models:</p>
+<ul class="simple">
+<li><p>Essentially assume that all co-movement is captured by the factors</p></li>
+<li><p>any residual co-movement is noise and we assume it is zero (even if the data says it is not)</p></li>
+</ul>
+</li>
+<li><p>Shrink the covariance matrix:</p>
+<ul class="simple">
+<li><p>We shrink all correlations to zero</p></li>
+<li><p>shrink all variances to the average</p></li>
+</ul>
+</li>
+</ol>
+<section id="factor-based-covariance-estimation">
+<h3><span class="section-number">15.3.1. </span>Factor-Based Covariance Estimation<a class="headerlink" href="#factor-based-covariance-estimation" title="Link to this heading">#</a></h3>
+<p>Notation</p>
+<div class="math notranslate nohighlight">
+\[R_t=B&#64;F_t+u_t\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p>B is N by M</p></li>
+<li><p>F is M by 1</p></li>
+<li><p>u is N by 1</p></li>
+</ul>
+<p>Then the variance-covariance matrix is</p>
+<div class="math notranslate nohighlight">
+\[Var(R_t)=B&#64;Var(F_t)&#64;B.T+Var(U_t)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Var_F</span><span class="o">=</span><span class="n">Factors</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+<span class="n">Cov</span><span class="o">=</span><span class="n">FactorLoadings</span> <span class="o">@</span> <span class="n">Var_F</span> <span class="o">@</span> <span class="n">FactorLoadings</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">VarianceIdiosyncratic</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">Cov</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MTUM</th>
+      <th>SPMO</th>
+      <th>XMMO</th>
+      <th>IMTM</th>
+      <th>XSMO</th>
+      <th>PDP</th>
+      <th>JMOM</th>
+      <th>DWAS</th>
+      <th>VFMO</th>
+      <th>XSVM</th>
+      <th>QMOM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MTUM</th>
+      <td>0.00016</td>
+      <td>0.000143</td>
+      <td>0.000155</td>
+      <td>0.000117</td>
+      <td>0.000152</td>
+      <td>0.000158</td>
+      <td>0.000141</td>
+      <td>0.000175</td>
+      <td>0.000159</td>
+      <td>0.000139</td>
+      <td>0.000169</td>
+    </tr>
+    <tr>
+      <th>SPMO</th>
+      <td>0.000143</td>
+      <td>0.000159</td>
+      <td>0.00015</td>
+      <td>0.000114</td>
+      <td>0.000146</td>
+      <td>0.000152</td>
+      <td>0.000137</td>
+      <td>0.000166</td>
+      <td>0.000152</td>
+      <td>0.000138</td>
+      <td>0.00016</td>
+    </tr>
+    <tr>
+      <th>XMMO</th>
+      <td>0.000155</td>
+      <td>0.00015</td>
+      <td>0.0002</td>
+      <td>0.000127</td>
+      <td>0.000178</td>
+      <td>0.000171</td>
+      <td>0.000153</td>
+      <td>0.000203</td>
+      <td>0.000175</td>
+      <td>0.000173</td>
+      <td>0.000184</td>
+    </tr>
+    <tr>
+      <th>IMTM</th>
+      <td>0.000117</td>
+      <td>0.000114</td>
+      <td>0.000127</td>
+      <td>0.000136</td>
+      <td>0.000128</td>
+      <td>0.000127</td>
+      <td>0.000115</td>
+      <td>0.000144</td>
+      <td>0.000129</td>
+      <td>0.000127</td>
+      <td>0.000133</td>
+    </tr>
+    <tr>
+      <th>XSMO</th>
+      <td>0.000152</td>
+      <td>0.000146</td>
+      <td>0.000178</td>
+      <td>0.000128</td>
+      <td>0.000227</td>
+      <td>0.000173</td>
+      <td>0.000154</td>
+      <td>0.000223</td>
+      <td>0.000184</td>
+      <td>0.000198</td>
+      <td>0.000192</td>
+    </tr>
+    <tr>
+      <th>PDP</th>
+      <td>0.000158</td>
+      <td>0.000152</td>
+      <td>0.000171</td>
+      <td>0.000127</td>
+      <td>0.000173</td>
+      <td>0.000187</td>
+      <td>0.000154</td>
+      <td>0.000198</td>
+      <td>0.000174</td>
+      <td>0.000163</td>
+      <td>0.000184</td>
+    </tr>
+    <tr>
+      <th>JMOM</th>
+      <td>0.000141</td>
+      <td>0.000137</td>
+      <td>0.000153</td>
+      <td>0.000115</td>
+      <td>0.000154</td>
+      <td>0.000154</td>
+      <td>0.000152</td>
+      <td>0.000173</td>
+      <td>0.000154</td>
+      <td>0.000148</td>
+      <td>0.00016</td>
+    </tr>
+    <tr>
+      <th>DWAS</th>
+      <td>0.000175</td>
+      <td>0.000166</td>
+      <td>0.000203</td>
+      <td>0.000144</td>
+      <td>0.000223</td>
+      <td>0.000198</td>
+      <td>0.000173</td>
+      <td>0.000284</td>
+      <td>0.000215</td>
+      <td>0.000218</td>
+      <td>0.000229</td>
+    </tr>
+    <tr>
+      <th>VFMO</th>
+      <td>0.000159</td>
+      <td>0.000152</td>
+      <td>0.000175</td>
+      <td>0.000129</td>
+      <td>0.000184</td>
+      <td>0.000174</td>
+      <td>0.000154</td>
+      <td>0.000215</td>
+      <td>0.000195</td>
+      <td>0.000177</td>
+      <td>0.000196</td>
+    </tr>
+    <tr>
+      <th>XSVM</th>
+      <td>0.000139</td>
+      <td>0.000138</td>
+      <td>0.000173</td>
+      <td>0.000127</td>
+      <td>0.000198</td>
+      <td>0.000163</td>
+      <td>0.000148</td>
+      <td>0.000218</td>
+      <td>0.000177</td>
+      <td>0.000252</td>
+      <td>0.000175</td>
+    </tr>
+    <tr>
+      <th>QMOM</th>
+      <td>0.000169</td>
+      <td>0.00016</td>
+      <td>0.000184</td>
+      <td>0.000133</td>
+      <td>0.000192</td>
+      <td>0.000184</td>
+      <td>0.00016</td>
+      <td>0.000229</td>
+      <td>0.000196</td>
+      <td>0.000175</td>
+      <td>0.000281</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="shrinkage-methods">
+<h3><span class="section-number">15.3.2. </span>Shrinkage methods<a class="headerlink" href="#shrinkage-methods" title="Link to this heading">#</a></h3>
+<p>Say our covariance in the data is <span class="math notranslate nohighlight">\(Var(R)\)</span></p>
+<p>We will then construct our estimator as</p>
+<div class="math notranslate nohighlight">
+\[\hat{Var}=(1-\tau)Var(R)+\tau I\sigma^2_avg\]</div>
+<ul class="simple">
+<li><p>the <span class="math notranslate nohighlight">\(\tau\)</span> parameter is the amount of shrinkage</p></li>
+<li><p>the worse the data is the more you apply</p></li>
+<li><p>In the limit al correlations are zero and all variances are the same</p></li>
+<li><p>Sometimes people mix and match–using a factor model and then shrink the residuals covariance matrix</p></li>
+<li><p>Particularly sensible approach when we know differences in factor exposures are important</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tau</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">var_avg</span><span class="o">=</span><span class="n">df_ret</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">N</span><span class="o">=</span><span class="n">df_ret</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">Var_shrink</span><span class="o">=</span><span class="n">df_ret</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">tau</span><span class="p">)</span><span class="o">+</span><span class="n">tau</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>Conceptual check</p>
+</div></blockquote>
+<p>Suppose you are trying to construct the minimum variance portfolio–say you think expected returns are undistinguishable across the funds, so you simply want to minimize variance</p>
+<p>your optimal weight, if you knew the covariance matrix is</p>
+<div class="math notranslate nohighlight">
+\[1'Var(R^e)^{-1}\]</div>
+<ul class="simple">
+<li><p>If we compare the in-sample Variance of our minimum variance portfolios for</p>
+<ul>
+<li><p>The unrestricted case</p></li>
+<li><p>The single-factor covariance</p></li>
+<li><p>The multi-factor covariance</p></li>
+<li><p>The shrinkage case</p></li>
+</ul>
+</li>
+<li><p>which one will have lowest variance? What will have the highest?</p></li>
+<li><p>Now split the sample in two. Repeat the covariance estimation procedure for each of these approaches for the first half of the sample</p></li>
+<li><p>Now use the weights to compute the variance of each of the portfolios in the second half</p></li>
+<li><p>Is the order likely to change?</p></li>
+</ul>
+</section>
+<section id="how-will-your-portfolio-risk-change-as-you-add-positions">
+<h3><span class="section-number">15.3.3. </span>How will your portfolio risk change as you add positions<a class="headerlink" href="#how-will-your-portfolio-risk-change-as-you-add-positions" title="Link to this heading">#</a></h3>
+<p>You have portfolio <span class="math notranslate nohighlight">\(X_0\)</span> and you want to sell w of your positions to invest in a fund with portfolio <span class="math notranslate nohighlight">\(X_1\)</span>. How your portfolio variance will change as a function of you reallocation?</p>
+<ul class="simple">
+<li><p>The answer is simple</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[Var(wX_1R_t+(1-w)X_0R_t)-Var(X_0R_t)\]</div>
+<ul class="simple">
+<li><p>But also kind of misleading since you might not have good data to estimate the variance of the new portfolio</p></li>
+<li><p>Now if you know each portfolio factor betas,<span class="math notranslate nohighlight">\(\beta_0=X_0&#64;B\)</span> and <span class="math notranslate nohighlight">\(\beta_1=X_1&#64;B\)</span> , and at least one of this portfolio is large and well diversified, then for small tilts, i.e. <span class="math notranslate nohighlight">\(w\)</span> small, we have</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{Var(wX_1R_t+(1-w)X_0R_t)-Var(X_0R_t)}{\Delta w}|_{w\approx 0} =\beta_1Var(F)\beta_0'\]</div>
+<ul class="simple">
+<li><p>The fact that one is well diversified just means that you can ignore the covariance-terms of the portfolios asset specific risks</p></li>
+<li><p>So you see above why a large pool of money when allocating money to an active manager will want to regulate their factor exposure</p></li>
+<li><p>funds with similar volatilities will be perceived as very different risks depending on how the exposure of portfolio relates to the exposure of the fund</p></li>
+</ul>
+<p>For example, look at how your portfolio risk change if you go from an equal weighted portfolio of these ETFS to just investing in one of them, say MTUM</p>
 <p>Here I will use i,j for a individual stock</p>
 <div class="math notranslate nohighlight">
 \[r^{e,i}=\alpha_i+\beta_{i,f}f+u_{i}\]</div>
@@ -981,122 +1497,6 @@ Sigma_e:
 </div>
 </div>
 </section>
-<section id="multiple-factors">
-<h3><span class="section-number">15.2.2. </span>Multiple Factors<a class="headerlink" href="#multiple-factors" title="Link to this heading">#</a></h3>
-<p>Say you have</p>
-<ul class="simple">
-<li><p>factor loadings B now are a matrix (N by M),</p></li>
-<li><p>f is now a vector with M factors (M by 1)</p></li>
-</ul>
-<p>Then I can write my portfolio return as</p>
-<div class="math notranslate nohighlight">
-\[r_p=W.T &#64;R=W.T &#64;(A+Bf+U)\]</div>
-<p>Because <span class="math notranslate nohighlight">\(E[U]=0\)</span>, Thus it follows that</p>
-<div class="math notranslate nohighlight">
-\[E[r_p]=W.T &#64;(A+BE[f])\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[Var[r_p]=Var(W.T &#64;(A+Bf+U))=(W.T&#64;B)&#64;Var(f)&#64;(B.T&#64;W).T+W.T&#64;Var(U)&#64;W\]</div>
-<ul class="simple">
-<li><p>(W.T&#64;B) is a 1 by M vector or your portfolio betas with respect to each of the M factors–it is just a weighted average of the asset betas!</p></li>
-<li><p>Var(f) is an M by M variance-covariance matrix</p></li>
-</ul>
-<p>You can also just think of this as the weights multiplying the factor-implied variance-covariance matrix</p>
-<div class="math notranslate nohighlight">
-\[Var[r_p]=Var(W.T &#64;(A+Bf+U))=W.T&#64; Var(Bf+U)&#64;W=W.T(B&#64;Var(f)B.T+Var(U))&#64;W\]</div>
-<p>Now pick a portfolio W and use all the 6 factors</p>
-<ul class="simple">
-<li><p>what this is the total portfolio variance?</p></li>
-<li><p>What is systematic risk share?</p></li>
-</ul>
-<p>Lets now use all the six factors in our model</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factor</span> <span class="o">=</span> <span class="s1">&#39;Mkt-RF&#39;</span>
-<span class="n">factors</span><span class="o">=</span><span class="n">df_ff6</span><span class="o">.</span><span class="n">columns</span>
-
-<span class="n">df_merged</span> <span class="o">=</span> <span class="n">df_re</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_ff6</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-<span class="n">df_merged</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Beta</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">residuals</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">Alpha_se</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># Run univariate regressions</span>
-<span class="c1"># here we are running a regression of each factor on the market factor</span>
-<span class="k">for</span> <span class="n">stock</span> <span class="ow">in</span> <span class="n">Tickers</span><span class="p">:</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">df_merged</span><span class="p">[</span><span class="n">factors</span><span class="p">])</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">stock</span><span class="p">]</span><span class="n">s</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="n">Beta</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">factors</span><span class="p">])</span>
-    <span class="c1"># I am storying the entire time-series of residuals</span>
-    <span class="n">residuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
-
-
-<span class="n">Beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">Beta</span><span class="p">)</span>
-
-<span class="c1"># Calculate the variance-covariance matrix of the residuals</span>
-<span class="n">residuals_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
-<span class="n">VarF</span><span class="o">=</span><span class="n">df_merged</span><span class="p">[</span><span class="n">factors</span><span class="p">]</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span> 
-<span class="c1"># why not .var()?</span>
-<span class="n">VarU</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">residuals_matrix</span><span class="o">.</span><span class="n">T</span><span class="p">)))</span>
-
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Beta:&quot;</span><span class="p">,</span> <span class="n">Beta</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VarU:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">VarU</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VarF:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">VarF</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">stock</span><span class="p">]</span><span class="n">s</span>
-                        <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
-</div>
-<p>Can you construct the variance of the portfolio?</p>
-</section>
-</section>
-<section id="factor-risk-analysis">
-<h2><span class="section-number">15.3. </span>Factor Risk  Analysis<a class="headerlink" href="#factor-risk-analysis" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>What each asset is contributing to my overall portfolio risk?</p></li>
-<li><p>what is the asset that at the margin contributes the most?</p></li>
-<li><p>If I want to reduce my factor risk, what is the asset that would reduce it most efficiently?</p></li>
-<li><p>For that we can compute</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\frac{\Delta Var[r_p]}{\Delta W}=2B&#64;Var(f)(B.T &#64;W)+2Var(U)&#64;W\]</div>
-<p>This is a vector where each entry tells you the increase in risk produced my a marginal increase in each asset</p>
-<p>So the highest number in this vector tell us what is the asset that allows us to achieve the highest risk reduction per change in position</p>
-<p>Lets apply this to our problem</p>
-<p>Suppose I am interested in reducing the risk in a particular factor</p>
-<p>The portfolio factor risk is</p>
-<div class="math notranslate nohighlight">
-\[ cov(r_p,f)=cov(W'BF+u,I(i)F)=W'BVar(F)I(i)'\]</div>
-<ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(I(i)\)</span> is a vector that picks the relevant factor</p></li>
-<li><p>Note that W’B is an 1 by M beta vector–the multi-factor betas of your portfolio</p></li>
-<li><p>W’BVar(F) is a 1 by M vector of covariances</p></li>
-<li><p>So W’BVar(F)I(i)’ simply selects the ith covariance, i.e. <span class="math notranslate nohighlight">\([W'BVar(F)]_i\)</span></p></li>
-<li><p>My risk limit can be absolute: <span class="math notranslate nohighlight">\([W'BVar(F)]_i\)</span> times the size of my position</p></li>
-</ul>
-<p>In this case the direction of steepest reduction in factor i risk is</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\([BVar(F)]_i\)</span>: if the factors were uncorrelated, the asset beta would be all I needed, but in general we see that the factor covariances will matter as well</p></li>
-<li><p>my risk-limit can be also a share of total:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\frac{[W'BVar(F)]_i}{W.T(B&#64;Var(f)B.T+Var(U))&#64;W}\]</div>
 </section>
 <section id="dynamic-risk-management">
 <h2><span class="section-number">15.4. </span>Dynamic Risk Management<a class="headerlink" href="#dynamic-risk-management" title="Link to this heading">#</a></h2>
@@ -1107,7 +1507,7 @@ Sigma_e:
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(X_t\)</span> is your portfolio weights in date t for investment in date t+1,</p></li>
 <li><p><span class="math notranslate nohighlight">\(R_{t+1}\)</span> is the vector of asset excess returns during the holding period, i.e. from date <span class="math notranslate nohighlight">\(t\)</span> to date <span class="math notranslate nohighlight">\(t+1\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(Var_t() denotes the variance of this random variable given all we know in date \)</span>t$</p></li>
+<li><p><span class="math notranslate nohighlight">\(Var_t()\)</span> denotes the variance of this random variable given all we know in date <span class="math notranslate nohighlight">\(t\)</span></p></li>
 </ul>
 <p>The idea here is</p>
 <ul class="simple">
@@ -1123,798 +1523,78 @@ Sigma_e:
 <li><p>For factor covariance matrix</p></li>
 <li><p>For each asset specific idiosyncratic volatility</p></li>
 </ul>
-</section>
-<section id="id1">
-<h2><span class="section-number">15.5. </span>Single factor example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>We should never use a single factor if your goal is risk-management</p>
-<p>The goal here is to saturate the model so that the residuals are really uncorrelated</p>
-<p>But single factor makes for easier math :)</p>
-<div class="math notranslate nohighlight">
-\[Var_t(R_{t+1})=\beta_{t} \beta_{t}'\sigma^2_{f,t} +\Sigma_{u,t}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Sigma_{u,t}\)</span> is a diagonal matrix</p>
-<p>so our portfolio is</p>
-<div class="math notranslate nohighlight">
-\[Var_t(X_t'R_{t+1})=X_t'\beta_{t} \beta_{t}'X_t\sigma^2_{f,t} +X_t'\Sigma_{u,t}X_t\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta_p=X_t'\beta_{t}\)</span> is the beta of your portfolio (given holdings at date t)</p></li>
-</ul>
 <blockquote>
-<div><p>Why not simply estimate your portfolio beta directly?</p>
+<div><p>There is no right way of estimating these things
+Whatever works best out of sample</p>
 </div></blockquote>
-<p>To get started:</p>
 <ul class="simple">
-<li><p>Rolling 5 year window estimate for the betas</p></li>
-<li><p>Assume variances move together with the market variance</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\Sigma_{u,t}=\Sigma_{u}*\frac{\sigma^2_{market,t}}{\sigma^2_{market}}\]</div>
-<div class="math notranslate nohighlight">
-\[\Sigma_{F,t}=\Sigma_{F}*\frac{\sigma^2_{market,t}}{\sigma^2_{market}}\]</div>
-<ul class="simple">
-<li><p>Invest in trying to forecast market variance well</p></li>
-<li><p>use factor model to extrapolate implications to variance-covariance matrix</p></li>
-</ul>
-<p>Note: These are all assumptions. You have to check if they are good approximation and ultimate if indeed they help you forecast the variance of your portfolio!</p>
-<section id="time-varying-risk-in-a-single-asset-or-trading-strategy">
-<h3><span class="section-number">15.5.1. </span>Time-varying risk in a single asset (or trading strategy)<a class="headerlink" href="#time-varying-risk-in-a-single-asset-or-trading-strategy" title="Link to this heading">#</a></h3>
-<p>There are two main approaches we can take</p>
-<ul class="simple">
-<li><p>Realized Variance</p></li>
-<li><p>Garch approach</p></li>
-</ul>
-</section>
-<section id="the-realized-variance-approach">
-<h3><span class="section-number">15.5.2. </span>The Realized variance approach<a class="headerlink" href="#the-realized-variance-approach" title="Link to this heading">#</a></h3>
-<p>Say you have daily data on the returns of an asset <span class="math notranslate nohighlight">\(R_{t}\)</span>. The realized variance is defined as:</p>
-<div class="math notranslate nohighlight">
-\[RV_{t} = \sum_{i=1}^{N} R_{t-i}^{2}\]</div>
-<p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of days in the past you want to consider.</p>
-<p>The idea is that the realized variance is The higher the realized variance, the more the returns fluctuate.</p>
-<p>Note here that we ignore the expected return of the asset, which at such high frequencies is assumed to be zero.</p>
-<p>Armed with this estimate we can then run a forecasting regression:</p>
-<ul class="simple">
-<li><p>Can use lags</p></li>
-<li><p>Can use option based measures of volatility, which also encode future information about what market participants think about future risk</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets strat by importing daily data on the market</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
-
-<span class="c1"># Define the start and end dates</span>
-<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2024-01-01&#39;</span>
-<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;1926-01-01&#39;</span>
-
-<span class="c1"># Define the ticker symbol for the market factor</span>
-<span class="n">ticker</span> <span class="o">=</span> <span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span>
-
-<span class="c1"># Fetch the data from Ken French website</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;famafrench&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
-
-<span class="c1"># Extract the market factor data</span>
-<span class="n">market_factor</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Below I compute the variance across days in a given month, so I obtain a daily variance measure ( recall that the variance takes the mean of the square residuals)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
-<span class="p">((</span><span class="n">market_RV</span><span class="o">*</span><span class="mi">252</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/cb856a6b8b3d51d0bbafeb0d734fdc8d1bd8c4231148bc84221cb61efb5c0795.png" src="../../_images/cb856a6b8b3d51d0bbafeb0d734fdc8d1bd8c4231148bc84221cb61efb5c0795.png" />
-</div>
-</div>
-<p>below I will just sum the square returns, so I obtain a monthly variance measure</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># or alternatively, ignoring the mean</span>
-<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
-<span class="p">((</span><span class="n">market_RV</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/de13a602734962bcb74c4d0a8e106f2bb22f04040d57b70e15366f8b2ce58f89.png" src="../../_images/de13a602734962bcb74c4d0a8e106f2bb22f04040d57b70e15366f8b2ce58f89.png" />
-</div>
-</div>
-<p>LEts do some forecasting.</p>
-<p>Basic model</p>
-<div class="math notranslate nohighlight">
-\[RV_{t+1}=a+bRV_t+\epsilon_{t+1}\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
-
-<span class="c1"># Create lagged variable</span>
-<span class="n">market_RV</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">market_RV</span><span class="p">)</span>
-<span class="n">market_RV</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RV&#39;</span><span class="p">]</span>
-<span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RVl1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
-
-<span class="c1"># Remove missing values</span>
-<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-
-<span class="c1"># Add constant term</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RVl1</span><span class="p">)</span>
-
-<span class="c1"># Fit the regression model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="n">results1</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-
-<span class="c1"># Print the regression results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results1</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                     RV   R-squared:                       0.304
-Model:                            OLS   Adj. R-squared:                  0.304
-Method:                 Least Squares   F-statistic:                     510.5
-Date:                Wed, 01 May 2024   Prob (F-statistic):           4.68e-94
-Time:                        18:22:59   Log-Likelihood:                -6073.7
-No. Observations:                1169   AIC:                         1.215e+04
-Df Residuals:                    1167   BIC:                         1.216e+04
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const         11.5001      1.423      8.079      0.000       8.707      14.293
-RVl1           0.5516      0.024     22.594      0.000       0.504       0.600
-==============================================================================
-Omnibus:                     1650.566   Durbin-Watson:                   2.091
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):           510580.146
-Skew:                           7.829   Prob(JB):                         0.00
-Kurtosis:                     104.179   Cond. No.                         64.9
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results1</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x248c2c237f0&gt;]
-</pre></div>
-</div>
-<img alt="../../_images/f2369b664a1dd2a1c95fe07497c7ecf0bc0b1c14f32573c6665fdc65b12d2c89.png" src="../../_images/f2369b664a1dd2a1c95fe07497c7ecf0bc0b1c14f32573c6665fdc65b12d2c89.png" />
-</div>
-</div>
-<p>What if I do in Standard Deviation? Does it work better?</p>
-<p>Bu what do I care about?</p>
-<p>How would you do it?</p>
-<p>Does additional lags help?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RVl2&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RVl3&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="c1"># Remove missing values</span>
-<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-
-<span class="c1"># Add constant term</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;RVl1&#39;</span><span class="p">:</span><span class="s1">&#39;RVl3&#39;</span><span class="p">])</span>
-
-<span class="c1"># Fit the regression model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="n">results2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-
-<span class="c1"># Print the regression results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results2</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                     RV   R-squared:                       0.322
-Model:                            OLS   Adj. R-squared:                  0.320
-Method:                 Least Squares   F-statistic:                     183.8
-Date:                Wed, 01 May 2024   Prob (F-statistic):           1.53e-97
-Time:                        18:23:15   Log-Likelihood:                -6044.6
-No. Observations:                1166   AIC:                         1.210e+04
-Df Residuals:                    1162   BIC:                         1.212e+04
-Df Model:                           3                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const          9.1214      1.481      6.158      0.000       6.215      12.028
-RVl1           0.4949      0.029     17.031      0.000       0.438       0.552
-RVl2           0.0130      0.032      0.400      0.689      -0.051       0.077
-RVl3           0.1368      0.029      4.709      0.000       0.080       0.194
-==============================================================================
-Omnibus:                     1697.738   Durbin-Watson:                   2.020
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):           575996.199
-Skew:                           8.290   Prob(JB):                         0.00
-Kurtosis:                     110.615   Cond. No.                         101.
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</pre></div>
-</div>
-</div>
-</div>
-<p>What if it really matters the very recent past?</p>
-<p>Lets look at also last five days of the month</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;RV1m&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)),</span> <span class="s1">&#39;RV5d&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:,]</span><span class="o">**</span><span class="mi">2</span><span class="p">))})</span>
-
-
-<span class="n">market_RV</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/32b551c94a174dc1cd9a878337364d0d927bd3838e2e84665c9983dd0857df05.png" src="../../_images/32b551c94a174dc1cd9a878337364d0d927bd3838e2e84665c9983dd0857df05.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RV1ml1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
-<span class="n">market_RV</span><span class="p">[</span><span class="s1">&#39;RV5dl1&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV5d</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
-<span class="c1"># Remove missing values</span>
-<span class="n">market_RV</span> <span class="o">=</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-
-<span class="c1"># Add constant term</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">market_RV</span><span class="p">[[</span><span class="s1">&#39;RV1ml1&#39;</span><span class="p">,</span><span class="s1">&#39;RV5dl1&#39;</span><span class="p">]])</span>
-
-<span class="c1"># Fit the regression model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="n">results3</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-
-<span class="c1"># Print the regression results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results3</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                   RV1m   R-squared:                       0.318
-Model:                            OLS   Adj. R-squared:                  0.317
-Method:                 Least Squares   F-statistic:                     272.3
-Date:                Wed, 01 May 2024   Prob (F-statistic):           8.98e-98
-Time:                        18:26:09   Log-Likelihood:                -6061.7
-No. Observations:                1169   AIC:                         1.213e+04
-Df Residuals:                    1166   BIC:                         1.214e+04
-Df Model:                           2                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const         11.3676      1.410      8.063      0.000       8.602      14.134
-RV1ml1         0.4495      0.032     14.085      0.000       0.387       0.512
-RV5dl1         0.4955      0.101      4.904      0.000       0.297       0.694
-==============================================================================
-Omnibus:                     1648.413   Durbin-Watson:                   2.100
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):           489989.508
-Skew:                           7.829   Prob(JB):                         0.00
-Kurtosis:                     102.068   Cond. No.                         66.4
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</pre></div>
-</div>
-</div>
-</div>
-<p>What about forward looking information from option markets?</p>
-<p>We can use a measure of implied volatility–say the VIX</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas_datareader.data</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">web</span>
-
-<span class="c1"># Define the start and end dates</span>
-<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;1990-01-01&#39;</span>
-<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2024-01-01&#39;</span>
-
-<span class="c1"># Define the ticker symbol for the VIX</span>
-<span class="n">ticker</span> <span class="o">=</span> <span class="s1">&#39;VIXCLS&#39;</span>
-
-<span class="c1"># Fetch the data from FRED</span>
-<span class="n">vix_data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
-<span class="n">vix_data</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;VIX&#39;</span><span class="p">]</span>
-<span class="n">vix_data</span><span class="p">[</span><span class="s1">&#39;VIXl1&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">vix_data</span><span class="o">.</span><span class="n">VIX</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
-<span class="c1"># Print the VIX data</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vix_data</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              VIX  VIXl1
-DATE                    
-1990-01-02  17.24    NaN
-1990-01-03  18.19  17.24
-1990-01-04  19.22  18.19
-1990-01-05  20.11  19.22
-1990-01-08  20.26  20.11
-...           ...    ...
-2023-12-26  12.99    NaN
-2023-12-27  12.43  12.99
-2023-12-28  12.47  12.43
-2023-12-29  12.45  12.47
-2024-01-01    NaN  12.45
-
-[8870 rows x 2 columns]
-</pre></div>
-</div>
-</div>
-</div>
-<p>note that VIX is in annual and in standard deviation space.</p>
-<p>Lets put all this in yearly stadandar-deviation jsut to make sure the units are interpretable</p>
-<p>I need to divide VIX by 100–toget to be a number like 0.16, i.e. 16%</p>
-<p>the realized variance I need to first divide by a 100**2 ( returns were in %, so a 10, means 10%), and then multiply by 12 (since it was monthly), and finally square-root it since it was in variance space</p>
-<p>If you are confuse while we divide by 10000 and not jsut 100, do the division in returns before computing any variance</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
-1926-08-31    0.104247
-1926-09-30    0.082386
-1926-10-31    0.144156
-1926-11-30    0.066006
-1926-12-31    0.072420
-                ...   
-2023-08-31    0.130037
-2023-09-30    0.113227
-2023-10-31    0.149390
-2023-11-30    0.133621
-2023-12-31    0.107392
-Freq: M, Name: RV1m, Length: 1169, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">market_RV_vixunits</span><span class="o">=</span><span class="p">((</span><span class="n">market_RV</span><span class="o">/</span><span class="p">(</span><span class="mi">100</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">vix_data</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-<span class="n">market_RV_vixunits</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/d8ec42048cd37dd933dbc1aaac9be68556f5c6aa3e9fa067bce52d642edfaef6.png" src="../../_images/d8ec42048cd37dd933dbc1aaac9be68556f5c6aa3e9fa067bce52d642edfaef6.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove missing values</span>
-
-<span class="n">_temp</span><span class="o">=</span><span class="n">market_RV_vixunits</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-<span class="c1"># Add constant term</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">_temp</span><span class="p">[[</span><span class="s1">&#39;RV1ml1&#39;</span><span class="p">,</span><span class="s1">&#39;VIXl1&#39;</span><span class="p">]]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># Fit the regression model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">_temp</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="n">results4</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">missing</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">)</span>
-
-<span class="c1"># Print the regression results</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results4</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                   RV1m   R-squared:                       0.740
-Model:                            OLS   Adj. R-squared:                  0.738
-Method:                 Least Squares   F-statistic:                     393.5
-Date:                Wed, 01 May 2024   Prob (F-statistic):           1.14e-81
-Time:                        18:26:48   Log-Likelihood:                 524.84
-No. Observations:                 280   AIC:                            -1044.
-Df Residuals:                     277   BIC:                            -1033.
-Df Model:                           2                                         
-Covariance Type:            nonrobust                                         
-==============================================================================
-                 coef    std err          t      P&gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------
-const         -0.0312      0.003     -9.562      0.000      -0.038      -0.025
-RV1ml1        -0.0004      0.039     -0.010      0.992      -0.077       0.076
-VIXl1          1.4984      0.060     24.909      0.000       1.380       1.617
-==============================================================================
-Omnibus:                      316.412   Durbin-Watson:                   1.529
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):            32579.688
-Skew:                           4.464   Prob(JB):                         0.00
-Kurtosis:                      55.085   Cond. No.                         28.7
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Huge gain?</p>
-<p>Is this all about the VIX? or is there something else going on?</p>
-<p>CLUE: What happen with the sample?</p>
-</section>
-<section id="the-garch-approach">
-<h3><span class="section-number">15.5.3. </span>The GARCH approach<a class="headerlink" href="#the-garch-approach" title="Link to this heading">#</a></h3>
-<p>The GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model is a popular statistical model used for predicting and modeling the volatility, or variance, of financial time series data. It is widely used in finance and risk management to estimate and forecast the volatility of asset returns.</p>
-<p>The GARCH model takes into account both the past values of the time series and the past values of the conditional variance itself.</p>
-<p>The GARCH model is typically expressed as follows:</p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_t^2 = \omega + \sum_{i=1}^{p} \alpha_i \epsilon_{t-i}^2 + \sum_{j=1}^{q} \beta_j \sigma_{t-j}^2
-\]</div>
-<p>where:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\sigma_t^2\)</span> is the conditional variance at time <span class="math notranslate nohighlight">\(t\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\omega\)</span> is the constant term,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\alpha_i\)</span> and <span class="math notranslate nohighlight">\(\beta_j\)</span> are the coefficients of the model,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\epsilon_{t-i}^2\)</span> is the squared residual at time <span class="math notranslate nohighlight">\(t-i\)</span>, and</p></li>
-<li><p><span class="math notranslate nohighlight">\(\sigma_{t-j}^2\)</span> is the conditional variance at time <span class="math notranslate nohighlight">\(t-j\)</span>.</p></li>
-</ul>
-<p>The GARCH model allows for the estimation of the parameters <span class="math notranslate nohighlight">\(\omega\)</span>, <span class="math notranslate nohighlight">\(\alpha_i\)</span>, and <span class="math notranslate nohighlight">\(\beta_j\)</span> using various estimation techniques such as maximum likelihood estimation. Once the parameters are estimated, the model can be used to forecast the future conditional variance of the time series.</p>
-<p>By predicting the volatility of a financial time series, the GARCH model can be used to assess and manage risk in various financial applications, such as portfolio optimization, option pricing, and risk management strategies.</p>
-<ul class="simple">
-<li><p>Estimate GARCH for market</p></li>
-<li><p>Show T periods forecast</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">arch</span><span class="w"> </span><span class="kn">import</span> <span class="n">arch_model</span>
-
-<span class="c1"># Assume returns is your time series data</span>
-<span class="c1"># returns = ...</span>
-<span class="n">monthly_returns</span><span class="o">=</span><span class="n">market_factor</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">arch_model</span><span class="p">(</span><span class="n">monthly_returns</span><span class="p">,</span> <span class="n">vol</span><span class="o">=</span><span class="s1">&#39;Garch&#39;</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-
-<span class="n">model_fit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration:      1,   Func. Count:      6,   Neg. LLF: 121644695.74237345
-Iteration:      2,   Func. Count:     17,   Neg. LLF: 640569.4132864494
-Iteration:      3,   Func. Count:     24,   Neg. LLF: 940970.6741192145
-Iteration:      4,   Func. Count:     33,   Neg. LLF: -1938.7144124196502
-Optimization terminated successfully    (Exit mode 0)
-            Current function value: -1938.7144099338939
-            Iterations: 8
-            Function evaluations: 33
-            Gradient evaluations: 4
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\univariate\base.py:311: DataScaleWarning: y is poorly scaled, which may affect convergence of the optimizer when
-estimating the model parameters. The scale of y is 0.002851. Parameter
-estimation work better when this value is between 1 and 1000. The recommended
-rescaling is 10 * y.
-
-This warning can be disabled by either rescaling y before initializing the
-model or by setting rescale=False.
-
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output text_html"><table class="simpletable">
-<caption>Constant Mean - GARCH Model Results</caption>
-<tr>
-  <th>Dep. Variable:</th>       <td>Mkt-RF</td>       <th>  R-squared:         </th>  <td>   0.000</td> 
-</tr>
-<tr>
-  <th>Mean Model:</th>       <td>Constant Mean</td>   <th>  Adj. R-squared:    </th>  <td>   0.000</td> 
-</tr>
-<tr>
-  <th>Vol Model:</th>            <td>GARCH</td>       <th>  Log-Likelihood:    </th> <td>   1938.71</td>
-</tr>
-<tr>
-  <th>Distribution:</th>        <td>Normal</td>       <th>  AIC:               </th> <td>  -3869.43</td>
-</tr>
-<tr>
-  <th>Method:</th>        <td>Maximum Likelihood</td> <th>  BIC:               </th> <td>  -3849.17</td>
-</tr>
-<tr>
-  <th></th>                        <td></td>          <th>  No. Observations:  </th>    <td>1170</td>   
-</tr>
-<tr>
-  <th>Date:</th>           <td>Wed, May 01 2024</td>  <th>  Df Residuals:      </th>    <td>1169</td>   
-</tr>
-<tr>
-  <th>Time:</th>               <td>18:28:26</td>      <th>  Df Model:          </th>      <td>1</td>    
-</tr>
-</table>
-<table class="simpletable">
-<caption>Mean Model</caption>
-<tr>
-   <td></td>     <th>coef</th>     <th>std err</th>      <th>t</th>       <th>P>|t|</th>     <th>95.0% Conf. Int.</th>   
-</tr>
-<tr>
-  <th>mu</th> <td>7.9346e-03</td> <td>1.285e-03</td> <td>    6.174</td> <td>6.663e-10</td> <td>[5.416e-03,1.045e-02]</td>
-</tr>
-</table>
-<table class="simpletable">
-<caption>Volatility Model</caption>
-<tr>
-      <td></td>        <th>coef</th>     <th>std err</th>      <th>t</th>       <th>P>|t|</th>     <th>95.0% Conf. Int.</th>   
-</tr>
-<tr>
-  <th>omega</th>    <td>5.5202e-05</td> <td>1.783e-05</td> <td>    3.096</td> <td>1.963e-03</td> <td>[2.025e-05,9.015e-05]</td>
-</tr>
-<tr>
-  <th>alpha[1]</th> <td>    0.1286</td> <td>2.074e-02</td> <td>    6.200</td> <td>5.633e-10</td>  <td>[8.794e-02,  0.169]</td> 
-</tr>
-<tr>
-  <th>beta[1]</th>  <td>    0.8520</td> <td>2.082e-02</td> <td>   40.923</td>   <td>0.000</td>     <td>[  0.811,  0.893]</td>  
-</tr>
-</table><br/><br/>Covariance estimator: robust</div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this is the model best estimate of volatility at a given point in time</span>
-<span class="n">ax</span><span class="o">=</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">conditional_volatility</span><span class="o">*</span><span class="mi">12</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="c1"># If we want next period volatility</span>
-
-<span class="n">forecasts</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Get the variance</span>
-<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span><span class="o">*</span><span class="mi">12</span>
-
-<span class="c1"># Get the standard deviation (volatility) by taking the square root of the variance</span>
-<span class="p">((</span><span class="n">variance_forecast</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\__future__\_utility.py:11: FutureWarning: 
-The default for reindex is True. After September 2021 this will change to
-False. Set reindex to True or False to silence this message. Alternatively,
-you can use the import comment
-
-from arch.__future__ import reindexing
-
-to globally set reindex to True and silence this warning.
-
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
-</pre></div>
-</div>
-<img alt="../../_images/b9e5c4b213dc0f60f562e6bd23a9006483639e0039c6f4049e031ddec8cb538a.png" src="../../_images/b9e5c4b213dc0f60f562e6bd23a9006483639e0039c6f4049e031ddec8cb538a.png" />
-</div>
-</div>
-<p>Basically on top of each other</p>
-<p>Lets look at how it forecasts for a given date how volatiltiy will behave many month in the future</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">=</span><span class="mi">60</span>
-<span class="n">forecasts</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>
-
-<span class="c1"># Get the variance</span>
-<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span>
-
-<span class="c1"># Get the standard deviation (volatility) by taking the square root of the variance</span>
-<span class="n">volatility_forecast</span> <span class="o">=</span> <span class="p">(</span><span class="n">variance_forecast</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span>
-
-<span class="c1"># Print the 3-month ahead forecasted volatility for all data points</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">h</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">volatility_forecast</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-03&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\__future__\_utility.py:11: FutureWarning: 
-The default for reindex is True. After September 2021 this will change to
-False. Set reindex to True or False to silence this message. Alternatively,
-you can use the import comment
-
-from arch.__future__ import reindexing
-
-to globally set reindex to True and silence this warning.
-
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ea73c84f10&gt;]
-</pre></div>
-</div>
-<img alt="../../_images/5ae689859e2e299404cb638b86c2ad1fb8e845e6ede60096e6a7a0e90bdb3b87.png" src="../../_images/5ae689859e2e299404cb638b86c2ad1fb8e845e6ede60096e6a7a0e90bdb3b87.png" />
-</div>
-</div>
-<p>Which one is better?</p>
-<p>different approaches to deal with this</p>
-<p>There is a whole field dedicated to forecasting</p>
-<p>But the basic idea is simple</p>
-<p>You wan to have some penalty for it: What is the cost of getting it wrong?</p>
-<p>We could simply have a penalty:</p>
-<div class="math notranslate nohighlight">
-\[\gamma E[(Variance(model)-Variance(Truth))^2]\]</div>
-<p>Basically this the “Mean-Squared Error” approach to evaluating forecasts</p>
-<p>Here we need some estimate of the true variance</p>
-<p>Below we assume it is the realized variance</p>
-<p>It is very important that they are in the same units!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the model that that uses VIX</span>
-
-<span class="nb">print</span><span class="p">(((</span><span class="n">results4</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">-</span> <span class="n">market_RV_vixunits</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV_vixunits</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1"># divide by the variable variance to have a sense of how big are your mistakes!</span>
-
-<span class="c1"># this is the model that use 5 days and 1 month lagged RV (but much longer sample!)</span>
-<span class="nb">print</span><span class="p">(((</span><span class="n">results3</span><span class="o">.</span><span class="n">fittedvalues</span><span class="o">-</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.34890446461669083
-0.6810322887390576
-</pre></div>
-</div>
-</div>
-</div>
-<p>How do you make it more comparable?</p>
-<p>Lets add the GARCH to the mix</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forecasts</span> <span class="o">=</span> <span class="n">model_fit</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># Get the variance</span>
-<span class="n">variance_forecast</span> <span class="o">=</span> <span class="n">forecasts</span><span class="o">.</span><span class="n">variance</span><span class="o">*</span><span class="mi">12</span>
-
-<span class="c1"># check units!</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">variance_forecast</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">((</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>h.1    0.034199
-dtype: float64
-3399.012434626065
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\arch\__future__\_utility.py:11: FutureWarning: 
-The default for reindex is True. After September 2021 this will change to
-False. Set reindex to True or False to silence this message. Alternatively,
-you can use the import comment
-
-from arch.__future__ import reindexing
-
-to globally set reindex to True and silence this warning.
-
-  warnings.warn(
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(((</span><span class="n">variance_forecast</span><span class="p">[</span><span class="s1">&#39;h.1&#39;</span><span class="p">]</span><span class="o">-</span> <span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">market_RV</span><span class="o">.</span><span class="n">RV1m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">())</span> <span class="c1">#multiply to put in the same units</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0191992250394422
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note that to make it comparable we should look at similar samples.</p>
-<p>Why is that? How would you do that?</p>
-</section>
-</section>
-<section id="dynamic-portfolios">
-<h2><span class="section-number">15.6. </span>Dynamic Portfolios<a class="headerlink" href="#dynamic-portfolios" title="Link to this heading">#</a></h2>
-<p>The key idea here will be to use the factor structure idea for returns together with a GARCH or RV model for the market return volatility.</p>
-<p>The idea here is</p>
-<ul class="simple">
-<li><p>Correlations do change, but they change slower than variance so we will use standard rolling window to estimate correlations–essentially assuming that they are constant in our forecast horizon.</p></li>
-<li><p>And use our model to forecast the the variance</p></li>
-</ul>
-<p>IF returns have a factor structure we have</p>
-<div class="math notranslate nohighlight">
-\[Var_t(R_{t+1})=Var(\beta_t F_{t+1}+u_{t+1})=\beta_t Var_t(F) \beta_t'+Var_t(u)\]</div>
-<p>We thus need to produce time-varying estimates</p>
-<ul class="simple">
-<li><p>for the time-varying betas</p></li>
-<li><p>For the entire factor covariance matrix</p></li>
-<li><p>For each asset specific volatility</p></li>
-</ul>
-<p>Suppose we have single factor model–</p>
-<p>then we have</p>
-<div class="math notranslate nohighlight">
-\[Var_t(R^i_{t+1})=\beta_{i,t}^2 \sigma^2_{f,t} +\sigma^2_{i,t}(u)\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[Cov_t(R^i_{t+1},R^j_{t+1})=\beta_{i,t}*\beta_{j,t}\sigma^2_{f,t} \]</div>
-<p>or in matrix form</p>
-<div class="math notranslate nohighlight">
-\[Var_t(R_{t+1})=\beta_{t} \beta_{t}'\sigma^2_{f,t} +\Sigma_{u,t}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Sigma_{u,t}\)</span> is a diagonal matrix</p>
-<p>You see there are many things to estimate!</p>
-<p>Do I really need to estimate all these things?</p>
-<ul class="simple">
-<li><p>Depend of what are your assets</p></li>
-<li><p>Depend on how well you can estimate them</p></li>
-</ul>
-<p>There is a whole industry of estimating factor Betas for different assets
-4
-You can get quite sophisticated.</p>
-<p>To get started:</p>
-<ul class="simple">
-<li><p>Rolling 5 year window estimate for the betas</p></li>
-<li><p>Assume variances move together with the market variance</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\Sigma_{u,t}=\Sigma_{u}*\frac{\sigma^2_{market,t}}{\sigma^2_{market}}\]</div>
-<div class="math notranslate nohighlight">
-\[\Sigma_{F,t}=\Sigma_{F}*\frac{\sigma^2_{market,t}}{\sigma^2_{market}}\]</div>
-<ul class="simple">
-<li><p>Invest in trying to forecast market variance well</p></li>
-<li><p>use factor model to extrapolate implications to variance-covariance matrix</p></li>
-</ul>
-<p>Note: These are all assumptions. You have to check if they are good approximation and ultimate if indeed they help you forecast the variance of your portfolio!</p>
-</section>
-<section id="risk-budget-constraint">
-<h2><span class="section-number">15.7. </span>Risk-Budget Constraint<a class="headerlink" href="#risk-budget-constraint" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>How this is used in practice?</p></li>
-<li><p>In practice a fund or a “trading pod” is allocated some capital and some maximum risk-limits</p></li>
-<li><p>If you breach the risk-limit you have to de-risk</p></li>
-<li><p>Why is typically so hard to de-risk?</p></li>
-<li><p>Think about Melvin Capital.</p>
+<li><p>We already discussed good approaches to estimate betas and variances (Chapter 8)</p></li>
+<li><p>Here we simply put these estimates together</p></li>
+<li><p>One new trick to estimate factor covariances is to build it from correlations and variance estimates</p>
 <ul>
-<li><p>How should you think about de-risking? Should you comply? What is the trade-off?</p></li>
-<li><p>What are the incentives the manager faces? What does it depend on?</p></li>
-<li><p>How are these incentives different from a wealth individual invest in her own behalf?</p></li>
+<li><p>This is useful because correlations tend to move slower than variances</p></li>
+<li><p>(One can use this trick to estimate betas as well)</p></li>
 </ul>
 </li>
-<li><p>Should our past losses matter for our decision to de-risk?</p></li>
+<li><p>We often will rely on the fact that we believe we can measure high frequency variation in market volatility better than in the other factors</p></li>
+<li><p>Together with the fact that vols tend to move together it is natural to make assumptions like</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\Sigma_{u,t}=\Sigma_{u}*\frac{\sigma^2_{market,t}}{\sigma^2_{market}}\]</div>
+<div class="math notranslate nohighlight">
+\[\Sigma_{F,t}=diag(\Sigma_{F,t})^{1/2}Corr~diag(\Sigma_{F})^{1/2}\]</div>
+<ul class="simple">
+<li><p>where Corr is the correlation coming from a 2-5 year moving sample</p></li>
+<li><p>diag(\Sigma_{F})^{1/2} is a diagonal matrix with factor volatilities estimated at much higher frequencies</p>
+<ul>
+<li><p>Realized variance for the factor (using daily and even intra-day data)</p></li>
+<li><p>Garch/ARCH models</p></li>
+<li><p>Option implied volatility (specially for the market, but VIX can be useful more broadly)</p></li>
+</ul>
+</li>
+</ul>
+<p>Below we will do an example where we build a covariance matrix using this “mixed frequency” approach</p>
 </section>
-<section id="tracking-error-constraint">
-<h2><span class="section-number">15.8. </span>Tracking Error Constraint<a class="headerlink" href="#tracking-error-constraint" title="Link to this heading">#</a></h2>
+<section id="tracking-error-mandates">
+<h2><span class="section-number">15.5. </span>Tracking Error Mandates<a class="headerlink" href="#tracking-error-mandates" title="Link to this heading">#</a></h2>
+<p>Active managers operating in a  mutual often have limits on how much they can deviate from their benchmark</p>
+<p>This happens at the same time that they have incentives to beat it , i.e. their value added is <span class="math notranslate nohighlight">\(E[R-R^b]\)</span></p>
+<blockquote>
+<div><p>What is the difference between this notion of value added and alpha?</p>
+</div></blockquote>
+<p>The tracking error is simply the volatility of a relative return</p>
+<div class="math notranslate nohighlight">
+\[\sqrt{Var(R-R^b)}\]</div>
+<p>In the ideal scenario  you have a constant edge relative to the benchmark–no no tracking error–but still value added</p>
+<p>Of course that is virtually impossible, so you accept some tracking error to get some extra</p>
 <ul class="simple">
-<li><p>One can use exactly the same model to compute the tracking error</p></li>
-<li><p>it is simply the volatility of a relative return</p></li>
-<li><p>How would you adjust our math above to estimate the tracking error instead of the absolute risk?</p></li>
+<li><p>You are effectively short the benchmark</p></li>
+<li><p>To zero your vol you simply hold the benchmark portfolio</p></li>
 </ul>
-<p>Suppose we have many assets, all respecting this factor model. Say <span class="math notranslate nohighlight">\(R_t^e\)</span> is the big N by 1 vector of excess return <span class="math notranslate nohighlight">\([r_{t}^{e,1},r_{t}^{e,2},...]\)</span> for all these assets</p>
+<p>Benchmarks are typically tradable. A very common one is the S&amp;P500</p>
+<p>Your tracking error has two parts</p>
 <div class="math notranslate nohighlight">
-\[R_t^e=Bf_t+U_t\]</div>
-<p>where <span class="math notranslate nohighlight">\(B\)</span> is also a N by 1 vector of exposures <span class="math notranslate nohighlight">\([\beta_1,\beta_2,...\beta_N]\)</span>  and <span class="math notranslate nohighlight">\(u_t\)</span> is the N by 1 vector of shocks <span class="math notranslate nohighlight">\([\epsilon_1,\epsilon_2,...]\)</span></p>
-<p>Then their variance-covariance matrix is simply</p>
-<div class="math notranslate nohighlight">
-\[Var(R^e_t)=B &#64; B' Var(f_t)+ Var(U_t)\]</div>
+\[Var(R-R^b)=Var(\alpha+\beta R^b+u-R^b)=(\beta-1)^2Var(R^b)+var(u)\]</div>
+<p>The first piece is your exposure to the benchmark.</p>
 <ul class="simple">
-<li><p>Armed with the variance covariance of assets we have the variance of any portfolio of these assets</p></li>
-<li><p>To construct <span class="math notranslate nohighlight">\(Var(U_t)\)</span> you can stack all the residuals of the individual regression in a dataframe and compute the variance</p></li>
-<li><p>This will give you a vector S with N numbers, the you can use <code class="docutils literal notranslate"><span class="pre">np.diag(S)</span></code> to created a diagonal matrix with these variances in the diagonal</p></li>
+<li><p>How can you get this piece to zero? Is it costly?</p></li>
+</ul>
+<p>The second piece is everything else</p>
+<ul class="simple">
+<li><p>how can you get to zero? is it costly?</p></li>
+</ul>
+<p>Your value added also has two pieces</p>
+<div class="math notranslate nohighlight">
+\[E[R-R^b]=\alpha+(\beta-1)E[R^b]\]</div>
+<ul class="simple">
+<li><p>If benchmark has positive premium you can “beat it” simply by investing in higher beta stocks! (or leveraging up)</p></li>
+<li><p>For example if you have no original ideas and have a track record allowance of 5% how much value added you can produce?</p>
+<ul>
+<li><p>What your answer depends on?</p></li>
+</ul>
+</li>
+<li><p>Suppose you also have good trading ideas, i.e. alpha, how do you trade-off beta and alpha if your goal is to maximize value added?</p></li>
+<li><p>How is this related to the “betting against beta” phenomena?</p></li>
 </ul>
 </section>
 </section>
@@ -1955,7 +1635,7 @@ You can get quite sophisticated.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">14.9. </span>📊 Interpreting Factor Models</p>
+        <p class="prev-next-title"><span class="section-number">14.6. </span>📊 Interpreting Factor Models</p>
       </div>
     </a>
     <a class="right-next"
@@ -1987,24 +1667,18 @@ You can get quite sophisticated.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-why-this-distinction-matters">15.1.1. 🔁 Summary: Why This Distinction Matters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">15.1.2. ✅ Check Your Understanding</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-maximum-losses-to-portfolio-risk">15.1.3. From Maximum Losses to Portfolio Risk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.1.4. Risk-Budget Constraint</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix-estimation">15.2. Variance-Covariance Matrix Estimation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-factor-example">15.2.1. Single factor example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-factors">15.2.2. Multiple Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-factor-risk">15.2. Managing Factor Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix-estimation">15.3. Variance-Covariance Matrix Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-based-covariance-estimation">15.3.1. Factor-Based Covariance Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shrinkage-methods">15.3.2. Shrinkage methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-will-your-portfolio-risk-change-as-you-add-positions">15.3.3. How will your portfolio risk change as you add positions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-risk-analysis">15.3. Factor Risk  Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-risk-management">15.4. Dynamic Risk Management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.5. Single factor example</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-varying-risk-in-a-single-asset-or-trading-strategy">15.5.1. Time-varying risk in a single asset (or trading strategy)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-realized-variance-approach">15.5.2. The Realized variance approach</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-garch-approach">15.5.3. The GARCH approach</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-portfolios">15.6. Dynamic Portfolios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-budget-constraint">15.7. Risk-Budget Constraint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-constraint">15.8. Tracking Error Constraint</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-error-mandates">15.5. Tracking Error Mandates</a></li>
 </ul>
   </nav></div>
 

@@ -234,7 +234,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Performance_evaluation.html">12. Performance Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">13. Machine Learning in Finance</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="MultiFactorModels.html">14. Multi Factor Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">14.9. 📊 Interpreting Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">14.6. 📊 Interpreting Factor Models</a></li>
 
 
 </ul>
@@ -517,14 +517,14 @@ document.write(`
 <p>So far we wrote the portfolio return as simple product of weights and individual asset returns</p>
 <div class="math notranslate nohighlight">
 \[r^p=W R+(1-\sum_i^I w_{i})r^f\]</div>
-<p>where <span class="math notranslate nohighlight">\(R\)</span> is a a vector of riksy asset returns.</p>
+<p>where <span class="math notranslate nohighlight">\(R\)</span> is a a vector of risky asset returns.</p>
 <p>And <span class="math notranslate nohighlight">\(W=[w_1,w_2,...w_I]\)</span> is a vector of asset weights</p>
 <p>In practice things are not quite as simple.</p>
-<p>When <span class="math notranslate nohighlight">\((1-\sum_i^Iw_i)\in[0,1]\)</span> you have a postive fraction of your portfolio in the risk-free asset.</p>
+<p>When <span class="math notranslate nohighlight">\((1-\sum_i^Iw_i)\in[0,1]\)</span> you have a positive fraction of your portfolio in the risk-free asset.</p>
 <p>In this case you earn something close to the 3 month t-bill rate.</p>
 <p><strong>Leverage</strong></p>
 <p>When <span class="math notranslate nohighlight">\((1-\sum_i^Iw_i)&lt;0\)</span> you have a negative weight on the risk-free asset.</p>
-<p>This means that you are borowing money to invest more in the risky assets, mechanically <span class="math notranslate nohighlight">\(\sum_i^Iw_i&gt;1\)</span>.</p>
+<p>This means that you are borrowing money to invest more in the risky assets, mechanically <span class="math notranslate nohighlight">\(\sum_i^Iw_i&gt;1\)</span>.</p>
 <p>What happens in this case?</p>
 <ul class="simple">
 <li><p>No one will lend you money at the same rate the US gov get to borrow! They get to borrow at the lowest USD rates out there!</p></li>
@@ -561,13 +561,13 @@ document.write(`
 <li><p>in this case for each dollar you have invested you have to put exactyl one dollar in.</p></li>
 <li><p>when margin is 0.5, it means that your gross leverage is 1/0.5=2, which means that for each dollar you have you can buy 2 dollars in risky assets</p></li>
 <li><p>so the bank lends to you another dollar for each dollar you put it</p></li>
-<li><p>here is for a US retial broker. Focus on the top row, 50% initial , 30% maintenance, which translates to 1/0.5=2 initial leverage and 1/0.3=2.33 maintenance leverage</p></li>
+<li><p>here is for a US retail broker. Focus on the top row, 50% initial , 30% maintenance, which translates to 1/0.5=2 initial leverage and 1/0.3=2.33 maintenance leverage</p></li>
 </ul>
 <p><img alt="image.png" src="https://github.com/amoreira2/Fin418/blob/main/assets/plots/leverageandshorting2.jpg?raw=1" /></p>
 <p><strong>Example</strong></p>
 <p>lets say  <span class="math notranslate nohighlight">\(m_{initial}=0.5\)</span> and <span class="math notranslate nohighlight">\(m_{maintenance}=0.3\)</span>. Say you have 100k in your brokerage account and you can buy up to 200K in stocks. The broker lends to you 100k and hold the whole 200k in assets as protection. The value of your networth is still 100k. 200k in stocks -100k in the risk-free asset. For simplicity lets assume the risk-free rate is zero in this example.</p>
 <ul class="simple">
-<li><p>Say your risk portfolio drops 30%, what is yout networth? risky portfolio 200*(-0.3+1)=140k, minus the 100k, you are now worth 140-100=40</p></li>
+<li><p>Say your risk portfolio drops 30%, what is your networth? risky portfolio 200*(-0.3+1)=140k, minus the 100k, you are now worth 140-100=40</p></li>
 <li><p>This should not be surprising: You must absorb the entire loss</p></li>
 <li><p>What is you risk-asset weight and how much you are borrowing as fraction of your worth?</p></li>
 </ul>
@@ -621,7 +621,7 @@ document.write(`
 </ul>
 <p><strong>Fire Sales</strong></p>
 <ul class="simple">
-<li><p>If you don’t do it your broker will certainly sell fro you and  might even liquidiate your entire position</p></li>
+<li><p>If you don’t do it your broker will certainly sell for you and  might even liquidate your entire position</p></li>
 <li><p>for example, here is from a retail broker</p></li>
 </ul>
 <p><img alt="image.png" src="https://github.com/amoreira2/Fin418/blob/main/assets/plots/leverageandshorting3.jpg?raw=1" /></p>
@@ -638,13 +638,13 @@ document.write(`
 <li><p>In futures market, swap markets, and option markets you can get implicit leverage, often substantially more than in the cash market</p></li>
 <li><p>It will vary wildly from market to market and in OTC markets this will depend on the relationship you have with your broker</p></li>
 <li><p>For example the Achelegos fund was leveraged 10 to 1, so for each 1 dollar o networth they had 10 dollars of risky assets</p></li>
-<li><p>Often this leverage constraint is given by sometype of risk-management at the portfolio level</p></li>
+<li><p>Often this leverage constraint is given by some type of risk-management at the portfolio level</p></li>
 <li><p>For example, it is typical to make the amount of margin  that you have to post depend on your portfolio volatility</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[m\geq \overline{m}+c\sigma(r_p)\]</div>
 <ul class="simple">
-<li><p>This means that if volatilitiy goes up at the same time as your assets go down in value you face demand for cash both from your losses buy also from an increase in the margin you need to sustain your trade</p></li>
+<li><p>This means that if volatility goes up at the same time as your assets go down in value you face demand for cash both from your losses buy also from an increase in the margin you need to sustain your trade</p></li>
 </ul>
 <section id="aplication-all-in-on-tesla">
 <h2><span class="section-number">16.1. </span><strong>Aplication: All in on Tesla</strong><a class="headerlink" href="#aplication-all-in-on-tesla" title="Link to this heading">#</a></h2>
@@ -1015,7 +1015,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span><span class="o">=</span><span class="mi">1_000_000</span> <span class="c1"># inital portfolio value</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span><span class="o">=</span><span class="mi">1_000_000</span> <span class="c1"># initial portfolio value</span>
 
 <span class="n">rl</span><span class="o">=</span><span class="mf">0.01</span><span class="o">/</span><span class="mi">252</span> <span class="c1">#borrowing spread</span>
 <span class="n">m_initial</span><span class="o">=</span><span class="mf">0.5</span> <span class="c1"># Initial margin</span>

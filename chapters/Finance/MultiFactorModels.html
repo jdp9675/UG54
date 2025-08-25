@@ -65,7 +65,7 @@
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="14.9. 📊 Interpreting Factor Models" href="InterpretingFactorModels.html" />
+    <link rel="next" title="14.6. 📊 Interpreting Factor Models" href="InterpretingFactorModels.html" />
     <link rel="prev" title="13. Machine Learning" href="MachineLearning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -234,7 +234,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Performance_evaluation.html">12. Performance Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MachineLearning.html">13. Machine Learning in Finance</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">14. Multi Factor Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">14.9. 📊 Interpreting Factor Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InterpretingFactorModels.html">14.6. 📊 Interpreting Factor Models</a></li>
 
 
 </ul>
@@ -490,16 +490,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-a-multi-factor-model-the-time-series-approach">14.1. Estimating a multi-factor model: The Time-series approach</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">14.2. Application</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">14.3. Variance decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-a-better-behaved-co-variance-matrix">14.4. Application: A better behaved co-variance matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions">14.5. Application: How will your portfolio risk change as you add positions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">14.6. Performance Attribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes">14.6.1. Application: What does Cathie Wood  Likes ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">14.3. Performance Attribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes">14.3.1. Application: What does Cathie Wood  Likes ?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-up-from-assets-factor-risk-to-portfolio-factor-risk">14.7. Bottom up: from assets factor risk to portfolio factor risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cross-sectional-approach-or-characteristic-based-model">14.8. The Cross-Sectional Approach ( or Characteristic-based model)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-characteristic-adjusted-returns">14.8.1. Constructing Characteristic adjusted returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-up-from-assets-factor-risk-to-portfolio-factor-risk">14.4. Bottom up: from assets factor risk to portfolio factor risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cross-sectional-approach-or-characteristic-based-model">14.5. The Cross-Sectional Approach ( or Characteristic-based model)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-characteristic-adjusted-returns">14.5.1. Constructing Characteristic adjusted returns</a></li>
 </ul>
 </li>
 </ul>
@@ -969,455 +966,15 @@ Notes:
 <p>What are other things that we should be looking at?</p>
 <p>Is this table providing a fair comparison across funds?</p>
 </section>
-<section id="variance-decomposition">
-<h2><span class="section-number">14.3. </span>Variance decomposition<a class="headerlink" href="#variance-decomposition" title="Link to this heading">#</a></h2>
-<p>The betas measure the exposure of the asset return to the factor, but it does not give an accurate way of thinking which factor drives the most of the variation in the asset as factors can have very different variances</p>
-<div class="math notranslate nohighlight">
-\[1=\frac{Cov(r^i_t,r^i_t)}{Var(r^i_t)}=\frac{Cov(r^i_t,\sum_j^m \beta_{i,j}f^j_t+\epsilon^i_t)}{Var(r^i_t)}\]</div>
-<div class="math notranslate nohighlight">
-\[1=\frac{\sum_j^m \beta_{i,j}Cov(r^i_t,f^j_t)+\sigma^2_{\epsilon}}{Var(r^i_t)}\]</div>
-<p>The the variance share of factor j is <span class="math notranslate nohighlight">\(\frac{\beta_{i,j}Cov(r^i_t,f^j_t)}{Var(r^i_t)}\)</span> and the share of non-factor variance is <span class="math notranslate nohighlight">\(\frac{\sigma^2_{\epsilon}}{Var(r^i_t)}\)</span></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VarianceDecomposition</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">tickers</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="n">FactorLoadings</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">tickers</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-<span class="n">VarianceIdiosyncratic</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([],</span><span class="n">index</span><span class="o">=</span><span class="n">tickers</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;epsilon&#39;</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">ticker</span> <span class="ow">in</span> <span class="n">tickers</span><span class="p">:</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">df_ETF</span><span class="p">[</span><span class="n">ticker</span><span class="p">]</span>
-    <span class="n">Factors</span> <span class="o">=</span> <span class="n">df_factor</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">Factors</span><span class="p">)</span> 
-    <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span>
-    <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1"># get the covariance matrix of the factors and the dependent variable</span>
-    <span class="n">CovMatrix</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">y</span><span class="p">,</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
-    <span class="c1"># get the column of the covariance matrix corresponding to the dependent variable and exclude itself to get the covariance of </span>
-    <span class="c1"># the dependent variable with each factor</span>
-    <span class="n">FactorLoadings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,:]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="n">VarianceIdiosyncratic</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span><span class="s1">&#39;epsilon&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
-    <span class="n">VarianceDecomposition</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ticker</span><span class="p">,:]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">*</span><span class="n">CovMatrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">y</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
-    <span class="c1"># Get the residual variance</span>
-    <span class="n">VarianceDecomposition</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">ticker</span><span class="p">,</span><span class="s1">&#39;epsilon&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">/</span><span class="n">y</span><span class="o">.</span><span class="n">var</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
-
-
-
-<span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">VarianceDecomposition</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Mkt-RF</th>
-      <th>SMB</th>
-      <th>HML</th>
-      <th>RMW</th>
-      <th>CMA</th>
-      <th>MOM</th>
-      <th>epsilon</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>MTUM</th>
-      <td>85</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>4</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>SPMO</th>
-      <td>85</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>2</td>
-      <td>13.0</td>
-    </tr>
-    <tr>
-      <th>XMMO</th>
-      <td>83</td>
-      <td>4</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>-2</td>
-      <td>13.0</td>
-    </tr>
-    <tr>
-      <th>IMTM</th>
-      <td>68</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>1</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>31.0</td>
-    </tr>
-    <tr>
-      <th>XSMO</th>
-      <td>70</td>
-      <td>16</td>
-      <td>1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>-3</td>
-      <td>14.0</td>
-    </tr>
-    <tr>
-      <th>PDP</th>
-      <td>90</td>
-      <td>1</td>
-      <td>-1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>-2</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>JMOM</th>
-      <td>90</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>-1</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>DWAS</th>
-      <td>64</td>
-      <td>23</td>
-      <td>-1</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td>8.0</td>
-    </tr>
-    <tr>
-      <th>VFMO</th>
-      <td>82</td>
-      <td>7</td>
-      <td>-2</td>
-      <td>2</td>
-      <td>0</td>
-      <td>2</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>XSVM</th>
-      <td>60</td>
-      <td>18</td>
-      <td>10</td>
-      <td>-2</td>
-      <td>0</td>
-      <td>1</td>
-      <td>10.0</td>
-    </tr>
-    <tr>
-      <th>QMOM</th>
-      <td>58</td>
-      <td>6</td>
-      <td>-2</td>
-      <td>3</td>
-      <td>0</td>
-      <td>7</td>
-      <td>23.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>What do we learn?</p>
-<p>Decompositions like that extensively in the money management industry</p>
-<ul class="simple">
-<li><p>Used to classify managers in terms of styles–often called style analysis</p></li>
-<li><p>Used to control own portfolio factor risk to satisfy investment mandates</p></li>
-</ul>
-<p>When looking at a portfolio/fund you have two approaches to measure it’s factor exposures</p>
-<ul class="simple">
-<li><p>Top down: what we did so far. run a time-series regression of the portfolio returns on the factor return</p></li>
-<li><p>Bottom up: from the asset factor exposures build the portfolio factor exposure</p></li>
-</ul>
-<p>What are the benefits and drawbacks of each?</p>
-</section>
-<section id="application-a-better-behaved-co-variance-matrix">
-<h2><span class="section-number">14.4. </span>Application: A better behaved co-variance matrix<a class="headerlink" href="#application-a-better-behaved-co-variance-matrix" title="Link to this heading">#</a></h2>
-<p>We have</p>
-<div class="math notranslate nohighlight">
-\[R_t=B&#64;F_t+u_t\]</div>
-<p>Then</p>
-<div class="math notranslate nohighlight">
-\[Var(R_t)=B&#64;Var(F_t)&#64;B.T+Var(U_t)\]</div>
-<p>The big difference is that now <span class="math notranslate nohighlight">\(F\)</span> is a vector of factors</p>
-<p>so <span class="math notranslate nohighlight">\(Var(F_t)\)</span> is a M by M variance covariance matrix, where M is the number of factors</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Var_F</span><span class="o">=</span><span class="n">Factors</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
-<span class="n">Cov</span><span class="o">=</span><span class="n">FactorLoadings</span> <span class="o">@</span> <span class="n">Var_F</span> <span class="o">@</span> <span class="n">FactorLoadings</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">VarianceIdiosyncratic</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">Cov</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>MTUM</th>
-      <th>SPMO</th>
-      <th>XMMO</th>
-      <th>IMTM</th>
-      <th>XSMO</th>
-      <th>PDP</th>
-      <th>JMOM</th>
-      <th>DWAS</th>
-      <th>VFMO</th>
-      <th>XSVM</th>
-      <th>QMOM</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>MTUM</th>
-      <td>0.00016</td>
-      <td>0.000143</td>
-      <td>0.000155</td>
-      <td>0.000117</td>
-      <td>0.000152</td>
-      <td>0.000158</td>
-      <td>0.000141</td>
-      <td>0.000175</td>
-      <td>0.000159</td>
-      <td>0.000139</td>
-      <td>0.000169</td>
-    </tr>
-    <tr>
-      <th>SPMO</th>
-      <td>0.000143</td>
-      <td>0.000159</td>
-      <td>0.00015</td>
-      <td>0.000114</td>
-      <td>0.000146</td>
-      <td>0.000152</td>
-      <td>0.000137</td>
-      <td>0.000166</td>
-      <td>0.000152</td>
-      <td>0.000138</td>
-      <td>0.00016</td>
-    </tr>
-    <tr>
-      <th>XMMO</th>
-      <td>0.000155</td>
-      <td>0.00015</td>
-      <td>0.0002</td>
-      <td>0.000127</td>
-      <td>0.000178</td>
-      <td>0.000171</td>
-      <td>0.000153</td>
-      <td>0.000203</td>
-      <td>0.000175</td>
-      <td>0.000173</td>
-      <td>0.000184</td>
-    </tr>
-    <tr>
-      <th>IMTM</th>
-      <td>0.000117</td>
-      <td>0.000114</td>
-      <td>0.000127</td>
-      <td>0.000136</td>
-      <td>0.000128</td>
-      <td>0.000127</td>
-      <td>0.000115</td>
-      <td>0.000144</td>
-      <td>0.000129</td>
-      <td>0.000127</td>
-      <td>0.000133</td>
-    </tr>
-    <tr>
-      <th>XSMO</th>
-      <td>0.000152</td>
-      <td>0.000146</td>
-      <td>0.000178</td>
-      <td>0.000128</td>
-      <td>0.000227</td>
-      <td>0.000173</td>
-      <td>0.000154</td>
-      <td>0.000223</td>
-      <td>0.000184</td>
-      <td>0.000198</td>
-      <td>0.000192</td>
-    </tr>
-    <tr>
-      <th>PDP</th>
-      <td>0.000158</td>
-      <td>0.000152</td>
-      <td>0.000171</td>
-      <td>0.000127</td>
-      <td>0.000173</td>
-      <td>0.000187</td>
-      <td>0.000154</td>
-      <td>0.000198</td>
-      <td>0.000174</td>
-      <td>0.000163</td>
-      <td>0.000184</td>
-    </tr>
-    <tr>
-      <th>JMOM</th>
-      <td>0.000141</td>
-      <td>0.000137</td>
-      <td>0.000153</td>
-      <td>0.000115</td>
-      <td>0.000154</td>
-      <td>0.000154</td>
-      <td>0.000152</td>
-      <td>0.000173</td>
-      <td>0.000154</td>
-      <td>0.000148</td>
-      <td>0.00016</td>
-    </tr>
-    <tr>
-      <th>DWAS</th>
-      <td>0.000175</td>
-      <td>0.000166</td>
-      <td>0.000203</td>
-      <td>0.000144</td>
-      <td>0.000223</td>
-      <td>0.000198</td>
-      <td>0.000173</td>
-      <td>0.000284</td>
-      <td>0.000215</td>
-      <td>0.000218</td>
-      <td>0.000229</td>
-    </tr>
-    <tr>
-      <th>VFMO</th>
-      <td>0.000159</td>
-      <td>0.000152</td>
-      <td>0.000175</td>
-      <td>0.000129</td>
-      <td>0.000184</td>
-      <td>0.000174</td>
-      <td>0.000154</td>
-      <td>0.000215</td>
-      <td>0.000195</td>
-      <td>0.000177</td>
-      <td>0.000196</td>
-    </tr>
-    <tr>
-      <th>XSVM</th>
-      <td>0.000139</td>
-      <td>0.000138</td>
-      <td>0.000173</td>
-      <td>0.000127</td>
-      <td>0.000198</td>
-      <td>0.000163</td>
-      <td>0.000148</td>
-      <td>0.000218</td>
-      <td>0.000177</td>
-      <td>0.000252</td>
-      <td>0.000175</td>
-    </tr>
-    <tr>
-      <th>QMOM</th>
-      <td>0.000169</td>
-      <td>0.00016</td>
-      <td>0.000184</td>
-      <td>0.000133</td>
-      <td>0.000192</td>
-      <td>0.000184</td>
-      <td>0.00016</td>
-      <td>0.000229</td>
-      <td>0.000196</td>
-      <td>0.000175</td>
-      <td>0.000281</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>Suppose you are trying to construct the minimum variance portfolio–say you think expected returns are undistinguishable across the funds, so you simply want to minimize variance</p>
-<p>your optimal weight, if you knew the covariance matrix is</p>
-<div class="math notranslate nohighlight">
-\[E[R^e]Var(R^e)^{-1}\]</div>
-<ul class="simple">
-<li><p>If we compare the in-sample Variance of our minimum variance portfolios for</p>
-<ul>
-<li><p>The unrestricted case</p></li>
-<li><p>The single-factor covariance</p></li>
-<li><p>The multi-factor covariance</p></li>
-</ul>
-</li>
-<li><p>which one will have lowest variance? What will have the highest?</p></li>
-<li><p>Now split the sample in two. Repeat the covariance estimation procedure for each of these approaches for the first half of the sample</p></li>
-<li><p>Now use the weights to compute the variance of each of the portfolios in the second half</p></li>
-<li><p>Is the order likely to change? Why? Why not?</p></li>
-</ul>
-</section>
-<section id="application-how-will-your-portfolio-risk-change-as-you-add-positions">
-<h2><span class="section-number">14.5. </span>Application: How will your portfolio risk change as you add positions<a class="headerlink" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions" title="Link to this heading">#</a></h2>
-<p>You have portfolio <span class="math notranslate nohighlight">\(X_0\)</span> and you want to sell w of your positions to invest in a fund with portfolio <span class="math notranslate nohighlight">\(X_1\)</span>. How your portfolio variance will change as a function of you reallocation?</p>
-<ul class="simple">
-<li><p>The answer is simple</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[Var(wX_1R_t+(1-w)X_0R_t)-Var(X_0R_t)\]</div>
-<ul class="simple">
-<li><p>But also kind of misleading since you might not have good data to estimate the variance of the new portfolio</p></li>
-<li><p>Now if you know each portfolio factor betas,<span class="math notranslate nohighlight">\(\beta_0=X_0&#64;B\)</span> and <span class="math notranslate nohighlight">\(\beta_1=X_1&#64;B\)</span> , and at least one of this portfolio is large and well diversified, then for small tilts, i.e. <span class="math notranslate nohighlight">\(w\)</span> small, we have</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\frac{Var(wX_1R_t+(1-w)X_0R_t)-Var(X_0R_t)}{\Delta w}|_{w\approx 0} =\beta_1Var(F)\beta_0'\]</div>
-<ul class="simple">
-<li><p>The fact that one is well diversified just means that you can ignore the covariance-terms of the portfolios asset specific risks</p></li>
-<li><p>So you see above why a large pool of money when allocating money to an active manager will want to regulate their factor exposure</p></li>
-<li><p>funds with similar volatilities will be perceived as very different risks depending on how the exposure of portfolio relates to the exposure of the fund</p></li>
-</ul>
-<p>For example, look at how your portfolio risk change if you go from an equal weighted portfolio of these ETFS to just investing in one of them, say MTUM</p>
-</section>
 <section id="performance-attribution">
-<h2><span class="section-number">14.6. </span>Performance Attribution<a class="headerlink" href="#performance-attribution" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>Performance Attribution<a class="headerlink" href="#performance-attribution" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We can use factor models to decompose a manager strategy</p></li>
 <li><p>What explains their returns?</p></li>
 <li><p>What tilts they have?  What kind of stocks they like?</p></li>
 </ul>
 <section id="application-what-does-cathie-wood-likes">
-<h3><span class="section-number">14.6.1. </span>Application: What does Cathie Wood  Likes ?<a class="headerlink" href="#application-what-does-cathie-wood-likes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.1. </span>Application: What does Cathie Wood  Likes ?<a class="headerlink" href="#application-what-does-cathie-wood-likes" title="Link to this heading">#</a></h3>
 <p><img alt="Cathie Wood" src="../../_images/CW_image.jfif" /></p>
 <p>Cathie Wood is a renowned stock-picker and the founder of ARK Invest, which manages around 60 billion in assets and invests in innovative technologies such as self-driving cars and genomics. She gained fame for her success in the male-dominated world of investing, her persuasive investment arguments, and her proven track record in the stock market. Prior to founding ARK Invest, she gained experience at The Capital Group, Jennison Associates, and AllianceBernstein, and co-founded Tupelo Capital Management, a hedge fund. Wood is known for her unconventional investment strategies and her advocacy for investing in disruptive technologies, which has garnered her a large following in the investing world. Her estimated net worth is around $250 million.</p>
 <p>Citations:
@@ -1534,7 +1091,7 @@ Notes:
 </section>
 </section>
 <section id="bottom-up-from-assets-factor-risk-to-portfolio-factor-risk">
-<h2><span class="section-number">14.7. </span>Bottom up: from assets factor risk to portfolio factor risk<a class="headerlink" href="#bottom-up-from-assets-factor-risk-to-portfolio-factor-risk" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.4. </span>Bottom up: from assets factor risk to portfolio factor risk<a class="headerlink" href="#bottom-up-from-assets-factor-risk-to-portfolio-factor-risk" title="Link to this heading">#</a></h2>
 <p>Above we estimated fund factor exposures by looking at how the fund co-move with the different factors</p>
 <p>An alternative is to look through the fund and compute asset factor loadings and from them compute the fund factor loadings</p>
 <p>Consider portfolio with weights  <span class="math notranslate nohighlight">\(X\)</span> that earns excess returns <span class="math notranslate nohighlight">\(r=X&#64;R\)</span> where R is the vector of asset excess returns.</p>
@@ -2593,7 +2150,7 @@ Notes:
 <p>The general recipe that people use is 1-2 years when using daily data. 5 years when using monthly</p>
 </section>
 <section id="the-cross-sectional-approach-or-characteristic-based-model">
-<h2><span class="section-number">14.8. </span>The Cross-Sectional Approach ( or Characteristic-based model)<a class="headerlink" href="#the-cross-sectional-approach-or-characteristic-based-model" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.5. </span>The Cross-Sectional Approach ( or Characteristic-based model)<a class="headerlink" href="#the-cross-sectional-approach-or-characteristic-based-model" title="Link to this heading">#</a></h2>
 <p>In the time-series approach, we start from the factors and estimate the betas</p>
 <p>Now we will flip this: we will start from the betas–which are the characteristic–and use a regression to tell us what is the return associated with this characteristic</p>
 <p>That is, we will estimate the factors themselves!</p>
@@ -3513,7 +3070,7 @@ Notes:
 <li><p>Essentially I would run a for loop and get a sequence of betas <span class="math notranslate nohighlight">\([\beta_t,\beta_{t+1},...]\)</span> and these would be the returns on the factors</p></li>
 </ul>
 <section id="constructing-characteristic-adjusted-returns">
-<h3><span class="section-number">14.8.1. </span>Constructing Characteristic adjusted returns<a class="headerlink" href="#constructing-characteristic-adjusted-returns" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.5.1. </span>Constructing Characteristic adjusted returns<a class="headerlink" href="#constructing-characteristic-adjusted-returns" title="Link to this heading">#</a></h3>
 <p>We can get the portfolio characteristics and based on that construct the return implied by these characteristics</p>
 <p>We then subtract these characteristic returns from the portfolio returns</p>
 <p>It is the equivalent of the “hedged portfolios” that uses the betas to hedge. Here we simply use the characterisitc–instead of makign “factor” neutral we make them characteristic neutral</p>
@@ -4232,7 +3789,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14.9. </span>📊 Interpreting Factor Models</p>
+        <p class="prev-next-title"><span class="section-number">14.6. </span>📊 Interpreting Factor Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -4254,16 +3811,13 @@ dtype: float64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-a-multi-factor-model-the-time-series-approach">14.1. Estimating a multi-factor model: The Time-series approach</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application">14.2. Application</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-decomposition">14.3. Variance decomposition</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-a-better-behaved-co-variance-matrix">14.4. Application: A better behaved co-variance matrix</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-how-will-your-portfolio-risk-change-as-you-add-positions">14.5. Application: How will your portfolio risk change as you add positions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">14.6. Performance Attribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes">14.6.1. Application: What does Cathie Wood  Likes ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-attribution">14.3. Performance Attribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-what-does-cathie-wood-likes">14.3.1. Application: What does Cathie Wood  Likes ?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-up-from-assets-factor-risk-to-portfolio-factor-risk">14.7. Bottom up: from assets factor risk to portfolio factor risk</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cross-sectional-approach-or-characteristic-based-model">14.8. The Cross-Sectional Approach ( or Characteristic-based model)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-characteristic-adjusted-returns">14.8.1. Constructing Characteristic adjusted returns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bottom-up-from-assets-factor-risk-to-portfolio-factor-risk">14.4. Bottom up: from assets factor risk to portfolio factor risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cross-sectional-approach-or-characteristic-based-model">14.5. The Cross-Sectional Approach ( or Characteristic-based model)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-characteristic-adjusted-returns">14.5.1. Constructing Characteristic adjusted returns</a></li>
 </ul>
 </li>
 </ul>
