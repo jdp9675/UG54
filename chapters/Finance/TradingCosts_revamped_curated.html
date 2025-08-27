@@ -60,8 +60,8 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/TradingCosts_revamped';</script>
-    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/TradingCosts_revamped.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/Finance/TradingCosts_revamped_curated';</script>
+    <link rel="canonical" href="https://amoreira2.github.io/Fin418/chapters/Finance/TradingCosts_revamped_curated.html" />
     <link rel="icon" href="../../_static/figuremain2.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -302,7 +302,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/TradingCosts_revamped.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/amoreira2/Fin418/blob/main/chapters/Finance/TradingCosts_revamped_curated.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +350,7 @@
       
       
       
-      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/TradingCosts_revamped.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/amoreira2/Fin418/issues/new?title=Issue%20on%20page%20%2Fchapters/Finance/TradingCosts_revamped_curated.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +380,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/Finance/TradingCosts_revamped.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/Finance/TradingCosts_revamped_curated.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -474,16 +474,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Trading costs and Liquidity</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">🎯 Learning Objectives</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">Implementation Shortfall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">Absorption capacity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-do-you-actually-need-to-trade">How much do you actually need to trade?</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">✅ Key Takeaways</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -494,54 +488,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <!-- Visual style for callouts & badges (self-contained) -->
-<style>
-:root {
-  --accent:#5b21b6;         /* Stern-ish purple */
-  --exercise:#0ea5e9;
-  --concept:#22c55e;
-  --important:#ef4444;
-  --insight:#f59e0b;
-}
-.markdown-callout {
-  padding: 1rem 1.2rem;
-  border-left: 6px solid var(--accent);
-  background: #f9fafb;
-  border-radius: 0.6rem;
-  margin: 1rem 0;
-}
-.callout-title { 
-  font-weight: 600; 
-  text-transform: uppercase; 
-  font-size: 0.85rem; 
-  letter-spacing: 0.03em;
-  margin-bottom: 0.25rem;
-}
-.badge { 
-  display:inline-block; 
-  padding: 0.15rem 0.55rem; 
-  border-radius: 999px; 
-  font-size: 0.72rem; 
-  background: var(--accent); 
-  color: white; 
-  margin-right: 0.4rem; 
-}
-.callout.exercise { border-left-color: var(--exercise); background: #f0f9ff; }
-.callout.concept   { border-left-color: var(--concept);   background: #f0fff4; }
-.callout.important { border-left-color: var(--important); background: #fff7ed; }
-.callout.insight   { border-left-color: var(--insight);   background: #fffbeb; }
-
-/* Headings: slightly tighter and bolder for readability */
-h1, h2, h3 { scroll-margin-top: 80px; }
-h1 { border-bottom: 2px solid #eee; padding-bottom: 0.3rem; }
-</style><p>To Be Done</p>
+  <p>To Be Done</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+%matplotlib inline
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
 </pre></div>
 </div>
 </div>
@@ -558,31 +512,16 @@ C:\Users\alan.moreira\AppData\Roaming\Python\Python39\site-packages\pandas\core\
 <h1>Trading costs and Liquidity<a class="headerlink" href="#trading-costs-and-liquidity" title="Link to this heading">#</a></h1>
 <p>So we have taken prices as given and discussed quantitative allocation rules that overperform relative to a standard CAPM benchmark.</p>
 <p>An important question is whether we would be able to trade at those prices if we tried to implement the strategy.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="learning-objectives">
-<h1>🎯 Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h1>
-<p>By the end of this notebook, you will be able to:</p>
-<ul class="simple">
-<li><p>Define the main components of <strong>trading costs</strong> (spreads, commissions/fees, market impact, and slippage) and how they affect realized performance.</p></li>
-<li><p>Compute <strong>cost‑adjusted returns</strong> from raw signals/weights using spreads/fees and <strong>turnover</strong>.</p></li>
-<li><p>Measure <strong>implementation shortfall</strong> from price series and orders, and interpret its drivers.</p></li>
-<li><p>Compare pre‑ and post‑cost performance for strategies and discuss when costs can <strong>erase alpha</strong>.</p></li>
-<li><p>Implement simple, <strong>vectorized Python</strong> functions to apply costs across portfolios/backtests.</p></li>
-<li><p>Diagnose common <strong>backtesting pitfalls</strong> related to frictions (e.g., no slippage, ignoring liquidity).</p></li>
-</ul>
-<blockquote>
-<div><p>Tip: Look for <strong>badges</strong> that highlight Exercises, Concepts, Insights, and Important caveats as you progress.</p>
-</div></blockquote>
 <p>Liquidity is the ease of trading a security.</p>
 <p>This encompass many factors, all of which impose a cost on those wishing to trade.</p>
 <p>Sources of illiquidity:</p>
 <ol class="arabic simple">
 <li><p>Exogenous transactions costs = brokerage fees, order-processing costs, transaction taxes.</p></li>
-<li><p>Demand pressure = when need to sell quickly, nautral buyer not available. Whoever is available will ask to be compensated to absorb the trade</p></li>
+<li><p>Demand pressure = when need to sell quickly, natural buyer not available. Whoever is available will ask to be compensated to absorb the trade</p></li>
 <li><p>Inventory risk = if can’t find a buyer will sell to a market maker who will later sell position.  But, since market maker faces future price changes, he might demand compensation for this risk</p></li>
 <li><p>Private information = concern over trading against an informed party (e.g., insider).  Need to be compensated for this risk. Private information can be about fundamentals or about future flows.</p></li>
 </ol>
-<p>Obviuosly a perfect answer to this question requires costly experimentation. It would require trading and measuring how prices change in reponse to your trading behavior.</p>
+<p>Obviously a perfect answer to this question requires costly experimentation. It would require trading and measuring how prices change in response to your trading behavior.</p>
 <section id="implementation-shortfall">
 <h2>Implementation Shortfall<a class="headerlink" href="#implementation-shortfall" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -592,13 +531,13 @@ C:\Users\alan.moreira\AppData\Roaming\Python\Python39\site-packages\pandas\core\
 <p><strong>Shortfall=return of wish portfolio- return of real portfolio</strong></p>
 <p>(after all costs)</p>
 <p>Shortfall includes both execution costs ( the costs of trading to  get you to the wish portfolio)  and opportunity costs ( the costs of deviating from the wish portfolio )</p>
-<p>IF you trade quickly what force will increase the Shotfall ?Which will increase?</p>
+<p>IF you trade quickly what force will increase the Shortfall ?Which will increase?</p>
 <p>How should you trade in this world?</p>
 <p>Precise answer is highly empirical</p>
 <p>But overall shape of the solution is clear</p>
 <ul class="simple">
 <li><p>Find size of tracking error that minimize shortfall</p></li>
-<li><p>IF your weights imply a tracking below the cap, don;t trade</p></li>
+<li><p>IF your weights imply a tracking below the cap, don’t trade</p></li>
 <li><p>Trade whenever tracking error going above this value</p></li>
 <li><p>Trade just enough to keep tracking error at the cap</p></li>
 </ul>
@@ -652,21 +591,21 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crsp</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://github.com/amoreira2/Fin418/blob/main/assets/data/crspm2005_2020.pkl?raw=true&#39;</span><span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pandas.tseries.offsets</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>crsp=pd.read_pickle(&#39;https://github.com/amoreira2/Fin418/blob/main/assets/data/crspm2005_2020.pkl?raw=true&#39;)
+from pandas.tseries.offsets import *
 
-<span class="c1"># change variable format to int</span>
-<span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="c1"># Line up date to be end of month </span>
-<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+# change variable format to int
+crsp[[&#39;permno&#39;]]=crsp[[&#39;permno&#39;]].astype(int)
+# Line up date to be end of month 
+crsp[&#39;date&#39;]=crsp[&#39;date&#39;]+MonthEnd(0)
 
-<span class="c1"># calculate market equity</span>
-<span class="c1"># why do we use absolute value of price?</span>
-<span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;me&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;prc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">*</span><span class="n">crsp</span><span class="p">[</span><span class="s1">&#39;shrout&#39;</span><span class="p">]</span> 
-<span class="c1"># drop price and shareoustandng since we won&#39;t need it anymore</span>
+# calculate market equity
+# why do we use absolute value of price?
+crsp[&#39;me&#39;]=crsp[&#39;prc&#39;].abs()*crsp[&#39;shrout&#39;] 
+# drop price and shareoustandng since we won&#39;t need it anymore
 
-<span class="n">crsp</span><span class="o">=</span><span class="n">crsp</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span><span class="s1">&#39;vol&#39;</span><span class="p">,</span><span class="s1">&#39;prc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">crsp</span>
+crsp=crsp[[&#39;permno&#39;,&#39;date&#39;,&#39;ret&#39;, &#39;me&#39;,&#39;vol&#39;,&#39;prc&#39;]].sort_values([&#39;permno&#39;,&#39;date&#39;]).set_index(&#39;date&#39;).drop_duplicates().reset_index()
+crsp
 </pre></div>
 </div>
 </div>
@@ -804,89 +743,89 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data=crsp_m.copy()</span>
-<span class="c1"># ngroups=10</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># data=crsp_m.copy()
+# ngroups=10
 
-<span class="k">def</span><span class="w"> </span><span class="nf">momreturns_w</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ngroups</span><span class="p">):</span>
+def momreturns_w(data, ngroups):
     
-    <span class="c1"># step1. create a temporary crsp dataset</span>
-    <span class="n">_tmp_crsp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span><span class="s1">&#39;vol&#39;</span><span class="p">,</span><span class="s1">&#39;prc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-    <span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;vol&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;prc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="mf">1e6</span> <span class="c1"># in million dollars like me</span>
+    # step1. create a temporary crsp dataset
+    _tmp_crsp = data[[&#39;permno&#39;,&#39;date&#39;,&#39;ret&#39;, &#39;me&#39;,&#39;vol&#39;,&#39;prc&#39;]].sort_values([&#39;permno&#39;,&#39;date&#39;]).set_index(&#39;date&#39;).drop_duplicates()
+    _tmp_crsp[&#39;volume&#39;]=_tmp_crsp[&#39;vol&#39;]*_tmp_crsp[&#39;prc&#39;].abs()*100/1e6 # in million dollars like me
 
-    <span class="c1"># step 2: construct the signal</span>
-    <span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;grossret&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
-    <span class="n">_tmp_cumret</span><span class="o">=</span><span class="n">_tmp_crsp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)[</span><span class="s1">&#39;grossret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-    <span class="n">_tmp_cumret</span><span class="o">=</span><span class="n">_tmp_cumret</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;grossret&#39;</span><span class="p">:</span><span class="s1">&#39;cumret&#39;</span><span class="p">})</span>
+    # step 2: construct the signal
+    _tmp_crsp[&#39;grossret&#39;]=_tmp_crsp[&#39;ret&#39;]+1
+    _tmp_cumret=_tmp_crsp.groupby(&#39;permno&#39;)[&#39;grossret&#39;].rolling(window=12).apply(np.prod, raw=True)-1
+    _tmp_cumret=_tmp_cumret.reset_index().rename(columns={&#39;grossret&#39;:&#39;cumret&#39;})
 
-    <span class="n">_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">_tmp_crsp</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">_tmp_cumret</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;cumret&#39;</span><span class="p">]],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
-    <span class="c1"># merge the 12 month return signal back to the original database</span>
-    <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;mom&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">_tmp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)[</span><span class="s1">&#39;cumret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    _tmp = pd.merge(_tmp_crsp.reset_index(), _tmp_cumret[[&#39;permno&#39;,&#39;date&#39;,&#39;cumret&#39;]], how=&#39;left&#39;, on=[&#39;permno&#39;,&#39;date&#39;])
+    # merge the 12 month return signal back to the original database
+    _tmp[&#39;mom&#39;]=_tmp.groupby(&#39;permno&#39;)[&#39;cumret&#39;].shift(2)
 
-    <span class="c1"># step 3: rank assets by signal</span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">_tmp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span> <span class="c1"># sort by date and firm identifier </span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mom&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span><span class="c1"># drop the row if any of these variables &#39;mom&#39;,&#39;ret&#39;,&#39;me&#39; are missing</span>
-    <span class="n">mom</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">])[</span><span class="s1">&#39;mom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ngroups</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">duplicates</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">))</span>
-    <span class="c1"># create `ngroups` groups each month. Assign membership accroding to the stock ranking in the distribution of trading signal </span>
-    <span class="c1"># in a given month </span>
-    <span class="c1"># transform in string the group names</span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span><span class="c1"># drop the row if any of &#39;mom_group&#39; is missing</span>
-    <span class="n">mom</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;m</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    # step 3: rank assets by signal
+    mom=_tmp.sort_values([&#39;date&#39;,&#39;permno&#39;]) # sort by date and firm identifier 
+    mom=mom.dropna(subset=[&#39;mom&#39;], how=&#39;any&#39;)# drop the row if any of these variables &#39;mom&#39;,&#39;ret&#39;,&#39;me&#39; are missing
+    mom[&#39;mom_group&#39;]=mom.groupby([&#39;date&#39;])[&#39;mom&#39;].transform(lambda x: pd.qcut(x, ngroups, labels=False,duplicates=&#39;drop&#39;))
+    # create `ngroups` groups each month. Assign membership accroding to the stock ranking in the distribution of trading signal 
+    # in a given month 
+    # transform in string the group names
+    mom=mom.dropna(subset=[&#39;mom_group&#39;], how=&#39;any&#39;)# drop the row if any of &#39;mom_group&#39; is missing
+    mom[&#39;mom_group&#39;]=mom[&#39;mom_group&#39;].astype(int).astype(str).apply(lambda x: &#39;m{}&#39;.format(x))
 
-    <span class="n">mom</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#shift all the date to end of the month</span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span> <span class="c1"># resort </span>
+    mom[&#39;date&#39;]=mom[&#39;date&#39;]+MonthEnd(0) #shift all the date to end of the month
+    mom=mom.sort_values([&#39;permno&#39;,&#39;date&#39;]) # resort 
 
-    <span class="c1"># step 4: form portfolio weights</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">wavg_wght</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">ret_name</span><span class="p">,</span> <span class="n">weight_name</span><span class="p">):</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">ret_name</span><span class="p">]</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">weight_name</span><span class="p">]</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Wght&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">group</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">]]</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="c1"># We now simply have to  use the above function to construct the portfolio</span>
+    # step 4: form portfolio weights
+    def wavg_wght(group, ret_name, weight_name):
+        d = group[ret_name]
+        w = group[weight_name]
+        try:
+            group[&#39;Wght&#39;]=(w) / w.sum()
+            return group[[&#39;permno&#39;,&#39;Wght&#39;]]
+        except ZeroDivisionError:
+            return np.nan
+    # We now simply have to  use the above function to construct the portfolio
 
-    <span class="c1"># the code below applies the function in each date,mom_group group,</span>
-    <span class="c1"># so it applies the function to each of these subgroups of the data set, </span>
-    <span class="c1"># so it retursn one time-series for each mom_group, as it average the returns of</span>
-    <span class="c1"># all the firms in a given group in a given date</span>
+    # the code below applies the function in each date,mom_group group,
+    # so it applies the function to each of these subgroups of the data set, 
+    # so it retursn one time-series for each mom_group, as it average the returns of
+    # all the firms in a given group in a given date
 
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wavg_wght</span><span class="p">,</span> <span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;me&#39;</span><span class="p">)</span> 
+    weights = mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).apply(wavg_wght, &#39;ret&#39;,&#39;me&#39;) 
 
-    <span class="c1"># merge back</span>
-    <span class="n">weights</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span>
-    <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span>
+    # merge back
+    weights=mom.merge(weights,on=[&#39;date&#39;,&#39;permno&#39;])
+    weights=weights.sort_values([&#39;date&#39;,&#39;permno&#39;])
 
-    <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;mom_group_lead&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mom_group</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;Wght_lead&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Wght</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+    weights[&#39;mom_group_lead&#39;]=weights.groupby(&#39;permno&#39;).mom_group.shift(-1)
+    weights[&#39;Wght_lead&#39;]=weights.groupby(&#39;permno&#39;).Wght.shift(-1)
+    weights=weights.sort_values([&#39;permno&#39;,&#39;date&#39;])
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">wavg_ret</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">ret_name</span><span class="p">,</span> <span class="n">weight_name</span><span class="p">):</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">ret_name</span><span class="p">]</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">weight_name</span><span class="p">]</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">d</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    def wavg_ret(group, ret_name, weight_name):
+        d = group[ret_name]
+        w = group[weight_name]
+        try:
+            return (d * w).sum() / w.sum()
+        except ZeroDivisionError:
+            return np.nan
 
-    <span class="n">port_vwret</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wavg_ret</span><span class="p">,</span> <span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">)</span>
-    <span class="n">port_vwret</span> <span class="o">=</span> <span class="n">port_vwret</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;port_vwret&#39;</span><span class="p">})</span><span class="c1"># give a name to the new time-seires</span>
+    port_vwret = weights.groupby([&#39;date&#39;,&#39;mom_group&#39;]).apply(wavg_ret, &#39;ret&#39;,&#39;Wght&#39;)
+    port_vwret = port_vwret.reset_index().rename(columns={0:&#39;port_vwret&#39;})# give a name to the new time-seires
 
 
-    <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">port_vwret</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span>
+    weights=weights.merge(port_vwret,how=&#39;left&#39;,on=[&#39;date&#39;,&#39;mom_group&#39;])
 
-    <span class="n">port_vwret</span><span class="o">=</span><span class="n">port_vwret</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span> <span class="c1"># set indexes</span>
-    <span class="n">port_vwret</span><span class="o">=</span><span class="n">port_vwret</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># unstack so we have in each column the different portfolios, and in each </span>
-    <span class="n">port_vwret</span><span class="o">=</span><span class="n">port_vwret</span><span class="o">.</span><span class="n">port_vwret</span>
+    port_vwret=port_vwret.set_index([&#39;date&#39;,&#39;mom_group&#39;]) # set indexes
+    port_vwret=port_vwret.unstack(level=-1) # unstack so we have in each column the different portfolios, and in each 
+    port_vwret=port_vwret.port_vwret
 
-    <span class="k">return</span> <span class="n">port_vwret</span><span class="p">,</span> <span class="n">weights</span>
+    return port_vwret, weights
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">port_ret</span><span class="p">,</span> <span class="n">wght</span><span class="o">=</span><span class="n">momreturns_w</span><span class="p">(</span><span class="n">crsp</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>port_ret, wght=momreturns_w(crsp, 10)
 </pre></div>
 </div>
 </div>
@@ -1000,7 +939,7 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wght</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wght.head()
 </pre></div>
 </div>
 </div>
@@ -1137,19 +1076,19 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct dollars of each stock that need to be bought (sold) at date t+1</span>
-<span class="n">mom</span><span class="o">=</span><span class="n">wght</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">mom</span><span class="p">[</span><span class="s1">&#39;trade&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">mom</span><span class="o">.</span><span class="n">Wght_lead</span><span class="o">*</span><span class="p">(</span><span class="n">mom</span><span class="o">.</span><span class="n">mom_group</span><span class="o">==</span><span class="n">mom</span><span class="o">.</span><span class="n">mom_group_lead</span><span class="p">)</span><span class="o">-</span><span class="n">mom</span><span class="o">.</span><span class="n">Wght</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">mom</span><span class="o">.</span><span class="n">ret</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">mom</span><span class="o">.</span><span class="n">port_vwret</span><span class="p">))</span>
-<span class="n">mom</span><span class="p">[</span><span class="s1">&#39;trade_newbuys&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">mom</span><span class="o">.</span><span class="n">mom_group</span><span class="o">==</span><span class="n">mom</span><span class="o">.</span><span class="n">mom_group_lead</span><span class="p">))</span><span class="o">*</span><span class="n">mom</span><span class="o">.</span><span class="n">Wght_lead</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># construct dollars of each stock that need to be bought (sold) at date t+1
+mom=wght.copy()
+mom[&#39;trade&#39;]=(mom.Wght_lead*(mom.mom_group==mom.mom_group_lead)-mom.Wght*(1+mom.ret)/(1+mom.port_vwret))
+mom[&#39;trade_newbuys&#39;]=(~(mom.mom_group==mom.mom_group_lead))*mom.Wght_lead
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># per dollar of position how much do you have to trade every month?</span>
-<span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">trade</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;m9&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group_lead&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">trade_newbuys</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;m9&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># per dollar of position how much do you have to trade every month?
+mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).trade.apply(lambda x:x.abs().sum()).loc[:,&#39;m9&#39;].plot()
+mom.groupby([&#39;date&#39;,&#39;mom_group_lead&#39;]).trade_newbuys.apply(lambda x:x.abs().sum()).loc[:,&#39;m9&#39;].plot()
 </pre></div>
 </div>
 </div>
@@ -1162,9 +1101,9 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_trade</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">trade</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;m9&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group_lead&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">trade_newbuys</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;m9&#39;</span><span class="p">]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>total_trade=mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).trade.apply(lambda x:x.abs().sum()).loc[:,&#39;m9&#39;]+mom.groupby([&#39;date&#39;,&#39;mom_group_lead&#39;]).trade_newbuys.apply(lambda x:x.abs().sum()).loc[:,&#39;m9&#39;]
 
-<span class="n">total_trade</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+total_trade.plot()
 </pre></div>
 </div>
 </div>
@@ -1177,26 +1116,27 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets look at the most illiquid stocks, the stocks that I will likely have most trouble trading</span>
-<span class="c1"># lets start by normalizing the amount of trade per stock volume</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># lets look at the most illiquid stocks, the stocks that I will likely have most trouble trading
+# lets start by normalizing the amount of trade per stock volume
 
-<span class="n">mom</span><span class="p">[</span><span class="s1">&#39;tradepervol&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">trade</span><span class="o">/</span><span class="n">mom</span><span class="o">.</span><span class="n">volume</span>
+mom[&#39;tradepervol&#39;]=mom.trade/mom.volume
 
-<span class="n">mom</span><span class="p">[</span><span class="s1">&#39;trade_newbuyspervol&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">trade_newbuys</span><span class="o">/</span><span class="n">mom</span><span class="o">.</span><span class="n">volume</span>
+mom[&#39;trade_newbuyspervol&#39;]=mom.trade_newbuys/mom.volume
+
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this allow us to study how much of the volume of each stock I will be &quot;using&quot;</span>
-<span class="c1"># lets choose a position size, here in millions of dollars , because that is the normalization we used for the volume data</span>
-<span class="n">Position</span><span class="o">=</span><span class="mf">1e3</span> <span class="c1">#(1e3 means one billion dollars)</span>
-<span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span>
-<span class="p">(</span><span class="n">Position</span><span class="o">*</span><span class="p">(</span><span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">tradepervol</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;m9&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="p">(</span><span class="n">Position</span><span class="o">*</span><span class="p">(</span><span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">tradepervol</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;m9&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># this allow us to study how much of the volume of each stock I will be &quot;using&quot;
+# lets choose a position size, here in millions of dollars , because that is the normalization we used for the volume data
+Position=1e3 #(1e3 means one billion dollars)
+threshold=0.05
+(Position*(mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).tradepervol.quantile(threshold).loc[:,&#39;m9&#39;])).plot()
+(Position*(mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).tradepervol.quantile(1-threshold).loc[:,&#39;m9&#39;])).plot()
 
-<span class="p">(</span><span class="n">Position</span><span class="o">*</span><span class="p">(</span><span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">trade_newbuyspervol</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;m9&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+(Position*(mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).trade_newbuyspervol.quantile(1-threshold).loc[:,&#39;m9&#39;])).plot()
 </pre></div>
 </div>
 </div>
@@ -1232,95 +1172,95 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 <p>How to change our code to implement the volume-weighted approach?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">momreturns</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ngroups</span><span class="p">,</span><span class="n">wghtvar</span><span class="o">=</span><span class="s1">&#39;me&#39;</span><span class="p">):</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def momreturns(data, ngroups,wghtvar=&#39;me&#39;):
     
-    <span class="c1"># step1. create a temporary crsp dataset</span>
-    <span class="n">_tmp_crsp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;ret&#39;</span><span class="p">,</span> <span class="s1">&#39;me&#39;</span><span class="p">,</span><span class="s1">&#39;vol&#39;</span><span class="p">,</span><span class="s1">&#39;prc&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-    <span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;vol&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;prc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="o">/</span><span class="mf">1e6</span> <span class="c1"># in million dollars like me</span>
+    # step1. create a temporary crsp dataset
+    _tmp_crsp = data[[&#39;permno&#39;,&#39;date&#39;,&#39;ret&#39;, &#39;me&#39;,&#39;vol&#39;,&#39;prc&#39;]].sort_values([&#39;permno&#39;,&#39;date&#39;]).set_index(&#39;date&#39;).drop_duplicates()
+    _tmp_crsp[&#39;volume&#39;]=_tmp_crsp[&#39;vol&#39;]*_tmp_crsp[&#39;prc&#39;].abs()*100/1e6 # in million dollars like me
 
-    <span class="c1"># step 2: construct the signal</span>
-    <span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;grossret&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">_tmp_crsp</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
-    <span class="n">_tmp_cumret</span><span class="o">=</span><span class="n">_tmp_crsp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)[</span><span class="s1">&#39;grossret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-    <span class="n">_tmp_cumret</span><span class="o">=</span><span class="n">_tmp_cumret</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;grossret&#39;</span><span class="p">:</span><span class="s1">&#39;cumret&#39;</span><span class="p">})</span>
+    # step 2: construct the signal
+    _tmp_crsp[&#39;grossret&#39;]=_tmp_crsp[&#39;ret&#39;]+1
+    _tmp_cumret=_tmp_crsp.groupby(&#39;permno&#39;)[&#39;grossret&#39;].rolling(window=12).apply(np.prod, raw=True)-1
+    _tmp_cumret=_tmp_cumret.reset_index().rename(columns={&#39;grossret&#39;:&#39;cumret&#39;})
 
-    <span class="n">_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">_tmp_crsp</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">_tmp_cumret</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;cumret&#39;</span><span class="p">]],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
-    <span class="c1"># merge the 12 month return signal back to the original database</span>
-    <span class="n">_tmp</span><span class="p">[</span><span class="s1">&#39;mom&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">_tmp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)[</span><span class="s1">&#39;cumret&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    _tmp = pd.merge(_tmp_crsp.reset_index(), _tmp_cumret[[&#39;permno&#39;,&#39;date&#39;,&#39;cumret&#39;]], how=&#39;left&#39;, on=[&#39;permno&#39;,&#39;date&#39;])
+    # merge the 12 month return signal back to the original database
+    _tmp[&#39;mom&#39;]=_tmp.groupby(&#39;permno&#39;)[&#39;cumret&#39;].shift(2)
 
-    <span class="c1"># step 3: rank assets by signal</span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">_tmp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span> <span class="c1"># sort by date and firm identifier </span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mom&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span><span class="c1"># drop the row if any of these variables &#39;mom&#39;,&#39;ret&#39;,&#39;me&#39; are missing</span>
-    <span class="n">mom</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">])[</span><span class="s1">&#39;mom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ngroups</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">duplicates</span><span class="o">=</span><span class="s1">&#39;drop&#39;</span><span class="p">))</span>
-    <span class="c1"># create `ngroups` groups each month. Assign membership accroding to the stock ranking in the distribution of trading signal </span>
-    <span class="c1"># in a given month </span>
-    <span class="c1"># transform in string the group names</span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span><span class="c1"># drop the row if any of &#39;mom_group&#39; is missing</span>
-    <span class="n">mom</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="p">[</span><span class="s1">&#39;mom_group&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;m</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    # step 3: rank assets by signal
+    mom=_tmp.sort_values([&#39;date&#39;,&#39;permno&#39;]) # sort by date and firm identifier 
+    mom=mom.dropna(subset=[&#39;mom&#39;], how=&#39;any&#39;)# drop the row if any of these variables &#39;mom&#39;,&#39;ret&#39;,&#39;me&#39; are missing
+    mom[&#39;mom_group&#39;]=mom.groupby([&#39;date&#39;])[&#39;mom&#39;].transform(lambda x: pd.qcut(x, ngroups, labels=False,duplicates=&#39;drop&#39;))
+    # create `ngroups` groups each month. Assign membership accroding to the stock ranking in the distribution of trading signal 
+    # in a given month 
+    # transform in string the group names
+    mom=mom.dropna(subset=[&#39;mom_group&#39;], how=&#39;any&#39;)# drop the row if any of &#39;mom_group&#39; is missing
+    mom[&#39;mom_group&#39;]=mom[&#39;mom_group&#39;].astype(int).astype(str).apply(lambda x: &#39;m{}&#39;.format(x))
 
-    <span class="n">mom</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">mom</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">MonthEnd</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">#shift all the date to end of the month</span>
-    <span class="n">mom</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span> <span class="c1"># resort </span>
+    mom[&#39;date&#39;]=mom[&#39;date&#39;]+MonthEnd(0) #shift all the date to end of the month
+    mom=mom.sort_values([&#39;permno&#39;,&#39;date&#39;]) # resort 
 
-    <span class="c1"># step 4: form portfolio weights</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">wavg_wght</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">ret_name</span><span class="p">,</span> <span class="n">weight_name</span><span class="p">):</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">ret_name</span><span class="p">]</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">weight_name</span><span class="p">]</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">group</span><span class="p">[</span><span class="s1">&#39;Wght&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">group</span><span class="p">[[</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">]]</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="c1"># We now simply have to  use the above function to construct the portfolio</span>
+    # step 4: form portfolio weights
+    def wavg_wght(group, ret_name, weight_name):
+        d = group[ret_name]
+        w = group[weight_name]
+        try:
+            group[&#39;Wght&#39;]=(w) / w.sum()
+            return group[[&#39;permno&#39;,&#39;Wght&#39;]]
+        except ZeroDivisionError:
+            return np.nan
+    # We now simply have to  use the above function to construct the portfolio
 
-    <span class="c1"># the code below applies the function in each date,mom_group group,</span>
-    <span class="c1"># so it applies the function to each of these subgroups of the data set, </span>
-    <span class="c1"># so it retursn one time-series for each mom_group, as it average the returns of</span>
-    <span class="c1"># all the firms in a given group in a given date</span>
+    # the code below applies the function in each date,mom_group group,
+    # so it applies the function to each of these subgroups of the data set, 
+    # so it retursn one time-series for each mom_group, as it average the returns of
+    # all the firms in a given group in a given date
 
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">mom</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wavg_wght</span><span class="p">,</span> <span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="n">wghtvar</span><span class="p">)</span> 
+    weights = mom.groupby([&#39;date&#39;,&#39;mom_group&#39;]).apply(wavg_wght, &#39;ret&#39;,wghtvar) 
 
-    <span class="c1"># merge back</span>
-    <span class="n">weights</span><span class="o">=</span><span class="n">mom</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span>
-    <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;permno&#39;</span><span class="p">])</span>
+    # merge back
+    weights=mom.merge(weights,on=[&#39;date&#39;,&#39;permno&#39;])
+    weights=weights.sort_values([&#39;date&#39;,&#39;permno&#39;])
 
-    <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;mom_group_lead&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mom_group</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">weights</span><span class="p">[</span><span class="s1">&#39;Wght_lead&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;permno&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">Wght</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;permno&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+    weights[&#39;mom_group_lead&#39;]=weights.groupby(&#39;permno&#39;).mom_group.shift(-1)
+    weights[&#39;Wght_lead&#39;]=weights.groupby(&#39;permno&#39;).Wght.shift(-1)
+    weights=weights.sort_values([&#39;permno&#39;,&#39;date&#39;])
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">wavg_ret</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">ret_name</span><span class="p">,</span> <span class="n">weight_name</span><span class="p">):</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">ret_name</span><span class="p">]</span>
-        <span class="n">w</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="n">weight_name</span><span class="p">]</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">(</span><span class="n">d</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">w</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    def wavg_ret(group, ret_name, weight_name):
+        d = group[ret_name]
+        w = group[weight_name]
+        try:
+            return (d * w).sum() / w.sum()
+        except ZeroDivisionError:
+            return np.nan
 
-    <span class="n">port_vwret</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wavg_ret</span><span class="p">,</span> <span class="s1">&#39;ret&#39;</span><span class="p">,</span><span class="s1">&#39;Wght&#39;</span><span class="p">)</span>
-    <span class="n">port_vwret</span> <span class="o">=</span> <span class="n">port_vwret</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;port_vwret&#39;</span><span class="p">})</span><span class="c1"># give a name to the new time-seires</span>
+    port_vwret = weights.groupby([&#39;date&#39;,&#39;mom_group&#39;]).apply(wavg_ret, &#39;ret&#39;,&#39;Wght&#39;)
+    port_vwret = port_vwret.reset_index().rename(columns={0:&#39;port_vwret&#39;})# give a name to the new time-seires
 
 
-    <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">port_vwret</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span>
+    weights=weights.merge(port_vwret,how=&#39;left&#39;,on=[&#39;date&#39;,&#39;mom_group&#39;])
 
-    <span class="n">port_vwret</span><span class="o">=</span><span class="n">port_vwret</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;mom_group&#39;</span><span class="p">])</span> <span class="c1"># set indexes</span>
-    <span class="n">port_vwret</span><span class="o">=</span><span class="n">port_vwret</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># unstack so we have in each column the different portfolios, and in each </span>
-    <span class="n">port_vwret</span><span class="o">=</span><span class="n">port_vwret</span><span class="o">.</span><span class="n">port_vwret</span>
+    port_vwret=port_vwret.set_index([&#39;date&#39;,&#39;mom_group&#39;]) # set indexes
+    port_vwret=port_vwret.unstack(level=-1) # unstack so we have in each column the different portfolios, and in each 
+    port_vwret=port_vwret.port_vwret
 
-    <span class="k">return</span> <span class="n">port_vwret</span><span class="p">,</span> <span class="n">weights</span>
+    return port_vwret, weights
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">momportfoliosme</span><span class="p">,</span><span class="n">wght</span><span class="o">=</span><span class="n">momreturns</span><span class="p">(</span><span class="n">crsp</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">wghtvar</span><span class="o">=</span><span class="s1">&#39;me&#39;</span><span class="p">)</span>
-<span class="n">momportfoliosvol</span><span class="p">,</span><span class="n">wght_vol</span><span class="o">=</span><span class="n">momreturns</span><span class="p">(</span><span class="n">crsp</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">wghtvar</span><span class="o">=</span><span class="s1">&#39;vol&#39;</span><span class="p">)</span>
-<span class="n">momportfolios</span><span class="o">=</span><span class="n">momportfoliosme</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">momportfoliosvol</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;_me&#39;</span><span class="p">,</span><span class="s1">&#39;_vol&#39;</span><span class="p">])</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>momportfoliosme,wght=momreturns(crsp,10,wghtvar=&#39;me&#39;)
+momportfoliosvol,wght_vol=momreturns(crsp,10,wghtvar=&#39;vol&#39;)
+momportfolios=momportfoliosme.merge(momportfoliosvol,left_index=True,right_index=True,suffixes=[&#39;_me&#39;,&#39;_vol&#39;])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">momportfolios</span><span class="p">[[</span><span class="s1">&#39;m9_me&#39;</span><span class="p">,</span><span class="s1">&#39;m9_vol&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>momportfolios[[&#39;m9_me&#39;,&#39;m9_vol&#39;]].plot()
 </pre></div>
 </div>
 </div>
@@ -1336,12 +1276,12 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 <p>Don’t be fooled by the long-only performance–replciating the market is easy!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets look at it&#39;s tracking error</span>
-<span class="n">y</span><span class="o">=</span><span class="n">momportfolios</span><span class="p">[</span><span class="s1">&#39;m9_vol&#39;</span><span class="p">]</span>
-<span class="n">x</span><span class="o">=</span><span class="n">momportfolios</span><span class="p">[</span><span class="s1">&#39;m9_me&#39;</span><span class="p">]</span>
-<span class="n">x</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># lets look at it&#39;s tracking error
+y=momportfolios[&#39;m9_vol&#39;]
+x=momportfolios[&#39;m9_me&#39;]
+x=sm.add_constant(x)
+results = sm.OLS(y,x).fit()
+results.summary()
 </pre></div>
 </div>
 </div>
@@ -1410,7 +1350,7 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">momportfolios</span><span class="p">[</span><span class="s1">&#39;m9_vol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">/</span><span class="n">results</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">12</span><span class="p">,</span><span class="n">momportfolios</span><span class="p">[</span><span class="s1">&#39;m9_me&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span><span class="p">]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[momportfolios[&#39;m9_vol&#39;].mean()/results.params[1]*12,momportfolios[&#39;m9_me&#39;].mean()*12]
 </pre></div>
 </div>
 </div>
@@ -1425,7 +1365,7 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 <p>In addition to that you also have to eat the strategy residual risk</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">results</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="n">momportfolios</span><span class="p">[</span><span class="s1">&#39;m9_me&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()]</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[results.resid.std(),momportfolios[&#39;m9_me&#39;].std()]
 </pre></div>
 </div>
 </div>
@@ -1439,11 +1379,11 @@ UsedVolume_{i,t}&amp;=\frac{position \times \bigg(w_{i,t+1}^*-w_{i,t+1}(\text{be
 <p><strong>How our implemented strategy compare with the desired strategy?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/amoreira2/Fin418/main/assets/data/df_WarrenBAndCathieW_monthly.pkl&#39;</span><span class="p">)</span>
-<span class="n">Factors</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;BRK&#39;</span><span class="p">,</span><span class="s1">&#39;ARKK&#39;</span><span class="p">,</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">Factors</span> <span class="o">=</span> <span class="n">Factors</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">Factors</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span> <span class="s1">&#39;Mom&#39;</span><span class="p">})</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>df=pd.read_pickle(&#39;https://raw.githubusercontent.com/amoreira2/Fin418/main/assets/data/df_WarrenBAndCathieW_monthly.pkl&#39;)
+Factors=df.drop([&#39;BRK&#39;,&#39;ARKK&#39;,&#39;RF&#39;],axis=1)
+Factors = Factors.rename(columns={Factors.columns[-1]: &#39;Mom&#39;})
 
-<span class="n">Factors</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">*</span><span class="mi">12</span>
+Factors.mean()*12
 </pre></div>
 </div>
 </div>
@@ -1461,8 +1401,8 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">portfolios</span><span class="o">=</span><span class="n">momportfolios</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">Factors</span><span class="p">,</span><span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">portfolios</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>portfolios=momportfolios.merge(Factors,left_index=True,right_index=True)
+portfolios.head()
 </pre></div>
 </div>
 </div>
@@ -1636,18 +1576,18 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># things to look at:</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># things to look at:
 
-<span class="c1">#y=portfolios[&#39;m9_me&#39;]</span>
-<span class="c1">#y=momportfolios[&#39;m9_vol&#39;]</span>
-<span class="c1">#y=momportfolios[&#39;m9_me&#39;]-momportfolios[&#39;m0_me&#39;]</span>
+#y=portfolios[&#39;m9_me&#39;]
+#y=momportfolios[&#39;m9_vol&#39;]
+#y=momportfolios[&#39;m9_me&#39;]-momportfolios[&#39;m0_me&#39;]
 
 
-<span class="n">y</span><span class="o">=</span><span class="n">portfolios</span><span class="p">[</span><span class="s1">&#39;m9_me&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">portfolios</span><span class="p">[</span><span class="s1">&#39;m0_me&#39;</span><span class="p">]</span>
-<span class="n">x</span><span class="o">=</span><span class="n">portfolios</span><span class="p">[</span><span class="s1">&#39;Mom&#39;</span><span class="p">]</span>
-<span class="n">x</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+y=portfolios[&#39;m9_me&#39;]-portfolios[&#39;m0_me&#39;]
+x=portfolios[&#39;Mom&#39;]
+x=sm.add_constant(x)
+results = sm.OLS(y,x).fit()
+results.summary()
 </pre></div>
 </div>
 </div>
@@ -1711,16 +1651,6 @@ dtype: float64
 <p>why such a large difference even for the strategy that follows the Momentum strategy?</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="key-takeaways">
-<h1>✅ Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Trading costs compound and can meaningfully reduce (or eliminate) apparent alpha.</p></li>
-<li><p><strong>Turnover</strong> is a primary driver of costs; the same signal with lower turnover usually wins after frictions.</p></li>
-<li><p><strong>Implementation shortfall</strong> is the most comprehensive way to capture all costs between decision and execution.</p></li>
-<li><p>Always present <strong>pre‑ and post‑cost</strong> metrics in notebooks, and stress‑test costs to check robustness.</p></li>
-<li><p>Prefer simple, transparent, <strong>vectorized</strong> implementations for reproducibility and speed.</p></li>
-</ul>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1768,16 +1698,10 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Trading costs and Liquidity</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">🎯 Learning Objectives</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-shortfall">Implementation Shortfall</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-capacity">Absorption capacity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-do-you-actually-need-to-trade">How much do you actually need to trade?</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">✅ Key Takeaways</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
