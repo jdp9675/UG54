@@ -515,11 +515,18 @@ See why differing betas demand a formal model and set the stage for multi-factor
 <h2><span class="section-number">4.1. </span>Libraries and aux functions<a class="headerlink" href="#libraries-and-aux-functions" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install wrds
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load libraries used in this notebook</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
+<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
@@ -608,15 +615,6 @@ See why differing betas demand a formal model and set the stage for multi-factor
 <li><p>In practice there are many types of distributions that are economically like a dividend but have different names: cash dividends, stock dividends, capital gain distributions, rights offerings, acquisition  related distributions, splits</p></li>
 </ul>
 <p>Lets start by loading Price and Dividend data on a single stock</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># first we connect with WRDS database using the wrds package so we need to install it first and import it</span>
-<span class="o">%</span><span class="k">pip</span> install wrds
-<span class="kn">import</span><span class="w"> </span><span class="nn">wrds</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets connect with  the wrds database</span>
