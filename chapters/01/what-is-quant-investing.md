@@ -1,17 +1,17 @@
-What is Quantitative Investing?
+What is Data Driven Investing?
 ====================
 
-Quantitative investing is about leveraging large and diverse datasets through exploration, prediction, inference, and theory to reach better, systematically-driven investment decisions. At its core, quantitative investing involves identifying patterns in asset prices and exploiting those insights using robust statistical methods and computational techniques.
+Data Driven investing is about leveraging large and diverse datasets through exploration, prediction, inference, and theory to reach better, systematically-driven investment decisions. At its core, Data Driven investing involves identifying patterns in asset prices and exploiting those insights using robust statistical methods and computational techniques.
 
-This approach is distinctively positioned between purely passive investment strategies, which simply replicate market performance, and actively managed strategies, where human judgment alone determines investment decisions.
+I would say that Data Driven Investing is broader than systematic/quantitative investing. Quantitative investing is  positioned between purely passive investment strategies, which simply replicate market performance, and actively managed strategies, where human judgment alone determines investment decisions. While in this class you certainly learn a lot about quantitative investing, the tools developed here can be used even if your fundamental source of insight is from good old human judgement.
 
-* This is a class about quantitative investing in practice.
+* This is a class about  investing in practice.
 * We will learn how to use data to guide investment decisions
 * Focus on how to organize, analyze, and investigate financial data sets
 * We will learn the state of the art in quantitative investing, and learn how to evaluate new quantitative strategies
 * Develop tools and programming skills that can be applied widely: asset management, investment banking, corporate finance, strategy
 
-Key Components of Quantitative Investing
+Key Components of Data Driven Investing
 
 1. Data Analysis
 
@@ -19,7 +19,7 @@ Quantitative investing relies heavily on extensive financial data, including his
 
 2. Model Development
 
-Investors construct mathematical models designed to predict future asset returns, measure and manage risk, and optimize portfolios. These models range from relatively simple factor models, such as the CAPM and Fama-French models, to complex machine learning models that adapt dynamically to market conditions.
+Investors construct mathematical models designed to predict future asset returns, measure and manage risk, and optimize portfolios. These models range from relatively simple factor models, such as the CAPM and Fama-French models, to complex machine learning models that adapt dynamically to market conditions. Sometimes a model will be the selection of human traders--Data can help you parse which traders are good and when.
 
 3. Algorithmic Execution
 
@@ -33,9 +33,9 @@ Quantitative methods systematically quantify and manage risks, including market 
 
 Continuous monitoring of strategy performance using statistical metrics like Sharpe ratios, alpha, tracking error, and drawdown analysis is crucial. Investors rely on rigorous back-testing and out-of-sample validation to ensure strategy robustness and viability.
 
-**Diverse Approaches within Quantitative Investing**
+**Diverse Approaches within Data Driven Investing**
 
-Quantitative investing encompasses various styles, distinguished by their trading horizons and methods:
+Data Driven investing encompasses various styles, distinguished by their trading horizons and methods:
 
 
 - Fundamental Quantitative Investing (e.g., Blackrock, AQR, Bridgewater, DFA, Vanguard): Strategies using systematic applications of economic and accounting insights traditionally employed by human analysts but scaled computationally across vast asset universes.
@@ -122,15 +122,3 @@ Conclusion
 Quantitative investing, with its systematic, data-driven ethos, offers investors robust methodologies for navigating financial markets. By integrating sophisticated analytical techniques and disciplined risk management practices—including innovative structures like pod shops—quantitative investing continues to revolutionize investment management practices globally.
 
 
-Some books:
-* Asset Management: is a great book by an Academic that now is the head of research at Blackrock. I highly recommend it.
-
-* Trillions: Very nice book about the history of quant investing 
-
- Here some newspapers articles on fundamental Quantitative Investing:
-
-* [no good year for quants](https://github.com/amoreira2/Lectures/blob/09526a0cdfc6c60b6b2ad63389f266ac7b5433fa/assets/papers/A%20terrible,%C2%A0horrible,%20no-good%C2%A0year%20for%20quants%20_%20Financial%20Times.pdf),
-* [And they are back](https://github.com/amoreira2/Lectures/blob/09526a0cdfc6c60b6b2ad63389f266ac7b5433fa/assets/papers/%E2%80%98Quant%20winter%E2%80%99%20thaw%20ends%20long%20spell%20of%20drab%20returns%20for%20funds%20_%20Financial%20Times.pdf),
-* [But things are not quite the same](https://github.com/amoreira2/Lectures/blob/09526a0cdfc6c60b6b2ad63389f266ac7b5433fa/assets/papers/Investors%20brace%20for%20%E2%80%98major%20shift%E2%80%99%20as%20momentum%20and%20value%20collide%20_%20Financial%20Times.pdf)
-
-And here some articles about pod shops:
