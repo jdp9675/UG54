@@ -474,7 +474,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-aux-functions">4.1. Libraries and aux functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-auxiliary-functions">4.1. Libraries and Auxiliary Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-return">4.2. What is a return?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposing-returns">4.3. Decomposing Returns</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#striping-the-risk-free-rate">4.3.1. Striping the risk-free rate</a></li>
@@ -511,8 +511,8 @@ Understand that the expected value of excess return is the reward for bearing ri
 See why differing betas demand a formal model and set the stage for multi-factor extensions covered in later notebooks.</p></li>
 </ol>
 <hr class="docutils" />
-<section id="libraries-and-aux-functions">
-<h2><span class="section-number">4.1. </span>Libraries and aux functions<a class="headerlink" href="#libraries-and-aux-functions" title="Link to this heading">#</a></h2>
+<section id="libraries-and-auxiliary-functions">
+<h2><span class="section-number">4.1. </span>Libraries and Auxiliary Functions<a class="headerlink" href="#libraries-and-auxiliary-functions" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install wrds
@@ -637,7 +637,6 @@ Done
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We now get daily prices and dividends for the UNH stock</span>
 <span class="c1"># lets not think too hard how we did that--the function is defined above--but for now--lets just used it</span>
 <span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds_single_ticker</span><span class="p">(</span><span class="s1">&#39;UNH&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">)</span>
-<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -645,6 +644,21 @@ Done
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[92655]
 </pre></div>
 </div>
+</div>
+</div>
+<blockquote>
+<div><p>Since most of you probably don’t have the wrds setup yet, I have saved the data for UNH for you to access it.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df.to_csv(&#39;../../assets/data/UNH_data.csv&#39;)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/amoreira2/UG54/refs/heads/main/assets/data/UNH_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -733,14 +747,13 @@ Done
 <p>10131 rows × 2 columns</p>
 </div></div></div>
 </div>
+<blockquote>
+<div><p><strong>Try it out</strong>
+How do you construct returns?</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#How do we construct returns?</span>
-
-<span class="c1"># what .shift does?</span>
-
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">=?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;ret&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
 
 <span class="n">df</span>
 </pre></div>
@@ -814,38 +827,38 @@ Done
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-12-22</th>
-      <td>520.31000</td>
+      <th>2024-12-24</th>
+      <td>506.10001</td>
       <td>0.0</td>
-      <td>0.000827</td>
+      <td>-0.000474</td>
     </tr>
     <tr>
-      <th>2023-12-26</th>
-      <td>520.03003</td>
+      <th>2024-12-26</th>
+      <td>511.14999</td>
       <td>0.0</td>
-      <td>-0.000538</td>
+      <td>0.009978</td>
     </tr>
     <tr>
-      <th>2023-12-27</th>
-      <td>522.78998</td>
+      <th>2024-12-27</th>
+      <td>509.98999</td>
       <td>0.0</td>
-      <td>0.005307</td>
+      <td>-0.002269</td>
     </tr>
     <tr>
-      <th>2023-12-28</th>
-      <td>524.90002</td>
+      <th>2024-12-30</th>
+      <td>507.79999</td>
       <td>0.0</td>
-      <td>0.004036</td>
+      <td>-0.004294</td>
     </tr>
     <tr>
-      <th>2023-12-29</th>
-      <td>526.46997</td>
+      <th>2024-12-31</th>
+      <td>505.85999</td>
       <td>0.0</td>
-      <td>0.002991</td>
+      <td>-0.003820</td>
     </tr>
   </tbody>
 </table>
-<p>9879 rows × 3 columns</p>
+<p>10131 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -871,6 +884,8 @@ Done
 <li><p>What is the annualized return?</p></li>
 <li><p>What is the dividend yield?</p></li>
 </ul>
+<blockquote>
+<div><p><strong>Think and Code</strong></p>
 <p>Suppose we are now at the end of the sample</p>
 <ol class="arabic simple">
 <li><p>You have 1000 dollars invested in this stock in the end of the sample, the next day there’s a 16% chance your portfolio’s value will fall below a certain amount. How would you estimate that value?</p></li>
@@ -881,6 +896,7 @@ returns?</p></li>
 <li><p>What plot can you to give you a sense of how these returns varying over time?</p></li>
 <li><p>What drives these returns? Why do they vary over time?</p></li>
 </ol>
+</div></blockquote>
 </section>
 <section id="decomposing-returns">
 <h2><span class="section-number">4.3. </span>Decomposing Returns<a class="headerlink" href="#decomposing-returns" title="Link to this heading">#</a></h2>
@@ -934,27 +950,22 @@ returns?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" src="../../_images/96fe965a6328450d9a4c9d8687504d76d674e8726a23d321778f012499256198.png" />
+<img alt="../../_images/939b4bfd517c107de28d902d52459d4aca6d514731ddd5454be812c7dc261bea.png" src="../../_images/939b4bfd517c107de28d902d52459d4aca6d514731ddd5454be812c7dc261bea.png" />
 </div>
 </div>
 <p>How do we interpret this rate?</p>
 <p>Say if I invested in the tbill in 2005 how much money I would have in the end of 3 months? And in the end of the year?</p>
-<p>Lets get another stock to play with and merge it together with our risk-free return</p>
+<p>Lets get the return column of our dataframe and  merge it together with our risk-free return</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds_single_ticker</span><span class="p">(</span><span class="s1">&#39;NVDA&#39;</span><span class="p">,</span><span class="n">conn</span><span class="p">,</span><span class="n">dividends</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rf</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rf</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[86580]
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -973,6 +984,8 @@ returns?</p></li>
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>P</th>
+      <th>D</th>
       <th>ret</th>
       <th>rf</th>
     </tr>
@@ -980,79 +993,106 @@ returns?</p></li>
       <th>date</th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1999-01-25</th>
-      <td>0.104762</td>
-      <td>0.0444</td>
+      <th>1984-10-18</th>
+      <td>4.87500</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.1010</td>
     </tr>
     <tr>
-      <th>1999-01-26</th>
-      <td>-0.077586</td>
-      <td>0.0446</td>
+      <th>1984-10-19</th>
+      <td>4.68750</td>
+      <td>0.0</td>
+      <td>-0.038462</td>
+      <td>0.0993</td>
     </tr>
     <tr>
-      <th>1999-01-27</th>
-      <td>-0.003115</td>
-      <td>0.0447</td>
+      <th>1984-10-22</th>
+      <td>4.68750</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+      <td>0.0992</td>
     </tr>
     <tr>
-      <th>1999-01-28</th>
-      <td>-0.003125</td>
-      <td>0.0449</td>
+      <th>1984-10-23</th>
+      <td>4.56250</td>
+      <td>0.0</td>
+      <td>-0.026667</td>
+      <td>0.0982</td>
     </tr>
     <tr>
-      <th>1999-01-29</th>
-      <td>-0.047022</td>
-      <td>0.0448</td>
+      <th>1984-10-24</th>
+      <td>4.68750</td>
+      <td>0.0</td>
+      <td>0.027397</td>
+      <td>0.0951</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>2024-12-24</th>
-      <td>0.003938</td>
+      <td>506.10001</td>
+      <td>0.0</td>
+      <td>-0.000474</td>
       <td>0.0440</td>
     </tr>
     <tr>
       <th>2024-12-26</th>
-      <td>-0.002068</td>
+      <td>511.14999</td>
+      <td>0.0</td>
+      <td>0.009978</td>
       <td>0.0435</td>
     </tr>
     <tr>
       <th>2024-12-27</th>
-      <td>-0.020868</td>
+      <td>509.98999</td>
+      <td>0.0</td>
+      <td>-0.002269</td>
       <td>0.0431</td>
     </tr>
     <tr>
       <th>2024-12-30</th>
-      <td>0.003503</td>
+      <td>507.79999</td>
+      <td>0.0</td>
+      <td>-0.004294</td>
       <td>0.0437</td>
     </tr>
     <tr>
       <th>2024-12-31</th>
-      <td>-0.023275</td>
+      <td>505.85999</td>
+      <td>0.0</td>
+      <td>-0.003820</td>
       <td>0.0437</td>
     </tr>
   </tbody>
 </table>
-<p>6527 rows × 2 columns</p>
+<p>10131 rows × 4 columns</p>
 </div></div></div>
 </div>
 <p>Lets construct another column called ‘ret_e’ for excess returns</p>
-<p>What is the trading interpretation of such series?</p>
-<p>Is it the “return” to which strategy exactly?</p>
+<blockquote>
+<div><p><strong>Concept Check</strong></p>
 <ul class="simple">
+<li><p>What is the trading interpretation of such series?</p></li>
+<li><p>Is it the “return” to which strategy exactly?</p></li>
 <li><p>How the historical distributions of ret and rete compare?</p></li>
 <li><p>Are their averages similar?</p></li>
 <li><p>are their historical standard deviations similar?</p></li>
 <li><p>Do they have similar interpretation?</p></li>
 <li><p>Is the standard-deviation of risk-free rate useful to tell you the distribution of you returns in the end of 3 months for an investments in the risk-free asset?</p></li>
 </ul>
+</div></blockquote>
 </section>
 </section>
 <section id="risk-premiums">
@@ -1116,8 +1156,6 @@ returns?</p></li>
 
 <span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">])</span>
 <span class="c1">#Why did I divide by 252?</span>
-<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rf</span><span class="o">/</span><span class="mi">252</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1125,6 +1163,29 @@ returns?</p></li>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[47896, 55976, 84398]
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># again you can load this data directly if you don;t have wrds access</span>
+<span class="c1"># df.to_csv(&#39;../../assets/data/df_SPYWMTJPM_data.csv&#39;)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/amoreira2/UG54/refs/heads/main/assets/data/df_SPYWMTJPM_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># will create excess returns</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_rf</span><span class="o">/</span><span class="mi">252</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1236,14 +1297,12 @@ returns?</p></li>
     </tr>
   </tbody>
 </table>
-<p>8037 rows × 4 columns</p>
+<p>7974 rows × 4 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># will create excess retursn</span>
-
-<span class="n">df_re</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;rf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rf&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;rf&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">df_re</span>
 </pre></div>
 </div>
@@ -1347,7 +1406,7 @@ returns?</p></li>
     </tr>
   </tbody>
 </table>
-<p>8037 rows × 3 columns</p>
+<p>7974 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1369,11 +1428,7 @@ returns?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\Alan.Moreira\Anaconda3\lib\site-packages\scipy\__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.26.0
-  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
-</pre></div>
-</div>
-<img alt="../../_images/f431df0d9c60ae6812e5f746347d3c58898a17be2698de1bedd79d8b13d652c8.png" src="../../_images/f431df0d9c60ae6812e5f746347d3c58898a17be2698de1bedd79d8b13d652c8.png" />
+<img alt="../../_images/817dacd6b08e102c8885e5304aeb347978bb760b67dc627078d6bd23099d42c2.png" src="../../_images/817dacd6b08e102c8885e5304aeb347978bb760b67dc627078d6bd23099d42c2.png" />
 </div>
 </div>
 <p>Indeed we see quite a bit of co-movement!</p>
@@ -1553,7 +1608,7 @@ returns?</p></li>
     </tr>
   </tbody>
 </table>
-<p>8037 rows × 4 columns</p>
+<p>7974 rows × 4 columns</p>
 </div></div></div>
 </div>
 <p>What is the trading interpretation in this case? What is the portfolio that yields the ‘ret_m_spy’ payoff?</p>
@@ -1577,7 +1632,7 @@ returns?</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0275409cf852228aba722c1c7ce0c746d197cea8dc14540b42385320f6206d13.png" src="../../_images/0275409cf852228aba722c1c7ce0c746d197cea8dc14540b42385320f6206d13.png" />
+<img alt="../../_images/b63fce2776b32ef63359576fc3e34ae0d3a4f25be0230ef14b1d00cd9972a1a0.png" src="../../_images/b63fce2776b32ef63359576fc3e34ae0d3a4f25be0230ef14b1d00cd9972a1a0.png" />
 </div>
 </div>
 <p>Did it work?</p>
@@ -1706,7 +1761,7 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-aux-functions">4.1. Libraries and aux functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-auxiliary-functions">4.1. Libraries and Auxiliary Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-return">4.2. What is a return?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposing-returns">4.3. Decomposing Returns</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#striping-the-risk-free-rate">4.3.1. Striping the risk-free rate</a></li>
