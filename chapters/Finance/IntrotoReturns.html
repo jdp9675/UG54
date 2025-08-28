@@ -617,7 +617,9 @@ See why differing betas demand a formal model and set the stage for multi-factor
 <p>Lets start by loading Price and Dividend data on a single stock</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets connect with  the wrds database</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># lets connect with  the wrds database </span>
+<span class="c1"># you need to have an account do do this</span>
+<span class="c1"># and you need to setup your duo account--it is quick !</span>
 <span class="n">conn</span> <span class="o">=</span> <span class="n">wrds</span><span class="o">.</span><span class="n">Connection</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -647,7 +649,8 @@ Done
 </div>
 </div>
 <blockquote>
-<div><p>Since most of you probably don’t have the wrds setup yet, I have saved the data for UNH for you to access it.</p>
+<div><p><strong>Work around</strong></p>
+<p>Since most of you probably don’t have the wrds setup yet, I have saved the data for UNH for you to access it.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -748,8 +751,8 @@ Done
 </div></div></div>
 </div>
 <blockquote>
-<div><p><strong>Try it out</strong>
-How do you construct returns?</p>
+<div><p><strong>Try it out</strong></p>
+<p>How do you construct returns?</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -953,7 +956,7 @@ returns?</p></li>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/939b4bfd517c107de28d902d52459d4aca6d514731ddd5454be812c7dc261bea.png" src="../../_images/939b4bfd517c107de28d902d52459d4aca6d514731ddd5454be812c7dc261bea.png" />
+<img alt="../../_images/7aa97b4d73f6ccb6ae1ef4d6a31d8dc5b2ebef907fdc96d997a9cc9d02125403.png" src="../../_images/7aa97b4d73f6ccb6ae1ef4d6a31d8dc5b2ebef907fdc96d997a9cc9d02125403.png" />
 </div>
 </div>
 <p>How do we interpret this rate?</p>
@@ -1152,10 +1155,7 @@ returns?</p></li>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#conn = wrds.Connection()</span>
-
-
 <span class="n">df</span><span class="o">=</span><span class="n">get_daily_wrds</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span><span class="n">tickers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">])</span>
-<span class="c1">#Why did I divide by 252?</span>
 </pre></div>
 </div>
 </div>
@@ -1165,6 +1165,9 @@ returns?</p></li>
 </div>
 </div>
 </div>
+<blockquote>
+<div><p>WRDS workaround</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># again you can load this data directly if you don;t have wrds access</span>
@@ -1176,6 +1179,9 @@ returns?</p></li>
 </div>
 </div>
 </div>
+<blockquote>
+<div><p><strong>Calculation check</strong>: Why divide by 252?</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># will create excess returns</span>
@@ -1409,86 +1415,42 @@ returns?</p></li>
 <p>7974 rows × 3 columns</p>
 </div></div></div>
 </div>
+<blockquote>
+<div><p><strong>How can I visualize co-movement?</strong></p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
-
-
-<span class="c1"># Function to add regression line and beta coefficient</span>
-
-<span class="n">df_re</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;SPY vs WMT&#39;</span><span class="p">)</span>
-
-<span class="c1"># Scatter plot for SPY vs CSCO</span>
-<span class="n">df_re</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;JPM&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;SPY vs JPM&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/817dacd6b08e102c8885e5304aeb347978bb760b67dc627078d6bd23099d42c2.png" src="../../_images/817dacd6b08e102c8885e5304aeb347978bb760b67dc627078d6bd23099d42c2.png" />
+<img alt="../../_images/a9195b19d9e993cd3925a4a14cbdd338ecd2f5968a6adf7f8008260b1407090a.png" src="../../_images/a9195b19d9e993cd3925a4a14cbdd338ecd2f5968a6adf7f8008260b1407090a.png" />
 </div>
 </div>
-<p>Indeed we see quite a bit of co-movement!</p>
-<p>Days that SPY return is up, Both stocks tend to be up as well</p>
-<p>Another way of see this is looking at the correlation between the stocks and the factor</p>
+<blockquote>
+<div><p>What is a quantitative way to measure co-movement?</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df_re.?</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SPY</th>
-      <th>WMT</th>
-      <th>JPM</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>SPY</th>
-      <td>1.000000</td>
-      <td>0.492221</td>
-      <td>0.707302</td>
-    </tr>
-    <tr>
-      <th>WMT</th>
-      <td>0.492221</td>
-      <td>1.000000</td>
-      <td>0.325104</td>
-    </tr>
-    <tr>
-      <th>JPM</th>
-      <td>0.707302</td>
-      <td>0.325104</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    df_re.<span class="o">?</span>
+          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
 </div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Cleaning up co-movement?</strong></p>
 <p>Lets try to clean the stock from exposure to the common factor by subtracting it out</p>
-<p>‘m_spy’ denote the returns minus the return on the factor</p>
+</div></blockquote>
+<p>I am using ‘m_spy’ denote the returns minus the return on the factor</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="p">[[</span><span class="s1">&#39;WMT_m_spy&#39;</span><span class="p">,</span><span class="s1">&#39;JPM_m_spy&#39;</span><span class="p">]]</span><span class="o">=</span><span class="n">df_re</span><span class="p">[[</span><span class="s1">&#39;WMT&#39;</span><span class="p">,</span><span class="s1">&#39;JPM&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1611,8 +1573,13 @@ returns?</p></li>
 <p>7974 rows × 4 columns</p>
 </div></div></div>
 </div>
-<p>What is the trading interpretation in this case? What is the portfolio that yields the ‘ret_m_spy’ payoff?</p>
-<p>What is the cost of implementing this portfolio? Say you want to have a 100 dollar exposure to it?</p>
+<blockquote>
+<div><p><strong>Concept check</strong></p>
+<p>What is the trading interpretation in this case?</p>
+<p>What is the portfolio that yields the ‘ret_m_spy’ payoff?</p>
+<p>What is the theoretical “cost” of implementing this portfolio?(if you want to have a 100 dollar exposure to it?)</p>
+<p>In practice how much capital you need?</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -1625,9 +1592,6 @@ returns?</p></li>
 
 <span class="c1"># Scatter plot for SPY vs CSCO</span>
 <span class="n">df_re</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SPY&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;JPM_m_spy&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;SPY vs JPM&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1636,40 +1600,6 @@ returns?</p></li>
 </div>
 </div>
 <p>Did it work?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;SPY&#39;</span><span class="p">,:]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY          1.000000
-WMT          0.492221
-JPM          0.707302
-WMT_m_spy   -0.264076
-JPM_m_spy    0.272552
-Name: SPY, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_re</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SPY          0.011617
-WMT          0.015902
-JPM          0.022911
-WMT_m_spy    0.014351
-JPM_m_spy    0.016833
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
 <p>What is going on?</p>
 <p>The “model” motivating our decomposition was</p>
 <div class="math notranslate nohighlight">
@@ -1677,8 +1607,8 @@ dtype: float64
 <p>with the <span class="math notranslate nohighlight">\(r-f-rf\)</span> picking up the stock specific movement and <span class="math notranslate nohighlight">\(f\)</span> the common movement</p>
 <p>But it seems that the residual still has factor exposure</p>
 <ul class="simple">
-<li><p>For stock 1, the residual is negatively correlated, so it seems tha we are taking out too much</p></li>
-<li><p>For stock 2, it is still positive, so we are taking out too little</p></li>
+<li><p>For Walmart, the residual is negatively correlated, so it seems tha we are taking out too much</p></li>
+<li><p>For JPMorgan, it is still positive, so we are taking out too little</p></li>
 <li><p>Taking out 1 dollar of factor exposure for each 1 dollar of stock exposure reduced the factor exposure and the asset volatilities, but we can do better</p></li>
 </ul>
 <p>What should we do? How do we fix this?</p>
