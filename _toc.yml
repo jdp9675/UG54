@@ -5,7 +5,7 @@ options:
   numbered: true
 sections:
 - file: chapters/01/what-is-quant-investing
-  title: What is Quantitative Investing?
+  title: What is Data Driven Investing?
   sections:
   - file: chapters/01/statistical-techniques
     title: Statistical Techniques
@@ -118,8 +118,6 @@ sections:
   sections:
   - file: chapters/Assignments/Assignment1
     title: Assignment 1
-  # - file: chapters/Assignments/Assignment1
-  #   title: Assignment 1
   # - file: chapters/Assignments/Assignment2
   #   title: Assignment 2
   # - file: chapters/Assignments/Assignment3
